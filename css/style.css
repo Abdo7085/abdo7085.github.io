@@ -841,6 +841,9 @@
 .team .team-item:hover .team-content {
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
 }
+.team-center {
+justify-content: center;
+}
 /*** Team End ***/
 
 
