@@ -3,10 +3,10 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Electra - Electrical Website Template</title>
+        <title>Contact Us - Smart Home & Security Solutions</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+        <meta content="contact smart home installer, security system consultation, home automation quote" name="keywords">
+        <meta content="Get in touch for professional smart home automation and security system installations. Request a consultation or quote for your project." name="description">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,15 +165,22 @@
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
                         <div>
-                            <h4 class="text-primary">Contact Us</h4>
-                            <h1 class="display-4 mb-4">Illuminate Your Message Get in Contact</h1>
-                            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia hic aspernatur unde magnam necessitatibus provident iusto maxime nobis esse eligendi.
-                            </p>
+                            <h4 class="text-primary">Get in Touch</h4>
+                            <h1 class="display-4 mb-4">Transform Your Space with Smart Technology</h1>
+                            <p class="mb-5">Ready to enhance your home or business with cutting-edge smart automation and security solutions? Our team of experts is here to help you create a customized system that meets your needs.</p>
                             <div class="d-flex align-items-center mb-4">
-                                <a class="btn btn-primary btn-md-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-md-square me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-md-square me-3" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-primary btn-md-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <div class="bg-white p-4 text-center me-3">
+                                    <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                                    <p class="mb-0">24/7 Security</p>
+                                </div>
+                                <div class="bg-white p-4 text-center me-3">
+                                    <i class="fas fa-home fa-2x text-primary mb-2"></i>
+                                    <p class="mb-0">Smart Living</p>
+                                </div>
+                                <div class="bg-white p-4 text-center">
+                                    <i class="fas fa-cogs fa-2x text-primary mb-2"></i>
+                                    <p class="mb-0">Expert Support</p>
+                                </div>
                             </div>
                             <div class="row g-4">
                                 <div class="col-12">
@@ -208,53 +215,60 @@
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                         <div>
-                            <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-primary fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                            <p class="mb-4">Fill out the form below to request a consultation or quote for your smart home or security project. Our team will get back to you within 24 hours.</p>
                             <form>
                                 <div class="row g-4">
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                                            <input type="text" class="form-control border-0" id="name" placeholder="Your Name" required>
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
+                                            <input type="email" class="form-control border-0" id="email" placeholder="Your Email" required>
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating">
-                                            <input type="phone" class="form-control border-0" id="phone" placeholder="Phone">
+                                            <input type="tel" class="form-control border-0" id="phone" placeholder="Phone" required>
                                             <label for="phone">Your Phone</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0" id="project" placeholder="Project">
-                                            <label for="project">Your Project</label>
+                                            <select class="form-control border-0" id="service" required>
+                                                <option value="">Select a Service</option>
+                                                <option value="smart-home">Smart Home Automation</option>
+                                                <option value="security">Security Systems</option>
+                                                <option value="cameras">Surveillance Cameras</option>
+                                                <option value="lighting">Smart Lighting</option>
+                                                <option value="access">Access Control</option>
+                                            </select>
+                                            <label for="service">Service Required</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                            <label for="subject">Subject</label>
+                                            <input type="text" class="form-control border-0" id="property" placeholder="Property Type">
+                                            <label for="property">Property Type (Residential/Commercial)</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 125px"></textarea>
-                                            <label for="message">Message</label>
+                                            <textarea class="form-control border-0" placeholder="Project Details" id="message" style="height: 125px" required></textarea>
+                                            <label for="message">Project Details & Requirements</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheck">
-                                            <label class="form-check-label" for="flexCheck">I agree with the site privacy policy</label>
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheck" required>
+                                            <label class="form-check-label" for="flexCheck">I agree to receive communications about smart home and security solutions</label>
                                           </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3">Send Message</button>
+                                        <button type="submit" class="btn btn-primary w-100 py-3">Request Consultation</button>
                                     </div>
                                 </div>
                             </form>
@@ -294,39 +308,38 @@
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <div class="footer-item">
-                                <h3 class="text-white mb-4"><i class="fas fa-bolt text-primary me-3"></i>Electra</h3>
-                                <p class="mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+                                <h3 class="text-white mb-4"><i class="fas fa-home text-primary me-3"></i>Smart Solutions</h3>
+                                <p class="mb-3">Your trusted provider of professional smart home automation and security solutions. Transform your space with cutting-edge technology.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#"> Home</a>
-                            <a href="#"> About us</a>
-                            <a href="#"> Service</a>
-                            <a href="#"> Testimonial</a>
-                            <a href="#"> Contact Us</a>
+                            <a href="index.html">Home</a>
+                            <a href="about.html">About Us</a>
+                            <a href="service.html">Services</a>
+                            <a href="project.html">Projects</a>
+                            <a href="contact.html">Contact Us</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Electricity service</h4>
-                            <a href="#"> Air Conditioning</a>
-                            <a href="#"> Electrical Panels</a>
-                            <a href="#"> Security System</a>
-                            <a href="#"> Indoor Lighting</a>
-                            <a href="#"> Electrical Services</a>
+                            <h4 class="text-white mb-4">Our Services</h4>
+                            <a href="#">Security Camera Systems</a>
+                            <a href="#">Smart Home Automation</a>
+                            <a href="#">Access Control Solutions</a>
+                            <a href="#">Lighting Control</a>
+                            <a href="#">24/7 Monitoring</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Contact Info</h4>
-                            <a href="#"><i class="fa fa-map-marker-alt text-primary me-2"></i> 123 Street, New York, USA</a>
-                            <a href="mailto:info@example.com"><i class="fas fa-envelope text-primary me-2"></i> info@example.com</a>
-                            <a href="mailto:info@example.com"><i class="fas fa-envelope text-primary me-2"></i> info@example.com</a>
-                            <a href="tel:+012 345 67890"><i class="fas fa-phone text-primary me-2"></i> +012 345 67890</a>
-                            <a href="tel:+012 345 67890" class="mb-3"><i class="fas fa-print text-primary me-2"></i> +012 345 67890</a>
+                            <a href="#"><i class="fa fa-map-marker-alt text-primary me-2"></i>[Your Address]</a>
+                            <a href="mailto:info@company.com"><i class="fas fa-envelope text-primary me-2"></i>info@company.com</a>
+                            <a href="tel:+1234567890"><i class="fas fa-phone text-primary me-2"></i>Call for Service</a>
+                            <a href="#" class="mb-3"><i class="fas fa-clock text-primary me-2"></i>24/7 Emergency Support</a>
                         </div>
                     </div>
                 </div>
