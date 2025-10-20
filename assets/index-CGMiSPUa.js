@@ -1703,7 +1703,7 @@ function gf(e, t, n, r, l, i, o, s, a) {
     il = null,
     vf.apply(yf, arguments)
 }
-function xf(e, t, n, r, l, i, o, s, a) {
+function xf(e, t, n, r) {
     if (gf.apply(this, arguments),
     Bn) {
         if (Bn) {
@@ -7306,11 +7306,11 @@ function Ue(e) {
     }
     t & 4096 && (e.flags &= -4097)
 }
-function Kp(e, t, n) {
+function Kp(e) {
     N = e,
     bc(e)
 }
-function bc(e, t, n) {
+function bc(e) {
     for (var r = (e.mode & 1) !== 0; N !== null; ) {
         var l = N
           , i = l.child;
@@ -10085,7 +10085,7 @@ function Km(e) {
     return t || G(!1),
     t
 }
-function Ym(e) {
+function Ym() {
     let t = S.useContext(Bt);
     return t || G(!1),
     t
@@ -10118,7 +10118,7 @@ function Xm() {
         }, i)))
     }, [e, t])
 }
-function Zm(e, t) {
+function Zm(e) {
     e == null || e.v7_startTransition,
     e == null || e.v7_relativeSplatPath
 }
@@ -11448,168 +11448,85 @@ const Xh = re("Zap", [["polygon", {
         })
     })
 }
-  , qh = () => {
-    const e = S.useRef(null);
-    S.useEffect( () => {
-        const n = new IntersectionObserver(l => {
-            l.forEach(i => {
-                i.isIntersecting && i.target.classList.add("visible")
-            }
-            )
-        }
-        ,{
-            threshold: .1
-        })
-          , r = document.querySelectorAll(".fade-in");
-        return r.forEach(l => n.observe(l)),
-        () => {
-            r.forEach(l => n.unobserve(l))
-        }
-    }
-    , []);
-    const t = [{
-        icon: u.jsx(rl, {
-            className: "w-8 h-8 text-primary"
-        }),
-        title: "🏡 BASIC PACKAGE",
-        price: "$129",
-        subtitle: "💼 Service Only",
-        features: ["TV Mount (Standard Wall)", "Smart Lock Setup (You Provide Lock)", "Wi-Fi & App Setup", "Voice Assistant Link (Google/Alexa)"],
-        upgrade: "Want gear too? Full setup: $249–$299",
-        cta: "Basic",
-        popular: !1
-    }, {
-        icon: u.jsx(Kh, {
-            className: "w-8 h-8 text-primary"
-        }),
-        title: "⚖️ PRO PACKAGE",
-        price: "$199",
-        subtitle: "💼 Service Only",
-        features: ["Everything in BASIC +", "Smart Thermostat Setup", "Custom Routines (Bedtime, Away Mode)"],
-        upgrade: "Add gear? Full setup: $399–$459",
-        cta: "Pro",
-        popular: !0
-    }, {
-        icon: u.jsx(Xh, {
-            className: "w-8 h-8 text-primary"
-        }),
-        title: "🚨 ELITE PACKAGE",
-        price: "$299",
-        subtitle: "💼 Service Only",
-        features: ["Everything in PRO +", "Smart Doorbell Install", "Motion-Activated Lights", "Full Automation & Optimization"],
-        upgrade: "Add gear? Full setup: $599–$679",
-        cta: "Elite",
-        popular: !1
-    }];
-    return u.jsx("section", {
-        id: "smarthomeservices",
-        className: "py-16 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white",
-        ref: e,
-        children: u.jsx("div", {
-            className: "container mx-auto px-4",
-            children: u.jsxs("div", {
-                className: "max-w-7xl mx-auto",
-                children: [u.jsxs("div", {
-                    className: "text-center mb-16 fade-in",
-                    children: [u.jsx("h2", {
-                        className: "text-3xl md:text-4xl font-bold mb-4 font-exo text-white",
-                        children: u.jsx("span", {
-                            className: "border-b-2 border-primary pb-2",
-                            children: "Let's Level Up Your Home"
+    , qh = () => {
+        const e = S.useRef(null);
+        S.useEffect(() => {
+                const n = new IntersectionObserver(l => {
+                        l.forEach(i => {
+                                i.isIntersecting && i.target.classList.add("visible")
                         })
-                    }), u.jsx("p", {
-                        className: "text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed",
-                        children: "Choose the perfect smart home automation package for your needs. Professional installation and setup included."
-                    }), u.jsx("div", {
-                        className: "section-divider"
-                    })]
-                }), u.jsx("div", {
-                    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
-                    children: t.map( (n, r) => u.jsxs("div", {
-                        className: `
-                  relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm
-                  border border-gray-700/50 rounded-2xl p-8 transition-all duration-500
-                  hover:transform hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30
-                  fade-in group
-                  ${n.popular ? "ring-2 ring-primary/50 shadow-lg shadow-primary/20" : ""}
-                `,
+                }, {
+                        threshold: .1
+                });
+                const r = document.querySelectorAll(".fade-in");
+                r.forEach(l => n.observe(l));
+                return () => {
+                        r.forEach(l => n.unobserve(l))
+                }
+        }, []);
+        const t = [{
+                icon: u.jsx("img", {
+                        src: "assets/example01.gif",
+                        alt: "Smart Home Showcase",
+                        className: "mx-auto max-w-full h-auto rounded-lg shadow-lg w-[90vw] md:w-auto",
+                        loading: "lazy",
                         style: {
-                            animationDelay: `${r * .1}s`
-                        },
-                        children: [n.popular && u.jsx("div", {
-                            className: "absolute -top-3 left-1/2 transform -translate-x-1/2",
-                            children: u.jsx("span", {
-                                className: "bg-primary text-white px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wide",
-                                children: "Popular"
-                            })
-                        }), u.jsxs("div", {
-                            className: "text-center mb-6",
-                            children: [u.jsx("div", {
-                                className: "flex items-center justify-center mb-4",
-                                children: n.icon
-                            }), u.jsx("h3", {
-                                className: "text-xl font-bold mb-2 font-exo text-white",
-                                children: n.title
-                            }), u.jsx("div", {
-                                className: "bg-primary/10 border border-primary/20 rounded-lg p-3 mb-4",
-                                children: u.jsx("p", {
-                                    className: "text-primary text-sm font-medium",
-                                    children: n.subtitle
-                                })
-                            })]
-                        }), u.jsxs("div", {
-                            className: "text-center mb-6",
-                            children: [u.jsx("div", {
-                                className: "text-4xl font-bold text-white mb-2",
-                                children: n.price
-                            }), u.jsx("p", {
-                                className: "text-gray-400 text-sm",
-                                children: "One-time setup fee"
-                            })]
-                        }), u.jsx("div", {
-                            className: "mb-6",
-                            children: u.jsx("ul", {
-                                className: "space-y-3",
-                                children: n.features.map( (l, i) => u.jsxs("li", {
-                                    className: "flex items-start",
-                                    children: [u.jsx(je, {
-                                        className: "w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0"
-                                    }), u.jsx("span", {
-                                        className: "text-gray-300 text-sm leading-relaxed",
-                                        children: l
-                                    })]
-                                }, i))
-                            })
-                        }), u.jsx("div", {
-                            className: "bg-primary/5 border border-primary/20 rounded-lg p-4 mb-6",
-                            children: u.jsxs("div", {
-                                className: "flex items-center",
-                                children: [u.jsx(Vh, {
-                                    className: "w-5 h-5 text-primary mr-3 flex-shrink-0"
-                                }), u.jsx("p", {
-                                    className: "text-gray-300 text-sm",
-                                    children: n.upgrade
+                            display: "block"
+                        }
+                }),
+                features: []
+        }];
+        return u.jsx("section", {
+                id: "example",
+                // reduce height on small screens so single GIF doesn't feel oversized
+                className: "min-h-[60vh] md:min-h-screen flex items-center justify-center py-12 md:py-16 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white",
+                ref: e,
+                children: u.jsx("div", {
+                        className: "container mx-auto px-4",
+                        children: u.jsxs("div", {
+                                className: "max-w-7xl mx-auto",
+                                children: [u.jsxs("div", {
+                                        className: "text-center mb-6 md:mb-8 fade-in",
+                                        children: [u.jsx("h2", {
+                                                className: "text-2xl md:text-4xl font-bold mb-3 md:mb-4 font-exo text-white",
+                                                children: u.jsx("span", {
+                                                        className: "border-b-2 border-primary pb-2",
+                                                        children: "Let's Level Up Your Home"
+                                                })
+                                        }), u.jsx("p", {
+                                                className: "text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed",
+                                                children: "Choose the perfect smart home automation package for your needs. Professional installation and setup included."
+                                        })]
+                                }), u.jsx("div", {
+                                        // center the single image card and let it size to the GIF's intrinsic size
+                                        className: "flex items-center justify-center",
+                                        children: t.map((n, r) => u.jsxs("div", {
+                                                className: `
+                                    inline-block bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm
+                                    border border-gray-700/50 rounded-2xl p-3 md:p-8 transition-all duration-500
+                                    hover:transform hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30
+                                    fade-in group
+                                `,
+                                                style: {
+                                                        animationDelay: `${r * .1}s`,
+                                                        maxWidth: "1100px",
+                                                        width: "auto"
+                                                },
+                                                children: [u.jsxs("div", {
+                                                        // slightly smaller vertical padding on mobile
+                                                        className: "text-center py-4 md:py-6",
+                                                        children: [u.jsx("div", {
+                                                                className: "flex items-center justify-center mb-0",
+                                                                children: n.icon
+                                                        })]
+                                                })]
+                                        }, r))
                                 })]
-                            })
-                        }), u.jsx("button", {
-                            onClick: () => window.location.href = "tel:9015016177",
-                            className: `
-                    w-full py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide
-                    transition-all duration-300 hover:transform hover:-translate-y-1
-                    ${n.popular ? "bg-primary text-white hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25" : "bg-gray-700 text-white hover:bg-gray-600 hover:shadow-lg"}
-                  `,
-                            children: n.cta
-                        }), u.jsx("div", {
-                            className: "absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                        })]
-                    }, r))
-                })]
-            })
+                        })
+                })
         })
-    })
 }
-  , Jh = () => {
-    const e = S.useRef(null);
+    , Jh = () => {
     return S.useEffect( () => {
         const t = new IntersectionObserver(r => {
             r.forEach(l => {
@@ -11626,94 +11543,9 @@ const Xh = re("Zap", [["polygon", {
             n.forEach(r => t.unobserve(r))
         }
     }
-    , []),
-    u.jsx("section", {
-        className: "py-16 bg-white text-gray-800",
-        ref: e,
-        children: u.jsx("div", {
-            className: "container mx-auto px-4",
-            children: u.jsx("div", {
-                className: "max-w-5xl mx-auto",
-                children: u.jsxs("div", {
-                    className: "flex flex-col md:flex-row items-center justify-between gap-10",
-                    children: [u.jsxs("div", {
-                        className: "md:w-1/2 fade-in",
-                        children: [u.jsx("h2", {
-                            className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-primary",
-                            children: u.jsx("span", {
-                                className: "border-b-2 border-primary pb-1",
-                                children: "Water Purification"
-                            })
-                        }), u.jsx("div", {
-                            className: "bg-gray-50 p-4 rounded-lg mb-4 shadow-sm",
-                            children: u.jsx("p", {
-                                className: "text-sm font-semibold text-primary",
-                                children: "Starting from $300"
-                            })
-                        }), u.jsx("p", {
-                            className: "text-sm md:text-base mb-4 leading-relaxed",
-                            children: "Pure & clean water throughout your home with our advanced filtration systems that remove contaminants and impurities."
-                        }), u.jsxs("ul", {
-                            className: "mb-6 space-y-2",
-                            children: [u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Removes sediment, chlorine, and harmful bacteria"
-                                })]
-                            }), u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Protects appliances from scale buildup"
-                                })]
-                            }), u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Eliminates the need for bottled water"
-                                })]
-                            })]
-                        }), u.jsx("p", {
-                            className: "text-sm md:text-base mb-6 leading-relaxed",
-                            children: "Our reverse osmosis systems deliver crystal-clear water directly to your tap, delivering crystal-clear water while protecting appliances from scale buildup."
-                        }), u.jsx("div", {
-                            className: "flex flex-col sm:flex-row gap-4",
-                            children: u.jsx("a", {
-                                href: "tel:9015016177",
-                                className: "btn-primary hover:scale-105 transition-transform",
-                                children: "👉 Purify Your Water"
-                            })
-                        })]
-                    }), u.jsx("div", {
-                        className: "md:w-1/2 fade-in",
-                        children: u.jsxs("div", {
-                            className: "flex flex-col space-y-3",
-                            children: [u.jsx("img", {
-                                src: "/assets/waterimage1.webp",
-                                alt: "Modern Kitchen",
-                                className: "rounded-lg w-full h-auto mb-4 shadow-md hover:shadow-lg transition-shadow"
-                            }), u.jsx("img", {
-                                src: "/assets/waterimage2.webp",
-                                alt: "Water Purification System",
-                                className: "rounded-lg w-full h-auto shadow-md hover:shadow-lg transition-shadow",
-                                loading: "lazy"
-                            })]
-                        })
-                    })]
-                })
-            })
-        })
-    })
+    , [])
 }
   , bh = () => {
-    const e = S.useRef(null);
     return S.useEffect( () => {
         const t = new IntersectionObserver(r => {
             r.forEach(l => {
@@ -11730,322 +11562,158 @@ const Xh = re("Zap", [["polygon", {
             n.forEach(r => t.unobserve(r))
         }
     }
-    , []),
-    u.jsx("section", {
-        id: "home-theatre",
-        className: "py-16 bg-white text-gray-800",
-        ref: e,
-        children: u.jsx("div", {
-            className: "container mx-auto px-4",
-            children: u.jsx("div", {
-                className: "max-w-5xl mx-auto",
+    , [])
+}
+    , ev = () => {
+        const [e,t] = S.useState("residential")
+            , n = S.useRef(null);
+        S.useEffect( () => {
+                const l = new IntersectionObserver(o => {
+                        o.forEach(s => {
+                                s.isIntersecting && s.target.classList.add("visible")
+                        })
+                }
+                ,{
+                        threshold: .1
+                });
+                // scope the query to this section so newly rendered cards are observed when switching tabs
+                const scope = n.current || document;
+                const i = scope.querySelectorAll(".fade-in, .service-card");
+                i.forEach(o => l.observe(o));
+                return () => {
+                        i.forEach(o => l.unobserve(o));
+                        l.disconnect();
+                }
+        }
+        , [e]); // re-run when the active tab changes so new elements get observed
+        const r = {
+                residential: [{
+                        icon: u.jsx(rl, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Smart Home Automation",
+                        description: "Complete smart home solutions including installation, setup, and programming of connected devices for seamless control and automation."
+                }, {
+                        icon: u.jsx(Wh, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Smart Locks & Video Doorbells",
+                        description: "Secure your home with smart locks and doorbells featuring remote access, real-time alerts, and expert installation."
+                }, {
+                        icon: u.jsx(rl, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Thermostat Installation & Setup",
+                        description: "Energy-efficient thermostat installation and programming, including integration with your smart home system."
+                }, {
+                        icon: u.jsx(Ja, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Security Cameras & Motion Sensors",
+                        description: "Custom surveillance setups with motion-activated cameras, mobile access, and expert system configuration."
+                }, {
+                        icon: u.jsx(qa, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Voice Assistant Integration (Alexa, Google, etc.)",
+                        description: "Hands-free control with Alexa, Google Assistant, or Siri—fully configured for your home devices and routines."
+                }, {
+                        icon: u.jsx(ba, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Network & Wi-Fi Optimization",
+                        description: "Optimized home networks with mesh Wi-Fi and expert placement for fast, stable, and full-home coverage."
+                }, {
+                        icon: u.jsx(rl, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Smart Lighting & Switches",
+                        description: "Install and automate lighting systems with smart switches, dimmers, and remote controls for personalized ambiance."
+                }],
+                commercial: [{
+                        icon: u.jsx($h, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Commercial Automation",
+                        description: "Integrated control systems for lighting, HVAC, and security to optimize energy usage and enhance operational efficiency."
+                }, {
+                        icon: u.jsx(ba, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Enterprise WiFi",
+                        description: "High-performance wireless networks designed for business environments with multiple access points and advanced security features."
+                }, {
+                        icon: u.jsx(Ja, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Commercial Surveillance",
+                        description: "Comprehensive security camera systems with analytics capabilities for retail, office, and industrial environments."
+                }, {
+                        icon: u.jsx(qa, {
+                                className: "w-8 h-8 text-primary"
+                        }),
+                        title: "Commercial Audio",
+                        description: "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems."
+                }]
+        };
+        return u.jsx("section", {
+                id: "services",
+                className: "section-padding bg-gray-50",
+                ref: n,
                 children: u.jsxs("div", {
-                    className: "flex flex-col md:flex-row items-center justify-between gap-10",
-                    children: [u.jsxs("div", {
-                        className: "md:w-1/2 fade-in",
-                        children: [u.jsx("h2", {
-                            className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-primary",
-                            children: u.jsx("span", {
-                                className: "border-b-2 border-primary pb-1",
-                                children: "Home Theatre & TV Mounting"
-                            })
+                        className: "container mx-auto px-4",
+                        children: [u.jsxs("div", {
+                                className: "text-center mb-12 fade-in",
+                                children: [u.jsx("h2", {
+                                        className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary",
+                                        children: "Services"
+                                }), u.jsx("p", {
+                                        className: "text-base text-gray-600 max-w-2xl mx-auto font-poppins",
+                                        children: "Smart solutions for both residential and commercial clients."
+                                })]
                         }), u.jsx("div", {
-                            className: "bg-gray-50 p-4 rounded-lg mb-4 shadow-sm",
-                            children: u.jsx("p", {
-                                className: "text-sm font-semibold text-primary",
-                                children: "Professional Installation"
-                            })
-                        }), u.jsx("p", {
-                            className: "text-sm md:text-base mb-4 leading-relaxed",
-                            children: "Transform your living space with professional TV mounting and custom home theatre installations for optimal viewing and sound quality."
-                        }), u.jsxs("ul", {
-                            className: "mb-6 space-y-2",
-                            children: [u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Clean, professional TV mounting with hidden cables"
-                                })]
-                            }), u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Surround sound system installation and calibration"
-                                })]
-                            }), u.jsxs("li", {
-                                className: "flex items-start",
-                                children: [u.jsx(je, {
-                                    className: "w-5 h-5 text-primary mr-2 mt-0.5"
-                                }), u.jsx("span", {
-                                    className: "text-sm",
-                                    children: "Custom home theater design and setup"
-                                })]
-                            })]
-                        }), u.jsx("p", {
-                            className: "text-sm md:text-base mb-6 leading-relaxed",
-                            children: "From concealing cables to calibrating audio systems, we deliver cinema-quality entertainment that complements your home's aesthetic."
-                        }), u.jsxs("div", {
-                            className: "flex flex-col sm:flex-row gap-4",
-                            children: [u.jsx("a", {
-                                href: "tel:9015016177",
-                                className: "btn-primary hover:scale-105 transition-transform",
-                                children: "👉 TV Mounting Service"
-                            }), u.jsx(Mt, {
-                                to: "/previous-work",
-                                className: "btn-outline hover:scale-105 transition-transform",
-                                children: "See Previous Work"
-                            })]
+                                className: "flex justify-center mb-8 fade-in",
+                                children: u.jsxs("div", {
+                                        className: "inline-flex rounded-md shadow-sm",
+                                        role: "group",
+                                        children: [u.jsx("button", {
+                                                type: "button",
+                                                className: `px-5 py-2 text-base font-medium rounded-l-lg transition-all duration-300 ${e === "residential" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
+                                                onClick: () => t("residential"),
+                                                children: "Residential Services"
+                                        }), u.jsx("button", {
+                                                type: "button",
+                                                className: `px-5 py-2 text-base font-medium rounded-r-lg transition-all duration-300 ${e === "commercial" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
+                                                onClick: () => t("commercial"),
+                                                children: "Commercial Services"
+                                        })]
+                                })
+                        }), u.jsx("div", {
+                                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+                                children: r[e].map((service) => u.jsxs("div", {
+                                        className: "service-card fade-in",
+                                        children: [u.jsx("div", {
+                                                className: "mb-3",
+                                                children: service.icon
+                                        }), u.jsx("h3", {
+                                                className: "text-lg font-bold mb-2 font-exo",
+                                                children: service.title
+                                        }), u.jsx("p", {
+                                                className: "text-gray-600 text-sm",
+                                                children: service.description
+                                        })]
+                                }, service.title)) // use stable key (title) instead of index
                         })]
-                    }), u.jsx("div", {
-                        className: "md:w-1/2 fade-in",
-                        children: u.jsxs("div", {
-                            className: "flex flex-col space-y-3",
-                            children: [u.jsx("img", {
-                                src: "/assets/hometheatre1.webp",
-                                alt: "Home Theatre Setup",
-                                className: "rounded-lg w-full h-auto mb-4 shadow-md hover:shadow-lg transition-shadow",
-                                loading: "lazy"
-                            }), u.jsx("img", {
-                                src: "/assets/hometheatre2.webp",
-                                alt: "Wall Mounted TV",
-                                className: "rounded-lg w-full h-auto shadow-md hover:shadow-lg transition-shadow",
-                                loading: "lazy"
-                            })]
-                        })
-                    })]
                 })
-            })
         })
-    })
 }
-  , ev = () => {
-    const [e,t] = S.useState("residential")
-      , n = S.useRef(null);
-    S.useEffect( () => {
-        const l = new IntersectionObserver(o => {
-            o.forEach(s => {
-                s.isIntersecting && s.target.classList.add("visible")
-            }
-            )
-        }
-        ,{
-            threshold: .1
-        })
-          , i = document.querySelectorAll(".fade-in");
-        return i.forEach(o => l.observe(o)),
-        () => {
-            i.forEach(o => l.unobserve(o))
-        }
-    }
-    , []);
-    const r = {
-        residential: [{
-            icon: u.jsx(rl, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Smart Home Automation",
-            description: "Complete smart home solutions including installation, setup, and programming of connected devices for seamless control and automation."
-        }, {
-            icon: u.jsx(Yh, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "TV Mounting",
-            description: "Professional wall mounting for TVs of all sizes, with clean cable management and device integration for a sleek setup."
-        }, {
-            icon: u.jsx(Wh, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Smart Locks & Video Doorbells",
-            description: "Secure your home with smart locks and doorbells featuring remote access, real-time alerts, and expert installation."
-        }, {
-            icon: u.jsx(rl, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Thermostat Installation & Setup",
-            description: "Energy-efficient thermostat installation and programming, including integration with your smart home system."
-        }, {
-            icon: u.jsx(Ja, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Security Cameras & Motion Sensors",
-            description: "Custom surveillance setups with motion-activated cameras, mobile access, and expert system configuration."
-        }, {
-            icon: u.jsx(qa, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Voice Assistant Integration (Alexa, Google, etc.)",
-            description: "Hands-free control with Alexa, Google Assistant, or Siri—fully configured for your home devices and routines."
-        }, {
-            icon: u.jsx(ba, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Network & Wi-Fi Optimization",
-            description: "Optimized home networks with mesh Wi-Fi and expert placement for fast, stable, and full-home coverage."
-        }, {
-            icon: u.jsx(rl, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Smart Lighting & Switches",
-            description: "Install and automate lighting systems with smart switches, dimmers, and remote controls for personalized ambiance."
-        }],
-        commercial: [{
-            icon: u.jsx($h, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Commercial Automation",
-            description: "Integrated control systems for lighting, HVAC, and security to optimize energy usage and enhance operational efficiency."
-        }, {
-            icon: u.jsx(ba, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Enterprise WiFi",
-            description: "High-performance wireless networks designed for business environments with multiple access points and advanced security features."
-        }, {
-            icon: u.jsx(Ja, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Commercial Surveillance",
-            description: "Comprehensive security camera systems with analytics capabilities for retail, office, and industrial environments."
-        }, {
-            icon: u.jsx(qa, {
-                className: "w-8 h-8 text-primary"
-            }),
-            title: "Commercial Audio",
-            description: "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems."
-        }]
-    };
-    return u.jsx("section", {
-        id: "services",
-        className: "section-padding bg-gray-50",
-        ref: n,
-        children: u.jsxs("div", {
-            className: "container mx-auto px-4",
-            children: [u.jsxs("div", {
-                className: "text-center mb-12 fade-in",
-                children: [u.jsx("h2", {
-                    className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary",
-                    children: "Services"
-                }), u.jsx("p", {
-                    className: "text-base text-gray-600 max-w-2xl mx-auto font-poppins",
-                    children: "Smart solutions for both residential and commercial clients."
-                })]
-            }), u.jsx("div", {
-                className: "flex justify-center mb-8 fade-in",
-                children: u.jsxs("div", {
-                    className: "inline-flex rounded-md shadow-sm",
-                    role: "group",
-                    children: [u.jsx("button", {
-                        type: "button",
-                        className: `px-5 py-2 text-base font-medium rounded-l-lg transition-all duration-300 ${e === "residential" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
-                        onClick: () => t("residential"),
-                        children: "Residential Services"
-                    }), u.jsx("button", {
-                        type: "button",
-                        className: `px-5 py-2 text-base font-medium rounded-r-lg transition-all duration-300 ${e === "commercial" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
-                        onClick: () => t("commercial"),
-                        children: "Commercial Services"
-                    })]
-                })
-            }), u.jsx("div", {
-                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
-                children: r[e].map( (l, i) => u.jsxs("div", {
-                    className: "service-card fade-in",
-                    children: [u.jsx("div", {
-                        className: "mb-3",
-                        children: l.icon
-                    }), u.jsx("h3", {
-                        className: "text-lg font-bold mb-2 font-exo",
-                        children: l.title
-                    }), u.jsx("p", {
-                        className: "text-gray-600 text-sm",
-                        children: l.description
-                    })]
-                }, i))
-            })]
-        })
-    })
-}
-  , tv = () => {
-    const e = [{
-        price: "$105",
-        title: "TV Mounting",
-        description: "Professional TV mounting with bracket installation and cable management."
-    }, {
-        price: "$15",
-        title: "Smart Home Consultation",
-        description: "Assessment of your home to identify the best smart solutions for your needs."
-    }, {
-        price: "$125",
-        title: "Home Automation Installation",
-        description: "Expert installation of smart home devices with setup and configuration."
-    }, {
-        price: "$125",
-        title: "Home Network Setup",
-        description: "Complete network installation with router configuration and WiFi optimization."
-    }, {
-        price: "$75",
-        title: "Smart Home Maintenance",
-        description: "Regular maintenance to ensure all smart devices function optimally."
-    }, {
-        price: "$20",
-        title: "24/7 Customer Support",
-        description: "Round-the-clock technical support with priority response times."
-    }, {
-        price: "$625",
-        title: "Reverse Osmosis Installation",
-        description: "Professional installation of reverse osmosis water filtration systems."
-    }, {
-        price: "$120",
-        title: "Speaker Installation",
-        description: "Expert speaker installation with mounting and acoustic optimization."
-    }];
-    return u.jsx("section", {
-        id: "pricing",
-        className: "section-padding bg-gray-50",
-        children: u.jsxs("div", {
-            className: "container mx-auto px-4",
-            children: [u.jsxs("div", {
-                className: "text-center mb-12",
-                children: [u.jsx("h2", {
-                    className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary",
-                    children: "Pricing"
-                }), u.jsx("p", {
-                    className: "text-base text-gray-600 max-w-2xl mx-auto font-poppins",
-                    children: "Transparent costs for all our services. Contact us for custom solutions."
-                })]
-            }), u.jsx("div", {
-                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5",
-                children: e.map( (t, n) => u.jsxs("div", {
-                    className: "price-card flex flex-col",
-                    children: [u.jsx("div", {
-                        className: "flex items-center justify-center mb-3",
-                        children: u.jsx("span", {
-                            className: "text-2xl font-bold text-primary",
-                            children: t.title
-                        })
-                    }), u.jsx("h3", {
-                        className: "text-lg font-bold mb-2 font-exo text-center",
-                        children: t.price
-                    }), u.jsx("p", {
-                        className: "text-gray-600 mb-5 flex-grow text-center text-sm",
-                        children: t.description
-                    })]
-                }, n))
-            })]
-        })
-    })
-}
-  , nv = () => {
+    , nv = () => {
     const e = [{
         question: "What services do you offer?",
         answer: "We specialize in smart home automation, home theater setup, TV mounting, reverse osmosis water purification, and other low-voltage solutions."
     }, {
         question: "How much does installation cost?",
-        answer: "Pricing depends on the service. TV mounting starts at $105, and water purification starts at $300. Contact us for a custom quote."
+        answer: "Services depends on the service. TV mounting starts at $105, and water purification starts at $300. Contact us for a custom quote."
     }, {
         question: "How long does installation take?",
         answer: "Most installations are completed within a few hours. More complex projects may take longer, and we’ll provide an estimated timeline during consultation."
@@ -12149,7 +11817,7 @@ const Xh = re("Zap", [["polygon", {
                 className: "text-center mb-6",
                 children: u.jsx("h2", {
                     className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary fade-in",
-                    children: "How We Level Up The Quality of Life in Your Home"
+                    children: "Your Trusted Partner in Smart Home & Security Solutions"
                 })
             }), u.jsx("div", {
                 className: "section-divider fade-in"
@@ -12190,7 +11858,7 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Keyless locks — app-based access, no keys."
+                                    children: "Smart Locks — app-based access, no keys."
                                 })]
                             }), u.jsxs("li", {
                                 className: "flex items-start",
@@ -12298,7 +11966,7 @@ const Xh = re("Zap", [["polygon", {
                 name: "keywords",
                 content: "smart home, home automation, TV mounting, home theatre, Nashville"
             })]
-        }), u.jsx(Zh, {}), u.jsx(rv, {}), u.jsx(bh, {}), u.jsx(Jh, {}), u.jsx(qh, {}), u.jsx(ev, {}), u.jsx(tv, {}), u.jsx(nv, {}), u.jsx(Od, {})]
+        }), u.jsx(Zh, {}), u.jsx(rv, {}), u.jsx(bh, {}), u.jsx(Jh, {}), u.jsx(qh, {}), u.jsx(ev, {}), u.jsx(nv, {}), u.jsx(Od, {})]
     })
 }
   , iv = () => {
@@ -12361,15 +12029,15 @@ const Xh = re("Zap", [["polygon", {
                             })
                         }), u.jsx("li", {
                             children: u.jsx("button", {
-                                onClick: () => n("smarthomeservices"),
+                                onClick: () => n("example"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Packages"
+                                children: "Example"
                             })
                         }), u.jsx("li", {
                             children: u.jsx("button", {
-                                onClick: () => n("pricing"),
+                                onClick: () => n("services"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Pricing"
+                                children: "Services"
                             })
                         }), u.jsx("li", {
                             children: u.jsx(Mt, {
@@ -12696,13 +12364,13 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link",
                     children: "What We Do"
                 }), u.jsx("button", {
-                    onClick: () => s("smarthomeservices"),
+                    onClick: () => s("example"),
                     className: "nav-link",
-                    children: "Packages"
+                    children: "Example"
                 }), u.jsx("button", {
-                    onClick: () => s("pricing"),
+                    onClick: () => s("services"),
                     className: "nav-link",
-                    children: "Pricing"
+                    children: "Services"
                 }), u.jsx(Mt, {
                     to: "/previous-work",
                     onClick: () => {
@@ -12748,13 +12416,13 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link text-base py-1 text-left",
                     children: "What We Do"
                 }), u.jsx("button", {
-                    onClick: () => s("smarthomeservices"),
+                    onClick: () => s("example"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Packages"
+                    children: "Example"
                 }), u.jsx("button", {
-                    onClick: () => s("pricing"),
+                    onClick: () => s("services"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Pricing"
+                    children: "Services"
                 }), u.jsx(Mt, {
                     to: "/previous-work",
                     onClick: () => {
