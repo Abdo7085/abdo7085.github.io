@@ -12001,7 +12001,7 @@ const Xh = re("Zap", [["polygon", {
                         to: "/",
                         className: "flex items-center mb-4",
                         children: u.jsx("img", {
-                            src: "/assets/logoet.webp",
+                            src: "/assets/S‑ELECTRICITY-EN.svg",
                             alt: "S‑ELECTRICITY LLC Logo",
                             className: "h-9 w-auto"
                         })
@@ -12348,7 +12348,7 @@ const Xh = re("Zap", [["polygon", {
                 to: "/",
                 className: "flex items-center",
                 children: u.jsx("img", {
-                    src: "/assets/logocircular.webp",
+                    src: "/assets/S‑ELECTRICITY-LOGO.svg",
                     alt: "S‑ELECTRICITY LLC Logo",
                     className: "h-9 w-auto",
                     loading: "eager"
