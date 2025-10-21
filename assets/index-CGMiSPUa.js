@@ -11430,7 +11430,7 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4 w-full",
                 children: [u.jsxs("a", {
-                    href: "tel:9015016177",
+                    href: "tel:0612345678",
                     className: "btn-primary text-base sm:text-base cta-button-animation inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105",
                     children: [u.jsx(Sn, {
                         className: "w-4 h-4 mr-2"
@@ -11710,10 +11710,10 @@ const Xh = re("Zap", [["polygon", {
     , nv = () => {
     const e = [{
         question: "What services do you offer?",
-        answer: "We specialize in smart home automation, home theater setup, TV mounting, reverse osmosis water purification, and other low-voltage solutions."
+        answer: "We specialize in smart home automation, Smart Locks setup, Domotique, reverse osmosis water purification, and other low-voltage solutions."
     }, {
         question: "How much does installation cost?",
-        answer: "Services depends on the service. TV mounting starts at $105, and water purification starts at $300. Contact us for a custom quote."
+        answer: "Services depends on the service. Domotique starts at $105, and water purification starts at $300. Contact us for a custom quote."
     }, {
         question: "How long does installation take?",
         answer: "Most installations are completed within a few hours. More complex projects may take longer, and we’ll provide an estimated timeline during consultation."
@@ -11722,7 +11722,7 @@ const Xh = re("Zap", [["polygon", {
         answer: "Yes, we provide warranties on our installations to ensure quality and reliability. Specific warranty details depend on the service."
     }, {
         question: "How do I schedule an appointment?",
-        answer: "You can call us at (901) 501-6177. We'll be happy to talk to you anytime."
+        answer: "You can call us at 061-234-5678. We'll be happy to talk to you anytime."
     }];
     return u.jsx("section", {
         className: "py-16 bg-gray-50 text-gray-800",
@@ -11779,11 +11779,11 @@ const Xh = re("Zap", [["polygon", {
                 className: "text-base mb-6 max-w-2xl mx-auto fade-in",
                 children: "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget."
             }), u.jsxs("a", {
-                href: "tel:9015016177",
+                href: "tel:0612345678",
                 className: "btn-secondary text-base inline-flex items-center hover:scale-105 transition-transform fade-in",
                 children: [u.jsx(Sn, {
                     className: "w-4 h-4 mr-2"
-                }), " Call Now: 901-501-6177"]
+                }), " Call Now: 061-234-5678"]
             })]
         })
     })
@@ -11891,7 +11891,7 @@ const Xh = re("Zap", [["polygon", {
                         }), u.jsxs("div", {
                             className: "flex flex-col sm:flex-row gap-4",
                             children: [u.jsx("a", {
-                                href: "tel:9015016177",
+                                href: "tel:0612345678",
                                 className: "btn-primary hover:scale-105 transition-transform",
                                 children: "👉 Upgrade Your Home"
                             }), u.jsx(Mt, {
@@ -11958,13 +11958,13 @@ const Xh = re("Zap", [["polygon", {
     u.jsxs(u.Fragment, {
         children: [u.jsxs(Ts, {
             children: [u.jsx("title", {
-                children: "Ennoble Smart Home & Home Cinema | Nashville"
+                children: "S‑ELECTRICITY Smart Home & Domotique | Morocco"
             }), u.jsx("meta", {
                 name: "description",
-                content: "Smart Home Automation, Home Cinema & TV Mounting in Nashville."
+                content: "Smart Home Automation, Domotique & Security Cameras in Morocco."
             }), u.jsx("meta", {
                 name: "keywords",
-                content: "smart home, home automation, TV mounting, home theatre, Nashville"
+                content: "smart home, home automation, Domotique, home theatre, Morocco"
             })]
         }), u.jsx(Zh, {}), u.jsx(rv, {}), u.jsx(bh, {}), u.jsx(Jh, {}), u.jsx(qh, {}), u.jsx(ev, {}), u.jsx(nv, {}), u.jsx(Od, {})]
     })
@@ -12002,12 +12002,12 @@ const Xh = re("Zap", [["polygon", {
                         className: "flex items-center mb-4",
                         children: u.jsx("img", {
                             src: "/assets/logoet.webp",
-                            alt: "Ennoble Technology LLC Logo",
+                            alt: "S‑ELECTRICITY LLC Logo",
                             className: "h-9 w-auto"
                         })
                     }), u.jsx("p", {
                         className: "text-gray-400 mb-4 text-sm",
-                        children: "Smart home automation & low voltage solutions in Nashville. Upgrade your home for a modern & seamless experience."
+                        children: "Smart home automation & low voltage solutions in Morocco. Upgrade your home for a modern & seamless experience."
                     })]
                 }), u.jsxs("div", {
                     children: [u.jsx("h3", {
@@ -12065,9 +12065,9 @@ const Xh = re("Zap", [["polygon", {
                             children: [u.jsx(Sn, {
                                 className: "w-4 h-4 mr-2 text-primary"
                             }), u.jsx("a", {
-                                href: "tel:9015016177",
+                                href: "tel:0612345678",
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "901-501-6177"
+                                children: "061-234-5678"
                             })]
                         }), u.jsxs("li", {
                             className: "flex items-center",
@@ -12087,7 +12087,7 @@ const Xh = re("Zap", [["polygon", {
                     className: "flex flex-col md:flex-row justify-between items-center",
                     children: [u.jsx("p", {
                         className: "text-gray-500 text-xs mb-3 md:mb-0",
-                        children: "© 2025 Ennoble Technology LLC. All rights reserved."
+                        children: "© 2025 S‑ELECTRICITY LLC. All rights reserved."
                     }), u.jsxs("div", {
                         className: "flex space-x-4",
                         children: [u.jsx("a", {
@@ -12127,7 +12127,7 @@ const Xh = re("Zap", [["polygon", {
     })
 }
   , ov = () => u.jsx("a", {
-    href: "tel:9015016177",
+    href: "tel:0612345678",
     className: "mobile-dialer md:hidden",
     "aria-label": "Call Now",
     children: u.jsx(Sn, {
@@ -12161,7 +12161,7 @@ const Xh = re("Zap", [["polygon", {
     }, {
         id: 2,
         src: "/assets/previouswork2.webp",
-        alt: "TV Mounting Project 1",
+        alt: "Security Cameras Project 1",
         category: "Smart Lock Installation"
     }, {
         id: 3,
@@ -12191,7 +12191,7 @@ const Xh = re("Zap", [["polygon", {
     }, {
         id: 8,
         src: "/assets/previouswork8.webp",
-        alt: "TV Mounting Project 2",
+        alt: "Security Cameras Project 2",
         category: "Smart Lock"
     }, {
         id: 9,
@@ -12202,13 +12202,13 @@ const Xh = re("Zap", [["polygon", {
     return u.jsxs(u.Fragment, {
         children: [u.jsxs(Ts, {
             children: [u.jsx("title", {
-                children: "Previous Work | Ennoble Smart Home & Home Cinema Nashville"
+                children: "Previous Work | S‑ELECTRICITY Smart Home & Domotique Morocco"
             }), u.jsx("meta", {
                 name: "description",
-                content: "See our previous smart home automation, TV mounting, and home theater installation projects in Nashville. Real customer installations and results."
+                content: "See our previous smart home automation, Domotique, and Smart Locks installation projects in Morocco. Real customer installations and results."
             }), u.jsx("meta", {
                 name: "keywords",
-                content: "smart home installations, TV mounting Nashville, home theater setup, previous work, customer projects"
+                content: "smart home installations, Domotique Morocco, Smart Locks setup, previous work, customer projects"
             })]
         }), u.jsxs("section", {
             className: "relative min-h-screen bg-gradient-to-br from-primary via-secondary to-primary overflow-hidden",
@@ -12225,7 +12225,7 @@ const Xh = re("Zap", [["polygon", {
                             children: "Previous Work"
                         }), u.jsx("p", {
                             className: "text-base md:text-lg lg:text-xl mb-8 leading-relaxed max-w-2xl mx-auto",
-                            children: "See the quality and craftsmanship of our smart home installations, TV mounting, and home automation projects across Nashville."
+                            children: "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco."
                         }), u.jsx("div", {
                             className: "fade-in",
                             children: u.jsxs("div", {
@@ -12271,7 +12271,7 @@ const Xh = re("Zap", [["polygon", {
                             })]
                         }), u.jsx("p", {
                             className: "text-gray-600 max-w-2xl mx-auto fade-in",
-                            children: "Real installations from satisfied customers across Nashville. Each project showcases our commitment to quality and attention to detail."
+                            children: "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail."
                         })]
                     }), u.jsx("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
@@ -12349,7 +12349,7 @@ const Xh = re("Zap", [["polygon", {
                 className: "flex items-center",
                 children: u.jsx("img", {
                     src: "/assets/logocircular.webp",
-                    alt: "Ennoble Technology LLC Logo",
+                    alt: "S‑ELECTRICITY LLC Logo",
                     className: "h-9 w-auto",
                     loading: "eager"
                 })
@@ -12387,7 +12387,7 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link",
                     children: "Contact"
                 }), u.jsxs("a", {
-                    href: "tel:9015016177",
+                    href: "tel:0612345678",
                     className: "btn-primary ml-3 text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
@@ -12439,7 +12439,7 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link text-base py-1 text-left",
                     children: "Contact"
                 }), u.jsxs("a", {
-                    href: "tel:9015016177",
+                    href: "tel:0612345678",
                     className: "btn-primary w-full justify-center text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
@@ -12475,10 +12475,10 @@ function uv() {
     u.jsxs(u.Fragment, {
         children: [u.jsxs(Ts, {
             children: [u.jsx("title", {
-                children: "Ennoble Smart Home & Home Cinema"
+                children: "S‑ELECTRICITY Smart Home & Domotique"
             }), u.jsx("meta", {
                 name: "description",
-                content: "Smart Home Automation, Home Cinema & TV Mounting in Nashville."
+                content: "Smart Home Automation, Domotique & Security Cameras in Morocco."
             }), u.jsx("meta", {
                 name: "viewport",
                 content: "width=device-width, initial-scale=1.0"
