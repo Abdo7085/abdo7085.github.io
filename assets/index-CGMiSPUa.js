@@ -11491,11 +11491,11 @@ const Xh = re("Zap", [["polygon", {
                                                 className: "text-2xl md:text-4xl font-bold mb-3 md:mb-4 font-exo text-white",
                                                 children: u.jsx("span", {
                                                         className: "border-b-2 border-primary pb-2",
-                                                        children: "Let's Level Up Your Home"
+                                                        children: "Your home at your fingertips"
                                                 })
                                         }), u.jsx("p", {
                                                 className: "text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed",
-                                                children: "Choose the perfect smart home automation package for your needs. Professional installation and setup included."
+                                                children: "Thanks to home automation, your home is just a click away. Whether you're at home or out, control your lighting, motorized systems, gates, heating, or air conditioning... with a fingertip."
                                         })]
                                 }), u.jsx("div", {
                                         // center the single image card and let it size to the GIF's intrinsic size
@@ -12074,9 +12074,9 @@ const Xh = re("Zap", [["polygon", {
                             children: [u.jsx(Bh, {
                                 className: "w-4 h-4 mr-2 text-primary"
                             }), u.jsx("a", {
-                                href: "mailto:the.ennobletech@gmail.com",
+                                href: "mailto:samirelectricity.notify@gmail.com",
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "the.ennobletech@gmail.com"
+                                children: "samirelectricity.notify@gmail.com"
                             })]
                         })]
                     })]
