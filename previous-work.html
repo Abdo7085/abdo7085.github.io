@@ -39,7 +39,12 @@
     <meta
       name="description"
       content="Smart Home Automation, Domotique & Security in Morocco."
+      data-i18n-meta="meta_description_previous_work"
     />
+    <!-- Language alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://example.com/" />
+    <link rel="alternate" hreflang="fr" href="https://example.com/fr/" />
+    <link rel="alternate" hreflang="ar" href="https://example.com/ar/" />
     <link rel="canonical" href="https://example.com/" />
     <meta
       name="keywords"
@@ -103,11 +108,21 @@
         ]
       }
     </script>
-    <title>S‑ELECTRICITY Smart Home & Domotique  | Morocco</title>
+  <title data-i18n-title="page_title_previous_work">S‑ELECTRICITY Smart Home & Domotique  | Morocco</title>
     <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <script defer src="/assets/i18n.js"></script>
   </head>
   <body>
+    <div class="lang-switch">
+      <label for="langSelectPW" class="visually-hidden">Language</label>
+      <select id="langSelectPW" aria-label="Select language">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
     <div id="root"></div>
     <noscript>
       <style>
@@ -121,9 +136,10 @@
       <img
         src="/assets/S‑ELECTRICITY-LOGO.svg"
         alt="S‑ELECTRICITY Logo"
+        data-i18n-alt="logo_alt"
         width="200"
       />
-      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+      <p data-i18n="noscript_text">S‑ELECTRICITY - Smart Home Solutions</p>
     </noscript>
   </body>
 </html>
