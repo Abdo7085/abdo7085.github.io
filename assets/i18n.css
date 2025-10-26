@@ -1,0 +1,144 @@
+/* Simple language switcher styles and RTL helpers */
+.lang-switch{
+  position:fixed;
+  /* float at bottom-right on desktop to avoid header overlap */
+  bottom:12px;
+  right:12px;
+  top:auto;
+  /* keep it above general content but beneath header (header uses z-50) */
+  z-index:48;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  border-radius:9999px; /* pill */
+  box-shadow:0 8px 24px rgba(15,23,42,0.12);
+  padding:6px 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  backdrop-filter: blur(6px);
+}
+.lang-switch select{
+  border:0;
+  background:transparent;
+  font-weight:700;
+  padding:6px 8px 6px 0;
+  border-radius:6px;
+  font-size:0.95rem;
+  appearance:none;
+  -webkit-appearance:none;
+  color:#0f172a;
+}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Basic RTL adjustments: these are minimal — adapt to your real stylesheet */
+[dir="rtl"] body{direction:rtl}
+[dir="rtl"] .lang-switch{right:auto;left:12px}
+
+/* Responsive: keep selector out of the header / mobile menu area */
+@media (max-width: 767px){
+  .lang-switch{
+    /* bottom-right on small screens per request */
+    left:auto;
+    right:12px;
+    transform:none;
+    bottom:16px;
+    padding:6px 10px;
+  }
+  .lang-switch .lang-globe{display:block}
+}
+
+/* small globe icon style */
+.lang-switch .lang-globe svg{display:block}
+.lang-switch:hover{transform:translateY(-4px);transition:transform .18s ease}
+
+/* focus styles for accessibility */
+.lang-switch select:focus{outline:2px solid rgba(59,130,246,0.25);outline-offset:4px}
+
+/* Desktop vs Mobile controls */
+.lang-desktop{display:none}
+.lang-desktop-btn{display:none} /* hide desktop-styled button by default (mobile first) */
+.lang-mobile-btn{display:inline-flex}
+
+/* Desktop: show modern dropdown button/menu */
+@media (min-width: 768px){
+  .lang-desktop{display:none}
+  .lang-mobile-btn{display:none}
+  .lang-desktop-btn{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;font-weight:700;color:#0f172a;padding:6px 10px;border-radius:9999px}
+  .lang-desktop-btn:hover{background:rgba(2,6,23,0.03)}
+
+  .lang-desktop-menu{
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 12px;
+    transform: none;
+    background: white;
+    color: #0f172a;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(2,6,23,0.10);
+    padding:6px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    z-index:60;
+    width: max-content; /* fit to content */
+    min-width:0;
+    align-items:stretch;
+  }
+
+  /* Respect the `hidden` attribute: CSS should not force menus visible when JS sets hidden=true */
+  .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{
+    display: none !important;
+  }
+
+  .lang-desktop-menu button{
+    border:0;
+    background:transparent;
+    padding:8px 10px;
+    border-radius:8px;
+    font-weight:700;
+    text-align:left;
+    white-space:nowrap;
+  }
+
+  .lang-desktop-menu button:hover{background:rgba(15,23,42,0.04)}
+  .lang-desktop-menu button:focus{outline:2px solid rgba(59,130,246,0.18)}
+}
+
+/* Mobile menu: make it match desktop dropdown and open above the floating button */
+@media (max-width: 767px){
+  .lang-mobile-btn{display:inline-flex}
+  .lang-desktop-btn{display:none}
+
+  .lang-mobile-menu{
+    position: absolute;
+    bottom: calc(100% + 8px); /* open upward */
+    right: 0; /* align to right edge of the floating container */
+    transform: none;
+    background: white;
+    color: #0f172a;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(2,6,23,0.10);
+    padding:6px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    z-index:60;
+    width: max-content;
+    min-width:0;
+    align-items:stretch;
+  }
+
+  .lang-mobile-menu button{
+    border:0;
+    background:transparent;
+    padding:8px 10px;
+    border-radius:8px;
+    font-weight:700;
+    text-align:left;
+    white-space:nowrap;
+  }
+
+  .lang-mobile-menu button:hover{background:rgba(15,23,42,0.04)}
+  .lang-mobile-menu button:focus{outline:2px solid rgba(59,130,246,0.18)}
+
+  .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{ display: none !important; }
+}
