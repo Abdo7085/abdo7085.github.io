@@ -12106,14 +12106,14 @@ const Xh = re("Zap", [["polygon", {
                     }), u.jsxs("div", {
                         className: "flex space-x-4 mt-4 md:mt-0",
                         children: [u.jsx("a", {
-                            href: "https://www.facebook.com/EnnobleTechnologyLLC/",
+                            href: "https://www.facebook.com/abdrhmane.tetouani/",
                             target: "_blank",
                             rel: "noopener noreferrer",
                             children: u.jsx(Uh, {
                                 className: "w-5 h-5 text-gray-400 hover:text-primary transition-colors"
                             })
                         }), u.jsx("a", {
-                            href: "https://www.instagram.com/ennoble.smart/",
+                            href: "https://www.instagram.com/abde_1rahman/",
                             target: "_blank",
                             rel: "noopener noreferrer",
                             children: u.jsx(Hh, {
