@@ -107,6 +107,28 @@
       }
     </script>
   <title>S‑ELECTRICITY Smart Home & Domotique | Morocco</title>
+    <!-- SPA language-prefix shim: when this page is served at /ar/ we keep the URL
+         but let the client SPA router operate on the path without the /ar prefix.
+         This also sets the persisted language so the i18n loader loads the correct locale. -->
+    <script>
+      (function(){
+        try{
+          const m = location.pathname.match(/^\/(en|fr|ar)(\/|$)/i);
+          if(m){
+            const lang = m[1].toLowerCase();
+            // persist selection for the i18n loader
+            try{ localStorage.setItem('site_lang', lang); }catch(e){}
+            // set document language/dir immediately for crawlers and UI
+            try{ document.documentElement.lang = lang; document.documentElement.dir = (lang==='ar')? 'rtl':'ltr'; }catch(e){}
+            // rewrite the visible path for the SPA router so it can match routes normally
+            const newPath = location.pathname.replace(/^\/(en|fr|ar)/i, '') || '/';
+            if(newPath !== location.pathname){
+              history.replaceState(history.state, document.title, newPath + location.search + location.hash);
+            }
+          }
+        }catch(e){ /* noop */ }
+      })();
+    </script>
     <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
     <link rel="stylesheet" href="/assets/i18n.css">
