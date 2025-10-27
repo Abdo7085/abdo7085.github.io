@@ -14,22 +14,47 @@
   // Localized word for "Language" per language
   const langWord = { en: 'Language', fr: 'Langue', ar: 'اللغة' };
   function detect(){
+    // 1) honor explicit language in the URL path (/ar/ or /fr/)
+    try{
+      const parts = location.pathname.split('/').filter(Boolean);
+      if(parts.length){
+        const first = parts[0].toLowerCase();
+        if(available.includes(first)) return first;
+      }
+    }catch(e){}
+
+    // 2) persisted selection in localStorage
     const stored = localStorage.getItem('site_lang');
     if(stored && available.includes(stored)) return stored;
+
+    // 3) browser preference
     const nav = (navigator.languages && navigator.languages[0]) || navigator.language || defaultLang;
     const short = nav.split('-')[0];
     return available.includes(short)? short : defaultLang;
   }
 
   async function loadLocale(lang){
-    try{
-      const res = await fetch(`/assets/locales/${lang}.json`);
-      if(!res.ok) throw new Error('Locale not found');
-      return await res.json();
-    }catch(e){
-      if(lang !== defaultLang) return loadLocale(defaultLang);
-      return {};
+    // Try a few fetch path variants so the loader works whether the site
+    // is hosted at the site root or under a language subpath (e.g. /ar/).
+    const candidates = [
+      `/assets/locales/${lang}.json`,
+      `assets/locales/${lang}.json`,
+      `./assets/locales/${lang}.json`,
+      `../assets/locales/${lang}.json`
+    ];
+
+    for(const p of candidates){
+      try{
+        const res = await fetch(p);
+        if(res && res.ok){
+          try{ return await res.json(); }catch(e){ /* parse error -> continue */ }
+        }
+      }catch(e){ /* continue to next candidate */ }
     }
+
+    // Fallback to default language if nothing worked
+    if(lang !== defaultLang) return loadLocale(defaultLang);
+    return {};
   }
 
   function applyTranslations(dict){
