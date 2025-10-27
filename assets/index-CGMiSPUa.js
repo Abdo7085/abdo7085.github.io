@@ -11472,7 +11472,7 @@ const Xh = re("Zap", [["polygon", {
         }, []);
         const t = [{
                 icon: u.jsx("img", {
-                        src: "assets/example01.gif",
+                        src: "/assets/example01.gif",
                         alt: "Smart Home Showcase",
                         className: "mx-auto max-w-full h-auto rounded-lg shadow-lg w-[90vw] md:w-auto",
                         loading: "lazy",
@@ -12555,6 +12555,13 @@ function uv() {
 }
 fd(document.getElementById("root")).render(u.jsx(S.StrictMode, {
     children: u.jsx(ih, {
+        // detect language prefix in the pathname and pass it as router basename
+        basename: (function(){
+            try{
+                const m = location.pathname.match(/^\/(en|fr|ar)(\/|$)/i);
+                return m ? '/' + m[1].toLowerCase() : '/';
+            }catch(e){ return '/'; }
+        })(),
         children: u.jsx(Ld, {
             children: u.jsx(uv, {})
         })

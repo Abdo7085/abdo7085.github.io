@@ -23,14 +23,20 @@
       }
     }catch(e){}
 
-    // 2) persisted selection in localStorage
+    // 2) If the user is on the root path, default to English regardless of stored value.
+    // This makes the root URL (/) show English while language-prefixed paths show
+    // their respective languages.
+    try{
+      const p = location.pathname || '/';
+      if(p === '/' || p === '') return defaultLang;
+    }catch(e){}
+
+    // 3) Otherwise, fall back to any persisted selection if present.
     const stored = localStorage.getItem('site_lang');
     if(stored && available.includes(stored)) return stored;
 
-    // 3) browser preference
-    const nav = (navigator.languages && navigator.languages[0]) || navigator.language || defaultLang;
-    const short = nav.split('-')[0];
-    return available.includes(short)? short : defaultLang;
+    // 4) final fallback
+    return defaultLang;
   }
 
   async function loadLocale(lang){
@@ -269,9 +275,9 @@
         }catch(e){/* ignore invalid json-ld */}
       }
     }catch(e){/* noop */}
-    // set selectors if present
-    const sel = document.getElementById('langSelect') || document.getElementById('langSelect404');
-    if(sel) sel.value = l;
+  // set selectors if present (support index, 404 and previous-work pages)
+  const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
+  if(sel) sel.value = l;
     // update toggle labels if present (mobile & desktop)
     try{
       const mobileBtn = document.getElementById('langToggleBtn');
@@ -316,12 +322,49 @@
     }catch(e){}
   }
 
-  // Change language handler
+  // Change language handler: persist selection, update URL (preserve the rest of the path),
+  // update html lang/dir and re-run init so translations apply immediately.
   function changeTo(lang){
     if(!available.includes(lang)) return;
-    localStorage.setItem('site_lang', lang);
-    // For static pages just re-run init to update content and attributes
+    try{ localStorage.setItem('site_lang', lang); }catch(e){}
+    try{ document.documentElement.lang = lang; document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr'; }catch(e){}
+
+    // Build target path preserving the suffix after any existing language prefix
+    try{
+      const cur = location.pathname || '/';
+      // capture optional prefix and the rest: /fr/whatever -> rest = /whatever
+      const m = cur.match(/^\/(en|fr|ar)(\/|$)([\s\S]*)/i);
+      let rest = '/';
+      if(m){ rest = '/' + (m[3] || ''); }
+      else rest = cur;
+      if(!rest.startsWith('/')) rest = '/' + rest;
+
+      let target;
+      if(lang === 'en'){
+        // english lives at root (no prefix)
+        target = rest;
+      } else {
+        // prefix with language
+        target = '/' + lang + (rest === '/' ? '/' : rest);
+      }
+      // normalize multiple slashes
+      target = target.replace(/\/\/+/g, '/');
+      // push new URL (wrapped pushState will trigger locationchange watcher)
+      try{
+        // Use a full navigation to the language-prefixed page so the server-provided
+        // localized HTML (fr/index.html, ar/index.html) is loaded. This ensures
+        // correct router basename and SEO-friendly content for crawlers.
+        location.assign(target + location.search + location.hash);
+        return; // navigation will unload current script
+      }catch(e){ /* fallback to pushState if assign isn't allowed */
+        try{ history.pushState({}, '', target + location.search + location.hash); }catch(e){}
+      }
+    }catch(e){}
+
+    // re-run translations and any init logic for the chosen language
     init(lang);
+    // trigger locationchange so SPA routers and observers react immediately
+    try{ window.dispatchEvent(new Event('locationchange')); }catch(e){}
   }
 
   // Wire global listeners on load
@@ -329,7 +372,7 @@
     init();
     // start watching for SPA updates so translations are applied immediately on navigation
     watchSpaUpdates();
-    ['langSelect','langSelect404'].forEach(id=>{
+    ['langSelect','langSelect404','langSelectPW'].forEach(id=>{
       const el = document.getElementById(id);
       if(!el) return;
       el.addEventListener('change',(e)=>{ changeTo(e.target.value); });

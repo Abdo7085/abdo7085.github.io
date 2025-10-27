@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
   <head>
     <meta charset="UTF-8" />
     <!-- Favicon for different sizes and devices -->
@@ -36,25 +36,19 @@
     />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="S‑ELECTRICITY توفر حلول الأتمتة المنزلية والدوماطيك وكاميرات الأمان في المغرب."
-      data-i18n-meta="meta_description_index"
-    />
+    <meta name="description" content="توفر S‑ELECTRICITY حلول أتمتة المنازل والدوموتيك وكاميرات الأمان في المغرب." data-i18n-meta="meta_description_index">
     <!-- Language alternates for SEO -->
     <link rel="alternate" hreflang="en" href="https://example.com/" />
     <link rel="alternate" hreflang="fr" href="https://example.com/fr/" />
     <link rel="alternate" hreflang="ar" href="https://example.com/ar/" />
-    <link rel="canonical" href="https://example.com/ar/" />
+    <link rel="canonical" href="https://example.com/ar" />
     <meta
       name="keywords"
       content="smart home, home automation, Security, Security Cameras, Morocco"
     />
-    <meta property="og:title" content="S‑ELECTRICITY Smart Home & Domotique | Morocco" />
-    <meta
-      property="og:description"
-      content="S‑ELECTRICITY توفر حلول الأتمتة المنزلية والدوماطيك وكاميرات الأمان في المغرب." />
-    <meta property="og:url" content="https://example.com/ar/" />
+    <meta property="og:title" content="S‑ELECTRICITY المنزل الذكي و الدوموتيك | المغرب" />
+    <meta property="og:description" content="توفر S‑ELECTRICITY حلول أتمتة المنازل والدوموتيك وكاميرات الأمان في المغرب." />
+    <meta property="og:url" content="https://example.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="S‑ELECTRICITY Smart Home & Domotique" />
     <meta
@@ -64,10 +58,8 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="1200" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="S‑ELECTRICITY Smart Home & Domotique | Morocco" />
-    <meta
-      name="twitter:description"
-      content="S‑ELECTRICITY توفر حلول الأتمتة المنزلية والدوماطيك وكاميرات الأمان في المغرب." />
+    <meta name="twitter:title" content="S‑ELECTRICITY المنزل الذكي و الدوموتيك | المغرب" />
+    <meta name="twitter:description" content="توفر S‑ELECTRICITY حلول أتمتة المنازل والدوموتيك وكاميرات الأمان في المغرب." />
     <meta
       name="twitter:image"
       content="https://example.com/assets/S‑ELECTRICITY-LOGO.svg"
@@ -87,9 +79,9 @@
         "@type": "LocalBusiness",
         "name": "S‑ELECTRICITY",
         "alternateName": "S‑ELECTRICITY Smart Home & Domotique",
-        "url": "https://example.com/ar/",
+        "url": "https://example.com",
         "logo": "https://example.com/assets/S‑ELECTRICITY-LOGO.svg",
-        "description": "S‑ELECTRICITY توفر حلول الأتمتة المنزلية والدوماطيك وكاميرات الأمان في المغرب.",
+        "description": "توفر S‑ELECTRICITY حلول أتمتة المنازل والدوموتيك وكاميرات الأمان في المغرب.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "123 Main St",
@@ -106,29 +98,7 @@
         ]
       }
     </script>
-  <title>S‑ELECTRICITY Smart Home & Domotique | Morocco</title>
-    <!-- SPA language-prefix shim: when this page is served at /ar/ we keep the URL
-         but let the client SPA router operate on the path without the /ar prefix.
-         This also sets the persisted language so the i18n loader loads the correct locale. -->
-    <script>
-      (function(){
-        try{
-          const m = location.pathname.match(/^\/(en|fr|ar)(\/|$)/i);
-          if(m){
-            const lang = m[1].toLowerCase();
-            // persist selection for the i18n loader
-            try{ localStorage.setItem('site_lang', lang); }catch(e){}
-            // set document language/dir immediately for crawlers and UI
-            try{ document.documentElement.lang = lang; document.documentElement.dir = (lang==='ar')? 'rtl':'ltr'; }catch(e){}
-            // rewrite the visible path for the SPA router so it can match routes normally
-            const newPath = location.pathname.replace(/^\/(en|fr|ar)/i, '') || '/';
-            if(newPath !== location.pathname){
-              history.replaceState(history.state, document.title, newPath + location.search + location.hash);
-            }
-          }
-        }catch(e){ /* noop */ }
-      })();
-    </script>
+  <title>S‑ELECTRICITY المنزل الذكي و الدوموتيك | المغرب</title>
     <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
     <link rel="stylesheet" href="/assets/i18n.css">
@@ -147,14 +117,14 @@
         </svg>
       </span>
       <!-- Desktop modern dropdown (hidden on small screens) -->
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">العربية ▾</button>
+      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">English ▾</button>
       <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
         <button type="button" data-lang="en">English</button>
         <button type="button" data-lang="fr">Français</button>
         <button type="button" data-lang="ar">العربية</button>
       </div>
       <!-- Mobile custom menu: a compact button that toggles a styled menu -->
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">العربية</button>
+      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">English</button>
       <div id="langMenu" class="lang-mobile-menu" hidden>
         <button type="button" data-lang="en">English</button>
         <button type="button" data-lang="fr">Français</button>
@@ -181,3 +151,4 @@
     </noscript>
   </body>
 </html>
+
