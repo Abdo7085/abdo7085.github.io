@@ -11415,26 +11415,31 @@ const Xh = re("Zap", [["polygon", {
         },
         children: u.jsxs("div", {
             className: "w-full max-w-2xl mx-auto md:mx-0 md:text-left mb-8 md:mb-12",
-            children: [u.jsxs("h1", {
+                children: [u.jsxs("h1", {
                 className: "text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-4 font-exo leading-tight",
                 children: [u.jsx("span", {
                     className: "inline-block",
                     children: "S\u2011ELECTRICITY"
                 }), u.jsx("span", {
                     className: "inline-block ml-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium whitespace-nowrap",
-                    children: "Home Automation & Video Surveillance & Security"
+                    "data-i18n": "spa_subtitle",
+                    children: ""
                 })]
             }), u.jsx("p", {
                 className: "text-base xs:text-lg sm:text-xl md:text-xl mb-6 max-w-2xl font-poppins leading-relaxed",
-                children: "Upgrade your home or business for comfort, security and easy controlling"
+                "data-i18n": "spa_upgrade_business",
+                children: ""
             }), u.jsxs("div", {
                 className: "flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4 w-full",
                 children: [u.jsxs("a", {
                     href: "tel:0612345678",
                     className: "btn-primary text-base sm:text-base cta-button-animation inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105",
                     children: [u.jsx(Sn, {
-                        className: "w-4 h-4 mr-2"
-                    }), " Free Consultation - Call Now"]
+                            className: "w-4 h-4 mr-2"
+                        }), u.jsx("span", {
+                            "data-i18n": "spa_cta_free_consultation",
+                            children: ""
+                        })]
                 }), u.jsx("button", {
                     onClick: e,
                     className: "btn-secondary text-lg sm:text-xl hover:scale-105 transition-transform inline-flex items-center justify-center px-10 py-5 rounded-lg font-semibold",
@@ -11442,7 +11447,8 @@ const Xh = re("Zap", [["polygon", {
                         backgroundColor: "#FCFAFA",
                         color: "#000000"
                     },
-                    children: "Tell me more"
+                    "data-i18n": "spa_tell_me_more",
+                    children: ""
                 })]
             })]
         })
@@ -11489,13 +11495,15 @@ const Xh = re("Zap", [["polygon", {
                                         className: "text-center mb-6 md:mb-8 fade-in",
                                         children: [u.jsx("h2", {
                                                 className: "text-2xl md:text-4xl font-bold mb-3 md:mb-4 font-exo text-white",
-                                                children: u.jsx("span", {
-                                                        className: "border-b-2 border-primary pb-2",
-                                                        children: "Your home at your fingertips"
-                                                })
+                        children: u.jsx("span", {
+                            className: "border-b-2 border-primary pb-2",
+                            "data-i18n": "spa_home_at_fingertips",
+                            children: ""
+                        })
                                         }), u.jsx("p", {
-                                                className: "text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed",
-                                                children: "Thanks to home automation, your home is just a click away. Whether you're at home or out, control your lighting, motorized systems, gates, heating, or air conditioning... with a fingertip."
+                        className: "text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed",
+                        "data-i18n": "spa_thanks_home_automation",
+                        children: ""
                                         })]
                                 }), u.jsx("div", {
                                         // center the single image card and let it size to the GIF's intrinsic size
@@ -11587,73 +11595,73 @@ const Xh = re("Zap", [["polygon", {
         }
         , [e]); // re-run when the active tab changes so new elements get observed
         const r = {
-                residential: [{
+        residential: [{
                         icon: u.jsx(rl, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Smart Home Automation",
-                        description: "Complete smart home solutions including installation, setup, and programming of connected devices for seamless control and automation."
+            titleKey: "spa_smart_home_automation",
+            descriptionKey: "spa_desc_smart_home"
                 }, {
                         icon: u.jsx(Wh, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Smart Locks & Video Doorbells",
-                        description: "Secure your home with smart locks and doorbells featuring remote access, real-time alerts, and expert installation."
+            titleKey: "spa_title_smart_locks",
+            descriptionKey: "spa_desc_smart_locks"
                 }, {
                         icon: u.jsx(rl, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Thermostat Installation & Setup",
-                        description: "Energy-efficient thermostat installation and programming, including integration with your smart home system."
+            titleKey: "spa_title_thermostat",
+            descriptionKey: "spa_desc_thermostat"
                 }, {
                         icon: u.jsx(Ja, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Security Cameras & Motion Sensors",
-                        description: "Custom surveillance setups with motion-activated cameras, mobile access, and expert system configuration."
+            titleKey: "spa_title_security_cameras",
+            descriptionKey: "spa_desc_security_cameras"
                 }, {
                         icon: u.jsx(qa, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Voice Assistant Integration (Alexa, Google, etc.)",
-                        description: "Hands-free control with Alexa, Google Assistant, or Siri—fully configured for your home devices and routines."
+            titleKey: "spa_title_voice_integration",
+            descriptionKey: "spa_desc_voice_integration"
                 }, {
                         icon: u.jsx(ba, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Network & Wi-Fi Optimization",
-                        description: "Optimized home networks with mesh Wi-Fi and expert placement for fast, stable, and full-home coverage."
+            titleKey: "spa_title_network",
+            descriptionKey: "spa_desc_network"
                 }, {
                         icon: u.jsx(rl, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Smart Lighting & Switches",
-                        description: "Install and automate lighting systems with smart switches, dimmers, and remote controls for personalized ambiance."
+            titleKey: "spa_title_smart_lighting",
+            descriptionKey: "spa_desc_smart_lighting"
                 }],
                 commercial: [{
                         icon: u.jsx($h, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Commercial Automation",
-                        description: "Integrated control systems for lighting, HVAC, and security to optimize energy usage and enhance operational efficiency."
+            titleKey: "spa_title_commercial_automation",
+            descriptionKey: "spa_desc_commercial_automation"
                 }, {
                         icon: u.jsx(ba, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Enterprise WiFi",
-                        description: "High-performance wireless networks designed for business environments with multiple access points and advanced security features."
+            titleKey: "spa_title_enterprise_wifi",
+            descriptionKey: "spa_desc_enterprise_wifi"
                 }, {
                         icon: u.jsx(Ja, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Commercial Surveillance",
-                        description: "Comprehensive security camera systems with analytics capabilities for retail, office, and industrial environments."
+            titleKey: "spa_title_commercial_surveillance",
+            descriptionKey: "spa_desc_commercial_surveillance"
                 }, {
                         icon: u.jsx(qa, {
                                 className: "w-8 h-8 text-primary"
                         }),
-                        title: "Commercial Audio",
-                        description: "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems."
+            titleKey: "spa_title_commercial_audio",
+            descriptionKey: "spa_desc_commercial_audio"
                 }]
         };
         return u.jsx("section", {
@@ -11666,7 +11674,8 @@ const Xh = re("Zap", [["polygon", {
                                 className: "text-center mb-12 fade-in",
                                 children: [u.jsx("h2", {
                                         className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary",
-                                        children: "Services"
+                                        "data-i18n": "spa_services",
+                                        children: ""
                                 }), u.jsx("p", {
                                         className: "text-base text-gray-600 max-w-2xl mx-auto font-poppins",
                                         children: "Smart solutions for both residential and commercial clients."
@@ -11680,49 +11689,53 @@ const Xh = re("Zap", [["polygon", {
                                                 type: "button",
                                                 className: `px-5 py-2 text-base font-medium rounded-l-lg transition-all duration-300 ${e === "residential" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
                                                 onClick: () => t("residential"),
-                                                children: "Residential Services"
+                                                "data-i18n": "spa_residential_services",
+                                                children: ""
                                         }), u.jsx("button", {
                                                 type: "button",
                                                 className: `px-5 py-2 text-base font-medium rounded-r-lg transition-all duration-300 ${e === "commercial" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
                                                 onClick: () => t("commercial"),
-                                                children: "Commercial Services"
+                                                "data-i18n": "spa_commercial_services",
+                                                children: ""
                                         })]
                                 })
                         }), u.jsx("div", {
                                 className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
                                 children: r[e].map((service) => u.jsxs("div", {
                                         className: "service-card fade-in",
-                                        children: [u.jsx("div", {
-                                                className: "mb-3",
-                                                children: service.icon
-                                        }), u.jsx("h3", {
-                                                className: "text-lg font-bold mb-2 font-exo",
-                                                children: service.title
-                                        }), u.jsx("p", {
-                                                className: "text-gray-600 text-sm",
-                                                children: service.description
-                                        })]
-                                }, service.title)) // use stable key (title) instead of index
+                    children: [u.jsx("div", {
+                        className: "mb-3",
+                        children: service.icon
+                    }), u.jsx("h3", {
+                        className: "text-lg font-bold mb-2 font-exo",
+                        "data-i18n": service.titleKey,
+                        children: ""
+                    }), u.jsx("p", {
+                        className: "text-gray-600 text-sm",
+                        "data-i18n": service.descriptionKey,
+                        children: ""
+                    })]
+                }, service.titleKey)) // use stable key (titleKey) instead of index
                         })]
                 })
         })
 }
     , nv = () => {
     const e = [{
-        question: "What services do you offer?",
-        answer: "We specialize in smart home automation, Smart Locks setup, Domotique, reverse osmosis water purification, and other low-voltage solutions."
+        questionKey: "spa_q_services",
+        answerKey: "spa_a_services"
     }, {
-        question: "How much does installation cost?",
-        answer: "Services depends on the service. Domotique starts at $105, and water purification starts at $300. Contact us for a custom quote."
+        questionKey: "spa_q_price",
+        answerKey: "spa_a_prices"
     }, {
-        question: "How long does installation take?",
-        answer: "Most installations are completed within a few hours. More complex projects may take longer, and we’ll provide an estimated timeline during consultation."
+        questionKey: "spa_q_how_long",
+        answerKey: "spa_a_how_long"
     }, {
-        question: "Do you offer warranties on installations?",
-        answer: "Yes, we provide warranties on our installations to ensure quality and reliability. Specific warranty details depend on the service."
+        questionKey: "spa_q_warranty",
+        answerKey: "spa_a_warranty"
     }, {
-        question: "How do I schedule an appointment?",
-        answer: "You can call us at 061-234-5678. We'll be happy to talk to you anytime."
+        questionKey: "spa_q_schedule",
+        answerKey: "spa_a_schedule"
     }];
     return u.jsx("section", {
         className: "py-16 bg-gray-50 text-gray-800",
@@ -11730,17 +11743,20 @@ const Xh = re("Zap", [["polygon", {
             className: "container mx-auto px-4 max-w-5xl",
             children: [u.jsx("h2", {
                 className: "text-3xl md:text-4xl font-bold mb-8 text-center text-primary",
-                children: "Frequently Asked Questions"
+                "data-i18n": "spa_faq_title",
+                children: ""
             }), u.jsx("div", {
                 className: "space-y-6",
                 children: e.map( (t, n) => u.jsxs("div", {
                     className: "p-6 bg-white shadow-md rounded-lg fade-in",
                     children: [u.jsx("h3", {
                         className: "text-xl font-semibold mb-2",
-                        children: t.question
+                        "data-i18n": t.questionKey,
+                        children: ""
                     }), u.jsx("p", {
                         className: "text-gray-700 text-base",
-                        children: t.answer
+                        "data-i18n": t.answerKey,
+                        children: ""
                     })]
                 }, n))
             })]
@@ -11774,16 +11790,21 @@ const Xh = re("Zap", [["polygon", {
             className: "container mx-auto px-4 text-center",
             children: [u.jsx("h2", {
                 className: "text-2xl md:text-3xl font-bold mb-4 font-exo fade-in",
-                children: "Need a Custom Solution?"
+                "data-i18n": "spa_need_custom",
+                children: ""
             }), u.jsx("p", {
                 className: "text-base mb-6 max-w-2xl mx-auto fade-in",
-                children: "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget."
+                "data-i18n": "spa_team",
+                children: ""
             }), u.jsxs("a", {
                 href: "tel:0612345678",
                 className: "btn-secondary text-base inline-flex items-center hover:scale-105 transition-transform fade-in",
                 children: [u.jsx(Sn, {
                     className: "w-4 h-4 mr-2"
-                }), " Call Now: 061-234-5678"]
+                }), u.jsx("span", {
+                    "data-i18n": "spa_call_now_phone",
+                    children: ""
+                })]
             })]
         })
     })
@@ -11817,7 +11838,8 @@ const Xh = re("Zap", [["polygon", {
                 className: "text-center mb-6",
                 children: u.jsx("h2", {
                     className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-secondary fade-in",
-                    children: "Your Trusted Partner in Smart Home & Security Solutions"
+                    "data-i18n": "spa_trusted_partner",
+                    children: ""
                 })
             }), u.jsx("div", {
                 className: "section-divider fade-in"
@@ -11831,17 +11853,20 @@ const Xh = re("Zap", [["polygon", {
                             className: "text-2xl md:text-3xl font-bold mb-3 font-exo text-primary",
                             children: u.jsx("span", {
                                 className: "border-b-2 border-primary pb-1",
-                                children: "Smart Home Automation"
+                                "data-i18n": "spa_smart_home_automation",
+                                children: ""
                             })
                         }), u.jsx("div", {
                             className: "bg-gray-50 p-4 rounded-lg mb-4 shadow-sm",
                             children: u.jsx("p", {
                                 className: "text-sm font-semibold text-primary",
-                                children: "Complete Smart Home Integration"
+                                "data-i18n": "spa_complete_integration",
+                                children: ""
                             })
                         }), u.jsx("p", {
                             className: "text-sm md:text-base mb-4 leading-relaxed",
-                            children: "Transform your house into an intelligent Smart Home with seamless automation, voice control, and cutting-edge tech that adapts to your lifestyle. Full control, no contracts, no confusion."
+                            "data-i18n": "spa_transform_house",
+                            children: ""
                         }), u.jsxs("ul", {
                             className: "mb-6 space-y-2",
                             children: [u.jsxs("li", {
@@ -11850,7 +11875,8 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Smart thermostats — control temp anywhere."
+                                    "data-i18n": "spa_feat_thermostats",
+                                    children: ""
                                 })]
                             }), u.jsxs("li", {
                                 className: "flex items-start",
@@ -11858,7 +11884,8 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Smart Locks — app-based access, no keys."
+                                    "data-i18n": "spa_feat_locks",
+                                    children: ""
                                 })]
                             }), u.jsxs("li", {
                                 className: "flex items-start",
@@ -11866,7 +11893,8 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Voice control — Google, Alexa, or Siri."
+                                    "data-i18n": "spa_feat_voice",
+                                    children: ""
                                 })]
                             }), u.jsxs("li", {
                                 className: "flex items-start",
@@ -11874,7 +11902,8 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Lighting & fans — adjust anytime, anywhere."
+                                    "data-i18n": "spa_feat_lighting",
+                                    children: ""
                                 })]
                             }), u.jsxs("li", {
                                 className: "flex items-start",
@@ -11882,22 +11911,26 @@ const Xh = re("Zap", [["polygon", {
                                     className: "w-5 h-5 text-primary mr-2 mt-0.5"
                                 }), u.jsx("span", {
                                     className: "text-sm",
-                                    children: "Security setup — cameras, sensors, no fees."
+                                    "data-i18n": "spa_feat_security",
+                                    children: ""
                                 })]
                             })]
                         }), u.jsx("p", {
                             className: "text-sm md:text-base mb-6 leading-relaxed",
-                            children: "Your smart home works together, just like it should. Simple, connected, and always under your command."
+                            "data-i18n": "spa_tagline",
+                            children: ""
                         }), u.jsxs("div", {
                             className: "flex flex-col sm:flex-row gap-4",
                             children: [u.jsx("a", {
                                 href: "tel:0612345678",
                                 className: "btn-primary hover:scale-105 transition-transform",
-                                children: "👉 Upgrade Your Home"
+                                "data-i18n": "spa_cta_upgrade",
+                                children: ""
                             }), u.jsx(Mt, {
                                 to: "/previous-work",
                                 className: "btn-outline hover:scale-105 transition-transform",
-                                children: "See Real Installs"
+                                "data-i18n": "spa_cta_real_installs",
+                                children: ""
                             })]
                         })]
                     }), u.jsx("div", {
@@ -12007,37 +12040,43 @@ const Xh = re("Zap", [["polygon", {
                         })
                     }), u.jsx("p", {
                         className: "text-gray-400 mb-4 text-sm",
-                        children: "Smart home automation & low voltage solutions in Morocco. Upgrade your home for a modern & seamless experience."
+                        "data-i18n": "spa_intro",
+                        children: ""
                     })]
                 }), u.jsxs("div", {
                     children: [u.jsx("h3", {
                         className: "text-lg font-bold mb-4 font-exo",
-                        children: "Quick Links"
+                        "data-i18n": "spa_quick_links",
+                        children: ""
                     }), u.jsxs("ul", {
                         className: "space-y-2 text-sm",
                         children: [u.jsx("li", {
                             children: u.jsx("button", {
                                 onClick: () => n("hero"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Home"
+                                "data-i18n": "spa_home",
+                                children: ""
                             })
                         }), u.jsx("li", {
                             children: u.jsx("button", {
                                 onClick: () => n("smart-home-focus"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "What We Do"
+                                "data-i18n": "spa_what_we_do",
+                                children: ""
                             })
                         }), u.jsx("li", {
                             children: u.jsx("button", {
                                 onClick: () => n("example"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Example"
+                                "data-i18n": "spa_example",
+                                children: ""
                             })
                         }), u.jsx("li", {
                             children: u.jsx("button", {
                                 onClick: () => n("services"),
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Services"
+                                "data-i18n": "spa_services",
+                                children: ""
                             })
                         }), u.jsx("li", {
                             children: u.jsx(Mt, {
@@ -12050,7 +12089,8 @@ const Xh = re("Zap", [["polygon", {
                                 }
                                 ,
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "Previous Work"
+                                "data-i18n": "spa_previous_work",
+                                children: ""
                             })
                         })]
                     })]
@@ -12222,7 +12262,8 @@ const Xh = re("Zap", [["polygon", {
                         className: "fade-in",
                         children: [u.jsx("h1", {
                             className: "text-3xl md:text-5xl lg:text-6xl font-bold mb-6 font-exo leading-tight",
-                            children: "Previous Work"
+                            "data-i18n": "spa_previous_work",
+                            children: ""
                         }), u.jsx("p", {
                             className: "text-base md:text-lg lg:text-xl mb-8 leading-relaxed max-w-2xl mx-auto",
                             children: "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco."
@@ -12358,19 +12399,23 @@ const Xh = re("Zap", [["polygon", {
                 children: [u.jsx("button", {
                     onClick: () => s("hero"),
                     className: "nav-link",
-                    children: "Home"
+                    "data-i18n": "spa_home",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("smart-home-focus"),
                     className: "nav-link",
-                    children: "What We Do"
+                    "data-i18n": "spa_what_we_do",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("example"),
                     className: "nav-link",
-                    children: "Example"
+                    "data-i18n": "spa_example",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("services"),
                     className: "nav-link",
-                    children: "Services"
+                    "data-i18n": "spa_services",
+                    children: ""
                 }), u.jsx(Mt, {
                     to: "/previous-work",
                     onClick: () => {
@@ -12381,17 +12426,22 @@ const Xh = re("Zap", [["polygon", {
                     }
                     ,
                     className: "nav-link",
-                    children: "Previous Work"
+                    "data-i18n": "spa_previous_work",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("contact"),
                     className: "nav-link",
-                    children: "Contact"
+                    "data-i18n": "spa_contact",
+                    children: ""
                 }), u.jsxs("a", {
                     href: "tel:0612345678",
                     className: "btn-primary ml-3 text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
-                    }), " Call Now"]
+                    }), u.jsx("span", {
+                        "data-i18n": "spa_cta_call_now",
+                        children: ""
+                    })]
                 })]
             }), u.jsx("button", {
                 className: "md:hidden text-white focus:outline-none",
@@ -12410,19 +12460,23 @@ const Xh = re("Zap", [["polygon", {
                 children: [u.jsx("button", {
                     onClick: () => s("hero"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Home"
+                    "data-i18n": "spa_home",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("smart-home-focus"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "What We Do"
+                    "data-i18n": "spa_what_we_do",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("example"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Example"
+                    "data-i18n": "spa_example",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("services"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Services"
+                    "data-i18n": "spa_services",
+                    children: ""
                 }), u.jsx(Mt, {
                     to: "/previous-work",
                     onClick: () => {
@@ -12433,17 +12487,22 @@ const Xh = re("Zap", [["polygon", {
                     }
                     ,
                     className: "nav-link",
-                    children: "Previous Work"
+                    "data-i18n": "spa_previous_work",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("contact"),
                     className: "nav-link text-base py-1 text-left",
-                    children: "Contact"
+                    "data-i18n": "spa_contact",
+                    children: ""
                 }), u.jsxs("a", {
                     href: "tel:0612345678",
                     className: "btn-primary w-full justify-center text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
-                    }), " Call Now"]
+                    }), u.jsx("span", {
+                        "data-i18n": "spa_cta_call_now",
+                        children: ""
+                    })]
                 })]
             })
         })]

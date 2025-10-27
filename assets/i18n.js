@@ -61,7 +61,20 @@
     "Services": "spa_services",
     "Residential Services": "spa_residential_services",
     "Commercial Services": "spa_commercial_services",
-    "What services do you offer?": "spa_q_services",
+  "What services do you offer?": "spa_q_services",
+  "Smart solutions for both residential and commercial clients.": "spa_services_lead",
+  "Frequently Asked Questions": "spa_faq_title",
+  "Complete smart home solutions including installation, setup, and programming of connected devices for seamless control and automation.": "spa_desc_smart_home",
+  "Secure your home with smart locks and doorbells featuring remote access, real-time alerts, and expert installation.": "spa_desc_smart_locks",
+  "Energy-efficient thermostat installation and programming, including integration with your smart home system.": "spa_desc_thermostat",
+  "Custom surveillance setups with motion-activated cameras, mobile access, and expert system configuration.": "spa_desc_security_cameras",
+  "Hands-free control with Alexa, Google Assistant, or Siri—fully configured for your home devices and routines.": "spa_desc_voice_integration",
+  "Optimized home networks with mesh Wi-Fi and expert placement for fast, stable, and full-home coverage.": "spa_desc_network",
+  "Install and automate lighting systems with smart switches, dimmers, and remote controls for personalized ambiance.": "spa_desc_smart_lighting",
+  "Integrated control systems for lighting, HVAC, and security to optimize energy usage and enhance operational efficiency.": "spa_desc_commercial_automation",
+  "High-performance wireless networks designed for business environments with multiple access points and advanced security features.": "spa_desc_enterprise_wifi",
+  "Comprehensive security camera systems with analytics capabilities for retail, office, and industrial environments.": "spa_desc_commercial_surveillance",
+  "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems.": "spa_desc_commercial_audio",
     "We specialize in smart home automation, Smart Locks setup, Domotique, reverse osmosis water purification, and other low-voltage solutions.": "spa_a_services",
     "Services depends on the service. Domotique starts at $105, and water purification starts at $300. Contact us for a custom quote.": "spa_a_prices",
     "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget.": "spa_team",
@@ -75,6 +88,18 @@
     "Contact": "spa_contact",
     "S‑ELECTRICITY Smart Home & Domotique | Morocco": "spa_site_title",
     "Smart home automation & low voltage solutions in Morocco. Upgrade your home for a modern & seamless experience.": "spa_intro"
+    ,
+    "Free Consultation - Call Now": "spa_cta_free_consultation",
+    "Call Now": "spa_cta_call_now",
+    "Call Now: 061-234-5678": "spa_call_now_phone",
+    "Need a Custom Solution?": "spa_need_custom",
+    "How much does installation cost?": "spa_q_price",
+    "How long does installation take?": "spa_q_how_long",
+    "Most installations are completed within a few hours. More complex projects may take longer, and we’ll provide an estimated timeline during consultation.": "spa_a_how_long",
+    "Do you offer warranties on installations?": "spa_q_warranty",
+    "Yes, we provide warranties on our installations to ensure quality and reliability. Specific warranty details depend on the service.": "spa_a_warranty",
+    "How do I schedule an appointment?": "spa_q_schedule",
+    "You can call us at 061-234-5678. We'll be happy to talk to you anytime.": "spa_a_schedule",
   };
 
   // Additional mappings discovered in the SPA bundle
@@ -126,7 +151,9 @@
   function replaceTextNodesWithDict(dict){
     if(!dict) return;
     // Create array of [original, key, translation]
-    const replacements = Object.keys(textReplacementMap).map(orig=>({ orig, key: textReplacementMap[orig], trans: dict[textReplacementMap[orig]] || null }));
+  const replacements = Object.keys(textReplacementMap).map(orig=>({ orig, key: textReplacementMap[orig], trans: dict[textReplacementMap[orig]] || null }));
+  // Apply longest originals first to avoid short substring replacements breaking longer phrases
+  replacements.sort((a,b)=>b.orig.length - a.orig.length);
     if(!replacements.some(r=>r.trans)) return; // nothing to do
 
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
@@ -232,6 +259,38 @@
     }catch(e){}
   }
 
+  // Re-run translations when SPA updates the DOM or when the URL changes
+  function watchSpaUpdates(){
+    let root = document.getElementById('root') || document.body;
+    try{
+      const mo = new MutationObserver(() => {
+        // re-run with the currently loaded dict
+        const lang = (localStorage.getItem('site_lang') || detect());
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
+      });
+      mo.observe(root, { childList: true, subtree: true, characterData: true });
+    }catch(e){}
+
+    // detect history navigation in SPA (pushState/replaceState) and popstate
+    try{
+      const wrap = (type)=>{
+        const orig = history[type];
+        return function(){
+          const res = orig.apply(this, arguments);
+          window.dispatchEvent(new Event('locationchange'));
+          return res;
+        };
+      };
+      history.pushState = wrap('pushState');
+      history.replaceState = wrap('replaceState');
+      window.addEventListener('popstate', ()=> window.dispatchEvent(new Event('locationchange')));
+      window.addEventListener('locationchange', ()=>{
+        const lang = (localStorage.getItem('site_lang') || detect());
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
+      });
+    }catch(e){}
+  }
+
   // Change language handler
   function changeTo(lang){
     if(!available.includes(lang)) return;
@@ -243,6 +302,8 @@
   // Wire global listeners on load
   window.addEventListener('DOMContentLoaded', ()=>{
     init();
+    // start watching for SPA updates so translations are applied immediately on navigation
+    watchSpaUpdates();
     ['langSelect','langSelect404'].forEach(id=>{
       const el = document.getElementById(id);
       if(!el) return;
