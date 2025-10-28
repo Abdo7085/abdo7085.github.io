@@ -48,10 +48,25 @@
 
 /* small globe icon style */
 .lang-switch .lang-globe svg{display:block}
-.lang-switch:hover{transform:translateY(-4px);transition:transform .18s ease}
+.lang-switch:hover{transition:transform .18s ease}
+
+/* Only apply the small hover "lift" on pointer-capable devices to avoid
+   the floating control jumping on touch when the menu opens. */
+@media (hover: hover) and (pointer: fine) {
+  .lang-switch:hover{transform:translateY(-4px)}
+}
 
 /* focus styles for accessibility */
 .lang-switch select:focus{outline:2px solid rgba(59,130,246,0.25);outline-offset:4px}
+
+/* Ensure language toggle buttons explicitly use the dark site text color so
+  they don't accidentally inherit white from other global rules. */
+.lang-desktop-btn, .lang-mobile-btn { color: #0f172a; }
+
+/* Ensure menu item buttons inherit the menu color (dark) and are not
+  overridden by other button styles elsewhere in the project. */
+.lang-desktop-menu, .lang-mobile-menu { color: #0f172a; }
+.lang-desktop-menu button, .lang-mobile-menu button { color: inherit; }
 
 /* Desktop vs Mobile controls */
 .lang-desktop{display:none}
