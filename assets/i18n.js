@@ -25,7 +25,13 @@
         try{
           const span = document.createElement('span');
           const style = getComputedStyle(refEl);
-          span.style.font = style.font || `${style.fontSize} ${style.fontFamily}`;
+          // Copy key font properties to ensure accurate width for different fonts/weights
+          span.style.fontFamily = style.fontFamily || 'inherit';
+          span.style.fontSize = style.fontSize || 'inherit';
+          span.style.fontWeight = style.fontWeight || 'normal';
+          span.style.fontStyle = style.fontStyle || 'normal';
+          span.style.letterSpacing = style.letterSpacing || 'normal';
+          span.style.textTransform = style.textTransform || 'none';
           span.style.whiteSpace = 'nowrap';
           span.style.position = 'absolute';
           span.style.left = '-9999px';
@@ -43,7 +49,12 @@
           const curW = mobileBtn.getBoundingClientRect().width || 0;
           const newText = `${word}`;
           const newW = measureTextWidth(newText, mobileBtn) || 0;
-          const desired = Math.ceil(Math.max(curW, newW));
+          // include horizontal padding so the measured width matches visual space
+          const cs = getComputedStyle(mobileBtn);
+          const padLeft = parseFloat(cs.paddingLeft) || 0;
+          const padRight = parseFloat(cs.paddingRight) || 0;
+          const extra = padLeft + padRight;
+          const desired = Math.ceil(Math.max(curW, newW + extra));
           // only increase minWidth if it's smaller than desired to avoid shrinking flicker
           const curMin = parseFloat(mobileBtn.style.minWidth) || 0;
           if(desired > curMin) mobileBtn.style.minWidth = desired + 'px';
@@ -56,7 +67,11 @@
           const curW = desktopBtn.getBoundingClientRect().width || 0;
           const newText = `${word} ▾`;
           const newW = measureTextWidth(newText, desktopBtn) || 0;
-          const desired = Math.ceil(Math.max(curW, newW));
+          const cs = getComputedStyle(desktopBtn);
+          const padLeft = parseFloat(cs.paddingLeft) || 0;
+          const padRight = parseFloat(cs.paddingRight) || 0;
+          const extra = padLeft + padRight;
+          const desired = Math.ceil(Math.max(curW, newW + extra));
           const curMin = parseFloat(desktopBtn.style.minWidth) || 0;
           if(desired > curMin) desktopBtn.style.minWidth = desired + 'px';
         }catch(e){}
