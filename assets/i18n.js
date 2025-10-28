@@ -44,7 +44,7 @@
         }catch(e){ return null; }
       }
 
-      if(mobileBtn){
+  if(mobileBtn){
         try{
           const curW = mobileBtn.getBoundingClientRect().width || 0;
           const newText = `${word}`;
@@ -60,9 +60,27 @@
           if(desired > curMin) mobileBtn.style.minWidth = desired + 'px';
         }catch(e){}
         mobileBtn.textContent = `${word}`;
+        // After changing text, re-measure once fonts and styles have settled so
+        // languages with different glyph widths (e.g. Arabic) get an accurate width.
+        const finalizeMobileWidth = ()=>{
+          try{
+            const newW2 = measureTextWidth(`${word}`, mobileBtn) || 0;
+            const cs2 = getComputedStyle(mobileBtn);
+            const padL2 = parseFloat(cs2.paddingLeft) || 0;
+            const padR2 = parseFloat(cs2.paddingRight) || 0;
+            const desired2 = Math.ceil(newW2 + padL2 + padR2);
+            mobileBtn.style.minWidth = desired2 + 'px';
+          }catch(e){}
+        };
+        if(window.document && window.document.fonts && window.document.fonts.ready){
+          window.document.fonts.ready.then(()=>{ requestAnimationFrame(finalizeMobileWidth); }).catch(()=>setTimeout(finalizeMobileWidth,50));
+        } else {
+          // fallback short delay
+          setTimeout(finalizeMobileWidth,50);
+        }
       }
       const desktopBtn = document.getElementById('langDesktopBtn');
-      if(desktopBtn){
+  if(desktopBtn){
         try{
           const curW = desktopBtn.getBoundingClientRect().width || 0;
           const newText = `${word} ▾`;
@@ -77,6 +95,22 @@
         }catch(e){}
         // desktop includes a caret only
         desktopBtn.textContent = `${word} ▾`;
+        // finalize desktop width after fonts load/settle
+        const finalizeDesktopWidth = ()=>{
+          try{
+            const newW2 = measureTextWidth(`${word} ▾`, desktopBtn) || 0;
+            const cs2 = getComputedStyle(desktopBtn);
+            const padL2 = parseFloat(cs2.paddingLeft) || 0;
+            const padR2 = parseFloat(cs2.paddingRight) || 0;
+            const desired2 = Math.ceil(newW2 + padL2 + padR2);
+            desktopBtn.style.minWidth = desired2 + 'px';
+          }catch(e){}
+        };
+        if(window.document && window.document.fonts && window.document.fonts.ready){
+          window.document.fonts.ready.then(()=>{ requestAnimationFrame(finalizeDesktopWidth); }).catch(()=>setTimeout(finalizeDesktopWidth,50));
+        } else {
+          setTimeout(finalizeDesktopWidth,50);
+        }
       }
       // also update any selects
       const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
