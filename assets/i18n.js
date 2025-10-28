@@ -293,6 +293,7 @@
     "Scroll down to see our gallery": "spa_scroll_gallery",
     "Our Recent Projects": "spa_recent_projects",
     "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail.": "spa_recent_projects_desc",
+    "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco.": "spa_previous_work_lead",
     "Tell me more": "spa_tell_me_more"
   });
 
