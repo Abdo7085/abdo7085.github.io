@@ -39,6 +39,37 @@
     return defaultLang;
   }
 
+  // Update the visible language toggle/button labels consistently
+  function updateLanguageButtons(lang){
+    try{
+      const word = langWord[lang] || 'Language';
+      const name = langNames[lang] || (lang.toUpperCase());
+      const mobileBtn = document.getElementById('langToggleBtn');
+      if(mobileBtn){
+        try{
+          // prevent a layout jump by preserving current width while we change the text
+          const pw = mobileBtn.getBoundingClientRect().width;
+          if(pw && pw > 0) mobileBtn.style.minWidth = Math.ceil(pw) + 'px';
+        }catch(e){}
+        mobileBtn.textContent = `${word} - ${name}`;
+        // allow the button to resize shortly after to accommodate responsive layouts
+        setTimeout(()=>{ try{ mobileBtn.style.minWidth = ''; }catch(e){} }, 250);
+      }
+      const desktopBtn = document.getElementById('langDesktopBtn');
+      if(desktopBtn){
+        try{
+          const pw2 = desktopBtn.getBoundingClientRect().width;
+          if(pw2 && pw2 > 0) desktopBtn.style.minWidth = Math.ceil(pw2) + 'px';
+        }catch(e){}
+        desktopBtn.textContent = `${word} - ${name} ▾`;
+        setTimeout(()=>{ try{ desktopBtn.style.minWidth = ''; }catch(e){} }, 250);
+      }
+      // also update any selects
+      const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
+      if(sel) sel.value = lang;
+    }catch(e){}
+  }
+
   async function loadLocale(lang){
     // Try a few fetch path variants so the loader works whether the site
     // is hosted at the site root or under a language subpath (e.g. /ar/).
@@ -279,15 +310,7 @@
   const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
   if(sel) sel.value = l;
     // update toggle labels if present (mobile & desktop)
-    try{
-      const mobileBtn = document.getElementById('langToggleBtn');
-  // Compose the label as: <Language-word> - <Language name in that language>
-  const word = langWord[l] || 'Language';
-  const name = langNames[l] || (l.toUpperCase());
-  if(mobileBtn) mobileBtn.textContent = `${word} - ${name}`;
-  const desktopBtn = document.getElementById('langDesktopBtn');
-  if(desktopBtn) desktopBtn.textContent = `${word} - ${name} ▾`;
-    }catch(e){}
+    try{ updateLanguageButtons(l); }catch(e){}
   }
 
   // Re-run translations when SPA updates the DOM or when the URL changes
@@ -317,7 +340,7 @@
       window.addEventListener('popstate', ()=> window.dispatchEvent(new Event('locationchange')));
       window.addEventListener('locationchange', ()=>{
         const lang = (localStorage.getItem('site_lang') || detect());
-        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} try{ updateLanguageButtons(lang); }catch(e){} });
       });
     }catch(e){}
   }
@@ -351,10 +374,10 @@
       target = target.replace(/\/\/+/g, '/');
       // push new URL (wrapped pushState will trigger locationchange watcher)
       try{
-        // Use a full navigation to the language-prefixed page so the server-provided
-        // localized HTML (fr/index.html, ar/index.html) is loaded. This ensures
-        // correct router basename and SEO-friendly content for crawlers.
-        location.assign(target + location.search + location.hash);
+  // Update visible buttons immediately, then navigate to the language-prefixed page
+  // so the server-provided localized HTML (fr/index.html, ar/index.html) is loaded.
+  try{ updateLanguageButtons(lang); }catch(e){}
+  location.assign(target + location.search + location.hash);
         return; // navigation will unload current script
       }catch(e){ /* fallback to pushState if assign isn't allowed */
         try{ history.pushState({}, '', target + location.search + location.hash); }catch(e){}
