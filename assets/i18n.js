@@ -9,6 +9,8 @@
 (function(){
   const defaultLang = 'en';
   const available = ['en','fr','ar'];
+  // Cache for loaded locale dictionaries (store Promise to dedupe concurrent requests)
+  const localeCache = {};
   // Display names of languages in their own language (used in the button label)
   const langNames = { en: 'English', fr: 'Français', ar: 'العربية' };
   // Localized word for "Language" per language
@@ -69,7 +71,8 @@
             const padL2 = parseFloat(cs2.paddingLeft) || 0;
             const padR2 = parseFloat(cs2.paddingRight) || 0;
             const desired2 = Math.ceil(newW2 + padL2 + padR2);
-            mobileBtn.style.minWidth = desired2 + 'px';
+            const curMin2 = parseFloat(mobileBtn.style.minWidth) || 0;
+            if(desired2 > curMin2) mobileBtn.style.minWidth = desired2 + 'px';
           }catch(e){}
         };
         if(window.document && window.document.fonts && window.document.fonts.ready){
@@ -103,7 +106,8 @@
             const padL2 = parseFloat(cs2.paddingLeft) || 0;
             const padR2 = parseFloat(cs2.paddingRight) || 0;
             const desired2 = Math.ceil(newW2 + padL2 + padR2);
-            desktopBtn.style.minWidth = desired2 + 'px';
+            const curMin2 = parseFloat(desktopBtn.style.minWidth) || 0;
+            if(desired2 > curMin2) desktopBtn.style.minWidth = desired2 + 'px';
           }catch(e){}
         };
         if(window.document && window.document.fonts && window.document.fonts.ready){
@@ -144,27 +148,36 @@
   }
 
   async function loadLocale(lang){
-    // Try a few fetch path variants so the loader works whether the site
-    // is hosted at the site root or under a language subpath (e.g. /ar/).
-    const candidates = [
-      `/assets/locales/${lang}.json`,
-      `assets/locales/${lang}.json`,
-      `./assets/locales/${lang}.json`,
-      `../assets/locales/${lang}.json`
-    ];
+    // Return cached promise/dict when available to avoid repeated fetches on DOM churn
+    if(localeCache[lang]) return localeCache[lang];
 
-    for(const p of candidates){
-      try{
-        const res = await fetch(p);
-        if(res && res.ok){
-          try{ return await res.json(); }catch(e){ /* parse error -> continue */ }
-        }
-      }catch(e){ /* continue to next candidate */ }
-    }
+    const p = (async ()=>{
+      // Try a few fetch path variants so the loader works whether the site
+      // is hosted at the site root or under a language subpath (e.g. /ar/).
+      const candidates = [
+        `/assets/locales/${lang}.json`,
+        `assets/locales/${lang}.json`,
+        `./assets/locales/${lang}.json`,
+        `../assets/locales/${lang}.json`
+      ];
 
-    // Fallback to default language if nothing worked
-    if(lang !== defaultLang) return loadLocale(defaultLang);
-    return {};
+      for(const path of candidates){
+        try{
+          const res = await fetch(path);
+          if(res && res.ok){
+            try{ return await res.json(); }catch(e){ /* parse error -> continue */ }
+          }
+        }catch(e){ /* continue to next candidate */ }
+      }
+
+      // Fallback to default language if nothing worked
+      if(lang !== defaultLang) return loadLocale(defaultLang);
+      return {};
+    })();
+
+    // store the promise immediately so concurrent callers reuse it
+    localeCache[lang] = p;
+    return p;
   }
 
   function applyTranslations(dict){
@@ -405,12 +418,23 @@
   function watchSpaUpdates(){
     let root = document.getElementById('root') || document.body;
     try{
+      // Debounced observer: many frameworks/mutations can produce lots of micro-mutations
+      // so we coalesce them into a single work run to avoid repeated fetch/DOM writes.
+      let moDebounce = null;
       const mo = new MutationObserver(() => {
-        // re-run with the currently detected language (path-first). This ensures
-        // that visiting root (/) stays English even if a different language is
-        // stored from a previous visit.
-        const lang = detect();
-        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} try{ updateLanguageButtons(lang); }catch(e){} });
+        try{
+          if(moDebounce) clearTimeout(moDebounce);
+          moDebounce = setTimeout(()=>{
+            try{
+              const lang = detect();
+              loadLocale(lang).then(dict=>{
+                applyTranslations(dict);
+                try{ replaceTextNodesWithDict(dict); }catch(e){}
+                try{ updateLanguageButtons(lang); }catch(e){}
+              });
+            }catch(e){}
+          }, 120);
+        }catch(e){}
       });
       mo.observe(root, { childList: true, subtree: true, characterData: true });
     }catch(e){}
