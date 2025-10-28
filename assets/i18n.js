@@ -39,37 +39,6 @@
     return defaultLang;
   }
 
-  // Update the visible language toggle/button labels consistently
-  function updateLanguageButtons(lang){
-    try{
-      const word = langWord[lang] || 'Language';
-      const name = langNames[lang] || (lang.toUpperCase());
-      const mobileBtn = document.getElementById('langToggleBtn');
-      if(mobileBtn){
-        try{
-          // prevent a layout jump by preserving current width while we change the text
-          const pw = mobileBtn.getBoundingClientRect().width;
-          if(pw && pw > 0) mobileBtn.style.minWidth = Math.ceil(pw) + 'px';
-        }catch(e){}
-        mobileBtn.textContent = `${word} - ${name}`;
-        // allow the button to resize shortly after to accommodate responsive layouts
-        setTimeout(()=>{ try{ mobileBtn.style.minWidth = ''; }catch(e){} }, 250);
-      }
-      const desktopBtn = document.getElementById('langDesktopBtn');
-      if(desktopBtn){
-        try{
-          const pw2 = desktopBtn.getBoundingClientRect().width;
-          if(pw2 && pw2 > 0) desktopBtn.style.minWidth = Math.ceil(pw2) + 'px';
-        }catch(e){}
-        desktopBtn.textContent = `${word} - ${name} ▾`;
-        setTimeout(()=>{ try{ desktopBtn.style.minWidth = ''; }catch(e){} }, 250);
-      }
-      // also update any selects
-      const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
-      if(sel) sel.value = lang;
-    }catch(e){}
-  }
-
   async function loadLocale(lang){
     // Try a few fetch path variants so the loader works whether the site
     // is hosted at the site root or under a language subpath (e.g. /ar/).
@@ -270,8 +239,23 @@
       if(titleEl){
         const key = titleEl.getAttribute('data-i18n-title') || 'title';
         if(dict[key]) document.title = dict[key];
-      } else if(dict.title){
-        document.title = dict.title;
+      } else {
+        // Avoid applying a generic `dict.title` that may be the 404 title
+        // (e.g. locale files often contain a "title" for the 404 page).
+        // Instead: prefer page-specific keys (by path) or the 404 page when present.
+        try{
+          const p = (location.pathname || '/').toLowerCase();
+          // 404 template detection (the generated 404.html uses .notfound-root)
+          const is404 = !!document.querySelector('main.notfound-root');
+          if(is404 && dict.title){
+            document.title = dict.title;
+          } else if(p === '/' || p === '' || p === '/index.html'){
+            if(dict.page_title_index) document.title = dict.page_title_index;
+          } else if(p.startsWith('/previous-work')){
+            if(dict.page_title_previous_work) document.title = dict.page_title_previous_work;
+          }
+          // otherwise leave the HTML <title> as authored by the server
+        }catch(e){}
       }
 
       // update meta description(s) via data-i18n-meta on meta tags, or fallback to dict.meta_description
@@ -310,7 +294,15 @@
   const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
   if(sel) sel.value = l;
     // update toggle labels if present (mobile & desktop)
-    try{ updateLanguageButtons(l); }catch(e){}
+    try{
+      const mobileBtn = document.getElementById('langToggleBtn');
+  // Compose the label as: <Language-word> - <Language name in that language>
+  const word = langWord[l] || 'Language';
+  const name = langNames[l] || (l.toUpperCase());
+  if(mobileBtn) mobileBtn.textContent = `${word} - ${name}`;
+  const desktopBtn = document.getElementById('langDesktopBtn');
+  if(desktopBtn) desktopBtn.textContent = `${word} - ${name} ▾`;
+    }catch(e){}
   }
 
   // Re-run translations when SPA updates the DOM or when the URL changes
@@ -340,7 +332,7 @@
       window.addEventListener('popstate', ()=> window.dispatchEvent(new Event('locationchange')));
       window.addEventListener('locationchange', ()=>{
         const lang = (localStorage.getItem('site_lang') || detect());
-        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} try{ updateLanguageButtons(lang); }catch(e){} });
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
       });
     }catch(e){}
   }
@@ -374,10 +366,10 @@
       target = target.replace(/\/\/+/g, '/');
       // push new URL (wrapped pushState will trigger locationchange watcher)
       try{
-  // Update visible buttons immediately, then navigate to the language-prefixed page
-  // so the server-provided localized HTML (fr/index.html, ar/index.html) is loaded.
-  try{ updateLanguageButtons(lang); }catch(e){}
-  location.assign(target + location.search + location.hash);
+        // Use a full navigation to the language-prefixed page so the server-provided
+        // localized HTML (fr/index.html, ar/index.html) is loaded. This ensures
+        // correct router basename and SEO-friendly content for crawlers.
+        location.assign(target + location.search + location.hash);
         return; // navigation will unload current script
       }catch(e){ /* fallback to pushState if assign isn't allowed */
         try{ history.pushState({}, '', target + location.search + location.hash); }catch(e){}
