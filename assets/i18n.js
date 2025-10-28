@@ -310,8 +310,10 @@
     let root = document.getElementById('root') || document.body;
     try{
       const mo = new MutationObserver(() => {
-        // re-run with the currently loaded dict
-        const lang = (localStorage.getItem('site_lang') || detect());
+        // re-run with the currently detected language (path-first). This ensures
+        // that visiting root (/) stays English even if a different language is
+        // stored from a previous visit.
+        const lang = detect();
         loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
       });
       mo.observe(root, { childList: true, subtree: true, characterData: true });
@@ -331,7 +333,9 @@
       history.replaceState = wrap('replaceState');
       window.addEventListener('popstate', ()=> window.dispatchEvent(new Event('locationchange')));
       window.addEventListener('locationchange', ()=>{
-        const lang = (localStorage.getItem('site_lang') || detect());
+        // Use the detected language (path-first) for location changes so that
+        // language-prefixed routes win over any persisted selection.
+        const lang = detect();
         loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
       });
     }catch(e){}
