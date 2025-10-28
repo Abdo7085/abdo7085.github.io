@@ -13,6 +13,31 @@
   const langNames = { en: 'English', fr: 'Français', ar: 'العربية' };
   // Localized word for "Language" per language
   const langWord = { en: 'Language', fr: 'Langue', ar: 'اللغة' };
+
+  // Update the visible language toggle/button labels consistently
+  function updateLanguageButtons(lang){
+    try{
+      const word = langWord[lang] || 'Language';
+      const name = langNames[lang] || (lang.toUpperCase());
+      const mobileBtn = document.getElementById('langToggleBtn');
+      if(mobileBtn){
+        try{ const pw = mobileBtn.getBoundingClientRect().width; if(pw && pw>0) mobileBtn.style.minWidth = Math.ceil(pw) + 'px'; }catch(e){}
+        // show only the localized word (e.g. "Language", "Langue", "اللغة")
+        mobileBtn.textContent = `${word}`;
+        setTimeout(()=>{ try{ mobileBtn.style.minWidth = ''; }catch(e){} }, 250);
+      }
+      const desktopBtn = document.getElementById('langDesktopBtn');
+      if(desktopBtn){
+        try{ const pw2 = desktopBtn.getBoundingClientRect().width; if(pw2 && pw2>0) desktopBtn.style.minWidth = Math.ceil(pw2) + 'px'; }catch(e){}
+        // desktop includes a caret only
+        desktopBtn.textContent = `${word} ▾`;
+        setTimeout(()=>{ try{ desktopBtn.style.minWidth = ''; }catch(e){} }, 250);
+      }
+      // also update any selects
+      const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
+      if(sel) sel.value = lang;
+    }catch(e){}
+  }
   function detect(){
     // 1) honor explicit language in the URL path (/ar/ or /fr/)
     try{
@@ -294,15 +319,7 @@
   const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
   if(sel) sel.value = l;
     // update toggle labels if present (mobile & desktop)
-    try{
-      const mobileBtn = document.getElementById('langToggleBtn');
-  // Compose the label as: <Language-word> - <Language name in that language>
-  const word = langWord[l] || 'Language';
-  const name = langNames[l] || (l.toUpperCase());
-  if(mobileBtn) mobileBtn.textContent = `${word} - ${name}`;
-  const desktopBtn = document.getElementById('langDesktopBtn');
-  if(desktopBtn) desktopBtn.textContent = `${word} - ${name} ▾`;
-    }catch(e){}
+    try{ updateLanguageButtons(l); }catch(e){}
   }
 
   // Re-run translations when SPA updates the DOM or when the URL changes
@@ -314,7 +331,7 @@
         // that visiting root (/) stays English even if a different language is
         // stored from a previous visit.
         const lang = detect();
-        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} try{ updateLanguageButtons(lang); }catch(e){} });
       });
       mo.observe(root, { childList: true, subtree: true, characterData: true });
     }catch(e){}
@@ -336,7 +353,7 @@
         // Use the detected language (path-first) for location changes so that
         // language-prefixed routes win over any persisted selection.
         const lang = detect();
-        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} });
+        loadLocale(lang).then(dict=>{ applyTranslations(dict); try{ replaceTextNodesWithDict(dict); }catch(e){} try{ updateLanguageButtons(lang); }catch(e){} });
       });
     }catch(e){}
   }
@@ -345,8 +362,9 @@
   // update html lang/dir and re-run init so translations apply immediately.
   function changeTo(lang){
     if(!available.includes(lang)) return;
-    try{ localStorage.setItem('site_lang', lang); }catch(e){}
-    try{ document.documentElement.lang = lang; document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr'; }catch(e){}
+  try{ localStorage.setItem('site_lang', lang); }catch(e){}
+  try{ document.documentElement.lang = lang; document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr'; }catch(e){}
+  try{ updateLanguageButtons(lang); }catch(e){}
 
     // Build target path preserving the suffix after any existing language prefix
     try{
