@@ -20,18 +20,48 @@
       const word = langWord[lang] || 'Language';
       const name = langNames[lang] || (lang.toUpperCase());
       const mobileBtn = document.getElementById('langToggleBtn');
+      // helper: measure text width using an offscreen span copying font styles
+      function measureTextWidth(text, refEl){
+        try{
+          const span = document.createElement('span');
+          const style = getComputedStyle(refEl);
+          span.style.font = style.font || `${style.fontSize} ${style.fontFamily}`;
+          span.style.whiteSpace = 'nowrap';
+          span.style.position = 'absolute';
+          span.style.left = '-9999px';
+          span.style.top = '-9999px';
+          span.textContent = text;
+          document.body.appendChild(span);
+          const w = span.getBoundingClientRect().width;
+          document.body.removeChild(span);
+          return w;
+        }catch(e){ return null; }
+      }
+
       if(mobileBtn){
-        try{ const pw = mobileBtn.getBoundingClientRect().width; if(pw && pw>0) mobileBtn.style.minWidth = Math.ceil(pw) + 'px'; }catch(e){}
-        // show only the localized word (e.g. "Language", "Langue", "اللغة")
+        try{
+          const curW = mobileBtn.getBoundingClientRect().width || 0;
+          const newText = `${word}`;
+          const newW = measureTextWidth(newText, mobileBtn) || 0;
+          const desired = Math.ceil(Math.max(curW, newW));
+          // only increase minWidth if it's smaller than desired to avoid shrinking flicker
+          const curMin = parseFloat(mobileBtn.style.minWidth) || 0;
+          if(desired > curMin) mobileBtn.style.minWidth = desired + 'px';
+        }catch(e){}
         mobileBtn.textContent = `${word}`;
-        setTimeout(()=>{ try{ mobileBtn.style.minWidth = ''; }catch(e){} }, 250);
       }
       const desktopBtn = document.getElementById('langDesktopBtn');
       if(desktopBtn){
-        try{ const pw2 = desktopBtn.getBoundingClientRect().width; if(pw2 && pw2>0) desktopBtn.style.minWidth = Math.ceil(pw2) + 'px'; }catch(e){}
+        try{
+          const curW = desktopBtn.getBoundingClientRect().width || 0;
+          const newText = `${word} ▾`;
+          const newW = measureTextWidth(newText, desktopBtn) || 0;
+          const desired = Math.ceil(Math.max(curW, newW));
+          const curMin = parseFloat(desktopBtn.style.minWidth) || 0;
+          if(desired > curMin) desktopBtn.style.minWidth = desired + 'px';
+        }catch(e){}
         // desktop includes a caret only
         desktopBtn.textContent = `${word} ▾`;
-        setTimeout(()=>{ try{ desktopBtn.style.minWidth = ''; }catch(e){} }, 250);
       }
       // also update any selects
       const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
