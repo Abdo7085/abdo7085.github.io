@@ -20,7 +20,7 @@ INDEX = ROOT / 'index.html'
 LOCALES = ROOT / 'assets' / 'locales'
 OUT_DIRS = [('fr', ROOT / 'fr'), ('ar', ROOT / 'ar')]
 # default host placeholder; can be overridden with --host or env
-HOST = 'https://example.com'
+HOST = 'https://smartelectricity.ma'
 
 
 def load_locale(lang):
