@@ -3,6 +3,7 @@
   <!-- Home pages -->
   <url>
     <loc>https://smartelectricity.ma/</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/" />
@@ -11,6 +12,7 @@
   <!-- Localized home pages (explicit) -->
   <url>
     <loc>https://smartelectricity.ma/fr/</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/" />
@@ -18,6 +20,7 @@
 
   <url>
     <loc>https://smartelectricity.ma/ar/</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/" />
@@ -26,6 +29,7 @@
   <!-- Previous work pages (SEO) -->
   <url>
     <loc>https://smartelectricity.ma/previous-work.html</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/previous-work.html" />
@@ -33,6 +37,7 @@
 
   <url>
     <loc>https://smartelectricity.ma/fr/previous-work.html</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/previous-work.html" />
@@ -40,6 +45,7 @@
 
   <url>
     <loc>https://smartelectricity.ma/ar/previous-work.html</loc>
+    <lastmod>2025-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/previous-work.html" />
