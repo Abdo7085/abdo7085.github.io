@@ -11398,7 +11398,7 @@ const Xh = re("Zap", [["polygon", {
 }]])
   , Zh = () => {
     const e = () => {
-        const t = document.getElementById("home-theatre");
+        const t = document.getElementById("smart-home-focus");
         t && t.scrollIntoView({
             behavior: "smooth"
         })
