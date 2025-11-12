@@ -11432,7 +11432,7 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4 w-full",
                 children: [u.jsxs("a", {
-                    href: "tel:0612345678",
+                    href: "tel:0654132112",
                     className: "btn-primary text-base sm:text-base cta-button-animation inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105",
                     children: [u.jsx(Sn, {
                             className: "w-4 h-4 mr-2"
@@ -11797,7 +11797,7 @@ const Xh = re("Zap", [["polygon", {
                 "data-i18n": "spa_team",
                 children: ""
             }), u.jsxs("a", {
-                href: "tel:0612345678",
+                href: "tel:0654132112",
                 className: "btn-secondary text-base inline-flex items-center hover:scale-105 transition-transform fade-in",
                 children: [u.jsx(Sn, {
                     className: "w-4 h-4 mr-2"
@@ -11922,7 +11922,7 @@ const Xh = re("Zap", [["polygon", {
                         }), u.jsxs("div", {
                             className: "flex flex-col sm:flex-row gap-4",
                             children: [u.jsx("a", {
-                                href: "tel:0612345678",
+                                href: "tel:0654132112",
                                 className: "btn-primary hover:scale-105 transition-transform",
                                 "data-i18n": "spa_cta_upgrade",
                                 children: ""
@@ -12105,9 +12105,9 @@ const Xh = re("Zap", [["polygon", {
                             children: [u.jsx(Sn, {
                                 className: "w-4 h-4 mr-2 text-primary"
                             }), u.jsx("a", {
-                                href: "tel:0612345678",
+                                href: "tel:0654132112",
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "061-234-5678"
+                                children: "0654-132112"
                             })]
                         }), u.jsxs("li", {
                             className: "flex items-center",
@@ -12167,7 +12167,7 @@ const Xh = re("Zap", [["polygon", {
     })
 }
   , ov = () => u.jsx("a", {
-    href: "tel:0612345678",
+    href: "tel:0654132112",
     className: "mobile-dialer md:hidden",
     "aria-label": "Call Now",
     children: u.jsx(Sn, {
@@ -12434,7 +12434,7 @@ const Xh = re("Zap", [["polygon", {
                     "data-i18n": "spa_contact",
                     children: ""
                 }), u.jsxs("a", {
-                    href: "tel:0612345678",
+                    href: "tel:0654132112",
                     className: "btn-primary ml-3 text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
@@ -12495,7 +12495,7 @@ const Xh = re("Zap", [["polygon", {
                     "data-i18n": "spa_contact",
                     children: ""
                 }), u.jsxs("a", {
-                    href: "tel:0612345678",
+                    href: "tel:0654132112",
                     className: "btn-primary w-full justify-center text-sm",
                     children: [u.jsx(Sn, {
                         className: "w-3 h-3 mr-1"
