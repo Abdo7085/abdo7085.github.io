@@ -10,14 +10,12 @@
   "privacy": "Privacy",
   "footer_copyright": "© 2025 SMART‑ELECTRICITY LLC · ",
   "logo_alt": "SMART‑ELECTRICITY logo",
-  "logo_alt_link": "Back to home"
-  ,
+  "logo_alt_link": "Back to home",
   "page_title_index": "S‑ELECTRICITY Smart Home & Domotique | Morocco",
   "meta_description_index": "S‑ELECTRICITY provides smart home automation, domotique and security camera solutions in Morocco.",
   "page_title_previous_work": "Previous Work · S‑ELECTRICITY",
   "meta_description_previous_work": "Examples of previous smart home and security installations by S‑ELECTRICITY in Morocco.",
-  "noscript_text": "S‑ELECTRICITY - Smart Home Solutions"
-  ,
+  "noscript_text": "S‑ELECTRICITY - Smart Home Solutions",
   "spa_services": "Services",
   "spa_services_lead": "Smart solutions for both residential and commercial clients.",
   "spa_residential_services": "Residential Services",
@@ -28,8 +26,7 @@
   "spa_q_price": "How much does installation cost?",
   "spa_q_how_long": "How long does installation take?",
   "spa_a_how_long": "The installation timeline depends entirely on the project's complexity. A simple setup like a few smart switches and a shutter can be completed in under a day. A full-house automation system for a villa can take several days to a few weeks.",
-  "spa_q_warranty": "Do you offer warranties on installations?",
-  "spa_a_warranty": "Yes, we provide warranties on our installations to ensure quality and reliability. Specific warranty details depend on the service.",
+  
   "spa_q_schedule": "How do I schedule an appointment?",
   "spa_a_schedule": "You can call us at 0654-132112. We'll be happy to talk to you anytime.",
   "spa_team": "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget.",
@@ -44,8 +41,7 @@
   "spa_previous_work": "Previous Work",
   "spa_contact": "Contact",
   "spa_site_title": "S‑ELECTRICITY Smart Home & Domotique | Morocco",
-  "spa_intro": "Smart home automation & low voltage solutions in Morocco. Upgrade your home for a modern & seamless experience."
-  ,
+  "spa_intro": "Smart home automation & electrical solutions in Morocco. Upgrade your home for a modern & seamless experience.",
   "spa_brand_short": "S‑ELECTRICITY",
   "spa_subtitle": "Home Automation & Video Surveillance & Security",
   "spa_upgrade_business": "Upgrade your home or business for comfort, security and easy controlling",
@@ -96,6 +92,6 @@
   "spa_terms_of_service": "Terms of Service",
   "spa_scroll_gallery": "Scroll down to see our gallery",
   "spa_recent_projects": "Our Recent Projects",
-  "spa_recent_projects_desc": "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail."
-  ,"spa_previous_work_lead": "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco."
+  "spa_recent_projects_desc": "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail.",
+  "spa_previous_work_lead": "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco."
 }

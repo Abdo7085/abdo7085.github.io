@@ -11731,9 +11731,6 @@ const Xh = re("Zap", [["polygon", {
         questionKey: "spa_q_how_long",
         answerKey: "spa_a_how_long"
     }, {
-        questionKey: "spa_q_warranty",
-        answerKey: "spa_a_warranty"
-    }, {
         questionKey: "spa_q_schedule",
         answerKey: "spa_a_schedule"
     }];
