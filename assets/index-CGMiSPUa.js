@@ -11638,31 +11638,35 @@ const Xh = re("Zap", [["polygon", {
             titleKey: "spa_title_smart_lighting",
             descriptionKey: "spa_desc_smart_lighting"
                 }],
-                commercial: [{
-                        icon: u.jsx($h, {
-                                className: "w-8 h-8 text-primary"
-                        }),
-            titleKey: "spa_title_commercial_automation",
-            descriptionKey: "spa_desc_commercial_automation"
-                }, {
-                        icon: u.jsx(ba, {
-                                className: "w-8 h-8 text-primary"
-                        }),
-            titleKey: "spa_title_enterprise_wifi",
-            descriptionKey: "spa_desc_enterprise_wifi"
-                }, {
-                        icon: u.jsx(Ja, {
-                                className: "w-8 h-8 text-primary"
-                        }),
-            titleKey: "spa_title_commercial_surveillance",
-            descriptionKey: "spa_desc_commercial_surveillance"
-                }, {
-                        icon: u.jsx(qa, {
-                                className: "w-8 h-8 text-primary"
-                        }),
-            titleKey: "spa_title_commercial_audio",
-            descriptionKey: "spa_desc_commercial_audio"
-                }]
+        commercial: [{
+            // Electrical Installations — lightning bolt
+            icon: u.jsx(Xh, {
+                className: "w-8 h-8 text-primary"
+            }),
+    titleKey: "spa_title_electrical_installations",
+    descriptionKey: "spa_desc_electrical_installations"
+        }, {
+            // Power Distribution & Panels — building
+            icon: u.jsx($h, {
+                className: "w-8 h-8 text-primary"
+            }),
+    titleKey: "spa_title_power_distribution_panels",
+    descriptionKey: "spa_desc_power_distribution_panels"
+        }, {
+            // Lighting & Fixture Installation — lightbulb
+            icon: u.jsx(Vh, {
+                className: "w-8 h-8 text-primary"
+            }),
+    titleKey: "spa_title_lighting_fixture_installation",
+    descriptionKey: "spa_desc_lighting_fixture_installation"
+        }, {
+            // Cabling & Wiring Solutions — shield (safety/grounding)
+            icon: u.jsx(Kh, {
+                className: "w-8 h-8 text-primary"
+            }),
+    titleKey: "spa_title_cabling_wiring_solutions",
+    descriptionKey: "spa_desc_cabling_wiring_solutions"
+        }]
         };
         return u.jsx("section", {
                 id: "services",
@@ -11689,7 +11693,7 @@ const Xh = re("Zap", [["polygon", {
                                                 type: "button",
                                                 className: `px-5 py-2 text-base font-medium rounded-l-lg transition-all duration-300 ${e === "residential" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`,
                                                 onClick: () => t("residential"),
-                                                "data-i18n": "spa_residential_services",
+                                                "data-i18n": "spa_domotique_services",
                                                 children: ""
                                         }), u.jsx("button", {
                                                 type: "button",
