@@ -362,8 +362,12 @@
           const p = (location.pathname || '/').toLowerCase();
           // 404 template detection (the generated 404.html uses .notfound-root)
           const is404 = !!document.querySelector('main.notfound-root');
-          if(is404 && dict.title){
-            document.title = dict.title;
+          if(is404){
+            if(dict.page_title_404){
+              document.title = dict.page_title_404;
+            } else if(dict.title){
+              document.title = dict.title;
+            }
           } else if(p === '/' || p === '' || p === '/index.html'){
             if(dict.page_title_index) document.title = dict.page_title_index;
           } else if(p.startsWith('/previous-work')){
