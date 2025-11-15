@@ -11408,7 +11408,7 @@ const Xh = re("Zap", [["polygon", {
         id: "hero",
         className: "relative h-[100dvh] md:h-screen flex items-end justify-center md:justify-start text-white px-4 py-6 sm:px-8 sm:py-8 md:px-16 md:py-16 overflow-hidden",
         style: {
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('${window.innerWidth < 768 ? "/assets/flatwebp.webp" : "/assets/roomwebp.webp"}')`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('${window.innerWidth < 768 ? "/assets/Vila-big-background.webp" : "/assets/roomwebp.webp"}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat"
@@ -11970,12 +11970,12 @@ const Xh = re("Zap", [["polygon", {
                         children: u.jsxs("div", {
                             className: "flex flex-col space-y-3",
                             children: [u.jsx("img", {
-                                src: "/assets/smart-home-hub.jpg",
+                                src: "/assets/camera-man.webp",
                                 alt: "Smart Home Hub and Voice Assistant",
                                 className: "rounded-lg w-full h-auto mb-4 shadow-md hover:shadow-lg transition-shadow",
                                 loading: "lazy"
                             }), u.jsx("img", {
-                                src: "/assets/smart-thermostat.webp",
+                                src: "/assets/smart-dashboard-panel.webp",
                                 alt: "Smart Thermostat Installation",
                                 className: "rounded-lg w-full h-auto shadow-md hover:shadow-lg transition-shadow",
                                 loading: "lazy"
