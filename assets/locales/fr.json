@@ -12,10 +12,10 @@
   "logo_alt": "logo SMART‑ELECTRICITY",
   "logo_alt_link": "Retour à l'accueil"
   ,
-  "page_title_index": "S‑ELECTRICITY Smart Home & Domotique | Morocco",
-  "meta_description_index": "S‑ELECTRICITY fournit des solutions d'automatisation domestique, domotique et caméras de sécurité au Maroc.",
-  "page_title_previous_work": "Travaux précédents · S‑ELECTRICITY",
-  "meta_description_previous_work": "Exemples d'installations précédentes de domotique et de sécurité réalisées par S‑ELECTRICITY au Maroc.",
+  "page_title_index": "Domotique, Maison Intelligente & Sécurité | S‑ELECTRICITY Maroc",
+  "meta_description_index": "Domotique et maison intelligente au Maroc — éclairage et interrupteurs intelligents, optimisation réseau/Wi‑Fi, caméras de surveillance et serrures intelligentes. Installation électrique experte à Tétouan.",
+  "page_title_previous_work": "Portfolio Installations Domotique & Sécurité | S‑ELECTRICITY",
+  "meta_description_previous_work": "Portfolio d’installations au Maroc : domotique, éclairage intelligent, optimisation réseau/Wi‑Fi, caméras de surveillance et serrures intelligentes. Installations électriques à Tétouan.",
   "noscript_text": "S‑ELECTRICITY - Solutions de maison intelligente"
   ,
   "spa_services": "Services",
@@ -95,6 +95,7 @@
   "spa_terms_of_service": "Conditions d'utilisation",
   "spa_scroll_gallery": "Faites défiler vers le bas pour voir notre galerie",
   "spa_recent_projects": "Nos projets récents",
-  "spa_recent_projects_desc": "Installations réelles de clients satisfaits à travers le Maroc. Chaque projet montre notre engagement pour la qualité et le souci du détail."
-  ,"spa_previous_work_lead": "Découvrez la qualité et le savoir‑faire de nos installations de maisons connectées, domotique et projets d'automatisation à travers le Maroc."
+  "spa_recent_projects_desc": "Installations réelles de clients satisfaits à travers le Maroc. Chaque projet montre notre engagement pour la qualité et le souci du détail.",
+  "spa_previous_work_lead": "Découvrez la qualité et le savoir‑faire de nos installations de maisons connectées, domotique et projets d'automatisation à travers le Maroc.",
+  "meta_description_404": "Page introuvable — S‑ELECTRICITY. Domotique, optimisation réseau/Wi‑Fi, caméras de surveillance et serrures intelligentes au Maroc. Découvrez nos services ou contactez‑nous."
 }

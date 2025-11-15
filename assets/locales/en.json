@@ -11,10 +11,10 @@
   "footer_copyright": "© 2025 SMART‑ELECTRICITY LLC · ",
   "logo_alt": "SMART‑ELECTRICITY logo",
   "logo_alt_link": "Back to home",
-  "page_title_index": "S‑ELECTRICITY Smart Home & Domotique | Morocco",
-  "meta_description_index": "S‑ELECTRICITY provides smart home automation, domotique and security camera solutions in Morocco.",
-  "page_title_previous_work": "Previous Work · S‑ELECTRICITY",
-  "meta_description_previous_work": "Examples of previous smart home and security installations by S‑ELECTRICITY in Morocco.",
+  "page_title_index": "Smart Home Automation, Domotique & Security | S‑ELECTRICITY Morocco",
+  "meta_description_index": "Smart home automation & domotique in Morocco — smart lighting & switches, Wi‑Fi/network optimization, security cameras & smart locks. Expert electrical installation in Tetouan.",
+  "page_title_previous_work": "Smart Home & Security Installations Portfolio | S‑ELECTRICITY",
+  "meta_description_previous_work": "Portfolio of real installations in Morocco: smart home automation, smart lighting, Wi‑Fi/network optimization, security cameras & smart locks. Electrical installations in Tetouan.",
   "noscript_text": "S‑ELECTRICITY - Smart Home Solutions",
   "spa_services": "Services",
   "spa_services_lead": "Smart solutions for both residential and commercial clients.",
@@ -94,4 +94,8 @@
   "spa_recent_projects": "Our Recent Projects",
   "spa_recent_projects_desc": "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail.",
   "spa_previous_work_lead": "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco."
+  ,
+  "meta_description_404": "Page not found — S‑ELECTRICITY. Smart home automation, Wi‑Fi/network optimization, security cameras & smart locks in Morocco. Visit our services or contact us."
+  ,
+  "page_title_404": "404 | Page Not Found – Smart Home Automation & Domotique | S‑ELECTRICITY Morocco"
 }
