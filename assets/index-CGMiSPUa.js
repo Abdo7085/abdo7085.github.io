@@ -12544,13 +12544,25 @@ function uv() {
                 content: "width=device-width, initial-scale=1.0"
             })]
         }), u.jsx(av, {}), u.jsxs(Jm, {
-            children: [u.jsx(So, {
-                path: "/",
-                element: u.jsx(lv, {})
-            }), u.jsx(So, {
-                path: "/previous-work",
-                element: u.jsx(sv, {})
-            })]
+            children: [
+                u.jsx(So, {
+                    path: "/",
+                    element: u.jsx(lv, {})
+                }),
+                // Serve the same component for the .html variant to support crawlers and direct visits
+                u.jsx(So, {
+                    path: "/index.html",
+                    element: u.jsx(lv, {})
+                }),
+                u.jsx(So, {
+                    path: "/previous-work",
+                    element: u.jsx(sv, {})
+                }),
+                u.jsx(So, {
+                    path: "/previous-work.html",
+                    element: u.jsx(sv, {})
+                })
+            ]
         }), u.jsx(iv, {}), u.jsx(ov, {})]
     })
 }
