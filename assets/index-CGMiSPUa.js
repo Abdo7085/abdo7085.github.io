@@ -11470,17 +11470,48 @@ const Xh = re("Zap", [["polygon", {
                         r.forEach(l => n.unobserve(l))
                 }
         }, []);
-        const t = [{
-                icon: u.jsx("img", {
-                        src: "/assets/example01.gif",
-                        alt: "Smart Home Showcase",
-                        className: "mx-auto max-w-full h-auto rounded-lg shadow-lg w-[90vw] md:w-auto",
-                        loading: "lazy",
-                        style: {
-                            display: "block"
+        S.useEffect(() => {
+            const e = document.querySelector(".lazy-video");
+            if (!e)
+                return;
+            const t = new IntersectionObserver((n, r) => {
+                n.forEach(l => {
+                    if (l.isIntersecting) {
+                        const i = l.target
+                          , o = i.querySelector('source[data-src]');
+                        if (o && !o.src) {
+                            o.src = o.getAttribute("data-src");
                         }
-                }),
-                features: []
+                        i.load();
+                        i.play && i.play().catch(() => {});
+                        r.unobserve(i);
+                    }
+                });
+            }, {
+                rootMargin: "200px 0px",
+                threshold: .01
+            });
+            t.observe(e);
+            return () => t.disconnect();
+        }, []);
+        const t = [{
+            icon: u.jsxs("video", {
+                className: "lazy-video mx-auto max-w-full h-auto rounded-lg shadow-lg w-[90vw] md:w-auto",
+                autoPlay: !0,
+                loop: !0,
+                muted: !0,
+                playsInline: !0,
+                preload: "none",
+                style: {
+                    display: "block"
+                },
+                "aria-label": "Smart Home Showcase",
+                children: [u.jsx("source", {
+                    "data-src": "/assets/example01.mp4",
+                    type: "video/mp4"
+                })]
+            }),
+            features: []
         }];
         return u.jsx("section", {
                 id: "example",
