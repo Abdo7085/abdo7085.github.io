@@ -12227,47 +12227,47 @@ const Xh = re("Zap", [["polygon", {
     , []);
     const e = [{
         id: 1,
-        src: "../assets/previouswork1.webp",
+        src: "../assets/media-Event-Image-Not-Found.jpg",
         alt: "Smart Home Installation Project 1",
         category: "TV Mounted"
     }, {
         id: 2,
-        src: "/assets/previouswork2.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Security Cameras Project 1",
         category: "Smart Lock Installation"
     }, {
         id: 3,
-        src: "/assets/previouswork3.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Ceiling Fan Installation 1",
         category: "Smart Lock Installation"
     }, {
         id: 4,
-        src: "/assets/previouswork4.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Smart Lock Installation 1",
         category: "TV Mounted"
     }, {
         id: 5,
-        src: "/assets/previouswork5.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Home Theater Setup 1",
         category: "Smart WiFi Integration"
     }, {
         id: 6,
-        src: "/assets/previouswork6.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Smart Thermostat Installation 1",
         category: "Smart Thermostat"
     }, {
         id: 7,
-        src: "/assets/previouswork7.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Smart Home Installation Project 2",
         category: "Home Theatre"
     }, {
         id: 8,
-        src: "/assets/previouswork8.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Security Cameras Project 2",
         category: "Smart Lock"
     }, {
         id: 9,
-        src: "/assets/previouswork9.webp",
+        src: "/assets/media-Event-Image-Not-Found.jpg",
         alt: "Water Purification System",
         category: "TV Mounted"
     }];
