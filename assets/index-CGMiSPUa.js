@@ -12163,13 +12163,13 @@ const Xh = re("Zap", [["polygon", {
                     }), u.jsxs("div", {
                         className: "flex space-x-4",
                         children: [u.jsx("a", {
-                            href: "https://www.freeprivacypolicy.com/live/5cfa6eb6-f10b-4b60-a680-dbf08a40da20",
+                            href: "https://www.smartelectricity.ma/live/5cfa6eb6-f10b-4b60-a680-dbf08a40da20",
                             target: "_blank",
                             rel: "noopener noreferrer",
                             className: "text-gray-500 text-xs hover:text-primary transition-colors",
                             children: "Privacy Policy"
                         }), u.jsx("a", {
-                            href: "https://www.freeprivacypolicy.com/live/5cfa6eb6-f10b-4b60-a680-dbf08a40da20",
+                            href: "https://www.smartelectricity.ma/live/5cfa6eb6-f10b-4b60-a680-dbf08a40da20",
                             target: "_blank",
                             rel: "noopener noreferrer",
                             className: "text-gray-500 text-xs hover:text-primary transition-colors",
