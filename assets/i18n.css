@@ -30,12 +30,17 @@
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
 /* Basic RTL adjustments: these are minimal — adapt to your real stylesheet */
-[dir="rtl"] body{direction:rtl}
+[dir="rtl"] body{direction:rtl; font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;}
 [dir="rtl"] .lang-switch{right:auto;left:12px}
 
 /* Tailwind RTL fixes */
 [dir="rtl"] {
   --tw-space-x-reverse: 1;
+  line-height: 1.8; /* Improve Arabic readability */
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Noto Sans Arabic', 'Exo 2', sans-serif;
 }
 
 /* Fix physical margin classes to behave like logical properties in RTL */
@@ -165,13 +170,18 @@
     align-items:stretch;
   }
 
+[dir="rtl"] .lang-desktop-menu button,
+[dir="rtl"] .lang-mobile-menu button{
+    text-align: right !important;
+  }
+
   .lang-mobile-menu button{
     border:0;
     background:transparent;
     padding:8px 10px;
     border-radius:8px;
     font-weight:700;
-    text-align:left;
+    text-align:right;
     white-space:nowrap;
   }
 
