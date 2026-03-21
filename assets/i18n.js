@@ -334,10 +334,8 @@
 
   function setHtmlLangDir(lang){
     document.documentElement.lang = lang;
-    // NOTE: By default we keep the page layout left-to-right even when Arabic is selected
-    // to avoid automatic UI flipping that may break the layout (per project request).
-    // If you want to allow RTL behavior later, change `forceLtrForArabic` to false.
-    const forceLtrForArabic = true;
+    // NOTE: RTL is enabled for Arabic to provide a native experience.
+    const forceLtrForArabic = false;
     document.documentElement.dir = (lang === 'ar' && !forceLtrForArabic) ? 'rtl' : 'ltr';
   }
 
