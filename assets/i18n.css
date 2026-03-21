@@ -33,6 +33,29 @@
 [dir="rtl"] body{direction:rtl}
 [dir="rtl"] .lang-switch{right:auto;left:12px}
 
+/* Tailwind RTL fixes */
+[dir="rtl"] {
+  --tw-space-x-reverse: 1;
+}
+
+/* Fix physical margin classes to behave like logical properties in RTL */
+[dir="rtl"] .ml-3 { margin-left: 0; margin-right: 0.75rem; }
+[dir="rtl"] .mr-1 { margin-right: 0; margin-left: 0.25rem; }
+[dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
+[dir="rtl"] .mr-3 { margin-right: 0; margin-left: 0.75rem; }
+
+/* Fix absolute positioned elements and text alignment */
+[dir="rtl"] .nav-link:after {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .md\:text-left { text-align: right; }
+
+/* Fix floating elements and other common RTL regressions */
+[dir="rtl"] .left-0 { left: auto; right: 0; }
+[dir="rtl"] .right-0 { right: auto; left: 0; }
+
 /* Responsive: keep selector out of the header / mobile menu area */
 @media (max-width: 767px){
   .lang-switch{
