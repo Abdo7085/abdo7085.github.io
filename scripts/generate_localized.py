@@ -141,8 +141,8 @@ def replace_body_static(html, dict_l, lang):
     # We look for the specific buttons by ID to be safe
     html = re.sub(r'(<button id="langDesktopBtn"[^>]*>)\s*Language ▾\s*(</button>)', fr'\1{word} ▾\2', html)
     html = re.sub(r'(<button id="langToggleBtn"[^>]*>)\s*Language\s*(</button>)', fr'\1{word}\2', html)
-    # And the visually hidden label (for index.html and 404.html)
-    html = re.sub(r'(<label for="langSelect(?:404)?" class="visually-hidden">)Language(</label>)', fr'\1{word}\2', html)
+    # And the visually hidden label (for index.html, 404.html, and previous-work.html)
+    html = re.sub(r'(<label for="langSelect[^"]*" class="visually-hidden">)Language(</label>)', fr'\1{word}\2', html)
 
     return html
 
