@@ -66,6 +66,12 @@ def replace_head(html, dict_l, lang, filename):
     meta_desc = dict_l.get(desc_key) or dict_l.get('spa_intro') or ''
     html = re.sub(r'<meta\s+name="description"[^>]*>', f'<meta name="description" content="{meta_desc}" data-i18n-meta="{desc_key}">', html, count=1)
 
+    # meta keywords (meta[name="keywords"])
+    keywords_key = f'meta_keywords_{key_suffix}'
+    meta_keywords = dict_l.get(keywords_key) or ''
+    if meta_keywords:
+        html = re.sub(r'<meta\s+name="keywords"[^>]*>', f'<meta name="keywords" content="{meta_keywords}">', html, count=1)
+
     # og:title / og:description / twitter:title / twitter:description
     html = re.sub(r'<meta\s+property="og:title"[^>]*>', f'<meta property="og:title" content="{title_val}" />', html, count=1)
     html = re.sub(r'<meta\s+property="og:description"[^>]*>', f'<meta property="og:description" content="{meta_desc}" />', html, count=1)
@@ -135,8 +141,8 @@ def replace_body_static(html, dict_l, lang):
     # We look for the specific buttons by ID to be safe
     html = re.sub(r'(<button id="langDesktopBtn"[^>]*>)\s*Language ▾\s*(</button>)', fr'\1{word} ▾\2', html)
     html = re.sub(r'(<button id="langToggleBtn"[^>]*>)\s*Language\s*(</button>)', fr'\1{word}\2', html)
-    # And the visually hidden label
-    html = re.sub(r'(<label for="langSelect" class="visually-hidden">)Language(</label>)', fr'\1{word}\2', html)
+    # And the visually hidden label (for index.html and 404.html)
+    html = re.sub(r'(<label for="langSelect(?:404)?" class="visually-hidden">)Language(</label>)', fr'\1{word}\2', html)
 
     return html
 
