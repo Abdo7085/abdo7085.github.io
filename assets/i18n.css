@@ -56,8 +56,16 @@
   font-family: 'Noto Sans Arabic', 'Exo 2', sans-serif;
 }
 
-/* Remove decorative underline from headings */
-h2 .border-b-2 { border-bottom: none !important; padding-bottom: 0 !important; }
+/* Keep decorative underline with small gap, not touching description text below */
+h2 .border-b-2 {
+  display: inline-block !important;
+  padding-bottom: 4px !important;
+  border-bottom: 2px solid rgb(187, 118, 31) !important;
+}
+h2:has(.border-b-2) {
+  overflow: visible !important;
+  margin-bottom: 1.25rem !important;
+}
 
 /* Show floating call button on desktop for all languages */
 .mobile-dialer { display: flex !important; }
