@@ -65,7 +65,10 @@ html,body{
   margin:6px 0 12px 0;
   letter-spacing: -0.02em;
   line-height:1.03;
+  outline:none;
 }
+
+.card h1:focus{ outline:none !important; }
 
 .lead{
   color:var(--muted);

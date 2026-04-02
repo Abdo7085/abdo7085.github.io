@@ -35,12 +35,45 @@
 
 /* Tailwind RTL fixes */
 [dir="rtl"] {
-  --tw-space-x-reverse: 1;
   line-height: 1.8; /* Improve Arabic readability */
+}
+/* space-x-* uses margin-left in LTR; flip to margin-right for RTL.
+   Direct margin overrides because the bundled CSS resets --tw-space-x-reverse after this file loads. */
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0 !important;
+  margin-right: 0.75rem !important;
+}
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0 !important;
+  margin-right: 1.5rem !important;
 }
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
   font-family: 'Noto Sans Arabic', 'Exo 2', sans-serif;
+}
+
+/* Remove decorative underline from headings in RTL */
+[dir="rtl"] h2 .border-b-2 { border-bottom: none !important; padding-bottom: 0 !important; }
+
+/* Show floating call button on desktop for all languages */
+.mobile-dialer { display: flex !important; }
+
+/* RTL: move call button to right side */
+[dir="rtl"] .mobile-dialer {
+  left: auto !important;
+  right: 1.5rem !important;
+}
+
+/* Flip rounded corners on button groups for RTL */
+[dir="rtl"] .rounded-l-lg {
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+[dir="rtl"] .rounded-r-lg {
+  border-radius: 0.5rem 0 0 0.5rem !important;
 }
 
 /* Fix physical margin classes to behave like logical properties in RTL */
