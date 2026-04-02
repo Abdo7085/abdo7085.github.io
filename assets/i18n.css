@@ -56,8 +56,8 @@
   font-family: 'Noto Sans Arabic', 'Exo 2', sans-serif;
 }
 
-/* Remove decorative underline from headings in RTL */
-[dir="rtl"] h2 .border-b-2 { border-bottom: none !important; padding-bottom: 0 !important; }
+/* Remove decorative underline from headings */
+h2 .border-b-2 { border-bottom: none !important; padding-bottom: 0 !important; }
 
 /* Show floating call button on desktop for all languages */
 .mobile-dialer { display: flex !important; }
