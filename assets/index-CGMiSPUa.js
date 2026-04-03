@@ -12414,7 +12414,7 @@ const Xh = re("Zap", [["polygon", {
     }
     ;
     return u.jsxs("header", {
-        className: `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${e ? "bg-secondary bg-opacity-95 py-2 shadow-md" : "bg-transparent py-3"}`,
+        className: `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${e || n ? "bg-secondary bg-opacity-95 py-2 shadow-md" : "bg-transparent py-3"}`,
         children: [u.jsxs("div", {
             className: "container mx-auto px-4 flex justify-between items-center",
             children: [u.jsx(Mt, {
@@ -12486,7 +12486,7 @@ const Xh = re("Zap", [["polygon", {
                 })
             })]
         }), u.jsx("div", {
-            className: `md:hidden bg-secondary absolute w-full transition-all duration-300 ease-in-out ${n ? "max-h-screen opacity-100 py-3" : "max-h-0 opacity-0 overflow-hidden"}`,
+            className: `md:hidden bg-secondary bg-opacity-95 absolute top-full left-0 w-full transition-all duration-300 ease-in-out shadow-md ${n ? "max-h-screen opacity-100 py-3" : "max-h-0 opacity-0 overflow-hidden"}`,
             children: u.jsxs("div", {
                 className: "container mx-auto px-4 flex flex-col space-y-3",
                 children: [u.jsx("button", {
