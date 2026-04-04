@@ -12,9 +12,9 @@
     "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."
   },
   "description": {
-    "en": "Provides system power to the KNX line. With an integrated choke. Output current: 640 mA. Features short-circuit and overvoltage protection.",
-    "fr": "Fournit l'alimentation système à la ligne KNX. Avec self intégrée. Courant de sortie : 640 mA. Dispose de protections contre les courts-circuits et les surtensions.",
-    "ar": "يوفر طاقة للنظام على خط KNX. يتضمن محول مدمج. تيار الإخراج: 640 مللي أمبير. مزود بحماية ضد قصر الدائرة والجهد الزائد."
+    "en": "The PS640 power supply is the essential foundation of any KNX smart home system, delivering reliable power to all connected devices on the bus line. Installed neatly inside your electrical panel, it works silently in the background to keep your entire smart home running smoothly. Built-in protection guards against short circuits and power surges, so your system stays safe and operational at all times. If you are building a KNX-based smart home, this is the first component you need.",
+    "fr": "L'alimentation PS640 est le socle indispensable de tout système domotique KNX, fournissant une énergie fiable à l'ensemble des appareils connectés sur le bus. Installée discrètement dans votre tableau électrique, elle fonctionne en silence pour assurer le bon fonctionnement de toute votre maison connectée. Sa protection intégrée contre les courts-circuits et les surtensions garantit la sécurité et la continuité de votre installation. Si vous construisez une maison intelligente KNX, c'est le premier composant dont vous avez besoin.",
+    "ar": "يُعدّ مزوّد الطاقة PS640 الأساس الذي لا غنى عنه لأي نظام منزل ذكي يعمل بتقنية KNX، حيث يوفّر طاقة موثوقة لجميع الأجهزة المتصلة على خط الناقل. يُثبَّت بشكل أنيق داخل لوحة الكهرباء ويعمل بصمت في الخلفية ليحافظ على تشغيل منزلك الذكي بسلاسة. تحميه وسائل حماية مدمجة من قصر الدائرة وارتفاع الجهد، مما يضمن سلامة نظامك واستمراريته في جميع الأوقات. إذا كنت تبني منزلاً ذكياً بتقنية KNX، فهذا هو المكوّن الأول الذي تحتاجه."
   },
   "technology": [
     "KNX"

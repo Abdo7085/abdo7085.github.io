@@ -12,9 +12,9 @@
     "ar": "مرحل ذكي بقناة واحدة مع قياس الطاقة."
   },
   "description": {
-    "en": "Compact single-channel smart relay switch with integrated power metering. Supports up to 16A (AC) switching current. Features Wi-Fi 802.11 b/g/n and Bluetooth 4.2 connectivity, MQTT, mJS scripting, schedules, and webhooks. Powered by ESP32 processor with 4MB flash. Ultra-compact design (37×42×16 mm) fits behind wall switches for easy retrofit installations.",
-    "fr": "Relais intelligent compact mono-canal avec mesure de puissance intégrée. Supporte jusqu'à 16A (AC) de courant de commutation. Connectivité Wi-Fi 802.11 b/g/n et Bluetooth 4.2, MQTT, scripting mJS, programmations et webhooks. Propulsé par processeur ESP32 avec 4 Mo de flash. Design ultra-compact (37×42×16 mm) s'installe derrière les interrupteurs pour une modernisation facile.",
-    "ar": "مرحل ذكي مدمج بقناة واحدة مع قياس طاقة مدمج. يدعم تيار تبديل حتى 16 أمبير (AC). يتميز باتصال Wi-Fi 802.11 b/g/n وBluetooth 4.2، وMQTT، وبرمجة mJS، والجداول الزمنية والويب هوكس. يعمل بمعالج ESP32 مع ذاكرة 4 ميجابايت. تصميم فائق الصغر (37×42×16 مم) يتسع خلف مفاتيح الحائط لتحديث سهل."
+    "en": "The Shelly Plus 1PM does everything the Plus 1 can do, with the added bonus of built-in power monitoring. It fits behind your wall switch and lets you control any light or appliance remotely via Wi-Fi or Bluetooth, while also tracking exactly how much energy that device consumes. This makes it easy to spot energy-hungry appliances and reduce your electricity bill. Set schedules, create automations, and keep an eye on your power usage all from your phone.",
+    "fr": "Le Shelly Plus 1PM fait tout ce que le Plus 1 peut faire, avec en plus un suivi de consommation energetique integre. Il se glisse derriere votre interrupteur mural et vous permet de controler n'importe quel eclairage ou appareil a distance via Wi-Fi ou Bluetooth, tout en mesurant precisement la quantite d'energie consommee. Cela vous aide a reperer les appareils les plus gourmands et a reduire votre facture d'electricite. Programmez des horaires, creez des automatisations et surveillez votre consommation depuis votre telephone.",
+    "ar": "يقوم Shelly Plus 1PM بكل ما يفعله Plus 1، مع ميزة إضافية وهي مراقبة استهلاك الطاقة المدمجة. يتسع خلف مفتاح الحائط ويتيح لك التحكم بأي مصباح أو جهاز عن بُعد عبر الواي فاي أو البلوتوث، مع تتبع دقيق لكمية الطاقة التي يستهلكها كل جهاز. يساعدك ذلك على اكتشاف الأجهزة الأكثر استهلاكاً وتقليل فاتورة الكهرباء. اضبط جداول زمنية وأنشئ أتمتة وراقب استهلاكك للطاقة من هاتفك."
   },
   "technology": [
     "Wi-Fi",

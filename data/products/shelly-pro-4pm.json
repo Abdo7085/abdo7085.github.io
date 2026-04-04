@@ -12,9 +12,9 @@
     "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."
   },
   "description": {
-    "en": "Professional 4-channel relay switch with Wi-Fi, LAN, and Bluetooth connection. Real-time power measurement for each channel and a color screen.",
-    "fr": "Relais professionnel 4 canaux avec connexion Wi-Fi, LAN et Bluetooth. Mesure de puissance en temps réel pour chaque canal et écran couleur.",
-    "ar": "مرحل احترافي بأربع قنوات مع اتصال عبر Wi-Fi و LAN و Bluetooth. قياس فوري لاستهلاك الطاقة لكل قناة مع شاشة ملونة للتحكم."
+    "en": "The Shelly Pro 4PM is a professional smart relay that lets you control four independent electrical circuits from a single DIN-rail device in your breaker panel. Each channel includes real-time power metering, so you can see exactly how much energy each circuit is using and identify opportunities to save. A built-in color screen right on the device gives you a quick status overview without needing your phone. With Wi-Fi, Bluetooth, and a wired LAN connection, it integrates seamlessly into any smart home system and keeps working reliably even if your Wi-Fi drops.",
+    "fr": "Le Shelly Pro 4PM est un relais intelligent professionnel qui vous permet de contrôler quatre circuits électriques indépendants depuis un seul appareil sur rail DIN dans votre tableau électrique. Chaque canal intègre une mesure de puissance en temps réel, vous permettant de voir exactement combien d'énergie chaque circuit consomme et d'identifier des économies possibles. Un écran couleur intégré directement sur l'appareil offre un aperçu rapide de l'état sans avoir besoin de votre téléphone. Grâce au Wi-Fi, au Bluetooth et à une connexion LAN filaire, il s'intègre parfaitement dans tout système de maison intelligente et continue de fonctionner même si votre Wi-Fi est interrompu.",
+    "ar": "شيلي برو 4PM هو مرحل ذكي احترافي يتيح لك التحكم في أربع دوائر كهربائية مستقلة من جهاز واحد يُثبَّت على سكة DIN في لوحة التوزيع. يتضمن كل قناة قياسًا فوريًا لاستهلاك الطاقة، مما يمكّنك من معرفة استهلاك كل دائرة بدقة واكتشاف فرص التوفير. توفر الشاشة الملونة المدمجة على الجهاز نظرة سريعة على الحالة دون الحاجة إلى هاتفك. بفضل اتصال Wi-Fi وBluetooth والشبكة السلكية، يندمج بسلاسة في أي نظام منزل ذكي ويستمر في العمل بموثوقية حتى في حال انقطاع الشبكة اللاسلكية."
   },
   "technology": [
     "Wi-Fi",

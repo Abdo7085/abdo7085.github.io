@@ -17,22 +17,34 @@
     "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
   },
   "description": {
-    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
-    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
-    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+    "en": "The RCU2000 is the largest output-only KNX room controller in the EAE lineup, offering 20 relay outputs for extensive automation across entire floors, large commercial lobbies, or buildings with many independent circuits. It supports up to 10 shutter channels and 5 fan coil channels, making it capable of managing complex lighting scenes, multiple blind groups, and several HVAC zones from a single DIN-rail device. Input is handled by external KNX keypads, touch panels, or building management systems, giving system integrators full flexibility in designing the user interface.",
+    "fr": "Le RCU2000 est le plus grand contrôleur de pièce KNX en sortie seule de la gamme EAE, offrant 20 sorties relais pour une automatisation étendue sur des étages entiers, de grands halls commerciaux ou des bâtiments avec de nombreux circuits indépendants. Il prend en charge jusqu'à 10 canaux de stores et 5 canaux de ventilo-convecteurs, capable de gérer des scènes d'éclairage complexes, plusieurs groupes de stores et plusieurs zones CVC depuis un seul appareil sur rail DIN. L'entrée est gérée par des claviers KNX externes, des écrans tactiles ou des systèmes de gestion technique du bâtiment, offrant aux intégrateurs une flexibilité totale dans la conception de l'interface utilisateur.",
+    "ar": "وحدة RCU2000 هي أكبر وحدة تحكم KNX بمخرجات فقط في مجموعة EAE، وتوفر 20 مخرج ريليه للأتمتة الواسعة عبر طوابق كاملة أو ردهات تجارية كبيرة أو مبانٍ ذات دوائر مستقلة متعددة. تدعم حتى 10 قنوات ستائر و5 قنوات فان كويل، مما يجعلها قادرة على إدارة سيناريوهات إضاءة معقدة ومجموعات ستائر متعددة ومناطق تكييف متعددة من جهاز واحد على سكة DIN. يتم التعامل مع المداخل عبر لوحات مفاتيح KNX خارجية أو شاشات لمسية أو أنظمة إدارة المباني، مما يمنح المتكاملين مرونة كاملة في تصميم واجهة المستخدم."
   },
   "specs": {
     "en": {
-      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
-      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+      "Relay Outputs": "20 x 16A",
+      "Dry Contact Inputs": "None",
+      "Shutter/Blind Channels": "Up to 10",
+      "Fan Coil Channels": "Up to 5",
+      "Mounting": "DIN Rail (35mm)",
+      "Power": "KNX bus powered"
     },
     "fr": {
-      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
-      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+      "Sorties relais": "20 x 16A",
+      "Entrées contact sec": "Aucune",
+      "Canaux store/volet": "Jusqu'à 10",
+      "Canaux ventilo-convecteur": "Jusqu'à 5",
+      "Montage": "Rail DIN (35mm)",
+      "Alimentation": "Alimenté par bus KNX"
     },
     "ar": {
-      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
-      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+      "مخرجات الريليه": "20 × 16A",
+      "مداخل الاتصال الجاف": "لا يوجد",
+      "قنوات الستائر/الشتر": "حتى 10",
+      "قنوات الفان كويل": "حتى 5",
+      "التركيب": "سكة DIN (35 مم)",
+      "الطاقة": "تغذية عبر ناقل KNX"
     }
   },
   "images": [

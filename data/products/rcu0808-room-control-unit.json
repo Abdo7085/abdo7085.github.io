@@ -17,22 +17,34 @@
     "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
   },
   "description": {
-    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
-    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
-    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+    "en": "The RCU0808 is a self-contained KNX room controller built for individual rooms like hotel rooms, apartments, or small offices. It pairs 8 relay outputs with 8 dry contact inputs, allowing you to connect physical switches, buttons, and sensors directly without needing separate KNX input modules. This makes it a complete, all-in-one solution for controlling lighting, blinds, and climate in compact spaces where simplicity and reliability matter most.",
+    "fr": "Le RCU0808 est un contrôleur de pièce KNX autonome conçu pour les espaces individuels comme les chambres d'hôtel, les appartements ou les petits bureaux. Il associe 8 sorties relais à 8 entrées à contact sec, permettant de raccorder directement des interrupteurs, boutons-poussoirs et capteurs physiques sans modules d'entrée KNX supplémentaires. Cela en fait une solution complète et tout-en-un pour le contrôle de l'éclairage, des stores et du climat dans les espaces compacts où simplicité et fiabilité sont essentielles.",
+    "ar": "وحدة RCU0808 هي وحدة تحكم KNX مستقلة مصممة للغرف الفردية مثل غرف الفنادق والشقق والمكاتب الصغيرة. تجمع بين 8 مخرجات ريليه و8 مداخل اتصال جاف، مما يتيح توصيل المفاتيح والأزرار والحساسات الفيزيائية مباشرة دون الحاجة إلى وحدات إدخال KNX منفصلة. هذا يجعلها حلاً شاملاً ومتكاملاً للتحكم في الإضاءة والستائر والتكييف في المساحات المدمجة حيث البساطة والموثوقية هما الأهم."
   },
   "specs": {
     "en": {
-      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
-      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+      "Relay Outputs": "8 x 16A",
+      "Dry Contact Inputs": "8",
+      "Shutter/Blind Channels": "Up to 4",
+      "Fan Coil Channels": "Up to 2",
+      "Mounting": "DIN Rail (35mm)",
+      "Power": "KNX bus powered"
     },
     "fr": {
-      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
-      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+      "Sorties relais": "8 x 16A",
+      "Entrées contact sec": "8",
+      "Canaux store/volet": "Jusqu'à 4",
+      "Canaux ventilo-convecteur": "Jusqu'à 2",
+      "Montage": "Rail DIN (35mm)",
+      "Alimentation": "Alimenté par bus KNX"
     },
     "ar": {
-      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
-      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+      "مخرجات الريليه": "8 × 16A",
+      "مداخل الاتصال الجاف": "8",
+      "قنوات الستائر/الشتر": "حتى 4",
+      "قنوات الفان كويل": "حتى 2",
+      "التركيب": "سكة DIN (35 مم)",
+      "الطاقة": "تغذية عبر ناقل KNX"
     }
   },
   "images": [

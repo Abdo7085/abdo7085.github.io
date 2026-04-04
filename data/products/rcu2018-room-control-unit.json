@@ -17,22 +17,34 @@
     "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
   },
   "description": {
-    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
-    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
-    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+    "en": "The RCU2018 is the most powerful and feature-rich KNX room controller from EAE, combining 20 relay outputs with 18 dry contact inputs in a single device. Built for entire floors, large commercial spaces, or buildings with extensive automation requirements, it can manage up to 10 shutter channels and 5 fan coil channels while accepting direct connections from dozens of physical switches and sensors. This top-of-the-line unit minimizes the number of devices on your DIN rail by consolidating output and input capabilities that would otherwise require multiple separate modules.",
+    "fr": "Le RCU2018 est le contrôleur de pièce KNX le plus puissant et le plus complet d'EAE, combinant 20 sorties relais et 18 entrées à contact sec dans un seul appareil. Conçu pour des étages entiers, de grands espaces commerciaux ou des bâtiments aux besoins d'automatisation importants, il peut gérer jusqu'à 10 canaux de stores et 5 canaux de ventilo-convecteurs tout en acceptant les connexions directes de nombreux interrupteurs et capteurs physiques. Ce modèle haut de gamme réduit le nombre d'appareils sur votre rail DIN en regroupant les capacités d'entrée et de sortie qui nécessiteraient autrement plusieurs modules séparés.",
+    "ar": "وحدة RCU2018 هي أقوى وأشمل وحدة تحكم KNX من EAE، تجمع بين 20 مخرج ريليه و18 مدخل اتصال جاف في جهاز واحد. مصممة لطوابق كاملة والمساحات التجارية الكبيرة والمباني ذات متطلبات الأتمتة الواسعة، يمكنها إدارة حتى 10 قنوات ستائر و5 قنوات فان كويل مع قبول التوصيلات المباشرة من عشرات المفاتيح والحساسات الفيزيائية. هذه الوحدة المتطورة تقلل عدد الأجهزة على سكة DIN من خلال دمج قدرات المخرجات والمداخل التي تتطلب عادة وحدات منفصلة متعددة."
   },
   "specs": {
     "en": {
-      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
-      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+      "Relay Outputs": "20 x 16A",
+      "Dry Contact Inputs": "18",
+      "Shutter/Blind Channels": "Up to 10",
+      "Fan Coil Channels": "Up to 5",
+      "Mounting": "DIN Rail (35mm)",
+      "Power": "KNX bus powered"
     },
     "fr": {
-      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
-      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+      "Sorties relais": "20 x 16A",
+      "Entrées contact sec": "18",
+      "Canaux store/volet": "Jusqu'à 10",
+      "Canaux ventilo-convecteur": "Jusqu'à 5",
+      "Montage": "Rail DIN (35mm)",
+      "Alimentation": "Alimenté par bus KNX"
     },
     "ar": {
-      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
-      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+      "مخرجات الريليه": "20 × 16A",
+      "مداخل الاتصال الجاف": "18",
+      "قنوات الستائر/الشتر": "حتى 10",
+      "قنوات الفان كويل": "حتى 5",
+      "التركيب": "سكة DIN (35 مم)",
+      "الطاقة": "تغذية عبر ناقل KNX"
     }
   },
   "images": [

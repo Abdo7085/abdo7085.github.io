@@ -17,22 +17,34 @@
     "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
   },
   "description": {
-    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
-    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
-    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+    "en": "The RCU1212 is a versatile KNX room controller that combines 12 relay outputs with 12 dry contact inputs, making it a fully self-contained automation hub for larger rooms and hotel suites. You can wire physical switches, push buttons, window contacts, and occupancy sensors directly into the unit, eliminating the need for separate input modules. With support for up to 6 shutter channels and 3 fan coil channels, it handles complex room setups where multiple lighting groups, blinds, and HVAC zones must work together seamlessly.",
+    "fr": "Le RCU1212 est un contrôleur de pièce KNX polyvalent qui combine 12 sorties relais et 12 entrées à contact sec, en faisant un centre d'automatisation entièrement autonome pour les pièces plus grandes et les suites d'hôtel. Vous pouvez raccorder directement des interrupteurs physiques, des boutons-poussoirs, des contacts de fenêtre et des détecteurs de présence, éliminant le besoin de modules d'entrée séparés. Avec jusqu'à 6 canaux de stores et 3 canaux de ventilo-convecteurs, il gère des configurations complexes où plusieurs groupes d'éclairage, stores et zones CVC doivent fonctionner ensemble harmonieusement.",
+    "ar": "وحدة RCU1212 هي وحدة تحكم KNX متعددة الاستخدامات تجمع بين 12 مخرج ريليه و12 مدخل اتصال جاف، مما يجعلها مركز أتمتة مستقل بالكامل للغرف الأكبر والأجنحة الفندقية. يمكنك توصيل المفاتيح الفيزيائية وأزرار الضغط وحساسات النوافذ وكواشف الحضور مباشرة دون الحاجة إلى وحدات إدخال منفصلة. مع دعم حتى 6 قنوات ستائر و3 قنوات فان كويل، تتعامل مع الإعدادات المعقدة حيث يجب أن تعمل مجموعات الإضاءة المتعددة والستائر ومناطق التكييف معًا بسلاسة."
   },
   "specs": {
     "en": {
-      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
-      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+      "Relay Outputs": "12 x 16A",
+      "Dry Contact Inputs": "12",
+      "Shutter/Blind Channels": "Up to 6",
+      "Fan Coil Channels": "Up to 3",
+      "Mounting": "DIN Rail (35mm)",
+      "Power": "KNX bus powered"
     },
     "fr": {
-      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
-      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+      "Sorties relais": "12 x 16A",
+      "Entrées contact sec": "12",
+      "Canaux store/volet": "Jusqu'à 6",
+      "Canaux ventilo-convecteur": "Jusqu'à 3",
+      "Montage": "Rail DIN (35mm)",
+      "Alimentation": "Alimenté par bus KNX"
     },
     "ar": {
-      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
-      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+      "مخرجات الريليه": "12 × 16A",
+      "مداخل الاتصال الجاف": "12",
+      "قنوات الستائر/الشتر": "حتى 6",
+      "قنوات الفان كويل": "حتى 3",
+      "التركيب": "سكة DIN (35 مم)",
+      "الطاقة": "تغذية عبر ناقل KNX"
     }
   },
   "images": [

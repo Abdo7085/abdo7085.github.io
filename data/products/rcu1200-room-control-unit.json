@@ -17,22 +17,34 @@
     "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
   },
   "description": {
-    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
-    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
-    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+    "en": "The RCU1200 is a mid-range KNX room controller well suited for larger rooms, hotel suites, or spaces that need more lighting zones and blind channels. With 12 relay outputs and no onboard inputs, it provides pure output-driven control while relying on external KNX switches and sensors for user interaction. It is an excellent choice for projects that require more capacity than an 8-output unit but want to keep the input side flexible through dedicated KNX devices.",
+    "fr": "Le RCU1200 est un contrôleur de pièce KNX de gamme intermédiaire adapté aux pièces plus grandes, aux suites d'hôtel ou aux espaces nécessitant davantage de zones d'éclairage et de canaux de stores. Avec 12 sorties relais et aucune entrée embarquée, il offre un contrôle purement basé sur les sorties en s'appuyant sur des interrupteurs et capteurs KNX externes. C'est un excellent choix pour les projets nécessitant plus de capacité qu'une unité à 8 sorties tout en gardant le côté entrée flexible via des appareils KNX dédiés.",
+    "ar": "وحدة RCU1200 هي وحدة تحكم KNX متوسطة المدى مناسبة للغرف الأكبر والأجنحة الفندقية والمساحات التي تحتاج إلى مزيد من مناطق الإضاءة وقنوات الستائر. مع 12 مخرج ريليه وبدون مداخل مدمجة، توفر تحكمًا يعتمد بالكامل على المخرجات بالاعتماد على مفاتيح وحساسات KNX خارجية. إنها خيار ممتاز للمشاريع التي تحتاج سعة أكبر من وحدة ذات 8 مخرجات مع الحفاظ على مرونة جانب المداخل عبر أجهزة KNX مخصصة."
   },
   "specs": {
     "en": {
-      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
-      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+      "Relay Outputs": "12 x 16A",
+      "Dry Contact Inputs": "None",
+      "Shutter/Blind Channels": "Up to 6",
+      "Fan Coil Channels": "Up to 3",
+      "Mounting": "DIN Rail (35mm)",
+      "Power": "KNX bus powered"
     },
     "fr": {
-      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
-      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+      "Sorties relais": "12 x 16A",
+      "Entrées contact sec": "Aucune",
+      "Canaux store/volet": "Jusqu'à 6",
+      "Canaux ventilo-convecteur": "Jusqu'à 3",
+      "Montage": "Rail DIN (35mm)",
+      "Alimentation": "Alimenté par bus KNX"
     },
     "ar": {
-      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
-      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+      "مخرجات الريليه": "12 × 16A",
+      "مداخل الاتصال الجاف": "لا يوجد",
+      "قنوات الستائر/الشتر": "حتى 6",
+      "قنوات الفان كويل": "حتى 3",
+      "التركيب": "سكة DIN (35 مم)",
+      "الطاقة": "تغذية عبر ناقل KNX"
     }
   },
   "images": [
