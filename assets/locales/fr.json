@@ -139,5 +139,7 @@
   "product_not_found_desc": "Le produit que vous recherchez n'existe pas ou a été supprimé.",
   "back_to_products_btn": "Retour aux produits",
   "showing_results": "Affichage de {start}–{end} sur {total} produits",
-  "tech_label": "Tech"
+  "tech_label": "Tech",
+  "key_features": "Caractéristiques clés",
+  "page_title_products": "Produits | S‑ELECTRICITY"
 }

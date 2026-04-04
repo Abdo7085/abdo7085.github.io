@@ -139,5 +139,7 @@
   "product_not_found_desc": "المنتج الذي تبحث عنه غير موجود أو تمت إزالته.",
   "back_to_products_btn": "العودة للمنتجات",
   "showing_results": "عرض {start}–{end} من أصل {total} منتج",
-  "tech_label": "التقنية"
+  "tech_label": "التقنية",
+  "key_features": "الميزات الرئيسية",
+  "page_title_products": "المنتجات | S‑ELECTRICITY"
 }

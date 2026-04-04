@@ -535,9 +535,6 @@ html[dir="rtl"] .prod-card:hover .prod-card-arrow {
   box-shadow: 0 0 0 3px rgba(184, 108, 37, 0.2);
 }
 .prod-search-icon {
-  color: rgba(255,255,255,0.4);
-}
-.prod-search-icon {
   position: absolute;
   left: 0.9rem;
   top: 50%;
@@ -545,6 +542,9 @@ html[dir="rtl"] .prod-card:hover .prod-card-arrow {
   width: 18px;
   height: 18px;
   fill: none;
+  color: rgba(255,255,255,0.4);
+  stroke: currentColor;
+  pointer-events: none;
 }
 
 /* RTL Support for Arabic */
