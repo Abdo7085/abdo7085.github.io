@@ -10,8 +10,23 @@ data/products_index.json → Aggregated index (auto-generated, never edit manual
 assets/products/        → Product images
 assets/locales/ar.json  → Arabic translations (filter values)
 assets/locales/fr.json  → French translations (filter values)
-scripts/build_products.py → Index builder script
+scripts/build_products.py → Unified build: index + static SEO pages + sitemap
+scripts/generate_static_seo.py → SEO page generator (called by build_products.py)
+
+products/               → Static product HTML pages (EN, auto-generated)
+fr/products/            → Static product HTML pages (FR, auto-generated)
+ar/products/            → Static product HTML pages (AR, auto-generated)
+sitemap.xml             → Auto-generated sitemap with all product URLs
 ```
+
+## Product URLs
+
+Products use **static HTML pages** (not query params) for SEO:
+- English: `https://smartelectricity.ma/products/<product-slug>.html`
+- French: `https://smartelectricity.ma/fr/products/<product-slug>.html`
+- Arabic: `https://smartelectricity.ma/ar/products/<product-slug>.html`
+
+Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD`, and `hreflang` tags so that search engines and social media platforms (WhatsApp, Facebook) can read the product info without JavaScript.
 
 ## Operations
 
@@ -66,16 +81,20 @@ scripts/build_products.py → Index builder script
    - Example: product_type `"Room Control Unit"` → key `"val_Room_Control_Unit"`
    - Example: installation `"Wall mount"` → key `"val_Wall_mount"`
 
-4. **Rebuild the index**:
+4. **Build everything** (index + static SEO pages + sitemap):
    ```bash
    python scripts/build_products.py
    ```
+   This single command does three things:
+   - Builds `data/products_index.json` (product listing index)
+   - Generates static HTML pages in `products/`, `fr/products/`, `ar/products/` (with og:image, JSON-LD, etc.)
+   - Updates `sitemap.xml` with all product URLs
 
 ### Editing an Existing Product
 
 1. Read the product file from `data/products/`
 2. Make the requested changes (preserve all three languages)
-3. Rebuild the index with `python scripts/build_products.py`
+3. Rebuild with `python scripts/build_products.py`
 
 ### Listing Products
 
@@ -84,8 +103,9 @@ List files in `data/products/` to show available products. Read individual files
 ### Deleting a Product
 
 1. Delete the JSON file from `data/products/`
-2. Rebuild the index with `python scripts/build_products.py`
-3. Optionally remove the product's images from `assets/products/`
+2. Delete the static HTML pages: `products/<slug>.html`, `fr/products/<slug>.html`, `ar/products/<slug>.html`
+3. Rebuild with `python scripts/build_products.py`
+4. Optionally remove the product's images from `assets/products/`
 
 ## Existing Filter Values (for consistency)
 
@@ -108,5 +128,5 @@ When the user provides product info in any language, translate it appropriately 
 - The `id` field MUST match the filename (without `.json`)
 - All text fields (`title`, `short_description`, `description`, `specs`) MUST have `en`, `fr`, and `ar` versions
 - Images should be optimized for web (keep file sizes small)
-- Always run the build script after any changes to product files
-- Never manually edit `data/products_index.json` — it's auto-generated
+- **Always run `python scripts/build_products.py` after any changes** — this is the single command that updates index, SEO pages, and sitemap
+- Never manually edit `data/products_index.json`, `sitemap.xml`, or files in `products/`, `fr/products/`, `ar/products/` — they are all auto-generated
