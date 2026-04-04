@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/mlolo/claude/abdo7085.github.io/data -type f -name *.json)",
+      "Bash(python3:*)",
+      "Bash(grep -E \"\\\\.\\(html|json\\)$\")",
+      "Bash(grep -E \"\\\\.html$\")"
+    ]
+  }
+}
