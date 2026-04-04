@@ -547,8 +547,8 @@
             <h1 class="prod-header-title" data-i18n="products_title">All Products</h1>
             <p class="prod-header-desc" data-i18n="products_desc">Explore our premium selection of smart home devices, sensors, and actuators.</p>
             <div class="prod-search-wrapper">
-              <svg class="prod-search-icon" viewBox="0 0 24 24">
-                 <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="prod-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
               <input type="text" id="prod-search" class="prod-search-input" placeholder="Search products..." data-i18n-attr="placeholder:search_placeholder" />
             </div>

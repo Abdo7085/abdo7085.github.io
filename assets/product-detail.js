@@ -33,6 +33,28 @@
     return obj[getLang()] || obj['en'] || obj['fr'] || obj['ar'] || '';
   }
 
+  // Locale dictionary for translating dynamic values (product_type, installation, etc.)
+  let _localeDict = null;
+  async function loadLocaleDict() {
+    if (_localeDict) return _localeDict;
+    const lang = getLang();
+    const paths = [`/assets/locales/${lang}.json`, `../assets/locales/${lang}.json`];
+    for (const p of paths) {
+      try {
+        const res = await fetch(p);
+        if (res.ok) { _localeDict = await res.json(); return _localeDict; }
+      } catch(e) {}
+    }
+    _localeDict = {};
+    return _localeDict;
+  }
+
+  function tVal(value) {
+    if (!value || !_localeDict) return value || '';
+    const key = 'val_' + value.replace(/[\s\-\/]+/g, '_');
+    return _localeDict[key] || value;
+  }
+
   function getQueryParam(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
@@ -287,11 +309,11 @@
             <div class="pd-meta">
               ${product.product_type ? `<div class="pd-meta-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                <span>${product.product_type}</span>
+                <span>${tVal(product.product_type)}</span>
               </div>` : ''}
               ${product.installation ? `<div class="pd-meta-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                <span>${product.installation}</span>
+                <span>${tVal(product.installation)}</span>
               </div>` : ''}
             </div>
 
@@ -386,7 +408,8 @@
     const id = getQueryParam('id');
     const [product, allProductsList] = await Promise.all([
         fetchProduct(id),
-        fetchAllProducts()
+        fetchAllProducts(),
+        loadLocaleDict()
     ]);
 
     function renderPage() {
