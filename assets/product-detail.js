@@ -109,9 +109,25 @@
   function renderGallery(images, title) {
     const defaultImage = '/assets/S‑ELECTRICITY-LOGO.svg';
     const mainImg = images && images.length > 0 ? images[0] : defaultImage;
+    const hasMultiple = images && images.length > 1;
+
+    let thumbsHtml = '';
+    if (hasMultiple) {
+      thumbsHtml = `<div class="pd-thumbs">`;
+      images.forEach((img, i) => {
+        thumbsHtml += `<button class="pd-thumb ${i === 0 ? 'pd-thumb-active' : ''}" data-idx="${i}">
+          <img src="${img}" alt="${title}" loading="lazy" />
+        </button>`;
+      });
+      thumbsHtml += `</div>`;
+    }
+
     return `
-      <div class="pd-gallery">
-        <img src="${mainImg}" alt="${title}" class="pd-main-img prod-fade-in" loading="lazy" />
+      <div class="pd-gallery-wrapper">
+        ${thumbsHtml}
+        <div class="pd-gallery">
+          <img src="${mainImg}" alt="${title}" class="pd-main-img prod-fade-in" id="pd-main-image" loading="lazy" />
+        </div>
       </div>
     `;
   }
@@ -130,12 +146,14 @@
     if(!rows) return '';
 
     return `
-      <h3 style="margin-top:2rem; font-size:1.5rem;" data-i18n="specifications">Specifications</h3>
-      <table class="pd-specs-table">
-        <tbody>
-          ${rows}
-        </tbody>
-      </table>
+      <div class="pd-specs-section">
+        <h3 class="pd-section-title" data-i18n="specifications">Specifications</h3>
+        <table class="pd-specs-table">
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      </div>
     `;
   }
 
@@ -216,24 +234,39 @@
   function renderProductContent(product, allProducts) {
     const prefix = getLangPrefix();
     const title = t(product.title);
-    const techs = Array.isArray(product.technology) ? product.technology.join(', ') : '';
+    const techs = Array.isArray(product.technology) ? product.technology : [];
+
+    // Build technology icons
+    let techIconsHtml = '';
+    techs.forEach(tech => {
+      const tl = tech.toLowerCase();
+      let icon = '';
+      if (tl.includes('wi-fi') || tl.includes('wifi')) {
+        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`;
+      } else if (tl.includes('bluetooth') || tl.includes('ble')) {
+        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>`;
+      } else if (tl.includes('knx')) {
+        icon = `<span style="font-weight:700;font-size:0.75rem;letter-spacing:0.05em;">KNX</span>`;
+      } else if (tl.includes('zigbee')) {
+        icon = `<span style="font-weight:700;font-size:0.7rem;">Zigbee</span>`;
+      } else if (tl.includes('z-wave')) {
+        icon = `<span style="font-weight:700;font-size:0.7rem;">Z-Wave</span>`;
+      } else {
+        icon = `<span style="font-weight:600;font-size:0.7rem;">${tech}</span>`;
+      }
+      techIconsHtml += `<span class="pd-tech-icon" title="${tech}">${icon}</span>`;
+    });
 
     return `
       <div id="custom-products-container">
         <!-- Breadcrumbs -->
-        <nav style="font-size:0.9rem; margin-bottom: 2rem; color: #6b7280; display:flex; gap:0.5rem; align-items:center;">
-          <a href="${prefix}/" style="text-decoration:none; color:inherit;" data-i18n="breadcrumb_home">Home</a> /
-          <a href="${prefix}/products.html" class="link-transition" style="text-decoration:none; color:inherit;" data-i18n="breadcrumb_products">Products</a> /
-          <span style="color: #1f2937; font-weight:500;">${title}</span>
+        <nav class="pd-breadcrumbs">
+          <a href="${prefix}/" data-i18n="breadcrumb_home">Home</a>
+          <span class="pd-breadcrumb-sep">›</span>
+          <a href="${prefix}/products.html" class="link-transition" data-i18n="breadcrumb_products">Products</a>
+          <span class="pd-breadcrumb-sep">›</span>
+          <span class="pd-breadcrumb-current">${title}</span>
         </nav>
-
-        <a href="${prefix}/products.html" class="pd-back-link link-transition">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span data-i18n="back_to_products">Back to all products</span>
-        </a>
 
         <div class="pd-layout">
           <!-- Left side: Gallery -->
@@ -243,18 +276,30 @@
           <div class="pd-info prod-fade-in">
             <div class="pd-brand">${product.brand || ''}</div>
             <h1 class="pd-title">${title}</h1>
-            <div class="pd-meta">
-              ${techs ? `<div class="pd-meta-item">${techs}</div>` : ''}
-              ${product.product_type ? `<div class="pd-meta-item">${product.product_type}</div>` : ''}
-              ${product.installation ? `<div class="pd-meta-item">${product.installation}</div>` : ''}
-            </div>
-            <div class="pd-desc">${t(product.description)}</div>
+            <p class="pd-desc">${t(product.description)}</p>
 
-            ${renderSpecs(product.specs)}
+            ${techs.length > 0 ? `
+            <div class="pd-features-bar">
+              <span class="pd-features-label" data-i18n="key_features">Key Features</span>
+              <div class="pd-tech-icons">${techIconsHtml}</div>
+            </div>` : ''}
+
+            <div class="pd-meta">
+              ${product.product_type ? `<div class="pd-meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span>${product.product_type}</span>
+              </div>` : ''}
+              ${product.installation ? `<div class="pd-meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                <span>${product.installation}</span>
+              </div>` : ''}
+            </div>
+
             ${renderFiles(product.files)}
           </div>
         </div>
 
+        ${renderSpecs(product.specs)}
         ${renderRelatedProducts(allProducts, product)}
       </div>
     `;
@@ -274,6 +319,24 @@
          }
          setTimeout(() => window.location.href = href, 200);
        });
+    });
+
+    // Thumbnail gallery click
+    container.querySelectorAll('.pd-thumb').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        const idx = parseInt(this.getAttribute('data-idx'));
+        const mainImg = document.getElementById('pd-main-image');
+        const img = this.querySelector('img');
+        if (mainImg && img) {
+          mainImg.style.opacity = '0';
+          setTimeout(() => {
+            mainImg.src = img.src;
+            mainImg.style.opacity = '1';
+          }, 200);
+        }
+        container.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('pd-thumb-active'));
+        this.classList.add('pd-thumb-active');
+      });
     });
   }
 

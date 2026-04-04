@@ -266,21 +266,28 @@
     const image = product.image || defaultImage;
     const title = t(product.title);
     const desc = t(product.short_description);
-    const techs = Array.isArray(product.technology) ? product.technology.join(', ') : '';
+    const techs = Array.isArray(product.technology) ? product.technology : [];
     const prefix = getLangPrefix();
+
+    let techChips = '';
+    if (techs.length > 0) {
+      techChips = techs.map(tech => `<span class="prod-card-tech">${tech}</span>`).join('');
+    }
 
     return `
       <a href="${prefix}/product.html?id=${product.id}" class="prod-card prod-fade-in product-link">
         <div class="prod-card-img-wrapper">
           <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
-          ${product.product_type ? `<div class="prod-badge">${product.product_type}</div>` : ''}
         </div>
         <div class="prod-card-content">
           <div class="prod-card-brand">${product.brand || ''}</div>
           <h3 class="prod-card-title">${title}</h3>
           <p class="prod-card-desc">${desc}</p>
-          <div class="prod-card-meta">
-            ${techs ? `<span><span data-i18n="tech_label">Tech</span>: ${techs}</span>` : ''}
+          <div class="prod-card-footer">
+            <div class="prod-card-techs">${techChips}</div>
+            <span class="prod-card-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
           </div>
         </div>
       </a>
@@ -529,16 +536,23 @@
 
     const appHtml = `
       <div id="custom-products-container">
-        <header style="margin-bottom: 2rem;">
-          <h1 class="prod-header-title" data-i18n="products_title">All Products</h1>
-          <p class="prod-header-desc" data-i18n="products_desc">Explore our premium selection of smart home devices, sensors, and actuators.</p>
-        </header>
-
-        <div class="prod-search-wrapper">
-          <svg class="prod-search-icon" viewBox="0 0 24 24">
-             <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <input type="text" id="prod-search" class="prod-search-input" placeholder="Search products..." data-i18n-attr="placeholder:search_placeholder" />
+        <!-- Hero Banner -->
+        <div class="prod-hero">
+          <div class="prod-hero-content">
+            <nav class="prod-breadcrumbs">
+              <a href="${getLangPrefix()}/" data-i18n="breadcrumb_home">Home</a>
+              <span class="prod-breadcrumb-sep">›</span>
+              <span class="prod-breadcrumb-current" data-i18n="breadcrumb_products">Products</span>
+            </nav>
+            <h1 class="prod-header-title" data-i18n="products_title">All Products</h1>
+            <p class="prod-header-desc" data-i18n="products_desc">Explore our premium selection of smart home devices, sensors, and actuators.</p>
+            <div class="prod-search-wrapper">
+              <svg class="prod-search-icon" viewBox="0 0 24 24">
+                 <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <input type="text" id="prod-search" class="prod-search-input" placeholder="Search products..." data-i18n-attr="placeholder:search_placeholder" />
+            </div>
+          </div>
         </div>
 
         <div id="prod-top-filters-container"></div>
