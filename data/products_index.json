@@ -1,0 +1,544 @@
+[
+  {
+    "id": "eae-knx-power-supply-ps640",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Power Supply",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "EAE KNX Power Supply 640mA",
+      "fr": "Alimentation EAE KNX 640mA",
+      "ar": "مزود طاقة EAE KNX 640mA"
+    },
+    "short_description": {
+      "en": "Stable 30V DC power supply for KNX TP lines with integrated choke.",
+      "fr": "Alimentation stable 30V DC pour lignes KNX TP avec self intégrée.",
+      "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-power-supply-ps640.png"
+  },
+  {
+    "id": "eae-knx-rosa-switches",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "EAE Rosa Metal KNX Switch",
+      "fr": "Interrupteur EAE Rosa Métal KNX",
+      "ar": "مفتاح EAE Rosa المعدني KNX"
+    },
+    "short_description": {
+      "en": "Premium brushed metal KNX touch switch with frameless design.",
+      "fr": "Interrupteur tactile KNX en métal brossé premium avec design sans cadre.",
+      "ar": "مفتاح لمس KNX فاخر من المعدن المصقول وتصميم أنيق بدون إطار."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-rosa-switches.png"
+  },
+  {
+    "id": "eae-knx-rosa-thermostat",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Thermostat",
+    "installation": "Wall mount",
+    "title": {
+      "en": "EAE Rosa Metal KNX Thermostat",
+      "fr": "Thermostat Métallique EAE Rosa KNX",
+      "ar": "ترموستات EAE Rosa المعدني KNX"
+    },
+    "short_description": {
+      "en": "Premium metal touch thermostat with integrated room temperature controller.",
+      "fr": "Thermostat tactile en métal premium avec contrôleur de température ambiante intégré.",
+      "ar": "منظم حرارة معدني فاخر يعمل باللمس مع جهاز تحكم مدمج لدرجة حرارة الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-rosa-thermostat.png"
+  },
+  {
+    "id": "eae-knx-td4-touch-panel",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "EAE TD4-KNX 4\" Touch Panel",
+      "fr": "Écran Tactile EAE TD4-KNX 4\"",
+      "ar": "شاشة لمس EAE TD4-KNX مقاس 4 بوصة"
+    },
+    "short_description": {
+      "en": "4-inch capacitive touch panel with built-in sensors, RGB control, and thermostat functions.",
+      "fr": "Écran tactile capacitif de 4 pouces avec capteurs intégrés, contrôle RGB et fonctions thermostat.",
+      "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-td4-touch-panel.jpg"
+  },
+  {
+    "id": "rcu0800-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU0800 Room Control Unit",
+      "fr": "RCU0800 Unité de contrôle de pièce",
+      "ar": "RCU0800 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu0800-room-control-unit.png"
+  },
+  {
+    "id": "rcu0808-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU0808 Room Control Unit",
+      "fr": "RCU0808 Unité de contrôle de pièce",
+      "ar": "RCU0808 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu0808-room-control-unit.png"
+  },
+  {
+    "id": "rcu1200-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU1200 Room Control Unit",
+      "fr": "RCU1200 Unité de contrôle de pièce",
+      "ar": "RCU1200 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu1200-room-control-unit.png"
+  },
+  {
+    "id": "rcu1212-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU1212 Room Control Unit",
+      "fr": "RCU1212 Unité de contrôle de pièce",
+      "ar": "RCU1212 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu1212-room-control-unit.png"
+  },
+  {
+    "id": "rcu1600-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU1600 Room Control Unit",
+      "fr": "RCU1600 Unité de contrôle de pièce",
+      "ar": "RCU1600 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu1600-room-control-unit.png"
+  },
+  {
+    "id": "rcu1616-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU1616 Room Control Unit",
+      "fr": "RCU1616 Unité de contrôle de pièce",
+      "ar": "RCU1616 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu1616-room-control-unit.png"
+  },
+  {
+    "id": "rcu2000-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU2000 Room Control Unit",
+      "fr": "RCU2000 Unité de contrôle de pièce",
+      "ar": "RCU2000 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu2000-room-control-unit.png"
+  },
+  {
+    "id": "rcu2018-room-control-unit",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "RCU2018 Room Control Unit",
+      "fr": "RCU2018 Unité de contrôle de pièce",
+      "ar": "RCU2018 وحدة التحكم بالغرفة"
+    },
+    "short_description": {
+      "en": "All-in-one KNX device for unified room control.",
+      "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+      "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+    },
+    "category": "",
+    "image": "/assets/products/rcu2018-room-control-unit.png"
+  },
+  {
+    "id": "rg-eg105gw-t",
+    "brand": "Reyee",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Free standing",
+    "title": {
+      "en": "Reyee RG-EG105GW(T)",
+      "fr": "Reyee RG-EG105GW(T)",
+      "ar": "ريي RG-EG105GW(T)"
+    },
+    "short_description": {
+      "en": "Wi-Fi 5 all-in-one business wireless router.",
+      "fr": "Routeur professionnel tout-en-un Wi-Fi 5.",
+      "ar": "راوتر أعمال متكامل Wi-Fi 5."
+    },
+    "category": "",
+    "image": "/assets/products/rg-eg105gw-t.png"
+  },
+  {
+    "id": "rg-es220gs-lp",
+    "brand": "Reyee",
+    "technology": [
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Free standing",
+    "title": {
+      "en": "Reyee RG-ES220GS-LP",
+      "fr": "Reyee RG-ES220GS-LP",
+      "ar": "ريي RG-ES220GS-LP"
+    },
+    "short_description": {
+      "en": "20-port Gigabit PoE+ smart CCTV switch.",
+      "fr": "Switch PoE+ Gigabit 20 ports pour vidéosurveillance.",
+      "ar": "سويتش PoE+ ذكي 20 منفذ للمراقبة بالفيديو."
+    },
+    "category": "",
+    "image": "/assets/products/rg-es220gs-lp.png"
+  },
+  {
+    "id": "rg-rap62",
+    "brand": "Reyee",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Ceiling mounting",
+    "title": {
+      "en": "Reyee RG-RAP62",
+      "fr": "Reyee RG-RAP62",
+      "ar": "ريي RG-RAP62"
+    },
+    "short_description": {
+      "en": "Wi-Fi 6 dual-band ceiling access point.",
+      "fr": "Point d'accès plafond Wi-Fi 6 bi-bande.",
+      "ar": "نقطة وصول سقفية Wi-Fi 6 ثنائية النطاق."
+    },
+    "category": "",
+    "image": "/assets/products/rg-rap62.png"
+  },
+  {
+    "id": "shelly-1-gen3",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly 1 Gen3",
+      "fr": "Shelly 1 Gen3",
+      "ar": "شيلي 1 الجيل الثالث"
+    },
+    "short_description": {
+      "en": "Gen3 single-channel smart relay switch.",
+      "fr": "Relais intelligent Gen3 mono-canal.",
+      "ar": "مرحل ذكي الجيل الثالث بقناة واحدة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-1-gen3.png"
+  },
+  {
+    "id": "shelly-1pm-gen3",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly 1PM Gen3",
+      "fr": "Shelly 1PM Gen3",
+      "ar": "شيلي 1PM الجيل الثالث"
+    },
+    "short_description": {
+      "en": "Gen3 smart relay with power metering.",
+      "fr": "Relais intelligent Gen3 avec mesure de puissance.",
+      "ar": "مرحل ذكي الجيل الثالث مع قياس الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-1pm-gen3.png"
+  },
+  {
+    "id": "shelly-2pm-gen3",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly 2PM Gen3",
+      "fr": "Shelly 2PM Gen3",
+      "ar": "شيلي 2PM الجيل الثالث"
+    },
+    "short_description": {
+      "en": "Gen3 2-channel smart relay with power metering.",
+      "fr": "Relais intelligent Gen3 2 canaux avec mesure de puissance.",
+      "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-2pm-gen3.png"
+  },
+  {
+    "id": "shelly-dimmer-gen3",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Dimmer",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly Dimmer Gen3",
+      "fr": "Shelly Dimmer Gen3",
+      "ar": "شيلي ديمر الجيل الثالث"
+    },
+    "short_description": {
+      "en": "Gen3 smart dimmer, up to 200W.",
+      "fr": "Variateur intelligent Gen3, jusqu'à 200W.",
+      "ar": "مخفت إضاءة ذكي الجيل الثالث، حتى 200 واط."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-dimmer-gen3.png"
+  },
+  {
+    "id": "shelly-plus-1",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly Plus 1",
+      "fr": "Shelly Plus 1",
+      "ar": "شيلي بلس 1"
+    },
+    "short_description": {
+      "en": "1-channel smart relay switch.",
+      "fr": "Relais intelligent mono-canal.",
+      "ar": "مرحل ذكي بقناة واحدة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-plus-1.png"
+  },
+  {
+    "id": "shelly-plus-1pm",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly Plus 1PM",
+      "fr": "Shelly Plus 1PM",
+      "ar": "شيلي بلس 1PM"
+    },
+    "short_description": {
+      "en": "1-channel smart relay with power metering.",
+      "fr": "Relais intelligent 1 canal avec mesure de puissance.",
+      "ar": "مرحل ذكي بقناة واحدة مع قياس الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-plus-1pm.png"
+  },
+  {
+    "id": "shelly-plus-2pm",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Shelly Plus 2PM",
+      "fr": "Shelly Plus 2PM",
+      "ar": "شيلي بلس 2PM"
+    },
+    "short_description": {
+      "en": "2-channel smart relay with power metering.",
+      "fr": "Relais intelligent 2 canaux avec mesure de puissance.",
+      "ar": "مرحل ذكي بقناتين مع قياس الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-plus-2pm.png"
+  },
+  {
+    "id": "shelly-pro-3",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LAN"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Shelly Pro 3",
+      "fr": "Shelly Pro 3",
+      "ar": "شيلي برو 3"
+    },
+    "short_description": {
+      "en": "3-channel DIN rail smart relay switch.",
+      "fr": "Relais intelligent 3 canaux sur rail DIN.",
+      "ar": "مرحل ذكي بـ 3 قنوات على سكة DIN."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-pro-3.png"
+  },
+  {
+    "id": "shelly-pro-4pm",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LAN",
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Shelly Pro 4PM",
+      "fr": "Shelly Pro 4PM",
+      "ar": "شيلي برو 4PM"
+    },
+    "short_description": {
+      "en": "4-channel DIN rail smart switch with power measurement.",
+      "fr": "Interrupteur intelligent rail DIN 4 canaux avec mesure de puissance.",
+      "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-pro-4pm.png"
+  },
+  {
+    "id": "shelly-pro-dual-cover-shutter-pm",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth",
+      "LAN",
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Shelly Pro Dual Cover/Shutter PM",
+      "fr": "Shelly Pro Dual Cover/Shutter PM",
+      "ar": "شيلي برو للستائر والمصاريع المزدوجة PM"
+    },
+    "short_description": {
+      "en": "Dual cover/shutter controller with power metering.",
+      "fr": "Contrôleur double volet/store avec mesure de puissance.",
+      "ar": "وحدة تحكم مزدوجة للستائر مع قياس الطاقة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
+  }
+]

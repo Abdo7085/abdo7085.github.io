@@ -1,0 +1,97 @@
+{
+  "id": "shelly-pro-dual-cover-shutter-pm",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Pro Dual Cover/Shutter PM",
+    "fr": "Shelly Pro Dual Cover/Shutter PM",
+    "ar": "شيلي برو للستائر والمصاريع المزدوجة PM"
+  },
+  "short_description": {
+    "en": "Dual cover/shutter controller with power metering.",
+    "fr": "Contrôleur double volet/store avec mesure de puissance.",
+    "ar": "وحدة تحكم مزدوجة للستائر مع قياس الطاقة."
+  },
+  "description": {
+    "en": "Professional DIN-rail smart controller for two independent covers or shutters with 16A per channel. Features real-time power metering, 3 control modes (detached, single input, dual input), obstacle detection, and supports Wi-Fi, Bluetooth 4.2, and LAN connectivity. Powered by ESP32 processor with 8MB flash, supporting MQTT, mJS scripting, schedules, and webhooks.",
+    "fr": "Contrôleur intelligent professionnel sur rail DIN pour deux volets ou stores indépendants avec 16A par canal. Mesure de puissance en temps réel, 3 modes de contrôle (détaché, entrée simple, double entrée), détection d'obstacles, et connectivité Wi-Fi, Bluetooth 4.2 et LAN. Propulsé par un processeur ESP32 avec 8 Mo de flash, compatible MQTT, scripting mJS, programmations et webhooks.",
+    "ar": "وحدة تحكم ذكية احترافية على سكة DIN لستارتين أو مصراعين مستقلين بقدرة 16 أمبير لكل قناة. تتميز بقياس الطاقة الفوري، و3 أوضاع تحكم (منفصل، مدخل واحد، مدخل مزدوج)، وكشف العوائق، مع اتصال Wi-Fi وBluetooth 4.2 وLAN. تعمل بمعالج ESP32 مع ذاكرة 8 ميجابايت، وتدعم MQTT وبرمجة mJS والجداول الزمنية والويب هوكس."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth",
+    "LAN",
+    "KNX"
+  ],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+  "specs": {
+    "en": {
+      "Power Supply": "110–240 VAC",
+      "Power Consumption": "< 3 W",
+      "Output Channels": "2 Covers/Shutters (16A each)",
+      "Motor Power": "1.0 HP @ 240 VAC / 0.5 HP @ 120 VAC",
+      "Neutral Required": "No",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "LAN": "Yes",
+      "Wi-Fi Range": "Up to 30m indoor / 50m outdoor",
+      "Processor": "ESP32-D0WDQ6",
+      "Flash Memory": "8 MB",
+      "Dimensions": "96 × 53 × 59 mm",
+      "Operating Temperature": "-20°C to 40°C",
+      "Humidity": "30% to 70% RH",
+      "Conductor Cross-section": "0.5–2.5 mm²"
+    },
+    "fr": {
+      "Alimentation": "110–240 VAC",
+      "Consommation": "< 3 W",
+      "Canaux de Sortie": "2 Volets/Stores (16A chacun)",
+      "Puissance Moteur": "1.0 HP @ 240 VAC / 0.5 HP @ 120 VAC",
+      "Neutre Requis": "Non",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "LAN": "Oui",
+      "Portée Wi-Fi": "Jusqu'à 30m intérieur / 50m extérieur",
+      "Processeur": "ESP32-D0WDQ6",
+      "Mémoire Flash": "8 Mo",
+      "Dimensions": "96 × 53 × 59 mm",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Humidité": "30% à 70% HR",
+      "Section de Conducteur": "0,5–2,5 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "110–240 فولت تيار متردد",
+      "استهلاك الطاقة": "< 3 واط",
+      "قنوات الخرج": "2 ستائر/مصاريع (16 أمبير لكل قناة)",
+      "قدرة المحرك": "1.0 حصان @ 240 فولت / 0.5 حصان @ 120 فولت",
+      "الحيادي مطلوب": "لا",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "شبكة سلكية": "نعم",
+      "مدى الواي فاي": "حتى 30 متر داخلي / 50 متر خارجي",
+      "المعالج": "ESP32-D0WDQ6",
+      "ذاكرة فلاش": "8 ميجابايت",
+      "الأبعاد": "96 × 53 × 59 مم",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "الرطوبة": "30% إلى 70%",
+      "مقطع الموصل": "0.5–2.5 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
+  ],
+  "files": [
+    {
+      "name": "User Guide",
+      "url": "https://manuals.plus/shelly/pro-dual-cover-and-shutter-pm-smart-controller-manual"
+    },
+    {
+      "name": "Knowledge Base",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-pro-dual-cover-pm"
+    },
+    {
+      "name": "EU Declaration of Conformity",
+      "url": "https://shelly.link/ProDualCoverPM_DoC"
+    }
+  ]
+}

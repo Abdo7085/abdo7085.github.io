@@ -1,0 +1,91 @@
+{
+  "id": "rg-eg105gw-t",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-EG105GW(T)",
+    "fr": "Reyee RG-EG105GW(T)",
+    "ar": "ريي RG-EG105GW(T)"
+  },
+  "short_description": {
+    "en": "Wi-Fi 5 all-in-one business wireless router.",
+    "fr": "Routeur professionnel tout-en-un Wi-Fi 5.",
+    "ar": "راوتر أعمال متكامل Wi-Fi 5."
+  },
+  "description": {
+    "en": "High-performance all-in-one wireless router for small businesses. Wi-Fi 5 (802.11ac) with up to 1,266 Mbps, 5 Gigabit Ethernet ports, and support for up to 150 concurrent clients. Features Reyee Mesh networking, 4 WAN load balancing, VPN support (IPSec, OpenVPN, L2TP, PPTP), multiple VLANs, and free cloud management. Dual-core 880 MHz processor with 256MB DDR3 RAM and 32MB flash. Remote NVR/IPC monitoring support.",
+    "fr": "Routeur sans fil tout-en-un haute performance pour petites entreprises. Wi-Fi 5 (802.11ac) jusqu'à 1 266 Mbps, 5 ports Gigabit Ethernet, supporte jusqu'à 150 clients simultanés. Réseau Reyee Mesh, équilibrage de charge 4 WAN, VPN (IPSec, OpenVPN, L2TP, PPTP), VLANs multiples et gestion cloud gratuite. Processeur double cœur 880 MHz avec 256 Mo DDR3 et 32 Mo flash. Surveillance NVR/IPC à distance.",
+    "ar": "راوتر لاسلكي متكامل عالي الأداء للأعمال الصغيرة. Wi-Fi 5 (802.11ac) بسرعة حتى 1,266 ميجابت/ثانية، 5 منافذ Gigabit Ethernet، ويدعم حتى 150 جهاز متصل في نفس الوقت. يتميز بشبكة Reyee Mesh، وموازنة أحمال 4 WAN، ودعم VPN (IPSec، OpenVPN، L2TP، PPTP)، وVLAN متعددة، وإدارة سحابية مجانية. معالج ثنائي النواة 880 ميجاهرتز مع 256 ميجابايت DDR3 و32 ميجابايت فلاش. دعم مراقبة NVR/IPC عن بُعد."
+  },
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Free standing",
+  "specs": {
+    "en": {
+      "Wi-Fi Standard": "Wi-Fi 5 (802.11ac/a/b/g/n)",
+      "Max Data Rate": "1,266 Mbps",
+      "Throughput": "700 Mbps",
+      "Ethernet Ports": "5 × Gigabit (1 WAN + 1 LAN + 3 WAN/LAN)",
+      "Max Concurrent Clients": "150",
+      "Processor": "Dual-core 880 MHz",
+      "RAM": "256 MB DDR3",
+      "Flash": "32 MB",
+      "VPN": "IPSec, OpenVPN, L2TP, PPTP",
+      "Mesh": "Reyee Mesh",
+      "WAN Load Balancing": "Up to 4 WAN",
+      "Cloud Management": "Free (Ruijie Cloud)",
+      "Dimensions": "120 × 28 × 120 mm",
+      "Weight": "0.251 kg",
+      "Operating Temperature": "0°C to 40°C"
+    },
+    "fr": {
+      "Norme Wi-Fi": "Wi-Fi 5 (802.11ac/a/b/g/n)",
+      "Débit Max": "1 266 Mbps",
+      "Débit Réel": "700 Mbps",
+      "Ports Ethernet": "5 × Gigabit (1 WAN + 1 LAN + 3 WAN/LAN)",
+      "Clients Simultanés Max": "150",
+      "Processeur": "Double cœur 880 MHz",
+      "RAM": "256 Mo DDR3",
+      "Flash": "32 Mo",
+      "VPN": "IPSec, OpenVPN, L2TP, PPTP",
+      "Mesh": "Reyee Mesh",
+      "Équilibrage WAN": "Jusqu'à 4 WAN",
+      "Gestion Cloud": "Gratuite (Ruijie Cloud)",
+      "Dimensions": "120 × 28 × 120 mm",
+      "Poids": "0,251 kg",
+      "Température de Fonctionnement": "0°C à 40°C"
+    },
+    "ar": {
+      "معيار الواي فاي": "Wi-Fi 5 (802.11ac/a/b/g/n)",
+      "أقصى سرعة": "1,266 ميجابت/ثانية",
+      "السرعة الفعلية": "700 ميجابت/ثانية",
+      "منافذ إيثرنت": "5 × Gigabit (1 WAN + 1 LAN + 3 WAN/LAN)",
+      "أقصى عدد أجهزة متصلة": "150",
+      "المعالج": "ثنائي النواة 880 ميجاهرتز",
+      "الذاكرة": "256 ميجابايت DDR3",
+      "فلاش": "32 ميجابايت",
+      "VPN": "IPSec، OpenVPN، L2TP، PPTP",
+      "شبكة Mesh": "Reyee Mesh",
+      "موازنة أحمال WAN": "حتى 4 WAN",
+      "إدارة سحابية": "مجانية (Ruijie Cloud)",
+      "الأبعاد": "120 × 28 × 120 مم",
+      "الوزن": "0.251 كجم",
+      "درجة حرارة التشغيل": "0 إلى 40 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/rg-eg105gw-t.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://reyee.ruijie.com/en-global/resources/preview/77248"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://reyee.ruijie.com/en-global/products/reyee-router/wireless-router/rg-eg105gwt/"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "rg-rap62",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-RAP62",
+    "fr": "Reyee RG-RAP62",
+    "ar": "ريي RG-RAP62"
+  },
+  "short_description": {
+    "en": "Wi-Fi 6 dual-band ceiling access point.",
+    "fr": "Point d'accès plafond Wi-Fi 6 bi-bande.",
+    "ar": "نقطة وصول سقفية Wi-Fi 6 ثنائية النطاق."
+  },
+  "description": {
+    "en": "Wi-Fi 6 (802.11ax) dual-band indoor ceiling access point with up to 1,774 Mbps combined data rate. 2x2 MU-MIMO on both 2.4 GHz (573 Mbps) and 5 GHz (1,201 Mbps) bands. Supports up to 256 clients on 5 GHz and 64 on 2.4 GHz. Powered via PoE/PoE+ or 12V DC adapter (max 12.95W). Built-in omnidirectional antennas, IP41 rated, Gigabit Ethernet uplink. Free cloud management via Ruijie Cloud with Reyee Mesh support.",
+    "fr": "Point d'accès intérieur plafond Wi-Fi 6 (802.11ax) bi-bande avec débit combiné jusqu'à 1 774 Mbps. 2x2 MU-MIMO sur les bandes 2,4 GHz (573 Mbps) et 5 GHz (1 201 Mbps). Supporte jusqu'à 256 clients sur 5 GHz et 64 sur 2,4 GHz. Alimenté via PoE/PoE+ ou adaptateur 12V DC (max 12,95W). Antennes omnidirectionnelles intégrées, indice IP41, liaison montante Gigabit Ethernet. Gestion cloud gratuite via Ruijie Cloud avec support Reyee Mesh.",
+    "ar": "نقطة وصول داخلية سقفية Wi-Fi 6 (802.11ax) ثنائية النطاق بسرعة إجمالية حتى 1,774 ميجابت/ثانية. 2x2 MU-MIMO على نطاقي 2.4 جيجاهرتز (573 ميجابت/ثانية) و5 جيجاهرتز (1,201 ميجابت/ثانية). تدعم حتى 256 جهاز على 5 جيجاهرتز و64 على 2.4 جيجاهرتز. تعمل عبر PoE/PoE+ أو محول 12 فولت (أقصى استهلاك 12.95 واط). هوائيات متعددة الاتجاهات مدمجة، تصنيف IP41، منفذ Gigabit Ethernet. إدارة سحابية مجانية عبر Ruijie Cloud مع دعم Reyee Mesh."
+  },
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Ceiling mounting",
+  "specs": {
+    "en": {
+      "Wi-Fi Standard": "Wi-Fi 6 (802.11ax/ac/a/b/g/n)",
+      "Max Data Rate": "1,774 Mbps",
+      "5 GHz Speed": "1,201 Mbps (2x2 MU-MIMO)",
+      "2.4 GHz Speed": "573 Mbps (2x2 MU-MIMO)",
+      "Spatial Streams": "4 (dual-radio)",
+      "Ethernet Port": "1 × Gigabit RJ45",
+      "Power Supply": "PoE/PoE+ or DC 12V 1.5A",
+      "Max Power Consumption": "12.95 W",
+      "Max Clients (5 GHz)": "256",
+      "Max Clients (2.4 GHz)": "64",
+      "Antennas": "Built-in omnidirectional",
+      "IP Rating": "IP41",
+      "Dimensions": "Ø175 × 39 mm",
+      "Weight": "≤ 0.4 kg",
+      "Operating Temperature": "0°C to 40°C"
+    },
+    "fr": {
+      "Norme Wi-Fi": "Wi-Fi 6 (802.11ax/ac/a/b/g/n)",
+      "Débit Max": "1 774 Mbps",
+      "Vitesse 5 GHz": "1 201 Mbps (2x2 MU-MIMO)",
+      "Vitesse 2,4 GHz": "573 Mbps (2x2 MU-MIMO)",
+      "Flux Spatiaux": "4 (double radio)",
+      "Port Ethernet": "1 × Gigabit RJ45",
+      "Alimentation": "PoE/PoE+ ou DC 12V 1,5A",
+      "Consommation Max": "12,95 W",
+      "Clients Max (5 GHz)": "256",
+      "Clients Max (2,4 GHz)": "64",
+      "Antennes": "Omnidirectionnelles intégrées",
+      "Indice IP": "IP41",
+      "Dimensions": "Ø175 × 39 mm",
+      "Poids": "≤ 0,4 kg",
+      "Température de Fonctionnement": "0°C à 40°C"
+    },
+    "ar": {
+      "معيار الواي فاي": "Wi-Fi 6 (802.11ax/ac/a/b/g/n)",
+      "أقصى سرعة": "1,774 ميجابت/ثانية",
+      "سرعة 5 جيجاهرتز": "1,201 ميجابت/ثانية (2x2 MU-MIMO)",
+      "سرعة 2.4 جيجاهرتز": "573 ميجابت/ثانية (2x2 MU-MIMO)",
+      "التدفقات المكانية": "4 (راديو مزدوج)",
+      "منفذ إيثرنت": "1 × Gigabit RJ45",
+      "مصدر الطاقة": "PoE/PoE+ أو DC 12V 1.5A",
+      "أقصى استهلاك": "12.95 واط",
+      "أقصى أجهزة (5 جيجاهرتز)": "256",
+      "أقصى أجهزة (2.4 جيجاهرتز)": "64",
+      "الهوائيات": "متعددة الاتجاهات مدمجة",
+      "تصنيف الحماية": "IP41",
+      "الأبعاد": "Ø175 × 39 مم",
+      "الوزن": "≤ 0.4 كجم",
+      "درجة حرارة التشغيل": "0 إلى 40 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/rg-rap62.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://reyee.ruijie.com/en-global/resources/preview/rg-rap62-datasheet"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://reyee.ruijie.com/en-global/products/reyee-wireless/reyee-indoor-ap/rg-rap62/"
+    }
+  ]
+}

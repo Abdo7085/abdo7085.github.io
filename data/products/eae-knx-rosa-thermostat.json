@@ -1,0 +1,69 @@
+{
+  "id": "eae-knx-rosa-thermostat",
+  "brand": "EAE Technology",
+  "title": {
+    "en": "EAE Rosa Metal KNX Thermostat",
+    "fr": "Thermostat Métallique EAE Rosa KNX",
+    "ar": "ترموستات EAE Rosa المعدني KNX"
+  },
+  "short_description": {
+    "en": "Premium metal touch thermostat with integrated room temperature controller.",
+    "fr": "Thermostat tactile en métal premium avec contrôleur de température ambiante intégré.",
+    "ar": "منظم حرارة معدني فاخر يعمل باللمس مع جهاز تحكم مدمج لدرجة حرارة الغرفة."
+  },
+  "description": {
+    "en": "The Rosa Metal KNX Thermostat offers a frameless minimalist design with touch buttons matching the metal surface. Can control fans, heating, and cooling modes natively via KNX.",
+    "fr": "Le Thermostat Rosa Metal KNX offre un design minimaliste sans cadre avec des boutons tactiles assortis à la surface métallique. Peut contrôler les ventilateurs, le chauffage et la climatisation.",
+    "ar": "يوفر ترموستات Rosa المعدني تصميماً أنيقاً بدون إطار مع أزرار لمس مطابقة للسطح المعدني. يمكّنه التحكم في المراوح، أوضاع التدفئة، والتبريد برمجياً عبر نظام KNX."
+  },
+  "technology": [
+    "KNX"
+  ],
+  "product_type": "Thermostat",
+  "installation": "Wall mount",
+  "specs": {
+    "en": {
+      "Colors": "Pearl White, Natural, Gold, Bronze, Anthracite",
+      "Dimensions": "85 x 85mm",
+      "Features": "Touch operated, Navigation LEDs",
+      "Control": "Lighting, HVAC, Shutter/Blind, DND/MUR, Scene Call"
+    },
+    "fr": {
+      "Couleurs": "Blanc perle, Naturel, Or, Bronze, Anthracite",
+      "Dimensions": "85 x 85 mm",
+      "Caractéristiques": "Fonctionnement tactile, LED de navigation",
+      "Contrôle": "Éclairage, CVC, Volets/Stores, DND/MUR, Appel de scène"
+    },
+    "ar": {
+      "الألوان": "أبيض لؤلؤي، طبيعي، ذهبي، برونزي، أنثراسايت",
+      "الأبعاد": "85 × 85 مم",
+      "المميزات": "تعمل باللمس، إضاءة LED للملاحة",
+      "التحكم": "الإضاءة، التدفئة والتبريد، الستائر، DND/MUR، استدعاء المشاهد"
+    }
+  },
+  "images": [
+    "/assets/products/eae-knx-rosa-thermostat.png"
+  ],
+  "files": [
+    {
+      "name": "CE Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/CE-Rosa-Metal-Thermostat-EAE-TEK-EN-R3.pdf"
+    },
+    {
+      "name": "Datasheet",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-ROSA-Metal-Thermostat-R3.1.pdf"
+    },
+    {
+      "name": "Installation Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-Rosa-Thermostat-R3.0.pdf"
+    },
+    {
+      "name": "Product Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-TTx100-ROSA-Thermostat.pdf"
+    },
+    {
+      "name": "ETS Product File",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/TTx_Rosa_Thermostat_v3.1_en_de_es_fr_it.rar"
+    }
+  ]
+}

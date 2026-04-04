@@ -1,0 +1,69 @@
+{
+  "id": "eae-knx-power-supply-ps640",
+  "brand": "EAE Technology",
+  "title": {
+    "en": "EAE KNX Power Supply 640mA",
+    "fr": "Alimentation EAE KNX 640mA",
+    "ar": "مزود طاقة EAE KNX 640mA"
+  },
+  "short_description": {
+    "en": "Stable 30V DC power supply for KNX TP lines with integrated choke.",
+    "fr": "Alimentation stable 30V DC pour lignes KNX TP avec self intégrée.",
+    "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."
+  },
+  "description": {
+    "en": "Provides system power to the KNX line. With an integrated choke. Output current: 640 mA. Features short-circuit and overvoltage protection.",
+    "fr": "Fournit l'alimentation système à la ligne KNX. Avec self intégrée. Courant de sortie : 640 mA. Dispose de protections contre les courts-circuits et les surtensions.",
+    "ar": "يوفر طاقة للنظام على خط KNX. يتضمن محول مدمج. تيار الإخراج: 640 مللي أمبير. مزود بحماية ضد قصر الدائرة والجهد الزائد."
+  },
+  "technology": [
+    "KNX"
+  ],
+  "product_type": "Power Supply",
+  "installation": "DIN Rail mounting",
+  "specs": {
+    "en": {
+      "Input Voltage": "150-275V AC, 50/60Hz",
+      "Outputs": "KNX Bus (30VDC) + Additional (30VDC)",
+      "Protection": "Short-circuit, overload",
+      "Features": "LED indicators, Reset button"
+    },
+    "fr": {
+      "Tension d'Entrée": "150-275V AC, 50/60Hz",
+      "Sorties": "Bus KNX (30VDC) + Supplémentaire (30VDC)",
+      "Protection": "Court-circuit, surcharge",
+      "Caractéristiques": "Indicateurs LED, Bouton de réinitialisation"
+    },
+    "ar": {
+      "جهد الدخل": "150-275 فولت تيار متردد، 50/60 هرتز",
+      "المخارج": "ناقل KNX (30 فولت) + إضافي (30 فولت)",
+      "الحماية": "قصر الدائرة، زيادة الحمل",
+      "المميزات": "مؤشرات LED، زر إعادة الضبط"
+    }
+  },
+  "images": [
+    "/assets/products/eae-knx-power-supply-ps640.png"
+  ],
+  "files": [
+    {
+      "name": "CE Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/CE-PSU-EAE-TEK-EN-R4.pdf"
+    },
+    {
+      "name": "Datasheet",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-PS320_PS640-R3.0.pdf"
+    },
+    {
+      "name": "Installation Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-PS320_PS640-R3.0_1.pdf"
+    },
+    {
+      "name": "Product Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/PS320_640-User-Manual.pdf"
+    },
+    {
+      "name": "Product Catalog",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/ps640-power-supply_1.pdf"
+    }
+  ]
+}

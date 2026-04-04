@@ -1,0 +1,91 @@
+{
+  "id": "rg-es220gs-lp",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-ES220GS-LP",
+    "fr": "Reyee RG-ES220GS-LP",
+    "ar": "ريي RG-ES220GS-LP"
+  },
+  "short_description": {
+    "en": "20-port Gigabit PoE+ smart CCTV switch.",
+    "fr": "Switch PoE+ Gigabit 20 ports pour vidéosurveillance.",
+    "ar": "سويتش PoE+ ذكي 20 منفذ للمراقبة بالفيديو."
+  },
+  "description": {
+    "en": "20-port Gigabit smart managed PoE+ switch designed for CCTV networks. 16 PoE+ ports, 2 Gigabit uplink ports, and 2 SFP slots, with 130W total PoE budget. Features automatic IP camera recognition, loop prevention, PoE watchdog for automatic camera reboot, port isolation, extended 250m transmission at 10 Mbps, and mobile VLAN configuration. 40 Gbps switching capacity, fanless design. Free cloud management via Ruijie Cloud.",
+    "fr": "Switch PoE+ managé Gigabit 20 ports conçu pour les réseaux de vidéosurveillance. 16 ports PoE+, 2 ports uplink Gigabit et 2 emplacements SFP, avec budget PoE total de 130W. Reconnaissance automatique des caméras IP, prévention de boucle, watchdog PoE pour redémarrage automatique, isolation de port, transmission étendue à 250m à 10 Mbps et configuration VLAN mobile. Capacité de commutation 40 Gbps, design sans ventilateur. Gestion cloud gratuite via Ruijie Cloud.",
+    "ar": "سويتش PoE+ مُدار ذكي بـ 20 منفذ Gigabit مصمم لشبكات المراقبة بالفيديو. 16 منفذ PoE+ ومنفذي uplink Gigabit ومنفذي SFP، بميزانية طاقة إجمالية 130 واط. يتميز بالتعرف التلقائي على كاميرات IP، ومنع الحلقات، ومراقب PoE لإعادة تشغيل الكاميرات تلقائياً، وعزل المنافذ، ونقل ممتد حتى 250 متر بسرعة 10 ميجابت/ثانية، وإعداد VLAN عبر الهاتف. سعة تبديل 40 جيجابت/ثانية، تصميم بدون مروحة. إدارة سحابية مجانية عبر Ruijie Cloud."
+  },
+  "technology": [
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Free standing",
+  "specs": {
+    "en": {
+      "Total Ports": "20 (16 PoE + 2 Uplink + 2 SFP)",
+      "PoE Ports": "16 (PoE/PoE+)",
+      "PoE Budget": "130 W",
+      "Switching Capacity": "40 Gbps",
+      "Forwarding Rate": "29.76 Mpps",
+      "PoE Standard": "IEEE 802.3af/at",
+      "Extended Transmission": "250m at 10 Mbps",
+      "Management": "Layer 2 managed, Cloud (free)",
+      "VLAN": "Yes (mobile config)",
+      "PoE Watchdog": "Yes",
+      "Loop Prevention": "Automatic",
+      "Cooling": "Fanless",
+      "Operating Temperature": "0°C to 40°C",
+      "Warranty": "3 years"
+    },
+    "fr": {
+      "Ports Totaux": "20 (16 PoE + 2 Uplink + 2 SFP)",
+      "Ports PoE": "16 (PoE/PoE+)",
+      "Budget PoE": "130 W",
+      "Capacité de Commutation": "40 Gbps",
+      "Taux de Transmission": "29,76 Mpps",
+      "Standard PoE": "IEEE 802.3af/at",
+      "Transmission Étendue": "250m à 10 Mbps",
+      "Gestion": "Layer 2 managé, Cloud (gratuit)",
+      "VLAN": "Oui (config mobile)",
+      "Watchdog PoE": "Oui",
+      "Prévention de Boucle": "Automatique",
+      "Refroidissement": "Sans ventilateur",
+      "Température de Fonctionnement": "0°C à 40°C",
+      "Garantie": "3 ans"
+    },
+    "ar": {
+      "إجمالي المنافذ": "20 (16 PoE + 2 Uplink + 2 SFP)",
+      "منافذ PoE": "16 (PoE/PoE+)",
+      "ميزانية PoE": "130 واط",
+      "سعة التبديل": "40 جيجابت/ثانية",
+      "معدل التمرير": "29.76 مليون حزمة/ثانية",
+      "معيار PoE": "IEEE 802.3af/at",
+      "نقل ممتد": "250 متر بسرعة 10 ميجابت/ثانية",
+      "الإدارة": "Layer 2 مُدار، سحابي (مجاني)",
+      "VLAN": "نعم (إعداد عبر الهاتف)",
+      "مراقب PoE": "نعم",
+      "منع الحلقات": "تلقائي",
+      "التبريد": "بدون مروحة",
+      "درجة حرارة التشغيل": "0 إلى 40 درجة مئوية",
+      "الضمان": "3 سنوات"
+    }
+  },
+  "images": [
+    "/assets/products/rg-es220gs-lp.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://reyee.ruijie.com/en-global/resources/preview/rg-es200gs-lp-series-datasheet"
+    },
+    {
+      "name": "Configuration Guide",
+      "url": "https://reyee.ruijie.com/en-global/support/documents/slide_ruijie-reyee-rg-es220gs-lp-and-rg-es228gs-lp-switches-1-0-1-b1p43-configuration-guide"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://reyee.ruijie.com/en-global/products/reyee-switch/smart-cctv-switch/rg-es220gs-lp/"
+    }
+  ]
+}

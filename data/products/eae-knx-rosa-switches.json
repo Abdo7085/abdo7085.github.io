@@ -1,0 +1,77 @@
+{
+  "id": "eae-knx-rosa-switches",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Switch",
+  "installation": "Wall mount",
+  
+  "title": {
+    "en": "EAE Rosa Metal KNX Switch",
+    "fr": "Interrupteur EAE Rosa Métal KNX",
+    "ar": "مفتاح EAE Rosa المعدني KNX"
+  },
+  
+  "short_description": {
+    "en": "Premium brushed metal KNX touch switch with frameless design.",
+    "fr": "Interrupteur tactile KNX en métal brossé premium avec design sans cadre.",
+    "ar": "مفتاح لمس KNX فاخر من المعدن المصقول وتصميم أنيق بدون إطار."
+  },
+  
+  "description": {
+    "en": "Rosa Metal switches provide an aesthetic appearance with large brushed surface buttons. Offers touch operation, navigation LEDs, and feedback LEDs. Available up to 3 folds.",
+    "fr": "Les interrupteurs Rosa Metal offrent une apparence esthétique avec de grands boutons à surface brossée. Fonctionnement tactile, LED de navigation et LED de statut.",
+    "ar": "توفر مفاتيح Rosa المعدنية مظهراً جمالياً بأزرار كبيرة ذات سطح مصقول. تدعم التشغيل باللمس وإضاءة التوجيه ومؤشرات LED لمعرفة الحالة الحالية."
+  },
+  
+  "specs": {
+    "en": {
+      "Colors": "Pearl White, Natural, Gold, Bronze, Anthracite",
+      "Dimensions": "85 x 85 mm",
+      "Features": "Touch operated, Navigation & Feedback LEDs, Optional temperature sensor",
+      "Material": "7000 Series Aluminium"
+    },
+    "fr": {
+      "Couleurs": "Blanc perle, Naturel, Or, Bronze, Anthracite",
+      "Dimensions": "85 x 85 mm",
+      "Caractéristiques": "Commande tactile, LED de navigation et de retour, Capteur de temp. optionnel",
+      "Matériau": "Aluminium série 7000"
+    },
+    "ar": {
+      "الألوان": "أبيض لؤلؤي، طبيعي، ذهبي، برونزي، أنثراسايت",
+      "الأبعاد": "85 × 85 مم",
+      "المميزات": "تعمل باللمس، إضاءة توجيه ومؤشرات، حساس حرارة (اختياري)",
+      "المادة": "ألومنيوم فئة 7000"
+    }
+  },
+  
+  "images": [
+    "/assets/products/eae-knx-rosa-switches.png"
+  ],
+  
+  "files": [
+    {
+      "name": "CE Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/CE-Rosa-Metal-Switch-EAE-TEK-EN-R3.pdf"
+    },
+    {
+      "name": "KNX Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/EAE_ROSA_SWITCH.pdf"
+    },
+    {
+      "name": "Datasheet",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-ROSA-Metal-Switch-sR3.1_1.pdf"
+    },
+    {
+      "name": "Installation Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-Rosa-Switch-R3.0.pdf"
+    },
+    {
+      "name": "Product Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-ROSA-Switch-sr1.pdf"
+    },
+    {
+      "name": "ETS Product File",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/STx_Rosa-Switch_v2.1_en_de_es_fr_it.rar"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "eae-knx-td4-touch-panel",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  
+  "title": {
+    "en": "EAE TD4-KNX 4\" Touch Panel",
+    "fr": "Écran Tactile EAE TD4-KNX 4\"",
+    "ar": "شاشة لمس EAE TD4-KNX مقاس 4 بوصة"
+  },
+  
+  "short_description": {
+    "en": "4-inch capacitive touch panel with built-in sensors, RGB control, and thermostat functions.",
+    "fr": "Écran tactile capacitif de 4 pouces avec capteurs intégrés, contrôle RGB et fonctions thermostat.",
+    "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."
+  },
+  
+  "description": {
+    "en": "The TD4-KNX provides effortless control with a 4-inch capacitive touch screen. Features include built-in temperature and proximity sensors, 4-zone thermostat control, RGB/tunable white lighting control, touch vibration feedback, and displays for energy, air quality, humidity, and CO2.",
+    "fr": "Le TD4-KNX offre un contrôle sans effort avec un écran tactile capacitif de 4 pouces. Les caractéristiques incluent des capteurs de température et de proximité intégrés, un contrôle thermostat 4 zones, un contrôle d'éclairage RGB/blanc variable, un retour de vibration, et des affichages pour l'énergie, la qualité de l'air, l'humidité et le CO2.",
+    "ar": "توفر لوحة TD4-KNX تحكماً سلسًا عبر شاشة لمس سعوية بحجم 4 بوصات. تشمل الميزات مستشعرات مدمجة للحرارة والتقارب، تحكماً حرارياً في 4 مناطق، تحكماً في إضاءة RGB والأبيض المتغير، اهتزاز تفاعلي عند اللمس، وشاشات لعرض استهلاك الطاقة وجودة الهواء والرطوبة ومستويات ثاني أكسيد الكربون."
+  },
+  
+  "specs": {
+    "en": {
+      "Screen": "4-inch capacitive touch",
+      "Sensors": "Temperature, Proximity",
+      "Functions": "Thermostat (4-Zone), RGB Control",
+      "Display Info": "Energy, Air Quality, CO2, Humidity"
+    },
+    "fr": {
+      "Écran": "Tactile capacitif 4 pouces",
+      "Capteurs": "Température, Proximité",
+      "Fonctions": "Thermostat (4 zones), Contrôle RGB",
+      "Affichage": "Énergie, Qualité de l'air, CO2, Humidité"
+    },
+    "ar": {
+      "الشاشة": "شاشة لمس سعوية 4 بوصة",
+      "المستشعرات": "الحرارة، التقارب",
+      "الوظائف": "ترموستات (4 مناطق)، تحكم RGB",
+      "شاشة العرض": "الطاقة، جودة الهواء، CO2، الرطوبة"
+    }
+  },
+  
+  "images": [
+    "/assets/products/eae-knx-td4-touch-panel.jpg"
+  ],
+  
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/30-Datasheet-TD4-KNX-4inc-Touch-Display-R1.0-6.pdf"
+    },
+    {
+      "name": "Installation Manual",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-TD4-KNX-4inch-Touch-Display-R2.1.pdf"
+    },
+    {
+      "name": "KNX Product File",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/TD4x-KNX-4-Touch-Display_6.knxprod"
+    }
+  ]
+}

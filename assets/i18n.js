@@ -625,4 +625,32 @@
 
   // expose for console/debug
   window.__site_i18n = { changeTo, init };
+
+  // Auto-redirect product pages to the correct language-prefixed URL.
+  // When the SPA navigates to /products.html or /product.html without a language
+  // prefix, detect the user's saved language and redirect to the correct path.
+  (function autoRedirectProducts() {
+    const path = location.pathname || '/';
+    if (path === '/products.html' || path === '/product.html') {
+      const savedLang = localStorage.getItem('site_lang');
+      if (savedLang && savedLang !== 'en' && ['ar', 'fr'].includes(savedLang)) {
+        location.replace('/' + savedLang + path + location.search + location.hash);
+      }
+    }
+  })();
+
+  // Intercept the "Products" nav button (originally "Example" / #example in the SPA)
+  // and redirect to /products.html with the correct language prefix.
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('[data-i18n="spa_example"]');
+    if (target) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      const lang = document.documentElement.lang || 'en';
+      const prefix = (lang === 'ar') ? '/ar' : (lang === 'fr') ? '/fr' : '';
+      window.location.href = prefix + '/products.html';
+    }
+  }, true);
+
 })();

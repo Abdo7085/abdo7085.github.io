@@ -1,0 +1,62 @@
+{
+  "id": "shelly-pro-4pm",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Pro 4PM",
+    "fr": "Shelly Pro 4PM",
+    "ar": "شيلي برو 4PM"
+  },
+  "short_description": {
+    "en": "4-channel DIN rail smart switch with power measurement.",
+    "fr": "Interrupteur intelligent rail DIN 4 canaux avec mesure de puissance.",
+    "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."
+  },
+  "description": {
+    "en": "Professional 4-channel relay switch with Wi-Fi, LAN, and Bluetooth connection. Real-time power measurement for each channel and a color screen.",
+    "fr": "Relais professionnel 4 canaux avec connexion Wi-Fi, LAN et Bluetooth. Mesure de puissance en temps réel pour chaque canal et écran couleur.",
+    "ar": "مرحل احترافي بأربع قنوات مع اتصال عبر Wi-Fi و LAN و Bluetooth. قياس فوري لاستهلاك الطاقة لكل قناة مع شاشة ملونة للتحكم."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth",
+    "LAN",
+    "KNX"
+  ],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+  "specs": {
+    "en": {
+      "Channels": "4",
+      "Inputs": "4 Switch/Button (S1-S4)",
+      "Outputs": "4 Relay (16A max per channel)",
+      "Max Total Load": "40A",
+      "Power Metering": "Yes (per channel)",
+      "Display": "1.8-inch Color TFT"
+    },
+    "fr": {
+      "Canaux": "4",
+      "Entrées": "4 Interrupteur/Bouton (S1-S4)",
+      "Sorties": "4 Relais (16A max par canal)",
+      "Charge Totale Max": "40A",
+      "Mesure de Puissance": "Oui (par canal)",
+      "Écran": "TFT couleur 1.8 pouces"
+    },
+    "ar": {
+      "القنوات": "4",
+      "المدخلات": "4 مفتاح/زر (S1-S4)",
+      "المخرجات": "4 مرحلات (16 أمبير كحد أقصى لكل قناة)",
+      "أقصى حمولة إجمالية": "40 أمبير",
+      "قياس الطاقة": "نعم (لكل قناة)",
+      "الشاشة": "TFT ملونة قياس 1.8 بوصة"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-pro-4pm.png"
+  ],
+  "files": [
+    {
+      "name": "User Guide",
+      "url": "https://shellysa.co.za/wp-content/uploads/2023/02/User-Guide-shelly_pro_4pm.pdf"
+    }
+  ]
+}

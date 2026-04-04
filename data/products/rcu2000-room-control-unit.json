@@ -1,0 +1,67 @@
+{
+  "id": "rcu2000-room-control-unit",
+  "brand": "EAE Technology",
+  "technology": [
+    "KNX"
+  ],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+  "title": {
+    "en": "RCU2000 Room Control Unit",
+    "fr": "RCU2000 Unité de contrôle de pièce",
+    "ar": "RCU2000 وحدة التحكم بالغرفة"
+  },
+  "short_description": {
+    "en": "All-in-one KNX device for unified room control.",
+    "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
+    "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
+  },
+  "description": {
+    "en": "EAE Room Controller Unit is an all-in-one KNX device to control various different room units from a single interface. Room Control Unit provides control of lights, blinds and fan coils as well as optional dry contact inputs.",
+    "fr": "L'unité de contrôle d'ambiance EAE est un appareil KNX tout-en-un permettant de contrôler diverses unités d'une pièce à partir d'une seule interface. Elle offre le contrôle de l'éclairage, des stores et des ventilo-convecteurs ainsi que des entrées à contacts secs en option.",
+    "ar": "وحدة التحكم بالغرفة من EAE هي جهاز KNX شامل للتحكم في مختلف وحدات الغرفة من واجهة واحدة. توفر الوحدة تحكمًا في الإضاءة، الستائر، ووحدات التكييف المركزية، بالإضافة إلى مداخل اتصال جاف اختيارية."
+  },
+  "specs": {
+    "en": {
+      "Feature 1": "KNX Hotel GRMS & Lighting Control Solutions",
+      "Feature 2": "Fan Coil Control (2 & 3 point valve)"
+    },
+    "fr": {
+      "Caractéristique 1": "Solutions KNX GRMS pour hôtels et contrôle d'éclairage",
+      "Caractéristique 2": "Contrôle ventilo-convecteur (vanne 2 et 3 points)"
+    },
+    "ar": {
+      "الميزة 1": "حلول KNX لإدارة غرف الفنادق والتحكم في الإضاءة",
+      "الميزة 2": "تحكم بوحدات الفان كويل (صمام بنقطتين و3 نقاط)"
+    }
+  },
+  "images": [
+    "/assets/products/rcu2000-room-control-unit.png"
+  ],
+  "files": [
+    {
+      "name": "CE Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/CE-RCU-V2-EAE-TEK-EN-R10_1.pdf"
+    },
+    {
+      "name": "KNX Certificate",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/KNX-Certificate-RC2000v2_2.pdf"
+    },
+    {
+      "name": "Datasheet V2",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-RCXXYYv2-v1.0_1.pdf"
+    },
+    {
+      "name": "Installation Manual V2",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-RCUXXYYv2-v1.0_3.pdf"
+    },
+    {
+      "name": "Product Manual V2",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-RCUXXYYv2-R1.0-0_1.pdf"
+    },
+    {
+      "name": "ETS Product Folder V.2 (.knxprod)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/KNXRoomControlUnit_v2_0_en_de_es_fr_it_1.knxprod"
+    }
+  ]
+}

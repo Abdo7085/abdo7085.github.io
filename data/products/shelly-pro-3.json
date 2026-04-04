@@ -1,0 +1,95 @@
+{
+  "id": "shelly-pro-3",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Pro 3",
+    "fr": "Shelly Pro 3",
+    "ar": "شيلي برو 3"
+  },
+  "short_description": {
+    "en": "3-channel DIN rail smart relay switch.",
+    "fr": "Relais intelligent 3 canaux sur rail DIN.",
+    "ar": "مرحل ذكي بـ 3 قنوات على سكة DIN."
+  },
+  "description": {
+    "en": "Professional 3-channel DIN rail relay switch with 16A per channel and 48A total capacity. Features Wi-Fi 802.11 b/g/n, Bluetooth 4.2, and LAN (RJ45) connectivity. Supports dry contacts, overheat protection, MQTT, mJS scripting, schedules, and webhooks. Powered by ESP32 processor with 8MB flash.",
+    "fr": "Relais professionnel 3 canaux sur rail DIN avec 16A par canal et 48A de capacité totale. Connectivité Wi-Fi 802.11 b/g/n, Bluetooth 4.2 et LAN (RJ45). Supporte les contacts secs, protection contre la surchauffe, MQTT, scripting mJS, programmations et webhooks. Propulsé par processeur ESP32 avec 8 Mo de flash.",
+    "ar": "مرحل احترافي بـ 3 قنوات على سكة DIN بقدرة 16 أمبير لكل قناة و48 أمبير إجمالي. يتميز باتصال Wi-Fi 802.11 b/g/n وBluetooth 4.2 وLAN (RJ45). يدعم التوصيلات الجافة والحماية من الحرارة الزائدة وMQTT وبرمجة mJS والجداول الزمنية والويب هوكس. يعمل بمعالج ESP32 مع ذاكرة 8 ميجابايت."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth",
+    "LAN"
+  ],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+  "specs": {
+    "en": {
+      "Power Supply": "110–240 VAC, 50/60Hz",
+      "Power Consumption": "< 3 W",
+      "Output Channels": "3 Relays",
+      "Max Current (per channel)": "16A",
+      "Max Total Current": "48A",
+      "Max Switching Voltage (AC)": "240 V",
+      "Max Switching Voltage (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "LAN": "RJ45",
+      "Wi-Fi Range": "Up to 30m indoor / 50m outdoor",
+      "Processor": "ESP32",
+      "Flash Memory": "8 MB",
+      "Dimensions": "96 × 53 × 59 mm",
+      "Operating Temperature": "-20°C to 40°C",
+      "Conductor Cross-section": "0.5–2.5 mm²"
+    },
+    "fr": {
+      "Alimentation": "110–240 VAC, 50/60Hz",
+      "Consommation": "< 3 W",
+      "Canaux de Sortie": "3 Relais",
+      "Courant Max (par canal)": "16A",
+      "Courant Total Max": "48A",
+      "Tension de Commutation Max (AC)": "240 V",
+      "Tension de Commutation Max (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "LAN": "RJ45",
+      "Portée Wi-Fi": "Jusqu'à 30m intérieur / 50m extérieur",
+      "Processeur": "ESP32",
+      "Mémoire Flash": "8 Mo",
+      "Dimensions": "96 × 53 × 59 mm",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Section de Conducteur": "0,5–2,5 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "110–240 فولت متردد، 50/60 هرتز",
+      "استهلاك الطاقة": "< 3 واط",
+      "قنوات الخرج": "3 مرحلات",
+      "التيار الأقصى (لكل قناة)": "16 أمبير",
+      "التيار الإجمالي الأقصى": "48 أمبير",
+      "أقصى جهد تبديل (AC)": "240 فولت",
+      "أقصى جهد تبديل (DC)": "30 فولت",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "شبكة سلكية": "RJ45",
+      "مدى الواي فاي": "حتى 30 متر داخلي / 50 متر خارجي",
+      "المعالج": "ESP32",
+      "ذاكرة فلاش": "8 ميجابايت",
+      "الأبعاد": "96 × 53 × 59 مم",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "مقطع الموصل": "0.5–2.5 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-pro-3.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-pro-3"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-pro-3"
+    }
+  ]
+}

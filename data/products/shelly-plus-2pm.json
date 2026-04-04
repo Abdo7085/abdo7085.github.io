@@ -1,0 +1,94 @@
+{
+  "id": "shelly-plus-2pm",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Plus 2PM",
+    "fr": "Shelly Plus 2PM",
+    "ar": "شيلي بلس 2PM"
+  },
+  "short_description": {
+    "en": "2-channel smart relay with power metering.",
+    "fr": "Relais intelligent 2 canaux avec mesure de puissance.",
+    "ar": "مرحل ذكي بقناتين مع قياس الطاقة."
+  },
+  "description": {
+    "en": "Compact 2-channel smart relay switch with integrated power metering for each channel. Supports up to 10A per channel (16A total). Features Wi-Fi 802.11 b/g/n and Bluetooth 4.2 connectivity, cover/shutter control mode, MQTT, mJS scripting, schedules, and webhooks. Powered by ESP32 processor with 4MB flash. Ultra-compact design (37×42×16 mm) fits behind wall switches.",
+    "fr": "Relais intelligent compact à 2 canaux avec mesure de puissance intégrée par canal. Supporte jusqu'à 10A par canal (16A total). Connectivité Wi-Fi 802.11 b/g/n et Bluetooth 4.2, mode contrôle volet/store, MQTT, scripting mJS, programmations et webhooks. Propulsé par processeur ESP32 avec 4 Mo de flash. Design ultra-compact (37×42×16 mm) s'installe derrière les interrupteurs.",
+    "ar": "مرحل ذكي مدمج بقناتين مع قياس طاقة مدمج لكل قناة. يدعم حتى 10 أمبير لكل قناة (16 أمبير إجمالي). يتميز باتصال Wi-Fi 802.11 b/g/n وBluetooth 4.2، ووضع التحكم بالستائر/المصاريع، وMQTT، وبرمجة mJS، والجداول الزمنية والويب هوكس. يعمل بمعالج ESP32 مع ذاكرة 4 ميجابايت. تصميم فائق الصغر (37×42×16 مم) يتسع خلف مفاتيح الحائط."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth"
+  ],
+  "product_type": "Smart Relay",
+  "installation": "Behind wall switch",
+  "specs": {
+    "en": {
+      "Power Supply": "110–240 VAC / 24 VDC ±10%",
+      "Power Consumption": "< 1.4 W",
+      "Output Channels": "2 Relays with power metering",
+      "Max Current (per channel)": "10A",
+      "Max Total Current": "16A (18A peak)",
+      "Max Switching Voltage (AC)": "240 V",
+      "Max Switching Voltage (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Wi-Fi Range": "Up to 30m indoor / 50m outdoor",
+      "Processor": "ESP32-U4WDH",
+      "Flash Memory": "4 MB",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Operating Temperature": "-20°C to 40°C",
+      "Humidity": "30% to 70% RH",
+      "Conductor Cross-section": "0.5–1.5 mm²"
+    },
+    "fr": {
+      "Alimentation": "110–240 VAC / 24 VDC ±10%",
+      "Consommation": "< 1,4 W",
+      "Canaux de Sortie": "2 Relais avec mesure de puissance",
+      "Courant Max (par canal)": "10A",
+      "Courant Total Max": "16A (18A crête)",
+      "Tension de Commutation Max (AC)": "240 V",
+      "Tension de Commutation Max (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Portée Wi-Fi": "Jusqu'à 30m intérieur / 50m extérieur",
+      "Processeur": "ESP32-U4WDH",
+      "Mémoire Flash": "4 Mo",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Humidité": "30% à 70% HR",
+      "Section de Conducteur": "0,5–1,5 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "110–240 فولت متردد / 24 فولت مستمر ±10%",
+      "استهلاك الطاقة": "< 1.4 واط",
+      "قنوات الخرج": "2 مرحل مع قياس الطاقة",
+      "التيار الأقصى (لكل قناة)": "10 أمبير",
+      "التيار الإجمالي الأقصى": "16 أمبير (18 أمبير ذروة)",
+      "أقصى جهد تبديل (AC)": "240 فولت",
+      "أقصى جهد تبديل (DC)": "30 فولت",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "مدى الواي فاي": "حتى 30 متر داخلي / 50 متر خارجي",
+      "المعالج": "ESP32-U4WDH",
+      "ذاكرة فلاش": "4 ميجابايت",
+      "الأبعاد": "37 × 42 × 16 مم",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "الرطوبة": "30% إلى 70%",
+      "مقطع الموصل": "0.5–1.5 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-plus-2pm.png"
+  ],
+  "files": [
+    {
+      "name": "User Guide",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-plus-2pm"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-plus-2pm"
+    }
+  ]
+}

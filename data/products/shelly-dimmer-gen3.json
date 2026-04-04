@@ -1,0 +1,91 @@
+{
+  "id": "shelly-dimmer-gen3",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Dimmer Gen3",
+    "fr": "Shelly Dimmer Gen3",
+    "ar": "شيلي ديمر الجيل الثالث"
+  },
+  "short_description": {
+    "en": "Gen3 smart dimmer, up to 200W.",
+    "fr": "Variateur intelligent Gen3, jusqu'à 200W.",
+    "ar": "مخفت إضاءة ذكي الجيل الثالث، حتى 200 واط."
+  },
+  "description": {
+    "en": "Third-generation single-channel smart dimmer with trailing edge technology. Supports dimmable LEDs up to 150W and incandescent/halogen up to 200W. Works with or without neutral wire (min 20W load without neutral). Features Wi-Fi 802.11 b/g/n, Bluetooth 4.2, MQTT, mJS scripting, schedules, and webhooks. Dual processor: ESP32 C3 + STM32 G051 with 8MB flash. Compact (38×42.5×16.5 mm), fits behind wall switches.",
+    "fr": "Variateur intelligent mono-canal de troisième génération avec technologie trailing edge. Supporte les LED dimmables jusqu'à 150W et incandescent/halogène jusqu'à 200W. Fonctionne avec ou sans neutre (min 20W sans neutre). Wi-Fi 802.11 b/g/n, Bluetooth 4.2, MQTT, scripting mJS, programmations et webhooks. Double processeur : ESP32 C3 + STM32 G051 avec 8 Mo de flash. Compact (38×42,5×16,5 mm), s'installe derrière les interrupteurs.",
+    "ar": "مخفت إضاءة ذكي بقناة واحدة من الجيل الثالث بتقنية trailing edge. يدعم مصابيح LED القابلة للتعتيم حتى 150 واط والمتوهجة/الهالوجين حتى 200 واط. يعمل مع أو بدون سلك محايد (حد أدنى 20 واط بدون محايد). يتميز بـ Wi-Fi 802.11 b/g/n وBluetooth 4.2 وMQTT وبرمجة mJS والجداول الزمنية والويب هوكس. معالج مزدوج: ESP32 C3 + STM32 G051 مع ذاكرة 8 ميجابايت. مدمج (38×42.5×16.5 مم)، يتسع خلف مفاتيح الحائط."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth"
+  ],
+  "product_type": "Dimmer",
+  "installation": "Behind wall switch",
+  "specs": {
+    "en": {
+      "Power Supply": "220–240 VAC, 50Hz",
+      "Power Consumption": "< 1.5 W",
+      "Max Output Power": "200 W",
+      "Dimmable LED": "Up to 150 W",
+      "Incandescent/Halogen": "Up to 200 W",
+      "Min Load (no neutral)": "20 W",
+      "Dimming Type": "Trailing edge",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Processor": "ESP32 C3 + STM32 G051",
+      "Flash Memory": "8 MB",
+      "Dimensions": "38 × 42.5 × 16.5 mm",
+      "Weight": "24.3 g",
+      "Operating Temperature": "-20°C to 40°C",
+      "Conductor Cross-section": "0.5–4 mm²"
+    },
+    "fr": {
+      "Alimentation": "220–240 VAC, 50Hz",
+      "Consommation": "< 1,5 W",
+      "Puissance Max de Sortie": "200 W",
+      "LED Dimmable": "Jusqu'à 150 W",
+      "Incandescent/Halogène": "Jusqu'à 200 W",
+      "Charge Min (sans neutre)": "20 W",
+      "Type de Variation": "Trailing edge",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Processeur": "ESP32 C3 + STM32 G051",
+      "Mémoire Flash": "8 Mo",
+      "Dimensions": "38 × 42,5 × 16,5 mm",
+      "Poids": "24,3 g",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Section de Conducteur": "0,5–4 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "220–240 فولت متردد، 50 هرتز",
+      "استهلاك الطاقة": "< 1.5 واط",
+      "أقصى قدرة خرج": "200 واط",
+      "LED قابل للتعتيم": "حتى 150 واط",
+      "متوهج/هالوجين": "حتى 200 واط",
+      "أدنى حمل (بدون محايد)": "20 واط",
+      "نوع التعتيم": "Trailing edge",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "المعالج": "ESP32 C3 + STM32 G051",
+      "ذاكرة فلاش": "8 ميجابايت",
+      "الأبعاد": "38 × 42.5 × 16.5 مم",
+      "الوزن": "24.3 غرام",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "مقطع الموصل": "0.5–4 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-dimmer-gen3.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-dimmer-gen3"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-dimmer-gen3"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "shelly-2pm-gen3",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly 2PM Gen3",
+    "fr": "Shelly 2PM Gen3",
+    "ar": "شيلي 2PM الجيل الثالث"
+  },
+  "short_description": {
+    "en": "Gen3 2-channel smart relay with power metering.",
+    "fr": "Relais intelligent Gen3 2 canaux avec mesure de puissance.",
+    "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."
+  },
+  "description": {
+    "en": "Third-generation 2-channel smart relay with integrated power metering per channel. Supports up to 10A per channel (16A total, 18A peak). Features Wi-Fi 802.11 b/g/n, Bluetooth 4.2, MQTT, mJS scripting, schedules, and webhooks. New ESP-Shelly-C38F processor with 8MB flash. Supports conductor cross-section up to 4 mm². Compact design (37×42×16 mm), fits behind wall switches. Also supports cover/shutter control mode.",
+    "fr": "Relais intelligent 2 canaux de troisième génération avec mesure de puissance intégrée par canal. Supporte jusqu'à 10A par canal (16A total, 18A crête). Wi-Fi 802.11 b/g/n, Bluetooth 4.2, MQTT, scripting mJS, programmations et webhooks. Nouveau processeur ESP-Shelly-C38F avec 8 Mo de flash. Section de conducteur jusqu'à 4 mm². Design compact (37×42×16 mm), s'installe derrière les interrupteurs. Mode contrôle volet/store disponible.",
+    "ar": "مرحل ذكي بقناتين من الجيل الثالث مع قياس طاقة مدمج لكل قناة. يدعم حتى 10 أمبير لكل قناة (16 أمبير إجمالي، 18 أمبير ذروة). يتميز بـ Wi-Fi 802.11 b/g/n وBluetooth 4.2 وMQTT وبرمجة mJS والجداول الزمنية والويب هوكس. معالج جديد ESP-Shelly-C38F مع ذاكرة 8 ميجابايت. يدعم مقطع موصل حتى 4 مم². تصميم مدمج (37×42×16 مم)، يتسع خلف مفاتيح الحائط. يدعم أيضاً وضع التحكم بالستائر."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth"
+  ],
+  "product_type": "Smart Relay",
+  "installation": "Behind wall switch",
+  "specs": {
+    "en": {
+      "Power Supply": "110–240 VAC / 24 VDC ±10%",
+      "Power Consumption": "< 1.4 W",
+      "Output Channels": "2 Relays with power metering",
+      "Max Current (per channel)": "10A",
+      "Max Total Current": "16A (18A peak)",
+      "Max Switching Voltage (AC)": "240 V",
+      "Max Switching Voltage (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Processor": "ESP-Shelly-C38F",
+      "Flash Memory": "8 MB",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Weight": "30 g",
+      "Operating Temperature": "-20°C to 40°C",
+      "Conductor Cross-section": "0.5–4 mm²"
+    },
+    "fr": {
+      "Alimentation": "110–240 VAC / 24 VDC ±10%",
+      "Consommation": "< 1,4 W",
+      "Canaux de Sortie": "2 Relais avec mesure de puissance",
+      "Courant Max (par canal)": "10A",
+      "Courant Total Max": "16A (18A crête)",
+      "Tension de Commutation Max (AC)": "240 V",
+      "Tension de Commutation Max (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Processeur": "ESP-Shelly-C38F",
+      "Mémoire Flash": "8 Mo",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Poids": "30 g",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Section de Conducteur": "0,5–4 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "110–240 فولت متردد / 24 فولت مستمر ±10%",
+      "استهلاك الطاقة": "< 1.4 واط",
+      "قنوات الخرج": "2 مرحل مع قياس الطاقة",
+      "التيار الأقصى (لكل قناة)": "10 أمبير",
+      "التيار الإجمالي الأقصى": "16 أمبير (18 أمبير ذروة)",
+      "أقصى جهد تبديل (AC)": "240 فولت",
+      "أقصى جهد تبديل (DC)": "30 فولت",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "المعالج": "ESP-Shelly-C38F",
+      "ذاكرة فلاش": "8 ميجابايت",
+      "الأبعاد": "37 × 42 × 16 مم",
+      "الوزن": "30 غرام",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "مقطع الموصل": "0.5–4 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-2pm-gen3.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-2pm-gen3"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-2pm-gen3"
+    }
+  ]
+}

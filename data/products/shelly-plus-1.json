@@ -1,0 +1,97 @@
+{
+  "id": "shelly-plus-1",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Plus 1",
+    "fr": "Shelly Plus 1",
+    "ar": "شيلي بلس 1"
+  },
+  "short_description": {
+    "en": "1-channel smart relay switch.",
+    "fr": "Relais intelligent mono-canal.",
+    "ar": "مرحل ذكي بقناة واحدة."
+  },
+  "description": {
+    "en": "Compact single-channel smart relay switch supporting up to 16A (AC). Wide power supply range: 110–240 VAC, 24–48 VDC, or 12 VDC. Features Wi-Fi 802.11 b/g/n and Bluetooth 4.2 connectivity, MQTT, mJS scripting, schedules, and webhooks. Powered by ESP32 processor with 4MB flash. Ultra-compact design (37×42×16 mm) fits behind wall switches for easy retrofit installations.",
+    "fr": "Relais intelligent compact mono-canal supportant jusqu'à 16A (AC). Large plage d'alimentation : 110–240 VAC, 24–48 VDC ou 12 VDC. Connectivité Wi-Fi 802.11 b/g/n et Bluetooth 4.2, MQTT, scripting mJS, programmations et webhooks. Propulsé par processeur ESP32 avec 4 Mo de flash. Design ultra-compact (37×42×16 mm) s'installe derrière les interrupteurs.",
+    "ar": "مرحل ذكي مدمج بقناة واحدة يدعم حتى 16 أمبير (AC). نطاق تغذية واسع: 110–240 فولت متردد، 24–48 فولت مستمر، أو 12 فولت مستمر. يتميز باتصال Wi-Fi 802.11 b/g/n وBluetooth 4.2، وMQTT، وبرمجة mJS، والجداول الزمنية والويب هوكس. يعمل بمعالج ESP32 مع ذاكرة 4 ميجابايت. تصميم فائق الصغر (37×42×16 مم) يتسع خلف مفاتيح الحائط."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth"
+  ],
+  "product_type": "Smart Relay",
+  "installation": "Behind wall switch",
+  "specs": {
+    "en": {
+      "Power Supply": "110–240 VAC / 24–48 VDC / 12 VDC ±10%",
+      "Power Consumption": "< 1.2 W",
+      "Output Channels": "1 Relay",
+      "Max Switching Current (AC)": "16A",
+      "Max Switching Current (DC)": "10A",
+      "Max Switching Voltage (AC)": "240 V",
+      "Max Switching Voltage (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Wi-Fi Range": "Up to 30m indoor / 50m outdoor",
+      "Processor": "ESP32-U4WDH",
+      "Flash Memory": "4 MB",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Weight": "26 g",
+      "Operating Temperature": "-20°C to 40°C",
+      "Humidity": "30% to 70% RH",
+      "Conductor Cross-section": "0.5–1.5 mm²"
+    },
+    "fr": {
+      "Alimentation": "110–240 VAC / 24–48 VDC / 12 VDC ±10%",
+      "Consommation": "< 1,2 W",
+      "Canaux de Sortie": "1 Relais",
+      "Courant de Commutation Max (AC)": "16A",
+      "Courant de Commutation Max (DC)": "10A",
+      "Tension de Commutation Max (AC)": "240 V",
+      "Tension de Commutation Max (DC)": "30 V",
+      "Wi-Fi": "802.11 b/g/n",
+      "Bluetooth": "4.2",
+      "Portée Wi-Fi": "Jusqu'à 30m intérieur / 50m extérieur",
+      "Processeur": "ESP32-U4WDH",
+      "Mémoire Flash": "4 Mo",
+      "Dimensions": "37 × 42 × 16 mm",
+      "Poids": "26 g",
+      "Température de Fonctionnement": "-20°C à 40°C",
+      "Humidité": "30% à 70% HR",
+      "Section de Conducteur": "0,5–1,5 mm²"
+    },
+    "ar": {
+      "مصدر الطاقة": "110–240 فولت متردد / 24–48 فولت مستمر / 12 فولت مستمر ±10%",
+      "استهلاك الطاقة": "< 1.2 واط",
+      "قنوات الخرج": "1 مرحل",
+      "تيار التبديل الأقصى (AC)": "16 أمبير",
+      "تيار التبديل الأقصى (DC)": "10 أمبير",
+      "أقصى جهد تبديل (AC)": "240 فولت",
+      "أقصى جهد تبديل (DC)": "30 فولت",
+      "واي فاي": "802.11 b/g/n",
+      "بلوتوث": "4.2",
+      "مدى الواي فاي": "حتى 30 متر داخلي / 50 متر خارجي",
+      "المعالج": "ESP32-U4WDH",
+      "ذاكرة فلاش": "4 ميجابايت",
+      "الأبعاد": "37 × 42 × 16 مم",
+      "الوزن": "26 غرام",
+      "درجة حرارة التشغيل": "-20 إلى 40 درجة مئوية",
+      "الرطوبة": "30% إلى 70%",
+      "مقطع الموصل": "0.5–1.5 مم²"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-plus-1.png"
+  ],
+  "files": [
+    {
+      "name": "User Guide",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-plus-1"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-plus-1"
+    }
+  ]
+}
