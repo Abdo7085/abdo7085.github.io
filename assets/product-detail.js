@@ -6,7 +6,7 @@
 (function() {
   // Auto-redirect to correct language-prefixed URL if needed
   var _path = location.pathname || '/';
-  if (_path === '/product.html') {
+  if (_path === '/product.html' || (_path.startsWith('/products/') && _path.endsWith('.html'))) {
     var _lang = localStorage.getItem('site_lang');
     if (_lang && _lang !== 'en' && (_lang === 'ar' || _lang === 'fr')) {
       location.replace('/' + _lang + _path + location.search + location.hash);
@@ -57,7 +57,12 @@
 
   function getQueryParam(name) {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    let val = urlParams.get(name);
+    if (!val && name === 'id') {
+      const match = window.location.pathname.match(/\/product(?:s)?\/([^/.]+)(?:\.html)?/);
+      if (match) val = match[1];
+    }
+    return val;
   }
 
   async function fetchProduct(id) {
@@ -100,7 +105,7 @@
     const twitterImage = document.getElementById('meta-twitter-image');
 
     const baseUrl = 'https://smartelectricity.ma';
-    const canonicalUrl = baseUrl + '/product.html?id=' + id;
+    const canonicalUrl = baseUrl + '/products/' + id + '.html';
 
     if (canonical) canonical.href = canonicalUrl;
     if (ogTitle) ogTitle.content = `${title} | SMART ELECTRICITY`;
@@ -116,7 +121,7 @@
     hreflangs.forEach(function(link) {
       var lang = link.getAttribute('hreflang');
       var prefix = lang === 'en' ? '' : '/' + lang;
-      link.href = baseUrl + prefix + '/product.html?id=' + id;
+      link.href = baseUrl + prefix + '/products/' + id + '.html';
     });
   }
 
@@ -140,7 +145,7 @@
       },
       "category": product.product_type || ''
     };
-    jsonLd.url = 'https://smartelectricity.ma/product.html?id=' + product.id;
+    jsonLd.url = 'https://smartelectricity.ma/products/' + product.id + '.html';
     jsonLd.offers = {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -260,7 +265,7 @@
         const title = t(p.title);
         const image = p.image || '/assets/S‑ELECTRICITY-LOGO.svg';
         html += `
-          <a href="${prefix}/product.html?id=${p.id}" class="prod-card link-transition">
+          <a href="${prefix}/products/${p.id}.html" class="prod-card link-transition">
             <div class="prod-card-img-wrapper" style="height:180px;">
               <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
             </div>
@@ -477,7 +482,7 @@
   // Check if the current page is a product detail page
   function isProductDetailPage() {
     const path = location.pathname || '/';
-    return path.endsWith('/product.html') || path.endsWith('/product');
+    return path.endsWith('/product.html') || path.endsWith('/product') || /\/products\/[^/]+\.html$/.test(path);
   }
 
   function cleanupProductDetail() {
@@ -523,7 +528,7 @@
 
   // Handle SPA navigation (including browser Back/Forward via popstate)
   window.addEventListener('locationchange', () => {
-    if (window.location.pathname.includes('product.')) {
+    if (window.location.pathname.includes('product')) {
       // Re-mount products app if it was cleaned up
       if (!document.getElementById('custom-product-detail-wrapper')) {
         mountApp();

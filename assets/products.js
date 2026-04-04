@@ -275,7 +275,7 @@
     }
 
     return `
-      <a href="${prefix}/product.html?id=${product.id}" class="prod-card prod-fade-in product-link">
+      <a href="${prefix}/products/${product.id}.html" class="prod-card prod-fade-in product-link">
         <div class="prod-card-img-wrapper">
           <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
         </div>
@@ -537,7 +537,7 @@
       return {
         "@type": "ListItem",
         "position": i + 1,
-        "url": "https://smartelectricity.ma/product.html?id=" + p.id,
+        "url": "https://smartelectricity.ma/products/" + p.id + ".html",
         "name": title
       };
     });
