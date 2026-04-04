@@ -599,11 +599,15 @@
 
     // Data Loading
     allProducts = await fetchProducts();
-    // Shuffle products so different brands appear mixed
-    for (let i = allProducts.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [allProducts[i], allProducts[j]] = [allProducts[j], allProducts[i]];
-    }
+    // Shuffle products with a daily seed so brands appear mixed but order stays consistent per day
+    (function seedShuffle(arr) {
+      var d = new Date(), seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+      function rng() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; }
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(rng() * (i + 1));
+        var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+      }
+    })(allProducts);
 
     const layoutContainer = document.getElementById('prod-layout-container');
     if (layoutContainer) {
