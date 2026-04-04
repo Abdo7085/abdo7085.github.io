@@ -545,6 +545,7 @@ html[dir="rtl"] .prod-card:hover .prod-card-arrow {
   color: rgba(255,255,255,0.4);
   stroke: currentColor;
   pointer-events: none;
+  z-index: 1;
 }
 
 /* RTL Support for Arabic */
