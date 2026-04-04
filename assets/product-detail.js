@@ -84,17 +84,40 @@
   function updateMeta(product) {
     const title = t(product.title);
     const descText = t(product.short_description) || t(product.description);
+    const image = (product.images && product.images.length > 0) ? product.images[0] : '';
+    const imageUrl = image ? window.location.origin + image : '';
+    const id = product.id;
 
     document.title = `${title} | SMART ELECTRICITY`;
+
     const canonical = document.getElementById('meta-canonical');
     const ogTitle = document.getElementById('meta-og-title');
     const ogDesc = document.getElementById('meta-og-description');
+    const ogImage = document.getElementById('meta-og-image');
     const desc = document.getElementById('meta-description');
+    const twitterTitle = document.getElementById('meta-twitter-title');
+    const twitterDesc = document.getElementById('meta-twitter-description');
+    const twitterImage = document.getElementById('meta-twitter-image');
 
-    if (canonical) canonical.href = window.location.href;
+    const baseUrl = 'https://smartelectricity.ma';
+    const canonicalUrl = baseUrl + '/product.html?id=' + id;
+
+    if (canonical) canonical.href = canonicalUrl;
     if (ogTitle) ogTitle.content = `${title} | SMART ELECTRICITY`;
     if (ogDesc) ogDesc.content = descText;
+    if (ogImage) ogImage.content = imageUrl ? baseUrl + image : '';
     if (desc) desc.content = descText;
+    if (twitterTitle) twitterTitle.content = `${title} | SMART ELECTRICITY`;
+    if (twitterDesc) twitterDesc.content = descText;
+    if (twitterImage) twitterImage.content = imageUrl ? baseUrl + image : '';
+
+    // Update hreflang for this specific product
+    var hreflangs = document.querySelectorAll('link[hreflang]');
+    hreflangs.forEach(function(link) {
+      var lang = link.getAttribute('hreflang');
+      var prefix = lang === 'en' ? '' : '/' + lang;
+      link.href = baseUrl + prefix + '/product.html?id=' + id;
+    });
   }
 
   function injectJsonLd(product) {
@@ -116,6 +139,16 @@
         "name": product.brand || ''
       },
       "category": product.product_type || ''
+    };
+    jsonLd.url = 'https://smartelectricity.ma/product.html?id=' + product.id;
+    jsonLd.offers = {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "MAD",
+        "seller": {
+            "@type": "Organization",
+            "name": "SMART ELECTRICITY"
+        }
     };
     if (image) {
       jsonLd.image = window.location.origin + image;

@@ -524,6 +524,39 @@
     }
   }
 
+  function injectProductListJsonLd(products) {
+    var existing = document.getElementById('productlist-jsonld');
+    if (existing) existing.remove();
+
+    var items = products.map(function(p, i) {
+      var title = p.title;
+      if (typeof title === 'object') {
+        var lang = document.documentElement.lang || 'en';
+        title = title[lang] || title['en'] || '';
+      }
+      return {
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": "https://smartelectricity.ma/product.html?id=" + p.id,
+        "name": title
+      };
+    });
+
+    var jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Smart Home Products",
+      "numberOfItems": products.length,
+      "itemListElement": items
+    };
+
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'productlist-jsonld';
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+  }
+
   let _mounted = false;
 
   async function initApp() {
@@ -608,6 +641,8 @@
         var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
       }
     })(allProducts);
+
+    injectProductListJsonLd(allProducts);
 
     const layoutContainer = document.getElementById('prod-layout-container');
     if (layoutContainer) {

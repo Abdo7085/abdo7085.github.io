@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home -->
   <url>
     <loc>https://smartelectricity.ma/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/" />
@@ -18,6 +19,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/" />
   </url>
+
+  <!-- Previous Work -->
   <url>
     <loc>https://smartelectricity.ma/previous-work.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/previous-work.html" />
@@ -36,24 +39,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/previous-work.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/previous-work.html" />
   </url>
-  <url>
-    <loc>https://smartelectricity.ma/product.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html" />
-  </url>
-  <url>
-    <loc>https://smartelectricity.ma/fr/product.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html" />
-  </url>
-  <url>
-    <loc>https://smartelectricity.ma/ar/product.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html" />
-  </url>
+
+  <!-- Products Listing -->
   <url>
     <loc>https://smartelectricity.ma/products.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products.html" />
@@ -71,5 +58,505 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products.html" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products.html" />
+  </url>
+
+  <!-- Product: eae-knx-power-supply-ps640 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=eae-knx-power-supply-ps640</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-power-supply-ps640" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=eae-knx-power-supply-ps640</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-power-supply-ps640" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=eae-knx-power-supply-ps640</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-power-supply-ps640" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-power-supply-ps640" />
+  </url>
+
+  <!-- Product: eae-knx-rosa-switches -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=eae-knx-rosa-switches</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-switches" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-switches</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-switches" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-switches</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-switches" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-switches" />
+  </url>
+
+  <!-- Product: eae-knx-rosa-thermostat -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=eae-knx-rosa-thermostat</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-thermostat" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-thermostat</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-thermostat" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-thermostat</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-rosa-thermostat" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-rosa-thermostat" />
+  </url>
+
+  <!-- Product: eae-knx-td4-touch-panel -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=eae-knx-td4-touch-panel</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-td4-touch-panel" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=eae-knx-td4-touch-panel</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-td4-touch-panel" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=eae-knx-td4-touch-panel</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=eae-knx-td4-touch-panel" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=eae-knx-td4-touch-panel" />
+  </url>
+
+  <!-- Product: rcu0800-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu0800-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0800-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu0800-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0800-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu0800-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0800-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0800-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu0808-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu0808-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0808-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu0808-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0808-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu0808-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu0808-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu0808-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu1200-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu1200-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1200-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu1200-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1200-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu1200-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1200-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1200-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu1212-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu1212-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1212-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu1212-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1212-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu1212-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1212-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1212-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu1600-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu1600-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1600-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu1600-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1600-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu1600-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1600-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1600-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu1616-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu1616-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1616-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu1616-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1616-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu1616-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu1616-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu1616-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu2000-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu2000-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2000-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu2000-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2000-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu2000-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2000-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2000-room-control-unit" />
+  </url>
+
+  <!-- Product: rcu2018-room-control-unit -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rcu2018-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2018-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rcu2018-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2018-room-control-unit" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rcu2018-room-control-unit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rcu2018-room-control-unit" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rcu2018-room-control-unit" />
+  </url>
+
+  <!-- Product: rg-eg105gw-t -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rg-eg105gw-t</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-eg105gw-t" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rg-eg105gw-t</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-eg105gw-t" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rg-eg105gw-t</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-eg105gw-t" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-eg105gw-t" />
+  </url>
+
+  <!-- Product: rg-es220gs-lp -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rg-es220gs-lp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-es220gs-lp" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rg-es220gs-lp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-es220gs-lp" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rg-es220gs-lp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-es220gs-lp" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-es220gs-lp" />
+  </url>
+
+  <!-- Product: rg-rap62 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=rg-rap62</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-rap62" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=rg-rap62</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-rap62" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=rg-rap62</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=rg-rap62" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=rg-rap62" />
+  </url>
+
+  <!-- Product: shelly-1-gen3 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-1-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-1-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-1-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1-gen3" />
+  </url>
+
+  <!-- Product: shelly-1pm-gen3 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-1pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1pm-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-1pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1pm-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-1pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-1pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-1pm-gen3" />
+  </url>
+
+  <!-- Product: shelly-2pm-gen3 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-2pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-2pm-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-2pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-2pm-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-2pm-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-2pm-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-2pm-gen3" />
+  </url>
+
+  <!-- Product: shelly-dimmer-gen3 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-dimmer-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-dimmer-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-dimmer-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-dimmer-gen3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-dimmer-gen3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-dimmer-gen3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-dimmer-gen3" />
+  </url>
+
+  <!-- Product: shelly-plus-1 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-plus-1</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-plus-1</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-plus-1</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1" />
+  </url>
+
+  <!-- Product: shelly-plus-1pm -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-plus-1pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-plus-1pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-plus-1pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-1pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-1pm" />
+  </url>
+
+  <!-- Product: shelly-plus-2pm -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-plus-2pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-2pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-plus-2pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-2pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-plus-2pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-plus-2pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-plus-2pm" />
+  </url>
+
+  <!-- Product: shelly-pro-3 -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-pro-3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-pro-3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-3" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-pro-3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-3" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-3" />
+  </url>
+
+  <!-- Product: shelly-pro-4pm -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-pro-4pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-4pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-pro-4pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-4pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-pro-4pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-4pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-4pm" />
+  </url>
+
+  <!-- Product: shelly-pro-dual-cover-shutter-pm -->
+  <url>
+    <loc>https://smartelectricity.ma/product.html?id=shelly-pro-dual-cover-shutter-pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/product.html?id=shelly-pro-dual-cover-shutter-pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/product.html?id=shelly-pro-dual-cover-shutter-pm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/product.html?id=shelly-pro-dual-cover-shutter-pm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/product.html?id=shelly-pro-dual-cover-shutter-pm" />
   </url>
 </urlset>
