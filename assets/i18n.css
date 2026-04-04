@@ -211,6 +211,11 @@ h2:has(.border-b-2) {
     align-items:stretch;
   }
 
+  [dir="rtl"] .lang-mobile-menu{
+    right: auto;
+    left: 0;
+  }
+
 [dir="rtl"] .lang-desktop-menu button,
 [dir="rtl"] .lang-mobile-menu button{
     text-align: right !important;
