@@ -58,7 +58,7 @@
   function renderCard(product) {
     var title = t(product.title);
     var desc = t(product.short_description);
-    var image = (product.images && product.images.length > 0) ? product.images[0] : '';
+    var image = product.image || ((product.images && product.images.length > 0) ? product.images[0] : '');
     var prefix = getLangPrefix();
     var href = prefix + '/products/' + product.id + '.html';
 
