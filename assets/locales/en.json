@@ -140,5 +140,8 @@
   "showing_results": "Showing {start}–{end} of {total} products",
   "tech_label": "Tech",
   "key_features": "Key Features",
-  "page_title_products": "Products | S‑ELECTRICITY"
+  "page_title_products": "Products | S‑ELECTRICITY",
+  "hp_products_title": "Our Products",
+  "hp_products_subtitle": "We sell and install premium smart home devices from leading brands.",
+  "hp_products_browse": "Browse All Products"
 }

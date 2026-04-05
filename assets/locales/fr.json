@@ -140,5 +140,8 @@
   "showing_results": "Affichage de {start}–{end} sur {total} produits",
   "tech_label": "Tech",
   "key_features": "Caractéristiques clés",
-  "page_title_products": "Produits | S‑ELECTRICITY"
+  "page_title_products": "Produits | S‑ELECTRICITY",
+  "hp_products_title": "Nos Produits",
+  "hp_products_subtitle": "Nous vendons et installons des appareils domotiques de marques leaders.",
+  "hp_products_browse": "Voir Tous les Produits"
 }

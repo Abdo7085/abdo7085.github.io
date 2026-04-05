@@ -140,5 +140,8 @@
   "showing_results": "عرض {start}–{end} من أصل {total} منتج",
   "tech_label": "التقنية",
   "key_features": "الميزات الرئيسية",
-  "page_title_products": "المنتجات | S‑ELECTRICITY"
+  "page_title_products": "المنتجات | S‑ELECTRICITY",
+  "hp_products_title": "منتجاتنا",
+  "hp_products_subtitle": "نبيع ونثبّت أجهزة المنزل الذكي من أفضل العلامات التجارية.",
+  "hp_products_browse": "تصفح جميع المنتجات"
 }
