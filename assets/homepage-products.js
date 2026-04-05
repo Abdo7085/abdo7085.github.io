@@ -85,13 +85,11 @@
     return [];
   }
 
-  var _injected = false;
+  var _cachedProducts = null;
 
   function inject() {
-    if (_injected || document.getElementById('homepage-products-section')) {
-      _injected = true;
-      return true;
-    }
+    // Already in DOM — nothing to do
+    if (document.getElementById('homepage-products-section')) return true;
 
     // Find FAQ section to insert before it
     var faqTitle = document.querySelector('[data-i18n="spa_faq_title"]');
@@ -104,10 +102,13 @@
     wrapper.innerHTML = buildSectionShell();
     var sectionEl = wrapper.firstElementChild;
     faqSection.parentNode.insertBefore(sectionEl, faqSection);
-    _injected = true;
 
-    // Fetch and render products
-    fetchProducts().then(function(allProducts) {
+    // Fetch and render products (cache after first fetch)
+    var loadProducts = _cachedProducts
+      ? Promise.resolve(_cachedProducts)
+      : fetchProducts().then(function(data) { _cachedProducts = data; return data; });
+
+    loadProducts.then(function(allProducts) {
       var featured = FEATURED_IDS
         .map(function(id) { return allProducts.find(function(p) { return p.id === id; }); })
         .filter(Boolean);
@@ -117,7 +118,6 @@
         grid.innerHTML = featured.map(renderCard).join('');
       }
 
-      // Trigger i18n translations
       if (window.__site_i18n && window.__site_i18n.init) {
         setTimeout(function() { window.__site_i18n.init(); }, 100);
       }
@@ -126,19 +126,24 @@
     return true;
   }
 
-  // MutationObserver to wait for React to render
-  function mount() {
-    if (inject()) return;
-
+  // Persistent observer — keeps watching for React re-renders that wipe our section
+  function startObserver() {
     var observer = new MutationObserver(function() {
-      if (inject()) observer.disconnect();
+      if (!isHomepage()) return;
+      // Re-inject if our section was removed by a React re-render
+      if (!document.getElementById('homepage-products-section')) {
+        var faqTitle = document.querySelector('[data-i18n="spa_faq_title"]');
+        if (faqTitle) inject();
+      }
     });
     observer.observe(document.body || document.documentElement, {
       childList: true, subtree: true
     });
+  }
 
-    // Safety timeout — stop observing after 15s
-    setTimeout(function() { observer.disconnect(); }, 15000);
+  function mount() {
+    inject();
+    startObserver();
   }
 
   if (document.readyState === 'loading') {
@@ -146,14 +151,4 @@
   } else {
     mount();
   }
-
-  // Handle SPA navigation — cleanup on non-homepage
-  window.addEventListener('locationchange', function() {
-    if (!isHomepage()) {
-      var el = document.getElementById('homepage-products-section');
-      if (el) { el.remove(); _injected = false; }
-    } else if (!_injected) {
-      mount();
-    }
-  });
 })();
