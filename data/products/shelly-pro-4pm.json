@@ -19,8 +19,7 @@
   "technology": [
     "Wi-Fi",
     "Bluetooth",
-    "LAN",
-    "KNX"
+    "LAN"
   ],
   "product_type": "Actuator",
   "installation": "DIN Rail mounting",

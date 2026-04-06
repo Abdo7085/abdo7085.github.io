@@ -499,8 +499,7 @@
     "technology": [
       "Wi-Fi",
       "Bluetooth",
-      "LAN",
-      "KNX"
+      "LAN"
     ],
     "product_type": "Actuator",
     "installation": "DIN Rail mounting",
@@ -523,10 +522,9 @@
     "technology": [
       "Wi-Fi",
       "Bluetooth",
-      "LAN",
-      "KNX"
+      "LAN"
     ],
-    "product_type": "Actuator",
+    "product_type": "Shutter",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "Shelly Pro Dual Cover/Shutter PM",
@@ -540,6 +538,111 @@
     },
     "category": "",
     "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
+  },
+  {
+    "id": "sonoff-mini-zb2gs-l",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF MINI DUO-L ZB2GS-L 2-Gang Zigbee Smart Switch",
+      "fr": "Interrupteur Intelligent SONOFF MINI DUO-L ZB2GS-L 2 Canaux Zigbee",
+      "ar": "مفتاح ذكي SONOFF MINI DUO-L ZB2GS-L بقناتين Zigbee"
+    },
+    "short_description": {
+      "en": "Dual-channel no-neutral smart switch for older wiring.",
+      "fr": "Interrupteur double canal sans neutre pour anciens câblages.",
+      "ar": "مفتاح ذكي بقناتين بدون سلك محايد للتركيبات القديمة."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-mini-zb2gs-l.png"
+  },
+  {
+    "id": "sonoff-mini-zb2gs",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF MINI DUO ZB2GS 2-Gang Zigbee Smart Switch",
+      "fr": "Interrupteur Intelligent SONOFF MINI DUO ZB2GS 2 Canaux Zigbee",
+      "ar": "مفتاح ذكي SONOFF MINI DUO ZB2GS بقناتين Zigbee"
+    },
+    "short_description": {
+      "en": "Compact dual-channel smart switch for two loads.",
+      "fr": "Interrupteur intelligent double canal compact.",
+      "ar": "مفتاح ذكي مدمج بقناتين للتحكم بحملين."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-mini-zb2gs.png"
+  },
+  {
+    "id": "sonoff-mini-zbdim",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Dimmer",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF MINI Extreme ZBDIM Zigbee Dimmer",
+      "fr": "Variateur Zigbee SONOFF MINI Extreme ZBDIM",
+      "ar": "مخفت إضاءة Zigbee سونوف MINI Extreme ZBDIM"
+    },
+    "short_description": {
+      "en": "Compact behind-wall smart dimmer for warm lighting.",
+      "fr": "Variateur intelligent encastré pour une lumière modulable.",
+      "ar": "مخفت إضاءة ذكي مدمج خلف الحائط لإضاءة هادئة."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-mini-zbdim.png"
+  },
+  {
+    "id": "sonoff-mini-zbrbs",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Shutter",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch",
+      "fr": "Interrupteur Volet Roulant Intelligent SONOFF MINI-ZBRBS",
+      "ar": "مفتاح ستائر ذكي SONOFF MINI-ZBRBS"
+    },
+    "short_description": {
+      "en": "Compact behind-wall smart roller shutter controller.",
+      "fr": "Contrôleur de volet roulant intelligent compact, encastré.",
+      "ar": "وحدة تحكم ذكية مدمجة بالستائر، تُركَّب خلف الحائط."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-mini-zbrbs.png"
+  },
+  {
+    "id": "sonoff-zbmini-extreme-l2",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF ZBMINI Extreme ZBMINIL2",
+      "fr": "SONOFF ZBMINI Extreme ZBMINIL2",
+      "ar": "سونوف ZBMINI Extreme ZBMINIL2"
+    },
+    "short_description": {
+      "en": "No-neutral smart switch for older wiring.",
+      "fr": "Interrupteur intelligent sans neutre pour anciens câblages.",
+      "ar": "مفتاح ذكي بدون سلك محايد للتركيبات القديمة."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-zbmini-extreme-l2.png"
   },
   {
     "id": "sonoff-zbmini-extreme",
@@ -560,6 +663,6 @@
       "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."
     },
     "category": "",
-    "image": "/assets/products/sonoff-zbmini-extreme.avif"
+    "image": "/assets/products/sonoff-zbmini-extreme.png"
   }
 ]

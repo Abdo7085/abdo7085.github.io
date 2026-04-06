@@ -12,6 +12,7 @@ assets/locales/ar.json  → Arabic translations (filter values)
 assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
 scripts/generate_static_seo.py → SEO page generator (called by build_products.py)
+scripts/remove_bg.py      → Strip white background from a product image → transparent PNG
 
 products/               → Static product HTML pages (EN, auto-generated)
 fr/products/            → Static product HTML pages (FR, auto-generated)
@@ -74,7 +75,13 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 }
 ```
 
-2. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
+2. **Remove the white background from the product image** — Most manufacturer images have a plain white studio background. Always run the background remover so the product blends into the site's cards cleanly:
+   ```bash
+   python scripts/remove_bg.py assets/products/<product-slug>.<ext>
+   ```
+   This writes a transparent, auto-cropped `.png` next to the source image (same stem, `.png` extension). Then reference the `.png` in the JSON `images` array. The script only removes white-ish backgrounds via edge flood-fill, so interior whites (screens, labels) are preserved. Skip this step only if the source image already has a transparent background, or if the background is a lifestyle/photo shot rather than plain white.
+
+3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
    - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
 
 3. **Update locale files if needed** — If you introduce a new `product_type` or `installation` value that doesn't already exist in the catalog, add its translation key to both `assets/locales/ar.json` and `assets/locales/fr.json`. The key format is `val_<Value>` where spaces become underscores:
@@ -132,6 +139,19 @@ In Arabic (`ar`) text, **never translate** the following — keep them in their 
 - **Model numbers and brand names**: always keep as-is
 
 Only translate **common nouns and descriptive language** — for example "وحدة تحكم" (controller), "مرحل ذكي" (smart relay), "قياس الطاقة" (power metering). When in doubt, keep the English term.
+
+## Downloads & Manuals (`files` array)
+
+Each entry in `files` should link to **authoritative manufacturer content**, not marketing pages or third-party resellers. Strongly prefer, in this order:
+
+1. **PDF documents** hosted by the manufacturer — datasheets, user manuals, installation guides, wiring diagrams, declarations of conformity. These are stable, printable, and search-engine friendly. Always label them clearly: `"Datasheet (PDF)"`, `"User Manual (PDF)"`, `"Installation Guide (PDF)"`.
+2. **Manufacturer Knowledge Base / Help Center pages** — e.g. `kb.shelly.cloud`, `help.eaetechnology.com`, `sonoff.tech/product/...`, `reyee.ruijie.com/.../faq`. These are acceptable when no PDF exists for the topic, and they often contain richer setup info. Label them `"Knowledge Base"` or `"Setup Guide"`.
+
+**Avoid** linking to: generic product/marketing pages (e.g. `shelly.com/products/shop/...`), Amazon/AliExpress listings, blog posts, YouTube videos, or any non-manufacturer source. If the only thing you can find is a marketing page, it's better to omit that file entry than to include a low-value link.
+
+When researching a new product, actively search the manufacturer's site for `filetype:pdf <model number>` or browse their downloads/support section to locate proper PDFs before falling back to KB pages.
+
+**Verify every URL before adding it.** Use WebFetch (or a HEAD request) on each candidate link to confirm it returns a 200 response and real content — never trust a guessed URL pattern. A broken link in `files` is worse than no link at all. If a PDF URL returns 404, drop it and search again; don't commit broken links.
 
 ## Important Rules
 

@@ -1,0 +1,80 @@
+{
+  "id": "sonoff-mini-zbrbs",
+  "brand": "SONOFF",
+  "technology": [
+    "Zigbee"
+  ],
+  "product_type": "Shutter",
+  "installation": "Behind wall switch",
+  "title": {
+    "en": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch",
+    "fr": "Interrupteur Volet Roulant Intelligent SONOFF MINI-ZBRBS",
+    "ar": "مفتاح ستائر ذكي SONOFF MINI-ZBRBS"
+  },
+  "short_description": {
+    "en": "Compact behind-wall smart roller shutter controller.",
+    "fr": "Contrôleur de volet roulant intelligent compact, encastré.",
+    "ar": "وحدة تحكم ذكية مدمجة بالستائر، تُركَّب خلف الحائط."
+  },
+  "description": {
+    "en": "The MINI-ZBRBS is a tiny smart controller that turns your existing roller shutters, blinds, or curtains into smart ones — without changing the look of your wall switch. It slips behind your current shutter switch and lets you raise, lower, or stop your shutters from your phone, on a schedule, or by voice. Best of all, you can set them to any exact position (like 60% open) with a simple tap, perfect for letting in just the right amount of light. Once paired with Home Assistant, Zigbee2MQTT, or another Zigbee hub, your shutters can react to sunrise, sunset, weather, or any scene you create — and because commands run locally over Zigbee, everything keeps working even if your internet goes down. It also strengthens the rest of your Zigbee mesh network as a router.",
+    "fr": "Le MINI-ZBRBS est un minuscule contrôleur intelligent qui transforme vos volets roulants, stores ou rideaux existants en équipements connectés — sans changer l'apparence de votre interrupteur mural. Il se glisse derrière votre interrupteur de volet actuel et vous permet de monter, descendre ou arrêter vos volets depuis votre téléphone, selon un programme ou à la voix. Encore mieux, vous pouvez les positionner avec précision (par exemple 60% ouvert) d'un simple geste, idéal pour doser la lumière exactement comme vous le souhaitez. Une fois associé à Home Assistant, Zigbee2MQTT ou à un autre hub Zigbee, vos volets peuvent réagir au lever du soleil, au coucher, à la météo ou à toute scène que vous créez — et comme les commandes s'exécutent localement via Zigbee, tout continue de fonctionner même si votre internet est coupé. Il renforce également le reste de votre réseau Zigbee en agissant comme routeur.",
+    "ar": "MINI-ZBRBS هو وحدة تحكم ذكية صغيرة جداً تحوّل ستائرك الكهربائية أو رول شاترز أو الستائر الموجودة لديك إلى ستائر ذكية — دون تغيير شكل مفتاح الحائط. تُركَّب خلف مفتاح الستائر الحالي وتتيح لك رفعها أو خفضها أو إيقافها من هاتفك أو وفق جدول زمني أو بالصوت. والأفضل من ذلك أنك تستطيع ضبطها على أي وضعية بدقة (مثل 60% مفتوحة) بنقرة واحدة، وهو مثالي لإدخال القدر المناسب تماماً من الضوء. عند ربطها بـ Home Assistant أو Zigbee2MQTT أو أي Zigbee hub آخر، يمكن لستائرك أن تتفاعل مع شروق الشمس وغروبها وحالة الطقس أو أي scene تُنشئها — ولأن الأوامر تُنفَّذ محلياً عبر Zigbee، يستمر كل شيء في العمل حتى لو انقطع الإنترنت. كما تعمل كـ router لتقوية بقية شبكة Zigbee mesh في منزلك."
+  },
+  "specs": {
+    "en": {
+      "Model": "MINI-ZBRBS",
+      "Power Supply": "100–240 VAC, 50/60Hz",
+      "Max Current": "1A",
+      "Motor Type": "4-wire or 5-wire AC motor with built-in limit switches",
+      "Wireless Protocol": "Zigbee 3.0",
+      "Zigbee Role": "Router",
+      "Neutral Wire": "Required",
+      "Position Control": "Percentage adjustment with calibration",
+      "Local Scenes": "Yes (works offline)",
+      "Dimensions": "39.5 × 33 × 16.8 mm",
+      "Mounting Box": "EU 60/80, depth ≥ 60 mm",
+      "Operating Temperature": "-10°C to 40°C",
+      "Hub Required": "Yes (Zigbee hub)"
+    },
+    "fr": {
+      "Modèle": "MINI-ZBRBS",
+      "Alimentation": "100–240 VAC, 50/60Hz",
+      "Courant Max": "1A",
+      "Type de Moteur": "Moteur AC 4 ou 5 fils avec fins de course intégrées",
+      "Protocole Sans Fil": "Zigbee 3.0",
+      "Rôle Zigbee": "Routeur",
+      "Fil Neutre": "Requis",
+      "Contrôle de Position": "Réglage en pourcentage avec calibration",
+      "Scènes Locales": "Oui (fonctionne hors ligne)",
+      "Dimensions": "39,5 × 33 × 16,8 mm",
+      "Boîtier de Montage": "EU 60/80, profondeur ≥ 60 mm",
+      "Température de Fonctionnement": "-10°C à 40°C",
+      "Hub Requis": "Oui (hub Zigbee)"
+    },
+    "ar": {
+      "الموديل": "MINI-ZBRBS",
+      "مصدر الطاقة": "100–240 فولت متردد، 50/60 هرتز",
+      "أقصى تيار": "1 أمبير",
+      "نوع المحرك": "محرك AC بـ 4 أو 5 أسلاك مع limit switches مدمجة",
+      "بروتوكول لاسلكي": "Zigbee 3.0",
+      "دور Zigbee": "Router",
+      "سلك محايد": "مطلوب",
+      "التحكم بالوضعية": "ضبط بالنسبة المئوية مع calibration",
+      "scenes محلية": "نعم (تعمل دون إنترنت)",
+      "الأبعاد": "39.5 × 33 × 16.8 مم",
+      "علبة التثبيت": "EU 60/80، عمق ≥ 60 مم",
+      "درجة حرارة التشغيل": "-10 إلى 40 درجة مئوية",
+      "موزع مطلوب": "نعم (Zigbee hub)"
+    }
+  },
+  "images": [
+    "/assets/products/sonoff-mini-zbrbs.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://help.sonoff.tech/docs/MINIZBRBS"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "sonoff-mini-zbdim",
+  "brand": "SONOFF",
+  "technology": [
+    "Zigbee"
+  ],
+  "product_type": "Dimmer",
+  "installation": "Behind wall switch",
+  "title": {
+    "en": "SONOFF MINI Extreme ZBDIM Zigbee Dimmer",
+    "fr": "Variateur Zigbee SONOFF MINI Extreme ZBDIM",
+    "ar": "مخفت إضاءة Zigbee سونوف MINI Extreme ZBDIM"
+  },
+  "short_description": {
+    "en": "Compact behind-wall smart dimmer for warm lighting.",
+    "fr": "Variateur intelligent encastré pour une lumière modulable.",
+    "ar": "مخفت إضاءة ذكي مدمج خلف الحائط لإضاءة هادئة."
+  },
+  "description": {
+    "en": "The MINI Extreme ZBDIM is a tiny smart dimmer that fits behind your existing wall switch and turns any compatible light into a fully adjustable smart light. Instead of just on and off, you can set any brightness from a soft glow to full power — from your phone, on a schedule, or by voice — perfect for cozy evenings, movie nights, or gentle wake-up lighting. It works with traditional incandescent and halogen bulbs as well as dimmable LED lamps, and keeps your familiar wall switch fully functional. Pair it with Home Assistant, Zigbee2MQTT, or another Zigbee hub and you can integrate dimming into scenes, automations, and voice commands through Alexa or Google Home. As a Zigbee device it also helps strengthen the mesh network in your home.",
+    "fr": "Le MINI Extreme ZBDIM est un minuscule variateur intelligent qui se glisse derrière votre interrupteur mural existant et transforme n'importe quel éclairage compatible en lumière entièrement ajustable. Au lieu d'un simple allumé/éteint, vous pouvez régler n'importe quel niveau de luminosité, d'une lueur douce à pleine puissance — depuis votre téléphone, selon un programme ou à la voix — parfait pour les soirées cosy, les soirées cinéma ou un réveil en douceur. Il fonctionne avec les ampoules incandescentes et halogènes traditionnelles ainsi qu'avec les ampoules LED dimmables, et préserve le fonctionnement habituel de votre interrupteur mural. Associé à Home Assistant, Zigbee2MQTT ou à un autre hub Zigbee, vous pouvez intégrer la variation dans des scènes, des automatisations et des commandes vocales via Alexa ou Google Home. En tant que dispositif Zigbee, il renforce aussi le réseau mesh de votre maison.",
+    "ar": "MINI Extreme ZBDIM هو مخفت إضاءة ذكي صغير جداً يُركَّب خلف مفتاح الحائط الموجود لديك ويحوّل أي إضاءة متوافقة إلى إضاءة ذكية قابلة للتحكم الكامل بالسطوع. بدلاً من مجرد التشغيل والإطفاء، يمكنك ضبط أي مستوى سطوع من إضاءة هادئة جداً إلى أقصى قوة — من هاتفك أو وفق جدول زمني أو بالصوت — مثالي لأمسيات هادئة أو ليالي الأفلام أو إيقاظ تدريجي لطيف. يعمل مع لمبات incandescent وhalogen التقليدية وكذلك لمبات LED القابلة للتخفيت، ويحافظ على عمل مفتاح الحائط بشكله الطبيعي. عند ربطه بـ Home Assistant أو Zigbee2MQTT أو أي Zigbee hub آخر، يمكنك دمج التحكم بالسطوع في scenes والأتمتة والأوامر الصوتية عبر Alexa أو Google Home. وكجهاز Zigbee فإنه يساعد أيضاً في تقوية شبكة mesh في منزلك."
+  },
+  "specs": {
+    "en": {
+      "Model": "MINI-ZBDIM",
+      "MCU": "EFR32MG21",
+      "Power Supply": "220–240 VAC, 50Hz",
+      "Max Load (Incandescent / Halogen)": "400W",
+      "Max Load (Dimmable LED)": "200VA",
+      "Max Load (Dimmable Electronic Transformer)": "200W",
+      "Wireless Protocol": "Zigbee 3.0",
+      "Zigbee Role": "Router (repeater)",
+      "Neutral Wire": "Required",
+      "Compatible Switches": "Push button (default), Rocker",
+      "Dimensions": "45 × 39.4 × 16.8 mm",
+      "Weight": "24.5 g",
+      "Operating Temperature": "-10°C to 40°C",
+      "Humidity": "5–95% RH (non-condensing)",
+      "Hub Required": "Yes (Zigbee hub)"
+    },
+    "fr": {
+      "Modèle": "MINI-ZBDIM",
+      "MCU": "EFR32MG21",
+      "Alimentation": "220–240 VAC, 50Hz",
+      "Charge Max (Incandescente / Halogène)": "400W",
+      "Charge Max (LED Dimmable)": "200VA",
+      "Charge Max (Transformateur Électronique Dimmable)": "200W",
+      "Protocole Sans Fil": "Zigbee 3.0",
+      "Rôle Zigbee": "Routeur (répéteur)",
+      "Fil Neutre": "Requis",
+      "Interrupteurs Compatibles": "Bouton poussoir (défaut), Bascule",
+      "Dimensions": "45 × 39,4 × 16,8 mm",
+      "Poids": "24,5 g",
+      "Température de Fonctionnement": "-10°C à 40°C",
+      "Humidité": "5–95% HR (sans condensation)",
+      "Hub Requis": "Oui (hub Zigbee)"
+    },
+    "ar": {
+      "الموديل": "MINI-ZBDIM",
+      "MCU": "EFR32MG21",
+      "مصدر الطاقة": "220–240 فولت متردد، 50 هرتز",
+      "أقصى حمولة (Incandescent / Halogen)": "400 واط",
+      "أقصى حمولة (Dimmable LED)": "200 VA",
+      "أقصى حمولة (Dimmable Electronic Transformer)": "200 واط",
+      "بروتوكول لاسلكي": "Zigbee 3.0",
+      "دور Zigbee": "Router (repeater)",
+      "سلك محايد": "مطلوب",
+      "المفاتيح المتوافقة": "Push button (افتراضي)، Rocker",
+      "الأبعاد": "45 × 39.4 × 16.8 مم",
+      "الوزن": "24.5 غ",
+      "درجة حرارة التشغيل": "-10 إلى 40 درجة مئوية",
+      "الرطوبة": "5–95% (بدون تكثف)",
+      "موزع مطلوب": "نعم (Zigbee hub)"
+    }
+  },
+  "images": [
+    "/assets/products/sonoff-mini-zbdim.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://help.sonoff.tech/docs/wl1jzfUJ"
+    }
+  ]
+}

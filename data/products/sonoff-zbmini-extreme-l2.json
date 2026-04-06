@@ -1,0 +1,80 @@
+{
+  "id": "sonoff-zbmini-extreme-l2",
+  "brand": "SONOFF",
+  "technology": [
+    "Zigbee"
+  ],
+  "product_type": "Smart Relay",
+  "installation": "Behind wall switch",
+  "title": {
+    "en": "SONOFF ZBMINI Extreme ZBMINIL2",
+    "fr": "SONOFF ZBMINI Extreme ZBMINIL2",
+    "ar": "سونوف ZBMINI Extreme ZBMINIL2"
+  },
+  "short_description": {
+    "en": "No-neutral smart switch for older wiring.",
+    "fr": "Interrupteur intelligent sans neutre pour anciens câblages.",
+    "ar": "مفتاح ذكي بدون سلك محايد للتركيبات القديمة."
+  },
+  "description": {
+    "en": "The ZBMINIL2 is a tiny smart switch built for one specific challenge: older homes where the wall box doesn't have a neutral wire. Most smart switches simply won't work in that situation — this one does. It slips behind your existing wall switch, keeps it fully functional, and turns any light into a smart light you can control from your phone or by voice. It even handles very low-wattage LED bulbs (from just 3W) without needing an extra anti-flicker module. Pair it with Home Assistant, Zigbee2MQTT, or most Zigbee hubs, and you get remote control, schedules, and voice commands through Alexa or Google Home — all without rewiring your home.",
+    "fr": "Le ZBMINIL2 est un minuscule interrupteur intelligent conçu pour un problème précis : les maisons anciennes où le boîtier mural ne dispose pas de fil neutre. La plupart des interrupteurs connectés ne fonctionnent tout simplement pas dans ce cas — celui-ci, si. Il se glisse derrière votre interrupteur mural existant, préserve son fonctionnement normal, et transforme n'importe quel éclairage en lumière intelligente pilotable depuis votre téléphone ou par commande vocale. Il gère même des ampoules LED de très faible puissance (à partir de 3W) sans nécessiter de module anti-scintillement. Associé à Home Assistant, Zigbee2MQTT ou la plupart des hubs Zigbee, il offre contrôle à distance, programmations et commandes vocales via Alexa ou Google Home — sans refaire votre installation électrique.",
+    "ar": "ZBMINIL2 هو مفتاح ذكي صغير جداً صُمّم لحل مشكلة محددة: المنازل القديمة التي لا يتوفر في علبة المفتاح فيها سلك محايد. معظم المفاتيح الذكية ببساطة لا تعمل في هذه الحالة — أما هذا فيعمل. يُركَّب خلف مفتاح الحائط الموجود لديك، ويحافظ على عمله الطبيعي تماماً، ويحوّل أي إضاءة إلى إضاءة ذكية يمكنك التحكم بها من هاتفك أو بالصوت. كما يتعامل بسلاسة مع لمبات LED ذات الاستهلاك المنخفض جداً (بدءاً من 3 واط) دون الحاجة إلى وحدة anti-flicker إضافية. عند ربطه بـ Home Assistant أو Zigbee2MQTT أو معظم Zigbee hubs، تحصل على التحكم عن بُعد والجدولة والأوامر الصوتية عبر Alexa أو Google Home — دون إعادة توصيل أسلاك المنزل."
+  },
+  "specs": {
+    "en": {
+      "Model": "ZBMINIL2",
+      "MCU": "EFR32MG22",
+      "Power Supply": "100–240 VAC, 50/60Hz",
+      "Max Load": "6A (1380W @ 230V, 720W @ 120V)",
+      "Minimum Load": "3W (no anti-flicker module needed)",
+      "Wireless Protocol": "Zigbee 3.0",
+      "Zigbee Role": "End device",
+      "Neutral Wire": "Not required",
+      "Compatible Switches": "Rocker, Push button",
+      "Dimensions": "39.5 × 32 × 18.4 mm",
+      "Mounting Boxes": "EU, 86-type, 120-type",
+      "Operating Temperature": "-10°C to 40°C",
+      "Hub Required": "Yes (Zigbee hub)"
+    },
+    "fr": {
+      "Modèle": "ZBMINIL2",
+      "MCU": "EFR32MG22",
+      "Alimentation": "100–240 VAC, 50/60Hz",
+      "Charge Max": "6A (1380W @ 230V, 720W @ 120V)",
+      "Charge Minimum": "3W (sans module anti-scintillement)",
+      "Protocole Sans Fil": "Zigbee 3.0",
+      "Rôle Zigbee": "End device",
+      "Fil Neutre": "Non requis",
+      "Interrupteurs Compatibles": "Bascule, Bouton poussoir",
+      "Dimensions": "39,5 × 32 × 18,4 mm",
+      "Boîtiers de Montage": "EU, type 86, type 120",
+      "Température de Fonctionnement": "-10°C à 40°C",
+      "Hub Requis": "Oui (hub Zigbee)"
+    },
+    "ar": {
+      "الموديل": "ZBMINIL2",
+      "MCU": "EFR32MG22",
+      "مصدر الطاقة": "100–240 فولت متردد، 50/60 هرتز",
+      "أقصى حمولة": "6 أمبير (1380 واط عند 230 فولت، 720 واط عند 120 فولت)",
+      "أدنى حمولة": "3 واط (بدون وحدة anti-flicker)",
+      "بروتوكول لاسلكي": "Zigbee 3.0",
+      "دور Zigbee": "End device",
+      "سلك محايد": "غير مطلوب",
+      "المفاتيح المتوافقة": "Rocker، Push button",
+      "الأبعاد": "39.5 × 32 × 18.4 مم",
+      "علب التثبيت": "EU، النوع 86، النوع 120",
+      "درجة حرارة التشغيل": "-10 إلى 40 درجة مئوية",
+      "موزع مطلوب": "نعم (Zigbee hub)"
+    }
+  },
+  "images": [
+    "/assets/products/sonoff-zbmini-extreme-l2.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://help.sonoff.tech/docs/zbminil2"
+    }
+  ]
+}

@@ -12,9 +12,9 @@
     "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."
   },
   "description": {
-    "en": "Ultra-compact Zigbee 3.0 smart switch (ZBMINIR2) that fits inside EU, 86-type, and 120-type mounting boxes. Supports up to 10A load (2,400W at 240V) for lights and appliances. Acts as a Zigbee router, extending your mesh network and supporting up to 64 end devices. Compatible with momentary switches, door contacts, SPDT, and rocker switches. Works with Home Assistant (ZHA/Zigbee2MQTT) and requires a Zigbee hub. Neutral wire required.",
-    "fr": "Interrupteur intelligent Zigbee 3.0 ultra-compact (ZBMINIR2) compatible avec les boîtiers EU, 86 et 120. Supporte une charge jusqu'à 10A (2 400W à 240V). Fonctionne comme routeur Zigbee, étendant votre réseau mesh et supportant jusqu'à 64 appareils. Compatible avec les interrupteurs momentanés, contacts de porte, SPDT et à bascule. Fonctionne avec Home Assistant (ZHA/Zigbee2MQTT). Nécessite un hub Zigbee et un fil neutre.",
-    "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر (ZBMINIR2) يتسع داخل علب التثبيت الأوروبية والنوع 86 والنوع 120. يدعم حمولة حتى 10 أمبير (2,400 واط عند 240 فولت). يعمل كموجه Zigbee لتوسيع شبكة mesh ويدعم حتى 64 جهاز. متوافق مع المفاتيح اللحظية وملامسات الأبواب ومفاتيح SPDT والمفاتيح الهزازة. يعمل مع Home Assistant عبر ZHA أو Zigbee2MQTT. يتطلب موزع Zigbee وسلك محايد."
+    "en": "The ZBMINI Extreme is a tiny smart switch designed to slip behind your existing wall switch and turn any ordinary light or appliance into a smart one — without changing how it looks. It's so compact it fits even the tightest European wall boxes, and it keeps your familiar wall switch fully functional so the rest of your household won't notice anything new. Because it speaks Zigbee, it also helps strengthen your smart home's mesh network, making nearby devices more reliable. It pairs seamlessly with Home Assistant, Zigbee2MQTT, and most major Zigbee hubs, giving you remote control, automations, and voice control through Alexa or Google Home.",
+    "fr": "Le ZBMINI Extreme est un minuscule interrupteur intelligent conçu pour se glisser derrière votre interrupteur mural existant et rendre n'importe quelle lumière ou appareil intelligent — sans rien changer à l'apparence de votre installation. Si compact qu'il s'intègre même dans les boîtiers les plus étroits, il préserve le fonctionnement habituel de votre interrupteur mural pour que personne ne remarque le changement. Comme il utilise Zigbee, il renforce aussi le réseau mesh de votre maison connectée et améliore la fiabilité des appareils voisins. Il s'intègre parfaitement avec Home Assistant, Zigbee2MQTT et la plupart des hubs Zigbee, vous offrant contrôle à distance, automatisations et commande vocale via Alexa ou Google Home.",
+    "ar": "ZBMINI Extreme هو مفتاح ذكي صغير جداً مصمم ليُركَّب خلف مفتاح الحائط الموجود لديك ويحوّل أي إضاءة أو جهاز عادي إلى جهاز ذكي — دون تغيير شكل التركيب. حجمه الصغير جداً يسمح بتركيبه حتى في أضيق علب الحائط، ويحافظ على عمل مفتاح الحائط بشكله الطبيعي حتى لا يلاحظ أحد في المنزل أي تغيير. ولأنه يستعمل Zigbee، فإنه يقوّي أيضاً شبكة mesh في منزلك الذكي ويجعل الأجهزة المجاورة أكثر استقراراً. يتكامل بسلاسة مع Home Assistant وZigbee2MQTT ومعظم Zigbee hubs، مما يمنحك التحكم عن بُعد والأتمتة والتحكم الصوتي عبر Alexa أو Google Home."
   },
   "technology": [
     "Zigbee"
@@ -63,12 +63,12 @@
     }
   },
   "images": [
-    "/assets/products/sonoff-zbmini-extreme.avif"
+    "/assets/products/sonoff-zbmini-extreme.png"
   ],
   "files": [
     {
-      "name": "Product Page",
-      "url": "https://sonoff.tech/products/sonoff-zbmini-extreme-zigbee-smart-switch-zbminir2"
+      "name": "Knowledge Base",
+      "url": "https://help.sonoff.tech/docs/zbminir2"
     }
   ]
 }

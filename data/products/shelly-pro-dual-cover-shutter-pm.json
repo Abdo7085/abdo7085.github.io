@@ -19,10 +19,9 @@
   "technology": [
     "Wi-Fi",
     "Bluetooth",
-    "LAN",
-    "KNX"
+    "LAN"
   ],
-  "product_type": "Actuator",
+  "product_type": "Shutter",
   "installation": "DIN Rail mounting",
   "specs": {
     "en": {

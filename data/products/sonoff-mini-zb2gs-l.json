@@ -1,0 +1,89 @@
+{
+  "id": "sonoff-mini-zb2gs-l",
+  "brand": "SONOFF",
+  "technology": [
+    "Zigbee"
+  ],
+  "product_type": "Smart Relay",
+  "installation": "Behind wall switch",
+  "title": {
+    "en": "SONOFF MINI DUO-L ZB2GS-L 2-Gang Zigbee Smart Switch",
+    "fr": "Interrupteur Intelligent SONOFF MINI DUO-L ZB2GS-L 2 Canaux Zigbee",
+    "ar": "مفتاح ذكي SONOFF MINI DUO-L ZB2GS-L بقناتين Zigbee"
+  },
+  "short_description": {
+    "en": "Dual-channel no-neutral smart switch for older wiring.",
+    "fr": "Interrupteur double canal sans neutre pour anciens câblages.",
+    "ar": "مفتاح ذكي بقناتين بدون سلك محايد للتركيبات القديمة."
+  },
+  "description": {
+    "en": "The MINI DUO-L ZB2GS-L is a tiny two-channel smart switch designed for one specific situation: older homes where the wall box has no neutral wire. Most dual-gang smart switches simply can't be installed in that case — this one can. It slips behind your existing two-gang wall switch and turns both lights into independently controllable smart lights, without rewiring the room. It even handles low-wattage LED bulbs (from just 3W) without any extra anti-flicker module. Pair it with Home Assistant, Zigbee2MQTT, or another Zigbee hub and you'll get app control, schedules, scenes, and voice control through Alexa or Google Home — all from one tiny module hidden behind a perfectly normal-looking wall switch.",
+    "fr": "Le MINI DUO-L ZB2GS-L est un minuscule interrupteur intelligent à deux canaux conçu pour une situation précise : les maisons anciennes où le boîtier mural ne dispose pas de fil neutre. La plupart des interrupteurs intelligents doubles ne peuvent tout simplement pas être installés dans ce cas — celui-ci, si. Il se glisse derrière votre interrupteur mural double existant et transforme les deux lumières en lumières intelligentes contrôlables séparément, sans refaire le câblage. Il gère même les ampoules LED de très faible puissance (à partir de 3W) sans aucun module anti-scintillement supplémentaire. Associé à Home Assistant, Zigbee2MQTT ou à un autre hub Zigbee, vous obtenez contrôle via application, programmations, scènes et commandes vocales via Alexa ou Google Home — le tout depuis un minuscule module caché derrière un interrupteur d'apparence parfaitement normale.",
+    "ar": "MINI DUO-L ZB2GS-L هو مفتاح ذكي صغير جداً بقناتين مصمم لحالة محددة: المنازل القديمة التي لا يتوفر في علبة المفتاح فيها سلك محايد. معظم المفاتيح الذكية المزدوجة ببساطة لا يمكن تركيبها في هذه الحالة — أما هذا فيمكن. يُركَّب خلف مفتاح الحائط المزدوج الموجود لديك ويحوّل الإضاءتين إلى إضاءات ذكية يمكن التحكم بها كل واحدة على حدة، دون إعادة توصيل أسلاك الغرفة. كما يتعامل مع لمبات LED ذات الاستهلاك المنخفض جداً (بدءاً من 3 واط) دون الحاجة إلى أي وحدة anti-flicker إضافية. عند ربطه بـ Home Assistant أو Zigbee2MQTT أو أي Zigbee hub آخر، تحصل على التحكم عبر التطبيق والجدولة وscenes والأوامر الصوتية عبر Alexa أو Google Home — كل ذلك من وحدة صغيرة مخبأة خلف مفتاح حائط بمظهر طبيعي تماماً."
+  },
+  "specs": {
+    "en": {
+      "Model": "MINI-ZB2GS-L",
+      "MCU": "EFR32MG22",
+      "Power Supply": "100–240 VAC, 50/60Hz",
+      "Channels": "2 independent",
+      "Max Load per Channel": "8A",
+      "Max Total Load": "12A (resistive)",
+      "Minimum Load": "3W (no anti-flicker module needed)",
+      "Wireless Protocol": "Zigbee 3.0",
+      "Zigbee Role": "End device",
+      "Neutral Wire": "Not required",
+      "Compatible Switches": "Rocker, Push button",
+      "Dimensions": "45 × 39.4 × 16.8 mm",
+      "Weight": "33 g",
+      "Operating Temperature": "-10°C to 40°C",
+      "Humidity": "5–95% RH (non-condensing)",
+      "Hub Required": "Yes (Zigbee hub)"
+    },
+    "fr": {
+      "Modèle": "MINI-ZB2GS-L",
+      "MCU": "EFR32MG22",
+      "Alimentation": "100–240 VAC, 50/60Hz",
+      "Canaux": "2 indépendants",
+      "Charge Max par Canal": "8A",
+      "Charge Totale Max": "12A (résistive)",
+      "Charge Minimum": "3W (sans module anti-scintillement)",
+      "Protocole Sans Fil": "Zigbee 3.0",
+      "Rôle Zigbee": "End device",
+      "Fil Neutre": "Non requis",
+      "Interrupteurs Compatibles": "Bascule, Bouton poussoir",
+      "Dimensions": "45 × 39,4 × 16,8 mm",
+      "Poids": "33 g",
+      "Température de Fonctionnement": "-10°C à 40°C",
+      "Humidité": "5–95% HR (sans condensation)",
+      "Hub Requis": "Oui (hub Zigbee)"
+    },
+    "ar": {
+      "الموديل": "MINI-ZB2GS-L",
+      "MCU": "EFR32MG22",
+      "مصدر الطاقة": "100–240 فولت متردد، 50/60 هرتز",
+      "عدد القنوات": "قناتان مستقلتان",
+      "أقصى حمولة لكل قناة": "8 أمبير",
+      "أقصى حمولة إجمالية": "12 أمبير (resistive)",
+      "أدنى حمولة": "3 واط (بدون وحدة anti-flicker)",
+      "بروتوكول لاسلكي": "Zigbee 3.0",
+      "دور Zigbee": "End device",
+      "سلك محايد": "غير مطلوب",
+      "المفاتيح المتوافقة": "Rocker، Push button",
+      "الأبعاد": "45 × 39.4 × 16.8 مم",
+      "الوزن": "33 غ",
+      "درجة حرارة التشغيل": "-10 إلى 40 درجة مئوية",
+      "الرطوبة": "5–95% (بدون تكثف)",
+      "موزع مطلوب": "نعم (Zigbee hub)"
+    }
+  },
+  "images": [
+    "/assets/products/sonoff-mini-zb2gs-l.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://help.sonoff.tech/docs/MINI-ZB2GS-L"
+    }
+  ]
+}
