@@ -302,7 +302,20 @@
   replacements.sort((a,b)=>b.orig.length - a.orig.length);
     if(!replacements.some(r=>r.trans)) return; // nothing to do
 
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(node) {
+        // Skip text nodes inside product containers — their content is already
+        // translated via the multilingual JSON data and the t() helper.
+        var el = node.parentElement;
+        while(el) {
+          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          el = el.parentElement;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
     const nodes = [];
     while(walker.nextNode()) nodes.push(walker.currentNode);
 
