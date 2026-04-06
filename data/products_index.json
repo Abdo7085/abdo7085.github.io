@@ -540,5 +540,26 @@
     },
     "category": "",
     "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
+  },
+  {
+    "id": "sonoff-zbmini-extreme",
+    "brand": "SONOFF",
+    "technology": [
+      "Zigbee"
+    ],
+    "product_type": "Smart Relay",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "SONOFF ZBMINI Extreme",
+      "fr": "SONOFF ZBMINI Extreme",
+      "ar": "سونوف ZBMINI Extreme"
+    },
+    "short_description": {
+      "en": "Ultra-compact Zigbee 3.0 smart switch.",
+      "fr": "Interrupteur intelligent Zigbee 3.0 ultra-compact.",
+      "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."
+    },
+    "category": "",
+    "image": "/assets/products/sonoff-zbmini-extreme.avif"
   }
 ]

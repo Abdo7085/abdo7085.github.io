@@ -504,4 +504,22 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products/shelly-pro-dual-cover-shutter-pm.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products/shelly-pro-dual-cover-shutter-pm.html" />
   </url>
+  <url>
+    <loc>https://smartelectricity.ma/products/sonoff-zbmini-extreme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products/sonoff-zbmini-extreme.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/products/sonoff-zbmini-extreme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products/sonoff-zbmini-extreme.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/products/sonoff-zbmini-extreme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products/sonoff-zbmini-extreme.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products/sonoff-zbmini-extreme.html" />
+  </url>
 </urlset>

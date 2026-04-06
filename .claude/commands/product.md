@@ -111,8 +111,8 @@ List files in `data/products/` to show available products. Read individual files
 
 These are the values currently in use across products. Always prefer reusing existing values:
 
-**Brands**: `EAE Technology`, `Shelly`, `Reyee`
-**Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`
+**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`
+**Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`
 **Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`
 **Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
 
@@ -123,10 +123,20 @@ When the user provides product info in any language, translate it appropriately 
 - **`short_description`**: Keep it very short — one concise line, max 8-10 words. Focus on what the product IS, not connectivity details. Connectivity info is already shown via the `technology` tags on the card. Example: "Dual cover/shutter controller with power metering." NOT "DIN-rail dual cover/shutter smart controller with power metering, Wi-Fi, Bluetooth, and LAN connectivity."
 - **`description`**: Rich but accessible. Write 3-5 sentences that explain what the product does, how it fits into a smart home setup, and what benefits it brings — in clear language a homeowner would understand. Cover the use case, key advantages, and what makes it stand out. Avoid raw specs (voltages, frequencies, protocol codes) — those belong in the `specs` table. Avoid jargon — if a technical term is necessary, explain it simply. The goal: someone reading this should understand WHY they'd want this product without needing an engineering degree.
 
+## Arabic Translation Rules
+
+In Arabic (`ar`) text, **never translate** the following — keep them in their original English form:
+- **Product/platform names**: Home Assistant, Alexa, Google Home, Zigbee2MQTT, ZHA, Ruijie Cloud, Reyee Mesh, etc.
+- **Technical terms that are industry-standard in English**: mesh, webhook, trailing edge, mJS, flash, firmware, Layer 2, uplink, SFP, etc.
+- **Protocol/standard names**: MQTT, PoE, VPN, VLAN, Wi-Fi, Bluetooth, KNX, Zigbee, LAN, GHz, etc.
+- **Model numbers and brand names**: always keep as-is
+
+Only translate **common nouns and descriptive language** — for example "وحدة تحكم" (controller), "مرحل ذكي" (smart relay), "قياس الطاقة" (power metering). When in doubt, keep the English term.
+
 ## Important Rules
 
 - The `id` field MUST match the filename (without `.json`)
 - All text fields (`title`, `short_description`, `description`, `specs`) MUST have `en`, `fr`, and `ar` versions
-- Images should be optimized for web (keep file sizes small)
+- Images should be optimized for web — prefer `.avif` when the source provides it (much smaller than PNG/JPG). Use `.png` or `.jpg` as fallback. Don't convert `.avif` to `.png` unnecessarily
 - **Always run `python scripts/build_products.py` after any changes** — this is the single command that updates index, SEO pages, and sitemap
 - Never manually edit `data/products_index.json`, `sitemap.xml`, or files in `products/`, `fr/products/`, `ar/products/` — they are all auto-generated
