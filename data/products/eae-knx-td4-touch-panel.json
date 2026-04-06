@@ -1,28 +1,26 @@
 {
   "id": "eae-knx-td4-touch-panel",
   "brand": "EAE Technology",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Touch Panel",
   "installation": "Wall mount",
-  
   "title": {
     "en": "EAE TD4-KNX 4\" Touch Panel",
     "fr": "Écran Tactile EAE TD4-KNX 4\"",
     "ar": "شاشة لمس EAE TD4-KNX مقاس 4 بوصة"
   },
-  
   "short_description": {
     "en": "4-inch capacitive touch panel with built-in sensors, RGB control, and thermostat functions.",
     "fr": "Écran tactile capacitif de 4 pouces avec capteurs intégrés, contrôle RGB et fonctions thermostat.",
     "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."
   },
-  
   "description": {
     "en": "The TD4 touch panel is a compact color screen that serves as the central control point for any room in your smart home. From one elegant wall-mounted display, you can adjust lighting with full color and brightness control, manage the temperature across up to four zones, and operate blinds or curtains. Built-in sensors detect when you approach and automatically wake the screen, while also monitoring room temperature for precise climate control. It even displays real-time information about energy usage, air quality, and humidity, giving you a complete picture of your home environment at a glance.",
     "fr": "L'écran tactile TD4 est un écran couleur compact qui sert de point de contrôle central pour chaque pièce de votre maison connectée. Depuis un seul afficheur mural élégant, vous pouvez régler l'éclairage avec un contrôle complet des couleurs et de l'intensité, gérer la température sur jusqu'à quatre zones, et piloter vos stores ou rideaux. Ses capteurs intégrés détectent votre approche et réveillent automatiquement l'écran, tout en surveillant la température ambiante pour un confort climatique précis. Il affiche également en temps réel la consommation d'énergie, la qualité de l'air et le taux d'humidité, vous offrant une vue complète de votre environnement domestique en un coup d'oeil.",
     "ar": "لوحة اللمس TD4 هي شاشة ملونة مدمجة تعمل كنقطة تحكم مركزية لأي غرفة في منزلك الذكي. من شاشة واحدة أنيقة مثبتة على الحائط، يمكنك ضبط الإضاءة مع تحكم كامل بالألوان والسطوع، وإدارة درجة الحرارة في ما يصل إلى أربع مناطق، والتحكم بالستائر. تكشف المستشعرات المدمجة اقترابك وتوقظ الشاشة تلقائياً، بينما تراقب أيضاً درجة حرارة الغرفة لضبط المناخ بدقة. كما تعرض معلومات فورية عن استهلاك الطاقة وجودة الهواء والرطوبة، مما يمنحك صورة شاملة عن بيئة منزلك بنظرة واحدة."
   },
-  
   "specs": {
     "en": {
       "Screen": "4-inch capacitive touch",
@@ -43,11 +41,9 @@
       "شاشة العرض": "الطاقة، جودة الهواء، CO2، الرطوبة"
     }
   },
-  
   "images": [
-    "/assets/products/eae-knx-td4-touch-panel.jpg"
+    "/assets/products/eae-knx-td4-touch-panel.png"
   ],
-  
   "files": [
     {
       "name": "Datasheet",
