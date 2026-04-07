@@ -22,6 +22,23 @@ HOST = "https://smartelectricity.ma"
 
 LANGS = ["en", "fr", "ar"]
 
+OG_LOCALES = {"en": "en_US", "fr": "fr_FR", "ar": "ar_AR"}
+
+
+def make_meta_description(product, lang, max_len=160):
+    """Build a SEO-optimal meta description (~150-160 chars) from the long description."""
+    long_desc = t(product.get("description"), lang)
+    short_desc = t(product.get("short_description"), lang)
+    text = long_desc or short_desc or ""
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= max_len:
+        return text
+    cut = text[:max_len]
+    sp = cut.rfind(" ")
+    if sp > 80:
+        cut = cut[:sp]
+    return cut.rstrip(",.;:") + "…"
+
 
 def load_locale(lang):
     """Load locale JSON file."""
@@ -43,7 +60,7 @@ def t(obj, lang="en"):
 def build_json_ld(product, lang):
     """Build JSON-LD structured data for a single product page."""
     title = t(product.get("title"), lang)
-    desc = t(product.get("short_description"), lang) or t(product.get("description"), lang)
+    desc = t(product.get("description"), lang) or t(product.get("short_description"), lang)
     pid = product.get("id", "")
     images = product.get("images", [])
     image_url = HOST + images[0] if images else ""
@@ -53,6 +70,7 @@ def build_json_ld(product, lang):
         "@type": "Product",
         "name": title,
         "description": desc,
+        "sku": pid,
         "url": f"{HOST}/products/{pid}.html",
         "brand": {
             "@type": "Brand",
@@ -89,12 +107,16 @@ def generate_product_html(template_html, product, lang):
     """
     pid = product.get("id", "")
     title = t(product.get("title"), lang)
-    desc_text = t(product.get("short_description"), lang) or t(product.get("description"), lang)
+    brand = product.get("brand", "")
+    desc_text = make_meta_description(product, lang)
     images = product.get("images", [])
     image_path = images[0] if images else ""
     image_url = HOST + image_path if image_path else f"{HOST}/assets/S‑ELECTRICITY-LOGO.svg"
 
-    page_title = f"{title} | SMART ELECTRICITY"
+    if brand and brand.lower() not in title.lower():
+        page_title = f"{title} - {brand} | SMART ELECTRICITY"
+    else:
+        page_title = f"{title} | SMART ELECTRICITY"
 
     # Escape for HTML attributes
     safe_title = html_module.escape(page_title, quote=True)
@@ -205,7 +227,32 @@ def generate_product_html(template_html, product, lang):
     # Inject JSON-LD right before </head>
     json_ld = build_json_ld(product, lang)
     ld_script = f'<script type="application/ld+json" id="product-jsonld">{json_ld}</script>'
-    out = out.replace("</head>", f"  {ld_script}\n  </head>", 1)
+
+    # BreadcrumbList JSON-LD
+    products_label = {"en": "Products", "fr": "Produits", "ar": "المنتجات"}[lang]
+    home_url = f"{HOST}{prefix}/"
+    products_url = f"{HOST}{prefix}/products.html"
+    breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "SMART ELECTRICITY", "item": home_url},
+            {"@type": "ListItem", "position": 2, "name": products_label, "item": products_url},
+            {"@type": "ListItem", "position": 3, "name": title, "item": canonical_url},
+        ],
+    }
+    bc_script = f'<script type="application/ld+json" id="breadcrumb-jsonld">{json.dumps(breadcrumb, ensure_ascii=False)}</script>'
+
+    # og:locale tags
+    og_locale = OG_LOCALES[lang]
+    alt_locales = "".join(
+        f'\n  <meta property="og:locale:alternate" content="{OG_LOCALES[l]}" />'
+        for l in LANGS if l != lang
+    )
+    locale_tags = f'<meta property="og:locale" content="{og_locale}" />{alt_locales}'
+
+    inject = f"  {locale_tags}\n  {ld_script}\n  {bc_script}\n  </head>"
+    out = out.replace("</head>", inject, 1)
 
     return out
 
