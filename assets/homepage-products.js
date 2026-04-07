@@ -154,20 +154,29 @@
     if (!existing) inject();
   }
 
+  // Keep retrying until the homepage FAQ exists (React may render async)
+  function checkWithRetries() {
+    var tries = 0;
+    var max = 40; // ~6s
+    var iv = setInterval(function() {
+      tries++;
+      check();
+      if (document.getElementById('homepage-products-section') || !isHomepage() || tries >= max) {
+        clearInterval(iv);
+      }
+    }, 150);
+  }
+
   function hookHistory() {
     ['pushState', 'replaceState'].forEach(function(fn) {
       var orig = history[fn];
       history[fn] = function() {
         var r = orig.apply(this, arguments);
-        setTimeout(check, 0);
-        setTimeout(check, 150);
+        checkWithRetries();
         return r;
       };
     });
-    window.addEventListener('popstate', function() {
-      setTimeout(check, 0);
-      setTimeout(check, 150);
-    });
+    window.addEventListener('popstate', checkWithRetries);
   }
 
   function mount() {
@@ -175,11 +184,12 @@
     startObserver();
     hookHistory();
     // Handle back/forward cache restore (bfcache) from static pages
-    window.addEventListener('pageshow', function(e) {
-      setTimeout(check, 0);
-      setTimeout(check, 150);
-      setTimeout(check, 500);
-    });
+    window.addEventListener('pageshow', checkWithRetries);
+    // Intercept clicks on any in-app link to trigger a recheck
+    document.addEventListener('click', function(e) {
+      var a = e.target && e.target.closest && e.target.closest('a[href]');
+      if (a) checkWithRetries();
+    }, true);
   }
 
   if (document.readyState === 'loading') {
