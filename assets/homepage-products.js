@@ -183,6 +183,8 @@
     if (isHomepage()) inject();
     startObserver();
     hookHistory();
+    // Safety net — poll every second forever
+    setInterval(check, 1000);
     // Handle back/forward cache restore (bfcache) from static pages
     window.addEventListener('pageshow', checkWithRetries);
     // Intercept clicks on any in-app link to trigger a recheck
