@@ -17,8 +17,8 @@
   function isHomepage() {
     var p = location.pathname || '/';
     return p === '/' || p === '/index.html'
-      || p === '/fr/' || p === '/fr/index.html'
-      || p === '/ar/' || p === '/ar/index.html';
+      || p === '/fr' || p === '/fr/' || p === '/fr/index.html'
+      || p === '/ar' || p === '/ar/' || p === '/ar/index.html';
   }
 
   function getLang() {
