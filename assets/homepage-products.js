@@ -174,6 +174,12 @@
     if (isHomepage()) inject();
     startObserver();
     hookHistory();
+    // Handle back/forward cache restore (bfcache) from static pages
+    window.addEventListener('pageshow', function(e) {
+      setTimeout(check, 0);
+      setTimeout(check, 150);
+      setTimeout(check, 500);
+    });
   }
 
   if (document.readyState === 'loading') {
