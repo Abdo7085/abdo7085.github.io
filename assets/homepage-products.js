@@ -3,15 +3,37 @@
  * Injects a "Our Products" section into the homepage between Services and FAQ.
  */
 (function() {
-  // Featured product IDs — curated mix of brands and product types
-  var FEATURED_IDS = [
-    'eae-knx-rosa-switches',
-    'eae-knx-td4-touch-panel',
-    'shelly-1-gen3',
-    'shelly-dimmer-gen3',
-    'shelly-pro-4pm',
-    'rg-eg105gw-t'
-  ];
+  // Daily-seeded RNG so the selection is stable for the whole day.
+  function dailyRng() {
+    var d = new Date();
+    var seed = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+    return function() {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+  }
+
+  // Pick one random product per brand (daily-stable), then shuffle order.
+  function pickFeatured(allProducts) {
+    var rng = dailyRng();
+    var byBrand = {};
+    for (var i = 0; i < allProducts.length; i++) {
+      var p = allProducts[i];
+      var b = p.brand || 'Other';
+      if (!byBrand[b]) byBrand[b] = [];
+      byBrand[b].push(p);
+    }
+    var picks = [];
+    Object.keys(byBrand).sort().forEach(function(b) {
+      var list = byBrand[b];
+      picks.push(list[Math.floor(rng() * list.length)]);
+    });
+    for (var j = picks.length - 1; j > 0; j--) {
+      var k = Math.floor(rng() * (j + 1));
+      var tmp = picks[j]; picks[j] = picks[k]; picks[k] = tmp;
+    }
+    return picks;
+  }
 
   // Page guard — only run on homepage
   function isHomepage() {
@@ -108,9 +130,7 @@
       : fetchProducts().then(function(data) { _cachedProducts = data; return data; });
 
     loadProducts.then(function(allProducts) {
-      var featured = FEATURED_IDS
-        .map(function(id) { return allProducts.find(function(p) { return p.id === id; }); })
-        .filter(Boolean);
+      var featured = pickFeatured(allProducts);
 
       var grid = document.getElementById('hp-products-grid');
       if (grid && featured.length > 0) {
