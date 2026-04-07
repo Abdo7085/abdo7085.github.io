@@ -14,7 +14,7 @@
   }
 
   // Pick featured products daily: aim for TARGET cards, at most MAX_PER_BRAND per brand.
-  var TARGET = 4;
+  var TARGET = 6;
   var MAX_PER_BRAND = 2;
   function pickFeatured(allProducts) {
     var rng = dailyRng();
