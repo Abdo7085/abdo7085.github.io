@@ -13,7 +13,9 @@
     };
   }
 
-  // Pick one random product per brand (daily-stable), then shuffle order.
+  // Pick featured products daily: aim for TARGET cards, at most MAX_PER_BRAND per brand.
+  var TARGET = 4;
+  var MAX_PER_BRAND = 2;
   function pickFeatured(allProducts) {
     var rng = dailyRng();
     var byBrand = {};
@@ -23,14 +25,27 @@
       if (!byBrand[b]) byBrand[b] = [];
       byBrand[b].push(p);
     }
-    var picks = [];
-    Object.keys(byBrand).sort().forEach(function(b) {
+    // Shuffle each brand's list so picks are random within the brand.
+    Object.keys(byBrand).forEach(function(b) {
       var list = byBrand[b];
-      picks.push(list[Math.floor(rng() * list.length)]);
+      for (var j = list.length - 1; j > 0; j--) {
+        var k = Math.floor(rng() * (j + 1));
+        var tmp = list[j]; list[j] = list[k]; list[k] = tmp;
+      }
     });
-    for (var j = picks.length - 1; j > 0; j--) {
-      var k = Math.floor(rng() * (j + 1));
-      var tmp = picks[j]; picks[j] = picks[k]; picks[k] = tmp;
+    // Round-robin up to MAX_PER_BRAND passes, until we reach TARGET.
+    var picks = [];
+    var brands = Object.keys(byBrand).sort();
+    for (var pass = 0; pass < MAX_PER_BRAND && picks.length < TARGET; pass++) {
+      for (var bi = 0; bi < brands.length && picks.length < TARGET; bi++) {
+        var list2 = byBrand[brands[bi]];
+        if (list2.length > pass) picks.push(list2[pass]);
+      }
+    }
+    // Final shuffle of the picked order.
+    for (var j2 = picks.length - 1; j2 > 0; j2--) {
+      var k2 = Math.floor(rng() * (j2 + 1));
+      var tmp2 = picks[j2]; picks[j2] = picks[k2]; picks[k2] = tmp2;
     }
     return picks;
   }
