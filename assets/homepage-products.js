@@ -125,45 +125,38 @@
     return true;
   }
 
-  // Persistent observer — keeps watching for React re-renders that wipe our section
+  // MutationObserver is only active while on the homepage, to catch React
+  // re-renders that wipe our injected section. Disconnected on nav away.
+  var _observer = null;
   function startObserver() {
-    var observer = new MutationObserver(function() {
-      var existing = document.getElementById('homepage-products-section');
-      if (!isHomepage()) {
-        // Left the homepage (SPA navigation) — remove our injected section
-        if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-        return;
-      }
-      // Re-inject if our section was removed by a React re-render
-      if (!existing) {
-        var faqTitle = document.querySelector('[data-i18n="spa_faq_title"]');
-        if (faqTitle) inject();
-      }
+    if (_observer) return;
+    _observer = new MutationObserver(function() {
+      if (!isHomepage()) { stopObserver(); return; }
+      if (!document.getElementById('homepage-products-section')) inject();
     });
-    observer.observe(document.body || document.documentElement, {
+    _observer.observe(document.body || document.documentElement, {
       childList: true, subtree: true
     });
   }
-
-  function check() {
+  function stopObserver() {
+    if (_observer) { _observer.disconnect(); _observer = null; }
     var existing = document.getElementById('homepage-products-section');
-    if (!isHomepage()) {
-      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-      return;
-    }
-    if (!existing) inject();
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
   }
 
-  // Keep retrying until the homepage FAQ exists (React may render async)
-  function checkWithRetries() {
+  // Bounded retry — polls every 150ms for up to ~6s, then stops.
+  function activateHomepage() {
+    if (!isHomepage()) { stopObserver(); return; }
+    startObserver();
+    if (document.getElementById('homepage-products-section')) return;
     var tries = 0;
-    var max = 40; // ~6s
     var iv = setInterval(function() {
       tries++;
-      check();
-      if (document.getElementById('homepage-products-section') || !isHomepage() || tries >= max) {
+      if (!isHomepage() || document.getElementById('homepage-products-section') || tries >= 40) {
         clearInterval(iv);
+        return;
       }
+      inject();
     }, 150);
   }
 
@@ -172,26 +165,17 @@
       var orig = history[fn];
       history[fn] = function() {
         var r = orig.apply(this, arguments);
-        checkWithRetries();
+        activateHomepage();
         return r;
       };
     });
-    window.addEventListener('popstate', checkWithRetries);
+    window.addEventListener('popstate', activateHomepage);
+    window.addEventListener('pageshow', activateHomepage);
   }
 
   function mount() {
-    if (isHomepage()) inject();
-    startObserver();
+    activateHomepage();
     hookHistory();
-    // Safety net — poll every second forever
-    setInterval(check, 1000);
-    // Handle back/forward cache restore (bfcache) from static pages
-    window.addEventListener('pageshow', checkWithRetries);
-    // Intercept clicks on any in-app link to trigger a recheck
-    document.addEventListener('click', function(e) {
-      var a = e.target && e.target.closest && e.target.closest('a[href]');
-      if (a) checkWithRetries();
-    }, true);
   }
 
   if (document.readyState === 'loading') {
