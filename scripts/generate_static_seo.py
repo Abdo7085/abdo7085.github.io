@@ -77,15 +77,6 @@ def build_json_ld(product, lang):
             "name": product.get("brand", "")
         },
         "category": product.get("product_type", ""),
-        "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "priceCurrency": "MAD",
-            "seller": {
-                "@type": "Organization",
-                "name": "SMART ELECTRICITY"
-            }
-        }
     }
     if image_url:
         ld["image"] = image_url
