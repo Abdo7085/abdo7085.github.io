@@ -20,7 +20,6 @@
       || p === '/fr/' || p === '/fr/index.html'
       || p === '/ar/' || p === '/ar/index.html';
   }
-  if (!isHomepage()) return;
 
   function getLang() {
     return document.documentElement.lang || 'en';
@@ -129,9 +128,14 @@
   // Persistent observer — keeps watching for React re-renders that wipe our section
   function startObserver() {
     var observer = new MutationObserver(function() {
-      if (!isHomepage()) return;
+      var existing = document.getElementById('homepage-products-section');
+      if (!isHomepage()) {
+        // Left the homepage (SPA navigation) — remove our injected section
+        if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+        return;
+      }
       // Re-inject if our section was removed by a React re-render
-      if (!document.getElementById('homepage-products-section')) {
+      if (!existing) {
         var faqTitle = document.querySelector('[data-i18n="spa_faq_title"]');
         if (faqTitle) inject();
       }
@@ -142,7 +146,7 @@
   }
 
   function mount() {
-    inject();
+    if (isHomepage()) inject();
     startObserver();
   }
 
