@@ -145,9 +145,35 @@
     });
   }
 
+  function check() {
+    var existing = document.getElementById('homepage-products-section');
+    if (!isHomepage()) {
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+      return;
+    }
+    if (!existing) inject();
+  }
+
+  function hookHistory() {
+    ['pushState', 'replaceState'].forEach(function(fn) {
+      var orig = history[fn];
+      history[fn] = function() {
+        var r = orig.apply(this, arguments);
+        setTimeout(check, 0);
+        setTimeout(check, 150);
+        return r;
+      };
+    });
+    window.addEventListener('popstate', function() {
+      setTimeout(check, 0);
+      setTimeout(check, 150);
+    });
+  }
+
   function mount() {
     if (isHomepage()) inject();
     startObserver();
+    hookHistory();
   }
 
   if (document.readyState === 'loading') {
