@@ -78,6 +78,10 @@
   "images": [
     "/assets/products/shelly-dimmer-gen3.png"
   ],
+  "rating": {
+    "value": 4.5,
+    "count": 7
+  },
   "files": [
     {
       "name": "Knowledge Base",
