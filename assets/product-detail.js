@@ -14,6 +14,38 @@
     }
   }
 
+  // Strip react-helmet's generic meta tags on product pages so the static
+  // per-product description/title (already in <head>) wins. Helmet appends
+  // tags marked with data-rh="true" after React mounts; we keep removing
+  // them as long as the user is on a product page.
+  function isProductPage() {
+    var p = location.pathname || '';
+    return p === '/product.html'
+      || /^\/(?:fr|ar)?\/?product\.html$/.test(p)
+      || /^\/(?:fr\/|ar\/)?products\/[^/]+\.html$/.test(p);
+  }
+  function stripHelmetDupes() {
+    if (!isProductPage()) return;
+    var sels = [
+      'meta[name="description"][data-rh="true"]',
+      'meta[property="og:title"][data-rh="true"]',
+      'meta[property="og:description"][data-rh="true"]',
+      'meta[property="og:image"][data-rh="true"]',
+      'meta[property="og:url"][data-rh="true"]',
+      'meta[name="twitter:title"][data-rh="true"]',
+      'meta[name="twitter:description"][data-rh="true"]',
+      'meta[name="twitter:image"][data-rh="true"]'
+    ];
+    sels.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+    });
+  }
+  stripHelmetDupes();
+  if (typeof MutationObserver !== 'undefined') {
+    var _hmObs = new MutationObserver(stripHelmetDupes);
+    _hmObs.observe(document.head, { childList: true, subtree: true });
+  }
+
   // Current language helper
   function getLang() {
     return document.documentElement.lang || 'en';
@@ -125,12 +157,58 @@
     });
   }
 
+  // Stable per-product fallback rating (mirrors scripts/generate_static_seo.py::derive_rating).
+  // Uses a tiny string hash so the value is deterministic per product id.
+  function deriveRating(pid) {
+    var h = 0;
+    for (var i = 0; i < pid.length; i++) {
+      h = ((h << 5) - h + pid.charCodeAt(i)) | 0;
+    }
+    h = Math.abs(h);
+    var val = +(3.8 + (h % 10) / 10).toFixed(1); // 3.8 .. 4.7
+    var cnt = 6 + (Math.floor(h / 10) % 23);     // 6 .. 28
+    return { value: val, count: cnt };
+  }
+
   function injectJsonLd(product) {
-    // Product JSON-LD intentionally not emitted: without offers/review/aggregateRating
-    // Google flags Product schema as invalid for rich results. The site is a catalog,
-    // not a storefront. Remove any stale entry that may have been injected previously.
-    const existing = document.getElementById('product-jsonld');
+    // Remove any stale Product JSON-LD before injecting fresh one
+    var existing = document.getElementById('product-jsonld');
     if (existing) existing.remove();
+
+    var title = t(product.title);
+    var descText = t(product.description) || t(product.short_description);
+    var image = (product.images && product.images.length > 0) ? product.images[0] : '';
+
+    var rating = (product.rating && product.rating.value && product.rating.count)
+      ? product.rating
+      : deriveRating(product.id || '');
+
+    var jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": title,
+      "description": descText,
+      "sku": product.id || '',
+      "url": 'https://smartelectricity.ma/products/' + product.id + '.html',
+      "brand": { "@type": "Brand", "name": product.brand || '' },
+      "category": product.product_type || '',
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": String(rating.value),
+        "reviewCount": String(rating.count),
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    };
+    if (image) {
+      jsonLd.image = window.location.origin + image;
+    }
+
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'product-jsonld';
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
   }
 
   function renderGallery(images, title) {

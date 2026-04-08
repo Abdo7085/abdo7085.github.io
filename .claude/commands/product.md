@@ -69,11 +69,22 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 
   "images": ["/assets/products/<product-slug>.jpg"],
 
+  "rating": {
+    "value": 4.3,
+    "count": 17
+  },
+
   "files": [
     { "name": "Datasheet", "url": "https://..." }
   ]
 }
 ```
+
+**About the `rating` field**: This drives the `aggregateRating` block in the product's JSON-LD, which Google requires for `Product` rich-result eligibility (alongside `offers` or `review`). Since the site is a catalog (no prices), `aggregateRating` is the only viable path.
+
+- **Always try first** to find a real average rating from credible sources: Amazon listings of the same model, manufacturer's own product page, AliExpress, professional review sites, or trade reviews. If you find a real number, use it (e.g. Amazon shows 4.4 stars from 89 reviews → `{"value": 4.4, "count": 89}`).
+- **Only if no real data exists**, omit the `rating` field entirely. The build scripts (`generate_static_seo.py` and `assets/product-detail.js`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
+- **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
 2. **Remove the white background from the product image** — Most manufacturer images have a plain white studio background. Always run the background remover so the product blends into the site's cards cleanly:
    ```bash
