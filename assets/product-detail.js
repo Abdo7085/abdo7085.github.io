@@ -126,35 +126,11 @@
   }
 
   function injectJsonLd(product) {
-    // Remove any existing JSON-LD for product
+    // Product JSON-LD intentionally not emitted: without offers/review/aggregateRating
+    // Google flags Product schema as invalid for rich results. The site is a catalog,
+    // not a storefront. Remove any stale entry that may have been injected previously.
     const existing = document.getElementById('product-jsonld');
     if (existing) existing.remove();
-
-    const title = t(product.title);
-    const descText = t(product.short_description) || t(product.description);
-    const image = (product.images && product.images.length > 0) ? product.images[0] : '';
-
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": title,
-      "description": descText,
-      "brand": {
-        "@type": "Brand",
-        "name": product.brand || ''
-      },
-      "category": product.product_type || ''
-    };
-    jsonLd.url = 'https://smartelectricity.ma/products/' + product.id + '.html';
-    if (image) {
-      jsonLd.image = window.location.origin + image;
-    }
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'product-jsonld';
-    script.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(script);
   }
 
   function renderGallery(images, title) {

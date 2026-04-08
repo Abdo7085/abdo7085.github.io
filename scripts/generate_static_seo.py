@@ -215,9 +215,9 @@ def generate_product_html(template_html, product, lang):
         out, count=1
     )
 
-    # Inject JSON-LD right before </head>
-    json_ld = build_json_ld(product, lang)
-    ld_script = f'<script type="application/ld+json" id="product-jsonld">{json_ld}</script>'
+    # NOTE: Product JSON-LD intentionally omitted. Without offers/review/aggregateRating
+    # Google flags Product schema as invalid for rich results. Site is a catalog,
+    # not a storefront, so we ship only BreadcrumbList structured data.
 
     # BreadcrumbList JSON-LD
     products_label = {"en": "Products", "fr": "Produits", "ar": "المنتجات"}[lang]
@@ -242,7 +242,7 @@ def generate_product_html(template_html, product, lang):
     )
     locale_tags = f'<meta property="og:locale" content="{og_locale}" />{alt_locales}'
 
-    inject = f"  {locale_tags}\n  {ld_script}\n  {bc_script}\n  </head>"
+    inject = f"  {locale_tags}\n  {bc_script}\n  </head>"
     out = out.replace("</head>", inject, 1)
 
     return out
