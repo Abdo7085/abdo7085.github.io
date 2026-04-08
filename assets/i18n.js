@@ -7,6 +7,30 @@
 // - Sets <html lang> and <html dir> (rtl for 'ar')
 // Note: For SPA content rendered inside #root, integrate your app's i18n
 (function(){
+  // Strip react-helmet's generic meta tags so the static per-page SEO meta
+  // (already in <head>) wins. Helmet appends tags marked with data-rh="true"
+  // after React mounts; without this we end up with duplicate <meta name="description">
+  // and Googlebot may pick the generic one. Runs on every page since i18n.js is global.
+  function stripHelmetDupes() {
+    var sels = [
+      'meta[name="description"][data-rh="true"]',
+      'meta[property="og:title"][data-rh="true"]',
+      'meta[property="og:description"][data-rh="true"]',
+      'meta[property="og:image"][data-rh="true"]',
+      'meta[property="og:url"][data-rh="true"]',
+      'meta[name="twitter:title"][data-rh="true"]',
+      'meta[name="twitter:description"][data-rh="true"]',
+      'meta[name="twitter:image"][data-rh="true"]'
+    ];
+    sels.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+    });
+  }
+  stripHelmetDupes();
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(stripHelmetDupes).observe(document.head, { childList: true, subtree: true });
+  }
+
   const defaultLang = 'en';
   const available = ['en','fr','ar'];
   // Cache for loaded locale dictionaries (store Promise to dedupe concurrent requests)

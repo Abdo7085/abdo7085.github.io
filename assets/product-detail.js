@@ -14,37 +14,7 @@
     }
   }
 
-  // Strip react-helmet's generic meta tags on product pages so the static
-  // per-product description/title (already in <head>) wins. Helmet appends
-  // tags marked with data-rh="true" after React mounts; we keep removing
-  // them as long as the user is on a product page.
-  function isProductPage() {
-    var p = location.pathname || '';
-    return p === '/product.html'
-      || /^\/(?:fr|ar)?\/?product\.html$/.test(p)
-      || /^\/(?:fr\/|ar\/)?products\/[^/]+\.html$/.test(p);
-  }
-  function stripHelmetDupes() {
-    if (!isProductPage()) return;
-    var sels = [
-      'meta[name="description"][data-rh="true"]',
-      'meta[property="og:title"][data-rh="true"]',
-      'meta[property="og:description"][data-rh="true"]',
-      'meta[property="og:image"][data-rh="true"]',
-      'meta[property="og:url"][data-rh="true"]',
-      'meta[name="twitter:title"][data-rh="true"]',
-      'meta[name="twitter:description"][data-rh="true"]',
-      'meta[name="twitter:image"][data-rh="true"]'
-    ];
-    sels.forEach(function(sel) {
-      document.querySelectorAll(sel).forEach(function(el) { el.remove(); });
-    });
-  }
-  stripHelmetDupes();
-  if (typeof MutationObserver !== 'undefined') {
-    var _hmObs = new MutationObserver(stripHelmetDupes);
-    _hmObs.observe(document.head, { childList: true, subtree: true });
-  }
+  // (react-helmet duplicate-meta stripping is handled globally in assets/i18n.js)
 
   // Current language helper
   function getLang() {
