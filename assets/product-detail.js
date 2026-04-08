@@ -146,15 +146,6 @@
       "category": product.product_type || ''
     };
     jsonLd.url = 'https://smartelectricity.ma/products/' + product.id + '.html';
-    jsonLd.offers = {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "priceCurrency": "MAD",
-        "seller": {
-            "@type": "Organization",
-            "name": "SMART ELECTRICITY"
-        }
-    };
     if (image) {
       jsonLd.image = window.location.origin + image;
     }
