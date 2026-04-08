@@ -12146,9 +12146,9 @@ const Xh = re("Zap", [["polygon", {
                             children: [u.jsx(Bh, {
                                 className: "w-4 h-4 mr-2 text-primary"
                             }), u.jsx("a", {
-                                href: "mailto:samirelectricity.notify@gmail.com",
+                                href: "mailto:support@smartelectricity.ma",
                                 className: "text-gray-400 hover:text-primary transition-colors",
-                                children: "samirelectricity.notify@gmail.com"
+                                children: "support@smartelectricity.ma"
                             })]
                         })]
                     })]
