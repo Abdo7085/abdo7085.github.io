@@ -264,7 +264,9 @@
   "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems.": "spa_desc_cabling_wiring_solutions",
   "We specialize in smart home automation, Smart Locks setup, Domotique, Security Cameras, and other electrical solutions.": "spa_a_services",
   "We specialize in smart home automation, smart locks, video surveillance, security systems, and complete electrical solutions.": "spa_a_services",
+  "We offer smart home automation (KNX, Wi-Fi, Zigbee), video surveillance & security cameras, network & Wi-Fi optimization, smart locks & access control, professional electrical installations, and lighting design — for both residential and commercial properties.": "spa_a_services",
   "This is one of our most common questions, and the honest answer is that there isn't a one-size-fits-all price. The final cost depends entirely on your vision, the size of your property, and the level of automation you desire.": "spa_a_prices",
+  "There isn't a one-size-fits-all price. The final cost depends on the scope of work — whether it's a simple smart switch setup, a full surveillance system, or a complete home automation project. Contact us for a free personalized quote.": "spa_a_prices",
     "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget.": "spa_team",
     "Your Trusted Partner in Smart Home & Security Solutions": "spa_trusted_partner",
     "Smart Home Automation": "spa_smart_home_automation",
@@ -289,9 +291,11 @@
     "How much does installation cost?": "spa_q_price",
     "How long does installation take?": "spa_q_how_long",
   "The installation timeline depends entirely on the project's complexity. A simple setup like a few smart switches and a shutter can be completed in under a day. A full-house automation system for a villa can take several days to a few weeks.": "spa_a_how_long",
+  "It depends on the project scope. A simple setup like smart switches or a security camera can be done in a few hours. A full smart home system or network infrastructure for a villa may take several days to a couple of weeks.": "spa_a_how_long",
     "How do I schedule an appointment?": "spa_q_schedule",
     "You can call us at 0654-132112. We'll be happy to talk to you anytime.": "spa_a_schedule",
   "Call us at +212 654-132112 — we're happy to hear from you anytime.": "spa_a_schedule",
+  "Call us at +212 654-132112 or reach out through our website — we're happy to hear from you anytime.": "spa_a_schedule",
   };
 
   // Additional mappings discovered in the SPA bundle

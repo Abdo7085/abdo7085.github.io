@@ -30,7 +30,7 @@
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
 /* Basic RTL adjustments: these are minimal — adapt to your real stylesheet */
-[dir="rtl"] body{direction:rtl; font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;}
+[dir="rtl"] body{direction:rtl; font-family: 'Cairo', 'Poppins', sans-serif;}
 [dir="rtl"] .lang-switch{right:auto;left:12px}
 
 /* Tailwind RTL fixes */
@@ -53,7 +53,7 @@
 }
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
-  font-family: 'Noto Sans Arabic', 'Exo 2', sans-serif;
+  font-family: 'Cairo', 'Exo 2', sans-serif;
 }
 
 /* Keep decorative underline with small gap, not touching description text below */
