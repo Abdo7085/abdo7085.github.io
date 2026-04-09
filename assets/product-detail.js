@@ -95,7 +95,8 @@
     const imageUrl = image ? window.location.origin + image : '';
     const id = product.id;
 
-    document.title = `${title} | SMART ELECTRICITY`;
+    var _suffix = { en: 'S‑ELECTRICITY Morocco', fr: 'S‑ELECTRICITY Maroc', ar: 'S‑ELECTRICITY المغرب' };
+    document.title = `${title} | ${_suffix[getLang()] || _suffix.en}`;
 
     const canonical = document.getElementById('meta-canonical');
     const ogTitle = document.getElementById('meta-og-title');

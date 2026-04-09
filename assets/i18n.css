@@ -236,3 +236,53 @@ h2:has(.border-b-2) {
 
   .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{ display: none !important; }
 }
+
+/* Hero subtitle: forced to own line via JS (Tailwind loads after CSS, so
+   inline styles are needed — see i18n.js heroSubtitleFix). */
+
+/* ── "What We Do" section override ──
+   The React bundle renders the subsection title (spa_smart_home_automation)
+   at the same size as the main heading. Reduce it and remove the underline
+   so it reads as a proper subsection label, not a duplicate heading. */
+h2:has(> [data-i18n="spa_smart_home_automation"]) {
+  font-size: 1.15rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280 !important; /* gray-500 — softer than orange */
+  margin-bottom: 0.75rem !important;
+  display: inline-block !important;
+}
+h2:has(> [data-i18n="spa_smart_home_automation"]) span {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+/* Orange accent line under "WHAT WE DO" — fits text width only */
+h2:has(> [data-i18n="spa_smart_home_automation"])::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #6b7280; /* match "WHAT WE DO" text color */
+  border-radius: 2px;
+  margin-top: 0.15rem;
+}
+
+/* Make the badge ("End-to-End Smart Solutions") more prominent since
+   the title is now a small label */
+[data-i18n="spa_complete_integration"] {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important; /* near-black */
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+[data-i18n="spa_complete_integration"]::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: #bb761f; /* brand orange */
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}

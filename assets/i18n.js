@@ -31,6 +31,21 @@
     new MutationObserver(stripHelmetDupes).observe(document.head, { childList: true, subtree: true });
   }
 
+  // Force the hero subtitle to its own line (Tailwind's inline-block loads
+  // after our CSS, so !important doesn't win — inline style does).
+  function heroSubtitleFix() {
+    var el = document.querySelector('#hero [data-i18n="spa_subtitle"]');
+    if (!el) return;
+    el.style.display = 'block';
+    el.style.marginTop = '0.25rem';
+    el.style.marginLeft = '0';
+    el.style.whiteSpace = 'normal';
+  }
+  heroSubtitleFix();
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(heroSubtitleFix).observe(document.body, { childList: true, subtree: true });
+  }
+
   const defaultLang = 'en';
   const available = ['en','fr','ar'];
   // Cache for loaded locale dictionaries (store Promise to dedupe concurrent requests)
@@ -248,27 +263,35 @@
   "Comprehensive security camera systems with analytics capabilities for retail, office, and industrial environments.": "spa_desc_lighting_fixture_installation",
   "Professional audio solutions for retail spaces, restaurants, and offices with zoned controls and background music systems.": "spa_desc_cabling_wiring_solutions",
   "We specialize in smart home automation, Smart Locks setup, Domotique, Security Cameras, and other electrical solutions.": "spa_a_services",
+  "We specialize in smart home automation, smart locks, video surveillance, security systems, and complete electrical solutions.": "spa_a_services",
   "This is one of our most common questions, and the honest answer is that there isn't a one-size-fits-all price. The final cost depends entirely on your vision, the size of your property, and the level of automation you desire.": "spa_a_prices",
     "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget.": "spa_team",
     "Your Trusted Partner in Smart Home & Security Solutions": "spa_trusted_partner",
     "Smart Home Automation": "spa_smart_home_automation",
+    "What We Do": "spa_smart_home_automation",
     "Complete Smart Home Integration": "spa_complete_integration",
+    "End-to-End Smart Solutions": "spa_complete_integration",
     "Transform your house into an intelligent Smart Home with seamless automation, voice control, and cutting-edge tech that adapts to your lifestyle. Full control, no contracts, no confusion.": "spa_transform_house",
+    "From smart home automation to professional networking and security — we design, install, and maintain complete intelligent systems for homes and businesses across Morocco.": "spa_transform_house",
     "Your smart home works together, just like it should. Simple, connected, and always under your command.": "spa_tagline",
+    "One team, one call — everything from wiring to Wi-Fi, cameras to KNX. Professionally installed, fully supported.": "spa_tagline",
     "Contact Us": "spa_contact_us",
     "Previous Work": "spa_previous_work",
     "Contact": "spa_contact",
     "S‑ELECTRICITY Smart Home & Domotique | Morocco": "spa_site_title",
+    "S‑ELECTRICITY — Smart Home & Security | Morocco": "spa_site_title",
   "Smart home automation & electrical solutions in Morocco. Upgrade your home for a modern & seamless experience.": "spa_intro",
   "Free Consultation - Call Now": "spa_cta_free_consultation",
   "Call Now": "spa_cta_call_now",
   "Call Now: 0654-132112": "spa_call_now_phone",
+  "Call Now: +212 654-132112": "spa_call_now_phone",
     "Need a Custom Solution?": "spa_need_custom",
     "How much does installation cost?": "spa_q_price",
     "How long does installation take?": "spa_q_how_long",
   "The installation timeline depends entirely on the project's complexity. A simple setup like a few smart switches and a shutter can be completed in under a day. A full-house automation system for a villa can take several days to a few weeks.": "spa_a_how_long",
     "How do I schedule an appointment?": "spa_q_schedule",
     "You can call us at 0654-132112. We'll be happy to talk to you anytime.": "spa_a_schedule",
+  "Call us at +212 654-132112 — we're happy to hear from you anytime.": "spa_a_schedule",
   };
 
   // Additional mappings discovered in the SPA bundle
@@ -292,12 +315,17 @@
   "Commercial Surveillance": "spa_title_lighting_fixture_installation",
   "Commercial Audio": "spa_title_cabling_wiring_solutions",
 
-    // Service feature lines
+    // Service feature lines (old + new entries for idempotent replacement)
     "Smart thermostats — control temp anywhere.": "spa_feat_thermostats",
+    "Smart Home & KNX — lighting, blinds, HVAC, all automated.": "spa_feat_thermostats",
     "Smart Locks — app-based access, no keys.": "spa_feat_locks",
+    "Security & Surveillance — cameras, motion sensors, smart locks.": "spa_feat_locks",
     "Voice control — Google, Alexa, or Siri.": "spa_feat_voice",
+    "Network & Wi-Fi — mesh coverage, access points, enterprise solutions.": "spa_feat_voice",
     "Lighting & fans — adjust anytime, anywhere.": "spa_feat_lighting",
+    "Electrical Installations — panels, wiring, lighting fixtures.": "spa_feat_lighting",
     "Security setup — cameras, sensors, no fees.": "spa_feat_security",
+    "Voice & App Control — Alexa, Google, Siri, mobile dashboards.": "spa_feat_security",
 
     // CTAs and nav
     "👉 Upgrade Your Home": "spa_cta_upgrade",
@@ -309,12 +337,14 @@
 
     // Footer & misc
     "© 2025 S‑ELECTRICITY LLC. All rights reserved.": "spa_copyright",
+    "© 2026 S‑ELECTRICITY. All rights reserved.": "spa_copyright",
     "Privacy Policy": "spa_privacy_policy",
     "Terms of Service": "spa_terms_of_service",
     "Scroll down to see our gallery": "spa_scroll_gallery",
     "Our Recent Projects": "spa_recent_projects",
     "Real installations from satisfied customers across Morocco. Each project showcases our commitment to quality and attention to detail.": "spa_recent_projects_desc",
     "See the quality and craftsmanship of our smart home installations, Domotique, and home automation projects across Morocco.": "spa_previous_work_lead",
+    "See the quality and craftsmanship of our smart home automation, security, and electrical installations across Morocco.": "spa_previous_work_lead",
     "Tell me more": "spa_tell_me_more"
   });
 
