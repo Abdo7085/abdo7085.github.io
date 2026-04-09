@@ -2,19 +2,21 @@
 .lang-switch{
   position:fixed;
   /* float at bottom-right on desktop to avoid header overlap */
-  bottom:12px;
-  right:12px;
+  bottom:16px;
+  right:16px;
   top:auto;
   /* keep it above general content but beneath header (header uses z-50) */
   z-index:48;
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
-  border-radius:9999px; /* pill */
-  box-shadow:0 8px 24px rgba(15,23,42,0.12);
-  padding:6px 10px;
+  background: rgb(187, 118, 31); /* Brand Orange */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px; /* pill */
+  box-shadow: 0 8px 24px rgba(187, 118, 31, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  backdrop-filter: blur(6px);
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: white;
 }
 .lang-switch select{
   border:0;
@@ -25,7 +27,7 @@
   font-size:0.95rem;
   appearance:none;
   -webkit-appearance:none;
-  color:#0f172a;
+  color:white;
 }
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
@@ -105,32 +107,71 @@ h2:has(.border-b-2) {
 /* Responsive: keep selector out of the header / mobile menu area */
 @media (max-width: 767px){
   .lang-switch{
-    /* bottom-right on small screens per request */
-    left:auto;
-    right:12px;
-    transform:none;
-    bottom:16px;
-    padding:6px 10px;
+    /* Match the circular style to look balanced with WhatsApp */
+    left: auto;
+    right: 16px;
+    bottom: 24px;
+    padding: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+    transform: none;
   }
-  .lang-switch .lang-globe{display:block}
+  .lang-switch .lang-globe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lang-switch .lang-globe svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8;
+  }
+  .lang-mobile-btn {
+    /* Hide text visually but keep the button clickable over the entire circle */
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+    font-size: 0; /* Ensures width calculations don't overflow */
+    padding: 0 !important;
+  }
 }
 
 /* small globe icon style */
-.lang-switch .lang-globe svg{display:block}
-.lang-switch:hover{transition:transform .18s ease}
+.lang-switch .lang-globe svg {
+  display:block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.lang-switch .lang-globe svg * {
+  stroke: white !important; /* Force override inline SVG strokes */
+}
 
 /* Only apply the small hover "lift" on pointer-capable devices to avoid
    the floating control jumping on touch when the menu opens. */
 @media (hover: hover) and (pointer: fine) {
-  .lang-switch:hover{transform:translateY(-4px)}
+  .lang-switch:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(187, 118, 31, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: rgb(200, 128, 38); /* Slightly lighter orange */
+  }
+  .lang-switch:hover .lang-globe svg {
+    transform: rotate(20deg) scale(1.05);
+  }
 }
 
 /* focus styles for accessibility */
 .lang-switch select:focus{outline:2px solid rgba(59,130,246,0.25);outline-offset:4px}
 
-/* Ensure language toggle buttons explicitly use the dark site text color so
-  they don't accidentally inherit white from other global rules. */
-.lang-desktop-btn, .lang-mobile-btn { color: #0f172a; }
+/* Ensure language toggle buttons explicitly use white color so
+  they don't accidentally inherit dark text globally. */
+.lang-desktop-btn, .lang-mobile-btn { color: white; }
 
 /* Ensure menu item buttons inherit the menu color (dark) and are not
   overridden by other button styles elsewhere in the project. */
@@ -140,32 +181,40 @@ h2:has(.border-b-2) {
 /* Desktop vs Mobile controls */
 .lang-desktop{display:none}
 .lang-desktop-btn{display:none} /* hide desktop-styled button by default (mobile first) */
-.lang-mobile-btn{display:inline-flex}
+.lang-mobile-btn{display:inline-flex} /* Initial display, gets overridden in the new mobile block above */
 
 /* Desktop: show modern dropdown button/menu */
 @media (min-width: 768px){
   .lang-desktop{display:none}
   .lang-mobile-btn{display:none}
-  .lang-desktop-btn{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;font-weight:700;color:#0f172a;padding:6px 10px;border-radius:9999px}
-  .lang-desktop-btn:hover{background:rgba(2,6,23,0.03)}
+  .lang-desktop-btn{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;font-weight:700;color:white;padding:6px 10px;border-radius:9999px}
+  .lang-desktop-btn:hover{background:rgba(255,255,255,0.1)}
 
   .lang-desktop-menu{
     position: absolute;
-    bottom: calc(100% + 8px);
-    right: 12px;
-    transform: none;
-    background: white;
+    bottom: calc(100% + 12px);
+    right: 0;
+    transform-origin: bottom right;
+    animation: menu-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     color: #0f172a;
-    border-radius:10px;
-    box-shadow:0 10px 30px rgba(2,6,23,0.10);
-    padding:6px 8px;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+    padding: 8px;
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap: 4px;
     z-index:60;
     width: max-content; /* fit to content */
-    min-width:0;
+    min-width: 140px;
     align-items:stretch;
+  }
+  @keyframes menu-slide-up {
+    0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   /* Respect the `hidden` attribute: CSS should not force menus visible when JS sets hidden=true */
@@ -176,15 +225,21 @@ h2:has(.border-b-2) {
   .lang-desktop-menu button{
     border:0;
     background:transparent;
-    padding:8px 10px;
+    padding:8px 12px;
     border-radius:8px;
-    font-weight:700;
+    font-weight:600;
+    font-size: 0.95rem;
     text-align:left;
     white-space:nowrap;
+    transition: all 0.2s ease;
   }
 
-  .lang-desktop-menu button:hover{background:rgba(15,23,42,0.04)}
-  .lang-desktop-menu button:focus{outline:2px solid rgba(59,130,246,0.18)}
+  .lang-desktop-menu button:hover{
+    background: rgba(187, 118, 31, 0.08); /* Light orange hover */
+    color: rgb(187, 118, 31); /* Text turns orange */
+    transform: translateX(4px); /* Slight bump right */
+  }
+  .lang-desktop-menu button:focus{outline:2px solid rgba(187, 118, 31, 0.3)}
 }
 
 /* Mobile menu: make it match desktop dropdown and open above the floating button */
@@ -194,20 +249,24 @@ h2:has(.border-b-2) {
 
   .lang-mobile-menu{
     position: absolute;
-    bottom: calc(100% + 8px); /* open upward */
+    bottom: calc(100% + 12px); /* open upward */
     right: 0; /* align to right edge of the floating container */
-    transform: none;
-    background: white;
+    transform-origin: bottom right;
+    animation: menu-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     color: #0f172a;
-    border-radius:10px;
-    box-shadow:0 10px 30px rgba(2,6,23,0.10);
-    padding:6px 8px;
+    border-radius:14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+    padding: 8px;
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap: 4px;
     z-index:60;
     width: max-content;
-    min-width:0;
+    min-width: 140px;
     align-items:stretch;
   }
 
@@ -224,15 +283,20 @@ h2:has(.border-b-2) {
   .lang-mobile-menu button{
     border:0;
     background:transparent;
-    padding:8px 10px;
+    padding:8px 12px;
     border-radius:8px;
-    font-weight:700;
+    font-weight:600;
+    font-size: 0.95rem;
     text-align:right;
     white-space:nowrap;
+    transition: all 0.2s ease;
   }
 
-  .lang-mobile-menu button:hover{background:rgba(15,23,42,0.04)}
-  .lang-mobile-menu button:focus{outline:2px solid rgba(59,130,246,0.18)}
+  .lang-mobile-menu button:hover{
+    background: rgba(187, 118, 31, 0.08); /* Light orange hover */
+    color: rgb(187, 118, 31); /* Text turns orange */
+  }
+  .lang-mobile-menu button:focus{outline:2px solid rgba(187, 118, 31, 0.3)}
 
   .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{ display: none !important; }
 }
