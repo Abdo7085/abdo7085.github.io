@@ -19,6 +19,10 @@
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 0.75rem;
+  display: inline-block;
+  border-bottom: 2px solid rgb(187, 118, 31);
+  padding-bottom: 2px;
+  line-height: 1.3;
 }
 .hp-products-subtitle {
   font-size: 1.05rem;
