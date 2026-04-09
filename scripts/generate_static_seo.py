@@ -135,10 +135,11 @@ def generate_product_html(template_html, product, lang):
     image_path = images[0] if images else ""
     image_url = HOST + image_path if image_path else f"{HOST}/assets/S‑ELECTRICITY-LOGO.svg"
 
+    suffix = {"en": "S‑ELECTRICITY Morocco", "fr": "S‑ELECTRICITY Maroc", "ar": "S‑ELECTRICITY المغرب"}[lang]
     if brand and brand.lower() not in title.lower():
-        page_title = f"{title} - {brand} | SMART ELECTRICITY"
+        page_title = f"{title} - {brand} | {suffix}"
     else:
-        page_title = f"{title} | SMART ELECTRICITY"
+        page_title = f"{title} | {suffix}"
 
     # Escape for HTML attributes
     safe_title = html_module.escape(page_title, quote=True)
