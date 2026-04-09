@@ -350,7 +350,7 @@
 
           <!-- Right side: Info -->
           <div class="pd-info prod-fade-in">
-            ${product.brand ? `<a href="${prefix}/products.html?brand=${encodeURIComponent(product.brand)}" class="pd-brand link-transition" style="text-decoration:none; display:inline-block;" title="View all ${product.brand} products">${product.brand}</a>` : `<div class="pd-brand"></div>`}
+            ${product.brand ? `<a href="${prefix}/products.html?brand=${encodeURIComponent(product.brand)}" class="pd-brand link-transition" style="text-decoration:none; display:inline-block; width:fit-content; align-self:flex-start;" title="View all ${product.brand} products">${product.brand}</a>` : `<div class="pd-brand"></div>`}
             <h1 class="pd-title">${title}</h1>
             <p class="pd-desc">${t(product.description)}</p>
 
