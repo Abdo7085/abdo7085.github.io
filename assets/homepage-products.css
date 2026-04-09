@@ -1,8 +1,9 @@
 /* Homepage Products Section */
 .hp-products-section {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: linear-gradient(to bottom right, #111827, #000000, #111827);
   font-family: 'Poppins', 'Exo 2', sans-serif;
+  color: #ffffff;
 }
 .hp-products-inner {
   max-width: 1200px;
@@ -16,12 +17,12 @@
 .hp-products-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #ffffff;
   margin: 0 0 0.75rem;
 }
 .hp-products-subtitle {
   font-size: 1.05rem;
-  color: #6b7280;
+  color: #d1d5db;
   margin: 0;
   max-width: 600px;
   margin-inline: auto;
@@ -38,24 +39,26 @@
 .hp-product-card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 .hp-product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* Card Image */
 .hp-product-card-img {
   position: relative;
   height: 200px;
-  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  background: rgba(255,255,255,0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,13 +92,13 @@
 .hp-product-card-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #1f2937;
+  color: #f9fafb;
   margin: 0 0 0.5rem;
   line-height: 1.4;
 }
 .hp-product-card-desc {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #9ca3af;
   margin: 0;
   line-height: 1.6;
   display: -webkit-box;
