@@ -1,0 +1,78 @@
+{
+  "id": "reyee-ew1300g",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-EW1300G",
+    "fr": "Reyee RG-EW1300G",
+    "ar": "ريي RG-EW1300G"
+  },
+  "short_description": {
+    "en": "Dual-band Gigabit mesh router for homes.",
+    "fr": "Routeur mesh Gigabit double bande pour la maison.",
+    "ar": "راوتر mesh ثنائي النطاق للمنازل."
+  },
+  "description": {
+    "en": "A dual-band Wi-Fi 5 router built for homes, apartments, and small offices that need reliable coverage without the complexity. With five high-gain antennas and MU-MIMO technology, it delivers strong signal across large spaces and handles up to 96 devices at once. It supports Reyee Mesh, so you can pair it with other Reyee routers for seamless whole-home Wi-Fi without dead zones. Setup and management are simple through the Reyee app or the free Ruijie Cloud dashboard — no networking expertise required.",
+    "fr": "Un routeur Wi-Fi 5 double bande conçu pour les maisons, appartements et petits bureaux qui ont besoin d'une couverture fiable sans complexité. Avec cinq antennes à gain élevé et la technologie MU-MIMO, il offre un signal puissant dans les grands espaces et gère jusqu'à 96 appareils simultanément. Il prend en charge Reyee Mesh, vous pouvez donc l'associer à d'autres routeurs Reyee pour un Wi-Fi fluide dans toute la maison, sans zones mortes. La configuration et la gestion sont simples via l'application Reyee ou le tableau de bord gratuit Ruijie Cloud — aucune expertise réseau requise.",
+    "ar": "راوتر Wi-Fi 5 ثنائي النطاق مصمم للمنازل والشقق والمكاتب الصغيرة التي تحتاج تغطية موثوقة بدون تعقيد. بفضل خمس هوائيات عالية الكسب وتقنية MU-MIMO، يوفر إشارة قوية في المساحات الكبيرة ويتعامل مع حتى 96 جهاز في آن واحد. يدعم Reyee Mesh، مما يتيح إقرانه مع راوترات Reyee أخرى لتغطية Wi-Fi سلسة في كامل المنزل بدون مناطق ميتة. الإعداد والإدارة سهلان عبر تطبيق Reyee أو لوحة تحكم Ruijie Cloud المجانية — لا حاجة لخبرة تقنية."
+  },
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Free standing",
+  "specs": {
+    "en": {
+      "Wi-Fi Standard": "Wi-Fi 5 (802.11ac Wave2)",
+      "Max Data Rate": "1,300 Mbps (2.4 GHz: 400 Mbps + 5 GHz: 867 Mbps)",
+      "Ethernet Ports": "5 × Gigabit (1 WAN + 4 LAN)",
+      "Antennas": "5 × External (2.4 GHz: 4 dBi, 5 GHz: 5.5 dBi)",
+      "Max Concurrent Clients": "96 (32 on 2.4 GHz + 64 on 5 GHz)",
+      "Processor": "Dual-core with hyper-threading",
+      "MU-MIMO": "Supported",
+      "Mesh": "Reyee Mesh 3.0",
+      "Cloud Management": "Free (Ruijie Cloud)",
+      "IPv6": "Supported",
+      "Security": "WPA/WPA2/WPA3, Parental Controls",
+      "App Management": "Reyee Router App (iOS / Android)"
+    },
+    "fr": {
+      "Norme Wi-Fi": "Wi-Fi 5 (802.11ac Wave2)",
+      "Débit Max": "1 300 Mbps (2,4 GHz : 400 Mbps + 5 GHz : 867 Mbps)",
+      "Ports Ethernet": "5 × Gigabit (1 WAN + 4 LAN)",
+      "Antennes": "5 × Externes (2,4 GHz : 4 dBi, 5 GHz : 5,5 dBi)",
+      "Clients Simultanés Max": "96 (32 sur 2,4 GHz + 64 sur 5 GHz)",
+      "Processeur": "Double cœur avec hyper-threading",
+      "MU-MIMO": "Pris en charge",
+      "Mesh": "Reyee Mesh 3.0",
+      "Gestion Cloud": "Gratuite (Ruijie Cloud)",
+      "IPv6": "Pris en charge",
+      "Sécurité": "WPA/WPA2/WPA3, Contrôle parental",
+      "Application": "Reyee Router App (iOS / Android)"
+    },
+    "ar": {
+      "معيار الواي فاي": "Wi-Fi 5 (802.11ac Wave2)",
+      "أقصى سرعة": "1,300 ميجابت/ثانية (2.4 GHz: 400 + 5 GHz: 867)",
+      "منافذ إيثرنت": "5 × Gigabit (1 WAN + 4 LAN)",
+      "الهوائيات": "5 × خارجية (2.4 GHz: 4 dBi، 5 GHz: 5.5 dBi)",
+      "أقصى عدد أجهزة متصلة": "96 (32 على 2.4 GHz + 64 على 5 GHz)",
+      "المعالج": "ثنائي النواة مع hyper-threading",
+      "MU-MIMO": "مدعوم",
+      "شبكة Mesh": "Reyee Mesh 3.0",
+      "إدارة سحابية": "مجانية (Ruijie Cloud)",
+      "IPv6": "مدعوم",
+      "الأمان": "WPA/WPA2/WPA3، رقابة أبوية",
+      "التطبيق": "Reyee Router App (iOS / Android)"
+    }
+  },
+  "images": [
+    "/assets/products/reyee-ew1300g.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://mikrotik.co.id/images/Ruijie/RG-EW1300G/RG-EW1300G%20datasheet%2020240403.pdf"
+    }
+  ]
+}

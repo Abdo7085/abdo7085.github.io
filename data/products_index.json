@@ -252,6 +252,28 @@
     "image": "/assets/products/rcu2018-room-control-unit.png"
   },
   {
+    "id": "reyee-ew1300g",
+    "brand": "Reyee",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Free standing",
+    "title": {
+      "en": "Reyee RG-EW1300G",
+      "fr": "Reyee RG-EW1300G",
+      "ar": "ريي RG-EW1300G"
+    },
+    "short_description": {
+      "en": "Dual-band Gigabit mesh router for homes.",
+      "fr": "Routeur mesh Gigabit double bande pour la maison.",
+      "ar": "راوتر mesh ثنائي النطاق للمنازل."
+    },
+    "category": "",
+    "image": "/assets/products/reyee-ew1300g.png"
+  },
+  {
     "id": "rg-eg105gw-t",
     "brand": "Reyee",
     "technology": [
