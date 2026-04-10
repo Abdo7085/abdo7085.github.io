@@ -259,7 +259,7 @@ def generate_product_html(template_html, product, lang):
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "SMART ELECTRICITY", "item": home_url},
+            {"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": home_url},
             {"@type": "ListItem", "position": 2, "name": products_label, "item": products_url},
             {"@type": "ListItem", "position": 3, "name": title, "item": canonical_url},
         ],
