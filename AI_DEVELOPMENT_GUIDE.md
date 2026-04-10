@@ -8,15 +8,23 @@
 
 **أبرز المجلدات والملفات:**
 - `index.html`: الصفحة الرئيسية للموقع وتحتوي على حاوية `#root` ليتم حقن محتوى الـ SPA بداخلها.
-- `assets/`: مجلد الموارد ويحتوي على الصور، وملفات الترجمة (locales)، والسكربتات التأسيسية كـ `i18n.js` و `products.js` و `product-detail.js` (عرض تفاصيل المنتج) و `homepage-products.js` (عرض المنتجات على الصفحة الرئيسية).
+- `products.html`: صفحة كتالوج المنتجات (تحتوي على `ItemList` JSON-LD يُحقن آلياً بواسطة `build_products.py`).
+- `product.html`: قالب SPA لعرض تفاصيل المنتج الفردي. **مُعلّم بـ `noindex, nofollow`** لأنه قالب فارغ — الصفحات الفعلية المفهرسة هي المولّدة في `products/`.
+- `previous-work.html`: صفحة معرض الأعمال السابقة.
+- `assets/`: مجلد الموارد ويحتوي على الصور، وملفات الترجمة (locales)، والسكربتات التأسيسية:
+  - `i18n.js` + `i18n.css`: نظام الترجمة.
+  - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
+  - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA).
+  - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
 - **`assets/index-CGMiSPUa.js` (ملاحظة غاية في الأهمية):** هذا الملف الكودي (SPA Bundle) ليس مجرد مخرجات تجميعية (Build Output) قياسية مهملة، **بل هو ملف ثابت (Hardcoded) تم التعديل عليه يدوياً ودمجه مع الموقع المصدري**. يُعتبر الآن كملف برمجي أساسي (Static Source File). إحذر عند التعديل عليه حيث تتطلب أي محاولة لتغيير هيكلية (React) بداخله تركيزاً ودقة عالية، وتجرى التعديلات فيه مباشرة وبشكل دقيق.
 - `data/products/`: قاعـدة بيانات المنتجات، حيث يخصص لكل منتج ملف JSON مستقل.
-- `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. **تحذير هام:** تحتوي هذه المجلدات على ملفات قوالب وأساسيات ثابتة (تم تصميمها يدوياً) مثل `index.html` و `products.html` و `product.html` و `previous-work.html`. هذه الملفات **ليست** مولدة آلياً (ليست Auto-generated)، وبالتالي فأي تعديلات على الـ SEO أو الهيكلة في القوالب الإنجليزية يجب أن يتم تطبيقها يدوياً فيها أيضاً لتتساوى اللغات. (المولد الآلي `build_products.py` يُنشئ فقط الصفحات داخل مجلد `products/` بمختلف اللغات).
+- `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. تُولّد آلياً بواسطة `generate_localized.py` من القوالب الإنجليزية الجذرية. **أي تعديلات على الـ SEO أو الهيكلة يجب أن تتم في القوالب الإنجليزية ثم يُعاد تشغيل السكربت.**
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
-  - `build_products.py`: السكربت الرئيسي لبناء فهرس المنتجات وصفحات SEO وخريطة الموقع.
-  - `generate_static_seo.py`: مولد صفحات HTML الثابتة للمنتجات (يُستدعى من `build_products.py`).
+  - `build_products.py`: السكربت الرئيسي — يبني فهرس المنتجات + صفحات SEO + sitemap + يحقن ItemList JSON-LD في products.html.
+  - `generate_static_seo.py`: مولد صفحات HTML الثابتة للمنتجات مع SEO كامل (يُستدعى من `build_products.py`).
+  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD.
   - `remove_bg.py`: إزالة الخلفية البيضاء من صور المنتجات وتحويلها لـ PNG شفافة.
-  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ). **ملاحظة:** هذا السكربت مسؤول عن تحديث قوالب الجذر المترجمة — وليس صفحات المنتجات المنفردة.
+  - `crop_image.py`: قص الفراغ الشفاف من صور المنتجات لتملأ بطاقة المنتج بشكل متسق.
 
 ---
 
@@ -47,15 +55,57 @@
    `python scripts/build_products.py`
    
    **العمليات التي ينجزها هذا السكريبت:**
-   - إنتاج أو تحديث ملف הפهرسة `data/products_index.json` الضروري لتشغيل واجهة البحث والفلترة.
+   - إنتاج أو تحديث ملف الفهرسة `data/products_index.json` الضروري لتشغيل واجهة البحث والفلترة.
    - بناء وإعادة كتابة الصفحات الثابتة بصيغة HTML لكل اللغات داخل مسارات مثل (`/ar/products/` الخ).
-   - إلحاق المنتجات وروابطها بقاعدة الروابط الشاملة للموقع `sitemap.xml`.
+   - إلحاق المنتجات وروابطها بقاعدة الروابط الشاملة للموقع `sitemap.xml` مع `lastmod` و `hreflang` (بما فيه `x-default`).
+   - حقن `ItemList` JSON-LD في صفحة `products.html` (EN/FR/AR) لتحسين ظهور الكتالوج في محركات البحث.
 
 ---
 
-## 4. قواعد التطوير الحذرة والنصائح المتبعة (Development Principles)
+## 4. بنية SEO للموقع (SEO Architecture)
+
+### صفحات المنتجات المولّدة (Auto-generated Product Pages)
+كل صفحة منتج مولّدة تحتوي على:
+- `<title>` + `<meta description>` مترجمين حسب اللغة.
+- `hreflang` tags لكل اللغات الثلاث + `x-default` (يشير للنسخة الإنجليزية).
+- Open Graph + Twitter Card tags كاملة مع صورة المنتج.
+- `og:locale` + `og:locale:alternate` لكل لغة.
+- JSON-LD `Product` schema مع `aggregateRating` + `BreadcrumbList`.
+- `<meta name="robots" content="index, follow">` (يتم تجاوز قيمة القالب `noindex` آلياً).
+- `<h1>` داخل `<noscript>` باسم المنتج — للزواحف التي لا تنفذ JavaScript.
+
+### الصفحات الجذرية (Root Pages)
+الصفحات الجذرية (`index.html`, `products.html`, `previous-work.html`) تحتوي على:
+- `og:locale` + `og:locale:alternate` tags.
+- `hreflang` لكل اللغات + `x-default`.
+- `og:image` بصيغة PNG (وليس SVG — لتوافق Facebook/Twitter).
+- JSON-LD: `LocalBusiness` + `WebSite` + `FAQPage` (في index.html).
+- `<h1>` داخل `<noscript>` مع `data-i18n` لترجمته آلياً.
+
+### قالب product.html
+- مُعلّم بـ `noindex, nofollow` — لأنه قالب SPA فارغ.
+- `generate_static_seo.py` يتجاوز هذا آلياً ويضع `index, follow` في الصفحات المولّدة.
+
+### ترتيب تشغيل السكربتات (Build Order)
+عند تعديل أي شيء يؤثر على SEO:
+```
+1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + sitemap مبدئي
+2. python scripts/build_products.py         ← يجب أن يُشغّل أخيراً (ينتج sitemap كامل)
+```
+**ملاحظة حرجة:** كلا السكربتين يكتبان `sitemap.xml`. `build_products.py` ينتج الـ sitemap الكامل (صفحات ثابتة + منتجات)، لذلك **يجب أن يُشغّل دائماً بعد** `generate_localized.py`.
+
+### ملفات مستثناة من sitemap
+- `product.html` (قالب SPA — noindex)
+- `404.html` (صفحة خطأ)
+- `yandex_*.html` (ملفات تحقق)
+
+---
+
+## 5. قواعد التطوير الحذرة والنصائح المتبعة (Development Principles)
 
 - **توحيد مصطلحات الفلترة:** عند استخدام تقنية جديدة أو خيارات تنصيب في منتج ما (Installation / Technology)، أضف مقابلها المترجم فورًا إلى قواميس `ar.json` و `fr.json` (باستخدام البادئة `val_`).
-- **تحسين المظهر العام للمنتجات:** يجب استخدام سكربت استخراج خلفية الصور `python scripts/remove_bg.py` لتصبح بصيغة (PNG شفافة)، لتندمج بطاقة المنتج شكلياً مع تصميم واجهة الموقع بسلاسة تامة.
+- **تحسين المظهر العام للمنتجات:** يجب استخدام سكربت استخراج خلفية الصور `python scripts/remove_bg.py` لتصبح بصيغة (PNG شفافة)، ثم `python scripts/crop_image.py` لقصها بإحكام لتندمج بطاقة المنتج شكلياً مع تصميم واجهة الموقع بسلاسة تامة.
 - **الحفاظ على قوة المصطلحات الاصطلاحية:** أثناء توليد المحتوى العربي، يجب صيانة المصطلحات التقنية الأساسية (Wi-Fi، KNX، Router، MQTT) وإبقاؤها بلغتها الانجليزية لضمان عدم ضياع المعنى التقني الدقيق.
 - **تجنب التعديلات اليدوية المحكوم عليها بالضياع:** أي صفحات مصممة تلقائياً (Auto-generated) كصفحات المنتجات المنفردة `.html` في مجلداتها، وملفات الـ `products_index.json` و `sitemap.xml`، يُحظر التعديل اليدوي عليها. لأن سكريبت البناء سيستبدلها بالكامل دائماً بناءً على ملفات `data/products/`.
+- **التعديلات على القوالب الجذرية:** أي تغيير في `index.html` أو `products.html` أو `previous-work.html` (مثل إضافة meta tags، أو تعديل JSON-LD) يجب أن يتبعه تشغيل `generate_localized.py` ثم `build_products.py` لنشر التغيير لكل اللغات.
+- **og:image يجب أن يكون PNG/JPG دائماً** — لا تستخدم SVG لأن Facebook و Twitter لا يدعمانه.
