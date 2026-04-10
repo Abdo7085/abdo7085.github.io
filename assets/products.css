@@ -245,6 +245,18 @@ details[open] .prod-filter-title::after {
   opacity: 0.8;
 }
 
+.prod-filter-item.empty {
+  opacity: 0.4;
+}
+
+.prod-filter-item.empty input[type="checkbox"] {
+  cursor: not-allowed;
+}
+
+.prod-filter-item.empty label {
+  cursor: not-allowed;
+}
+
 .prod-filter-item input[type="checkbox"] {
   width: 18px;
   height: 18px;

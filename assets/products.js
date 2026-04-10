@@ -313,45 +313,87 @@
     return html;
   }
 
+  function pMatches(p, overrideCategory = null, overrideVal = null) {
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      let textToSearch = `${p.brand} ${p.product_type} ${p.installation} `;
+      if (Array.isArray(p.technology)) textToSearch += p.technology.join(' ');
+
+      const searchInField = (f) => {
+         if (!f) return '';
+         if (typeof f === 'string') return f;
+         return Object.values(f).join(' ');
+      };
+      textToSearch += searchInField(p.title) + ' ' + searchInField(p.short_description);
+
+      if (!textToSearch.toLowerCase().includes(query)) return false;
+    }
+
+    const checkState = (key, pVal, isArray = false) => {
+       // If evaluating a specific category option, hypothetically enforce it
+       if (overrideCategory === key) {
+          if (!pVal) return false;
+          if (isArray) return Array.isArray(pVal) && pVal.includes(overrideVal);
+          return pVal === overrideVal;
+       }
+       // Otherwise, enforce active filters
+       if (filtersState[key].size > 0) {
+          if (isArray) {
+            if (!pVal || !Array.isArray(pVal)) return false;
+            let match = false;
+            for (const fv of filtersState[key]) {
+              if (pVal.includes(fv)) { match = true; break; }
+            }
+            if (!match) return false;
+          } else {
+            if (!filtersState[key].has(pVal)) return false;
+          }
+       }
+       return true;
+    };
+
+    if (!checkState('brand', p.brand)) return false;
+    if (!checkState('product_type', p.product_type)) return false;
+    if (!checkState('installation', p.installation)) return false;
+    if (!checkState('technology', p.technology, true)) return false;
+
+    return true;
+  }
+
+  function updateFilterCounts() {
+     const checkboxes = document.querySelectorAll('#prod-sidebar input[type="checkbox"]');
+     if(!checkboxes.length) return;
+     checkboxes.forEach(cb => {
+         const key = cb.getAttribute('data-key');
+         const val = cb.value;
+         
+         let count = 0;
+         for (let i = 0; i < allProducts.length; i++) {
+             if (pMatches(allProducts[i], key, val)) {
+                 count++;
+             }
+         }
+         
+         const badge = cb.parentElement.querySelector('.prod-count-badge');
+         if (badge) badge.textContent = count;
+         
+         if (count === 0) {
+             cb.parentElement.classList.add('empty');
+         } else {
+             cb.parentElement.classList.remove('empty');
+         }
+     });
+  }
+
   function updateGrid() {
     const gridContainer = document.getElementById('prod-grid-container');
     if (!gridContainer) return;
 
+    // Refresh dynamic facet counts
+    updateFilterCounts();
+
     // Filter logic
-    const filtered = allProducts.filter(p => {
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        let textToSearch = `${p.brand} ${p.product_type} ${p.installation} `;
-        if (Array.isArray(p.technology)) textToSearch += p.technology.join(' ');
-
-        const searchInField = (f) => {
-           if (!f) return '';
-           if (typeof f === 'string') return f;
-           return Object.values(f).join(' ');
-        };
-        textToSearch += searchInField(p.title) + ' ' + searchInField(p.short_description);
-
-        if (!textToSearch.toLowerCase().includes(query)) return false;
-      }
-
-      if (filtersState.brand.size > 0 && !filtersState.brand.has(p.brand)) return false;
-      if (filtersState.product_type.size > 0 && !filtersState.product_type.has(p.product_type)) return false;
-      if (filtersState.installation.size > 0 && !filtersState.installation.has(p.installation)) return false;
-
-      if (filtersState.technology.size > 0) {
-        if (!p.technology || !Array.isArray(p.technology)) return false;
-        let match = false;
-        for (const tech of filtersState.technology) {
-          if (p.technology.includes(tech)) {
-            match = true;
-            break;
-          }
-        }
-        if (!match) return false;
-      }
-
-      return true;
-    });
+    const filtered = allProducts.filter(p => pMatches(p));
 
     const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
     if (currentPage > totalPages) currentPage = totalPages;
