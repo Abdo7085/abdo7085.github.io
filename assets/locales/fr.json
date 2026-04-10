@@ -145,5 +145,18 @@
   "page_title_product": "Détails du Produit | S‑ELECTRICITY Maroc",
   "hp_products_title": "Nos Produits",
   "hp_products_subtitle": "Nous vendons et installons des appareils domotiques de marques leaders.",
-  "hp_products_browse": "Voir Tous les Produits"
+  "hp_products_browse": "Voir Tous les Produits",
+  "faq_q1": "Quels services propose S‑ELECTRICITY ?",
+  "faq_a1": "Nous proposons la domotique (KNX, Wi-Fi, Zigbee), la vidéosurveillance et caméras de sécurité, l'optimisation réseau et Wi-Fi, les serrures connectées et le contrôle d'accès, les installations électriques professionnelles et la conception d'éclairage — pour les propriétés résidentielles et commerciales au Maroc.",
+  "faq_q2": "Quelles marques de domotique proposez-vous ?",
+  "faq_a2": "Notre catalogue comprend EAE Technology (KNX), Shelly, SONOFF et Reyee. Nous privilégions du matériel professionnel et durable, adapté aux installations résidentielles et commerciales.",
+  "faq_q3": "Proposez-vous l'installation et le service après-vente ?",
+  "faq_a3": "Oui. Notre équipe assure la conception, le câblage, la configuration et la mise en service de chaque système vendu, ainsi qu'un support technique après-vente pour toutes les installations.",
+  "faq_q4": "Livrez-vous dans tout le Maroc ?",
+  "faq_a4": "Oui, nous expédions nos produits dans tout le Maroc. Pour les services d'installation, nous intervenons principalement à Tétouan et dans la région nord.",
+  "faq_q5": "Comment contacter S‑ELECTRICITY ?",
+  "faq_a5": "Vous pouvez nous joindre par téléphone au +212 654-132112, ou via les options de contact sur notre site. Horaires : du lundi au vendredi, de 09h00 à 18h00.",
+  "noscript_h1_index": "S‑ELECTRICITY — Domotique et Maison Intelligente | Tétouan, Maroc",
+  "noscript_h1_products": "Produits Domotiques | S‑ELECTRICITY Maroc",
+  "noscript_h1_previous_work": "Nos Installations et Réalisations | S‑ELECTRICITY Maroc"
 }

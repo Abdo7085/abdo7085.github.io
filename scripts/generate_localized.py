@@ -20,6 +20,11 @@ LOCALES = ROOT / 'assets' / 'locales'
 # default host placeholder; can be overridden with --host or env
 HOST = 'https://smartelectricity.ma'
 
+OG_LOCALES = {"en": "en_US", "fr": "fr_FR", "ar": "ar_AR"}
+
+# Files to exclude from sitemap (SPA templates, verification files, error pages)
+SITEMAP_EXCLUDE = {'product.html', '404.html'}
+
 
 def load_locale(lang):
     p = LOCALES / f'{lang}.json'
@@ -87,21 +92,41 @@ def replace_head(html, dict_l, lang, filename):
     canonical = get_url(lang, page_suffix)
     html = re.sub(r'<link rel="canonical" href="[^"]*"\s*/?>', f'<link rel="canonical" href="{canonical}" />', html, count=1)
 
-    # update link alternates to absolute host
+    # update link alternates to absolute host (incl. x-default)
     en_alt = get_url('en', page_suffix)
     fr_alt = get_url('fr', page_suffix)
     ar_alt = get_url('ar', page_suffix)
     alternates = (
         f"<link rel=\"alternate\" hreflang=\"en\" href=\"{en_alt}\" />\n"
         f"    <link rel=\"alternate\" hreflang=\"fr\" href=\"{fr_alt}\" />\n"
-        f"    <link rel=\"alternate\" hreflang=\"ar\" href=\"{ar_alt}\" />"
+        f"    <link rel=\"alternate\" hreflang=\"ar\" href=\"{ar_alt}\" />\n"
+        f"    <link rel=\"alternate\" hreflang=\"x-default\" href=\"{en_alt}\" />"
     )
     html = re.sub(r'<!-- Language alternates for SEO -->[\s\S]*?<link rel="canonical"', f'<!-- Language alternates for SEO -->\n    {alternates}\n    <link rel="canonical"', html, count=1)
 
     # ensure og:url reflects the localized canonical
     html = re.sub(r'<meta\s+property="og:url"[^>]*>', f'<meta property="og:url" content="{canonical}" />', html, count=1)
 
-    # JSON-LD: replace description and url
+    # Issue 5 fix: add/update og:locale tags
+    og_locale = OG_LOCALES[lang]
+    alt_locale_tags = "\n    ".join(
+        f'<meta property="og:locale:alternate" content="{OG_LOCALES[l]}" />'
+        for l in ["en", "fr", "ar"] if l != lang
+    )
+    locale_block = f'<meta property="og:locale" content="{og_locale}" />\n    {alt_locale_tags}'
+
+    # Replace existing og:locale if present, otherwise insert before og:site_name
+    if re.search(r'<meta\s+property="og:locale"', html):
+        # Remove all existing og:locale and og:locale:alternate
+        html = re.sub(r'\s*<meta\s+property="og:locale(?::alternate)?"[^>]*/>\s*', '\n    ', html)
+    # Insert before og:site_name
+    html = html.replace(
+        '<meta property="og:site_name"',
+        f'{locale_block}\n    <meta property="og:site_name"',
+        1
+    )
+
+    # JSON-LD: replace description and url (first block only — LocalBusiness)
     def repl_ld(match):
         text = match.group(0)
         text = re.sub(r'"description"\s*:\s*"[^"]*"', f'"description": "{meta_desc}"', text, count=1)
@@ -112,36 +137,69 @@ def replace_head(html, dict_l, lang, filename):
     return html
 
 
+def replace_faq_jsonld(html, dict_l, lang):
+    """Issue 1 fix: Translate FAQPage JSON-LD to the target language."""
+    # Only process if FAQ keys exist in the locale
+    if 'faq_q1' not in dict_l:
+        return html
+
+    def repl_faq(match):
+        try:
+            text = match.group(0)
+            # Extract just the JSON content
+            json_match = re.search(r'<script type="application/ld\+json">\s*([\s\S]*?)\s*</script>', text)
+            if not json_match:
+                return text
+            data = json.loads(json_match.group(1))
+            if data.get("@type") != "FAQPage":
+                return text
+
+            # Translate each FAQ entry
+            for i, entity in enumerate(data.get("mainEntity", []), 1):
+                q_key = f"faq_q{i}"
+                a_key = f"faq_a{i}"
+                if q_key in dict_l:
+                    entity["name"] = dict_l[q_key]
+                if a_key in dict_l:
+                    entity["acceptedAnswer"]["text"] = dict_l[a_key]
+
+            new_json = json.dumps(data, ensure_ascii=False, indent=10)
+            return f'<script type="application/ld+json">\n      {new_json}\n    </script>'
+        except (json.JSONDecodeError, KeyError):
+            return text
+
+    # Match ALL JSON-LD blocks and only replace the FAQPage one
+    blocks = list(re.finditer(r'<script type="application/ld\+json">[\s\S]*?</script>', html))
+    for block in reversed(blocks):  # reversed to keep indices valid
+        content = block.group(0)
+        if '"FAQPage"' in content:
+            replaced = repl_faq(block)
+            html = html[:block.start()] + replaced + html[block.end():]
+            break
+
+    return html
+
+
 def replace_body_static(html, dict_l, lang):
     # Static translations for elements with data-i18n
-    # We match the opening tag with data-i18n and then everything until the next closing tag of any kind
-    # This is still a bit fragile but better than before.
-    # It assumes data-i18n is the last attribute or we stop at >.
     def repl_i18n(match):
         full_tag = match.group(0)
         key = match.group(1)
         if key in dict_l:
-            # We want to replace the content AFTER the >
-            # Find the first > that closes the tag with data-i18n
             tag_end_index = full_tag.find('>')
             if tag_end_index != -1:
                 opening_tag = full_tag[:tag_end_index+1]
                 return f'{opening_tag}{dict_l[key]}'
         return full_tag
 
-    # Match <tag ... data-i18n="key" ...>Content
-    # Using a non-greedy match for the content until the next tag starts
     html = re.sub(r'<[^>]+data-i18n="([^"]+)"[^>]*>[^<]*', repl_i18n, html)
 
     # Translate language switcher buttons
     lang_word = { 'en': 'Language', 'fr': 'Langue', 'ar': 'اللغة' }
     word = lang_word.get(lang, 'Language')
 
-    # Replace "Language ▾" and "Language" in buttons
-    # We look for the specific buttons by ID to be safe
     html = re.sub(r'(<button id="langDesktopBtn"[^>]*>)\s*Language ▾\s*(</button>)', fr'\1{word} ▾\2', html)
     html = re.sub(r'(<button id="langToggleBtn"[^>]*>)\s*Language\s*(</button>)', fr'\1{word}\2', html)
-    # And the visually hidden label (for index.html and 404.html)
     html = re.sub(r'(<label for="langSelect(?:404)?" class="visually-hidden">)Language(</label>)', fr'\1{word}\2', html)
 
     return html
@@ -164,16 +222,21 @@ def generate():
         for lang in ['en', 'fr', 'ar']:
             page_suffix = "" if filename == 'index.html' else filename
             def get_url(l, suffix):
-                # Ensure we don't have double slashes if suffix is empty
                 b = f"{HOST}/{l}/" if l != 'en' else f"{HOST}/"
                 return b + suffix
 
             loc = get_url(lang, page_suffix)
-            if filename != '404.html':
+
+            # Only add to sitemap if not excluded
+            if filename not in SITEMAP_EXCLUDE and filename != '404.html':
+                en_href = get_url("en", page_suffix)
+                fr_href = get_url("fr", page_suffix)
+                ar_href = get_url("ar", page_suffix)
                 alts = [
-                    f'    <xhtml:link rel="alternate" hreflang="en" href="{get_url("en", page_suffix)}" />',
-                    f'    <xhtml:link rel="alternate" hreflang="fr" href="{get_url("fr", page_suffix)}" />',
-                    f'    <xhtml:link rel="alternate" hreflang="ar" href="{get_url("ar", page_suffix)}" />'
+                    f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />',
+                    f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />',
+                    f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />',
+                    f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />'
                 ]
                 sitemap_urls.append(f"  <url>\n    <loc>{loc}</loc>\n" + "\n".join(alts) + "\n  </url>")
 
@@ -184,6 +247,7 @@ def generate():
             outdir = ROOT / lang
             dict_l = {**en, **load_locale(lang)}
             out_html = replace_head(base_html, dict_l, lang, filename)
+            out_html = replace_faq_jsonld(out_html, dict_l, lang)
             out_html = replace_body_static(out_html, dict_l, lang)
 
             outdir.mkdir(parents=True, exist_ok=True)

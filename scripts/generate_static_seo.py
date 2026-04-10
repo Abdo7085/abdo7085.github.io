@@ -15,6 +15,7 @@ import re
 import hashlib
 import html as html_module
 from pathlib import Path
+from datetime import date
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTS_DIR = ROOT / "data" / "products"
@@ -24,6 +25,8 @@ HOST = "https://smartelectricity.ma"
 LANGS = ["en", "fr", "ar"]
 
 OG_LOCALES = {"en": "en_US", "fr": "fr_FR", "ar": "ar_AR"}
+
+TODAY = date.today().isoformat()
 
 
 def make_meta_description(product, lang, max_len=160):
@@ -89,13 +92,16 @@ def build_json_ld(product, lang):
     image_url = HOST + images[0] if images else ""
     rating_value, rating_count = get_rating(product)
 
+    # Issue 9 fix: use correct language prefix in URL
+    prefix = "" if lang == "en" else f"/{lang}"
+
     ld = {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": title,
         "description": desc,
         "sku": pid,
-        "url": f"{HOST}/products/{pid}.html",
+        "url": f"{HOST}{prefix}/products/{pid}.html",
         "brand": {
             "@type": "Brand",
             "name": product.get("brand", "")
@@ -123,9 +129,11 @@ def generate_product_html(template_html, product, lang):
       - meta description
       - og:title, og:description, og:image, og:url
       - twitter:title, twitter:description, twitter:image
-      - canonical
-      - hreflang alternates
+      - canonical + hreflang (incl. x-default)
       - JSON-LD structured data
+      - og:locale
+      - robots index,follow (override template noindex)
+      - H1 in noscript for crawlers
     """
     pid = product.get("id", "")
     title = t(product.get("title"), lang)
@@ -133,9 +141,9 @@ def generate_product_html(template_html, product, lang):
     desc_text = make_meta_description(product, lang)
     images = product.get("images", [])
     image_path = images[0] if images else ""
-    image_url = HOST + image_path if image_path else f"{HOST}/assets/S‑ELECTRICITY-LOGO.svg"
+    image_url = HOST + image_path if image_path else f"{HOST}/assets/S\u2011ELECTRICITY-LOGO.svg"
 
-    suffix = {"en": "S‑ELECTRICITY Morocco", "fr": "S‑ELECTRICITY Maroc", "ar": "S‑ELECTRICITY المغرب"}[lang]
+    suffix = {"en": "S\u2011ELECTRICITY Morocco", "fr": "S\u2011ELECTRICITY Maroc", "ar": "S\u2011ELECTRICITY \u0627\u0644\u0645\u063a\u0631\u0628"}[lang]
     if brand and brand.lower() not in title.lower():
         page_title = f"{title} - {brand} | {suffix}"
     else:
@@ -177,6 +185,13 @@ def generate_product_html(template_html, product, lang):
         out, count=1
     )
 
+    # Issue 2 fix: override robots to index,follow for generated product pages
+    out = re.sub(
+        r'<meta\s+name="robots"[^>]*>',
+        '<meta name="robots" content="index, follow" />',
+        out, count=1
+    )
+
     # Canonical
     prefix = "" if lang == "en" else f"/{lang}"
     canonical_url = f"{HOST}{prefix}/products/{pid}.html"
@@ -186,12 +201,11 @@ def generate_product_html(template_html, product, lang):
         out, count=1
     )
 
-    # hreflang alternates
+    # hreflang alternates (incl. x-default)
     en_url = f"{HOST}/products/{pid}.html"
     fr_url = f"{HOST}/fr/products/{pid}.html"
     ar_url = f"{HOST}/ar/products/{pid}.html"
 
-    # Replace existing hreflang links
     out = re.sub(
         r'<link\s+rel="alternate"\s+hreflang="en"[^>]*/?>',
         f'<link rel="alternate" hreflang="en" href="{en_url}" />',
@@ -206,6 +220,14 @@ def generate_product_html(template_html, product, lang):
         r'<link\s+rel="alternate"\s+hreflang="ar"[^>]*/?>',
         f'<link rel="alternate" hreflang="ar" href="{ar_url}" />',
         out, count=1
+    )
+
+    # Issue 4 fix: add x-default hreflang (points to EN)
+    xdefault_link = f'<link rel="alternate" hreflang="x-default" href="{en_url}" />'
+    out = out.replace(
+        f'<link rel="alternate" hreflang="ar" href="{ar_url}" />',
+        f'<link rel="alternate" hreflang="ar" href="{ar_url}" />\n    {xdefault_link}',
+        1
     )
 
     # OG tags
@@ -252,14 +274,14 @@ def generate_product_html(template_html, product, lang):
     ld_script = f'<script type="application/ld+json" id="product-jsonld">{json_ld}</script>'
 
     # BreadcrumbList JSON-LD
-    products_label = {"en": "Products", "fr": "Produits", "ar": "المنتجات"}[lang]
+    products_label = {"en": "Products", "fr": "Produits", "ar": "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a"}[lang]
     home_url = f"{HOST}{prefix}/"
     products_url = f"{HOST}{prefix}/products.html"
     breadcrumb = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": home_url},
+            {"@type": "ListItem", "position": 1, "name": "S\u2011ELECTRICITY", "item": home_url},
             {"@type": "ListItem", "position": 2, "name": products_label, "item": products_url},
             {"@type": "ListItem", "position": 3, "name": title, "item": canonical_url},
         ],
@@ -277,14 +299,67 @@ def generate_product_html(template_html, product, lang):
     inject = f"  {locale_tags}\n  {ld_script}\n  {bc_script}\n  </head>"
     out = out.replace("</head>", inject, 1)
 
+    # Issue 10 fix: add H1 in noscript for crawlers
+    safe_h1 = html_module.escape(title)
+    out = out.replace(
+        '<p>S\u2011ELECTRICITY - Smart Home Solutions</p>',
+        f'<h1>{safe_h1}</h1>\n      <p>S\u2011ELECTRICITY - Smart Home Solutions</p>',
+        1
+    )
+
     return out
+
+
+def inject_products_page_jsonld(all_products):
+    """Issue 8 fix: Inject ItemList JSON-LD into products.html for each language."""
+    for lang in LANGS:
+        prefix = "" if lang == "en" else f"/{lang}"
+        if lang == "en":
+            page_path = ROOT / "products.html"
+        else:
+            page_path = ROOT / lang / "products.html"
+
+        if not page_path.exists():
+            continue
+
+        items = []
+        for i, product in enumerate(all_products, 1):
+            pid = product.get("id", "")
+            title = t(product.get("title"), lang)
+            items.append({
+                "@type": "ListItem",
+                "position": i,
+                "url": f"{HOST}{prefix}/products/{pid}.html",
+                "name": title
+            })
+
+        ld = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": {"en": "Products", "fr": "Produits", "ar": "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a"}[lang],
+            "numberOfItems": len(items),
+            "itemListElement": items
+        }
+
+        html = page_path.read_text(encoding="utf-8")
+        ld_script = f'<script type="application/ld+json" id="itemlist-jsonld">{json.dumps(ld, ensure_ascii=False)}</script>'
+
+        # Remove old injected ItemList if present (for re-runs)
+        html = re.sub(
+            r'<script type="application/ld\+json" id="itemlist-jsonld">.*?</script>\s*',
+            '', html, flags=re.S
+        )
+
+        html = html.replace("</head>", f"  {ld_script}\n  </head>", 1)
+        page_path.write_text(html, encoding="utf-8")
+        print(f"  Injected ItemList JSON-LD into {page_path.relative_to(ROOT)}")
 
 
 def generate_sitemap(all_product_ids):
     """Generate sitemap.xml including all static pages + all product pages."""
     urls = []
 
-    # Static pages
+    # Static pages (exclude product.html SPA template and 404.html)
     static_pages = [
         {"suffix": "", "file": "index.html"},  # Home
         {"suffix": "previous-work.html", "file": "previous-work.html"},
@@ -301,9 +376,11 @@ def generate_sitemap(all_product_ids):
             urls.append(
                 f"  <url>\n"
                 f"    <loc>{loc}</loc>\n"
+                f"    <lastmod>{TODAY}</lastmod>\n"
                 f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
+                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
                 f"  </url>"
             )
 
@@ -318,9 +395,11 @@ def generate_sitemap(all_product_ids):
             urls.append(
                 f"  <url>\n"
                 f"    <loc>{loc}</loc>\n"
+                f"    <lastmod>{TODAY}</lastmod>\n"
                 f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
+                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
                 f"  </url>"
             )
 
@@ -375,6 +454,9 @@ def main():
             page_html = generate_product_html(template_html, product, lang)
             out_path.write_text(page_html, encoding="utf-8")
             print(f"  OK {out_path.relative_to(ROOT)}")
+
+    # Issue 8: Inject ItemList JSON-LD into products.html
+    inject_products_page_jsonld(products)
 
     # Generate sitemap.xml
     sitemap = generate_sitemap(all_product_ids)
