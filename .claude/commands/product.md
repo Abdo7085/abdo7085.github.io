@@ -11,7 +11,8 @@ assets/products/        → Product images
 assets/locales/ar.json  → Arabic translations (filter values)
 assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
-scripts/generate_static_seo.py → SEO page generator (called by build_products.py)
+scripts/generate_static_seo.py → SEO page generator (called by build_products.py) — full hreflang, og:locale, JSON-LD, robots override, noscript H1
+scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD + partial sitemap
 scripts/remove_bg.py      → Strip white background from a product image → transparent PNG
 scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
 
@@ -28,7 +29,7 @@ Products use **static HTML pages** (not query params) for SEO:
 - French: `https://smartelectricity.ma/fr/products/<product-slug>.html`
 - Arabic: `https://smartelectricity.ma/ar/products/<product-slug>.html`
 
-Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD`, and `hreflang` tags so that search engines and social media platforms (WhatsApp, Facebook) can read the product info without JavaScript.
+Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (Product + BreadcrumbList), `hreflang` (including `x-default`), `og:locale`, `robots: index,follow`, and `<h1>` in `<noscript>` — so that search engines and social media platforms (WhatsApp, Facebook) can read the product info without JavaScript.
 
 ## Operations
 
@@ -110,10 +111,24 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    ```bash
    python scripts/build_products.py
    ```
-   This single command does three things:
+   This single command does all of the following:
    - Builds `data/products_index.json` (product listing index)
-   - Generates static HTML pages in `products/`, `fr/products/`, `ar/products/` (with og:image, JSON-LD, etc.)
-   - Updates `sitemap.xml` with all product URLs
+   - Generates static HTML pages in `products/`, `fr/products/`, `ar/products/` with full SEO:
+     - `<title>` + `<meta description>` translated per language
+     - `hreflang` tags for all 3 languages + `x-default` (pointing to EN)
+     - Open Graph + Twitter Card tags with product image
+     - `og:locale` + `og:locale:alternate` for each language
+     - JSON-LD `Product` schema with `aggregateRating` + `BreadcrumbList`
+     - `<meta name="robots" content="index, follow">` (overrides the `noindex` template)
+     - `<h1>` inside `<noscript>` with product name — for crawlers that don't execute JS
+   - Injects `ItemList` JSON-LD into `products.html` (EN/FR/AR) for catalog rich results
+   - Updates `sitemap.xml` with all product URLs + `lastmod` dates + `hreflang` alternates
+
+   **⚠️ Build order matters:** If you also modified root pages (index.html, products.html, previous-work.html), you must run `generate_localized.py` **first**, then `build_products.py` **last** — because both scripts write `sitemap.xml`, and `build_products.py` produces the complete sitemap (static pages + products):
+   ```bash
+   python scripts/generate_localized.py    # ← generates fr/ and ar/ root pages + partial sitemap
+   python scripts/build_products.py         # ← must run LAST (produces complete sitemap)
+   ```
 
 ### Editing an Existing Product
 
