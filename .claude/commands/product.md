@@ -131,10 +131,14 @@ These are the values currently in use across products. Always prefer reusing exi
 
 **Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`
 **Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`
-**Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`
+**Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`
 **Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
 
 When the user provides product info in any language, translate it appropriately for all three languages (en, fr, ar). If the user only gives partial info, ask for the missing critical fields before creating the file.
+
+### Self-Updating Filter Values
+
+After adding any product that introduces a **new** `brand`, `technology`, `product_type`, or `installation` value not listed above, you MUST update this section of the skill file (`.claude/commands/product.md`) by appending the new value to the appropriate line. This keeps the reference list always in sync with the actual catalog, so future sessions don't need to scan all product files to discover valid values.
 
 ## Writing Style
 
