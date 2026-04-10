@@ -13,6 +13,7 @@ assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
 scripts/generate_static_seo.py → SEO page generator (called by build_products.py)
 scripts/remove_bg.py      → Strip white background from a product image → transparent PNG
+scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
 
 products/               → Static product HTML pages (EN, auto-generated)
 fr/products/            → Static product HTML pages (FR, auto-generated)
@@ -91,6 +92,12 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    python scripts/remove_bg.py assets/products/<product-slug>.<ext>
    ```
    This writes a transparent, auto-cropped `.png` next to the source image (same stem, `.png` extension). Then reference the `.png` in the JSON `images` array. The script only removes white-ish backgrounds via edge flood-fill, so interior whites (screens, labels) are preserved. Skip this step only if the source image already has a transparent background, or if the background is a lifestyle/photo shot rather than plain white.
+
+   **Always crop the final image** — Whether or not `remove_bg.py` was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
+   ```bash
+   python scripts/crop_image.py assets/products/<product-slug>.png
+   ```
+   This trims all transparent padding and adds a small uniform margin (4% of the longest side). The product should fill most of the image canvas — compare with existing product images like `rcu0808-room-control-unit.png` for reference. This step is **mandatory** for every product image, even if it already has a transparent background.
 
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
    - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
