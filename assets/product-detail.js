@@ -111,11 +111,11 @@
     const canonicalUrl = baseUrl + '/products/' + id + '.html';
 
     if (canonical) canonical.href = canonicalUrl;
-    if (ogTitle) ogTitle.content = `${title} | SMART ELECTRICITY`;
+    if (ogTitle) ogTitle.content = `${title} | S‑ELECTRICITY`;
     if (ogDesc) ogDesc.content = descText;
     if (ogImage) ogImage.content = imageUrl ? baseUrl + image : '';
     if (desc) desc.content = descText;
-    if (twitterTitle) twitterTitle.content = `${title} | SMART ELECTRICITY`;
+    if (twitterTitle) twitterTitle.content = `${title} | S‑ELECTRICITY`;
     if (twitterDesc) twitterDesc.content = descText;
     if (twitterImage) twitterImage.content = imageUrl ? baseUrl + image : '';
 
