@@ -1,0 +1,94 @@
+{
+  "id": "zennio-maxinbox-66-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 66 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 66 v3",
+    "ar": "مشغل KNX Zennio MAXinBOX 66 v3"
+  },
+
+  "short_description": {
+    "en": "6-output, 6-input multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 6 sorties / 6 entrées avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 6 مخارج و6 مداخل مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 66 v3 combines 6 independent 16 A relay outputs with 6 analog/digital inputs in a single 4.5-unit DIN-rail module, giving you both sensing and control from one compact device. The inputs can be configured as binary push buttons, NTC temperature probes (±0.5 °C accuracy), or motion sensors with cable runs up to 30 m, eliminating the need for a separate binary input module. Outputs support switching, shutter/blind, and fan coil configurations with tungsten pre-contacts that handle 800 A inrush for reliable LED and transformer switching. Four built-in room thermostats manage heating and cooling zones directly, while 10 logic functions let you create local automation rules without a central server. With manual override buttons, LED status indicators, and KNX Secure support, it is ideal for rooms that need both sensing and actuation from one DIN-rail slot.",
+    "fr": "Le Zennio MAXinBOX 66 v3 combine 6 sorties relais indépendantes de 16 A avec 6 entrées analogiques/numériques dans un seul module DIN de 4,5 unités, offrant détection et contrôle depuis un seul appareil compact. Les entrées peuvent être configurées comme boutons-poussoirs, sondes de température NTC (précision ±0,5 °C) ou détecteurs de mouvement avec des câbles jusqu'à 30 m, éliminant le besoin d'un module d'entrée binaire séparé. Les sorties supportent la commutation, les volets/stores et les ventilo-convecteurs avec pré-contacts en tungstène gérant 800 A d'appel pour une commutation fiable des LED et transformateurs. Quatre thermostats d'ambiance intégrés gèrent directement les zones de chauffage et climatisation, tandis que 10 fonctions logiques permettent de créer des règles d'automatisation locales sans serveur central. Avec boutons de commande manuelle, indicateurs LED et support KNX Secure, il est idéal pour les pièces nécessitant détection et actionnement depuis un seul emplacement DIN.",
+    "ar": "يجمع Zennio MAXinBOX 66 v3 بين 6 مخارج relay مستقلة بتيار 16 أمبير و6 مداخل تناظرية/رقمية في وحدة DIN واحدة من 4.5 عناصر، مما يوفر الاستشعار والتحكم من جهاز واحد مدمج. يمكن تهيئة المداخل كأزرار ضغط أو حساسات حرارة NTC (دقة ±0.5 درجة مئوية) أو كاشفات حركة مع كابلات تصل إلى 30 متراً، مما يلغي الحاجة لوحدة إدخال ثنائية منفصلة. تدعم المخارج التبديل والستائر ومراوح التكييف مع ملامسات تنغستن مسبقة تتحمل 800 أمبير اندفاعي لتبديل موثوق للـ LED والمحولات. تدير أربعة ثرموستات غرف مدمجة مناطق التدفئة والتبريد مباشرة، بينما تتيح 10 وظائف منطقية إنشاء قواعد أتمتة محلية بدون خادم مركزي. مع أزرار تحكم يدوي ومؤشرات LED ودعم KNX Secure، فهو مثالي للغرف التي تحتاج الاستشعار والتشغيل من فتحة DIN واحدة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "6 × 16 A (bistable relays with tungsten pre-contact)",
+      "Inputs": "6 analog/digital (push buttons, NTC temperature probes, motion sensors)",
+      "Max Input Cable Length": "30 m",
+      "Configurations": "Switching, Shutter, Fan Coil",
+      "Room Thermostats": "4 built-in",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Power Consumption": "133 mW at 29 V DC",
+      "Logic Functions": "10",
+      "Dimensions": "67 × 90 × 79 mm (4.5 DIN units)",
+      "Weight": "500 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "6 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Entrées": "6 analogiques/numériques (boutons-poussoirs, sondes NTC, détecteurs de mouvement)",
+      "Longueur max. câble entrée": "30 m",
+      "Configurations": "Commutation, Volet, Ventilo-convecteur",
+      "Thermostats d'ambiance": "4 intégrés",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "133 mW à 29 V CC",
+      "Fonctions logiques": "10",
+      "Dimensions": "67 × 90 × 79 mm (4,5 unités DIN)",
+      "Poids": "500 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "6 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "المداخل": "6 تناظرية/رقمية (أزرار ضغط، حساسات حرارة NTC، كاشفات حركة)",
+      "أقصى طول كابل مدخل": "30 متر",
+      "التهيئات": "تبديل، ستائر، مراوح تكييف",
+      "ثرموستات الغرف": "4 مدمجة",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الاستهلاك": "133 مللي واط عند 29 فولت",
+      "الوظائف المنطقية": "10",
+      "الأبعاد": "67 × 90 × 79 مم (4.5 وحدات DIN)",
+      "الوزن": "500 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-66-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-66-v3/"
+    }
+  ]
+}

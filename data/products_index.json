@@ -814,6 +814,48 @@
     "image": "/assets/products/zennio-maxinbox-24-v2.png"
   },
   {
+    "id": "zennio-maxinbox-66-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MAXinBOX 66 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MAXinBOX 66 v3",
+      "ar": "مشغل KNX Zennio MAXinBOX 66 v3"
+    },
+    "short_description": {
+      "en": "6-output, 6-input multifunction actuator with KNX Secure.",
+      "fr": "Actionneur multifonction 6 sorties / 6 entrées avec KNX Secure.",
+      "ar": "مشغل متعدد الوظائف بـ 6 مخارج و6 مداخل مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-maxinbox-66-v3.png"
+  },
+  {
+    "id": "zennio-maxinbox-8-v4",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MAXinBOX 8 v4 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MAXinBOX 8 v4",
+      "ar": "مشغل KNX Zennio MAXinBOX 8 v4"
+    },
+    "short_description": {
+      "en": "8-output multifunction actuator with KNX Secure.",
+      "fr": "Actionneur multifonction 8 sorties avec KNX Secure.",
+      "ar": "مشغل متعدد الوظائف بـ 8 مخارج مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-maxinbox-8-v4.png"
+  },
+  {
     "id": "zennio-maxinbox-88",
     "brand": "Zennio",
     "technology": [
