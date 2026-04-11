@@ -1,0 +1,85 @@
+{
+  "id": "zennio-maxinbox-20",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 20 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 20",
+    "ar": "مشغل KNX Zennio MAXinBOX 20"
+  },
+
+  "short_description": {
+    "en": "20-output multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 20 sorties avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 20 مخرجاً مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 20 is a powerful DIN-rail actuator that packs 20 independent 16 A relay outputs into a single 10-unit module. Each output can be freely configured as a switching channel, part of a shutter pair, or a fan coil controller — giving you the flexibility to control lights, blinds, and HVAC from one device. Built-in push buttons let you manually override any output, while LED indicators show real-time status at a glance. With 30 independent logic functions, KNX Secure support, and a mechanical lifetime of over 3 million operations per relay, it is built for demanding commercial and residential installations.",
+    "fr": "Le Zennio MAXinBOX 20 est un actionneur DIN puissant qui intègre 20 sorties relais indépendantes de 16 A dans un seul module de 10 unités. Chaque sortie peut être librement configurée comme canal de commutation, paire de volet roulant ou contrôleur de ventilo-convecteur — vous offrant la flexibilité de contrôler l'éclairage, les stores et la CVC depuis un seul appareil. Des boutons-poussoirs intégrés permettent de forcer manuellement chaque sortie, tandis que les indicateurs LED affichent l'état en temps réel. Avec 30 fonctions logiques indépendantes, le support KNX Secure et une durée de vie mécanique de plus de 3 millions d'opérations par relais, il est conçu pour les installations commerciales et résidentielles exigeantes.",
+    "ar": "Zennio MAXinBOX 20 هو مشغل DIN قوي يجمع 20 مخرج relay مستقل بتيار 16 أمبير في وحدة واحدة من 10 عناصر. يمكن تهيئة كل مخرج بحرية كقناة تبديل أو زوج تحكم بالستائر أو وحدة تحكم بمراوح التكييف — مما يمنحك مرونة التحكم في الإضاءة والستائر والتكييف من جهاز واحد. تتيح الأزرار المدمجة التحكم اليدوي بأي مخرج، بينما تعرض مؤشرات LED الحالة الفورية. مع 30 وظيفة منطقية مستقلة ودعم KNX Secure وعمر ميكانيكي يتجاوز 3 ملايين عملية لكل relay، فهو مصمم للتركيبات التجارية والسكنية المتطلبة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "20 × 16 A (bistable relays, potential-free)",
+      "Configurations": "Switching, Shutter (up to 10 ch), Fan Coil (up to 5 blocks)",
+      "Max Resistive Load": "4000 W per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Current Draw": "4.5 mA @ 29 V DC",
+      "Logic Functions": "30 (AND, OR, XOR, comparators)",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Response Time": "≤ 10 ms",
+      "Dimensions": "68 × 90 × 175 mm (10 DIN units)",
+      "Weight": "670 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "20 × 16 A (relais bistables, libres de potentiel)",
+      "Configurations": "Commutation, Volet (jusqu'à 10 canaux), Ventilo-convecteur (jusqu'à 5 blocs)",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4,5 mA @ 29 V CC",
+      "Fonctions logiques": "30 (AND, OR, XOR, comparateurs)",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Temps de réponse": "≤ 10 ms",
+      "Dimensions": "68 × 90 × 175 mm (10 unités DIN)",
+      "Poids": "670 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "20 × 16 أمبير (relay ثنائي الاستقرار، بدون جهد)",
+      "التهيئات": "تبديل، ستائر (حتى 10 قنوات)، مراوح تكييف (حتى 5 مجموعات)",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "استهلاك التيار": "4.5 مللي أمبير @ 29 فولت",
+      "الوظائف المنطقية": "30 (AND، OR، XOR، مقارنات)",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "الأبعاد": "68 × 90 × 175 مم (10 وحدات DIN)",
+      "الوزن": "670 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-20.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-20/"
+    }
+  ]
+}
