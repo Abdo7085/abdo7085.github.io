@@ -13,8 +13,9 @@ assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
 scripts/generate_static_seo.py → SEO page generator (called by build_products.py) — full hreflang, og:locale, JSON-LD, robots override, noscript H1
 scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD + partial sitemap
-scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
-scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
+16: scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
+17: scripts/remove_bg_traditional.py → Traditional Fallback (Flood Fill) for flat screens/panels
+18: scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
 
 products/               → Static product HTML pages (EN, auto-generated)
 fr/products/            → Static product HTML pages (FR, auto-generated)
@@ -88,13 +89,21 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 - **Only if no real data exists**, omit the `rating` field entirely. The build scripts (`generate_static_seo.py` and `assets/product-detail.js`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
-2. **Remove the background from the product image** — Most manufacturer images have a studio background. Always run the AI background remover so the product blends into the site's cards cleanly:
-   ```bash
-   python scripts/remove_bg.py assets/products/<product-slug>.<ext>
-   ```
-   This uses `rembg` (U²-Net AI model) for accurate background removal and writes a transparent `.png` next to the source image (same stem, `.png` extension). Then reference the `.png` in the JSON `images` array. **Requires:** `pip install "rembg[cpu]"`. Skip this step only if the source image already has a transparent background.
+2. **Remove the background from the product image** — Most manufacturer images have a studio background.
+   - **For standard products (Plastic/White boxes):** Use the AI background remover:
+     ```bash
+     python scripts/remove_bg.py assets/products/<product-slug>.<ext>
+     ```
+     *Requires: `pip install "rembg[cpu]"`. This uses the U²-Net AI model.*
+   - **For flat screens/Touch Panels (Black screens):** Use the traditional fallback if the AI "hollows out" the screen:
+     ```bash
+     python scripts/remove_bg_traditional.py assets/products/<product-slug>.<ext>
+     ```
+     *This uses an Edge Flood Fill algorithm which preserves flat internal colors like screens.*
 
-   **Always crop the final image** — Whether or not `remove_bg.py` was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
+   These tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
+
+   **Always crop the final image** — Whether or not background removal was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
    ```bash
    python scripts/crop_image.py assets/products/<product-slug>.png
    ```
@@ -114,15 +123,15 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    This single command does all of the following:
    - Builds `data/products_index.json` (product listing index)
    - Generates static HTML pages in `products/`, `fr/products/`, `ar/products/` with full SEO:
-     - `<title>` + `<meta description>` translated per language
-     - `hreflang` tags for all 3 languages + `x-default` (pointing to EN)
+     - <title> + <meta description> translated per language
+     - hreflang tags for all 3 languages + x-default (pointing to EN)
      - Open Graph + Twitter Card tags with product image
-     - `og:locale` + `og:locale:alternate` for each language
-     - JSON-LD `Product` schema with `aggregateRating` + `BreadcrumbList`
-     - `<meta name="robots" content="index, follow">` (overrides the `noindex` template)
-     - `<h1>` inside `<noscript>` with product name — for crawlers that don't execute JS
-   - Injects `ItemList` JSON-LD into `products.html` (EN/FR/AR) for catalog rich results
-   - Updates `sitemap.xml` with all product URLs + `lastmod` dates + `hreflang` alternates
+     - og:locale + og:locale:alternate for each language
+     - JSON-LD Product schema with aggregateRating + BreadcrumbList
+     - <meta name="robots" content="index, follow"> (overrides the noindex template)
+     - <h1> inside <noscript> with product name — for crawlers that don't execute JS
+   - Injects ItemList JSON-LD into products.html (EN/FR/AR) for catalog rich results
+   - Updates sitemap.xml with all product URLs + lastmod dates + hreflang alternates
 
    **⚠️ Build order matters:** If you also modified root pages (index.html, products.html, previous-work.html), you must run `generate_localized.py` **first**, then `build_products.py` **last** — because both scripts write `sitemap.xml`, and `build_products.py` produces the complete sitemap (static pages + products):
    ```bash
