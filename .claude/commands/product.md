@@ -13,9 +13,9 @@ assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
 scripts/generate_static_seo.py → SEO page generator (called by build_products.py) — full hreflang, og:locale, JSON-LD, robots override, noscript H1
 scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD + partial sitemap
-16: scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
-17: scripts/remove_bg_traditional.py → Traditional Fallback (Flood Fill) for flat screens/panels
-18: scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
+scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
+scripts/remove_bg_traditional.py → Traditional Fallback (Flood Fill) for flat screens/panels
+scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
 
 products/               → Static product HTML pages (EN, auto-generated)
 fr/products/            → Static product HTML pages (FR, auto-generated)
@@ -89,19 +89,22 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 - **Only if no real data exists**, omit the `rating` field entirely. The build scripts (`generate_static_seo.py` and `assets/product-detail.js`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
-2. **Remove the background from the product image** — Most manufacturer images have a studio background.
-   - **For standard products (Plastic/White boxes):** Use the AI background remover:
+2. **Remove the background from the product image** — Most manufacturer images have a studio background. Choose the right tool **before** running — do NOT try AI first and fall back; pick based on product type:
+
+   - **`remove_bg.py` (AI)** — Use for standard products: relays, actuators, power supplies, routers, switches, sensors — anything with a plastic/metal housing and no large dark screen.
      ```bash
      python scripts/remove_bg.py assets/products/<product-slug>.<ext>
      ```
-     *Requires: `pip install "rembg[cpu]"`. This uses the U²-Net AI model.*
-   - **For flat screens/Touch Panels (Black screens):** Use the traditional fallback if the AI "hollows out" the screen:
+     *Requires: `pip install "rembg[cpu]"`. Uses rembg / U²-Net AI model.*
+
+   - **`remove_bg_traditional.py` (Flood Fill)** — Use for **any product with a visible screen or large dark/black surface**: touch panels, room control units with displays, tablets, monitors. The AI model treats dark bezels and screens as background and removes them, destroying the product image. The traditional Flood Fill algorithm only removes the actual outer background and preserves internal colors.
      ```bash
      python scripts/remove_bg_traditional.py assets/products/<product-slug>.<ext>
      ```
-     *This uses an Edge Flood Fill algorithm which preserves flat internal colors like screens.*
 
-   These tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
+   **Decision rule:** If the product image shows a screen, display, or large dark-colored face → always use `remove_bg_traditional.py`. For everything else → use `remove_bg.py`.
+
+   Both tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
 
    **Always crop the final image** — Whether or not background removal was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
    ```bash
@@ -112,11 +115,11 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
    - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
 
-3. **Update locale files if needed** — If you introduce a new `product_type` or `installation` value that doesn't already exist in the catalog, add its translation key to both `assets/locales/ar.json` and `assets/locales/fr.json`. The key format is `val_<Value>` where spaces become underscores:
+4. **Update locale files if needed** — If you introduce a new `product_type` or `installation` value that doesn't already exist in the catalog, add its translation key to both `assets/locales/ar.json` and `assets/locales/fr.json`. The key format is `val_<Value>` where spaces become underscores:
    - Example: product_type `"Room Control Unit"` → key `"val_Room_Control_Unit"`
    - Example: installation `"Wall mount"` → key `"val_Wall_mount"`
 
-4. **Build everything** (index + static SEO pages + sitemap):
+5. **Build everything** (index + static SEO pages + sitemap):
    ```bash
    python scripts/build_products.py
    ```

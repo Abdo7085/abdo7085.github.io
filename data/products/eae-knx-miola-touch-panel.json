@@ -1,0 +1,77 @@
+{
+  "id": "eae-knx-miola-touch-panel",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "EAE Miola 10\" KNX Touch Panel",
+    "fr": "Écran Tactile EAE Miola 10\" KNX",
+    "ar": "شاشة لمس EAE Miola مقاس 10 بوصة KNX"
+  },
+
+  "short_description": {
+    "en": "10.1\" smart home control panel with intercom and security.",
+    "fr": "Écran de contrôle domotique 10,1\" avec interphone et sécurité.",
+    "ar": "لوحة تحكم ذكية 10.1 بوصة مع اتصال داخلي ونظام أمان."
+  },
+
+  "description": {
+    "en": "The EAE Miola is a 10.1-inch wall-mounted touch panel that puts your entire smart home at your fingertips. From its elegant glass-and-aluminium display, you can control lighting, heating and cooling, curtains, security sensors, and even view IP camera feeds — all in one place. It doubles as a video intercom with built-in microphone and speaker using the SIP 2.0 standard, so you can see and speak with visitors at your door. Dual Ethernet ports let you keep home and building networks separated for added security, and five dry-contact inputs allow direct connection to conventional switches or sensors. With support for up to 254 rooms and 254 accessories, it scales effortlessly from a single apartment to an entire building.",
+    "fr": "L'EAE Miola est un écran tactile mural de 10,1 pouces qui met toute votre maison connectée au bout de vos doigts. Depuis son élégant afficheur en verre et aluminium, vous contrôlez l'éclairage, le chauffage et la climatisation, les stores, les capteurs de sécurité, et même les flux de caméras IP — le tout depuis un seul point. Il fait également office d'interphone vidéo grâce à son microphone et haut-parleur intégrés via le standard SIP 2.0, vous permettant de voir et parler avec les visiteurs à votre porte. Ses deux ports Ethernet permettent d'isoler les réseaux domestique et de bâtiment pour plus de sécurité, et cinq entrées à contact sec autorisent la connexion directe d'interrupteurs ou capteurs conventionnels. Avec la prise en charge de jusqu'à 254 pièces et 254 accessoires, il s'adapte sans effort d'un simple appartement à un immeuble entier.",
+    "ar": "شاشة EAE Miola هي لوحة لمس حائطية بحجم 10.1 بوصة تضع منزلك الذكي بالكامل بين يديك. من شاشتها الأنيقة المصنوعة من الزجاج والألومنيوم، يمكنك التحكم في الإضاءة والتدفئة والتبريد والستائر وأجهزة الاستشعار الأمنية، وحتى مشاهدة بث كاميرات IP — كل ذلك من مكان واحد. كما تعمل كنظام اتصال داخلي بالفيديو بفضل الميكروفون والسماعة المدمجين عبر معيار SIP 2.0، مما يتيح لك رؤية الزوار والتحدث معهم عند بابك. يتيح منفذا Ethernet المزدوجان فصل شبكة المنزل عن شبكة المبنى لمزيد من الأمان، وتسمح خمس مداخل تلامس جاف بتوصيل المفاتيح أو المستشعرات التقليدية مباشرة. مع دعم حتى 254 غرفة و254 جهازاً، يتوسع بسهولة من شقة واحدة إلى مبنى كامل."
+  },
+
+  "specs": {
+    "en": {
+      "Screen": "10.1\" capacitive touch, 1280 × 800 px",
+      "Processor": "PX30 chipset, 1 GB RAM, 8 GB storage",
+      "Operating System": "Android 8.0 with EAEOS drivers",
+      "Supply Voltage": "12–30 V DC",
+      "Digital Inputs": "5 (dry contact)",
+      "Network": "2 × Ethernet (dual LAN)",
+      "Audio": "Built-in microphone + speaker, SIP 2.0 intercom",
+      "Dimensions (on-wall)": "264 × 208 × 4 mm",
+      "Capacity": "254 rooms, 254 accessories",
+      "Finishes": "Natural Aluminium, Black Aluminium, Black Plastic"
+    },
+    "fr": {
+      "Écran": "Tactile capacitif 10,1\", 1280 × 800 px",
+      "Processeur": "Chipset PX30, 1 Go RAM, 8 Go stockage",
+      "Système d'exploitation": "Android 8.0 avec pilotes EAEOS",
+      "Tension d'alimentation": "12–30 V CC",
+      "Entrées numériques": "5 (contact sec)",
+      "Réseau": "2 × Ethernet (double LAN)",
+      "Audio": "Microphone + haut-parleur intégrés, interphone SIP 2.0",
+      "Dimensions (au mur)": "264 × 208 × 4 mm",
+      "Capacité": "254 pièces, 254 accessoires",
+      "Finitions": "Aluminium naturel, Aluminium noir, Plastique noir"
+    },
+    "ar": {
+      "الشاشة": "لمس سعوية 10.1 بوصة، 1280 × 800 بكسل",
+      "المعالج": "شريحة PX30، ذاكرة 1 جيجابايت، تخزين 8 جيجابايت",
+      "نظام التشغيل": "Android 8.0 مع تعريفات EAEOS",
+      "جهد التغذية": "12–30 فولت تيار مستمر",
+      "المداخل الرقمية": "5 (تلامس جاف)",
+      "الشبكة": "2 × Ethernet (شبكة مزدوجة)",
+      "الصوت": "ميكروفون + سماعة مدمجة، اتصال داخلي SIP 2.0",
+      "الأبعاد (على الحائط)": "264 × 208 × 4 مم",
+      "السعة": "254 غرفة، 254 جهاز",
+      "التشطيبات": "ألومنيوم طبيعي، ألومنيوم أسود، بلاستيك أسود"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-miola-touch-panel.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://eaetechnology.com/upload/dosyalar/MIOLA-DATASHEET-EN-R1.0_3s_3.pdf"
+    },
+    {
+      "name": "Brochure (PDF)",
+      "url": "https://www.eaegermany.com/storage/downloads/01J7K1FE5TXQHMP0A0KKWTBZNT.pdf"
+    }
+  ]
+}

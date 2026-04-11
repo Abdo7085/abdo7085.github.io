@@ -1,5 +1,26 @@
 [
   {
+    "id": "eae-knx-miola-touch-panel",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "EAE Miola 10\" KNX Touch Panel",
+      "fr": "Écran Tactile EAE Miola 10\" KNX",
+      "ar": "شاشة لمس EAE Miola مقاس 10 بوصة KNX"
+    },
+    "short_description": {
+      "en": "10.1\" smart home control panel with intercom and security.",
+      "fr": "Écran de contrôle domotique 10,1\" avec interphone et sécurité.",
+      "ar": "لوحة تحكم ذكية 10.1 بوصة مع اتصال داخلي ونظام أمان."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-miola-touch-panel.png"
+  },
+  {
     "id": "eae-knx-power-supply-ps640",
     "brand": "EAE Technology",
     "technology": [
