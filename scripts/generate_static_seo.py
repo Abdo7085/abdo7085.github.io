@@ -223,6 +223,11 @@ def generate_product_html(template_html, product, lang):
     )
 
     # Issue 4 fix: add x-default hreflang (points to EN)
+    # First remove any old x-default from the template to prevent duplicates
+    out = re.sub(
+        r'\s*<link\s+rel="alternate"\s+hreflang="x-default"[^>]*/?>',
+        '', out
+    )
     xdefault_link = f'<link rel="alternate" hreflang="x-default" href="{en_url}" />'
     out = out.replace(
         f'<link rel="alternate" hreflang="ar" href="{ar_url}" />',
