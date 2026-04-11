@@ -1,0 +1,83 @@
+{
+  "id": "zennio-maxinbox-12",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 12 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 12",
+    "ar": "مشغل KNX Zennio MAXinBOX 12"
+  },
+
+  "short_description": {
+    "en": "12-output multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 12 sorties avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 12 مخرجاً مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 12 is a compact DIN-rail actuator that fits 12 independent 16 A relay outputs into just 6 DIN units — one of the highest output densities in its class. Each output can be individually configured as a switching channel, shutter pair, or fan coil controller, letting you manage lights, blinds, and HVAC from a single slim module. Tungsten pre-contacts handle inrush currents up to 800 A for reliable operation with LED drivers and electronic transformers. Manual push buttons and LED indicators on the cover allow quick override without any KNX panel. With 30 logic functions and KNX Secure support, it is ideal for space-constrained electrical panels in both residential and commercial installations.",
+    "fr": "Le Zennio MAXinBOX 12 est un actionneur DIN compact qui regroupe 12 sorties relais indépendantes de 16 A en seulement 6 unités DIN — l'une des densités de sorties les plus élevées de sa catégorie. Chaque sortie peut être configurée individuellement comme canal de commutation, paire de volet roulant ou contrôleur de ventilo-convecteur, permettant de gérer l'éclairage, les stores et la CVC depuis un seul module mince. Les pré-contacts en tungstène supportent des courants d'appel jusqu'à 800 A pour un fonctionnement fiable avec les drivers LED et transformateurs électroniques. Des boutons-poussoirs et indicateurs LED en façade permettent le contrôle manuel sans panneau KNX. Avec 30 fonctions logiques et le support KNX Secure, il est idéal pour les tableaux électriques compacts en résidentiel et commercial.",
+    "ar": "Zennio MAXinBOX 12 هو مشغل DIN مدمج يجمع 12 مخرج relay مستقل بتيار 16 أمبير في 6 وحدات DIN فقط — أحد أعلى كثافات المخارج في فئته. يمكن تهيئة كل مخرج بشكل فردي كقناة تبديل أو زوج تحكم بالستائر أو وحدة تحكم بمراوح التكييف، مما يتيح إدارة الإضاءة والستائر والتكييف من وحدة واحدة نحيفة. تتحمل ملامسات التنغستن المسبقة تيارات اندفاعية تصل إلى 800 أمبير لتشغيل موثوق مع مشغلات LED والمحولات الإلكترونية. تتيح الأزرار ومؤشرات LED التحكم اليدوي السريع بدون لوحة KNX. مع 30 وظيفة منطقية ودعم KNX Secure، فهو مثالي لألواح التوزيع المحدودة المساحة في التركيبات السكنية والتجارية."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "12 × 16 A (bistable relays with tungsten pre-contact)",
+      "Configurations": "Switching, Shutter, Fan Coil",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Logic Functions": "30",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Dimensions": "68 × 90 × 105 mm (6 DIN units)",
+      "Weight": "397 g",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "12 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Configurations": "Commutation, Volet, Ventilo-convecteur",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Fonctions logiques": "30",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Dimensions": "68 × 90 × 105 mm (6 unités DIN)",
+      "Poids": "397 g",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "12 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "التهيئات": "تبديل، ستائر، مراوح تكييف",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الوظائف المنطقية": "30",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "الأبعاد": "68 × 90 × 105 مم (6 وحدات DIN)",
+      "الوزن": "397 غ",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-12.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://r-knx.ru/views/mysite.ru/files/product_files/Datasheet_MAXinBOX_12_EN.pdf"
+    },
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-12/"
+    }
+  ]
+}
