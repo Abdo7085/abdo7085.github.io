@@ -730,6 +730,27 @@
     "image": "/assets/products/sonoff-zbmini-extreme.png"
   },
   {
+    "id": "zennio-maxinbox-16-v4",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MAXinBOX 16 v4 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MAXinBOX 16 v4",
+      "ar": "مشغل KNX Zennio MAXinBOX 16 v4"
+    },
+    "short_description": {
+      "en": "16-output multifunction actuator with KNX Secure.",
+      "fr": "Actionneur multifonction 16 sorties avec KNX Secure.",
+      "ar": "مشغل متعدد الوظائف بـ 16 مخرجاً مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-maxinbox-16-v4.png"
+  },
+  {
     "id": "zennio-maxinbox-20",
     "brand": "Zennio",
     "technology": [

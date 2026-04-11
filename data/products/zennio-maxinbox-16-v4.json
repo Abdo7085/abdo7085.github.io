@@ -1,0 +1,92 @@
+{
+  "id": "zennio-maxinbox-16-v4",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 16 v4 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 16 v4",
+    "ar": "مشغل KNX Zennio MAXinBOX 16 v4"
+  },
+
+  "short_description": {
+    "en": "16-output multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 16 sorties avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 16 مخرجاً مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 16 v4 is a compact DIN-rail actuator that provides 16 independent 16 A relay outputs in just 8 DIN units. Each output can be configured as a switching channel, shutter pair, or fan coil controller, making it ideal for managing lights, blinds, and climate from a single module. Its tungsten pre-contacts handle high inrush currents up to 800 A, so it works reliably with LED drivers and electronic transformers. Manual push buttons and LED indicators on the cover allow quick override and status monitoring without needing a KNX panel. With 20 logic functions, KNX Secure support, and a relay lifetime of 3 million operations, it delivers professional-grade reliability in a space-efficient package.",
+    "fr": "Le Zennio MAXinBOX 16 v4 est un actionneur DIN compact qui offre 16 sorties relais indépendantes de 16 A en seulement 8 unités DIN. Chaque sortie peut être configurée comme canal de commutation, paire de volet roulant ou contrôleur de ventilo-convecteur, idéal pour gérer l'éclairage, les stores et le climat depuis un seul module. Ses pré-contacts en tungstène supportent des courants d'appel jusqu'à 800 A, assurant un fonctionnement fiable avec les drivers LED et transformateurs électroniques. Des boutons-poussoirs et indicateurs LED en façade permettent le contrôle manuel et la supervision sans panneau KNX. Avec 20 fonctions logiques, le support KNX Secure et une durée de vie des relais de 3 millions d'opérations, il offre une fiabilité professionnelle dans un format compact.",
+    "ar": "Zennio MAXinBOX 16 v4 هو مشغل DIN مدمج يوفر 16 مخرج relay مستقل بتيار 16 أمبير في 8 وحدات DIN فقط. يمكن تهيئة كل مخرج كقناة تبديل أو زوج تحكم بالستائر أو وحدة تحكم بمراوح التكييف، مما يجعله مثالياً لإدارة الإضاءة والستائر والمناخ من وحدة واحدة. تتحمل ملامساته المسبقة من التنغستن تيارات اندفاعية تصل إلى 800 أمبير، فيعمل بموثوقية مع مشغلات LED والمحولات الإلكترونية. تتيح الأزرار ومؤشرات LED على الغطاء التحكم اليدوي ومراقبة الحالة دون الحاجة للوحة KNX. مع 20 وظيفة منطقية ودعم KNX Secure وعمر relay يبلغ 3 ملايين عملية، يقدم موثوقية احترافية في حجم مدمج."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "16 × 16 A (bistable relays with tungsten pre-contact)",
+      "Configurations": "Switching, Shutter (up to 8 ch), Fan Coil (up to 4 blocks)",
+      "Max Resistive Load": "4000 W per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Current Draw": "4.05 mA @ 29 V DC",
+      "Logic Functions": "20 (AND, OR, XOR, comparators)",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Response Time": "≤ 10 ms",
+      "Dimensions": "67 × 90 × 140 mm (8 DIN units)",
+      "Weight": "531 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "16 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Configurations": "Commutation, Volet (jusqu'à 8 canaux), Ventilo-convecteur (jusqu'à 4 blocs)",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4,05 mA @ 29 V CC",
+      "Fonctions logiques": "20 (AND, OR, XOR, comparateurs)",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Temps de réponse": "≤ 10 ms",
+      "Dimensions": "67 × 90 × 140 mm (8 unités DIN)",
+      "Poids": "531 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "16 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "التهيئات": "تبديل، ستائر (حتى 8 قنوات)، مراوح تكييف (حتى 4 مجموعات)",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "استهلاك التيار": "4.05 مللي أمبير @ 29 فولت",
+      "الوظائف المنطقية": "20 (AND، OR، XOR، مقارنات)",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "الأبعاد": "67 × 90 × 140 مم (8 وحدات DIN)",
+      "الوزن": "531 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-16-v4.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://cdn.bitelec.ch/b/d/d/0/bdd0532a1fe2d84cfc448dde57fb936097989afe_Datasheet_MAXinBOX_16_v4_EN.pdf"
+    },
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-16-v4/"
+    }
+  ]
+}
