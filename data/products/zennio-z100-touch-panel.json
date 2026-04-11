@@ -1,0 +1,80 @@
+{
+  "id": "zennio-z100-touch-panel",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Z100 KNX Touch Panel",
+    "fr": "Écran Tactile Zennio Z100 KNX",
+    "ar": "شاشة لمس Zennio Z100 KNX"
+  },
+
+  "short_description": {
+    "en": "10\" capacitive color touch panel with thermostat and intercom.",
+    "fr": "Écran tactile couleur capacitif 10\" avec thermostat et interphone.",
+    "ar": "شاشة لمس ملونة سعوية 10 بوصة مع ترموستات واتصال داخلي."
+  },
+
+  "description": {
+    "en": "The Zennio Z100 is a 10-inch color capacitive touch panel that serves as the central hub for your KNX smart home. Its high-resolution display lets you control lighting, climate, blinds, security, and multimedia from up to 12 customizable pages — all with smooth, intuitive gestures. Two independent built-in thermostats handle heating and cooling zones directly from the panel, while proximity and light sensors automatically adjust the screen brightness and wake it when you approach. An Ethernet port enables optional remote control from a smartphone or web browser, and four analog/digital inputs let you wire conventional switches or sensors directly. Available in white, black, and silver to match any interior.",
+    "fr": "Le Zennio Z100 est un écran tactile couleur capacitif de 10 pouces qui sert de hub central pour votre maison connectée KNX. Son affichage haute résolution permet de contrôler l'éclairage, le climat, les stores, la sécurité et le multimédia depuis jusqu'à 12 pages personnalisables — le tout avec des gestes fluides et intuitifs. Deux thermostats intégrés indépendants gèrent les zones de chauffage et de climatisation directement depuis l'écran, tandis que les capteurs de proximité et de luminosité ajustent automatiquement la luminosité et réveillent l'écran à votre approche. Un port Ethernet permet le contrôle à distance optionnel depuis un smartphone ou un navigateur, et quatre entrées analogiques/numériques permettent de raccorder des interrupteurs ou capteurs conventionnels. Disponible en blanc, noir et argent pour s'adapter à tout intérieur.",
+    "ar": "شاشة Zennio Z100 هي لوحة لمس سعوية ملونة بحجم 10 بوصات تعمل كمركز تحكم رئيسي لمنزلك الذكي KNX. تتيح لك شاشتها عالية الدقة التحكم في الإضاءة والمناخ والستائر والأمان والوسائط المتعددة من خلال 12 صفحة قابلة للتخصيص — بإيماءات سلسة وبديهية. يتولى ترموستاتان مدمجان مستقلان إدارة مناطق التدفئة والتبريد مباشرة من اللوحة، بينما تضبط مستشعرات التقارب والإضاءة سطوع الشاشة تلقائياً وتوقظها عند اقترابك. يتيح منفذ Ethernet التحكم عن بُعد اختيارياً من الهاتف أو المتصفح، وتسمح أربع مداخل تناظرية/رقمية بتوصيل المفاتيح أو المستشعرات التقليدية مباشرة. متوفرة بالأبيض والأسود والفضي لتتناسب مع أي ديكور."
+  },
+
+  "specs": {
+    "en": {
+      "Screen": "10\" capacitive LCD, 1280 × 800 px, 16M colors",
+      "Supply Voltage": "24–29 V DC (external) + KNX bus",
+      "Analog/Digital Inputs": "4 (dry contact, 3.3 V DC)",
+      "Thermostats": "2 independent zones + internal temperature probe",
+      "Sensors": "Proximity, Luminosity",
+      "Connectivity": "KNX TP1-256, Ethernet (RJ-45), Micro-USB",
+      "Dimensions": "248.9 × 174 × 39.2 mm (11.8 mm protrusion)",
+      "Weight": "693 g",
+      "Operating Temperature": "5 to +45 °C",
+      "Protection": "IP20",
+      "Colors": "White (RAL 9016), Black (RAL 9004), Silver (RAL 9006)"
+    },
+    "fr": {
+      "Écran": "LCD capacitif 10\", 1280 × 800 px, 16M couleurs",
+      "Tension d'alimentation": "24–29 V CC (externe) + bus KNX",
+      "Entrées analogiques/numériques": "4 (contact sec, 3,3 V CC)",
+      "Thermostats": "2 zones indépendantes + sonde de température interne",
+      "Capteurs": "Proximité, Luminosité",
+      "Connectivité": "KNX TP1-256, Ethernet (RJ-45), Micro-USB",
+      "Dimensions": "248,9 × 174 × 39,2 mm (11,8 mm de saillie)",
+      "Poids": "693 g",
+      "Température de fonctionnement": "5 à +45 °C",
+      "Protection": "IP20",
+      "Couleurs": "Blanc (RAL 9016), Noir (RAL 9004), Argent (RAL 9006)"
+    },
+    "ar": {
+      "الشاشة": "LCD سعوية 10 بوصة، 1280 × 800 بكسل، 16 مليون لون",
+      "جهد التغذية": "24–29 فولت تيار مستمر (خارجي) + ناقل KNX",
+      "المداخل التناظرية/الرقمية": "4 (تلامس جاف، 3.3 فولت)",
+      "الترموستات": "منطقتان مستقلتان + مسبار حرارة داخلي",
+      "المستشعرات": "تقارب، إضاءة",
+      "الاتصال": "KNX TP1-256، Ethernet (RJ-45)، Micro-USB",
+      "الأبعاد": "248.9 × 174 × 39.2 مم (بروز 11.8 مم)",
+      "الوزن": "693 غ",
+      "درجة حرارة التشغيل": "5 إلى +45 درجة مئوية",
+      "الحماية": "IP20",
+      "الألوان": "أبيض (RAL 9016)، أسود (RAL 9004)، فضي (RAL 9006)"
+    }
+  },
+
+  "images": ["/assets/products/zennio-z100-touch-panel.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://cdn.bitelec.ch/e/b/5/c/eb5c3470a82a43fc20e930cb92096d20b99f63e7_Datasheet_Z100_EN_Ed1.pdf"
+    },
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/z100/"
+    }
+  ]
+}

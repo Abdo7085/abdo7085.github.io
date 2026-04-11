@@ -163,7 +163,7 @@ List files in `data/products/` to show available products. Read individual files
 
 These are the values currently in use across products. Always prefer reusing existing values:
 
-**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`
+**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`, `Zennio`
 **Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`
 **Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`, `Universal Interface`
 **Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
@@ -196,7 +196,9 @@ Each entry in `files` should link to **authoritative manufacturer content**, not
 1. **PDF documents** hosted by the manufacturer — datasheets, user manuals, installation guides, wiring diagrams, declarations of conformity. These are stable, printable, and search-engine friendly. Always label them clearly: `"Datasheet (PDF)"`, `"User Manual (PDF)"`, `"Installation Guide (PDF)"`.
 2. **Manufacturer Knowledge Base / Help Center pages** — e.g. `kb.shelly.cloud`, `help.eaetechnology.com`, `sonoff.tech/product/...`, `reyee.ruijie.com/.../faq`. These are acceptable when no PDF exists for the topic, and they often contain richer setup info. Label them `"Knowledge Base"` or `"Setup Guide"`.
 
-**Avoid** linking to: generic product/marketing pages (e.g. `shelly.com/products/shop/...`), Amazon/AliExpress listings, blog posts, YouTube videos, or any non-manufacturer source. If the only thing you can find is a marketing page, it's better to omit that file entry than to include a low-value link.
+3. **Manufacturer product pages with download sections** — When PDFs are hosted behind authentication (e.g. SharePoint) or can't be linked directly, it's acceptable to link to the official product page itself if it contains a downloads section with manuals, datasheets, and ETS files that professionals/installers can access. Label them `"Product Page (Manuals & Downloads)"`. This is especially useful for brands like Zennio where documentation is gated behind their site. The target audience for these links is **installers and professionals**, not end consumers.
+
+**Avoid** linking to: generic marketing-only pages with no technical downloads, Amazon/AliExpress listings, blog posts, YouTube videos, or any non-manufacturer source. If the only thing you can find is a marketing page with no downloads section, it's better to omit that file entry than to include a low-value link.
 
 When researching a new product, actively search the manufacturer's site for `filetype:pdf <model number>` or browse their downloads/support section to locate proper PDFs before falling back to KB pages.
 

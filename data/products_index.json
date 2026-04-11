@@ -728,5 +728,26 @@
     },
     "category": "",
     "image": "/assets/products/sonoff-zbmini-extreme.png"
+  },
+  {
+    "id": "zennio-z100-touch-panel",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z100 KNX Touch Panel",
+      "fr": "Écran Tactile Zennio Z100 KNX",
+      "ar": "شاشة لمس Zennio Z100 KNX"
+    },
+    "short_description": {
+      "en": "10\" capacitive color touch panel with thermostat and intercom.",
+      "fr": "Écran tactile couleur capacitif 10\" avec thermostat et interphone.",
+      "ar": "شاشة لمس ملونة سعوية 10 بوصة مع ترموستات واتصال داخلي."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z100-touch-panel.png"
   }
 ]
