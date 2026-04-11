@@ -1,0 +1,78 @@
+{
+  "id": "eae-knx-ui108-universal-interface",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "EAE UI108 Universal Interface",
+    "fr": "Interface universelle EAE UI108",
+    "ar": "واجهة EAE UI108 العامة"
+  },
+
+  "short_description": {
+    "en": "8-channel KNX binary input for conventional switches.",
+    "fr": "Entrée binaire KNX 8 canaux pour interrupteurs conventionnels.",
+    "ar": "مدخل ثنائي KNX بـ 8 قنوات للمفاتيح التقليدية."
+  },
+
+  "description": {
+    "en": "The EAE UI108 Universal Interface lets you bring conventional switches and dry contacts into your KNX smart home. Simply install it in a flush-mounted wall box behind your existing switch, and each of its 8 input channels can be configured independently via ETS to handle switching, dimming, curtain control, scene selection, value/priority commands, or pulse counting. It draws power directly from the KNX bus so no additional wiring is needed, and color-coded cables make installation quick and mistake-free. It is a cost-effective way to upgrade standard buttons to full KNX intelligence without replacing the switches themselves.",
+    "fr": "L'interface universelle EAE UI108 permet d'intégrer des interrupteurs conventionnels et des contacts secs dans votre maison connectée KNX. Il suffit de l'installer dans une boîte d'encastrement derrière votre interrupteur existant, et chacun de ses 8 canaux d'entrée peut être configuré indépendamment via ETS pour la commutation, la variation, le contrôle de stores, la sélection de scènes, les commandes de valeur/priorité ou le comptage d'impulsions. Il est alimenté directement par le bus KNX, sans câblage supplémentaire, et ses câbles à code couleur facilitent une installation rapide et sans erreur. C'est une solution économique pour upgrader des boutons standards en intelligence KNX complète sans remplacer les interrupteurs eux-mêmes.",
+    "ar": "تتيح لك واجهة EAE UI108 العامة إدخال المفاتيح التقليدية وجهات الاتصال الجافة إلى منزلك الذكي KNX. يكفي تركيبها في علبة حائط مدمجة خلف المفتاح الحالي، ويمكن تهيئة كل قناة من قنواتها الثماني بشكل مستقل عبر ETS للتبديل أو التعتيم أو التحكم بالستائر أو اختيار المشاهد أو أوامر القيمة/الأولوية أو عدّ النبضات. يتم تغذيتها مباشرة من ناقل KNX فلا حاجة لأسلاك إضافية، كما أن الكابلات المرمّزة بالألوان تجعل التركيب سريعاً وخالياً من الأخطاء. إنها طريقة اقتصادية لترقية الأزرار العادية إلى ذكاء KNX كامل دون استبدال المفاتيح نفسها."
+  },
+
+  "specs": {
+    "en": {
+      "Input Channels": "8 (potential-free / dry contact)",
+      "Operating Modes": "Switching, Dimming, Curtain, Value/Priority, Scene, Pulse Counter",
+      "Supply Voltage": "21–30 V DC (KNX bus powered)",
+      "Current Draw": "< 10 mA",
+      "Scanning Voltage": "3.3 V DC",
+      "Max Cable Length": "10 m",
+      "Operating Temperature": "−5 °C to +45 °C",
+      "Protection": "Short circuit, overvoltage, reverse polarity",
+      "Order Number": "48003"
+    },
+    "fr": {
+      "Canaux d'entrée": "8 (sans potentiel / contact sec)",
+      "Modes de fonctionnement": "Commutation, Variation, Store, Valeur/Priorité, Scène, Compteur d'impulsions",
+      "Tension d'alimentation": "21–30 V CC (alimenté par le bus KNX)",
+      "Consommation": "< 10 mA",
+      "Tension de balayage": "3,3 V CC",
+      "Longueur max. des câbles": "10 m",
+      "Température de fonctionnement": "−5 °C à +45 °C",
+      "Protection": "Court-circuit, surtension, inversion de polarité",
+      "Numéro de commande": "48003"
+    },
+    "ar": {
+      "قنوات الإدخال": "8 (بدون جهد / تلامس جاف)",
+      "أوضاع التشغيل": "تبديل، تعتيم، ستائر، قيمة/أولوية، مشاهد، عدّاد نبضات",
+      "جهد التغذية": "21–30 فولت تيار مستمر (تغذية من ناقل KNX)",
+      "استهلاك التيار": "< 10 مللي أمبير",
+      "جهد المسح": "3.3 فولت تيار مستمر",
+      "أقصى طول للكابل": "10 م",
+      "درجة حرارة التشغيل": "−5 إلى +45 درجة مئوية",
+      "الحماية": "قصر الدارة، فرط الجهد، عكس القطبية",
+      "رقم الطلب": "48003"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-ui108-universal-interface.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/ui108-universal-interface-1_2.pdf"
+    },
+    {
+      "name": "Product Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-UI108-r1.pdf"
+    },
+    {
+      "name": "Installation Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-UI108-r1.pdf"
+    }
+  ]
+}

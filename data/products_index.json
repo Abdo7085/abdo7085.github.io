@@ -84,6 +84,27 @@
     "image": "/assets/products/eae-knx-td4-touch-panel.png"
   },
   {
+    "id": "eae-knx-ui108-universal-interface",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "EAE UI108 Universal Interface",
+      "fr": "Interface universelle EAE UI108",
+      "ar": "واجهة EAE UI108 العامة"
+    },
+    "short_description": {
+      "en": "8-channel KNX binary input for conventional switches.",
+      "fr": "Entrée binaire KNX 8 canaux pour interrupteurs conventionnels.",
+      "ar": "مدخل ثنائي KNX بـ 8 قنوات للمفاتيح التقليدية."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-ui108-universal-interface.png"
+  },
+  {
     "id": "rcu0800-room-control-unit",
     "brand": "EAE Technology",
     "technology": [

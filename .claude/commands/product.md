@@ -153,7 +153,7 @@ These are the values currently in use across products. Always prefer reusing exi
 
 **Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`
 **Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`
-**Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`
+**Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`, `Universal Interface`
 **Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
 
 When the user provides product info in any language, translate it appropriately for all three languages (en, fr, ar). If the user only gives partial info, ask for the missing critical fields before creating the file.
