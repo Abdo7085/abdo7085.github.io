@@ -814,6 +814,27 @@
     "image": "/assets/products/zennio-maxinbox-24-v2.png"
   },
   {
+    "id": "zennio-maxinbox-88",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MAXinBOX 88 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MAXinBOX 88",
+      "ar": "مشغل KNX Zennio MAXinBOX 88"
+    },
+    "short_description": {
+      "en": "8-output, 8-input multifunction actuator with KNX Secure.",
+      "fr": "Actionneur multifonction 8 sorties / 8 entrées avec KNX Secure.",
+      "ar": "مشغل متعدد الوظائف بـ 8 مخارج و8 مداخل مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-maxinbox-88.png"
+  },
+  {
     "id": "zennio-z100-touch-panel",
     "brand": "Zennio",
     "technology": [

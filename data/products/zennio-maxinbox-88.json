@@ -1,0 +1,98 @@
+{
+  "id": "zennio-maxinbox-88",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 88 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 88",
+    "ar": "مشغل KNX Zennio MAXinBOX 88"
+  },
+
+  "short_description": {
+    "en": "8-output, 8-input multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 8 sorties / 8 entrées avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 8 مخارج و8 مداخل مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 88 is the most versatile member of the MAXinBOX family, combining 8 independent 16 A relay outputs with 8 analog/digital inputs in a compact 4-unit DIN-rail module. Each output can be configured as a switching channel, shutter pair, or fan coil controller, while the inputs accept binary push buttons, temperature probes, and motion sensors — so a single device can handle lights, blinds, climate, and room sensing. Four built-in room thermostats let you manage heating and cooling without additional controllers. Tungsten pre-contacts handle inrush currents up to 800 A for reliable operation with LED drivers and electronic transformers. Manual push buttons and LED indicators on the cover allow quick override without any KNX panel. With 10 logic functions and KNX Secure support, it is ideal for compact installations where both sensing and actuating are needed from one module.",
+    "fr": "Le Zennio MAXinBOX 88 est le membre le plus polyvalent de la famille MAXinBOX, combinant 8 sorties relais indépendantes de 16 A avec 8 entrées analogiques/numériques dans un module DIN compact de 4 unités. Chaque sortie peut être configurée comme canal de commutation, paire de volet roulant ou contrôleur de ventilo-convecteur, tandis que les entrées acceptent des boutons-poussoirs, des sondes de température et des détecteurs de mouvement — un seul appareil gère donc l'éclairage, les stores, le climat et la détection. Quatre thermostats d'ambiance intégrés permettent de gérer le chauffage et la climatisation sans contrôleur supplémentaire. Les pré-contacts en tungstène supportent des courants d'appel jusqu'à 800 A pour un fonctionnement fiable avec les drivers LED et transformateurs électroniques. Des boutons-poussoirs et indicateurs LED en façade permettent le contrôle manuel sans panneau KNX. Avec 10 fonctions logiques et le support KNX Secure, il est idéal pour les installations compactes nécessitant à la fois détection et actionnement depuis un seul module.",
+    "ar": "Zennio MAXinBOX 88 هو العضو الأكثر تنوعاً في عائلة MAXinBOX، يجمع بين 8 مخارج relay مستقلة بتيار 16 أمبير و8 مداخل تناظرية/رقمية في وحدة DIN مدمجة من 4 عناصر. يمكن تهيئة كل مخرج كقناة تبديل أو زوج تحكم بالستائر أو وحدة تحكم بمراوح التكييف، بينما تقبل المداخل أزرار ضغط وحساسات حرارة وكاشفات حركة — فجهاز واحد يتعامل مع الإضاءة والستائر والمناخ والاستشعار. تتيح أربعة ثرموستات غرف مدمجة إدارة التدفئة والتبريد بدون وحدات تحكم إضافية. تتحمل ملامسات التنغستن المسبقة تيارات اندفاعية تصل إلى 800 أمبير لتشغيل موثوق مع مشغلات LED والمحولات الإلكترونية. تتيح الأزرار ومؤشرات LED التحكم اليدوي السريع بدون لوحة KNX. مع 10 وظائف منطقية ودعم KNX Secure، فهو مثالي للتركيبات المدمجة التي تحتاج الاستشعار والتشغيل من وحدة واحدة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "8 × 16 A (bistable relays with tungsten pre-contact)",
+      "Inputs": "8 analog/digital (push buttons, temperature probes, motion sensors)",
+      "Configurations": "Switching, Shutter (up to 4 ch), Fan Coil",
+      "Room Thermostats": "4 built-in",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Response Time": "≤ 10 ms",
+      "Dimensions": "67 × 90 × 70 mm (4 DIN units)",
+      "Weight": "334 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "8 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Entrées": "8 analogiques/numériques (boutons-poussoirs, sondes de température, détecteurs de mouvement)",
+      "Configurations": "Commutation, Volet (jusqu'à 4 canaux), Ventilo-convecteur",
+      "Thermostats d'ambiance": "4 intégrés",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Temps de réponse": "≤ 10 ms",
+      "Dimensions": "67 × 90 × 70 mm (4 unités DIN)",
+      "Poids": "334 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "8 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "المداخل": "8 تناظرية/رقمية (أزرار ضغط، حساسات حرارة، كاشفات حركة)",
+      "التهيئات": "تبديل، ستائر (حتى 4 قنوات)، مراوح تكييف",
+      "ثرموستات الغرف": "4 مدمجة",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "الأبعاد": "67 × 90 × 70 مم (4 وحدات DIN)",
+      "الوزن": "334 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-88.png"],
+
+  "files": [
+    {
+      "name": "Fiche technique (PDF, FR)",
+      "url": "https://cdn.bitelec.ch/2/3/e/d/23eda4fce58e4552363df8fc48eb52fdf113bf43_Fiche_technique_MAXinBOX_88_FR.pdf"
+    },
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-88/"
+    }
+  ]
+}
