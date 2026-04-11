@@ -9,7 +9,13 @@ If output is omitted, writes alongside input with .png extension.
 """
 import sys
 from pathlib import Path
-from rembg import remove
+
+try:
+    from rembg import remove
+except ImportError:
+    print("Error: rembg not installed. Run: pip install 'rembg[cpu]'")
+    sys.exit(1)
+
 from PIL import Image
 
 def main():

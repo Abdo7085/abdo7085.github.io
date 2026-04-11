@@ -13,7 +13,7 @@ assets/locales/fr.json  → French translations (filter values)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap
 scripts/generate_static_seo.py → SEO page generator (called by build_products.py) — full hreflang, og:locale, JSON-LD, robots override, noscript H1
 scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD + partial sitemap
-scripts/remove_bg.py      → Strip white background from a product image → transparent PNG
+scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
 scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
 
 products/               → Static product HTML pages (EN, auto-generated)
@@ -88,11 +88,11 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 - **Only if no real data exists**, omit the `rating` field entirely. The build scripts (`generate_static_seo.py` and `assets/product-detail.js`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
-2. **Remove the white background from the product image** — Most manufacturer images have a plain white studio background. Always run the background remover so the product blends into the site's cards cleanly:
+2. **Remove the background from the product image** — Most manufacturer images have a studio background. Always run the AI background remover so the product blends into the site's cards cleanly:
    ```bash
    python scripts/remove_bg.py assets/products/<product-slug>.<ext>
    ```
-   This writes a transparent, auto-cropped `.png` next to the source image (same stem, `.png` extension). Then reference the `.png` in the JSON `images` array. The script only removes white-ish backgrounds via edge flood-fill, so interior whites (screens, labels) are preserved. Skip this step only if the source image already has a transparent background, or if the background is a lifestyle/photo shot rather than plain white.
+   This uses `rembg` (U²-Net AI model) for accurate background removal and writes a transparent `.png` next to the source image (same stem, `.png` extension). Then reference the `.png` in the JSON `images` array. **Requires:** `pip install "rembg[cpu]"`. Skip this step only if the source image already has a transparent background.
 
    **Always crop the final image** — Whether or not `remove_bg.py` was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
    ```bash
