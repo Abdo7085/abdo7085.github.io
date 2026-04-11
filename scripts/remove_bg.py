@@ -37,7 +37,8 @@ def main():
     img = Image.open(in_path)
     
     # Perform removal
-    out_img = remove(img)
+    # post_process_mask ensures internal uniform areas (like screens) are not carved out
+    out_img = remove(img, post_process_mask=True)
     
     # Ensure directory exists
     out_path.parent.mkdir(parents=True, exist_ok=True)
