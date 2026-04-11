@@ -19,8 +19,12 @@ def crop_product_image(img_path: Path, margin_pct: float = 4.0) -> None:
     img = Image.open(img_path).convert("RGBA")
     original_size = img.size
 
-    # Get bounding box of non-transparent content
-    bbox = img.getbbox()
+    # To handle AI background removal which leaves faint ghost pixels (alpha < 10)
+    # we extract the alpha channel and threshold it to find the true solid bounding box.
+    alpha = img.split()[-1]
+    solid_mask = alpha.point(lambda p: 255 if p > 10 else 0)
+    bbox = solid_mask.getbbox()
+    
     if not bbox:
         print(f"[crop] {img_path.name}: image is fully transparent, skipped.")
         return
