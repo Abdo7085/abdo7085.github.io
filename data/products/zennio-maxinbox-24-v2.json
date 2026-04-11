@@ -1,0 +1,92 @@
+{
+  "id": "zennio-maxinbox-24-v2",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MAXinBOX 24 v2 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MAXinBOX 24 v2",
+    "ar": "مشغل KNX Zennio MAXinBOX 24 v2"
+  },
+
+  "short_description": {
+    "en": "24-output multifunction actuator with KNX Secure.",
+    "fr": "Actionneur multifonction 24 sorties avec KNX Secure.",
+    "ar": "مشغل متعدد الوظائف بـ 24 مخرجاً مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MAXinBOX 24 v2 is the largest actuator in the MAXinBOX family, delivering 24 independent 16 A relay outputs from a single 12-unit DIN-rail module. Each output can be configured as a switching channel, shutter pair, or fan coil controller — giving you maximum flexibility to manage lights, blinds, and HVAC across large installations. Tungsten pre-contacts handle inrush currents up to 800 A, ensuring reliable operation with LED drivers and electronic transformers. Manual push buttons and LED indicators on the cover provide instant override and status monitoring. With 30 logic functions and KNX Secure support, it is the go-to choice for commercial buildings and large residential projects where output density matters.",
+    "fr": "Le Zennio MAXinBOX 24 v2 est le plus grand actionneur de la famille MAXinBOX, offrant 24 sorties relais indépendantes de 16 A depuis un seul module DIN de 12 unités. Chaque sortie peut être configurée comme canal de commutation, paire de volet roulant ou contrôleur de ventilo-convecteur — offrant une flexibilité maximale pour gérer l'éclairage, les stores et la CVC dans les grandes installations. Les pré-contacts en tungstène supportent des courants d'appel jusqu'à 800 A, assurant un fonctionnement fiable avec les drivers LED et transformateurs électroniques. Des boutons-poussoirs et indicateurs LED en façade permettent le contrôle manuel instantané. Avec 30 fonctions logiques et le support KNX Secure, c'est le choix idéal pour les bâtiments commerciaux et les grands projets résidentiels où la densité de sorties est essentielle.",
+    "ar": "Zennio MAXinBOX 24 v2 هو أكبر مشغل في عائلة MAXinBOX، يوفر 24 مخرج relay مستقل بتيار 16 أمبير من وحدة DIN واحدة بحجم 12 عنصراً. يمكن تهيئة كل مخرج كقناة تبديل أو زوج تحكم بالستائر أو وحدة تحكم بمراوح التكييف — مما يمنح أقصى مرونة لإدارة الإضاءة والستائر والتكييف في المنشآت الكبيرة. تتحمل ملامسات التنغستن المسبقة تيارات اندفاعية تصل إلى 800 أمبير، مما يضمن تشغيلاً موثوقاً مع مشغلات LED والمحولات الإلكترونية. تتيح الأزرار ومؤشرات LED التحكم اليدوي الفوري ومراقبة الحالة. مع 30 وظيفة منطقية ودعم KNX Secure، فهو الخيار المثالي للمباني التجارية والمشاريع السكنية الكبيرة حيث تكون كثافة المخارج ضرورية."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "24 × 16 A (bistable relays with tungsten pre-contact)",
+      "Configurations": "Switching, Shutter (up to 12 ch), Fan Coil (up to 6 blocks)",
+      "Max Resistive Load": "4000 W per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Current Draw": "4.3 mA @ 29 V DC",
+      "Logic Functions": "30 (AND, OR, XOR, comparators)",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Response Time": "≤ 10 ms",
+      "Dimensions": "68 × 90 × 212 mm (12 DIN units)",
+      "Weight": "757 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "24 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Configurations": "Commutation, Volet (jusqu'à 12 canaux), Ventilo-convecteur (jusqu'à 6 blocs)",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4,3 mA @ 29 V CC",
+      "Fonctions logiques": "30 (AND, OR, XOR, comparateurs)",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Temps de réponse": "≤ 10 ms",
+      "Dimensions": "68 × 90 × 212 mm (12 unités DIN)",
+      "Poids": "757 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "24 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "التهيئات": "تبديل، ستائر (حتى 12 قناة)، مراوح تكييف (حتى 6 مجموعات)",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "استهلاك التيار": "4.3 مللي أمبير @ 29 فولت",
+      "الوظائف المنطقية": "30 (AND، OR، XOR، مقارنات)",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "الأبعاد": "68 × 90 × 212 مم (12 وحدة DIN)",
+      "الوزن": "757 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-maxinbox-24-v2.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://r-knx.ru/views/mysite.ru/files/product_files/Datasheet_MAXinBOX_24_v2_EN.pdf"
+    },
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/maxinbox-24-v2/"
+    }
+  ]
+}
