@@ -1,0 +1,88 @@
+{
+  "id": "zennio-z40",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Z40 KNX Touch Panel 4.1\"",
+    "fr": "Panneau tactile KNX Zennio Z40 4,1\"",
+    "ar": "لوحة تحكم لمسية KNX Zennio Z40 بشاشة 4.1\""
+  },
+
+  "short_description": {
+    "en": "4.1-inch KNX capacitive touch panel with 7 pages.",
+    "fr": "Panneau tactile KNX capacitif 4,1 pouces avec 7 pages.",
+    "ar": "لوحة تحكم لمسية KNX بحجم 4.1 بوصات و7 صفحات."
+  },
+
+  "description": {
+    "en": "The Zennio Z40 is a compact 4.1-inch KNX capacitive touch panel designed for rooms where full control is needed without the footprint of a larger display. Its 56 programmable control points spread across 7 pages cover lighting, blinds, climate, scenes, and more. A built-in temperature probe and 2 independent thermostats handle HVAC management directly, while a proximity sensor activates the screen when you approach and a brightness sensor adjusts the backlight to the room's light level. Four analog/digital inputs connect push buttons or external sensors. Designed for universal compatibility, it fits standard European, British, Italian, Australian, and American flush-mounted boxes — making it one of the most versatile mounting options in Zennio's touch panel range. Available in four color finishes.",
+    "fr": "Le Zennio Z40 est un panneau tactile KNX capacitif compact de 4,1 pouces conçu pour les pièces nécessitant un contrôle complet sans l'encombrement d'un grand écran. Ses 56 points de contrôle programmables répartis sur 7 pages couvrent l'éclairage, les stores, le climat, les scènes et plus encore. Une sonde de température intégrée et 2 thermostats indépendants gèrent directement la CVC, tandis qu'un capteur de proximité active l'écran à votre approche et qu'un capteur de luminosité ajuste le rétroéclairage. Quatre entrées analogiques/numériques connectent des boutons-poussoirs ou des capteurs externes. Conçu pour la compatibilité universelle, il s'adapte aux boîtes encastrées européennes, britanniques, italiennes, australiennes et américaines standard.",
+    "ar": "Zennio Z40 هو لوحة تحكم لمسية KNX سعوية مدمجة بحجم 4.1 بوصات مصممة للغرف التي تحتاج تحكماً كاملاً بدون حجم شاشة كبيرة. تغطي نقاط التحكم الـ56 القابلة للبرمجة الموزعة على 7 صفحات الإضاءة والستائر والمناخ والمشاهد وأكثر. يتولى حساس حرارة مدمج ومنظمان حرارة مستقلان إدارة التدفئة والتبريد مباشرة، بينما يُنشّط حساس الاقتراب الشاشة عند اقترابك ويضبط حساس السطوع الإضاءة الخلفية. تصل أربعة مداخل تناظرية/رقمية الأزرار أو الحساسات الخارجية. مصمم للتوافق الشامل، يتناسب مع علب التركيب الأوروبية والبريطانية والإيطالية والأسترالية والأمريكية القياسية."
+  },
+
+  "specs": {
+    "en": {
+      "Display": "4.1\" color capacitive touch, 320 × 240 px",
+      "Touch Technology": "Capacitive multi-touch",
+      "Control Points": "56 across 7 pages",
+      "Inputs": "4 analog/digital",
+      "Thermostats": "2 independent",
+      "Temperature Sensor": "Built-in",
+      "Proximity Sensor": "Built-in (auto screen activation)",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Supply Voltage": "29 V DC (KNX bus), max 25 mA",
+      "Dimensions": "125 × 91 × 11.5 mm",
+      "Weight": "220 g",
+      "Installation": "Flush mount — European, British, Italian, Australian, American back boxes",
+      "Available Colors": "White, Glossy White, Silver, Anthracite",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Écran": "4,1\" tactile capacitif couleur, 320 × 240 px",
+      "Technologie tactile": "Multi-touch capacitif",
+      "Points de contrôle": "56 sur 7 pages",
+      "Entrées": "4 analogiques/numériques",
+      "Thermostats": "2 indépendants",
+      "Sonde de température": "Intégrée",
+      "Capteur de proximité": "Intégré (activation automatique de l'écran)",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Tension d'alimentation": "29 V CC (bus KNX), max 25 mA",
+      "Dimensions": "125 × 91 × 11,5 mm",
+      "Poids": "220 g",
+      "Installation": "Encastré — boîtes européennes, britanniques, italiennes, australiennes, américaines",
+      "Coloris disponibles": "Blanc, Blanc brillant, Argent, Anthracite",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "الشاشة": "4.1\" لمسية سعوية ملونة، 320 × 240 بكسل",
+      "تقنية اللمس": "Multi-touch سعوي",
+      "نقاط التحكم": "56 موزعة على 7 صفحات",
+      "المداخل": "4 تناظرية/رقمية",
+      "الثرموستاتات": "2 مستقلان",
+      "حساس الحرارة": "مدمج",
+      "حساس الاقتراب": "مدمج (تنشيط تلقائي للشاشة)",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "جهد التغذية": "29 فولت تيار مستمر (ناقل KNX)، حد أقصى 25 مللي أمبير",
+      "الأبعاد": "125 × 91 × 11.5 مم",
+      "الوزن": "220 غ",
+      "التركيب": "مدمج في الحائط — علب أوروبية، بريطانية، إيطالية، أسترالية، أمريكية",
+      "الألوان المتاحة": "أبيض، أبيض لامع، فضي، أنثراسيت",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-z40.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/z40/"
+    }
+  ]
+}

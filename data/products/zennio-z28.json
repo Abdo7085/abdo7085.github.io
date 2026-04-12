@@ -1,0 +1,85 @@
+{
+  "id": "zennio-z28",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Z28 KNX Touch Panel 2.8\"",
+    "fr": "Panneau tactile KNX Zennio Z28 2,8\"",
+    "ar": "لوحة تحكم لمسية KNX Zennio Z28 بشاشة 2.8\""
+  },
+
+  "short_description": {
+    "en": "2.8-inch KNX capacitive touch panel for standard 70 mm frames.",
+    "fr": "Panneau tactile KNX capacitif 2,8 pouces pour cadres 70 mm standard.",
+    "ar": "لوحة تحكم لمسية KNX بحجم 2.8 بوصات لإطارات 70 مم القياسية."
+  },
+
+  "description": {
+    "en": "The Zennio Z28 is the most compact panel in Zennio's touch display range, fitting standard 70×70 mm frames — including the ZS70 series and Jung LS — so it blends into any room without replacing existing switch plates. Its 2.8-inch capacitive display hosts 35 control points across 5 pages, covering lights, blinds, scenes, heating, cooling, and RGB(W) lighting. Built-in proximity and brightness sensors activate the screen automatically and dim the backlight when nobody is present, saving energy. Two independent thermostats manage climate zones directly from the panel, and 2 analog/digital inputs connect push buttons or motion sensors via cables up to 30 m. Password protection and control hiding keep sensitive functions secure. Available in white, silver, and anthracite to match any interior style.",
+    "fr": "Le Zennio Z28 est le panneau le plus compact de la gamme Zennio, s'adaptant aux cadres standard 70×70 mm — y compris la série ZS70 et Jung LS — pour s'intégrer dans n'importe quelle pièce sans remplacer les plaques d'interrupteurs existantes. Son écran capacitif de 2,8 pouces héberge 35 points de contrôle sur 5 pages, couvrant les lumières, les stores, les scènes, le chauffage, la climatisation et l'éclairage RGB(W). Des capteurs de proximité et de luminosité intégrés activent l'écran automatiquement et atténuent le rétroéclairage en l'absence de présence, économisant l'énergie. Deux thermostats indépendants gèrent les zones climatiques directement depuis le panneau, et 2 entrées analogiques/numériques connectent des boutons ou des détecteurs de mouvement. Protection par mot de passe et masquage des commandes disponibles. Disponible en blanc, argent et anthracite.",
+    "ar": "Zennio Z28 هو اللوحة الأكثر إدماجاً في تشكيلة Zennio، يتناسب مع الإطارات القياسية 70×70 مم — بما فيها سلسلة ZS70 وJung LS — ليندمج في أي غرفة بدون استبدال لوحات المفاتيح الحالية. تستضيف شاشته السعوية بحجم 2.8 بوصات 35 نقطة تحكم على 5 صفحات تغطي الإضاءة والستائر والمشاهد والتدفئة والتبريد وإضاءة RGB(W). حساسا الاقتراب والسطوع المدمجان يُنشّطان الشاشة تلقائياً ويخفتان الإضاءة الخلفية عند غياب أحد، مما يوفر الطاقة. يدير منظما حرارة مستقلان مناطق التكييف مباشرة من اللوحة، ومدخلان تناظريان/رقميان يصلان الأزرار أو كاشفات الحركة بكابلات تصل إلى 30 متراً. حماية بكلمة مرور وإخفاء عناصر التحكم متاحان. متاح بثلاثة ألوان."
+  },
+
+  "specs": {
+    "en": {
+      "Display": "2.8\" color capacitive touch, 240 × 320 px",
+      "Touch Technology": "Capacitive",
+      "Control Points": "35 across 5 pages",
+      "Inputs": "2 analog/digital (max 30 m cable)",
+      "Thermostats": "2 independent",
+      "Proximity Sensor": "Built-in (auto screen activation)",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Supply Voltage": "21–31 V DC (typical 29 V DC, KNX bus)",
+      "Dimensions": "71 × 71 × 36.6 mm",
+      "Frame Compatibility": "70 × 70 mm (ZS70 series, Jung LS and equivalents)",
+      "Installation": "Flush mount in standard 70 × 70 mm frame",
+      "Available Colors": "White (RAL 9016), Silver (RAL 9006), Anthracite (RAL 9004)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Écran": "2,8\" tactile capacitif couleur, 240 × 320 px",
+      "Technologie tactile": "Capacitif",
+      "Points de contrôle": "35 sur 5 pages",
+      "Entrées": "2 analogiques/numériques (câble max 30 m)",
+      "Thermostats": "2 indépendants",
+      "Capteur de proximité": "Intégré (activation automatique de l'écran)",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Tension d'alimentation": "21–31 V CC (29 V CC typique, bus KNX)",
+      "Dimensions": "71 × 71 × 36,6 mm",
+      "Compatibilité cadre": "70 × 70 mm (série ZS70, Jung LS et équivalents)",
+      "Installation": "Encastré dans cadre standard 70 × 70 mm",
+      "Coloris disponibles": "Blanc (RAL 9016), Argent (RAL 9006), Anthracite (RAL 9004)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "الشاشة": "2.8\" لمسية سعوية ملونة، 240 × 320 بكسل",
+      "تقنية اللمس": "سعوي",
+      "نقاط التحكم": "35 موزعة على 5 صفحات",
+      "المداخل": "2 تناظرية/رقمية (حد أقصى كابل 30 م)",
+      "الثرموستاتات": "2 مستقلان",
+      "حساس الاقتراب": "مدمج (تنشيط تلقائي للشاشة)",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "جهد التغذية": "21–31 فولت تيار مستمر (29 فولت نموذجي، ناقل KNX)",
+      "الأبعاد": "71 × 71 × 36.6 مم",
+      "توافق الإطار": "70 × 70 مم (سلسلة ZS70، Jung LS والمكافئة)",
+      "التركيب": "مدمج في إطار قياسي 70 × 70 مم",
+      "الألوان المتاحة": "أبيض (RAL 9016)، فضي (RAL 9006)، أنثراسيت (RAL 9004)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-z28.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/z28/"
+    }
+  ]
+}

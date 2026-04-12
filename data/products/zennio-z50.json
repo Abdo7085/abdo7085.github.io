@@ -1,0 +1,97 @@
+{
+  "id": "zennio-z50",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Z50 KNX Touch Panel 5\"",
+    "fr": "Panneau tactile KNX Zennio Z50 5\"",
+    "ar": "لوحة تحكم لمسية KNX Zennio Z50 بشاشة 5\""
+  },
+
+  "short_description": {
+    "en": "5-inch color capacitive KNX touch panel with 12 pages.",
+    "fr": "Panneau tactile KNX couleur 5 pouces avec 12 pages.",
+    "ar": "لوحة تحكم لمسية KNX ملونة بحجم 5 بوصات و12 صفحة."
+  },
+
+  "description": {
+    "en": "The Zennio Z50 is a sleek 5-inch KNX touch panel that delivers full smart home control through 12 fully customizable pages. Its vivid 480×854 color display responds to touch with 16 million colors, while a proximity sensor wakes the screen automatically as you approach and the built-in light sensor adjusts brightness to the room's ambient light. An internal temperature probe and 2 independent thermostats let it manage heating and cooling directly, and built-in speakers provide audio notifications for alarms or doorbells. Ethernet and USB ports make programming and updates quick and hassle-free. It fits any standard European or British back box and comes in four finishes — with optional licenses unlocking smartphone remote access, video intercom, and voice control via ZenVoice.",
+    "fr": "Le Zennio Z50 est un panneau tactile KNX élégant de 5 pouces qui offre le contrôle complet de la maison intelligente à travers 12 pages entièrement personnalisables. Son écran couleur vif en 480×854 répond au toucher avec 16 millions de couleurs, tandis qu'un capteur de proximité réveille l'écran automatiquement à votre approche et que le capteur de luminosité intégré ajuste la luminosité à la lumière ambiante. Une sonde de température interne et 2 thermostats indépendants lui permettent de gérer directement le chauffage et la climatisation, et des haut-parleurs intégrés fournissent des notifications audio. Des ports Ethernet et USB facilitent la programmation. Il s'adapte à toute boîte encastrée européenne ou britannique standard et est disponible en quatre finitions.",
+    "ar": "Zennio Z50 هو لوحة تحكم لمسية KNX أنيقة بحجم 5 بوصات توفر التحكم الكامل بالمنزل الذكي عبر 12 صفحة قابلة للتخصيص الكامل. تستجيب شاشتها الملونة الزاهية بدقة 480×854 للمس بـ 16 مليون لون، بينما يُنشّط حساس الاقتراب الشاشة تلقائياً عند اقترابك ويضبط حساس الضوء المدمج السطوع حسب إضاءة الغرفة. يتيح حساس حرارة داخلي ومنظمان حرارة مستقلان إدارة التدفئة والتبريد مباشرة، والمكبرات الصوتية المدمجة توفر إشعارات صوتية للإنذارات والأجراس. منافذ Ethernet وUSB تجعل البرمجة والتحديثات سهلة. يتناسب مع أي علبة حائط أوروبية أو بريطانية قياسية ومتاح بأربعة ألوان."
+  },
+
+  "specs": {
+    "en": {
+      "Display": "5\" full-color capacitive touch, 480 × 854 px, 16M colors",
+      "Touch Technology": "Capacitive multi-touch",
+      "Control Pages": "12 fully customizable",
+      "Inputs": "2 analog/digital",
+      "Thermostats": "2 independent",
+      "Temperature Sensor": "Built-in, ±0.5 °C accuracy",
+      "Proximity Sensor": "Built-in (auto screen activation)",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Audio": "Built-in speakers for notifications",
+      "Connectivity": "Ethernet + USB (programming / updates)",
+      "Supply Voltage": "24–29 V DC, max 200 mA",
+      "Dimensions": "142.1 × 85.5 × 35 mm (12 mm wall protrusion)",
+      "Weight": "200 g",
+      "Installation": "Flush mount, European / British standard back box",
+      "Available Colors": "White, Glossy White, Anthracite, Silver",
+      "Operating Temperature": "5 to +45 °C",
+      "Protection": "IP20",
+      "Optional Licenses": "Smartphone control, Video Intercom, ZenVoice"
+    },
+    "fr": {
+      "Écran": "5\" tactile capacitif couleur, 480 × 854 px, 16M couleurs",
+      "Technologie tactile": "Multi-touch capacitif",
+      "Pages de contrôle": "12 entièrement personnalisables",
+      "Entrées": "2 analogiques/numériques",
+      "Thermostats": "2 indépendants",
+      "Sonde de température": "Intégrée, précision ±0,5 °C",
+      "Capteur de proximité": "Intégré (activation automatique de l'écran)",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Audio": "Haut-parleurs intégrés pour notifications",
+      "Connectivité": "Ethernet + USB (programmation / mises à jour)",
+      "Tension d'alimentation": "24–29 V CC, max 200 mA",
+      "Dimensions": "142,1 × 85,5 × 35 mm (saillie murale 12 mm)",
+      "Poids": "200 g",
+      "Installation": "Encastré, boîte encastrée européenne / britannique standard",
+      "Coloris disponibles": "Blanc, Blanc brillant, Anthracite, Argent",
+      "Température de fonctionnement": "5 à +45 °C",
+      "Protection": "IP20",
+      "Licences optionnelles": "Contrôle smartphone, Interphone vidéo, ZenVoice"
+    },
+    "ar": {
+      "الشاشة": "5\" لمسية سعوية ملونة، 480 × 854 بكسل، 16 مليون لون",
+      "تقنية اللمس": "Multi-touch سعوي",
+      "صفحات التحكم": "12 قابلة للتخصيص الكامل",
+      "المداخل": "2 تناظرية/رقمية",
+      "الثرموستاتات": "2 مستقلان",
+      "حساس الحرارة": "مدمج، دقة ±0.5 درجة مئوية",
+      "حساس الاقتراب": "مدمج (تنشيط تلقائي للشاشة)",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "الصوت": "مكبرات صوت مدمجة للإشعارات",
+      "التوصيل": "Ethernet + USB (البرمجة / التحديثات)",
+      "جهد التغذية": "24–29 فولت تيار مستمر، حد أقصى 200 مللي أمبير",
+      "الأبعاد": "142.1 × 85.5 × 35 مم (بروز جداري 12 مم)",
+      "الوزن": "200 غ",
+      "التركيب": "مدمج في الحائط، علبة أوروبية / بريطانية قياسية",
+      "الألوان المتاحة": "أبيض، أبيض لامع، أنثراسيت، فضي",
+      "درجة حرارة التشغيل": "5 إلى +45 درجة مئوية",
+      "الحماية": "IP20",
+      "التراخيص الاختيارية": "تحكم عبر الهاتف، جرس الفيديو، ZenVoice"
+    }
+  },
+
+  "images": ["/assets/products/zennio-z50.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/z50/"
+    }
+  ]
+}

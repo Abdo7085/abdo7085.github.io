@@ -1024,6 +1024,90 @@
     "image": "/assets/products/zennio-z100-touch-panel.png"
   },
   {
+    "id": "zennio-z28",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z28 KNX Touch Panel 2.8\"",
+      "fr": "Panneau tactile KNX Zennio Z28 2,8\"",
+      "ar": "لوحة تحكم لمسية KNX Zennio Z28 بشاشة 2.8\""
+    },
+    "short_description": {
+      "en": "2.8-inch KNX capacitive touch panel for standard 70 mm frames.",
+      "fr": "Panneau tactile KNX capacitif 2,8 pouces pour cadres 70 mm standard.",
+      "ar": "لوحة تحكم لمسية KNX بحجم 2.8 بوصات لإطارات 70 مم القياسية."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z28.png"
+  },
+  {
+    "id": "zennio-z35-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z35 v3 KNX Touch Panel 3.5\"",
+      "fr": "Panneau tactile KNX Zennio Z35 v3 3,5\"",
+      "ar": "لوحة تحكم لمسية KNX Zennio Z35 v3 بشاشة 3.5\""
+    },
+    "short_description": {
+      "en": "3.5-inch KNX touch panel with humidity sensor and KNX Secure.",
+      "fr": "Panneau tactile KNX 3,5 pouces avec sonde d'humidité et KNX Secure.",
+      "ar": "لوحة تحكم لمسية KNX بحجم 3.5 بوصات مع حساس رطوبة وKNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z35-v3.png"
+  },
+  {
+    "id": "zennio-z40",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z40 KNX Touch Panel 4.1\"",
+      "fr": "Panneau tactile KNX Zennio Z40 4,1\"",
+      "ar": "لوحة تحكم لمسية KNX Zennio Z40 بشاشة 4.1\""
+    },
+    "short_description": {
+      "en": "4.1-inch KNX capacitive touch panel with 7 pages.",
+      "fr": "Panneau tactile KNX capacitif 4,1 pouces avec 7 pages.",
+      "ar": "لوحة تحكم لمسية KNX بحجم 4.1 بوصات و7 صفحات."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z40.png"
+  },
+  {
+    "id": "zennio-z50",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z50 KNX Touch Panel 5\"",
+      "fr": "Panneau tactile KNX Zennio Z50 5\"",
+      "ar": "لوحة تحكم لمسية KNX Zennio Z50 بشاشة 5\""
+    },
+    "short_description": {
+      "en": "5-inch color capacitive KNX touch panel with 12 pages.",
+      "fr": "Panneau tactile KNX couleur 5 pouces avec 12 pages.",
+      "ar": "لوحة تحكم لمسية KNX ملونة بحجم 5 بوصات و12 صفحة."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z50.png"
+  },
+  {
     "id": "zennio-z70-v2",
     "brand": "Zennio",
     "technology": [
