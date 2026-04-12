@@ -1,0 +1,88 @@
+{
+  "id": "zennio-minibox-20-v2",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MINiBOX 20 v2 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MINiBOX 20 v2",
+    "ar": "مشغل KNX Zennio MINiBOX 20 v2"
+  },
+
+  "short_description": {
+    "en": "2-output compact DIN-rail actuator with KNX Secure.",
+    "fr": "Actionneur DIN compact 2 sorties avec KNX Secure.",
+    "ar": "مشغل DIN مدمج بمخرجين مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MINiBOX 20 v2 is the most compact actuator in Zennio's DIN-rail lineup, offering 2 independent 16 A relay outputs in just 2 DIN units. Despite its small size, it delivers the same robust switching performance as its larger siblings — outputs can be configured as individual channels or as a single shutter/blind pair, with tungsten pre-contacts handling 800 A inrush for reliable operation with LED drivers and electronic transformers. Two Master Light controls allow centralized on/off for entire lighting groups, and 10 logic functions enable simple local automation. With manual override buttons, LED status indicators, full data saving on bus failure, and KNX Secure support, the MINiBOX 20 v2 is the ideal entry point for small KNX installations or for adding a pair of channels where panel space is tight.",
+    "fr": "Le Zennio MINiBOX 20 v2 est l'actionneur le plus compact de la gamme DIN Zennio, offrant 2 sorties relais indépendantes de 16 A dans seulement 2 unités DIN. Malgré sa petite taille, il offre les mêmes performances de commutation robustes que ses grands frères — les sorties peuvent être configurées en canaux individuels ou en une paire de volets/stores, avec des pré-contacts en tungstène supportant 800 A d'appel pour un fonctionnement fiable avec les drivers LED et transformateurs électroniques. Deux contrôles Master Light permettent la commutation centralisée de groupes d'éclairage entiers, et 10 fonctions logiques permettent une automatisation locale simple. Avec des boutons de commande manuelle, des indicateurs LED, la sauvegarde complète des données en cas de panne de bus et le support KNX Secure, le MINiBOX 20 v2 est le point d'entrée idéal pour les petites installations KNX.",
+    "ar": "Zennio MINiBOX 20 v2 هو المشغل الأكثر إدماجاً في تشكيلة Zennio لسكة DIN، يوفر مخرجي relay مستقلين بتيار 16 أمبير في وحدتي DIN فقط. رغم حجمه الصغير، يقدم نفس أداء التبديل القوي لأشقائه الأكبر — يمكن تهيئة المخارج كقنوات فردية أو كزوج ستائر واحد، مع ملامسات تنغستن مسبقة تتحمل 800 أمبير اندفاعي لتشغيل موثوق مع مشغلات LED والمحولات الإلكترونية. يتيح تحكمان Master Light التشغيل/الإطفاء المركزي لمجموعات الإضاءة، و10 وظائف منطقية تمكّن الأتمتة المحلية البسيطة. مع أزرار تحكم يدوي ومؤشرات LED وحفظ كامل للبيانات عند انقطاع الناقل ودعم KNX Secure، فهو نقطة البداية المثالية للتركيبات الصغيرة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "2 × 16 A (bistable relays with tungsten pre-contact)",
+      "Configurations": "Switching (2 ch), Shutter (1 ch)",
+      "Master Light Controls": "2",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Power Consumption": "3.8 mA at 29 V DC",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Dimensions": "67 × 90 × 36 mm (2 DIN units)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "2 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Configurations": "Commutation (2 canaux), Volet (1 canal)",
+      "Contrôles Master Light": "2",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "3,8 mA à 29 V CC",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Dimensions": "67 × 90 × 36 mm (2 unités DIN)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "2 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "التهيئات": "تبديل (قناتان)، ستائر (قناة واحدة)",
+      "تحكم Master Light": "2",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الاستهلاك": "3.8 مللي أمبير عند 29 فولت",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "الأبعاد": "67 × 90 × 36 مم (وحدتا DIN)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-minibox-20-v2.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/minibox-20-v2/"
+    }
+  ]
+}

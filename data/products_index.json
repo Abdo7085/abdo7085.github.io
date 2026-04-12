@@ -730,6 +730,48 @@
     "image": "/assets/products/sonoff-zbmini-extreme.png"
   },
   {
+    "id": "zennio-inbox-20-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio inBOX 20 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio inBOX 20 v3",
+      "ar": "مشغل KNX Zennio inBOX 20 v3"
+    },
+    "short_description": {
+      "en": "2-output flush-mount actuator for wall boxes.",
+      "fr": "Actionneur encastré 2 sorties pour boîtes murales.",
+      "ar": "مشغل مدمج بمخرجين لعلب الحائط."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-inbox-20-v3.png"
+  },
+  {
+    "id": "zennio-inbox-24-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio inBOX 24 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio inBOX 24 v3",
+      "ar": "مشغل KNX Zennio inBOX 24 v3"
+    },
+    "short_description": {
+      "en": "2-output, 4-input flush-mount actuator with thermostats.",
+      "fr": "Actionneur encastré 2 sorties / 4 entrées avec thermostats.",
+      "ar": "مشغل مدمج بمخرجين و4 مداخل مع ثرموستات."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-inbox-24-v3.png"
+  },
+  {
     "id": "zennio-maxinbox-12",
     "brand": "Zennio",
     "technology": [
@@ -875,6 +917,90 @@
     },
     "category": "",
     "image": "/assets/products/zennio-maxinbox-88.png"
+  },
+  {
+    "id": "zennio-minibox-20-v2",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MINiBOX 20 v2 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MINiBOX 20 v2",
+      "ar": "مشغل KNX Zennio MINiBOX 20 v2"
+    },
+    "short_description": {
+      "en": "2-output compact DIN-rail actuator with KNX Secure.",
+      "fr": "Actionneur DIN compact 2 sorties avec KNX Secure.",
+      "ar": "مشغل DIN مدمج بمخرجين مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-minibox-20-v2.png"
+  },
+  {
+    "id": "zennio-minibox-25-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MINiBOX 25 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MINiBOX 25 v3",
+      "ar": "مشغل KNX Zennio MINiBOX 25 v3"
+    },
+    "short_description": {
+      "en": "2-output, 5-input compact DIN-rail actuator with KNX Secure.",
+      "fr": "Actionneur DIN compact 2 sorties / 5 entrées avec KNX Secure.",
+      "ar": "مشغل DIN مدمج بـ 2 مخارج و5 مداخل مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-minibox-25-v3.png"
+  },
+  {
+    "id": "zennio-minibox-40-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MINiBOX 40 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MINiBOX 40 v3",
+      "ar": "مشغل KNX Zennio MINiBOX 40 v3"
+    },
+    "short_description": {
+      "en": "4-output compact DIN-rail actuator with KNX Secure.",
+      "fr": "Actionneur DIN compact 4 sorties avec KNX Secure.",
+      "ar": "مشغل DIN مدمج بـ 4 مخارج مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-minibox-40-v3.png"
+  },
+  {
+    "id": "zennio-minibox-45-v3",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Actuator",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio MINiBOX 45 v3 KNX Actuator",
+      "fr": "Actionneur KNX Zennio MINiBOX 45 v3",
+      "ar": "مشغل KNX Zennio MINiBOX 45 v3"
+    },
+    "short_description": {
+      "en": "4-output, 5-input compact DIN-rail actuator with KNX Secure.",
+      "fr": "Actionneur DIN compact 4 sorties / 5 entrées avec KNX Secure.",
+      "ar": "مشغل DIN مدمج بـ 4 مخارج و5 مداخل مع KNX Secure."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-minibox-45-v3.png"
   },
   {
     "id": "zennio-z100-touch-panel",

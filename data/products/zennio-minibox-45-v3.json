@@ -1,0 +1,97 @@
+{
+  "id": "zennio-minibox-45-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MINiBOX 45 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MINiBOX 45 v3",
+    "ar": "مشغل KNX Zennio MINiBOX 45 v3"
+  },
+
+  "short_description": {
+    "en": "4-output, 5-input compact DIN-rail actuator with KNX Secure.",
+    "fr": "Actionneur DIN compact 4 sorties / 5 entrées avec KNX Secure.",
+    "ar": "مشغل DIN مدمج بـ 4 مخارج و5 مداخل مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MINiBOX 45 v3 packs 4 independent 16 A relay outputs and 5 analog/digital inputs into just 2 DIN-rail units — half the size of the MAXinBOX family while still offering sensing and control in one device. The inputs accept push buttons, NTC temperature probes (±0.5 °C accuracy), and motion sensors with cable runs up to 30 m, so you can wire room sensors directly without a separate binary input module. Outputs can be configured as individual switching channels, up to 2 shutter/blind pairs, or a 2-pipe fan coil controller. Four built-in room thermostats handle heating and cooling zones, and 10 logic functions let you create local automation rules. With tungsten pre-contacts handling 800 A inrush, manual override buttons, and KNX Secure support, it is ideal for space-constrained panels that still need both sensing and actuation.",
+    "fr": "Le Zennio MINiBOX 45 v3 intègre 4 sorties relais indépendantes de 16 A et 5 entrées analogiques/numériques dans seulement 2 unités DIN — deux fois plus compact que la famille MAXinBOX tout en offrant détection et contrôle dans un seul appareil. Les entrées acceptent des boutons-poussoirs, des sondes de température NTC (précision ±0,5 °C) et des détecteurs de mouvement avec des câbles jusqu'à 30 m, permettant de raccorder les capteurs de pièce directement sans module d'entrée binaire séparé. Les sorties peuvent être configurées en canaux de commutation individuels, jusqu'à 2 paires de volets/stores ou en contrôleur de ventilo-convecteur 2 tubes. Quatre thermostats d'ambiance intégrés gèrent les zones de chauffage et climatisation, et 10 fonctions logiques permettent de créer des règles d'automatisation locales. Avec des pré-contacts en tungstène supportant 800 A d'appel, des boutons de commande manuelle et le support KNX Secure, il est idéal pour les tableaux à espace limité nécessitant détection et actionnement.",
+    "ar": "يضم Zennio MINiBOX 45 v3 أربعة مخارج relay مستقلة بتيار 16 أمبير و5 مداخل تناظرية/رقمية في وحدتي DIN فقط — نصف حجم عائلة MAXinBOX مع الحفاظ على الاستشعار والتحكم في جهاز واحد. تقبل المداخل أزرار ضغط وحساسات حرارة NTC (دقة ±0.5 درجة مئوية) وكاشفات حركة بكابلات تصل إلى 30 متراً، مما يتيح توصيل حساسات الغرفة مباشرة بدون وحدة إدخال ثنائية منفصلة. يمكن تهيئة المخارج كقنوات تبديل فردية أو حتى زوجين من الستائر أو كوحدة تحكم بمراوح تكييف ثنائية الأنابيب. تدير أربعة ثرموستات غرف مدمجة مناطق التدفئة والتبريد، و10 وظائف منطقية تتيح إنشاء قواعد أتمتة محلية. مع ملامسات تنغستن مسبقة تتحمل 800 أمبير اندفاعي وأزرار تحكم يدوي ودعم KNX Secure، فهو مثالي للوحات ذات المساحة المحدودة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "4 × 16 A (bistable relays with tungsten pre-contact)",
+      "Inputs": "5 analog/digital (push buttons, NTC temperature probes, motion sensors)",
+      "Max Input Cable Length": "30 m",
+      "Configurations": "Switching (4 ch), Shutter (up to 2 ch), Fan Coil",
+      "Room Thermostats": "4 built-in",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Power Consumption": "4.9 mA at 29 V DC",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Electrical Lifetime": "≥ 100,000 operations at 8 A",
+      "Dimensions": "67 × 90 × 36 mm (2 DIN units)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "4 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Entrées": "5 analogiques/numériques (boutons-poussoirs, sondes NTC, détecteurs de mouvement)",
+      "Longueur max. câble entrée": "30 m",
+      "Configurations": "Commutation (4 canaux), Volet (jusqu'à 2 canaux), Ventilo-convecteur",
+      "Thermostats d'ambiance": "4 intégrés",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4,9 mA à 29 V CC",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Durée de vie électrique": "≥ 100 000 opérations à 8 A",
+      "Dimensions": "67 × 90 × 36 mm (2 unités DIN)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "4 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "المداخل": "5 تناظرية/رقمية (أزرار ضغط، حساسات حرارة NTC، كاشفات حركة)",
+      "أقصى طول كابل مدخل": "30 متر",
+      "التهيئات": "تبديل (4 قنوات)، ستائر (حتى قناتين)، مراوح تكييف",
+      "ثرموستات الغرف": "4 مدمجة",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الاستهلاك": "4.9 مللي أمبير عند 29 فولت",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "العمر الكهربائي": "≥ 100,000 عملية عند 8 أمبير",
+      "الأبعاد": "67 × 90 × 36 مم (وحدتا DIN)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-minibox-45-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/minibox-45-v3/"
+    }
+  ]
+}

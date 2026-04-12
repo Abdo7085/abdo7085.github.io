@@ -1,0 +1,82 @@
+{
+  "id": "zennio-inbox-20-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio inBOX 20 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio inBOX 20 v3",
+    "ar": "مشغل KNX Zennio inBOX 20 v3"
+  },
+
+  "short_description": {
+    "en": "2-output flush-mount actuator for wall boxes.",
+    "fr": "Actionneur encastré 2 sorties pour boîtes murales.",
+    "ar": "مشغل مدمج بمخرجين لعلب الحائط."
+  },
+
+  "description": {
+    "en": "The Zennio inBOX 20 v3 is a flush-mount KNX actuator that fits inside a standard wall box, providing 2 independent 16 A relay outputs without occupying any DIN-rail space. Each output can be configured as an individual switching channel or combined into a single shutter/blind pair, supporting both 2-contact and 3-contact shutter wiring. Two Master Light controls allow centralized on/off for lighting groups, and 10 logic functions enable simple local automation. With manual override via an integrated push button, LED status indicator, and full data saving on KNX bus failure, it delivers reliable switching from behind any standard wall plate. At just 51.4 mm diameter and 26.6 mm height, it is perfect for retrofit projects, hotel rooms, or any installation where decentralized switching close to the load is preferred over running cables back to the panel.",
+    "fr": "Le Zennio inBOX 20 v3 est un actionneur KNX encastré qui se loge dans une boîte murale standard, fournissant 2 sorties relais indépendantes de 16 A sans occuper d'espace sur rail DIN. Chaque sortie peut être configurée en canal de commutation individuel ou combinée en une paire de volets/stores, supportant les câblages à 2 et 3 contacts. Deux contrôles Master Light permettent la commutation centralisée des groupes d'éclairage, et 10 fonctions logiques permettent une automatisation locale simple. Avec commande manuelle via un bouton-poussoir intégré, indicateur LED et sauvegarde complète des données en cas de panne de bus KNX, il offre une commutation fiable depuis derrière toute plaque murale standard. Avec seulement 51,4 mm de diamètre et 26,6 mm de hauteur, il est parfait pour les rénovations, les chambres d'hôtel ou toute installation où la commutation décentralisée proche de la charge est préférée.",
+    "ar": "Zennio inBOX 20 v3 هو مشغل KNX مدمج يتسع داخل علبة حائط قياسية، يوفر مخرجي relay مستقلين بتيار 16 أمبير بدون شغل أي مساحة على سكة DIN. يمكن تهيئة كل مخرج كقناة تبديل فردية أو دمجهما كزوج ستائر واحد، مع دعم توصيل الستائر بنقطتين أو 3 نقاط اتصال. يتيح تحكمان Master Light التشغيل/الإطفاء المركزي لمجموعات الإضاءة، و10 وظائف منطقية تمكّن الأتمتة المحلية البسيطة. مع تحكم يدوي عبر زر ضغط مدمج ومؤشر LED وحفظ كامل للبيانات عند انقطاع ناقل KNX، يوفر تبديلاً موثوقاً من خلف أي لوحة حائط قياسية. بقطر 51.4 مم وارتفاع 26.6 مم فقط، فهو مثالي لمشاريع التجديد وغرف الفنادق أو أي تركيب يُفضل فيه التبديل اللامركزي القريب من الحمل."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "2 × 16 A (bistable relays)",
+      "Configurations": "Switching (2 ch), Shutter (1 ch, 2 or 3 dry contacts)",
+      "Master Light Controls": "2",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Response Time": "≤ 10 ms",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Electrical Lifetime": "≥ 100,000 operations at 8 A",
+      "Dimensions": "Ø 51.4 × 26.6 mm (flush mount)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection Class": "II / III (4000 V)"
+    },
+    "fr": {
+      "Sorties": "2 × 16 A (relais bistables)",
+      "Configurations": "Commutation (2 canaux), Volet (1 canal, 2 ou 3 contacts secs)",
+      "Contrôles Master Light": "2",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Temps de réponse": "≤ 10 ms",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Durée de vie électrique": "≥ 100 000 opérations à 8 A",
+      "Dimensions": "Ø 51,4 × 26,6 mm (encastré)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Classe de protection": "II / III (4000 V)"
+    },
+    "ar": {
+      "المخارج": "2 × 16 أمبير (relay ثنائي الاستقرار)",
+      "التهيئات": "تبديل (قناتان)، ستائر (قناة واحدة، نقطتان أو 3 نقاط اتصال جاف)",
+      "تحكم Master Light": "2",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "العمر الكهربائي": "≥ 100,000 عملية عند 8 أمبير",
+      "الأبعاد": "Ø 51.4 × 26.6 مم (مدمج في الحائط)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "فئة الحماية": "II / III (4000 فولت)"
+    }
+  },
+
+  "images": ["/assets/products/zennio-inbox-20-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/inbox-20-v3/"
+    }
+  ]
+}

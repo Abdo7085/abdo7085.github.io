@@ -1,0 +1,97 @@
+{
+  "id": "zennio-inbox-24-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio inBOX 24 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio inBOX 24 v3",
+    "ar": "مشغل KNX Zennio inBOX 24 v3"
+  },
+
+  "short_description": {
+    "en": "2-output, 4-input flush-mount actuator with thermostats.",
+    "fr": "Actionneur encastré 2 sorties / 4 entrées avec thermostats.",
+    "ar": "مشغل مدمج بمخرجين و4 مداخل مع ثرموستات."
+  },
+
+  "description": {
+    "en": "The Zennio inBOX 24 v3 is a flush-mount KNX actuator that fits inside a standard wall box, bringing 2 independent 16 A relay outputs and 4 analog/digital inputs to any room without taking DIN-rail space. The inputs accept push buttons, NTC temperature probes, and motion sensors, so you can wire room sensors directly to the actuator behind the wall plate. Outputs support switching and shutter/blind configurations with a response time of just 10 ms. Four built-in room thermostats manage heating and cooling zones, 2 Master Light controls handle centralized lighting, and 10 logic functions enable local automation rules. At just 51.4 mm diameter and 26.6 mm height (58 g), it disappears behind any standard switch plate — ideal for retrofit projects or rooms where no electrical panel is nearby.",
+    "fr": "Le Zennio inBOX 24 v3 est un actionneur KNX encastré qui se loge dans une boîte murale standard, apportant 2 sorties relais indépendantes de 16 A et 4 entrées analogiques/numériques à n'importe quelle pièce sans occuper d'espace sur rail DIN. Les entrées acceptent des boutons-poussoirs, des sondes de température NTC et des détecteurs de mouvement, permettant de raccorder les capteurs directement à l'actionneur derrière la plaque murale. Les sorties supportent la commutation et les configurations volets/stores avec un temps de réponse de seulement 10 ms. Quatre thermostats d'ambiance intégrés gèrent les zones de chauffage et climatisation, 2 contrôles Master Light gèrent l'éclairage centralisé, et 10 fonctions logiques permettent des règles d'automatisation locales. Avec seulement 51,4 mm de diamètre et 26,6 mm de hauteur (58 g), il disparaît derrière toute plaque d'interrupteur standard — idéal pour les rénovations ou les pièces éloignées du tableau électrique.",
+    "ar": "Zennio inBOX 24 v3 هو مشغل KNX مدمج يتسع داخل علبة حائط قياسية، يوفر مخرجي relay مستقلين بتيار 16 أمبير و4 مداخل تناظرية/رقمية لأي غرفة بدون شغل مساحة على سكة DIN. تقبل المداخل أزرار ضغط وحساسات حرارة NTC وكاشفات حركة، مما يتيح توصيل حساسات الغرفة مباشرة بالمشغل خلف لوحة الحائط. تدعم المخارج التبديل والستائر بزمن استجابة 10 مللي ثانية فقط. تدير أربعة ثرموستات غرف مدمجة مناطق التدفئة والتبريد، ويتعامل تحكمان Master Light مع الإضاءة المركزية، و10 وظائف منطقية تمكّن قواعد الأتمتة المحلية. بقطر 51.4 مم وارتفاع 26.6 مم فقط (58 غ)، يختفي خلف أي لوحة مفاتيح قياسية — مثالي لمشاريع التجديد أو الغرف البعيدة عن اللوحة الكهربائية."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "2 × 16 A (bistable relays)",
+      "Inputs": "4 analog/digital (push buttons, NTC temperature probes, motion sensors)",
+      "Configurations": "Switching (2 ch), Shutter (1 ch)",
+      "Room Thermostats": "4 built-in",
+      "Master Light Controls": "2",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Response Time": "≤ 10 ms",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Power Consumption": "4.4 mA at 29 V DC",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Electrical Lifetime": "≥ 100,000 operations at 8 A",
+      "Dimensions": "Ø 51.4 × 26.6 mm (flush mount)",
+      "Weight": "58 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Sorties": "2 × 16 A (relais bistables)",
+      "Entrées": "4 analogiques/numériques (boutons-poussoirs, sondes NTC, détecteurs de mouvement)",
+      "Configurations": "Commutation (2 canaux), Volet (1 canal)",
+      "Thermostats d'ambiance": "4 intégrés",
+      "Contrôles Master Light": "2",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Temps de réponse": "≤ 10 ms",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4,4 mA à 29 V CC",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Durée de vie électrique": "≥ 100 000 opérations à 8 A",
+      "Dimensions": "Ø 51,4 × 26,6 mm (encastré)",
+      "Poids": "58 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المخارج": "2 × 16 أمبير (relay ثنائي الاستقرار)",
+      "المداخل": "4 تناظرية/رقمية (أزرار ضغط، حساسات حرارة NTC، كاشفات حركة)",
+      "التهيئات": "تبديل (قناتان)، ستائر (قناة واحدة)",
+      "ثرموستات الغرف": "4 مدمجة",
+      "تحكم Master Light": "2",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "زمن الاستجابة": "≤ 10 مللي ثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الاستهلاك": "4.4 مللي أمبير عند 29 فولت",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "العمر الكهربائي": "≥ 100,000 عملية عند 8 أمبير",
+      "الأبعاد": "Ø 51.4 × 26.6 مم (مدمج في الحائط)",
+      "الوزن": "58 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-inbox-24-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/inbox-24-v3/"
+    }
+  ]
+}

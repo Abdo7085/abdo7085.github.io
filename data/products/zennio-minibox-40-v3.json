@@ -1,0 +1,85 @@
+{
+  "id": "zennio-minibox-40-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MINiBOX 40 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MINiBOX 40 v3",
+    "ar": "مشغل KNX Zennio MINiBOX 40 v3"
+  },
+
+  "short_description": {
+    "en": "4-output compact DIN-rail actuator with KNX Secure.",
+    "fr": "Actionneur DIN compact 4 sorties avec KNX Secure.",
+    "ar": "مشغل DIN مدمج بـ 4 مخارج مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MINiBOX 40 v3 delivers 4 independent 16 A relay outputs in just 2 DIN-rail units, making it one of the most space-efficient KNX actuators available. Each output can be configured as an individual switching channel, paired into up to 2 shutter/blind channels, or set up as a 2-pipe fan coil controller. Tungsten pre-contacts handle inrush currents up to 800 A for reliable switching of LED drivers and electronic transformers. With 10 logic functions, manual override buttons with LED indicators, and KNX Secure support, it provides professional-grade control in a minimal footprint — perfect for compact electrical panels or retrofit projects where DIN-rail space is at a premium.",
+    "fr": "Le Zennio MINiBOX 40 v3 offre 4 sorties relais indépendantes de 16 A dans seulement 2 unités DIN, en faisant l'un des actionneurs KNX les plus compacts du marché. Chaque sortie peut être configurée en canal de commutation individuel, regroupée en jusqu'à 2 canaux de volets/stores, ou en contrôleur de ventilo-convecteur 2 tubes. Les pré-contacts en tungstène supportent des courants d'appel jusqu'à 800 A pour une commutation fiable des drivers LED et transformateurs électroniques. Avec 10 fonctions logiques, des boutons de commande manuelle avec indicateurs LED et le support KNX Secure, il offre un contrôle professionnel dans un encombrement minimal — parfait pour les tableaux compacts ou les projets de rénovation où l'espace DIN est limité.",
+    "ar": "يوفر Zennio MINiBOX 40 v3 أربعة مخارج relay مستقلة بتيار 16 أمبير في وحدتي DIN فقط، مما يجعله من أكثر مشغلات KNX كفاءة في استغلال المساحة. يمكن تهيئة كل مخرج كقناة تبديل فردية أو تجميعها في حتى قناتي ستائر أو كوحدة تحكم بمراوح تكييف ثنائية الأنابيب. تتحمل ملامسات التنغستن المسبقة تيارات اندفاعية حتى 800 أمبير لتبديل موثوق لمشغلات LED والمحولات الإلكترونية. مع 10 وظائف منطقية وأزرار تحكم يدوي مع مؤشرات LED ودعم KNX Secure، يوفر تحكماً احترافياً في حجم أصغر — مثالي للوحات الكهربائية المدمجة أو مشاريع التجديد حيث مساحة DIN محدودة."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "4 × 16 A (bistable relays with tungsten pre-contact)",
+      "Configurations": "Switching (4 ch), Shutter (up to 2 ch), Fan Coil",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Power Consumption": "4 mA at 29 V DC",
+      "Logic Functions": "10",
+      "Dimensions": "67 × 90 × 36 mm (2 DIN units)",
+      "Weight": "170 g",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "4 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Configurations": "Commutation (4 canaux), Volet (jusqu'à 2 canaux), Ventilo-convecteur",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Consommation": "4 mA à 29 V CC",
+      "Fonctions logiques": "10",
+      "Dimensions": "67 × 90 × 36 mm (2 unités DIN)",
+      "Poids": "170 g",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "4 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "التهيئات": "تبديل (4 قنوات)، ستائر (حتى قناتين)، مراوح تكييف",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الاستهلاك": "4 مللي أمبير عند 29 فولت",
+      "الوظائف المنطقية": "10",
+      "الأبعاد": "67 × 90 × 36 مم (وحدتا DIN)",
+      "الوزن": "170 غ",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-minibox-40-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/minibox-40-v3/"
+    }
+  ]
+}

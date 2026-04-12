@@ -1,0 +1,97 @@
+{
+  "id": "zennio-minibox-25-v3",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Actuator",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio MINiBOX 25 v3 KNX Actuator",
+    "fr": "Actionneur KNX Zennio MINiBOX 25 v3",
+    "ar": "مشغل KNX Zennio MINiBOX 25 v3"
+  },
+
+  "short_description": {
+    "en": "2-output, 5-input compact DIN-rail actuator with KNX Secure.",
+    "fr": "Actionneur DIN compact 2 sorties / 5 entrées avec KNX Secure.",
+    "ar": "مشغل DIN مدمج بـ 2 مخارج و5 مداخل مع KNX Secure."
+  },
+
+  "description": {
+    "en": "The Zennio MINiBOX 25 v3 combines 2 independent 16 A relay outputs with 5 analog/digital inputs in a compact 2-unit DIN-rail module, offering both sensing and switching from one small device. The inputs accept push buttons, NTC temperature probes (±0.5 °C accuracy at 25 °C), and motion sensors with cable runs up to 30 m. Outputs can be configured as individual switching channels or as a shutter/blind pair, with tungsten pre-contacts handling 800 A inrush for reliable LED and transformer switching. Four built-in room thermostats manage heating and cooling, while logic functions and timing controls enable local automation without a central server. With a maximum total current of 20 A, manual override buttons, and KNX Secure support, it is the go-to choice for single rooms that need both sensor input and relay output in minimal DIN-rail space.",
+    "fr": "Le Zennio MINiBOX 25 v3 combine 2 sorties relais indépendantes de 16 A avec 5 entrées analogiques/numériques dans un module DIN compact de 2 unités, offrant détection et commutation depuis un seul petit appareil. Les entrées acceptent des boutons-poussoirs, des sondes de température NTC (précision ±0,5 °C à 25 °C) et des détecteurs de mouvement avec des câbles jusqu'à 30 m. Les sorties peuvent être configurées en canaux de commutation individuels ou en paire de volets/stores, avec des pré-contacts en tungstène supportant 800 A d'appel pour une commutation fiable des LED et transformateurs. Quatre thermostats d'ambiance intégrés gèrent le chauffage et la climatisation, tandis que les fonctions logiques et les contrôles de temporisation permettent l'automatisation locale sans serveur central. Avec un courant total maximum de 20 A, des boutons de commande manuelle et le support KNX Secure, c'est le choix idéal pour les pièces individuelles nécessitant entrée capteur et sortie relais dans un espace DIN minimal.",
+    "ar": "يجمع Zennio MINiBOX 25 v3 بين مخرجي relay مستقلين بتيار 16 أمبير و5 مداخل تناظرية/رقمية في وحدة DIN مدمجة من عنصرين، مما يوفر الاستشعار والتبديل من جهاز صغير واحد. تقبل المداخل أزرار ضغط وحساسات حرارة NTC (دقة ±0.5 درجة مئوية عند 25 °C) وكاشفات حركة بكابلات تصل إلى 30 متراً. يمكن تهيئة المخارج كقنوات تبديل فردية أو كزوج ستائر، مع ملامسات تنغستن مسبقة تتحمل 800 أمبير اندفاعي لتبديل موثوق للـ LED والمحولات. تدير أربعة ثرموستات غرف مدمجة التدفئة والتبريد، بينما تتيح الوظائف المنطقية والتحكم بالتوقيت الأتمتة المحلية بدون خادم مركزي. مع تيار إجمالي أقصى 20 أمبير وأزرار تحكم يدوي ودعم KNX Secure، فهو الخيار المثالي للغرف الفردية."
+  },
+
+  "specs": {
+    "en": {
+      "Outputs": "2 × 16 A (bistable relays with tungsten pre-contact)",
+      "Inputs": "5 analog/digital (push buttons, NTC temperature probes, motion sensors)",
+      "Max Input Cable Length": "30 m",
+      "Max Total Current": "20 A",
+      "Configurations": "Switching (2 ch), Shutter (1 ch)",
+      "Room Thermostats": "4 built-in",
+      "Max Resistive Load": "4000 W per output",
+      "Max Inductive Load": "1500 VA per output",
+      "Max Capacitive Load": "140 µF per output",
+      "Max Inrush Current": "800 A / 200 µs",
+      "Supply Voltage": "21–31 V DC (KNX bus)",
+      "Logic Functions": "10",
+      "Mechanical Lifetime": "≥ 3,000,000 operations",
+      "Electrical Lifetime": "≥ 100,000 operations at 8 A",
+      "Dimensions": "67 × 90 × 36 mm (2 DIN units)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Sorties": "2 × 16 A (relais bistables avec pré-contact tungstène)",
+      "Entrées": "5 analogiques/numériques (boutons-poussoirs, sondes NTC, détecteurs de mouvement)",
+      "Longueur max. câble entrée": "30 m",
+      "Courant total max.": "20 A",
+      "Configurations": "Commutation (2 canaux), Volet (1 canal)",
+      "Thermostats d'ambiance": "4 intégrés",
+      "Charge résistive max.": "4000 W par sortie",
+      "Charge inductive max.": "1500 VA par sortie",
+      "Charge capacitive max.": "140 µF par sortie",
+      "Courant d'appel max.": "800 A / 200 µs",
+      "Tension d'alimentation": "21–31 V CC (bus KNX)",
+      "Fonctions logiques": "10",
+      "Durée de vie mécanique": "≥ 3 000 000 opérations",
+      "Durée de vie électrique": "≥ 100 000 opérations à 8 A",
+      "Dimensions": "67 × 90 × 36 mm (2 unités DIN)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "المخارج": "2 × 16 أمبير (relay ثنائي الاستقرار مع ملامس تنغستن مسبق)",
+      "المداخل": "5 تناظرية/رقمية (أزرار ضغط، حساسات حرارة NTC، كاشفات حركة)",
+      "أقصى طول كابل مدخل": "30 متر",
+      "التيار الإجمالي الأقصى": "20 أمبير",
+      "التهيئات": "تبديل (قناتان)، ستائر (قناة واحدة)",
+      "ثرموستات الغرف": "4 مدمجة",
+      "الحمل المقاوم الأقصى": "4000 واط لكل مخرج",
+      "الحمل الحثي الأقصى": "1500 فولت أمبير لكل مخرج",
+      "الحمل السعوي الأقصى": "140 ميكروفاراد لكل مخرج",
+      "تيار الاندفاع الأقصى": "800 أمبير / 200 ميكروثانية",
+      "جهد التغذية": "21–31 فولت تيار مستمر (ناقل KNX)",
+      "الوظائف المنطقية": "10",
+      "العمر الميكانيكي": "≥ 3,000,000 عملية",
+      "العمر الكهربائي": "≥ 100,000 عملية عند 8 أمبير",
+      "الأبعاد": "67 × 90 × 36 مم (وحدتا DIN)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-minibox-25-v3.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/minibox-25-v3/"
+    }
+  ]
+}
