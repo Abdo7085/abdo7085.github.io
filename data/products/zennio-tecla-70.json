@@ -1,0 +1,97 @@
+{
+  "id": "zennio-tecla-70",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Switch",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Tecla 70 KNX Touch Switch X1/X2/X4/X6",
+    "fr": "Interrupteur tactile KNX Zennio Tecla 70 X1/X2/X4/X6",
+    "ar": "مفتاح لمسي KNX Zennio Tecla 70 X1/X2/X4/X6"
+  },
+
+  "short_description": {
+    "en": "Backlit capacitive KNX touch switch for standard 70 mm frames.",
+    "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 70 mm standard.",
+    "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 70 مم القياسية."
+  },
+
+  "description": {
+    "en": "The Zennio Tecla 70 is a backlit capacitive touch switch designed for standard 70×70 mm frames, available in X1, X2, X4, and X6 variants to suit any room. Its PC-ABS housing is slim at just 22.6 mm deep, and each button is individually backlit for use in low light. Built-in temperature (±0.5 °C accuracy), proximity, and brightness sensors allow the panel to auto-adjust its backlight and manage a built-in PI thermostat for precise climate control. Two analog/digital inputs connect push buttons or motion sensors via cables up to 30 m. Acoustic feedback gives a soft click on each press. KNX Secure support makes it suitable for installations with strict security requirements. Available in White, Silver, Anthracite, and a custom color option.",
+    "fr": "Le Zennio Tecla 70 est un interrupteur tactile capacitif rétroéclairé conçu pour les cadres standard 70×70 mm, disponible en variantes X1, X2, X4 et X6. Son boîtier PC-ABS est slim avec seulement 22,6 mm de profondeur, et chaque bouton est rétroéclairé individuellement pour une utilisation en faible luminosité. Des capteurs de température (précision ±0,5 °C), de proximité et de luminosité intégrés permettent au panneau d'ajuster automatiquement son rétroéclairage et de gérer un thermostat PI intégré pour un contrôle climatique précis. Deux entrées analogiques/numériques connectent des boutons-poussoirs ou des détecteurs de mouvement. Le retour acoustique donne un clic doux à chaque pression. KNX Secure est supporté. Disponible en Blanc, Argent, Anthracite et couleur personnalisée.",
+    "ar": "Zennio Tecla 70 هو مفتاح ضغط لمسي سعوي مضيء مصمم لإطارات 70×70 مم القياسية، متاح بنسخ X1 وX2 وX4 وX6. هيكله من PC-ABS نحيف بعمق 22.6 مم فقط، وكل زر مضاء بشكل مستقل للاستخدام في الإضاءة المنخفضة. الحساسات المدمجة — الحرارة (دقة ±0.5 درجة مئوية)، الاقتراب، والسطوع — تضبط الإضاءة الخلفية تلقائياً وتدير منظم حرارة PI مدمج للتحكم المناخي الدقيق. مدخلان تناظريان/رقميان يصلان أزرار الضغط أو كاشفات الحركة. التغذية الصوتية توفر نقرة خفيفة عند كل ضغطة. يدعم KNX Secure. متاح بألوان أبيض وفضي وأنثراسيت وخيار لون مخصص."
+  },
+
+  "specs": {
+    "en": {
+      "Variants": "X1, X2, X4, X6 (1, 2, 4, or 6 buttons)",
+      "Housing": "PC-ABS",
+      "Dimensions": "70.5 × 70.5 × 22.6 mm",
+      "Supply Voltage": "21–31 V DC (typical 29 V DC, KNX bus)",
+      "Current Consumption": "6.6 mA at 29 V DC",
+      "Inputs": "2 analog/digital (max 30 m cable)",
+      "Temperature Sensor": "Built-in, ±0.5 °C accuracy",
+      "Proximity Sensor": "Built-in, ~5 cm range",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Thermostat": "Built-in PI controller",
+      "Acoustic Feedback": "Yes (configurable)",
+      "Backlit Buttons": "Yes, individually backlit icons",
+      "Frame Compatibility": "70 × 70 mm standard frames",
+      "Installation": "Flush mount in standard 70 × 70 mm frame",
+      "Available Colors": "White, Silver, Anthracite, Custom",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Secure"
+    },
+    "fr": {
+      "Variantes": "X1, X2, X4, X6 (1, 2, 4 ou 6 boutons)",
+      "Boîtier": "PC-ABS",
+      "Dimensions": "70,5 × 70,5 × 22,6 mm",
+      "Tension d'alimentation": "21–31 V CC (typique 29 V CC, bus KNX)",
+      "Consommation": "6,6 mA à 29 V CC",
+      "Entrées": "2 analogiques/numériques (câble max 30 m)",
+      "Sonde de température": "Intégrée, précision ±0,5 °C",
+      "Capteur de proximité": "Intégré, portée ~5 cm",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Thermostat": "Contrôleur PI intégré",
+      "Retour acoustique": "Oui (configurable)",
+      "Boutons rétroéclairés": "Oui, icônes rétroéclairées individuellement",
+      "Compatibilité cadre": "Cadres standard 70 × 70 mm",
+      "Installation": "Encastré dans cadre standard 70 × 70 mm",
+      "Coloris disponibles": "Blanc, Argent, Anthracite, Personnalisé",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Secure"
+    },
+    "ar": {
+      "النسخ": "X1، X2، X4، X6 (1، 2، 4، أو 6 أزرار)",
+      "الهيكل": "PC-ABS",
+      "الأبعاد": "70.5 × 70.5 × 22.6 مم",
+      "جهد التغذية": "21–31 فولت تيار مستمر (29 فولت نموذجي، ناقل KNX)",
+      "استهلاك التيار": "6.6 مللي أمبير عند 29 فولت",
+      "المداخل": "2 تناظرية/رقمية (حد أقصى كابل 30 م)",
+      "حساس الحرارة": "مدمج، دقة ±0.5 درجة مئوية",
+      "حساس الاقتراب": "مدمج، مدى ~5 سم",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "الثرموستات": "وحدة تحكم PI مدمجة",
+      "التغذية الصوتية": "نعم (قابل للضبط)",
+      "الأزرار المضيئة": "نعم، أيقونات مضاءة بشكل مستقل",
+      "توافق الإطار": "إطارات قياسية 70 × 70 مم",
+      "التركيب": "مدمج في إطار قياسي 70 × 70 مم",
+      "الألوان المتاحة": "أبيض، فضي، أنثراسيت، مخصص",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-tecla-70.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/tecla-70/"
+    }
+  ]
+}

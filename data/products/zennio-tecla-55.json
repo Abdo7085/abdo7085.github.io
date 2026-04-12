@@ -1,0 +1,91 @@
+{
+  "id": "zennio-tecla-55",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Switch",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Tecla 55 KNX Touch Switch X1/X2/X4/X6",
+    "fr": "Interrupteur tactile KNX Zennio Tecla 55 X1/X2/X4/X6",
+    "ar": "مفتاح لمسي KNX Zennio Tecla 55 X1/X2/X4/X6"
+  },
+
+  "short_description": {
+    "en": "Backlit capacitive KNX touch switch for standard 55 mm frames.",
+    "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 55 mm standard.",
+    "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 55 مم القياسية."
+  },
+
+  "description": {
+    "en": "The Zennio Tecla 55 is a compact backlit capacitive touch switch designed for standard 55×55 mm frames — the most widely used format in Europe and North Africa. Available in X1, X2, X4, and X6 variants, each button lights up individually so the panel is always easy to use in low-light conditions. Built-in temperature, proximity, and brightness sensors allow the Tecla 55 to auto-adjust its backlight and run a built-in thermostat for climate control. An acoustic feedback option provides a subtle click sound on each touch. It mounts in standard 55 mm flush-mounted back boxes and is available in White, Silver, and Anthracite finishes to blend into any interior.",
+    "fr": "Le Zennio Tecla 55 est un interrupteur tactile capacitif rétroéclairé compact conçu pour les cadres standard 55×55 mm — le format le plus répandu en Europe et en Afrique du Nord. Disponible en variantes X1, X2, X4 et X6, chaque bouton s'allume individuellement pour une utilisation facile dans des conditions de faible luminosité. Des capteurs de température, de proximité et de luminosité intégrés permettent au Tecla 55 d'ajuster automatiquement son rétroéclairage et d'alimenter un thermostat intégré pour le contrôle climatique. Un retour acoustique optionnel fournit un son de clic discret à chaque touche. Il se monte dans des boîtes encastrées 55 mm standard et est disponible en finitions Blanc, Argent et Anthracite.",
+    "ar": "Zennio Tecla 55 هو مفتاح ضغط لمسي سعوي مضيء مدمج مصمم لإطارات 55×55 مم القياسية — الحجم الأكثر استخداماً في أوروبا وشمال أفريقيا. متاح بنسخ X1 وX2 وX4 وX6، يضيء كل زر بشكل مستقل لتسهيل الاستخدام في الإضاءة المنخفضة. تتيح الحساسات المدمجة — الحرارة والاقتراب والسطوع — للوحة ضبط إضاءتها الخلفية تلقائياً وتشغيل منظم حرارة مدمج للتحكم المناخي. خيار التغذية الصوتية يوفر صوت نقرة خفيفة عند كل لمسة. يتناسب مع علب التركيب المدمجة القياسية بحجم 55 مم، ومتاح بألوان أبيض وفضي وأنثراسيت."
+  },
+
+  "specs": {
+    "en": {
+      "Variants": "X1, X2, X4, X6 (1, 2, 4, or 6 buttons)",
+      "Housing": "Polycarbonate",
+      "Dimensions": "55.5 × 55.5 × 25.6 mm",
+      "Supply Voltage": "21–31 V DC (typical 29 V DC, KNX bus)",
+      "Current Consumption": "6.1 mA at 29 V DC",
+      "Temperature Sensor": "Built-in",
+      "Proximity Sensor": "Built-in",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Thermostat": "Built-in",
+      "Acoustic Feedback": "Optional (configurable click sound)",
+      "Backlit Buttons": "Yes, individually backlit icons",
+      "Frame Compatibility": "55 × 55 mm standard frames",
+      "Installation": "Flush mount in standard 55 × 55 mm back box",
+      "Available Colors": "White, Silver, Anthracite",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Variantes": "X1, X2, X4, X6 (1, 2, 4 ou 6 boutons)",
+      "Boîtier": "Polycarbonate",
+      "Dimensions": "55,5 × 55,5 × 25,6 mm",
+      "Tension d'alimentation": "21–31 V CC (typique 29 V CC, bus KNX)",
+      "Consommation": "6,1 mA à 29 V CC",
+      "Sonde de température": "Intégrée",
+      "Capteur de proximité": "Intégré",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Thermostat": "Intégré",
+      "Retour acoustique": "Optionnel (son de clic configurable)",
+      "Boutons rétroéclairés": "Oui, icônes rétroéclairées individuellement",
+      "Compatibilité cadre": "Cadres standard 55 × 55 mm",
+      "Installation": "Encastré dans boîte standard 55 × 55 mm",
+      "Coloris disponibles": "Blanc, Argent, Anthracite",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "النسخ": "X1، X2، X4، X6 (1، 2، 4، أو 6 أزرار)",
+      "الهيكل": "بولي كربونات",
+      "الأبعاد": "55.5 × 55.5 × 25.6 مم",
+      "جهد التغذية": "21–31 فولت تيار مستمر (29 فولت نموذجي، ناقل KNX)",
+      "استهلاك التيار": "6.1 مللي أمبير عند 29 فولت",
+      "حساس الحرارة": "مدمج",
+      "حساس الاقتراب": "مدمج",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "الثرموستات": "مدمج",
+      "التغذية الصوتية": "اختياري (صوت نقرة قابل للضبط)",
+      "الأزرار المضيئة": "نعم، أيقونات مضاءة بشكل مستقل",
+      "توافق الإطار": "إطارات قياسية 55 × 55 مم",
+      "التركيب": "مدمج في علبة قياسية 55 × 55 مم",
+      "الألوان المتاحة": "أبيض، فضي، أنثراسيت",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-tecla-55.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/tecla-55/"
+    }
+  ]
+}

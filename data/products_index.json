@@ -730,6 +730,27 @@
     "image": "/assets/products/sonoff-zbmini-extreme.png"
   },
   {
+    "id": "zennio-flat-70",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Flat 70 KNX Glass Touch Switch X1/X2/X4/X6",
+      "fr": "Interrupteur tactile en verre KNX Zennio Flat 70 X1/X2/X4/X6",
+      "ar": "مفتاح لمسي زجاجي KNX Zennio Flat 70 X1/X2/X4/X6"
+    },
+    "short_description": {
+      "en": "Premium glass capacitive KNX touch switch for 70 mm frames.",
+      "fr": "Interrupteur tactile KNX en verre capacitif premium pour cadres 70 mm.",
+      "ar": "مفتاح لمسي زجاجي KNX سعوي فاخر لإطارات 70 مم."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-flat-70.png"
+  },
+  {
     "id": "zennio-inbox-20-v3",
     "brand": "Zennio",
     "technology": [
@@ -1001,6 +1022,90 @@
     },
     "category": "",
     "image": "/assets/products/zennio-minibox-45-v3.png"
+  },
+  {
+    "id": "zennio-tecla-55",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Tecla 55 KNX Touch Switch X1/X2/X4/X6",
+      "fr": "Interrupteur tactile KNX Zennio Tecla 55 X1/X2/X4/X6",
+      "ar": "مفتاح لمسي KNX Zennio Tecla 55 X1/X2/X4/X6"
+    },
+    "short_description": {
+      "en": "Backlit capacitive KNX touch switch for standard 55 mm frames.",
+      "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 55 mm standard.",
+      "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 55 مم القياسية."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-tecla-55.png"
+  },
+  {
+    "id": "zennio-tecla-70",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Tecla 70 KNX Touch Switch X1/X2/X4/X6",
+      "fr": "Interrupteur tactile KNX Zennio Tecla 70 X1/X2/X4/X6",
+      "ar": "مفتاح لمسي KNX Zennio Tecla 70 X1/X2/X4/X6"
+    },
+    "short_description": {
+      "en": "Backlit capacitive KNX touch switch for standard 70 mm frames.",
+      "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 70 mm standard.",
+      "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 70 مم القياسية."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-tecla-70.png"
+  },
+  {
+    "id": "zennio-tecla-xl",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Tecla XL KNX Touch Switch X4/X6/X8/X10",
+      "fr": "Interrupteur tactile KNX Zennio Tecla XL X4/X6/X8/X10",
+      "ar": "مفتاح لمسي KNX Zennio Tecla XL X4/X6/X8/X10"
+    },
+    "short_description": {
+      "en": "Large-format backlit capacitive KNX touch switch, 4–10 buttons.",
+      "fr": "Interrupteur tactile KNX capacitif grand format rétroéclairé, 4–10 boutons.",
+      "ar": "مفتاح لمسي KNX سعوي مضيء بحجم كبير، 4 إلى 10 أزرار."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-tecla-xl.png"
+  },
+  {
+    "id": "zennio-tecla",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Tecla KNX Touch Switch 1/2/4/6/8",
+      "fr": "Interrupteur tactile KNX Zennio Tecla 1/2/4/6/8",
+      "ar": "مفتاح لمسي KNX Zennio Tecla 1/2/4/6/8"
+    },
+    "short_description": {
+      "en": "Backlit capacitive KNX touch switch, 1 to 8 customizable buttons.",
+      "fr": "Interrupteur tactile KNX capacitif rétroéclairé, 1 à 8 boutons personnalisables.",
+      "ar": "مفتاح لمسي KNX سعوي مضيء، من 1 إلى 8 أزرار قابلة للتخصيص."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-tecla.png"
   },
   {
     "id": "zennio-z100-touch-panel",

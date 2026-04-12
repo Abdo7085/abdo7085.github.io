@@ -1,0 +1,82 @@
+{
+  "id": "zennio-tecla",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Switch",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Tecla KNX Touch Switch 1/2/4/6/8",
+    "fr": "Interrupteur tactile KNX Zennio Tecla 1/2/4/6/8",
+    "ar": "مفتاح لمسي KNX Zennio Tecla 1/2/4/6/8"
+  },
+
+  "short_description": {
+    "en": "Backlit capacitive KNX touch switch, 1 to 8 customizable buttons.",
+    "fr": "Interrupteur tactile KNX capacitif rétroéclairé, 1 à 8 boutons personnalisables.",
+    "ar": "مفتاح لمسي KNX سعوي مضيء، من 1 إلى 8 أزرار قابلة للتخصيص."
+  },
+
+  "description": {
+    "en": "The Zennio Tecla is a polycarbonate backlit capacitive touch switch available in 1, 2, 4, 6, and 8 button variants, making it suitable for anything from a simple light toggle to a full room control panel. Each button features a customizable backlit icon that dims or brightens based on a built-in ambient light sensor and wakes when the built-in proximity sensor detects your approach. A built-in temperature probe and thermostat let the Tecla manage heating and cooling directly, and 2 analog/digital inputs connect push buttons, motion detectors, or additional temperature probes via cables up to 30 m. It fits standard European, British, Italian, Australian, and American flush-mounted back boxes, and comes in White, Silver, Anthracite, and a custom color option.",
+    "fr": "Le Zennio Tecla est un interrupteur tactile capacitif rétroéclairé en polycarbonate disponible en variantes 1, 2, 4, 6 et 8 boutons, adapté pour tout usage, d'une simple commande d'éclairage à un panneau de contrôle de salle complet. Chaque bouton dispose d'une icône rétroéclairée personnalisable qui s'atténue ou s'illumine selon un capteur de luminosité ambiante intégré et s'active lorsque le capteur de proximité intégré détecte votre approche. Une sonde de température et un thermostat intégrés permettent au Tecla de gérer directement le chauffage et la climatisation, et 2 entrées analogiques/numériques connectent des boutons-poussoirs, des détecteurs de mouvement ou des sondes de température supplémentaires. Il s'adapte aux boîtes encastrées standard européennes, britanniques, italiennes, australiennes et américaines. Disponible en Blanc, Argent, Anthracite et couleur personnalisée.",
+    "ar": "Zennio Tecla هو مفتاح ضغط لمسي سعوي مضيء من البولي كربونات متاح بنسخ 1 و2 و4 و6 و8 أزرار، مناسب لكل شيء من تبديل الإضاءة البسيط إلى لوحة التحكم الكاملة للغرفة. كل زر يحمل أيقونة مضاءة قابلة للتخصيص تخفت أو تضيء بناءً على حساس إضاءة محيطية مدمج، وتستيقظ عندما يكتشف حساس الاقتراب المدمج اقترابك. حساس حرارة داخلي ومنظم حرارة مدمج يتيحان للوحة Tecla إدارة التدفئة والتبريد مباشرة، ومدخلان تناظريان/رقميان يصلان أزرار الضغط أو كاشفات الحركة أو حساسات حرارة إضافية بكابلات تصل إلى 30 متراً. يتناسب مع علب التركيب المدمجة القياسية الأوروبية والبريطانية والإيطالية والأسترالية والأمريكية. متاح بألوان أبيض وفضي وأنثراسيت وخيار لون مخصص."
+  },
+
+  "specs": {
+    "en": {
+      "Variants": "1, 2, 4, 6, 8 buttons",
+      "Housing": "Polycarbonate",
+      "Supply Voltage": "21–31 V DC (typical 29 V DC, KNX bus)",
+      "Inputs": "2 analog/digital (max 30 m cable)",
+      "Temperature Sensor": "Built-in",
+      "Proximity Sensor": "Built-in (auto screen activation)",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Thermostat": "Built-in",
+      "Backlit Buttons": "Yes, individually backlit customizable icons",
+      "Installation": "Flush mount — European, British, Italian, Australian, American back boxes",
+      "Available Colors": "White, Silver, Anthracite, Custom",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Variantes": "1, 2, 4, 6, 8 boutons",
+      "Boîtier": "Polycarbonate",
+      "Tension d'alimentation": "21–31 V CC (typique 29 V CC, bus KNX)",
+      "Entrées": "2 analogiques/numériques (câble max 30 m)",
+      "Sonde de température": "Intégrée",
+      "Capteur de proximité": "Intégré (activation automatique)",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Thermostat": "Intégré",
+      "Boutons rétroéclairés": "Oui, icônes personnalisables rétroéclairées individuellement",
+      "Installation": "Encastré — boîtes européennes, britanniques, italiennes, australiennes, américaines",
+      "Coloris disponibles": "Blanc, Argent, Anthracite, Personnalisé",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "النسخ": "1، 2، 4، 6، 8 أزرار",
+      "الهيكل": "بولي كربونات",
+      "جهد التغذية": "21–31 فولت تيار مستمر (29 فولت نموذجي، ناقل KNX)",
+      "المداخل": "2 تناظرية/رقمية (حد أقصى كابل 30 م)",
+      "حساس الحرارة": "مدمج",
+      "حساس الاقتراب": "مدمج (تنشيط تلقائي)",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "الثرموستات": "مدمج",
+      "الأزرار المضيئة": "نعم، أيقونات مخصصة مضاءة بشكل مستقل",
+      "التركيب": "مدمج في الحائط — علب أوروبية، بريطانية، إيطالية، أسترالية، أمريكية",
+      "الألوان المتاحة": "أبيض، فضي، أنثراسيت، مخصص",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-tecla.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/tecla/"
+    }
+  ]
+}
