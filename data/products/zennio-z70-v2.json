@@ -1,0 +1,97 @@
+{
+  "id": "zennio-z70-v2",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "Zennio Z70 v2 KNX Touch Panel 7\"",
+    "fr": "Panneau tactile KNX Zennio Z70 v2 7\"",
+    "ar": "لوحة تحكم لمسية KNX Zennio Z70 v2 بشاشة 7\""
+  },
+
+  "short_description": {
+    "en": "7-inch color capacitive KNX touch panel with 56 scenes.",
+    "fr": "Panneau tactile KNX couleur 7 pouces avec 56 scènes.",
+    "ar": "لوحة تحكم لمسية KNX ملونة بحجم 7 بوصات و56 مشهداً."
+  },
+
+  "description": {
+    "en": "The Zennio Z70 v2 is a premium 7-inch KNX wall touch panel that puts full smart home control at your fingertips with a crisp 1280×800 color display. It supports up to 56 customizable control windows for lighting, blinds, HVAC, scenes, and more — all organized the way you want them. A built-in temperature probe and 2 independent thermostats let it manage climate directly, while a proximity sensor activates the screen automatically as you approach and dims it when you leave. Four analog/digital inputs connect push buttons or sensors, and built-in speakers provide audio feedback for notifications. It fits into any standard European or British double wall box and is available in four finishes to match any interior. Optional licenses unlock smartphone remote access, video intercom, and voice control via ZenVoice.",
+    "fr": "Le Zennio Z70 v2 est un panneau tactile KNX mural haut de gamme de 7 pouces qui met le contrôle complet de la maison intelligente à portée de main avec un écran couleur net en 1280×800. Il prend en charge jusqu'à 56 fenêtres de contrôle personnalisables pour l'éclairage, les stores, la CVC, les scènes et plus encore — organisées comme vous le souhaitez. Une sonde de température intégrée et 2 thermostats indépendants lui permettent de gérer le climat directement, tandis qu'un capteur de proximité active l'écran automatiquement à votre approche et l'éteint à votre départ. Quatre entrées analogiques/numériques connectent des boutons-poussoirs ou des capteurs, et des haut-parleurs intégrés fournissent un retour audio pour les notifications. Il s'intègre dans toute double boîte murale européenne ou britannique standard et est disponible en quatre finitions. Des licences optionnelles débloquent l'accès à distance via smartphone, l'interphone vidéo et le contrôle vocal ZenVoice.",
+    "ar": "Zennio Z70 v2 هو لوحة تحكم لمسية KNX مدمجة بالحائط بحجم 7 بوصات تضع التحكم الكامل بالمنزل الذكي بين يديك بشاشة ملونة واضحة بدقة 1280×800. تدعم حتى 56 نافذة تحكم قابلة للتخصيص للإضاءة والستائر والتدفئة والمشاهد وغيرها — منظمة بالطريقة التي تريدها. يتيح حساس حرارة داخلي ومنظمان حرارة مستقلان إدارة المناخ مباشرة، بينما يُنشّط حساس الاقتراب الشاشة تلقائياً عند اقترابك ويطفئها عند ابتعادك. تصل أربعة مداخل تناظرية/رقمية أزرار الضغط أو الحساسات، والمكبرات الصوتية المدمجة توفر تغذية صوتية للإشعارات. يتناسب مع أي علبة حائط مزدوجة أوروبية أو بريطانية قياسية ومتاح بأربعة ألوان. التراخيص الاختيارية تفتح التحكم عن بُعد عبر الهاتف وجرس الفيديو والتحكم الصوتي عبر ZenVoice."
+  },
+
+  "specs": {
+    "en": {
+      "Display": "7\" full-color capacitive touch, 1280 × 800 px",
+      "Touch Technology": "Capacitive multi-touch",
+      "Control Windows": "Up to 56",
+      "Inputs": "4 analog/digital",
+      "Thermostats": "2 independent",
+      "Temperature Sensor": "Built-in, 0.1 °C resolution",
+      "Proximity Sensor": "Built-in (auto screen activation)",
+      "Brightness Sensor": "Built-in (auto backlight adjustment)",
+      "Audio": "Built-in speakers for notifications",
+      "Connectivity": "Ethernet + USB (programming / updates)",
+      "Supply Voltage": "24–29 V DC, max 375 mA at 24 V DC",
+      "Dimensions": "189 × 137 × 37 mm (11.8 mm wall protrusion)",
+      "Weight": "500 g",
+      "Installation": "Flush mount, European / British standard double box",
+      "Available Colors": "White, Glossy White, Anthracite, Silver",
+      "Operating Temperature": "-10 to +50 °C",
+      "Protection": "IP20",
+      "Optional Licenses": "Smartphone control, Video Intercom, ZenVoice"
+    },
+    "fr": {
+      "Écran": "7\" tactile capacitif couleur, 1280 × 800 px",
+      "Technologie tactile": "Multi-touch capacitif",
+      "Fenêtres de contrôle": "Jusqu'à 56",
+      "Entrées": "4 analogiques/numériques",
+      "Thermostats": "2 indépendants",
+      "Sonde de température": "Intégrée, résolution 0,1 °C",
+      "Capteur de proximité": "Intégré (activation automatique de l'écran)",
+      "Capteur de luminosité": "Intégré (réglage automatique du rétroéclairage)",
+      "Audio": "Haut-parleurs intégrés pour notifications",
+      "Connectivité": "Ethernet + USB (programmation / mises à jour)",
+      "Tension d'alimentation": "24–29 V CC, max 375 mA à 24 V CC",
+      "Dimensions": "189 × 137 × 37 mm (saillie murale 11,8 mm)",
+      "Poids": "500 g",
+      "Installation": "Encastré, double boîte européenne / britannique standard",
+      "Coloris disponibles": "Blanc, Blanc brillant, Anthracite, Argent",
+      "Température de fonctionnement": "-10 à +50 °C",
+      "Protection": "IP20",
+      "Licences optionnelles": "Contrôle smartphone, Interphone vidéo, ZenVoice"
+    },
+    "ar": {
+      "الشاشة": "7\" لمسية سعوية ملونة، 1280 × 800 بكسل",
+      "تقنية اللمس": "Multi-touch سعوي",
+      "نوافذ التحكم": "حتى 56",
+      "المداخل": "4 تناظرية/رقمية",
+      "الثرموستاتات": "2 مستقلان",
+      "حساس الحرارة": "مدمج، دقة 0.1 درجة مئوية",
+      "حساس الاقتراب": "مدمج (تنشيط تلقائي للشاشة)",
+      "حساس الإضاءة": "مدمج (ضبط تلقائي لإضاءة الخلفية)",
+      "الصوت": "مكبرات صوت مدمجة للإشعارات",
+      "التوصيل": "Ethernet + USB (البرمجة / التحديثات)",
+      "جهد التغذية": "24–29 فولت تيار مستمر، حد أقصى 375 مللي أمبير عند 24 فولت",
+      "الأبعاد": "189 × 137 × 37 مم (بروز جداري 11.8 مم)",
+      "الوزن": "500 غ",
+      "التركيب": "مدمج في الحائط، علبة مزدوجة أوروبية / بريطانية قياسية",
+      "الألوان المتاحة": "أبيض، أبيض لامع، أنثراسيت، فضي",
+      "درجة حرارة التشغيل": "-10 إلى +50 درجة مئوية",
+      "الحماية": "IP20",
+      "التراخيص الاختيارية": "تحكم عبر الهاتف، جرس الفيديو، ZenVoice"
+    }
+  },
+
+  "images": ["/assets/products/zennio-z70-v2.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/z70-v2/"
+    }
+  ]
+}

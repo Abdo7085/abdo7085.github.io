@@ -1022,5 +1022,26 @@
     },
     "category": "",
     "image": "/assets/products/zennio-z100-touch-panel.png"
+  },
+  {
+    "id": "zennio-z70-v2",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Zennio Z70 v2 KNX Touch Panel 7\"",
+      "fr": "Panneau tactile KNX Zennio Z70 v2 7\"",
+      "ar": "لوحة تحكم لمسية KNX Zennio Z70 v2 بشاشة 7\""
+    },
+    "short_description": {
+      "en": "7-inch color capacitive KNX touch panel with 56 scenes.",
+      "fr": "Panneau tactile KNX couleur 7 pouces avec 56 scènes.",
+      "ar": "لوحة تحكم لمسية KNX ملونة بحجم 7 بوصات و56 مشهداً."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-z70-v2.png"
   }
 ]
