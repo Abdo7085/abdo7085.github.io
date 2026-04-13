@@ -1,0 +1,77 @@
+{
+  "id": "eae-knx-ipr200-ip-router",
+  "brand": "EAE Technology",
+  "technology": ["KNX", "LAN"],
+  "product_type": "Gateway",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "EAE IPR200 KNX IP Router",
+    "fr": "Routeur IP KNX EAE IPR200",
+    "ar": "راوتر IP KNX EAE IPR200"
+  },
+
+  "short_description": {
+    "en": "KNX IP router with 5 simultaneous tunneling connections.",
+    "fr": "Routeur IP KNX avec 5 connexions tunneling simultanées.",
+    "ar": "راوتر IP KNX مع 5 اتصالات tunneling متزامنة."
+  },
+
+  "description": {
+    "en": "The EAE IPR200 is a KNX IP router that forwards KNX telegrams between different KNX TP lines using the local area network as a fast IP backbone — replacing traditional line couplers with much higher throughput. It supports 5 simultaneous KNXnet/IP tunneling connections, so multiple installers can program and monitor the system through ETS at the same time without swapping cables. At just 1 DIN module (18 mm) wide and entirely powered from the KNX bus, it adds full IP routing and tunneling capability to any panel without consuming extra space or needing an external power supply. Standard Ethernet protocols (ARP, ICMP, IGMP, UDP/IP, DHCP, AutoIP) ensure seamless integration with existing network infrastructure.",
+    "fr": "L'EAE IPR200 est un routeur IP KNX qui transfère les télégrammes KNX entre différentes lignes KNX TP en utilisant le réseau local comme backbone IP rapide — remplaçant les coupleurs de ligne traditionnels avec un débit bien supérieur. Il prend en charge 5 connexions tunneling KNXnet/IP simultanées, permettant à plusieurs installateurs de programmer et superviser le système via ETS en même temps. Avec seulement 1 module DIN (18 mm) de large et entièrement alimenté par le bus KNX, il ajoute le routage IP complet et le tunneling à tout tableau sans espace ni alimentation supplémentaire. Les protocoles Ethernet standard assurent une intégration transparente avec l'infrastructure réseau existante.",
+    "ar": "EAE IPR200 هو راوتر IP KNX يحوّل رسائل KNX بين خطوط KNX TP المختلفة باستخدام الشبكة المحلية كعمود فقري IP سريع — بديل لروابط الخطوط التقليدية بسرعة أعلى بكثير. يدعم 5 اتصالات KNXnet/IP tunneling متزامنة، مما يتيح لعدة مركّبين برمجة ومراقبة النظام عبر ETS في نفس الوقت. بعرض وحدة DIN واحدة فقط (18 مم) ومغذّى كلياً من ناقل KNX، يضيف توجيه IP كامل وقدرة tunneling لأي لوحة دون مساحة أو تغذية إضافية. بروتوكولات Ethernet القياسية تضمن تكاملاً سلساً مع البنية التحتية للشبكة."
+  },
+
+  "specs": {
+    "en": {
+      "Function": "KNXnet/IP routing + tunneling",
+      "DIN Modules": "1 (18 mm)",
+      "Ethernet": "RJ45, 10 Mbit/s",
+      "Supply Voltage": "21–30 V DC SELV (KNX bus), 15 mA",
+      "KNX Tunneling": "5 simultaneous connections",
+      "Protocols": "ARP, ICMP, IGMP, UDP/IP, DHCP, AutoIP",
+      "Operating Temperature": "5 to +45 °C",
+      "Humidity": "5–93 % (non-condensing)",
+      "ETS Compatibility": "ETS4 or higher",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Fonction": "Routage KNXnet/IP + tunneling",
+      "Modules DIN": "1 (18 mm)",
+      "Ethernet": "RJ45, 10 Mbit/s",
+      "Tension d'alimentation": "21–30 V CC SELV (bus KNX), 15 mA",
+      "Tunneling KNX": "5 connexions simultanées",
+      "Protocoles": "ARP, ICMP, IGMP, UDP/IP, DHCP, AutoIP",
+      "Température de fonctionnement": "5 à +45 °C",
+      "Humidité": "5–93 % (sans condensation)",
+      "Compatibilité ETS": "ETS4 ou supérieur",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "الوظيفة": "توجيه KNXnet/IP + tunneling",
+      "وحدات DIN": "1 (18 مم)",
+      "Ethernet": "RJ45، 10 Mbit/s",
+      "جهد التغذية": "21–30 فولت تيار مستمر SELV (ناقل KNX)، 15 mA",
+      "KNX Tunneling": "5 اتصالات متزامنة",
+      "البروتوكولات": "ARP، ICMP، IGMP، UDP/IP، DHCP، AutoIP",
+      "درجة حرارة التشغيل": "5 إلى +45 درجة مئوية",
+      "الرطوبة": "5–93% (بدون تكثف)",
+      "توافق ETS": "ETS4 أو أعلى",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-ipr200-ip-router.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-IPR200-R1.0.pdf"
+    },
+    {
+      "name": "Product Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-IPR200-R1.0.pdf"
+    }
+  ]
+}

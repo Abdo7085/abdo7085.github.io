@@ -1,0 +1,75 @@
+{
+  "id": "eae-knx-lc200-line-coupler",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Gateway",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "EAE LC200 KNX Line Coupler",
+    "fr": "Coupleur de ligne KNX EAE LC200",
+    "ar": "رابط خطوط KNX EAE LC200"
+  },
+
+  "short_description": {
+    "en": "Compact KNX line/backbone coupler with galvanic isolation.",
+    "fr": "Coupleur de ligne/backbone KNX compact avec isolation galvanique.",
+    "ar": "رابط خطوط/عمود فقري KNX مدمج مع عزل كلفاني."
+  },
+
+  "description": {
+    "en": "The EAE LC200 is a compact KNX line coupler that connects two KNX TP bus lines while providing full galvanic isolation between them — essential for protecting the installation against electrical faults that could propagate between lines. At just 1 DIN module (18 mm) wide, it is one of the slimmest couplers available, preserving valuable space in the electrical panel. The LC200 can operate as either a line coupler (connecting a sub-line to a main line) or a backbone coupler (connecting a main line to the backbone), and its 8 KB filter table ensures that only the telegrams that need to cross between lines actually do, keeping both lines responsive and efficient. It supports KNX long frames and is configured through ETS 4.2 or higher.",
+    "fr": "Le EAE LC200 est un coupleur de ligne KNX compact qui connecte deux lignes bus KNX TP tout en fournissant une isolation galvanique complète entre elles — essentiel pour protéger l'installation contre les défauts électriques qui pourraient se propager entre les lignes. Avec seulement 1 module DIN (18 mm) de large, c'est l'un des coupleurs les plus fins disponibles, préservant un espace précieux dans le tableau électrique. Le LC200 peut fonctionner comme coupleur de ligne ou coupleur backbone, et sa table de filtrage 8 Ko assure que seuls les télégrammes nécessaires traversent entre les lignes. Il supporte les trames longues KNX et se configure via ETS 4.2 ou supérieur.",
+    "ar": "EAE LC200 هو رابط خطوط KNX مدمج يربط خطي ناقل KNX TP مع توفير عزل كلفاني كامل بينهما — ضروري لحماية التركيب من الأعطال الكهربائية التي قد تنتقل بين الخطوط. بعرض وحدة DIN واحدة فقط (18 مم)، هو من أنحف الروابط المتاحة مما يوفّر مساحة ثمينة في لوحة التوزيع. يعمل كرابط خط (يصل خطاً فرعياً بخط رئيسي) أو رابط عمود فقري (يصل خطاً رئيسياً بالعمود الفقري)، وجدول الفلترة 8 كيلوبايت يضمن عبور الرسائل الضرورية فقط بين الخطوط. يدعم إطارات KNX الطويلة ويُضبط عبر ETS 4.2 أو أعلى."
+  },
+
+  "specs": {
+    "en": {
+      "Function": "Line coupler / backbone coupler (KNX TP)",
+      "DIN Modules": "1 (18 mm)",
+      "Filter Table": "8 KB (main group 0–31)",
+      "Galvanic Isolation": "Yes, between lines",
+      "KNX Long Frames": "Supported",
+      "Supply": "KNX bus powered (no external supply needed)",
+      "ETS Compatibility": "ETS 4.2 or higher",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Fonction": "Coupleur de ligne / coupleur backbone (KNX TP)",
+      "Modules DIN": "1 (18 mm)",
+      "Table de filtrage": "8 Ko (groupe principal 0–31)",
+      "Isolation galvanique": "Oui, entre les lignes",
+      "Trames longues KNX": "Supportées",
+      "Alimentation": "Alimenté par le bus KNX (aucune alimentation externe requise)",
+      "Compatibilité ETS": "ETS 4.2 ou supérieur",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "الوظيفة": "رابط خط / رابط عمود فقري (KNX TP)",
+      "وحدات DIN": "1 (18 مم)",
+      "جدول الفلترة": "8 كيلوبايت (مجموعة رئيسية 0–31)",
+      "العزل الكلفاني": "نعم، بين الخطوط",
+      "إطارات KNX الطويلة": "مدعومة",
+      "التغذية": "مغذّى من ناقل KNX (لا يحتاج مصدر خارجي)",
+      "توافق ETS": "ETS 4.2 أو أعلى",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-lc200-line-coupler.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-LC200-R1.0.pdf"
+    },
+    {
+      "name": "Product Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-LC200-R1.0.pdf"
+    },
+    {
+      "name": "Installation Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-LC200-R1.1.pdf"
+    }
+  ]
+}

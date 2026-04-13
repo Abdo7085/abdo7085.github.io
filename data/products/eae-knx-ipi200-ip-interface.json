@@ -1,0 +1,74 @@
+{
+  "id": "eae-knx-ipi200-ip-interface",
+  "brand": "EAE Technology",
+  "technology": ["KNX", "LAN"],
+  "product_type": "Gateway",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "EAE IPI200 KNX IP Interface",
+    "fr": "Interface IP KNX EAE IPI200",
+    "ar": "واجهة IP KNX EAE IPI200"
+  },
+
+  "short_description": {
+    "en": "KNXnet/IP tunneling interface for programming and monitoring.",
+    "fr": "Interface tunneling KNXnet/IP pour programmation et supervision.",
+    "ar": "واجهة KNXnet/IP tunneling للبرمجة والمراقبة."
+  },
+
+  "description": {
+    "en": "The EAE IPI200 is a KNX IP interface that bridges the KNX bus to your local network, allowing installers to program and monitor KNX installations remotely using ETS over a standard Ethernet connection. Using the KNXnet/IP tunneling protocol, it provides a data link between the IP network and the KNX TP bus line — so there is no need for a USB dongle or direct physical connection to the bus during commissioning. At just 1 DIN module (18 mm) wide and entirely bus-powered, it adds IP connectivity to any KNX panel without consuming extra space or requiring an additional power supply. Green and orange LEDs indicate available and in-use tunneling connections at a glance.",
+    "fr": "L'EAE IPI200 est une interface IP KNX qui relie le bus KNX au réseau local, permettant aux installateurs de programmer et superviser les installations KNX à distance via ETS sur une connexion Ethernet standard. Grâce au protocole KNXnet/IP tunneling, elle fournit un lien de données entre le réseau IP et la ligne bus KNX TP — sans besoin de dongle USB ni de connexion physique directe au bus lors de la mise en service. Avec seulement 1 module DIN (18 mm) de large et entièrement alimentée par le bus, elle ajoute la connectivité IP à tout tableau KNX sans espace ni alimentation supplémentaire. Des LEDs vertes et orange indiquent les connexions tunneling disponibles et en cours d'utilisation.",
+    "ar": "EAE IPI200 هو واجهة IP KNX تربط ناقل KNX بالشبكة المحلية، مما يتيح للمركّبين برمجة ومراقبة تركيبات KNX عن بُعد باستخدام ETS عبر اتصال Ethernet قياسي. باستخدام بروتوكول KNXnet/IP tunneling، يوفّر رابط بيانات بين شبكة IP وخط ناقل KNX TP — دون الحاجة لـ USB dongle أو اتصال فعلي مباشر بالناقل أثناء التشغيل. بعرض وحدة DIN واحدة فقط (18 مم) ومغذّى كلياً من الناقل، يضيف اتصال IP لأي لوحة KNX دون مساحة أو تغذية إضافية. مؤشرات LED خضراء وبرتقالية تعرض اتصالات tunneling المتاحة والمستخدمة."
+  },
+
+  "specs": {
+    "en": {
+      "Function": "KNXnet/IP tunneling interface",
+      "DIN Modules": "1 (18 mm)",
+      "Ethernet": "RJ45, 10 Mbit/s",
+      "Supply": "KNX bus powered (no external supply needed)",
+      "KNX Tunneling": "Multiple simultaneous connections",
+      "Protocols": "ARP, ICMP, IGMP, UDP/IP, DHCP, AutoIP",
+      "Status LEDs": "Green (available) / Orange (in use) per connection",
+      "ETS Compatibility": "ETS4 or higher",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Fonction": "Interface tunneling KNXnet/IP",
+      "Modules DIN": "1 (18 mm)",
+      "Ethernet": "RJ45, 10 Mbit/s",
+      "Alimentation": "Alimenté par le bus KNX (aucune alimentation externe requise)",
+      "Tunneling KNX": "Connexions simultanées multiples",
+      "Protocoles": "ARP, ICMP, IGMP, UDP/IP, DHCP, AutoIP",
+      "LEDs d'état": "Vert (disponible) / Orange (utilisé) par connexion",
+      "Compatibilité ETS": "ETS4 ou supérieur",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "الوظيفة": "واجهة KNXnet/IP tunneling",
+      "وحدات DIN": "1 (18 مم)",
+      "Ethernet": "RJ45، 10 Mbit/s",
+      "التغذية": "مغذّى من ناقل KNX (لا يحتاج مصدر خارجي)",
+      "KNX Tunneling": "اتصالات متعددة متزامنة",
+      "البروتوكولات": "ARP، ICMP، IGMP، UDP/IP، DHCP، AutoIP",
+      "مؤشرات LED": "أخضر (متاح) / برتقالي (مستخدم) لكل اتصال",
+      "توافق ETS": "ETS4 أو أعلى",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-ipi200-ip-interface.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-IPI200-R1.0.pdf"
+    },
+    {
+      "name": "Product Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Product-Manual-IPI200-R1.0.pdf"
+    }
+  ]
+}

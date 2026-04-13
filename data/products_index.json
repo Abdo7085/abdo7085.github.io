@@ -1,5 +1,70 @@
 [
   {
+    "id": "eae-knx-ipi200-ip-interface",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX",
+      "LAN"
+    ],
+    "product_type": "Gateway",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "EAE IPI200 KNX IP Interface",
+      "fr": "Interface IP KNX EAE IPI200",
+      "ar": "واجهة IP KNX EAE IPI200"
+    },
+    "short_description": {
+      "en": "KNXnet/IP tunneling interface for programming and monitoring.",
+      "fr": "Interface tunneling KNXnet/IP pour programmation et supervision.",
+      "ar": "واجهة KNXnet/IP tunneling للبرمجة والمراقبة."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-ipi200-ip-interface.png"
+  },
+  {
+    "id": "eae-knx-ipr200-ip-router",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX",
+      "LAN"
+    ],
+    "product_type": "Gateway",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "EAE IPR200 KNX IP Router",
+      "fr": "Routeur IP KNX EAE IPR200",
+      "ar": "راوتر IP KNX EAE IPR200"
+    },
+    "short_description": {
+      "en": "KNX IP router with 5 simultaneous tunneling connections.",
+      "fr": "Routeur IP KNX avec 5 connexions tunneling simultanées.",
+      "ar": "راوتر IP KNX مع 5 اتصالات tunneling متزامنة."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-ipr200-ip-router.png"
+  },
+  {
+    "id": "eae-knx-lc200-line-coupler",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Gateway",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "EAE LC200 KNX Line Coupler",
+      "fr": "Coupleur de ligne KNX EAE LC200",
+      "ar": "رابط خطوط KNX EAE LC200"
+    },
+    "short_description": {
+      "en": "Compact KNX line/backbone coupler with galvanic isolation.",
+      "fr": "Coupleur de ligne/backbone KNX compact avec isolation galvanique.",
+      "ar": "رابط خطوط/عمود فقري KNX مدمج مع عزل كلفاني."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-lc200-line-coupler.png"
+  },
+  {
     "id": "eae-knx-miola-touch-panel",
     "brand": "EAE Technology",
     "technology": [
@@ -21,6 +86,27 @@
     "image": "/assets/products/eae-knx-miola-touch-panel.png"
   },
   {
+    "id": "eae-knx-oria-push-switches",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Switch",
+    "installation": "Wall mount",
+    "title": {
+      "en": "EAE Oria KNX Push Switches",
+      "fr": "Interrupteurs poussoirs KNX EAE Oria",
+      "ar": "مفاتيح ضغط KNX EAE Oria"
+    },
+    "short_description": {
+      "en": "Elegant capacitive KNX push switch, 1 to 5 fold variants.",
+      "fr": "Interrupteur poussoir KNX capacitif élégant, variantes 1 à 5 touches.",
+      "ar": "مفتاح ضغط KNX أنيق بتصميم لمسي، من 1 إلى 5 أزرار."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-oria-push-switches.png"
+  },
+  {
     "id": "eae-knx-power-supply-ps640",
     "brand": "EAE Technology",
     "technology": [
@@ -40,6 +126,27 @@
     },
     "category": "",
     "image": "/assets/products/eae-knx-power-supply-ps640.png"
+  },
+  {
+    "id": "eae-knx-ps320-power-supply",
+    "brand": "EAE Technology",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Power Supply",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "EAE KNX Power Supply PS320 320mA",
+      "fr": "Alimentation KNX EAE PS320 320mA",
+      "ar": "مزود طاقة KNX EAE PS320 320mA"
+    },
+    "short_description": {
+      "en": "320 mA KNX bus power supply with additional 30 V output.",
+      "fr": "Alimentation bus KNX 320 mA avec sortie 30 V supplémentaire.",
+      "ar": "مزود طاقة ناقل KNX بقدرة 320 mA مع خرج 30 فولت إضافي."
+    },
+    "category": "",
+    "image": "/assets/products/eae-knx-ps320-power-supply.png"
   },
   {
     "id": "eae-knx-rosa-switches",

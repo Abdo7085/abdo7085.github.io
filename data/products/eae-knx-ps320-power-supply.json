@@ -1,0 +1,78 @@
+{
+  "id": "eae-knx-ps320-power-supply",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Power Supply",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "EAE KNX Power Supply PS320 320mA",
+    "fr": "Alimentation KNX EAE PS320 320mA",
+    "ar": "مزود طاقة KNX EAE PS320 320mA"
+  },
+
+  "short_description": {
+    "en": "320 mA KNX bus power supply with additional 30 V output.",
+    "fr": "Alimentation bus KNX 320 mA avec sortie 30 V supplémentaire.",
+    "ar": "مزود طاقة ناقل KNX بقدرة 320 mA مع خرج 30 فولت إضافي."
+  },
+
+  "description": {
+    "en": "The EAE PS320 is a KNX bus power supply designed for small to medium installations, delivering 320 mA at 30 V DC to all connected devices on the KNX line. It accepts a wide AC input range (150–275 V), making it compatible with most mains voltages worldwide, and includes a second 30 V DC output for powering auxiliary devices such as additional interfaces or sensors. Installed on a standard DIN rail inside the electrical panel, it works silently in the background to keep the smart home running smoothly. Built-in short-circuit and overload protection, combined with clear LED status indicators and a manual reset button, make troubleshooting quick and straightforward.",
+    "fr": "L'alimentation EAE PS320 est conçue pour les installations KNX petites à moyennes, délivrant 320 mA à 30 V CC à tous les appareils connectés sur la ligne KNX. Elle accepte une large plage d'entrée secteur (150–275 V), la rendant compatible avec la plupart des tensions dans le monde, et dispose d'une seconde sortie 30 V CC pour alimenter des équipements auxiliaires tels que des interfaces ou capteurs supplémentaires. Installée sur un rail DIN standard dans le tableau électrique, elle fonctionne silencieusement pour assurer le bon fonctionnement de la maison connectée. Les protections intégrées contre les courts-circuits et surcharges, combinées à des indicateurs LED et un bouton de réinitialisation, facilitent le diagnostic.",
+    "ar": "مزود الطاقة EAE PS320 مصمم لتركيبات KNX الصغيرة والمتوسطة، يوفر 320 mA عند 30 فولت تيار مستمر لجميع الأجهزة المتصلة على خط KNX. يقبل جهد دخل واسع (150–275 فولت تيار متردد) مما يجعله متوافقاً مع معظم شبكات الكهرباء عالمياً، ويتضمن خرجاً ثانياً 30 فولت لتغذية أجهزة مساعدة مثل الواجهات أو الحساسات الإضافية. يُثبَّت على سكة DIN قياسية داخل لوحة الكهرباء ويعمل بصمت للحفاظ على تشغيل المنزل الذكي بسلاسة. الحماية المدمجة من قصر الدارة والحمل الزائد مع مؤشرات LED وزر إعادة الضبط تسهّل التشخيص السريع."
+  },
+
+  "specs": {
+    "en": {
+      "Input Voltage": "150–275 V AC, 50/60 Hz",
+      "Output 1 (KNX Bus)": "30 V DC SELV, 320 mA, with integrated choke",
+      "Output 2 (Auxiliary)": "30 V DC SELV (without choke)",
+      "Power Consumption": "11.5 W",
+      "Power Loss": "2 W",
+      "Protection": "Short-circuit and overload on both outputs",
+      "Status Indicators": "3 LEDs (Power, Overload, Reset)",
+      "Reset Button": "Yes",
+      "Installation": "DIN Rail (IEC 60715 TH35)"
+    },
+    "fr": {
+      "Tension d'entrée": "150–275 V CA, 50/60 Hz",
+      "Sortie 1 (Bus KNX)": "30 V CC SELV, 320 mA, avec self intégrée",
+      "Sortie 2 (Auxiliaire)": "30 V CC SELV (sans self)",
+      "Consommation": "11,5 W",
+      "Pertes": "2 W",
+      "Protection": "Court-circuit et surcharge sur les deux sorties",
+      "Indicateurs d'état": "3 LEDs (Alimentation, Surcharge, Réinitialisation)",
+      "Bouton de réinitialisation": "Oui",
+      "Installation": "Rail DIN (IEC 60715 TH35)"
+    },
+    "ar": {
+      "جهد الدخل": "150–275 فولت تيار متردد، 50/60 هرتز",
+      "الخرج 1 (ناقل KNX)": "30 فولت تيار مستمر SELV، 320 mA، مع خانق مدمج",
+      "الخرج 2 (مساعد)": "30 فولت تيار مستمر SELV (بدون خانق)",
+      "استهلاك الطاقة": "11.5 واط",
+      "فقد الطاقة": "2 واط",
+      "الحماية": "قصر الدارة والحمل الزائد على كلا الخرجين",
+      "مؤشرات الحالة": "3 مؤشرات LED (الطاقة، الحمل الزائد، إعادة الضبط)",
+      "زر الإعادة": "نعم",
+      "التركيب": "سكة DIN (IEC 60715 TH35)"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-ps320-power-supply.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-PS320_PS640-R3.0.pdf"
+    },
+    {
+      "name": "Installation Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-PS320_PS640-R3.0_1.pdf"
+    },
+    {
+      "name": "User Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/PS320_640-User-Manual.pdf"
+    }
+  ]
+}

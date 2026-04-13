@@ -1,0 +1,77 @@
+{
+  "id": "eae-knx-oria-push-switches",
+  "brand": "EAE Technology",
+  "technology": ["KNX"],
+  "product_type": "Switch",
+  "installation": "Wall mount",
+
+  "title": {
+    "en": "EAE Oria KNX Push Switches",
+    "fr": "Interrupteurs poussoirs KNX EAE Oria",
+    "ar": "مفاتيح ضغط KNX EAE Oria"
+  },
+
+  "short_description": {
+    "en": "Elegant capacitive KNX push switch, 1 to 5 fold variants.",
+    "fr": "Interrupteur poussoir KNX capacitif élégant, variantes 1 à 5 touches.",
+    "ar": "مفتاح ضغط KNX أنيق بتصميم لمسي، من 1 إلى 5 أزرار."
+  },
+
+  "description": {
+    "en": "The EAE Oria is a sleek KNX push switch that brings stylish, intuitive control to every room. Available in single, 1-fold, 2-fold, 3-fold, 4-fold, and 5-fold configurations, each button can be independently programmed for lighting, dimming, shutter/blind control, scene calls, or panic buttons — offering maximum flexibility from a single wall plate. Front-facing status LEDs give a clear visual indication of each channel's state, and the slim 90×90 mm design fits standard 60×60 mm junction boxes for easy installation. Choose from four refined finishes — Antique, Pearl White, Mustang Gray, and Anthracite — to complement any interior style.",
+    "fr": "L'EAE Oria est un interrupteur poussoir KNX élégant qui apporte un contrôle intuitif et raffiné à chaque pièce. Disponible en configurations simple, 1 touche, 2 touches, 3 touches, 4 touches et 5 touches, chaque bouton peut être programmé indépendamment pour l'éclairage, la gradation, le contrôle des stores, les appels de scènes ou les boutons panique — offrant une flexibilité maximale depuis une seule plaque murale. Des LEDs d'état en façade indiquent clairement l'état de chaque canal, et le design slim 90×90 mm s'adapte aux boîtes de jonction standard 60×60 mm. Disponible en quatre finitions — Antique, Blanc Perle, Gris Mustang et Anthracite.",
+    "ar": "EAE Oria هو مفتاح ضغط KNX أنيق يوفّر تحكماً بديهياً وعصرياً في كل غرفة. متاح بتشكيلات مفرد و1 زر و2 و3 و4 و5 أزرار، كل زر قابل للبرمجة باستقلالية للإضاءة والتخفيت والتحكم بالستائر وتفعيل المشاهد أو أزرار الطوارئ — مرونة قصوى من لوحة حائط واحدة. مؤشرات LED أمامية تعرض حالة كل قناة بوضوح، والتصميم النحيف 90×90 مم يتناسب مع علب التوصيل القياسية 60×60 مم. متاح بأربع تشطيبات — Antique وPearl White وMustang Gray وAnthracite."
+  },
+
+  "specs": {
+    "en": {
+      "Variants": "Single, 1-fold, 2-fold, 3-fold, 4-fold, 5-fold",
+      "Front Dimensions": "90 × 90 mm",
+      "Depth (surface / flush)": "8.5 mm / 29.5 mm",
+      "Supply Voltage": "21–30 V DC (KNX bus)",
+      "Current Consumption": "< 10 mA",
+      "Status LEDs": "Front-facing per button",
+      "Functions": "Switching, dimming, blind control, value transfer, scene control",
+      "Junction Box": "Standard 60 × 60 mm",
+      "Available Colors": "Antique, Pearl White, Mustang Gray, Anthracite",
+      "ETS Compatibility": "ETS3 / ETS4 / ETS5"
+    },
+    "fr": {
+      "Variantes": "Simple, 1 touche, 2 touches, 3 touches, 4 touches, 5 touches",
+      "Dimensions façade": "90 × 90 mm",
+      "Profondeur (surface / encastré)": "8,5 mm / 29,5 mm",
+      "Tension d'alimentation": "21–30 V CC (bus KNX)",
+      "Consommation": "< 10 mA",
+      "LEDs d'état": "En façade par bouton",
+      "Fonctions": "Commutation, gradation, contrôle de stores, transfert de valeur, scènes",
+      "Boîte d'encastrement": "Standard 60 × 60 mm",
+      "Coloris disponibles": "Antique, Blanc Perle, Gris Mustang, Anthracite",
+      "Compatibilité ETS": "ETS3 / ETS4 / ETS5"
+    },
+    "ar": {
+      "النسخ": "مفرد، 1 زر، 2 أزرار، 3 أزرار، 4 أزرار، 5 أزرار",
+      "أبعاد الواجهة": "90 × 90 مم",
+      "العمق (سطحي / مدمج)": "8.5 مم / 29.5 مم",
+      "جهد التغذية": "21–30 فولت تيار مستمر (ناقل KNX)",
+      "استهلاك التيار": "< 10 mA",
+      "مؤشرات LED": "أمامية لكل زر",
+      "الوظائف": "تبديل، تخفيت، تحكم بالستائر، نقل القيم، مشاهد",
+      "علبة التوصيل": "قياسية 60 × 60 مم",
+      "الألوان المتاحة": "Antique، Pearl White، Mustang Gray، Anthracite",
+      "توافق ETS": "ETS3 / ETS4 / ETS5"
+    }
+  },
+
+  "images": ["/assets/products/eae-knx-oria-push-switches.png"],
+
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Datasheet-ORIA-Switch-R3.1.pdf"
+    },
+    {
+      "name": "Installation Manual (PDF)",
+      "url": "https://www.eaetechnology.com/upload/dosyalar/Installation-Manual-ORIA-Switch-R3.1.pdf"
+    }
+  ]
+}
