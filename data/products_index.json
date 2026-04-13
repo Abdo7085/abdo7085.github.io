@@ -730,6 +730,132 @@
     "image": "/assets/products/sonoff-zbmini-extreme.png"
   },
   {
+    "id": "zennio-bin-t-2x",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio BIN-T 2X KNX Universal Interface",
+      "fr": "Interface universelle KNX Zennio BIN-T 2X",
+      "ar": "واجهة KNX عالمية Zennio BIN-T 2X"
+    },
+    "short_description": {
+      "en": "2-channel binary input/LED output interface with temperature sensor.",
+      "fr": "Interface 2 canaux entrée binaire/sortie LED avec sonde de température.",
+      "ar": "واجهة 2 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-bin-t-2x.png"
+  },
+  {
+    "id": "zennio-bin-t-4x",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio BIN-T 4X KNX Universal Interface",
+      "fr": "Interface universelle KNX Zennio BIN-T 4X",
+      "ar": "واجهة KNX عالمية Zennio BIN-T 4X"
+    },
+    "short_description": {
+      "en": "4-channel binary input/LED output interface with temperature sensor.",
+      "fr": "Interface 4 canaux entrée binaire/sortie LED avec sonde de température.",
+      "ar": "واجهة 4 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-bin-t-4x.png"
+  },
+  {
+    "id": "zennio-bin-t-6x",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio BIN-T 6X KNX Universal Interface",
+      "fr": "Interface universelle KNX Zennio BIN-T 6X",
+      "ar": "واجهة KNX عالمية Zennio BIN-T 6X"
+    },
+    "short_description": {
+      "en": "6-channel binary input/LED output interface with temperature sensor.",
+      "fr": "Interface 6 canaux entrée binaire/sortie LED avec sonde de température.",
+      "ar": "واجهة 6 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-bin-t-6x.png"
+  },
+  {
+    "id": "zennio-bin-t-8x",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "Behind wall switch",
+    "title": {
+      "en": "Zennio BIN-T 8X KNX Universal Interface",
+      "fr": "Interface universelle KNX Zennio BIN-T 8X",
+      "ar": "واجهة KNX عالمية Zennio BIN-T 8X"
+    },
+    "short_description": {
+      "en": "8-channel binary input/LED output interface with temperature sensor.",
+      "fr": "Interface 8 canaux entrée binaire/sortie LED avec sonde de température.",
+      "ar": "واجهة 8 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-bin-t-8x.png"
+  },
+  {
+    "id": "zennio-diminbox-dx2",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Dimmer",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio DIMinBOX DX2 KNX Universal Dimmer",
+      "fr": "Variateur universel KNX Zennio DIMinBOX DX2",
+      "ar": "خافت ضوء KNX عالمي Zennio DIMinBOX DX2"
+    },
+    "short_description": {
+      "en": "2-channel universal KNX dimmer, 310 W/ch, with analog-digital inputs.",
+      "fr": "Variateur KNX universel 2 canaux, 310 W/canal, avec entrées analogiques-numériques.",
+      "ar": "خافت ضوء KNX عالمي 2 قنوات، 310 واط/قناة، مع مداخل تناظرية-رقمية."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-diminbox-dx2.png"
+  },
+  {
+    "id": "zennio-diminbox-dx4",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Dimmer",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio DIMinBOX DX4 KNX Universal Dimmer",
+      "fr": "Variateur universel KNX Zennio DIMinBOX DX4",
+      "ar": "خافت ضوء KNX عالمي Zennio DIMinBOX DX4"
+    },
+    "short_description": {
+      "en": "4-channel universal KNX dimmer, 300 W/ch, up to 1200 W combined.",
+      "fr": "Variateur KNX universel 4 canaux, 300 W/canal, jusqu'à 1200 W combiné.",
+      "ar": "خافت ضوء KNX عالمي 4 قنوات، 300 واط/قناة، حتى 1200 واط مجمّعاً."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-diminbox-dx4.png"
+  },
+  {
     "id": "zennio-flat-70",
     "brand": "Zennio",
     "technology": [
@@ -791,6 +917,69 @@
     },
     "category": "",
     "image": "/assets/products/zennio-inbox-24-v3.png"
+  },
+  {
+    "id": "zennio-kupsupply-160ma",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Power Supply",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio KUPSupply 160mA KNX Power Supply",
+      "fr": "Alimentation KNX Zennio KUPSupply 160mA",
+      "ar": "مصدر طاقة KNX Zennio KUPSupply 160mA"
+    },
+    "short_description": {
+      "en": "Compact universal KNX power supply 160 mA with auxiliary output.",
+      "fr": "Alimentation KNX universelle compacte 160 mA avec sortie auxiliaire.",
+      "ar": "مصدر طاقة KNX عالمي مدمج 160 mA مع خرج مساعد."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-kupsupply-160ma.png"
+  },
+  {
+    "id": "zennio-kupsupply-320ma",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Power Supply",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio KUPSupply 320mA KNX Power Supply",
+      "fr": "Alimentation KNX Zennio KUPSupply 320mA",
+      "ar": "مصدر طاقة KNX Zennio KUPSupply 320mA"
+    },
+    "short_description": {
+      "en": "Universal KNX power supply 320 mA with auxiliary 29 V output.",
+      "fr": "Alimentation KNX universelle 320 mA avec sortie auxiliaire 29 V.",
+      "ar": "مصدر طاقة KNX عالمي 320 mA مع خرج مساعد 29 فولت."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-kupsupply-320ma.png"
+  },
+  {
+    "id": "zennio-kupsupply-640ma",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Power Supply",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio KUPSupply 640mA KNX Power Supply",
+      "fr": "Alimentation KNX Zennio KUPSupply 640mA",
+      "ar": "مصدر طاقة KNX Zennio KUPSupply 640mA"
+    },
+    "short_description": {
+      "en": "Universal KNX power supply 640 mA with auxiliary 29 V output.",
+      "fr": "Alimentation KNX universelle 640 mA avec sortie auxiliaire 29 V.",
+      "ar": "مصدر طاقة KNX عالمي 640 mA مع خرج مساعد 29 فولت."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-kupsupply-640ma.png"
   },
   {
     "id": "zennio-maxinbox-12",
@@ -1022,6 +1211,69 @@
     },
     "category": "",
     "image": "/assets/products/zennio-minibox-45-v3.png"
+  },
+  {
+    "id": "zennio-narrowdim-x2",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Dimmer",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio NarrowDIM X2 KNX Universal Dimmer",
+      "fr": "Variateur universel KNX Zennio NarrowDIM X2",
+      "ar": "خافت ضوء KNX عالمي Zennio NarrowDIM X2"
+    },
+    "short_description": {
+      "en": "2-channel universal KNX dimmer for RLC, LED, and CFL loads.",
+      "fr": "Variateur KNX universel 2 canaux pour charges RLC, LED et CFL.",
+      "ar": "خافت ضوء KNX عالمي 2 قنوات لأحمال RLC وLED وCFL."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-narrowdim-x2.png"
+  },
+  {
+    "id": "zennio-narrowdim-x4",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Dimmer",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio NarrowDIM X4 KNX Universal Dimmer",
+      "fr": "Variateur universel KNX Zennio NarrowDIM X4",
+      "ar": "خافت ضوء KNX عالمي Zennio NarrowDIM X4"
+    },
+    "short_description": {
+      "en": "4-channel universal KNX dimmer for RLC, LED, and CFL loads.",
+      "fr": "Variateur KNX universel 4 canaux pour charges RLC, LED et CFL.",
+      "ar": "خافت ضوء KNX عالمي 4 قنوات لأحمال RLC وLED وCFL."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-narrowdim-x4.png"
+  },
+  {
+    "id": "zennio-railquad-8",
+    "brand": "Zennio",
+    "technology": [
+      "KNX"
+    ],
+    "product_type": "Universal Interface",
+    "installation": "DIN Rail mounting",
+    "title": {
+      "en": "Zennio RailQUAD 8 KNX Input Module",
+      "fr": "Module d'entrée KNX Zennio RailQUAD 8",
+      "ar": "وحدة مداخل KNX Zennio RailQUAD 8"
+    },
+    "short_description": {
+      "en": "DIN-rail KNX input module with 8 analog-digital channels.",
+      "fr": "Module d'entrée KNX sur rail DIN avec 8 canaux analogiques-numériques.",
+      "ar": "وحدة مداخل KNX على سكة DIN بـ 8 قنوات تناظرية-رقمية."
+    },
+    "category": "",
+    "image": "/assets/products/zennio-railquad-8.png"
   },
   {
     "id": "zennio-tecla-55",

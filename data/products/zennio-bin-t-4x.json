@@ -1,0 +1,85 @@
+{
+  "id": "zennio-bin-t-4x",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio BIN-T 4X KNX Universal Interface",
+    "fr": "Interface universelle KNX Zennio BIN-T 4X",
+    "ar": "واجهة KNX عالمية Zennio BIN-T 4X"
+  },
+
+  "short_description": {
+    "en": "4-channel binary input/LED output interface with temperature sensor.",
+    "fr": "Interface 4 canaux entrée binaire/sortie LED avec sonde de température.",
+    "ar": "واجهة 4 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+  },
+
+  "description": {
+    "en": "The Zennio BIN-T 4X is a compact KNX universal interface that fits inside a standard wall box or distribution box, connecting up to 4 push buttons, switches, or dry-contact sensors to the KNX bus — all powered directly from the bus with no external supply needed. Each of its 4 channels can be configured independently as a binary input or as a low-current LED output for switch-plate indicator lighting. An additional dedicated temperature sensor input enables a built-in thermostat function for climate control. KNX Data Secure support makes it suitable for security-sensitive installations.",
+    "fr": "Le Zennio BIN-T 4X est une interface universelle KNX compacte qui se glisse dans une boîte de dérivation murale ou de distribution standard, connectant jusqu'à 4 boutons-poussoirs, interrupteurs ou capteurs à contact sec au bus KNX — tous alimentés directement par le bus sans alimentation externe. Chacun de ses 4 canaux peut être configuré indépendamment en entrée binaire ou en sortie LED faible courant pour l'éclairage indicateur de plaque. Une entrée sonde de température dédiée supplémentaire active une fonction thermostat intégré pour le contrôle climatique. KNX Data Secure est supporté.",
+    "ar": "Zennio BIN-T 4X هو واجهة KNX عالمية مدمجة تتسع داخل علبة حائط قياسية أو علبة توزيع، تربط ما يصل إلى 4 أزرار ضغط أو مفاتيح أو حساسات تلامس جاف بناقل KNX — كلها مغذّاة مباشرةً من الناقل دون مصدر خارجي. كل قناة من الأربع قنوات قابلة للضبط باستقلالية كدخل ثنائي أو كخرج LED منخفض التيار لإضاءة مؤشرات اللوحة. مدخل حساس حرارة مخصص إضافي يتيح وظيفة منظم حرارة مدمج. يدعم KNX Data Secure."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZIOBINT4",
+      "Configurable Channels": "4 (binary input or LED output per channel)",
+      "Temperature Sensor Inputs": "1",
+      "Input Type": "Dry contact (potential-free), up to 12 V DC, 2 mA",
+      "LED Output": "Up to 12 V DC, 2 mA per channel",
+      "Temperature Accuracy": "±0.5 °C at 25 °C, resolution 0.1 °C",
+      "Max Cable Length": "30 m (≥ 1 mm² cable)",
+      "Supply Voltage": "21–31 V DC SELV (typical 29 V DC, KNX bus)",
+      "Current Consumption": "9.5 mA / 275 mW at 29 V DC",
+      "Dimensions": "39 × 39 × 13.6 mm",
+      "Installation": "Wall box or distribution box",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Data Secure"
+    },
+    "fr": {
+      "Référence modèle": "ZIOBINT4",
+      "Canaux configurables": "4 (entrée binaire ou sortie LED par canal)",
+      "Entrées sonde de température": "1",
+      "Type d'entrée": "Contact sec (sans potentiel), jusqu'à 12 V CC, 2 mA",
+      "Sortie LED": "Jusqu'à 12 V CC, 2 mA par canal",
+      "Précision température": "±0,5 °C à 25 °C, résolution 0,1 °C",
+      "Longueur câble max": "30 m (câble ≥ 1 mm²)",
+      "Tension d'alimentation": "21–31 V CC SELV (typique 29 V CC, bus KNX)",
+      "Consommation": "9,5 mA / 275 mW à 29 V CC",
+      "Dimensions": "39 × 39 × 13,6 mm",
+      "Installation": "Boîte murale ou boîte de distribution",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Data Secure"
+    },
+    "ar": {
+      "المرجع": "ZIOBINT4",
+      "القنوات القابلة للضبط": "4 (دخل ثنائي أو خرج LED لكل قناة)",
+      "مداخل حساس الحرارة": "1",
+      "نوع الدخل": "تلامس جاف (بدون جهد)، حتى 12 فولت، 2 mA",
+      "خرج LED": "حتى 12 فولت، 2 mA لكل قناة",
+      "دقة الحرارة": "±0.5 درجة مئوية عند 25°C، دقة 0.1 درجة",
+      "أقصى طول كابل": "30 م (كابل ≥ 1 مم²)",
+      "جهد التغذية": "21–31 فولت تيار مستمر SELV (29 فولت نموذجي، ناقل KNX)",
+      "استهلاك التيار": "9.5 mA / 275 mW عند 29 فولت",
+      "الأبعاد": "39 × 39 × 13.6 مم",
+      "التركيب": "علبة حائط أو علبة توزيع",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Data Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-bin-t-4x.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/bin-t-4x/"
+    }
+  ]
+}

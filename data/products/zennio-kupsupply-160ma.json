@@ -1,0 +1,79 @@
+{
+  "id": "zennio-kupsupply-160ma",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Power Supply",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio KUPSupply 160mA KNX Power Supply",
+    "fr": "Alimentation KNX Zennio KUPSupply 160mA",
+    "ar": "مصدر طاقة KNX Zennio KUPSupply 160mA"
+  },
+
+  "short_description": {
+    "en": "Compact universal KNX power supply 160 mA with auxiliary output.",
+    "fr": "Alimentation KNX universelle compacte 160 mA avec sortie auxiliaire.",
+    "ar": "مصدر طاقة KNX عالمي مدمج 160 mA مع خرج مساعد."
+  },
+
+  "description": {
+    "en": "The Zennio KUPSupply 160mA is the smallest member of the KUPSupply family, designed for compact KNX installations where only a limited number of bus devices need to be powered. It accepts 110–240 V AC input and delivers 29 V DC with a total output of up to 250 mA (up to 160 mA available to the KNX bus, remainder for the auxiliary output), making it an efficient choice for apartments or small commercial zones. Its slim 2 DIN-module width keeps panel space to a minimum, while the included short-circuit and overvoltage protection ensure reliable, long-term operation.",
+    "fr": "Le Zennio KUPSupply 160mA est le membre le plus compact de la famille KUPSupply, conçu pour les petites installations KNX où seul un nombre limité d'appareils bus doit être alimenté. Il accepte une entrée secteur 110–240 V CA et délivre 29 V CC avec un courant total jusqu'à 250 mA (jusqu'à 160 mA disponible pour le bus KNX, le reste pour la sortie auxiliaire), ce qui en fait un choix efficace pour les appartements ou les petites zones commerciales. Sa largeur slim de 2 modules DIN minimise l'espace dans l'armoire, tandis que les protections contre courts-circuits et surtensions garantissent un fonctionnement fiable à long terme.",
+    "ar": "Zennio KUPSupply 160mA هو أصغر أفراد عائلة KUPSupply، مصمم للتركيبات الصغيرة حيث لا يحتاج سوى عدد محدود من أجهزة الناقل إلى التغذية. يقبل دخلاً 110–240 فولت تيار متردد ويوفر 29 فولت تيار مستمر بتيار إجمالي حتى 250 mA (حتى 160 mA لناقل KNX والباقي للخرج المساعد)، مما يجعله خياراً فعالاً للشقق والمناطق التجارية الصغيرة. عرضه النحيف 2 وحدة DIN يوفر مساحة اللوحة، بينما تضمن الحمايات من قصر الدارة والجهد الزائد تشغيلاً موثوقاً طويل الأمد."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZPSU160",
+      "Input Voltage": "110–240 V AC, 50/60 Hz",
+      "Output Voltage": "29 V DC",
+      "KNX Bus Output": "Up to 160 mA",
+      "Total Max Output": "250 mA (KNX + auxiliary)",
+      "Auxiliary Output": "29 V DC (remaining capacity)",
+      "DIN Modules": "2",
+      "Dimensions": "67 × 90 × 35 mm",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Short-circuit Protection": "Yes",
+      "Overvoltage Protection": "Yes"
+    },
+    "fr": {
+      "Référence modèle": "ZPSU160",
+      "Tension d'entrée": "110–240 V CA, 50/60 Hz",
+      "Tension de sortie": "29 V CC",
+      "Sortie bus KNX": "Jusqu'à 160 mA",
+      "Courant total max": "250 mA (KNX + auxiliaire)",
+      "Sortie auxiliaire": "29 V CC (capacité restante)",
+      "Modules DIN": "2",
+      "Dimensions": "67 × 90 × 35 mm",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Protection court-circuit": "Oui",
+      "Protection surtension": "Oui"
+    },
+    "ar": {
+      "المرجع": "ZPSU160",
+      "جهد الدخل": "110–240 فولت تيار متردد، 50/60 هرتز",
+      "جهد الخرج": "29 فولت تيار مستمر",
+      "خرج ناقل KNX": "حتى 160 mA",
+      "إجمالي الخرج الأقصى": "250 mA (KNX + مساعد)",
+      "الخرج المساعد": "29 فولت تيار مستمر (الطاقة المتبقية)",
+      "وحدات DIN": "2",
+      "الأبعاد": "67 × 90 × 35 مم",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "حماية قصر الدارة": "نعم",
+      "حماية الجهد الزائد": "نعم"
+    }
+  },
+
+  "images": ["/assets/products/zennio-kupsupply-160ma.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/kupsupply-160ma/"
+    }
+  ]
+}

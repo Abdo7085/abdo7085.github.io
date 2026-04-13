@@ -1,0 +1,76 @@
+{
+  "id": "zennio-narrowdim-x2",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Dimmer",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio NarrowDIM X2 KNX Universal Dimmer",
+    "fr": "Variateur universel KNX Zennio NarrowDIM X2",
+    "ar": "خافت ضوء KNX عالمي Zennio NarrowDIM X2"
+  },
+
+  "short_description": {
+    "en": "2-channel universal KNX dimmer for RLC, LED, and CFL loads.",
+    "fr": "Variateur KNX universel 2 canaux pour charges RLC, LED et CFL.",
+    "ar": "خافت ضوء KNX عالمي 2 قنوات لأحمال RLC وLED وCFL."
+  },
+
+  "description": {
+    "en": "The Zennio NarrowDIM X2 is a 2-channel universal KNX dimmer for DIN-rail installation, capable of dimming resistive (R), inductive (L), capacitive (C), dimmable LED, and CFL lamp loads — all from the same unit. Automatic load-type detection handles resistive and reactive loads without any manual configuration, while LED and CFL lamps get dedicated configurable dimming curves for smooth, flicker-free dimming. Each channel handles up to 210 W at 230 V AC independently, and channels can be paired to control a single load of up to 400 W. At just 2 DIN modules, it is a very compact dimmer that fits alongside other equipment in standard electrical enclosures.",
+    "fr": "Le Zennio NarrowDIM X2 est un variateur KNX universel à 2 canaux pour installation sur rail DIN, capable de régler des charges résistives (R), inductives (L), capacitives (C), LED dimmables et lampes CFL — tout depuis la même unité. La détection automatique du type de charge gère les charges résistives et réactives sans configuration manuelle, tandis que les LED et les lampes CFL bénéficient de courbes de gradation configurables pour un gradation douce et sans scintillement. Chaque canal supporte jusqu'à 210 W à 230 V CA indépendamment, et les canaux peuvent être couplés pour commander une charge unique jusqu'à 400 W. Avec seulement 2 modules DIN, c'est un variateur très compact qui s'intègre aux armoires électriques standard.",
+    "ar": "Zennio NarrowDIM X2 هو خافت ضوء KNX عالمي ذو قناتين لتركيب سكة DIN، قادر على تخفيت أحمال مقاومية (R) وحثية (L) وسعوية (C) وLED قابلة للتخفيت ومصابيح CFL — كل ذلك من وحدة واحدة. الكشف التلقائي لنوع الحمل يعالج الأحمال المقاومية والتفاعلية دون ضبط يدوي، بينما تحصل أحمال LED وCFL على منحنيات تخفيت قابلة للضبط لتخفيت سلس وبدون وميض. كل قناة تتحمل حتى 210 واط عند 230 فولت باستقلالية، ويمكن إقران القناتين للتحكم في حمل واحد حتى 400 واط. بحجم 2 وحدة DIN فقط، هو خافت مدمج جداً يتناسب مع الخزائن الكهربائية القياسية."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZDINDX2",
+      "Channels": "2",
+      "Max Load per Channel": "210 W at 230 V AC (160 W at 110 V AC)",
+      "Max Combined Load": "400 W at 230 V AC (double-channel mode)",
+      "Load Types": "RLC (auto-detection), dimmable LED, CFL",
+      "DIN Modules": "2",
+      "Dimensions": "67 × 90 × 36 mm",
+      "Supply Voltage": "29 V DC (KNX bus) + 110–230 V AC 50/60 Hz (load supply)",
+      "KNX Bus Consumption": "10.1 mA at 29 V DC",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Référence modèle": "ZDINDX2",
+      "Canaux": "2",
+      "Charge max par canal": "210 W à 230 V CA (160 W à 110 V CA)",
+      "Charge combinée max": "400 W à 230 V CA (mode double canal)",
+      "Types de charges": "RLC (détection automatique), LED dimmable, CFL",
+      "Modules DIN": "2",
+      "Dimensions": "67 × 90 × 36 mm",
+      "Tension d'alimentation": "29 V CC (bus KNX) + 110–230 V CA 50/60 Hz (alimentation charge)",
+      "Consommation bus KNX": "10,1 mA à 29 V CC",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المرجع": "ZDINDX2",
+      "القنوات": "2",
+      "الحمل الأقصى لكل قناة": "210 واط عند 230 فولت تيار متردد (160 واط عند 110 فولت)",
+      "الحمل المشترك الأقصى": "400 واط عند 230 فولت (وضع القناة المزدوجة)",
+      "أنواع الأحمال": "RLC (كشف تلقائي)، LED قابلة للتخفيت، CFL",
+      "وحدات DIN": "2",
+      "الأبعاد": "67 × 90 × 36 مم",
+      "جهد التغذية": "29 فولت تيار مستمر (ناقل KNX) + 110–230 فولت تيار متردد 50/60 هرتز (تغذية الحمل)",
+      "استهلاك ناقل KNX": "10.1 mA عند 29 فولت",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-narrowdim-x2.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/narrowdim-x2/"
+    }
+  ]
+}

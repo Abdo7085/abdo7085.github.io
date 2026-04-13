@@ -1,0 +1,85 @@
+{
+  "id": "zennio-bin-t-6x",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio BIN-T 6X KNX Universal Interface",
+    "fr": "Interface universelle KNX Zennio BIN-T 6X",
+    "ar": "واجهة KNX عالمية Zennio BIN-T 6X"
+  },
+
+  "short_description": {
+    "en": "6-channel binary input/LED output interface with temperature sensor.",
+    "fr": "Interface 6 canaux entrée binaire/sortie LED avec sonde de température.",
+    "ar": "واجهة 6 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+  },
+
+  "description": {
+    "en": "The Zennio BIN-T 6X is a compact KNX universal interface that fits inside a standard wall box or distribution box, integrating up to 6 push buttons, switches, or dry-contact devices onto the KNX bus — all bus-powered with no external supply required. Each of its 6 channels is independently configurable as a binary input for sensors and push buttons, or as a low-current LED output for switch-plate indicators. A dedicated temperature sensor input adds thermostat functionality for direct climate management from the same module. KNX Data Secure is supported for encrypted bus communication.",
+    "fr": "Le Zennio BIN-T 6X est une interface universelle KNX compacte qui se glisse dans une boîte de dérivation murale ou de distribution standard, intégrant jusqu'à 6 boutons-poussoirs, interrupteurs ou contacts secs sur le bus KNX — tous alimentés par le bus sans alimentation externe. Chacun de ses 6 canaux est configurable indépendamment en entrée binaire pour capteurs et boutons-poussoirs, ou en sortie LED faible courant pour les indicateurs de plaque. Une entrée sonde de température dédiée ajoute la fonctionnalité thermostat pour la gestion climatique directe depuis le même module. KNX Data Secure est supporté.",
+    "ar": "Zennio BIN-T 6X هو واجهة KNX عالمية مدمجة تتسع داخل علبة حائط قياسية أو علبة توزيع، تدمج ما يصل إلى 6 أزرار ضغط أو مفاتيح أو أجهزة تلامس جاف على ناقل KNX — كلها مغذّاة من الناقل دون مصدر خارجي. كل قناة من الست قنوات قابلة للضبط باستقلالية كدخل ثنائي للحساسات وأزرار الضغط، أو كخرج LED منخفض التيار لمؤشرات اللوحة. مدخل حساس حرارة مخصص يضيف وظيفة منظم الحرارة للتحكم المناخي المباشر. يدعم KNX Data Secure."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZIOBINT6",
+      "Configurable Channels": "6 (binary input or LED output per channel)",
+      "Temperature Sensor Inputs": "1",
+      "Input Type": "Dry contact (potential-free), up to 12 V DC, 2 mA",
+      "LED Output": "Up to 12 V DC, 2 mA per channel",
+      "Temperature Accuracy": "±0.5 °C at 25 °C, resolution 0.1 °C",
+      "Max Cable Length": "30 m (≥ 1 mm² cable)",
+      "Supply Voltage": "21–31 V DC SELV (typical 29 V DC, KNX bus)",
+      "Current Consumption": "12.2 mA / 354 mW at 29 V DC",
+      "Dimensions": "39 × 39 × 13.6 mm",
+      "Installation": "Wall box or distribution box",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Data Secure"
+    },
+    "fr": {
+      "Référence modèle": "ZIOBINT6",
+      "Canaux configurables": "6 (entrée binaire ou sortie LED par canal)",
+      "Entrées sonde de température": "1",
+      "Type d'entrée": "Contact sec (sans potentiel), jusqu'à 12 V CC, 2 mA",
+      "Sortie LED": "Jusqu'à 12 V CC, 2 mA par canal",
+      "Précision température": "±0,5 °C à 25 °C, résolution 0,1 °C",
+      "Longueur câble max": "30 m (câble ≥ 1 mm²)",
+      "Tension d'alimentation": "21–31 V CC SELV (typique 29 V CC, bus KNX)",
+      "Consommation": "12,2 mA / 354 mW à 29 V CC",
+      "Dimensions": "39 × 39 × 13,6 mm",
+      "Installation": "Boîte murale ou boîte de distribution",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Data Secure"
+    },
+    "ar": {
+      "المرجع": "ZIOBINT6",
+      "القنوات القابلة للضبط": "6 (دخل ثنائي أو خرج LED لكل قناة)",
+      "مداخل حساس الحرارة": "1",
+      "نوع الدخل": "تلامس جاف (بدون جهد)، حتى 12 فولت، 2 mA",
+      "خرج LED": "حتى 12 فولت، 2 mA لكل قناة",
+      "دقة الحرارة": "±0.5 درجة مئوية عند 25°C، دقة 0.1 درجة",
+      "أقصى طول كابل": "30 م (كابل ≥ 1 مم²)",
+      "جهد التغذية": "21–31 فولت تيار مستمر SELV (29 فولت نموذجي، ناقل KNX)",
+      "استهلاك التيار": "12.2 mA / 354 mW عند 29 فولت",
+      "الأبعاد": "39 × 39 × 13.6 مم",
+      "التركيب": "علبة حائط أو علبة توزيع",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Data Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-bin-t-6x.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/bin-t-6x/"
+    }
+  ]
+}

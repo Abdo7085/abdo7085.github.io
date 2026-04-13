@@ -1,0 +1,82 @@
+{
+  "id": "zennio-bin-t-8x",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio BIN-T 8X KNX Universal Interface",
+    "fr": "Interface universelle KNX Zennio BIN-T 8X",
+    "ar": "واجهة KNX عالمية Zennio BIN-T 8X"
+  },
+
+  "short_description": {
+    "en": "8-channel binary input/LED output interface with temperature sensor.",
+    "fr": "Interface 8 canaux entrée binaire/sortie LED avec sonde de température.",
+    "ar": "واجهة 8 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+  },
+
+  "description": {
+    "en": "The Zennio BIN-T 8X is the largest model in the BIN-T family, providing 8 independently configurable channels in the same tiny 39×39×13.6 mm body that fits any standard wall or distribution box. Each channel can be set as a binary input to read push buttons, switches, motion sensors, or other dry-contact devices, or as a low-current LED output for button backlighting — all without requiring an external power supply since the module runs entirely on the KNX bus. A temperature sensor input enables a built-in thermostat for climate control, and KNX Data Secure is supported for high-security projects.",
+    "fr": "Le Zennio BIN-T 8X est le plus grand modèle de la famille BIN-T, offrant 8 canaux configurables indépendamment dans le même boîtier compact 39×39×13,6 mm adapté à toute boîte murale ou de distribution standard. Chaque canal peut être configuré en entrée binaire pour lire boutons-poussoirs, interrupteurs, détecteurs de mouvement ou contacts secs, ou en sortie LED faible courant pour le rétroéclairage des boutons — sans alimentation externe, le module fonctionnant entièrement sur le bus KNX. Une entrée sonde de température active un thermostat intégré pour le contrôle climatique, et KNX Data Secure est supporté.",
+    "ar": "Zennio BIN-T 8X هو أكبر نماذج عائلة BIN-T، يوفر 8 قنوات قابلة للضبط باستقلالية في نفس الجسم الصغير 39×39×13.6 مم الذي يتناسب مع أي علبة حائط أو توزيع قياسية. كل قناة قابلة للضبط كدخل ثنائي لقراءة أزرار الضغط والمفاتيح وكاشفات الحركة أو التلامسات الجافة، أو كخرج LED منخفض التيار لإضاءة خلفية الأزرار — كل ذلك دون مصدر طاقة خارجي إذ تعمل الوحدة كلياً على ناقل KNX. مدخل حساس حرارة يتيح منظم حرارة مدمج، ويدعم KNX Data Secure للمشاريع عالية الأمان."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZIOBINT8",
+      "Configurable Channels": "8 (binary input or LED output per channel)",
+      "Temperature Sensor Inputs": "1",
+      "Input Type": "Dry contact (potential-free), up to 12 V DC, 2 mA",
+      "LED Output": "Up to 12 V DC, 2 mA per channel",
+      "Temperature Accuracy": "±0.5 °C at 25 °C, resolution 0.1 °C",
+      "Max Cable Length": "30 m (≥ 1 mm² cable)",
+      "Supply Voltage": "21–31 V DC SELV (typical 29 V DC, KNX bus)",
+      "Dimensions": "39 × 39 × 13.6 mm",
+      "Installation": "Wall box or distribution box",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Data Secure"
+    },
+    "fr": {
+      "Référence modèle": "ZIOBINT8",
+      "Canaux configurables": "8 (entrée binaire ou sortie LED par canal)",
+      "Entrées sonde de température": "1",
+      "Type d'entrée": "Contact sec (sans potentiel), jusqu'à 12 V CC, 2 mA",
+      "Sortie LED": "Jusqu'à 12 V CC, 2 mA par canal",
+      "Précision température": "±0,5 °C à 25 °C, résolution 0,1 °C",
+      "Longueur câble max": "30 m (câble ≥ 1 mm²)",
+      "Tension d'alimentation": "21–31 V CC SELV (typique 29 V CC, bus KNX)",
+      "Dimensions": "39 × 39 × 13,6 mm",
+      "Installation": "Boîte murale ou boîte de distribution",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Data Secure"
+    },
+    "ar": {
+      "المرجع": "ZIOBINT8",
+      "القنوات القابلة للضبط": "8 (دخل ثنائي أو خرج LED لكل قناة)",
+      "مداخل حساس الحرارة": "1",
+      "نوع الدخل": "تلامس جاف (بدون جهد)، حتى 12 فولت، 2 mA",
+      "خرج LED": "حتى 12 فولت، 2 mA لكل قناة",
+      "دقة الحرارة": "±0.5 درجة مئوية عند 25°C، دقة 0.1 درجة",
+      "أقصى طول كابل": "30 م (كابل ≥ 1 مم²)",
+      "جهد التغذية": "21–31 فولت تيار مستمر SELV (29 فولت نموذجي، ناقل KNX)",
+      "الأبعاد": "39 × 39 × 13.6 مم",
+      "التركيب": "علبة حائط أو علبة توزيع",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Data Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-bin-t-8x.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/bin-t-8x/"
+    }
+  ]
+}

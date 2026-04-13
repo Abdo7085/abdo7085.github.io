@@ -1,0 +1,85 @@
+{
+  "id": "zennio-kupsupply-320ma",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Power Supply",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio KUPSupply 320mA KNX Power Supply",
+    "fr": "Alimentation KNX Zennio KUPSupply 320mA",
+    "ar": "مصدر طاقة KNX Zennio KUPSupply 320mA"
+  },
+
+  "short_description": {
+    "en": "Universal KNX power supply 320 mA with auxiliary 29 V output.",
+    "fr": "Alimentation KNX universelle 320 mA avec sortie auxiliaire 29 V.",
+    "ar": "مصدر طاقة KNX عالمي 320 mA مع خرج مساعد 29 فولت."
+  },
+
+  "description": {
+    "en": "The Zennio KUPSupply 320mA is a compact universal KNX power supply suited for small to medium KNX installations. With its wide-range AC input (110–240 V), it works on any mains voltage worldwide without modification, and provides a stable 29 V DC SELV output at up to 320 mA — shared between the KNX bus and an auxiliary 29 V output for powering additional low-voltage devices. Onboard short-circuit and overvoltage protection safeguard both the supply and the connected bus, while a front LED indicator makes overload diagnosis instant. At 4.5 DIN modules, it fits easily in standard electrical enclosures alongside other KNX DIN-rail equipment.",
+    "fr": "Le Zennio KUPSupply 320mA est une alimentation KNX universelle compacte adaptée aux installations KNX petites à moyennes. Grâce à sa large plage d'entrée secteur (110–240 V), il fonctionne sur toute tension secteur mondiale sans modification, et fournit une sortie stable de 29 V CC SELV jusqu'à 320 mA — partagée entre le bus KNX et une sortie auxiliaire 29 V pour alimenter des appareils basse tension supplémentaires. Des protections contre les courts-circuits et surtensions intégrées protègent l'alimentation et le bus connecté, tandis qu'un indicateur LED en façade rend le diagnostic de surcharge immédiat. Avec 4,5 modules DIN, il s'intègre facilement dans les armoires électriques standard.",
+    "ar": "Zennio KUPSupply 320mA هو مصدر طاقة KNX عالمي مدمج مناسب للتركيبات الصغيرة والمتوسطة. بفضل جهد الدخل الواسع (110–240 فولت)، يعمل على أي جهد في العالم دون تعديل، ويوفر خرجاً مستقراً 29 فولت تيار مستمر SELV بحد أقصى 320 mA — مشترك بين ناقل KNX وخرج مساعد 29 فولت لتغذية أجهزة الجهد المنخفض. تحمي دوائر الحماية المدمجة من قصر الدارة والجهد الزائد الناقل والمصدر معاً، ومؤشر LED أمامي يسهّل تشخيص الحمل الزائد فوراً. بحجم 4.5 وحدة DIN، يتناسب بسهولة مع الخزائن الكهربائية القياسية."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZPSU320",
+      "Input Voltage": "110–240 V AC, 50/60 Hz",
+      "Output Voltage": "29 V DC SELV",
+      "Output Current": "320 mA (KNX bus + auxiliary, shared)",
+      "Auxiliary Output": "29 V DC (shared with KNX bus)",
+      "DIN Modules": "4.5",
+      "Dimensions": "67 × 90 × 79 mm",
+      "Weight": "274 g",
+      "Operating Temperature": "−5 to +45 °C",
+      "Protection": "IP20",
+      "Short-circuit Protection": "Yes",
+      "Overvoltage Protection": "Yes",
+      "Overload Indicator": "Front LED",
+      "Reset Button": "Yes"
+    },
+    "fr": {
+      "Référence modèle": "ZPSU320",
+      "Tension d'entrée": "110–240 V CA, 50/60 Hz",
+      "Tension de sortie": "29 V CC SELV",
+      "Courant de sortie": "320 mA (bus KNX + auxiliaire, partagé)",
+      "Sortie auxiliaire": "29 V CC (partagée avec le bus KNX)",
+      "Modules DIN": "4,5",
+      "Dimensions": "67 × 90 × 79 mm",
+      "Poids": "274 g",
+      "Température de fonctionnement": "−5 à +45 °C",
+      "Protection": "IP20",
+      "Protection court-circuit": "Oui",
+      "Protection surtension": "Oui",
+      "Indicateur de surcharge": "LED frontale",
+      "Bouton de réinitialisation": "Oui"
+    },
+    "ar": {
+      "المرجع": "ZPSU320",
+      "جهد الدخل": "110–240 فولت تيار متردد، 50/60 هرتز",
+      "جهد الخرج": "29 فولت تيار مستمر SELV",
+      "تيار الخرج": "320 mA (ناقل KNX + مساعد، مشترك)",
+      "الخرج المساعد": "29 فولت تيار مستمر (مشترك مع ناقل KNX)",
+      "وحدات DIN": "4.5",
+      "الأبعاد": "67 × 90 × 79 مم",
+      "الوزن": "274 غ",
+      "درجة حرارة التشغيل": "−5 إلى +45 درجة مئوية",
+      "الحماية": "IP20",
+      "حماية قصر الدارة": "نعم",
+      "حماية الجهد الزائد": "نعم",
+      "مؤشر الحمل الزائد": "LED أمامي",
+      "زر الإعادة": "نعم"
+    }
+  },
+
+  "images": ["/assets/products/zennio-kupsupply-320ma.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/kupsupply-320ma/"
+    }
+  ]
+}

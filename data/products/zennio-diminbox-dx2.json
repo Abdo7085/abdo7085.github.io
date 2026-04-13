@@ -1,0 +1,79 @@
+{
+  "id": "zennio-diminbox-dx2",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Dimmer",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio DIMinBOX DX2 KNX Universal Dimmer",
+    "fr": "Variateur universel KNX Zennio DIMinBOX DX2",
+    "ar": "خافت ضوء KNX عالمي Zennio DIMinBOX DX2"
+  },
+
+  "short_description": {
+    "en": "2-channel universal KNX dimmer, 310 W/ch, with analog-digital inputs.",
+    "fr": "Variateur KNX universel 2 canaux, 310 W/canal, avec entrées analogiques-numériques.",
+    "ar": "خافت ضوء KNX عالمي 2 قنوات، 310 واط/قناة، مع مداخل تناظرية-رقمية."
+  },
+
+  "description": {
+    "en": "The Zennio DIMinBOX DX2 is a 2-channel universal KNX dimmer for DIN-rail installation offering higher per-channel wattage than the NarrowDIM family, with each channel handling up to 310 W at 230 V AC and up to 600 W when both channels are combined for a single load. It supports resistive, inductive, capacitive, dimmable LED, and CFL loads with automatic RLC detection, so no manual configuration is needed for most lamp types. Two built-in analog-digital inputs connect push buttons, temperature probes, or motion sensors at distances up to 30 m, enabling scene control or climate management without an additional interface module. Ten independent logic functions allow flexible automation rules to be programmed directly within the device.",
+    "fr": "Le Zennio DIMinBOX DX2 est un variateur KNX universel à 2 canaux pour installation sur rail DIN, offrant une puissance par canal plus élevée que la famille NarrowDIM, avec chaque canal supportant jusqu'à 310 W à 230 V CA et jusqu'à 600 W lorsque les deux canaux sont combinés pour une seule charge. Il prend en charge les charges résistives, inductives, capacitives, LED dimmables et CFL avec détection automatique RLC. Deux entrées analogiques-numériques intégrées connectent boutons-poussoirs, sondes de température ou détecteurs de mouvement jusqu'à 30 m, permettant la gestion de scènes ou du climat sans module d'interface supplémentaire. Dix fonctions logiques indépendantes autorisent des règles d'automatisation flexibles directement dans l'appareil.",
+    "ar": "Zennio DIMinBOX DX2 هو خافت ضوء KNX عالمي ذو قناتين لتركيب سكة DIN يوفر طاقة أعلى لكل قناة مقارنةً بعائلة NarrowDIM، إذ تتحمل كل قناة حتى 310 واط عند 230 فولت وحتى 600 واط عند دمج القناتين لحمل واحد. يدعم الأحمال المقاومية والحثية والسعوية وLED قابلة للتخفيت ومصابيح CFL مع كشف تلقائي للـ RLC دون ضبط يدوي. مدخلان تناظريان-رقميان مدمجان يصلان أزرار الضغط أو مسابير الحرارة أو كاشفات الحركة على مسافات حتى 30 متراً، مما يتيح التحكم في المشاهد أو المناخ دون وحدة واجهة إضافية. عشر دوالّ منطقية مستقلة تتيح قواعد أتمتة مرنة مباشرةً في الجهاز."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZDI-DBDX2",
+      "Channels": "2",
+      "Max Load per Channel": "310 W at 230 V AC",
+      "Max Combined Load": "600 W at 230 V AC (double-channel mode)",
+      "Load Types": "RLC (auto-detection), dimmable LED, CFL",
+      "Analog-Digital Inputs": "2 (push button, temperature probe, or motion sensor, max 30 m)",
+      "Logic Functions": "10 independent",
+      "DIN Modules": "2",
+      "Dimensions": "90 × 60 × 35 mm",
+      "Supply Voltage": "29 V DC (KNX bus) + 110–230 V AC 50/60 Hz (load supply)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Référence modèle": "ZDI-DBDX2",
+      "Canaux": "2",
+      "Charge max par canal": "310 W à 230 V CA",
+      "Charge combinée max": "600 W à 230 V CA (mode double canal)",
+      "Types de charges": "RLC (détection automatique), LED dimmable, CFL",
+      "Entrées analogiques-numériques": "2 (bouton-poussoir, sonde de température ou détecteur de mouvement, max 30 m)",
+      "Fonctions logiques": "10 indépendantes",
+      "Modules DIN": "2",
+      "Dimensions": "90 × 60 × 35 mm",
+      "Tension d'alimentation": "29 V CC (bus KNX) + 110–230 V CA 50/60 Hz",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المرجع": "ZDI-DBDX2",
+      "القنوات": "2",
+      "الحمل الأقصى لكل قناة": "310 واط عند 230 فولت تيار متردد",
+      "الحمل المشترك الأقصى": "600 واط عند 230 فولت (وضع القناة المزدوجة)",
+      "أنواع الأحمال": "RLC (كشف تلقائي)، LED قابلة للتخفيت، CFL",
+      "المداخل التناظرية-الرقمية": "2 (زر ضغط أو مسبار حرارة أو كاشف حركة، أقصى 30 م)",
+      "الدوالّ المنطقية": "10 مستقلة",
+      "وحدات DIN": "2",
+      "الأبعاد": "90 × 60 × 35 مم",
+      "جهد التغذية": "29 فولت تيار مستمر (ناقل KNX) + 110–230 فولت تيار متردد 50/60 هرتز",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-diminbox-dx2.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/diminbox-dx2/"
+    }
+  ]
+}

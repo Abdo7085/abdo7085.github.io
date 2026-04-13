@@ -1,0 +1,79 @@
+{
+  "id": "zennio-narrowdim-x4",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Dimmer",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio NarrowDIM X4 KNX Universal Dimmer",
+    "fr": "Variateur universel KNX Zennio NarrowDIM X4",
+    "ar": "خافت ضوء KNX عالمي Zennio NarrowDIM X4"
+  },
+
+  "short_description": {
+    "en": "4-channel universal KNX dimmer for RLC, LED, and CFL loads.",
+    "fr": "Variateur KNX universel 4 canaux pour charges RLC, LED et CFL.",
+    "ar": "خافت ضوء KNX عالمي 4 قنوات لأحمال RLC وLED وCFL."
+  },
+
+  "description": {
+    "en": "The Zennio NarrowDIM X4 is a 4-channel universal KNX dimmer for DIN-rail installation, designed for installations where multiple lighting circuits need individual dimming control from a single compact module. It handles resistive (R), inductive (L), capacitive (C), dimmable LED, and CFL lamp loads with automatic load-type detection for RLC loads and configurable dimming curves for LED and CFL. Each of the 4 channels independently dims loads up to 210 W at 230 V AC; channels can be paired for up to 400 W or all four combined for up to 750 W. Ten independent logical functions provide flexible automation scenarios, and built-in error detection covers short circuit, voltage surge, overheating, and power failure events.",
+    "fr": "Le Zennio NarrowDIM X4 est un variateur KNX universel à 4 canaux pour installation sur rail DIN, conçu pour les installations où plusieurs circuits d'éclairage nécessitent un contrôle de gradation individuel depuis un seul module compact. Il gère les charges résistives (R), inductives (L), capacitives (C), LED dimmables et lampes CFL avec détection automatique du type de charge pour les charges RLC et des courbes de gradation configurables pour LED et CFL. Chacun des 4 canaux règle indépendamment des charges jusqu'à 210 W à 230 V CA ; les canaux peuvent être couplés pour 400 W, ou les quatre combinés pour 750 W. Dix fonctions logiques indépendantes offrent des scénarios d'automatisation flexibles.",
+    "ar": "Zennio NarrowDIM X4 هو خافت ضوء KNX عالمي ذو 4 قنوات لتركيب سكة DIN، مصمم للتركيبات التي تحتاج دوائر إضاءة متعددة إلى تحكم فردي في التخفيت من وحدة مدمجة واحدة. يتعامل مع الأحمال المقاومية (R) والحثية (L) والسعوية (C) وLED قابلة للتخفيت ومصابيح CFL مع كشف تلقائي لنوع الحمل RLC ومنحنيات تخفيت قابلة للضبط للـ LED وCFL. كل قناة من الأربع تخفّت حمولاً حتى 210 واط عند 230 فولت باستقلالية؛ يمكن إقران القنوات لـ 400 واط أو دمج الأربع لـ 750 واط. عشر دوالّ منطقية مستقلة تتيح سيناريوهات أتمتة مرنة."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZDINDX4",
+      "Channels": "4",
+      "Max Load per Channel": "210 W at 230 V AC (160 W at 110 V AC)",
+      "Max Load (double-channel)": "400 W at 230 V AC",
+      "Max Load (quad-channel)": "750 W at 230 V AC",
+      "Load Types": "RLC (auto-detection), dimmable LED, CFL",
+      "Logic Functions": "10 independent",
+      "DIN Modules": "4.5",
+      "Dimensions": "67 × 90 × 79 mm",
+      "Supply Voltage": "29 V DC (KNX bus) + 110–230 V AC 50/60 Hz (load supply)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Référence modèle": "ZDINDX4",
+      "Canaux": "4",
+      "Charge max par canal": "210 W à 230 V CA (160 W à 110 V CA)",
+      "Charge max (double canal)": "400 W à 230 V CA",
+      "Charge max (quadruple canal)": "750 W à 230 V CA",
+      "Types de charges": "RLC (détection automatique), LED dimmable, CFL",
+      "Fonctions logiques": "10 indépendantes",
+      "Modules DIN": "4,5",
+      "Dimensions": "67 × 90 × 79 mm",
+      "Tension d'alimentation": "29 V CC (bus KNX) + 110–230 V CA 50/60 Hz",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المرجع": "ZDINDX4",
+      "القنوات": "4",
+      "الحمل الأقصى لكل قناة": "210 واط عند 230 فولت تيار متردد (160 واط عند 110 فولت)",
+      "الحمل الأقصى (قناتان مزدوجتان)": "400 واط عند 230 فولت",
+      "الحمل الأقصى (أربع قنوات)": "750 واط عند 230 فولت",
+      "أنواع الأحمال": "RLC (كشف تلقائي)، LED قابلة للتخفيت، CFL",
+      "الدوالّ المنطقية": "10 مستقلة",
+      "وحدات DIN": "4.5",
+      "الأبعاد": "67 × 90 × 79 مم",
+      "جهد التغذية": "29 فولت تيار مستمر (ناقل KNX) + 110–230 فولت تيار متردد 50/60 هرتز",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-narrowdim-x4.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/narrowdim-x4/"
+    }
+  ]
+}

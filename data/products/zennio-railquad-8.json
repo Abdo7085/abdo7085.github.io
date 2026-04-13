@@ -1,0 +1,73 @@
+{
+  "id": "zennio-railquad-8",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio RailQUAD 8 KNX Input Module",
+    "fr": "Module d'entrée KNX Zennio RailQUAD 8",
+    "ar": "وحدة مداخل KNX Zennio RailQUAD 8"
+  },
+
+  "short_description": {
+    "en": "DIN-rail KNX input module with 8 analog-digital channels.",
+    "fr": "Module d'entrée KNX sur rail DIN avec 8 canaux analogiques-numériques.",
+    "ar": "وحدة مداخل KNX على سكة DIN بـ 8 قنوات تناظرية-رقمية."
+  },
+
+  "description": {
+    "en": "The Zennio RailQUAD 8 is a DIN-rail KNX input module with 8 analog-digital channels, making it the go-to device for integrating a large number of conventional push buttons, switches, sensors, or temperature probes into a KNX installation from a single DIN-rail location. Each input can be configured independently — as a dry-contact binary input for switches and push buttons, as a temperature probe input for climate control, or as a motion sensor input. Eight built-in room thermostats let the RailQUAD 8 independently manage heating and cooling zones. The module is entirely powered from the KNX bus, requires no external supply, and fits in just 2 DIN modules — an efficient and space-saving hub for large input counts.",
+    "fr": "Le Zennio RailQUAD 8 est un module d'entrée KNX sur rail DIN avec 8 canaux analogiques-numériques, idéal pour intégrer un grand nombre de boutons-poussoirs conventionnels, interrupteurs, capteurs ou sondes de température dans une installation KNX depuis un seul emplacement sur rail DIN. Chaque entrée peut être configurée indépendamment — en entrée binaire à contact sec pour interrupteurs et boutons-poussoirs, en entrée sonde de température pour le contrôle climatique, ou en entrée détecteur de mouvement. Huit thermostats de pièce intégrés permettent au RailQUAD 8 de gérer indépendamment les zones de chauffage et de refroidissement. Le module est entièrement alimenté par le bus KNX, ne nécessite aucune alimentation externe et tient en seulement 2 modules DIN.",
+    "ar": "Zennio RailQUAD 8 هو وحدة مداخل KNX على سكة DIN بـ 8 قنوات تناظرية-رقمية، مثالية لدمج عدد كبير من أزرار الضغط والمفاتيح والحساسات أو مسابير الحرارة التقليدية في تركيب KNX من موقع واحد على سكة DIN. كل مدخل قابل للضبط باستقلالية — كدخل ثنائي تلامس جاف للمفاتيح وأزرار الضغط، أو كمدخل مسبار حرارة للتحكم المناخي، أو كمدخل كاشف حركة. ثمانية منظمات حرارة غرف مدمجة تتيح للـ RailQUAD 8 إدارة مناطق التدفئة والتبريد باستقلالية. الوحدة مغذّاة كلياً من ناقل KNX دون مصدر خارجي وتشغل 2 وحدة DIN فقط."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZIO-RQUAD8",
+      "Analog-Digital Inputs": "8",
+      "Input Modes": "Binary (dry contact), temperature probe, motion sensor",
+      "Built-in Thermostats": "8 room thermostats (heating/cooling)",
+      "Switch Type": "Dry contact (potential-free)",
+      "DIN Modules": "2",
+      "Dimensions": "67 × 90 × 36 mm",
+      "Supply Voltage": "KNX bus powered (no external supply needed)",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Référence modèle": "ZIO-RQUAD8",
+      "Entrées analogiques-numériques": "8",
+      "Modes d'entrée": "Binaire (contact sec), sonde de température, détecteur de mouvement",
+      "Thermostats intégrés": "8 thermostats de pièce (chauffage/refroidissement)",
+      "Type de contact": "Contact sec (sans potentiel)",
+      "Modules DIN": "2",
+      "Dimensions": "67 × 90 × 36 mm",
+      "Alimentation": "Alimenté par le bus KNX (aucune alimentation externe requise)",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المرجع": "ZIO-RQUAD8",
+      "المداخل التناظرية-الرقمية": "8",
+      "أوضاع المدخل": "ثنائي (تلامس جاف)، مسبار حرارة، كاشف حركة",
+      "منظمات الحرارة المدمجة": "8 منظمات حرارة غرف (تدفئة/تبريد)",
+      "نوع التلامس": "تلامس جاف (بدون جهد)",
+      "وحدات DIN": "2",
+      "الأبعاد": "67 × 90 × 36 مم",
+      "التغذية": "مغذّى من ناقل KNX (لا يحتاج مصدر خارجي)",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-railquad-8.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/railquad-8/"
+    }
+  ]
+}

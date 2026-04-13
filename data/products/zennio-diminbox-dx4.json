@@ -1,0 +1,88 @@
+{
+  "id": "zennio-diminbox-dx4",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Dimmer",
+  "installation": "DIN Rail mounting",
+
+  "title": {
+    "en": "Zennio DIMinBOX DX4 KNX Universal Dimmer",
+    "fr": "Variateur universel KNX Zennio DIMinBOX DX4",
+    "ar": "خافت ضوء KNX عالمي Zennio DIMinBOX DX4"
+  },
+
+  "short_description": {
+    "en": "4-channel universal KNX dimmer, 300 W/ch, up to 1200 W combined.",
+    "fr": "Variateur KNX universel 4 canaux, 300 W/canal, jusqu'à 1200 W combiné.",
+    "ar": "خافت ضوء KNX عالمي 4 قنوات، 300 واط/قناة، حتى 1200 واط مجمّعاً."
+  },
+
+  "description": {
+    "en": "The Zennio DIMinBOX DX4 is a high-capacity 4-channel universal KNX dimmer for DIN-rail installation, handling up to 300 W per channel at 230 V AC — up to 1200 W when all four channels are combined. It covers resistive, inductive, capacitive, dimmable LED, and CFL lamp loads with automatic RLC load-type detection and configurable dimming curves for LED and CFL. Front-panel manual control buttons allow temporary local override during commissioning or maintenance. Ten independent logic functions enable advanced automation scenarios, and comprehensive error detection covers short circuits, voltage surges, overheating, and power failures. At 8 DIN modules it is designed for installations with multiple independent lighting zones where high-power and multi-channel control are required from a single device.",
+    "fr": "Le Zennio DIMinBOX DX4 est un variateur KNX universel à haute capacité et 4 canaux pour installation sur rail DIN, gérant jusqu'à 300 W par canal à 230 V CA — jusqu'à 1200 W lorsque les quatre canaux sont combinés. Il couvre les charges résistives, inductives, capacitives, LED dimmables et CFL avec détection automatique RLC et courbes de gradation configurables pour LED et CFL. Des boutons de contrôle manuel en façade permettent un dérogation locale temporaire lors de la mise en service. Dix fonctions logiques indépendantes permettent des scénarios d'automatisation avancés, et une détection d'erreurs couvre les courts-circuits, surtensions, surchauffes et pannes de courant. Avec 8 modules DIN, il est conçu pour les installations multi-zones à haute puissance.",
+    "ar": "Zennio DIMinBOX DX4 هو خافت ضوء KNX عالمي عالي القدرة ذو 4 قنوات لتركيب سكة DIN، يتحمل حتى 300 واط لكل قناة عند 230 فولت — حتى 1200 واط عند دمج القنوات الأربع. يغطي الأحمال المقاومية والحثية والسعوية وLED قابلة للتخفيت ومصابيح CFL مع كشف تلقائي لـ RLC ومنحنيات تخفيت قابلة للضبط. أزرار تحكم يدوي أمامية تتيح تجاوزاً محلياً مؤقتاً أثناء الاستلام أو الصيانة. عشر دوالّ منطقية مستقلة تتيح سيناريوهات أتمتة متقدمة، وكشف شامل للأخطاء يغطي قصر الدارة والجهد الزائد والسخونة الزائدة وانقطاع التيار. بحجم 8 وحدات DIN صُمِّم للتركيبات متعددة المناطق التي تتطلب تحكماً عالي القدرة متعدد القنوات."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZDIDBDX4",
+      "Channels": "4",
+      "Max Load per Channel": "300 W at 230 V AC (200 W at 110 V AC)",
+      "Max Load (double-channel)": "600 W at 230 V AC",
+      "Max Load (quad-channel)": "1200 W at 230 V AC",
+      "Load Types": "RLC (auto-detection), dimmable LED, CFL",
+      "Logic Functions": "10 independent",
+      "Manual Control": "Front-panel buttons per channel",
+      "DIN Modules": "8",
+      "Dimensions": "67 × 90 × 140 mm",
+      "Weight": "361 g",
+      "Supply Voltage": "29 V DC (KNX bus) + 110–230 V AC 50/60 Hz (load supply)",
+      "KNX Bus Consumption": "13.5 mA at 29 V DC",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20"
+    },
+    "fr": {
+      "Référence modèle": "ZDIDBDX4",
+      "Canaux": "4",
+      "Charge max par canal": "300 W à 230 V CA (200 W à 110 V CA)",
+      "Charge max (double canal)": "600 W à 230 V CA",
+      "Charge max (quadruple canal)": "1200 W à 230 V CA",
+      "Types de charges": "RLC (détection automatique), LED dimmable, CFL",
+      "Fonctions logiques": "10 indépendantes",
+      "Contrôle manuel": "Boutons en façade par canal",
+      "Modules DIN": "8",
+      "Dimensions": "67 × 90 × 140 mm",
+      "Poids": "361 g",
+      "Tension d'alimentation": "29 V CC (bus KNX) + 110–230 V CA 50/60 Hz",
+      "Consommation bus KNX": "13,5 mA à 29 V CC",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20"
+    },
+    "ar": {
+      "المرجع": "ZDIDBDX4",
+      "القنوات": "4",
+      "الحمل الأقصى لكل قناة": "300 واط عند 230 فولت تيار متردد (200 واط عند 110 فولت)",
+      "الحمل الأقصى (قناتان)": "600 واط عند 230 فولت",
+      "الحمل الأقصى (أربع قنوات)": "1200 واط عند 230 فولت",
+      "أنواع الأحمال": "RLC (كشف تلقائي)، LED قابلة للتخفيت، CFL",
+      "الدوالّ المنطقية": "10 مستقلة",
+      "التحكم اليدوي": "أزرار أمامية لكل قناة",
+      "وحدات DIN": "8",
+      "الأبعاد": "67 × 90 × 140 مم",
+      "الوزن": "361 غ",
+      "جهد التغذية": "29 فولت تيار مستمر (ناقل KNX) + 110–230 فولت تيار متردد 50/60 هرتز",
+      "استهلاك ناقل KNX": "13.5 mA عند 29 فولت",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20"
+    }
+  },
+
+  "images": ["/assets/products/zennio-diminbox-dx4.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/diminbox-dx4/"
+    }
+  ]
+}

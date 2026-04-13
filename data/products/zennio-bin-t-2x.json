@@ -1,0 +1,85 @@
+{
+  "id": "zennio-bin-t-2x",
+  "brand": "Zennio",
+  "technology": ["KNX"],
+  "product_type": "Universal Interface",
+  "installation": "Behind wall switch",
+
+  "title": {
+    "en": "Zennio BIN-T 2X KNX Universal Interface",
+    "fr": "Interface universelle KNX Zennio BIN-T 2X",
+    "ar": "واجهة KNX عالمية Zennio BIN-T 2X"
+  },
+
+  "short_description": {
+    "en": "2-channel binary input/LED output interface with temperature sensor.",
+    "fr": "Interface 2 canaux entrée binaire/sortie LED avec sonde de température.",
+    "ar": "واجهة 2 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
+  },
+
+  "description": {
+    "en": "The Zennio BIN-T 2X is a compact KNX universal interface that fits inside a standard wall box or distribution box, connecting push buttons, switches, motion sensors, or other dry-contact devices to the KNX bus without needing any external power supply. Each of its 2 channels is configurable independently as a binary input — reading push buttons, ON/OFF sensors, or temperature probes — or as a low-current LED output to drive indicator LEDs in a switch plate from the KNX bus. A dedicated temperature sensor input rounds out the feature set, enabling a built-in thermostat for climate control from the same tiny module. KNX Data Secure support makes it suitable for security-sensitive projects.",
+    "fr": "Le Zennio BIN-T 2X est une interface universelle KNX compacte qui se glisse dans une boîte de dérivation murale ou de distribution standard, reliant des boutons-poussoirs, interrupteurs, détecteurs de mouvement ou autres contacts secs au bus KNX sans alimentation externe. Chacun de ses 2 canaux est configurable indépendamment en entrée binaire — lisant des boutons-poussoirs, capteurs ON/OFF ou sondes de température — ou en sortie LED faible courant pour piloter des LEDs indicatrices dans une plaque d'interrupteur depuis le bus KNX. Une entrée sonde de température dédiée complète les fonctionnalités, permettant un thermostat intégré pour le contrôle climatique depuis ce tout petit module. La prise en charge de KNX Data Secure le rend adapté aux projets sensibles à la sécurité.",
+    "ar": "Zennio BIN-T 2X هو واجهة KNX عالمية مدمجة تتسع داخل علبة حائط قياسية أو علبة توزيع، تربط أزرار الضغط والمفاتيح وكاشفات الحركة أو غيرها من الأجهزة ذات التلامس الجاف بناقل KNX دون الحاجة لمصدر طاقة خارجي. كل قناة من القناتين قابلة للضبط باستقلالية كدخل ثنائي — لقراءة أزرار الضغط أو حساسات تشغيل/إيقاف أو مسابير الحرارة — أو كخرج LED منخفض التيار لتشغيل مؤشرات LED في لوحة المفاتيح عبر ناقل KNX. مدخل مسبار حرارة مخصص يكمل المميزات بتمكين منظم حرارة مدمج للتحكم المناخي من هذه الوحدة الصغيرة. دعم KNX Data Secure يجعلها مناسبة للمشاريع الحساسة أمنياً."
+  },
+
+  "specs": {
+    "en": {
+      "Model Reference": "ZIOBINT2",
+      "Configurable Channels": "2 (binary input or LED output per channel)",
+      "Temperature Sensor Inputs": "1",
+      "Input Type": "Dry contact (potential-free), up to 12 V DC, 2 mA",
+      "LED Output": "Up to 12 V DC, 2 mA per channel",
+      "Temperature Accuracy": "±0.5 °C at 25 °C, resolution 0.1 °C",
+      "Max Cable Length": "30 m (≥ 1 mm² cable)",
+      "Supply Voltage": "21–31 V DC SELV (typical 29 V DC, KNX bus)",
+      "Current Consumption": "6.8 mA / 197 mW at 29 V DC",
+      "Dimensions": "39 × 39 × 13.6 mm",
+      "Installation": "Wall box or distribution box",
+      "Operating Temperature": "0 to +55 °C",
+      "Protection": "IP20",
+      "Security": "KNX Data Secure"
+    },
+    "fr": {
+      "Référence modèle": "ZIOBINT2",
+      "Canaux configurables": "2 (entrée binaire ou sortie LED par canal)",
+      "Entrées sonde de température": "1",
+      "Type d'entrée": "Contact sec (sans potentiel), jusqu'à 12 V CC, 2 mA",
+      "Sortie LED": "Jusqu'à 12 V CC, 2 mA par canal",
+      "Précision température": "±0,5 °C à 25 °C, résolution 0,1 °C",
+      "Longueur câble max": "30 m (câble ≥ 1 mm²)",
+      "Tension d'alimentation": "21–31 V CC SELV (typique 29 V CC, bus KNX)",
+      "Consommation": "6,8 mA / 197 mW à 29 V CC",
+      "Dimensions": "39 × 39 × 13,6 mm",
+      "Installation": "Boîte murale ou boîte de distribution",
+      "Température de fonctionnement": "0 à +55 °C",
+      "Protection": "IP20",
+      "Sécurité": "KNX Data Secure"
+    },
+    "ar": {
+      "المرجع": "ZIOBINT2",
+      "القنوات القابلة للضبط": "2 (دخل ثنائي أو خرج LED لكل قناة)",
+      "مداخل حساس الحرارة": "1",
+      "نوع الدخل": "تلامس جاف (بدون جهد)، حتى 12 فولت، 2 mA",
+      "خرج LED": "حتى 12 فولت، 2 mA لكل قناة",
+      "دقة الحرارة": "±0.5 درجة مئوية عند 25°C، دقة 0.1 درجة",
+      "أقصى طول كابل": "30 م (كابل ≥ 1 مم²)",
+      "جهد التغذية": "21–31 فولت تيار مستمر SELV (29 فولت نموذجي، ناقل KNX)",
+      "استهلاك التيار": "6.8 mA / 197 mW عند 29 فولت",
+      "الأبعاد": "39 × 39 × 13.6 مم",
+      "التركيب": "علبة حائط أو علبة توزيع",
+      "درجة حرارة التشغيل": "0 إلى +55 درجة مئوية",
+      "الحماية": "IP20",
+      "الأمان": "KNX Data Secure"
+    }
+  },
+
+  "images": ["/assets/products/zennio-bin-t-2x.png"],
+
+  "files": [
+    {
+      "name": "Product Page (Manuals & Downloads)",
+      "url": "https://www.zennio.com/product/bin-t-2x/"
+    }
+  ]
+}
