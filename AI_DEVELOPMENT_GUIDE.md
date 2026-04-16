@@ -113,3 +113,42 @@
 - **تجنب التعديلات اليدوية المحكوم عليها بالضياع:** أي صفحات مصممة تلقائياً (Auto-generated) كصفحات المنتجات المنفردة `.html` في مجلداتها، وملفات الـ `products_index.json` و `sitemap.xml`، يُحظر التعديل اليدوي عليها. لأن سكريبت البناء سيستبدلها بالكامل دائماً بناءً على ملفات `data/products/`.
 - **التعديلات على القوالب الجذرية:** أي تغيير في `index.html` أو `products.html` أو `previous-work.html` (مثل إضافة meta tags، أو تعديل JSON-LD) يجب أن يتبعه تشغيل `generate_localized.py` ثم `build_products.py` لنشر التغيير لكل اللغات.
 - **og:image يجب أن يكون PNG/JPG دائماً** — لا تستخدم SVG لأن Facebook و Twitter لا يدعمانه.
+
+---
+
+## 6. صور الصفحة الرئيسية (Homepage Images)
+
+الصفحة الرئيسية (SPA في `index-CGMiSPUa.js`) تستخدم صوراً ثابتة مرجعية من مجلد `assets/`. هذه الصور **ليست مضمّنة كـ base64** بل يُشار إليها بمسارات نسبية (`/assets/...`) داخل كود JavaScript في الملف المجمّع.
+
+### صور Hero (القسم العلوي — ملء الشاشة)
+الـ Hero يغطي كامل ارتفاع الشاشة (`h-[100dvh]`) ويستخدم `background-image` مع `background-size: cover`:
+
+- **Desktop** (≥ 768px): `/assets/roomwebp.webp`
+- **Mobile** (< 768px): `/assets/Vila-big-background.webp`
+
+الاختيار يتم ديناميكياً عبر `window.innerWidth` في سطر ~11411:
+```js
+backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-background.webp" : "/assets/roomwebp.webp"}')`
+```
+
+> **ملاحظة:** لأن الصورة تُحمّل عبر CSS `background-image` المُولّد بـ JavaScript، لن يبدأ المتصفح بتحميلها حتى يُنفذ JS. لذلك يُنصح بإضافة `<link rel="preload">` في `<head>` لتسريع LCP.
+
+### صور قسم "What We Do" (سطر ~11972–11981)
+- **صورة 1:** `/assets/camera-man.webp` — تقني تركيب كاميرات مراقبة
+- **صورة 2:** `/assets/smart-dashboard-panel.webp` — لوحة تحكم ذكية
+
+كلتا الصورتين تستخدمان `loading="lazy"` لأنهما تحت الطيّة (below the fold).
+
+### كيفية تعديل الصور
+لتغيير أي صورة في الصفحة الرئيسية:
+1. ضع الصورة الجديدة في `assets/` بصيغة `.webp` (الأمثل للويب).
+2. إذا تغيّر اسم الملف، عدّل المسار في `assets/index-CGMiSPUa.js` مباشرة (ابحث عن اسم الملف القديم).
+3. أعد تشغيل `python scripts/generate_localized.py` ثم `python scripts/build_products.py` لنشر التغييرات.
+4. **لا حاجة لإعادة بناء الـ SPA** — الصور مُشار إليها بمسارات نسبية ثابتة.
+
+### أبعاد الصور الموصى بها
+| الاستخدام | الأبعاد الموصى بها | الحجم الأقصى |
+|---|---|---|
+| Hero Desktop | 1920×1080 | ≤ 200 KB |
+| Hero Mobile | 1200×800 | ≤ 150 KB |
+| صور الأقسام (What We Do) | 800×500 أو أكبر | ≤ 80 KB |
