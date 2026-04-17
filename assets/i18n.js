@@ -334,6 +334,10 @@
     // CTAs and nav
     "👉 Upgrade Your Home": "spa_cta_upgrade",
     "See Real Installs": "spa_cta_real_installs",
+    "Chat on WhatsApp": "spa_cta_whatsapp",
+    "Discover Our Services": "spa_cta_discover_services",
+    "Book a Free Consultation": "spa_cta_book_visit",
+    "See Our Work": "spa_cta_see_our_work",
     "Quick Links": "spa_quick_links",
     "Home": "spa_home",
     "What We Do": "spa_what_we_do",

@@ -92,6 +92,12 @@ h2:has(.border-b-2) {
 [dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
 [dir="rtl"] .mr-3 { margin-right: 0; margin-left: 0.75rem; }
 
+/* CTA icon spacing helpers (logical, RTL-aware automatically) */
+.btn-icon-before { margin-inline-end: 0.5rem; flex-shrink: 0; }
+.btn-icon-after  { margin-inline-start: 0.5rem; flex-shrink: 0; }
+/* Flip horizontally-directional icons (arrows, right-chevrons) in RTL */
+[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+
 /* Fix absolute positioned elements and text alignment */
 [dir="rtl"] .nav-link:after {
   left: auto;
