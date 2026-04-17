@@ -11756,7 +11756,7 @@ const Xh = re("Zap", [["polygon", {
         })
 }
     , nv = () => {
-    const e = [{
+    const e = S.useMemo(() => [{
         questionKey: "spa_q_services",
         answerKey: "spa_a_services"
     }, {
@@ -11768,10 +11768,28 @@ const Xh = re("Zap", [["polygon", {
     }, {
         questionKey: "spa_q_schedule",
         answerKey: "spa_a_schedule"
-    }];
-    return u.jsx("section", {
+    }], []);
+    const [o, i] = S.useState(0);
+    S.useEffect(() => {
+        if (typeof window === "undefined") return;
+        const h = window.location.hash;
+        if (h && h.indexOf("#faq-") === 0) {
+            const n = parseInt(h.slice(5), 10);
+            if (!isNaN(n) && n >= 0 && n < e.length) {
+                i(n);
+                setTimeout(() => {
+                    const el = document.getElementById("faq");
+                    el && el.scrollIntoView({behavior: "smooth", block: "start"});
+                }, 150);
+            }
+        }
+    }, [e]);
+    return u.jsxs("section", {
+        id: "faq",
         className: "py-16 bg-gray-50 text-gray-800",
-        children: u.jsxs("div", {
+        children: [u.jsx("style", {
+            children: ".faq-btn{background:transparent;border:0;cursor:pointer;color:inherit;font:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;text-align:start;border-radius:.5rem;transition:background-color 200ms ease}.faq-btn:hover{background:rgba(0,0,0,.035)}.faq-btn:focus{outline:0}.faq-btn:focus-visible{outline:2px solid #b86c25;outline-offset:-2px}.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 320ms ease}.faq-panel.open{grid-template-rows:1fr}.faq-panel>div{overflow:hidden}"
+        }), u.jsxs("div", {
             className: "container mx-auto px-4 max-w-5xl",
             children: [u.jsx("h2", {
                 className: "text-3xl md:text-4xl font-bold mb-8 text-center text-primary",
@@ -11779,20 +11797,72 @@ const Xh = re("Zap", [["polygon", {
                 children: ""
             }), u.jsx("div", {
                 className: "space-y-6",
-                children: e.map( (t, n) => u.jsxs("div", {
-                    className: "p-6 bg-white shadow-md rounded-lg fade-in",
-                    children: [u.jsx("h3", {
-                        className: "text-xl font-semibold mb-2",
-                        "data-i18n": t.questionKey,
-                        children: ""
-                    }), u.jsx("p", {
-                        className: "text-gray-700 text-base",
-                        "data-i18n": t.answerKey,
-                        children: ""
-                    })]
-                }, n))
+                children: e.map((t, n) => {
+                    const a = o === n;
+                    const btnId = "faq-btn-" + n;
+                    const panelId = "faq-panel-" + n;
+                    return u.jsxs("div", {
+                        className: "bg-white shadow-md rounded-lg fade-in",
+                        style: { overflow: "hidden" },
+                        children: [u.jsxs("button", {
+                            type: "button",
+                            id: btnId,
+                            className: "faq-btn",
+                            onClick: () => i(a ? null : n),
+                            "aria-expanded": a,
+                            "aria-controls": panelId,
+                            children: [u.jsx("h3", {
+                                className: "text-xl font-semibold",
+                                style: { margin: 0, flex: "1 1 auto" },
+                                "data-i18n": t.questionKey,
+                                children: ""
+                            }), u.jsx("svg", {
+                                className: "text-primary",
+                                "aria-hidden": "true",
+                                width: "22",
+                                height: "22",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2.5",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                style: {
+                                    marginInlineStart: "1rem",
+                                    flex: "none",
+                                    transition: "transform 320ms ease",
+                                    transform: a ? "rotate(180deg)" : "rotate(0deg)"
+                                },
+                                children: u.jsx("polyline", {
+                                    points: "6 9 12 15 18 9"
+                                })
+                            })]
+                        }), u.jsx("div", {
+                            className: a ? "faq-panel open" : "faq-panel",
+                            children: u.jsx("div", {
+                                children: u.jsx("div", {
+                                    id: panelId,
+                                    role: "region",
+                                    "aria-labelledby": btnId,
+                                    "aria-hidden": !a,
+                                    style: {
+                                        opacity: a ? 1 : 0,
+                                        transition: a ? "opacity 220ms ease 120ms" : "opacity 150ms ease",
+                                        pointerEvents: a ? "auto" : "none"
+                                    },
+                                    children: u.jsx("p", {
+                                        className: "text-gray-700 text-base",
+                                        style: { padding: "0 1.5rem 1.5rem", margin: 0 },
+                                        "data-i18n": t.answerKey,
+                                        children: ""
+                                    })
+                                })
+                            })
+                        })]
+                    }, n)
+                })
             })]
-        })
+        })]
     })
 }
   , Od = () => {
