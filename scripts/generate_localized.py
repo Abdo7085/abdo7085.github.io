@@ -126,13 +126,45 @@ def replace_head(html, dict_l, lang, filename):
         1
     )
 
-    # JSON-LD: replace description and url (first block only — LocalBusiness)
-    def repl_ld(match):
-        text = match.group(0)
-        text = re.sub(r'"description"\s*:\s*"[^"]*"', f'"description": "{meta_desc}"', text, count=1)
-        text = re.sub(r'"url"\s*:\s*"[^"]*"', f'"url": "{canonical}"', text, count=1)
-        return text
-    html = re.sub(r'<script type="application/ld\+json">[\s\S]*?</script>', repl_ld, html, count=1)
+    # JSON-LD: update LocalBusiness (description + url) and WebSite (url + inLanguage).
+    # Iterate across all JSON-LD blocks and mutate by @type.
+    # FAQPage is handled separately in replace_faq_jsonld.
+    def process_json_ld_block(text):
+        json_match = re.search(r'<script type="application/ld\+json">\s*([\s\S]*?)\s*</script>', text)
+        if not json_match:
+            return text
+        try:
+            data = json.loads(json_match.group(1))
+        except json.JSONDecodeError:
+            return text
+
+        t = data.get("@type")
+        changed = False
+
+        if t == "LocalBusiness" or (isinstance(t, list) and "LocalBusiness" in t):
+            data["description"] = meta_desc
+            data["url"] = canonical
+            changed = True
+        elif t == "WebSite":
+            data["url"] = canonical
+            # Narrow inLanguage to the specific language of this localized page
+            data["inLanguage"] = lang
+            changed = True
+
+        if not changed:
+            return text
+
+        new_json = json.dumps(data, ensure_ascii=False, indent=10)
+        return f'<script type="application/ld+json">\n      {new_json}\n    </script>'
+
+    blocks = list(re.finditer(r'<script type="application/ld\+json">[\s\S]*?</script>', html))
+    for block in reversed(blocks):  # reversed to keep indices valid
+        content = block.group(0)
+        if '"FAQPage"' in content:
+            continue  # handled in replace_faq_jsonld
+        replaced = process_json_ld_block(content)
+        if replaced != content:
+            html = html[:block.start()] + replaced + html[block.end():]
 
     return html
 
