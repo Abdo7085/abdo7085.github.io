@@ -11772,23 +11772,33 @@ const Xh = re("Zap", [["polygon", {
     const [o, i] = S.useState(0);
     S.useEffect(() => {
         if (typeof window === "undefined") return;
-        const h = window.location.hash;
-        if (h && h.indexOf("#faq-") === 0) {
-            const n = parseInt(h.slice(5), 10);
-            if (!isNaN(n) && n >= 0 && n < e.length) {
-                i(n);
-                setTimeout(() => {
-                    const el = document.getElementById("faq");
-                    el && el.scrollIntoView({behavior: "smooth", block: "start"});
-                }, 150);
+        const applyHash = (scroll) => {
+            const h = window.location.hash;
+            if (h && h.indexOf("#faq-") === 0) {
+                const n = parseInt(h.slice(5), 10);
+                if (!isNaN(n) && n >= 0 && n < e.length) {
+                    i(n);
+                    if (scroll) {
+                        const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                        setTimeout(() => {
+                            const el = document.getElementById("faq-btn-" + n);
+                            el && el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+                            el && el.focus({preventScroll: true});
+                        }, 150);
+                    }
+                }
             }
-        }
+        };
+        applyHash(true);
+        const onHash = () => applyHash(true);
+        window.addEventListener("hashchange", onHash);
+        return () => window.removeEventListener("hashchange", onHash);
     }, [e]);
     return u.jsxs("section", {
         id: "faq",
         className: "py-16 bg-gray-50 text-gray-800",
         children: [u.jsx("style", {
-            children: ".faq-btn{background:transparent;border:0;cursor:pointer;color:inherit;font:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;text-align:start;border-radius:.5rem;transition:background-color 200ms ease}.faq-btn:hover{background:rgba(0,0,0,.035)}.faq-btn:focus{outline:0}.faq-btn:focus-visible{outline:2px solid #b86c25;outline-offset:-2px}.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 320ms ease}.faq-panel.open{grid-template-rows:1fr}.faq-panel>div{overflow:hidden}"
+            children: ".faq-btn{background:transparent;border:0;cursor:pointer;color:inherit;font:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;text-align:start;border-radius:.5rem;transition:background-color 200ms ease;-webkit-tap-highlight-color:transparent}.faq-btn:hover{background:rgba(0,0,0,.035)}.faq-btn:focus{outline:0}.faq-btn:focus-visible{outline:2px solid #b86c25;outline-offset:-2px}.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 320ms ease}.faq-panel.open{grid-template-rows:1fr}.faq-panel>div{overflow:hidden}@media (prefers-reduced-motion:reduce){.faq-btn,.faq-panel,.faq-chevron,.faq-answer{transition:none!important}}"
         }), u.jsxs("div", {
             className: "container mx-auto px-4 max-w-5xl",
             children: [u.jsx("h2", {
@@ -11817,7 +11827,7 @@ const Xh = re("Zap", [["polygon", {
                                 "data-i18n": t.questionKey,
                                 children: ""
                             }), u.jsx("svg", {
-                                className: "text-primary",
+                                className: "text-primary faq-chevron",
                                 "aria-hidden": "true",
                                 width: "22",
                                 height: "22",
@@ -11843,6 +11853,7 @@ const Xh = re("Zap", [["polygon", {
                                 children: u.jsx("div", {
                                     id: panelId,
                                     role: "region",
+                                    className: "faq-answer",
                                     "aria-labelledby": btnId,
                                     "aria-hidden": !a,
                                     style: {
