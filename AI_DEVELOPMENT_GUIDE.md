@@ -22,7 +22,7 @@
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
   - `build_products.py`: السكربت الرئيسي — يبني فهرس المنتجات + صفحات SEO + sitemap + يحقن ItemList JSON-LD في products.html.
   - `generate_static_seo.py`: مولد صفحات HTML الثابتة للمنتجات مع SEO كامل (يُستدعى من `build_products.py`).
-  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD.
+  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD + **توطين كل كتل JSON-LD** (LocalBusiness و WebSite) بالـ `url` و `inLanguage` المناسبين.
   - `remove_bg.py`: إزالة الخلفيات عبر الذكاء الاصطناعي (مكتبة `rembg` ونموذج U²-Net). **ملاحظة:** يتطلب التثبيت المسبق للحزمة عبر `pip install "rembg[cpu]"`.
   - `remove_bg_traditional.py`: أداة بديلة (Fallback) تستخدم خوارزمية الإغراق اللوني (Flood Fill) التقليدية للمنتجات ذات الحواف الصلبة والمسطحة (مثل الشاشات) التي يفشل الذكاء الاصطناعي في تمييزها.
   - `crop_image.py`: قص الفراغ الشفاف من صور المنتجات لتملأ بطاقة المنتج بشكل متسق (مُصمم بفلتر ذكي يتجاهل الهوامش الشبحية الناتجة عن الذكاء الاصطناعي).
@@ -83,6 +83,19 @@
 - JSON-LD: `LocalBusiness` + `WebSite` + `FAQPage` (في index.html).
 - `<h1>` داخل `<noscript>` مع `data-i18n` لترجمته آلياً.
 
+### اصطلاح التسمية التجارية في JSON-LD (Brand Naming)
+- `"name": "S‑ELECTRICITY"` — الاسم الرسمي المكتوب (مع رمز Hyphen منقّط U+2011).
+- `"alternateName": "SMART ELECTRICITY"` — الاسم المنطوق الكامل المخصص لإثراء Knowledge Graph وبحث Google autocomplete.
+- مطبَّق على كلتا Schemas: `LocalBusiness` و `WebSite` في `index.html` و `previous-work.html` لكل اللغات.
+
+### توطين JSON-LD عبر اللغات (JSON-LD Localization Pipeline)
+`generate_localized.py` يمرّ على **كل** كتل JSON-LD في الصفحة ويحدّث كلاً بحسب `@type`:
+- **LocalBusiness**: يُستبدل `description` بالمترجم + `url` بالـ canonical المحلي (مثل `https://smartelectricity.ma/ar/`).
+- **WebSite**: يُحدَّث `url` للمسار المحلي + `inLanguage` يُضيَّق من `["en","fr","ar"]` إلى لغة واحدة (`"ar"` أو `"fr"` أو `"en"`).
+- **FAQPage**: يُعالَج في دالة منفصلة (`replace_faq_jsonld`) تستخدم مفاتيح `faq_q1..4` / `faq_a1..4` من القواميس.
+
+**درس مستفاد (Lesson learned):** في وقت سابق كان السكربت يحدّث الكتلة الأولى فقط (`count=1`)، مما ترك `WebSite.url` يشير للجذر الإنجليزي في كل اللغات. تسبّب ذلك في عرض Google صفحات العربية/الفرنسية بشكل "فتات خبز مقطوع" (`smartelectricity.ma › ...`) مع تصنيف "Translate this page" — لأن Google رأى تعارضاً بين `<link rel=canonical>` و `WebSite.url`. **أي تعديل مستقبلي على كتل JSON-LD يجب أن يراعي `@type` ويُحدَّث لكل لغة.**
+
 ### قالب product.html
 - مُعلّم بـ `noindex, nofollow` — لأنه قالب SPA فارغ.
 - `generate_static_seo.py` يتجاوز هذا آلياً ويضع `index, follow` في الصفحات المولّدة.
@@ -113,6 +126,9 @@
 - **تجنب التعديلات اليدوية المحكوم عليها بالضياع:** أي صفحات مصممة تلقائياً (Auto-generated) كصفحات المنتجات المنفردة `.html` في مجلداتها، وملفات الـ `products_index.json` و `sitemap.xml`، يُحظر التعديل اليدوي عليها. لأن سكريبت البناء سيستبدلها بالكامل دائماً بناءً على ملفات `data/products/`.
 - **التعديلات على القوالب الجذرية:** أي تغيير في `index.html` أو `products.html` أو `previous-work.html` (مثل إضافة meta tags، أو تعديل JSON-LD) يجب أن يتبعه تشغيل `generate_localized.py` ثم `build_products.py` لنشر التغيير لكل اللغات.
 - **og:image يجب أن يكون PNG/JPG دائماً** — لا تستخدم SVG لأن Facebook و Twitter لا يدعمانه.
+- **حذار Tailwind في SPA Bundle:** قبل إضافة أي كلاس Tailwind جديد داخل `index-CGMiSPUa.js`، تحقق من وجوده في `assets/index-CJ3jXuVd.css`. خلاف ذلك فضِّل inline styles. راجع قسم 7 للتفاصيل.
+- **Schema JSON-LD يجب أن يطابق المحتوى المرئي دائماً:** خاصة `FAQPage` — أي تعديل بصري في أسئلة FAQ **يُلزمك** بتحديث JSON-LD + مفاتيح `faq_q*/a*` في القواميس. عدم التطابق يخالف إرشادات Google.
+- **عند تعديل أي JSON-LD schema في قالب جذري:** تأكد أن `generate_localized.py` يعالج `@type` الجديد (الدالة `process_json_ld_block` في السطر ~130). السكربت الحالي يعرف `LocalBusiness` و `WebSite` و `FAQPage` فقط.
 
 ---
 
@@ -152,3 +168,74 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 | Hero Desktop | 1920×1080 | ≤ 200 KB |
 | Hero Mobile | 1200×800 | ≤ 150 KB |
 | صور الأقسام (What We Do) | 800×500 أو أكبر | ≤ 80 KB |
+
+---
+
+## 7. المرجع التقني لـ SPA Bundle (`index-CGMiSPUa.js`)
+
+هذا الملف هو النواة التفاعلية للصفحة الرئيسية. بما أنه مُصغَّر/مُعدَّل يدوياً، هذه المراجع السريعة تختصر وقت أي تعديل مستقبلي.
+
+### اصطلاحات الأسماء بعد التصغير (Minification Aliases)
+- **`S`** = كائن React. كل hooks تُستدعى عبره:
+  - `S.useState`، `S.useEffect`، `S.useRef`، `S.useMemo`
+- **`u.jsx` / `u.jsxs`** = دوال JSX runtime (من `react/jsx-runtime`).
+  - `u.jsx` لعنصر بطفل واحد (أو بدون أطفال).
+  - `u.jsxs` لعنصر بعدة أطفال (array of children).
+- **المكوّنات** تحمل أسماء مختصرة ومُحرَّمة للقراءة: مثل `nv` (FAQ)، `Od` (Need a Custom Solution)، `rv` (Smart Home Focus). اعثر على المكوّن المطلوب دائماً عبر البحث عن مفتاح `data-i18n` مميّز داخله.
+
+### تحذير Tailwind CSS (الأهم عند التعديل)
+`assets/index-CJ3jXuVd.css` هو ملف CSS **مُجمَّع مسبقاً** (Pre-built Tailwind). يحتوي فقط على الكلاسات التي كانت مستخدمة في الكود المصدري الأصلي وقت البناء. **أي كلاس Tailwind جديد تضيفه داخل `index-CGMiSPUa.js` قد لا يعمل** لأنه ببساطة غير موجود في CSS.
+
+أمثلة واقعية على كلاسات موجودة / مفقودة:
+| ✅ موجودة ومؤكَّدة | ❌ غير مُجمَّعة |
+|---|---|
+| `space-y-3`, `space-y-6` | `space-y-4` |
+| `p-6`, `p-4` | `p-5` |
+| `text-xl`, `text-2xl`, `text-lg` | `text-start` (v3.3+) |
+| `bg-white`, `shadow-md`, `rounded-lg` | `transition-colors` |
+| `text-primary`, `bg-primary` | `flex-shrink-0`, `leading-none` |
+
+**قواعد تعديل المظهر في SPA Bundle:**
+1. إن كنت متأكداً أن الكلاس موجود (مستخدم في مكوّن آخر) — استخدمه.
+2. إن لم تكن متأكداً — تحقق بـ `Grep` على ملف `index-CJ3jXuVd.css` أولاً.
+3. إن كان الكلاس غير موجود — استخدم إما **inline styles** (`style: {...}`) أو **inline `<style>` block** داخل المكوّن عبر `u.jsx("style", {children: "..."})`.
+4. لا تحاول إعادة بناء Tailwind — ستكسر الموقع.
+
+### قيم التصميم المرجعية
+- **اللون الأساسي**: `--primary-color: #b86c25` (برتقالي-بُنّي نحاسي). استخدم `text-primary` أو `bg-primary` في Tailwind، أو `#b86c25` في inline styles.
+- **Fonts**: `font-exo` (خط Exo) للعناوين الكبيرة.
+
+### آلية `fade-in` العامة
+يوجد `IntersectionObserver` مشترك في مكوّنات مثل `Od` و `rv` يلاحظ كل `.fade-in` في الصفحة ويضيف كلاس `.visible` عند الظهور في viewport. إذا أضفت عنصراً بـ `className: "fade-in"`، سيستفيد تلقائياً من هذا النظام بدون إعداد إضافي.
+
+---
+
+## 8. قسم FAQ (Accordion + نظام المفاتيح المزدوج)
+
+### المكوّن ودوره
+قسم الأسئلة الشائعة مُعرَّف في المكوّن `nv` داخل `index-CGMiSPUa.js` (قرب السطر ~11758). تم تحويله من بطاقات ثابتة إلى **accordion قابل للطي** بالمواصفات التالية:
+- ARIA كامل: `aria-expanded`، `aria-controls`، `role="region"`، `aria-labelledby`.
+- حركة سلسة عبر تقنية `grid-template-rows: 0fr → 1fr`.
+- أيقونة chevron SVG تدور 180° عند الفتح.
+- السؤال الأول **مفتوح افتراضياً** (`S.useState(0)`) لتحسين LCP ورؤية المحتوى فوراً.
+- **دعم الروابط المباشرة** عبر hash: `https://smartelectricity.ma/#faq-2` يفتح السؤال الثالث.
+- يحترم `prefers-reduced-motion` (يعطل الانتقالات لمن يطلبها).
+- يستمع لـ `hashchange` ليستجيب للروابط الداخلية أثناء الجلسة.
+
+### ⚠️ نظام المفاتيح المزدوج (Dual-Key System) — اقرأ بعناية
+محتوى الأسئلة الشائعة يعيش **في مكانين منفصلين** داخل قواميس الترجمة `assets/locales/<lang>.json`:
+
+| الموقع | المفاتيح | الاستخدام |
+|---|---|---|
+| 1. الأكورديون المرئي (SPA) | `spa_q_services`, `spa_a_services`, `spa_q_price`, `spa_a_prices`, `spa_q_sell_products`, `spa_a_sell_products`, `spa_q_schedule`, `spa_a_schedule` | يقرأها `data-i18n` على عناصر الأكورديون |
+| 2. FAQPage JSON-LD | `faq_q1`, `faq_a1`, `faq_q2`, `faq_a2`, `faq_q3`, `faq_a3`, `faq_q4`, `faq_a4` | تُستخدم في `replace_faq_jsonld()` لترجمة schema |
+
+**عند تعديل أي سؤال/إجابة يجب تحديث المكانين في كل اللغات الثلاث + تحديث FAQPage JSON-LD الإنجليزي في `index.html` يدوياً.** وإلا يحدث **عدم تطابق بين schema والمحتوى المرئي** — وهو مخالف لإرشادات Google ويُعرِّض الموقع لعقوبة يدوية.
+
+### Checklist تعديل أسئلة FAQ
+1. ✅ حدِّث `spa_q_*` / `spa_a_*` في `en.json` و `fr.json` و `ar.json`.
+2. ✅ حدِّث `faq_q1..4` / `faq_a1..4` في `en.json` و `fr.json` و `ar.json` (نفس الترتيب!).
+3. ✅ عدِّل `FAQPage` JSON-LD في `index.html` يدوياً (النسخة الإنجليزية).
+4. ✅ إن غيّرت عدد الأسئلة، عدِّل المصفوفة `e` داخل `nv` في `index-CGMiSPUa.js`.
+5. ✅ شغِّل `generate_localized.py` ثم `build_products.py`.
+6. ✅ اختبر `https://site/#faq-0` و `#faq-3` للتأكد من صحة deep-linking.
