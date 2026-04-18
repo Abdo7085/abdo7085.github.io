@@ -21,12 +21,13 @@
   --proj-transition: 0.2s ease;
 }
 
-/* Force the SPA top navigation header to always have a solid dark background on project pages */
-header.fixed.top-0.z-50 {
+/* Force the SPA top navigation header to always have a solid dark background on non-homepage pages */
+body:not(.home-page) header.fixed.top-0.z-50 {
   background-color: rgba(0, 0, 0, 0.95) !important;
   backdrop-filter: blur(4px) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
+
 
 /* Base custom container injected into the SPA layout */
 #custom-project-detail-wrapper {
