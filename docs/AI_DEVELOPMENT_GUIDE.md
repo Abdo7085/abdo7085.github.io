@@ -16,7 +16,7 @@
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
   - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA).
-  - `projects.css`: أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة).
+  - `projects.css`: **ملف CSS مشترك (Shared CSS)** — يحتوي على أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة) **بالإضافة إلى** تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta`, `.proj-cta-inner`, `.proj-cta-btn` إلخ). هذا القسم يُعرض عبر مكوّن `Od` داخل الـ SPA في الصفحة الرئيسية وعبر `renderCta()` في `project-detail.js`. **لذلك يجب تحميل هذا الملف في كل صفحات الموقع التي تستخدم الـ SPA** (بما فيها قوالب المنتجات `product.html` و `products.html`).
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
 - **`assets/index-CGMiSPUa.js` (ملاحظة غاية في الأهمية):** هذا الملف الكودي (SPA Bundle) ليس مجرد مخرجات تجميعية (Build Output) قياسية مهملة، **بل هو ملف ثابت (Hardcoded) تم التعديل عليه يدوياً ودمجه مع الموقع المصدري**. يُعتبر الآن كملف برمجي أساسي (Static Source File). إحذر عند التعديل عليه حيث تتطلب أي محاولة لتغيير هيكلية (React) بداخله تركيزاً ودقة عالية، وتجرى التعديلات فيه مباشرة وبشكل دقيق.
@@ -191,6 +191,9 @@
 - **حذار Tailwind في SPA Bundle:** قبل إضافة أي كلاس Tailwind جديد داخل `index-CGMiSPUa.js`، تحقق من وجوده في `assets/index-CJ3jXuVd.css`. خلاف ذلك فضِّل inline styles. راجع قسم 7 للتفاصيل.
 - **Schema JSON-LD يجب أن يطابق المحتوى المرئي دائماً:** خاصة `FAQPage` — أي تعديل بصري في أسئلة FAQ **يُلزمك** بتحديث JSON-LD + مفاتيح `faq_q*/a*` في القواميس. عدم التطابق يخالف إرشادات Google.
 - **عند تعديل أي JSON-LD schema في قالب جذري:** تأكد أن `generate_localized.py` يعالج `@type` الجديد (الدالة `process_json_ld_block` في السطر ~130). السكربت الحالي يعرف `LocalBusiness` و `WebSite` و `FAQPage` فقط.
+- **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
+  - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + إعادة تشغيل سكربتات البناء الثلاثة بالترتيب.
+  - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
 
 ---
 
