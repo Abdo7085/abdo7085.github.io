@@ -1,23 +1,75 @@
 /* Simple language switcher styles and RTL helpers */
-.lang-switch{
-  position:fixed;
-  /* float at bottom-right on desktop to avoid header overlap */
-  bottom:16px;
-  right:16px;
-  top:auto;
-  /* keep it above general content but beneath header (header uses z-50) */
-  z-index:48;
-  background: rgb(187, 118, 31); /* Brand Orange */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 9999px; /* pill */
-  box-shadow: 0 8px 24px rgba(187, 118, 31, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  padding: 6px 14px;
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  color: white;
+
+/* --------------------------------------------------------------------------
+   UNIFIED FLOATING ACTION BUTTONS (WhatsApp & Language)
+   -------------------------------------------------------------------------- */
+.lang-switch, .mobile-dialer {
+  position: fixed !important;
+  bottom: 24px !important;
+  top: auto !important;
+  z-index: 50 !important;
+  height: 52px !important;
+  background: rgb(187, 118, 31) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(187, 118, 31, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  margin: 0 !important;
 }
+
+/* LTR Positioning (Default) */
+.lang-switch {
+  right: 24px !important;
+  left: auto !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  gap: 8px !important;
+  width: auto !important;
+}
+.mobile-dialer {
+  left: 24px !important;
+  right: auto !important;
+  width: 52px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  animation: none !important; /* Disable the old tw pulse if it exists */
+}
+
+/* RTL Positioning Constraints */
+[dir="rtl"] .lang-switch {
+  right: auto !important;
+  left: 24px !important;
+}
+[dir="rtl"] .mobile-dialer {
+  left: auto !important;
+  right: 24px !important;
+}
+
+/* Mobile Adjustments (Make both circular) */
+@media (max-width: 767px){
+  .lang-switch {
+    width: 52px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+}
+
+/* Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .lang-switch:hover, .mobile-dialer:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(187, 118, 31, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    background: rgb(200, 128, 38) !important;
+  }
+  .lang-switch:hover .lang-globe svg {
+    transform: rotate(20deg) scale(1.05) !important;
+  }
+}
+
 .lang-switch select{
   border:0;
   background:transparent;
@@ -33,7 +85,6 @@
 
 /* Basic RTL adjustments: these are minimal — adapt to your real stylesheet */
 [dir="rtl"] body{direction:rtl; font-family: 'Tajawal', 'Poppins', sans-serif;}
-[dir="rtl"] .lang-switch{right:auto;left:12px}
 
 /* Tailwind RTL fixes */
 [dir="rtl"] {
@@ -70,13 +121,8 @@ h2:has(.border-b-2) {
 }
 
 /* Show floating call button on desktop for all languages */
-.mobile-dialer { display: flex !important; }
 
 /* RTL: move call button to right side */
-[dir="rtl"] .mobile-dialer {
-  left: auto !important;
-  right: 1.5rem !important;
-}
 
 /* Flip rounded corners on button groups for RTL */
 [dir="rtl"] .rounded-l-lg {
@@ -112,19 +158,7 @@ h2:has(.border-b-2) {
 
 /* Responsive: keep selector out of the header / mobile menu area */
 @media (max-width: 767px){
-  .lang-switch{
-    /* Match the circular style to look balanced with WhatsApp */
-    left: auto;
-    right: 16px;
-    bottom: 24px;
-    padding: 0;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    justify-content: center;
-    gap: 0;
-    transform: none;
-  }
+  
   .lang-switch .lang-globe {
     display: flex;
     align-items: center;
@@ -161,16 +195,6 @@ h2:has(.border-b-2) {
 
 /* Only apply the small hover "lift" on pointer-capable devices to avoid
    the floating control jumping on touch when the menu opens. */
-@media (hover: hover) and (pointer: fine) {
-  .lang-switch:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(187, 118, 31, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: rgb(200, 128, 38); /* Slightly lighter orange */
-  }
-  .lang-switch:hover .lang-globe svg {
-    transform: rotate(20deg) scale(1.05);
-  }
-}
 
 /* focus styles for accessibility */
 .lang-switch select:focus{outline:2px solid rgba(59,130,246,0.25);outline-offset:4px}

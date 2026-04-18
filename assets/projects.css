@@ -1,0 +1,869 @@
+/*
+ * projects.css
+ * Premium styling for the project case-study page.
+ * Designed to cleanly integrate with the existing SPA styling and share
+ * design tokens with products.css.
+ */
+
+:root {
+  --proj-bg: #f8fafc;
+  --proj-card-bg: #ffffff;
+  --proj-text-main: #1f2937;
+  --proj-text-muted: #6b7280;
+  --proj-border: #e5e7eb;
+  --proj-primary: #b86c25;
+  --proj-primary-hover: #9c5a1e;
+  --proj-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --proj-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --proj-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --proj-radius-md: 12px;
+  --proj-radius-lg: 16px;
+  --proj-transition: 0.2s ease;
+}
+
+/* Force the SPA top navigation header to always have a solid dark background on project pages */
+header.fixed.top-0.z-50 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(4px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Base custom container injected into the SPA layout */
+#custom-project-detail-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem 4rem;
+  font-family: 'Poppins', 'Exo 2', sans-serif;
+  color: var(--proj-text-main);
+  background-color: #ffffff;
+  min-height: 70vh;
+}
+
+/* The JS renders every section as a sibling inside #custom-project-container.
+   Turning it into a flex column with gap gives consistent vertical rhythm
+   between all top-level page sections (breadcrumbs, hero, narrative, gallery,
+   testimonial, related products, CTA). */
+#custom-project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+/* Breadcrumbs hug the hero — tighten that specific gap only */
+#custom-project-container > .proj-breadcrumbs + .proj-hero {
+  margin-top: -1.75rem;
+}
+@media (min-width: 768px) {
+  #custom-project-container {
+    gap: 4rem;
+  }
+  #custom-project-container > .proj-breadcrumbs + .proj-hero {
+    margin-top: -2.5rem;
+  }
+}
+
+[dir="rtl"] #custom-project-detail-wrapper {
+  font-family: 'Tajawal', 'Poppins', sans-serif;
+}
+
+/* ============ Breadcrumbs ============ */
+.proj-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--proj-text-muted);
+  flex-wrap: wrap;
+}
+.proj-breadcrumbs a {
+  color: var(--proj-text-muted);
+  text-decoration: none;
+  transition: color var(--proj-transition);
+}
+.proj-breadcrumbs a:hover {
+  color: var(--proj-primary);
+}
+.proj-breadcrumb-sep {
+  color: var(--proj-border);
+}
+.proj-breadcrumb-current {
+  color: var(--proj-text-main);
+  font-weight: 500;
+}
+
+/* ============ Hero ============ */
+.proj-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  border-radius: var(--proj-radius-lg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.proj-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  inset-inline-end: -15%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 108, 37, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .proj-hero {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    padding: 3rem;
+  }
+}
+
+.proj-hero-content {
+  position: relative;
+  z-index: 1;
+}
+.proj-hero-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.proj-cat-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: rgba(184, 108, 37, 0.2);
+  color: #f5c99a;
+  border: 1px solid rgba(184, 108, 37, 0.4);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.proj-hero-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+.proj-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 1.25rem;
+}
+.proj-hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+}
+.proj-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.proj-fact svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+.proj-hero-cover {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--proj-radius-md);
+  overflow: hidden;
+  box-shadow: var(--proj-shadow-xl);
+  aspect-ratio: 4 / 3;
+  background: #0f172a;
+}
+.proj-hero-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============ Narrative / Description ============ */
+.proj-narrative {
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--proj-text-main);
+}
+.proj-narrative p {
+  margin: 0 0 1em;
+}
+
+/* When a reel is present, the narrative becomes a 2-column layout: sticky reel
+   on the left, description text on the right. On mobile the reel stacks on top. */
+.proj-narrative--with-reel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (min-width: 900px) {
+  .proj-narrative--with-reel {
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+.proj-narrative-text p {
+  margin: 0 0 1em;
+}
+.proj-narrative-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Sticky reel card ---- */
+.proj-reel-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--proj-radius-md);
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--proj-shadow-lg);
+  max-width: 320px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (min-width: 900px) {
+  .proj-reel-card {
+    position: sticky;
+    top: 6rem;
+    max-width: none;
+  }
+}
+
+.proj-reel-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  cursor: pointer;
+}
+.proj-reel-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Unmute toggle button (top-right of the reel) */
+.proj-reel-unmute {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-end: 0.75rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  transition: background var(--proj-transition), transform var(--proj-transition);
+}
+.proj-reel-unmute:hover {
+  background: rgba(0, 0, 0, 0.78);
+  transform: scale(1.06);
+}
+.proj-reel-unmute svg {
+  width: 18px;
+  height: 18px;
+}
+.proj-reel-unmute .icon-unmuted { display: none; }
+.proj-reel-card.is-unmuted .proj-reel-unmute .icon-muted { display: none; }
+.proj-reel-card.is-unmuted .proj-reel-unmute .icon-unmuted { display: block; }
+
+/* Fallback placeholder (no MP4 src — just an Instagram link) */
+.proj-reel-card .proj-reel-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%);
+  color: #fff;
+  text-decoration: none;
+}
+.proj-reel-card .proj-reel-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.proj-reel-card .proj-reel-placeholder svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+.proj-reel-card .proj-reel-placeholder-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Instagram "View on Instagram" CTA underneath the reel */
+.proj-reel-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, #833AB4 0%, #E1306C 40%, #FD1D1D 65%, #FCB045 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: filter var(--proj-transition), transform var(--proj-transition);
+}
+.proj-reel-ig-btn:hover {
+  filter: brightness(1.1);
+}
+.proj-reel-ig-btn:active {
+  transform: scale(0.98);
+}
+.proj-reel-ig-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ============ Media Mosaic ============ */
+.proj-media-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.proj-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--proj-text-main);
+  margin: 0;
+}
+
+/* Horizontal scrollable media strip — every item shares the same height, the
+   width derives from the natural aspect ratio so landscape photos and portrait
+   reels coexist without fighting each other for vertical space.
+   Scrollbar is hidden; user navigates via side arrow buttons or mouse drag. */
+.proj-mosaic-wrapper {
+  position: relative;
+}
+
+.proj-mosaic-strip {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+  /* Hide scrollbar across browsers */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge legacy */
+}
+.proj-mosaic-strip::-webkit-scrollbar {
+  display: none;                /* Chrome/Safari */
+  width: 0;
+  height: 0;
+}
+.proj-mosaic-strip.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;       /* free scroll while dragging */
+  scroll-behavior: auto;
+}
+.proj-mosaic-strip.is-dragging .proj-media-item {
+  pointer-events: none;         /* prevent stray clicks on children mid-drag */
+}
+.proj-mosaic-strip:focus-visible {
+  outline: 2px solid var(--proj-primary);
+  outline-offset: 4px;
+  border-radius: var(--proj-radius-md);
+}
+
+/* --- Side navigation buttons --- */
+.proj-strip-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  color: var(--proj-primary);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18), 0 2px 4px rgba(15, 23, 42, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: background var(--proj-transition), transform var(--proj-transition), opacity var(--proj-transition), box-shadow var(--proj-transition);
+  padding: 0;
+}
+.proj-strip-nav svg {
+  width: 22px;
+  height: 22px;
+}
+.proj-strip-nav:hover:not(:disabled) {
+  background: var(--proj-primary);
+  color: #fff;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 10px 24px rgba(184, 108, 37, 0.35);
+}
+.proj-strip-nav:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.96);
+}
+.proj-strip-nav:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+.proj-strip-nav--prev {
+  inset-inline-start: -18px;
+}
+.proj-strip-nav--next {
+  inset-inline-end: -18px;
+}
+/* Flip arrows in RTL so "next" still points to the progression direction */
+[dir="rtl"] .proj-strip-nav svg {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 640px) {
+  .proj-strip-nav {
+    width: 38px;
+    height: 38px;
+  }
+  .proj-strip-nav--prev { inset-inline-start: 4px; }
+  .proj-strip-nav--next { inset-inline-end: 4px; }
+}
+
+.proj-media-item {
+  position: relative;
+  flex: 0 0 auto;
+  height: 360px;
+  border-radius: var(--proj-radius-md);
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: var(--proj-shadow);
+  transition: transform var(--proj-transition), box-shadow var(--proj-transition);
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .proj-media-item { height: 440px; }
+}
+@media (min-width: 1100px) {
+  .proj-media-item { height: 500px; }
+}
+.proj-media-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--proj-shadow-lg);
+}
+
+/* Width follows orientation — landscape items wider than tall, portrait narrow */
+.proj-media-item[data-orientation="landscape"] {
+  aspect-ratio: 16 / 9;
+}
+.proj-media-item[data-orientation="portrait"],
+.proj-media-item[data-type="reel"] {
+  aspect-ratio: 9 / 16;
+}
+
+.proj-media-item img,
+.proj-media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Video badge overlay */
+.proj-media-badge {
+  position: absolute;
+  top: 0.6rem;
+  inset-inline-start: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  pointer-events: none;
+}
+.proj-media-badge svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+/* Play-button overlay shown on video thumbnails before user interaction */
+.proj-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+  transition: background var(--proj-transition);
+}
+.proj-video-play:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.proj-video-play svg {
+  width: 3rem;
+  height: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+/* Fully opaque video once playing */
+.proj-media-item.is-playing .proj-video-play {
+  display: none;
+}
+
+/* Instagram Reel placeholder */
+.proj-reel-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.proj-reel-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background var(--proj-transition);
+}
+.proj-reel-placeholder:hover::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+.proj-reel-placeholder-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.proj-reel-placeholder svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+.proj-reel-placeholder-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Direct Instagram embed iframe — plays the reel in-page */
+.proj-reel-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+/* ============ Testimonial ============ */
+.proj-testimonial {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+  border-inline-start: 4px solid var(--proj-primary);
+  border-radius: var(--proj-radius-md);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #451a03;
+  position: relative;
+}
+.proj-testimonial::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.5rem;
+  inset-inline-start: 1rem;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(184, 108, 37, 0.25);
+  font-style: normal;
+  font-family: Georgia, serif;
+}
+.proj-testimonial-quote {
+  margin: 0 0 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.proj-testimonial-author {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--proj-text-muted);
+}
+.proj-testimonial-author::before {
+  content: '— ';
+}
+
+/* ============ Related Products ============ */
+.proj-related {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.proj-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.proj-related-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--proj-card-bg);
+  border: 1px solid var(--proj-border);
+  border-radius: var(--proj-radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--proj-transition), box-shadow var(--proj-transition), border-color var(--proj-transition);
+}
+.proj-related-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--proj-shadow-lg);
+  border-color: var(--proj-primary);
+}
+.proj-related-card-img {
+  aspect-ratio: 1 / 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+.proj-related-card-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.proj-related-card-body {
+  padding: 0.75rem 1rem 1rem;
+}
+.proj-related-card-brand {
+  font-size: 0.7rem;
+  color: var(--proj-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+.proj-related-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--proj-text-main);
+  line-height: 1.3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============ CTA at bottom of page ============ */
+/* Mirrors the homepage "Need a Custom Solution?" banner — solid brand-orange
+   background that breaks out of the 1280px container to span the full viewport,
+   then re-centers its inner content. This matches what visitors see on
+   index.html so the brand voice stays consistent across pages. */
+.proj-cta {
+  /* Break out of the parent container's horizontal padding so the colored
+     band stretches edge-to-edge of the viewport. */
+  margin-inline: calc(50% - 50vw);
+  padding: 3rem 1.5rem;
+  background: var(--proj-primary);
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+/* On the project-detail pages the wrapper has padding-bottom: 4rem. Pull the
+   CTA down by that much so it sits flush against the site footer. On
+   previous-work the CTA is a standalone section (no wrapper padding) and
+   this rule does not apply, so no accidental overlap with the footer. */
+#custom-project-container > .proj-cta {
+  margin-bottom: -4rem;
+}
+/* Subtle radial accent on the right — gives the banner a bit of depth
+   without distracting from the copy. */
+.proj-cta::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  inset-inline-end: -10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.proj-cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.proj-cta-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0;
+  font-family: 'Exo 2', 'Poppins', sans-serif;
+}
+[dir="rtl"] .proj-cta-title {
+  font-family: 'Tajawal', 'Exo 2', sans-serif;
+}
+.proj-cta-lead {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 0.5rem;
+  max-width: 640px;
+}
+.proj-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .proj-cta-actions {
+    flex-direction: row;
+    width: auto;
+  }
+}
+/* Buttons follow the site's standard btn-* language: slight .375rem corner
+   radius (not pill), 500 weight, compact padding — consistent with the
+   homepage's "Book a Free Consultation" and "See Our Work" styling. */
+.proj-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  width: 100%;
+  transition: transform var(--proj-transition), background var(--proj-transition), color var(--proj-transition), box-shadow var(--proj-transition), border-color var(--proj-transition);
+}
+@media (min-width: 640px) {
+  .proj-cta-btn {
+    width: auto;
+  }
+}
+/* Primary — white fill with brand-orange text (reads as the main action on the orange banner) */
+.proj-cta-btn-primary {
+  background: #ffffff;
+  color: var(--proj-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.proj-cta-btn-primary:hover {
+  background: #f3f4f6;
+  color: var(--proj-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+/* Secondary — ghost outline on the orange background */
+.proj-cta-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+.proj-cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+.proj-cta-btn svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+/* Flip the chevron arrow in RTL so it still points in the progression direction */
+[dir="rtl"] .proj-cta-arrow {
+  transform: scaleX(-1);
+}
+
+/* ============ Loading / Not Found states ============ */
+.proj-loading,
+.proj-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  gap: 1rem;
+  color: var(--proj-text-muted);
+}
+.proj-loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--proj-border);
+  border-top-color: var(--proj-primary);
+  border-radius: 50%;
+  animation: proj-spin 0.9s linear infinite;
+}
+@keyframes proj-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* RTL fine-tuning — most rules already use logical properties */
+[dir="rtl"] .proj-testimonial::before {
+  content: '\201D';
+}

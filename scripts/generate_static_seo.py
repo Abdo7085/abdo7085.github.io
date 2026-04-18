@@ -408,6 +408,37 @@ def generate_sitemap(all_product_ids):
                 f"  </url>"
             )
 
+    # Project pages — read data/projects_index.json if it exists so that
+    # build_products.py (which runs last) produces the authoritative,
+    # complete sitemap including all project URLs.
+    projects_index_path = ROOT / "data" / "projects_index.json"
+    if projects_index_path.exists():
+        try:
+            project_entries = json.loads(projects_index_path.read_text(encoding="utf-8"))
+        except Exception:
+            project_entries = []
+        for entry in project_entries:
+            pid = entry.get("id")
+            if not pid:
+                continue
+            lastmod = entry.get("date") or TODAY
+            for lang in LANGS:
+                prefix = "" if lang == "en" else f"/{lang}"
+                loc = f"{HOST}{prefix}/projects/{pid}.html"
+                en_href = f"{HOST}/projects/{pid}.html"
+                fr_href = f"{HOST}/fr/projects/{pid}.html"
+                ar_href = f"{HOST}/ar/projects/{pid}.html"
+                urls.append(
+                    f"  <url>\n"
+                    f"    <loc>{loc}</loc>\n"
+                    f"    <lastmod>{lastmod}</lastmod>\n"
+                    f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
+                    f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
+                    f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
+                    f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
+                    f"  </url>"
+                )
+
     sitemap = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '

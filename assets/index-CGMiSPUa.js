@@ -11922,26 +11922,55 @@ const Xh = re("Zap", [["polygon", {
     , []),
     u.jsx("section", {
         id: "contact",
-        className: "py-12 bg-primary text-white",
+        className: "proj-cta",
         ref: e,
         children: u.jsxs("div", {
-            className: "container mx-auto px-4 text-center",
+            className: "proj-cta-inner",
             children: [u.jsx("h2", {
-                className: "text-2xl md:text-3xl font-bold mb-4 font-exo fade-in",
+                className: "proj-cta-title fade-in",
                 "data-i18n": "spa_need_custom",
                 children: ""
             }), u.jsx("p", {
-                className: "text-base mb-6 max-w-2xl mx-auto fade-in",
+                className: "proj-cta-lead fade-in",
                 "data-i18n": "spa_team",
                 children: ""
-            }), u.jsxs("a", {
-                href: "tel:0654132112",
-                className: "btn-secondary text-base inline-flex items-center hover:scale-105 transition-transform fade-in",
-                children: [u.jsx(Sn, {
-                    className: "w-4 h-4 mr-2"
-                }), u.jsx("span", {
-                    "data-i18n": "spa_call_now_phone",
-                    children: ""
+            }), u.jsxs("div", {
+                className: "proj-cta-actions fade-in",
+                children: [u.jsxs("a", {
+                    href: "https://wa.me/212654132112",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "proj-cta-btn proj-cta-btn-primary",
+                    children: [u.jsx("svg", {
+                        viewBox: "0 0 24 24",
+                        fill: "currentColor",
+                        "aria-hidden": "true",
+                        dangerouslySetInnerHTML: {
+                            __html: '<path d="M20.52 3.48A11.85 11.85 0 0 0 12.04 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.12 1.59 5.92L0 24l6.4-1.68a11.86 11.86 0 0 0 5.64 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.39-8.4zM12.04 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.44 4.43-9.87 9.87-9.87 2.64 0 5.11 1.03 6.97 2.9a9.79 9.79 0 0 1 2.89 6.98c0 5.44-4.43 9.87-9.87 9.87zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.35.19 1.86.12.57-.08 1.76-.72 2.01-1.41.24-.7.24-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>'
+                        }
+                    }), u.jsx("span", {
+                        "data-i18n": "spa_cta_whatsapp",
+                        children: ""
+                    })]
+                }), u.jsxs("a", {
+                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); return (m ? '/' + m[1].toLowerCase() : '') + '#services'; })(),
+                    className: "proj-cta-btn proj-cta-btn-secondary",
+                    children: [u.jsx("span", {
+                        "data-i18n": "spa_cta_discover_services",
+                        children: ""
+                    }), u.jsx("svg", {
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        strokeWidth: "2",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        className: "proj-cta-arrow",
+                        "aria-hidden": "true",
+                        dangerouslySetInnerHTML: {
+                            __html: '<polyline points="9 18 15 12 9 6"/>'
+                        }
+                    })]
                 })]
             })]
         })
@@ -12355,52 +12384,29 @@ const Xh = re("Zap", [["polygon", {
         }
     }
     , []);
-    const e = [{
-        id: 1,
-        src: "../assets/media-Event-Image-Not-Found.jpg",
-        alt: "Smart Home Installation Project 1",
-        category: "TV Mounted"
-    }, {
-        id: 2,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Security Cameras Project 1",
-        category: "Smart Lock Installation"
-    }, {
-        id: 3,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Ceiling Fan Installation 1",
-        category: "Smart Lock Installation"
-    }, {
-        id: 4,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Smart Lock Installation 1",
-        category: "TV Mounted"
-    }, {
-        id: 5,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Home Theater Setup 1",
-        category: "Smart WiFi Integration"
-    }, {
-        id: 6,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Smart Thermostat Installation 1",
-        category: "Smart Thermostat"
-    }, {
-        id: 7,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Smart Home Installation Project 2",
-        category: "Home Theatre"
-    }, {
-        id: 8,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Security Cameras Project 2",
-        category: "Smart Lock"
-    }, {
-        id: 9,
-        src: "/assets/media-Event-Image-Not-Found.jpg",
-        alt: "Water Purification System",
-        category: "TV Mounted"
-    }];
+    const [e, $setE] = S.useState([]);
+    S.useEffect(() => {
+        const $lang = document.documentElement.lang || 'en';
+        fetch('/data/projects_index.json')
+            .then(r => r.ok ? r.json() : [])
+            .then(list => {
+                const $prefix = $lang === 'en' ? '' : '/' + $lang;
+                const mapped = (list || []).map(p => {
+                    const title = (p.title && (p.title[$lang] || p.title.en || p.title.fr || p.title.ar)) || '';
+                    const cat = (p.categories && p.categories[0]) || '';
+                    return {
+                        id: p.id,
+                        href: $prefix + '/projects/' + p.id + '.html',
+                        src: p.cover || '/assets/S‑ELECTRICITY-LOGO.svg',
+                        alt: title,
+                        title: title,
+                        category: cat
+                    };
+                });
+                $setE(mapped);
+            })
+            .catch(() => { $setE([]); });
+    }, []);
     return u.jsxs(u.Fragment, {
         children: [u.jsxs(Ts, {
             children: [u.jsx("title", {
@@ -12478,10 +12484,16 @@ const Xh = re("Zap", [["polygon", {
                         })]
                     }), u.jsx("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
-                        children: e.map( (t, n) => u.jsx("div", {
-                            className: "fade-in group cursor-pointer",
+                        children: e.map( (t, n) => u.jsx("a", {
+                            href: t.href,
+                            className: "group cursor-pointer",
                             style: {
-                                animationDelay: `${n * .1}s`
+                                animationDelay: `${n * .1}s`,
+                                opacity: 1,
+                                transform: "none",
+                                display: "block",
+                                textDecoration: "none",
+                                color: "inherit"
                             },
                             children: u.jsxs("div", {
                                 className: "relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105",
@@ -12490,14 +12502,46 @@ const Xh = re("Zap", [["polygon", {
                                     alt: t.alt,
                                     className: "w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110",
                                     loading: "lazy"
+                                }), t.category && u.jsx("div", {
+                                    style: {
+                                        position: "absolute",
+                                        top: "12px",
+                                        left: "12px",
+                                        backgroundColor: "#b86c25",
+                                        color: "#ffffff",
+                                        padding: "6px 14px",
+                                        borderRadius: "999px",
+                                        fontSize: "0.72rem",
+                                        fontWeight: 600,
+                                        letterSpacing: "0.04em",
+                                        textTransform: "uppercase",
+                                        boxShadow: "0 4px 14px rgba(184,108,37,0.45)",
+                                        backdropFilter: "blur(4px)",
+                                        zIndex: 2
+                                    },
+                                    children: t.category
                                 }), u.jsx("div", {
-                                    className: "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                }), u.jsx("div", {
-                                    className: "absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300",
-                                    children: u.jsx("div", {
-                                        className: "bg-primary/90 text-white px-3 py-1 rounded-full text-sm font-medium inline-block",
-                                        children: t.category
-                                    })
+                                    style: {
+                                        position: "absolute",
+                                        inset: 0,
+                                        background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 70%)",
+                                        pointerEvents: "none"
+                                    }
+                                }), t.title && u.jsx("div", {
+                                    style: {
+                                        position: "absolute",
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        padding: "18px 16px 16px",
+                                        color: "#ffffff",
+                                        fontSize: "1rem",
+                                        fontWeight: 600,
+                                        lineHeight: 1.35,
+                                        textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                                        fontFamily: "'Exo 2', system-ui, sans-serif"
+                                    },
+                                    children: t.title
                                 })]
                             })
                         }, t.id))
