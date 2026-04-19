@@ -484,11 +484,16 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   box-shadow: var(--proj-shadow-lg);
 }
 
-/* Width follows orientation — landscape items wider than tall, portrait narrow */
+/* Width follows orientation — landscape items wider than tall, portrait narrow.
+   Portrait PHOTOS default to 3:4 (the most common portrait photo ratio).
+   Reels are always 9:16. When the build script populates real width/height,
+   the inline style on the <img>/<video> overrides these defaults. */
 .proj-media-item[data-orientation="landscape"] {
   aspect-ratio: 16 / 9;
 }
-.proj-media-item[data-orientation="portrait"],
+.proj-media-item[data-orientation="portrait"] {
+  aspect-ratio: 3 / 4;
+}
 .proj-media-item[data-type="reel"] {
   aspect-ratio: 9 / 16;
 }

@@ -402,7 +402,7 @@
   function renderMediaItem(item, index) {
     const orient = mediaOrientation(item);
     const alt = escapeHtml(t(item.alt) || '');
-    const ar = (item.width && item.height) ? (item.width + ' / ' + item.height) : (orient === 'portrait' ? '9 / 16' : '16 / 9');
+    const ar = (item.width && item.height) ? (item.width + ' / ' + item.height) : (orient === 'portrait' ? '3 / 4' : '16 / 9');
 
     if (item.type === 'image') {
       return (
