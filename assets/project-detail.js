@@ -297,7 +297,69 @@
     return (project.media || []).find(function(m) { return m.type === 'reel'; });
   }
 
-  function renderNarrative(project) {
+  function renderBrandsProtocols(project, productsIndex) {
+    const brands = [];
+    const protocols = [];
+
+    // Derive from related_products (products we sell — looked up in the index).
+    if (project.related_products && productsIndex && productsIndex.length) {
+      project.related_products.forEach(function(pid) {
+        const p = productsIndex.find(function(x) { return x.id === pid; });
+        if (!p) return;
+        if (p.brand && brands.indexOf(p.brand) === -1) brands.push(p.brand);
+        if (Array.isArray(p.technology)) {
+          p.technology.forEach(function(tech) {
+            if (tech && protocols.indexOf(tech) === -1) protocols.push(tech);
+          });
+        }
+      });
+    }
+
+    // Merge manual additions for equipment we don't sell / isn't in the catalog.
+    if (Array.isArray(project.extra_brands)) {
+      project.extra_brands.forEach(function(b) {
+        if (b && brands.indexOf(b) === -1) brands.push(b);
+      });
+    }
+    if (Array.isArray(project.extra_protocols)) {
+      project.extra_protocols.forEach(function(t) {
+        if (t && protocols.indexOf(t) === -1) protocols.push(t);
+      });
+    }
+
+    if (brands.length === 0 && protocols.length === 0) return '';
+
+    const brandChips = brands.map(function(b) {
+      return '<span class="proj-brand-chip">' + escapeHtml(b) + '</span>';
+    }).join('');
+    const protocolChips = protocols.map(function(p) {
+      return '<span class="proj-protocol-chip">' + escapeHtml(p) + '</span>';
+    }).join('');
+
+    const brandsRow = brands.length ? (
+      '<div class="proj-brands-group">' +
+        '<div class="proj-brands-group-label" data-i18n="proj_brands_label">Brands</div>' +
+        '<div class="proj-brands-chips">' + brandChips + '</div>' +
+      '</div>'
+    ) : '';
+
+    const protocolsRow = protocols.length ? (
+      '<div class="proj-brands-group">' +
+        '<div class="proj-brands-group-label" data-i18n="proj_protocols_label">Protocols</div>' +
+        '<div class="proj-brands-chips">' + protocolChips + '</div>' +
+      '</div>'
+    ) : '';
+
+    return (
+      '<div class="proj-brands-card">' +
+        '<h3 class="proj-brands-title" data-i18n="proj_brands_title">Brands &amp; Protocols</h3>' +
+        brandsRow +
+        protocolsRow +
+      '</div>'
+    );
+  }
+
+  function renderNarrative(project, productsIndex) {
     const desc = t(project.description);
     if (!desc) return '';
     // Split on blank lines into paragraphs
@@ -305,15 +367,17 @@
       return '<p>' + escapeHtml(p.trim()) + '</p>';
     }).join('');
 
+    const brandsBlock = renderBrandsProtocols(project, productsIndex);
+
     const reel = getReel(project);
     if (!reel) {
-      return '<section class="proj-narrative">' + paragraphs + '</section>';
+      return '<section class="proj-narrative">' + paragraphs + brandsBlock + '</section>';
     }
     // Reel present → 2-column layout: sticky reel card + narrative text.
     return (
       '<section class="proj-narrative proj-narrative--with-reel">' +
         renderReelCard(reel) +
-        '<div class="proj-narrative-text">' + paragraphs + '</div>' +
+        '<div class="proj-narrative-text">' + paragraphs + brandsBlock + '</div>' +
       '</section>'
     );
   }
@@ -474,7 +538,7 @@
       '<div id="custom-project-container">' +
         renderBreadcrumbs(project) +
         renderHero(project) +
-        renderNarrative(project) +
+        renderNarrative(project, productsIndex) +
         renderMediaSection(project) +
         renderTestimonial(project) +
         renderRelatedProducts(project, productsIndex) +

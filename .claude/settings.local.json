@@ -1,5 +1,11 @@
 {
   "permissions": {
-    "allow": []
+    "allow": [
+      "Bash(python -c \"import json; [json.load\\(open\\(f,encoding='utf-8'\\)\\) for f in ['assets/locales/en.json','assets/locales/fr.json','assets/locales/ar.json']]; print\\('OK — all 3 locales parse'\\)\")",
+      "Bash(node -e \"require\\('fs'\\).readFileSync\\('assets/project-detail.js','utf8'\\); new Function\\(require\\('fs'\\).readFileSync\\('assets/project-detail.js','utf8'\\)\\); console.log\\('JS parses OK'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python scripts/build_projects.py)",
+      "Bash(python scripts/build_products.py)"
+    ]
   }
 }

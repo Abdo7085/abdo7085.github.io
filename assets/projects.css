@@ -869,3 +869,59 @@ body:not(.home-page) header.fixed.top-0.z-50 {
 [dir="rtl"] .proj-testimonial::before {
   content: '\201D';
 }
+
+/* Brands & Protocols card — sits inside the narrative column, below the description */
+.proj-brands-card {
+  background: var(--proj-card-bg);
+  border: 1px solid var(--proj-border);
+  border-radius: var(--proj-radius-md);
+  box-shadow: var(--proj-shadow);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.75rem;
+}
+.proj-brands-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--proj-text-main);
+  margin: 0 0 1rem;
+}
+.proj-brands-group {
+  margin-bottom: 1rem;
+}
+.proj-brands-group:last-child {
+  margin-bottom: 0;
+}
+.proj-brands-group-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--proj-text-muted);
+  margin-bottom: 0.5rem;
+}
+.proj-brands-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.proj-brand-chip,
+.proj-protocol-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.proj-brand-chip {
+  background: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid var(--proj-border);
+}
+.proj-protocol-chip {
+  background: rgba(184, 108, 37, 0.08);
+  color: var(--proj-primary);
+  border: 1px solid rgba(184, 108, 37, 0.22);
+}

@@ -141,6 +141,9 @@ ffmpeg -i walkthrough.mp4 -ss 00:00:01 -vframes 1 walkthrough-poster.webp
 
   "related_products": ["eae-knx-actuator-8ch", "reyee-rg-ew3200gx-pro"],
 
+  "extra_brands": ["Hikvision", "Dahua"],
+  "extra_protocols": ["RTSP", "ONVIF", "PoE"],
+
   "testimonial": {
     "author": "Mr. X",
     "quote": {
@@ -166,7 +169,9 @@ ffmpeg -i walkthrough.mp4 -ss 00:00:01 -vframes 1 walkthrough-poster.webp
 - **Reel entries are NOT rendered in the gallery strip**. They appear as a sticky card beside the project description. The gallery strip only contains `image` and `video` items, in the order they appear in the `media` array.
 - `reel.instagram_url` is optional — when present, a small "View on Instagram" button appears below the sticky video card. When absent, only the autoplay-muted MP4 is shown.
 - At most **one reel per project** is meaningful. If you list multiple, only the first is rendered as the sticky card; the rest are ignored.
-- `related_products` is an array of `id`s from `data/products/`. The build script validates they exist and emits a `mentions` JSON-LD array linking to the product pages.
+- `related_products` is an array of `id`s from `data/products/`. The build script validates they exist and emits a `mentions` JSON-LD array linking to the product pages. It also feeds the **Brands & Protocols** card on the project page (the renderer reads each product's `brand` + `technology[]` from `products_index.json` and deduplicates them into two chip rows).
+- `extra_brands` (optional, string array) — manually-added brand names for equipment used on-site that we **don't sell or carry in the catalog** (e.g. `"Hikvision"`, `"Dahua"`). Merged with and deduped against brands derived from `related_products`. Leave out entirely if not needed — the section still renders from `related_products` alone. Names are never translated across languages (same rule as product brand names).
+- `extra_protocols` (optional, string array) — manually-added protocols/technologies not already covered by the `related_products` (e.g. `"RTSP"`, `"ONVIF"`, `"PoE"`). Same merge-and-dedupe behavior as `extra_brands`. Never translated.
 - `testimonial` is optional. When present, rendered as a `<blockquote>` styled component and included in JSON-LD as a `review.reviewBody` on the CreativeWork.
 - `duration_days` is optional, used only in the page's "Project Facts" badge strip.
 

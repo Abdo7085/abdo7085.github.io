@@ -153,5 +153,8 @@
   "page_title_project": "Project Case Study | S‑ELECTRICITY Morocco",
   "project_not_found": "Project Not Found",
   "project_not_found_desc": "The project you are looking for does not exist or has been removed.",
-  "proj_gallery_title": "Project Gallery"
+  "proj_gallery_title": "Project Gallery",
+  "proj_brands_title": "Brands & Protocols",
+  "proj_brands_label": "Brands",
+  "proj_protocols_label": "Protocols"
 }

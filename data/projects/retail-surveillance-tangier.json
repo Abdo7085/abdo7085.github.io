@@ -56,6 +56,8 @@
   ],
 
   "related_products": ["rg-eg105gw-t", "rg-es220gs-lp"],
+  "extra_brands": ["Hikvision", "Dahua"],
+  "extra_protocols": ["RTSP", "ONVIF", "PoE"],
 
   "duration_days": 4
 }
