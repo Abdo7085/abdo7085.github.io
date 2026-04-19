@@ -366,11 +366,11 @@
 
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode: function(node) {
-        // Skip text nodes inside product containers — their content is already
+        // Skip text nodes inside product/project containers — their content is already
         // translated via the multilingual JSON data and the t() helper.
         var el = node.parentElement;
         while(el) {
-          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper') {
+          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper') {
             return NodeFilter.FILTER_REJECT;
           }
           el = el.parentElement;
