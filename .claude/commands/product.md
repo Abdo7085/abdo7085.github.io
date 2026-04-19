@@ -91,18 +91,20 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 
 2. **Remove the background from the product image** — Most manufacturer images have a studio background. Choose the right tool **before** running — do NOT try AI first and fall back; pick based on product type:
 
-   - **`remove_bg.py` (AI)** — Use for standard products: relays, actuators, power supplies, routers, switches, sensors — anything with a plastic/metal housing and no large dark screen.
+   - **`remove_bg.py` (AI)** — Use for standard products with a simple, compact housing: relays, actuators, power supplies, indoor APs, network switches, sensors — anything that's essentially a rectangular box with no thin protrusions and no large dark screen.
      ```bash
      python scripts/remove_bg.py assets/products/<product-slug>.<ext>
      ```
      *Requires: `pip install "rembg[cpu]"`. Uses rembg / U²-Net AI model.*
 
-   - **`remove_bg_traditional.py` (Flood Fill)** — Use for **any product with a visible screen or large dark/black surface**: touch panels, room control units with displays, tablets, monitors. The AI model treats dark bezels and screens as background and removes them, destroying the product image. The traditional Flood Fill algorithm only removes the actual outer background and preserves internal colors.
+   - **`remove_bg_traditional.py` (Flood Fill)** — Use for any product where the AI model would misread part of the product as background. In particular:
+     - **Products with thin protruding parts** — wireless routers with external antennas, devices with whip/rod antennas, thin cables or leads extending from the body. The AI model crops out these thin elements as noise, destroying key product features.
+     - **Products with a visible screen or large dark/black surface** — touch panels, room control units with displays, tablets, monitors. The AI model treats dark bezels and screens as background and removes them.
      ```bash
      python scripts/remove_bg_traditional.py assets/products/<product-slug>.<ext>
      ```
 
-   **Decision rule:** If the product image shows a screen, display, or large dark-colored face → always use `remove_bg_traditional.py`. For everything else → use `remove_bg.py`.
+   **Decision rule:** If the product image shows (a) a screen/display/large dark face, OR (b) thin protruding parts like external antennas → always use `remove_bg_traditional.py`. For everything else → use `remove_bg.py`.
 
    Both tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
 
