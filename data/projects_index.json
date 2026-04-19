@@ -81,5 +81,28 @@
     },
     "cover": "/assets/hometheatre1.webp",
     "media_count": 3
+  },
+  {
+    "id": "huerto-pool-tetouan",
+    "date": "2025-07-16",
+    "location": "Tetouan, Morocco",
+    "categories": [
+      "Electrical Installation",
+      "Network & Wi-Fi",
+      "Security & Surveillance",
+      "Smart Home Automation"
+    ],
+    "title": {
+      "en": "Turnkey smart electrical and network fit-out for HUERTO POOL, Tetouan",
+      "fr": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan",
+      "ar": "تجهيز متكامل — كهرباء، شبكة وأتمتة ذكية لمطعم HUERTO POOL في تطوان"
+    },
+    "short_description": {
+      "en": "End-to-end electrical, network, surveillance and automation for HUERTO POOL, a luxury restaurant in Tetouan.",
+      "fr": "Installation complète électricité, réseau, vidéosurveillance et domotique pour HUERTO POOL, restaurant haut de gamme à Tétouan.",
+      "ar": "تركيب متكامل للكهرباء والشبكة والمراقبة والأجهزة الذكية لـ HUERTO POOL، مطعم فاخر جديد في تطوان."
+    },
+    "cover": "/assets/projects/huerto-pool-tetouan/cover.webp",
+    "media_count": 2
   }
 ]

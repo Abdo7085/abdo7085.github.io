@@ -47,37 +47,128 @@ The build script extracts real pixel dimensions via Pillow (for images and video
 
 ### Adding a New Project
 
-**Required questions to ask the user before writing any files.** Do not invent answers — ask one at a time if needed:
+**The interaction is conversational, not a rigid questionnaire.** Claude listens to what the user describes in natural language, extracts every fact already given, and auto-generates everything that can be inferred (title, short/long description in all three languages, categories, matched related products, extra brands/protocols). The user should only have to re-state things the narrative genuinely did not cover.
 
-1. **Project basics**: title (EN), short description, location, categories, date, duration.
-2. **Cover photo**: full path to a photo file on the user's computer that will be used as the listing card + `og:image`.
-3. **Gallery photos**: full paths to all photos that belong in the gallery strip (order matters; the first is shown first).
-4. **Reel** (optional but recommended if the client is comfortable showing video):
-   - Ask: _"Do you have a 9:16 MP4 video for this project?"_
-   - If **yes**: ask for the full path to the file on the user's computer. Copy it into `assets/reels/<project-slug>.mp4` and record it under `media[]` as `type: "reel"`.
-   - If **no**: skip the reel entry entirely.
-5. **Instagram URL for the reel** (only if a reel was provided):
-   - Ask: _"Do you have an Instagram link for this reel?"_
-   - If **yes**: save it as `instagram_url` on the reel entry — this becomes the "View on Instagram" button below the sticky reel card.
-   - If **no**: omit the field; the reel still autoplays, just without the Instagram button.
-6. **Related products**: IDs from `data/products/` that were used in this project.
-7. **Testimonial** (optional): quote + author initials (never full name without written consent).
+The flow has four phases — **A: Narrative**, **B: Draft**, **C: Media**, **D: Build**. Do NOT write any files before the end of Phase C.
 
-**Then build the media folder:**
+---
 
-```bash
-mkdir -p assets/projects/<project-slug>
-mkdir -p assets/reels                  # once per repo
-```
+#### Phase A — Narrative capture
 
-Copy every photo the user provided into `assets/projects/<project-slug>/` (renaming to kebab-case: `living-room.webp`, `panel-close-up.webp`, …). Copy the reel MP4 to `assets/reels/<project-slug>.mp4`.
+Open with a single free-form prompt. Do NOT send a numbered checklist. Use something like:
 
-For any `type: "video"` entry, also drop a **poster frame** (same name + `-poster.webp`). Extract one with ffmpeg if needed:
-```bash
-ffmpeg -i walkthrough.mp4 -ss 00:00:01 -vframes 1 walkthrough-poster.webp
-```
+> "أخبرني عن المشروع بكلماتك الخاصة — ماذا طلب العميل؟ ماذا ركّبت؟ أين ومتى؟ ما المعدات والعلامات التجارية التي استخدمتها؟ وإذا كان المشروع استغرق عدة أيام اذكر ذلك."
 
-2. **Create the JSON file** at `data/projects/<project-slug>.json` using this template:
+From the user's reply, extract silently (do NOT ask again if already given):
+- `location` (city + country — infer "Morocco" if a Moroccan city is mentioned without country)
+- `date` in ISO `YYYY-MM-DD`. Convert relative dates ("last month", "قبل أسبوعين") to absolute using today's date.
+- `duration_days` if mentioned
+- equipment / brand / protocol / technology keywords for product matching
+- implicit categories (inferred from equipment + context)
+- a testimonial hint if the user quotes the client
+
+Ask follow-up questions **only** for truly missing critical info. Typical gaps:
+- date not mentioned → "متى تم المشروع تقريباً؟"
+- location ambiguous → ask for the city
+- core scope unclear → ask one focused clarifying question
+
+Never re-ask for something the user already said. Never ask for things that belong to Phase C (media paths, Instagram link, testimonial) in Phase A.
+
+---
+
+#### Phase B — Draft generation (still NO files written)
+
+1. **Read `data/products_index.json`** and match related products from the narrative (see "Matching Related Products from the Narrative" below).
+2. **Assemble a draft** covering everything that can be auto-generated:
+   - Proposed `id` slug (see "Drafting Guidance")
+   - `title.en` → `title.fr` → `title.ar` (write EN first, then translate)
+   - `short_description` (12–15 words max, lead with deliverable) in all three languages
+   - `description` (4–8 sentences, case-study narrative) in all three languages
+   - `categories` from the approved list — reuse existing values (see "Existing Category Values")
+   - `related_products` — array of IDs from the catalog
+   - `extra_brands` / `extra_protocols` for anything mentioned that isn't already covered by the matched products
+   - `duration_days` if given
+   - `testimonial` if the user quoted the client (ask only for the author initials — never the full name)
+3. **Present the draft** to the user in a human-readable form (NOT raw JSON). Show:
+   - Proposed `id`
+   - Title + short description + first two lines of description in EN / FR / AR
+   - Categories as chips
+   - Matched products as a bullet list with their titles (not just IDs)
+   - Extra brands / extra protocols as chip rows
+   Close with: **"هل نعدّل أي شيء قبل إنشاء الملفات؟"**
+4. **Iterate on corrections.** The user may reply in free-form ("غيّر العنوان إلى…", "احذف Ruijie واضف Hikvision في extra_brands", "اختصر الوصف"). Apply changes in place and re-show the updated draft until the user approves.
+
+Do not proceed to Phase C before explicit approval of the draft.
+
+---
+
+#### Phase C — Media collection
+
+Once the draft is approved, ask for media in **one compact message** (still conversational, not a numbered bureaucracy):
+
+- مسار الصورة الرئيسية (cover) على جهازك
+- مسارات صور المعرض (بالترتيب الذي تريد عرضه)
+- هل لديك فيديو 9:16 (reel)؟ إذا نعم: المسار + رابط Instagram اختياري
+- هل توجد شهادة للعميل ننشرها؟ إذا نعم: الاقتباس + الاسم المختصر (مثل "Mr. X")
+
+Only after receiving paths (and reel/testimonial answers), move to Phase D.
+
+---
+
+#### Phase D — File creation + build
+
+1. **Create folders:**
+   ```bash
+   mkdir -p assets/projects/<project-slug>
+   mkdir -p assets/reels                  # once per repo
+   ```
+
+2. **Copy and rename media** into `assets/projects/<project-slug>/` using kebab-case names (`living-room.webp`, `panel-close-up.webp`, …). Copy the reel MP4 to `assets/reels/<project-slug>.mp4`.
+
+3. **Poster frames** — for every `type: "video"` entry, drop a poster frame alongside (same name + `-poster.webp`). Extract with ffmpeg if missing:
+   ```bash
+   ffmpeg -i walkthrough.mp4 -ss 00:00:01 -vframes 1 walkthrough-poster.webp
+   ```
+
+4. **Write the JSON file** at `data/projects/<project-slug>.json` using the schema template below.
+
+5. **Build everything:** `python scripts/build_projects.py` (see build-order warning further down if products/root pages also changed in the same session).
+
+6. **Report back** the three static URLs (EN/FR/AR) so the user can open them.
+
+---
+
+#### Matching Related Products from the Narrative
+
+When you generate the draft in Phase B, do product matching from **`data/products_index.json`** (the product catalog index — one row per product, currently 75 products). Do not open individual files in `data/products/` unless you need to disambiguate.
+
+Match on, in order of priority:
+1. **Explicit model numbers or product names** in the narrative (e.g. "RG-EW3200", "KNX actuator 8ch")
+2. **Brand name + product type** (e.g. "Reyee mesh" → match Reyee mesh routers)
+3. **Technology + installation context** (e.g. "KNX dimmer in a villa" → KNX dimmer actuators)
+4. **Categorical inference** (e.g. "surveillance cameras" → all camera products of the brand mentioned, or the most-commonly-used brand if unspecified)
+
+Rules:
+- **Never invent product IDs.** Every `related_products` ID must exist in `products_index.json`. Verify before adding.
+- **Prefer the specific over the generic.** If the narrative mentions a specific model and you have it, use it. Don't add ten vaguely-related SKUs to pad the list.
+- **If ambiguous**, include your best candidate and mention the alternatives to the user during draft review ("I matched X — also considered Y and Z, let me know if you'd prefer those").
+- **Equipment not in the catalog** (e.g. Hikvision cameras when we don't stock them) goes into `extra_brands` / `extra_protocols`, never fake-added to `related_products`.
+
+---
+
+#### Drafting Guidance
+
+- **Write EN first, then translate** to FR and AR. Never translate FR→AR or AR→EN — quality degrades.
+- Follow the **"Writing Style"** section below for length and tone (lead with deliverable, case-study narrative, never name the client).
+- Follow the **"Arabic Translation Rules"** section below when translating — keep brand names, model numbers, protocols, and industry-standard English tech terms in English inside the Arabic text.
+- **Do NOT mention specific product models, brand names, or protocols in `description` or `short_description`.** They are rendered separately by the page's **Brands & Protocols** card (fed by `related_products` + `extra_brands` + `extra_protocols`), so repeating names like "RG-EG105GW-X", "Dahua NVR", "Shelly Pro 4PM", "RTSP", "PoE", "Home Assistant" inside the narrative is redundant visual noise. Describe **what was delivered** in system-level terms instead — e.g. "a managed network backbone with ceiling-mounted Wi-Fi access points covering the whole venue", "PoE surveillance with centralized recording", "smart automation for lighting scenes, motorized shutters, and zoned power control". The reader sees the exact models in the chip rows.
+- **Propose the `id` slug** as `<primary-category-keyword>-<location-city>`, kebab-case, ASCII only. Examples: `surveillance-tangier`, `knx-villa-tetouan`, `mesh-wifi-casablanca-apt`. Before using the slug, check `data/projects/` for collisions — if a file with that slug exists, append a discriminator (`-v2`, `-2026`, or a more specific keyword).
+- **Don't pad the description.** 4–8 sentences means 4–8. If the narrative only supports 4, write 4. Do not invent client reactions or numbers not provided by the user.
+- **Categories**: pick from the approved list (see "Existing Category Values"). If the narrative genuinely doesn't fit any existing category, propose a new one to the user during draft review (do NOT silently introduce it).
+
+---
+
+#### Target Schema (reference — assembled during Phase B, written in Phase D)
 
 ```json
 {
@@ -175,34 +266,34 @@ ffmpeg -i walkthrough.mp4 -ss 00:00:01 -vframes 1 walkthrough-poster.webp
 - `testimonial` is optional. When present, rendered as a `<blockquote>` styled component and included in JSON-LD as a `review.reviewBody` on the CreativeWork.
 - `duration_days` is optional, used only in the page's "Project Facts" badge strip.
 
-3. **Check category consistency** — Read a few existing projects in `data/projects/` to match the exact casing of `categories` values. Consistency matters because categories feed badges on the listing cards (no filter UI yet, but planned).
+#### What the Build Does
 
-4. **Build everything**:
-   ```bash
-   python scripts/build_projects.py
-   ```
-   This single command does all of the following:
-   - Runs Pillow on every image + video poster to populate `width`/`height` in the index.
-   - Builds `data/projects_index.json` (sorted by `date` descending).
-   - Generates static HTML pages in `projects/`, `fr/projects/`, `ar/projects/` with:
-     - `<title>` + `<meta description>` translated per language.
-     - hreflang tags for all 3 languages + x-default (pointing to EN).
-     - Open Graph + Twitter Card with `cover` as `og:image`.
-     - og:locale + og:locale:alternate for each language.
-     - JSON-LD `CreativeWork` (or `Article` when a written narrative dominates) + BreadcrumbList + `mentions[]` for related products.
-     - `<meta name="robots" content="index, follow">` override.
-     - `<h1>` + `<p>` inside `<noscript>` so crawlers that don't execute JS still get the core content.
-     - Inline `<script>window.__PROJECT__ = {...}</script>` with the enriched project data (so `project-detail.js` renders instantly without a second fetch).
-   - Injects ItemList JSON-LD into `previous-work.html` (EN/FR/AR) for portfolio rich results.
-   - Appends all project URLs + lastmod + hreflang alternates to `sitemap.xml`.
+```bash
+python scripts/build_projects.py
+```
 
-   **⚠️ Build order matters:** `sitemap.xml` is rewritten by both `build_products.py` and `build_projects.py`. If you modified root pages AND projects AND products in the same session, run in this order so the final sitemap is complete:
-   ```bash
-   python scripts/generate_localized.py    # root pages + partial sitemap
-   python scripts/build_projects.py         # projects appended to sitemap
-   python scripts/build_products.py         # MUST run LAST (products + final sitemap merge)
-   ```
-   `build_products.py` is the authoritative final writer — it reads `projects_index.json` and merges project URLs into its sitemap output so nothing is lost.
+This single command:
+- Runs Pillow on every image + video poster to populate `width`/`height` in the index.
+- Builds `data/projects_index.json` (sorted by `date` descending).
+- Generates static HTML pages in `projects/`, `fr/projects/`, `ar/projects/` with:
+  - `<title>` + `<meta description>` translated per language.
+  - hreflang tags for all 3 languages + x-default (pointing to EN).
+  - Open Graph + Twitter Card with `cover` as `og:image`.
+  - og:locale + og:locale:alternate for each language.
+  - JSON-LD `CreativeWork` (or `Article` when a written narrative dominates) + BreadcrumbList + `mentions[]` for related products.
+  - `<meta name="robots" content="index, follow">` override.
+  - `<h1>` + `<p>` inside `<noscript>` so crawlers that don't execute JS still get the core content.
+  - Inline `<script>window.__PROJECT__ = {...}</script>` with the enriched project data (so `project-detail.js` renders instantly without a second fetch).
+- Injects ItemList JSON-LD into `previous-work.html` (EN/FR/AR) for portfolio rich results.
+- Appends all project URLs + lastmod + hreflang alternates to `sitemap.xml`.
+
+**⚠️ Build order matters:** `sitemap.xml` is rewritten by both `build_products.py` and `build_projects.py`. If you modified root pages AND projects AND products in the same session, run in this order so the final sitemap is complete:
+```bash
+python scripts/generate_localized.py    # root pages + partial sitemap
+python scripts/build_projects.py         # projects appended to sitemap
+python scripts/build_products.py         # MUST run LAST (products + final sitemap merge)
+```
+`build_products.py` is the authoritative final writer — it reads `projects_index.json` and merges project URLs into its sitemap output so nothing is lost.
 
 ### Editing an Existing Project
 

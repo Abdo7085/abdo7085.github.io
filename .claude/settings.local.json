@@ -5,7 +5,11 @@
       "Bash(node -e \"require\\('fs'\\).readFileSync\\('assets/project-detail.js','utf8'\\); new Function\\(require\\('fs'\\).readFileSync\\('assets/project-detail.js','utf8'\\)\\); console.log\\('JS parses OK'\\)\")",
       "Bash(python -c ' *)",
       "Bash(python scripts/build_projects.py)",
-      "Bash(python scripts/build_products.py)"
+      "Bash(python scripts/build_products.py)",
+      "WebFetch(domain:reyee.ruijie.com)",
+      "Bash(cp \"C:/Users/mlolo/Downloads/A place to connect, sip, and simply feel good. 💫 HUERTO POOL Rooftop..webp\" \"assets/projects/huerto-pool-tetouan/cover.webp\")",
+      "Bash(cp \"C:/Users/mlolo/OneDrive/سطح المكتب/Media/Website PV work/Design, Ambiance, Plaisir...Tout se vit ici — HUERTO POOL. 🌿.mp4\" \"assets/reels/huerto-pool-tetouan.mp4\")",
+      "Bash(python scripts/generate_localized.py)"
     ]
   }
 }
