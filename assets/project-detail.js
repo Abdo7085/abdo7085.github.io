@@ -615,11 +615,18 @@
         const gap = parseInt(getComputedStyle(strip).columnGap || '16', 10) || 16;
         return item.getBoundingClientRect().width + gap;
       }
+      function isRTL() {
+        return getComputedStyle(strip).direction === 'rtl';
+      }
       function updateNavState() {
         const max = strip.scrollWidth - strip.clientWidth - 1;
         const pos = Math.abs(strip.scrollLeft);
-        if (prev) prev.disabled = pos <= 2;
-        if (next) next.disabled = pos >= max;
+        const atStart = pos <= 2;
+        const atEnd = pos >= max;
+        // In RTL, the visual roles of prev/next are swapped (prev shows right-arrow ▶ = forward).
+        // Disable each button based on the navigation it actually performs.
+        if (prev) prev.disabled = isRTL() ? atEnd : atStart;
+        if (next) next.disabled = isRTL() ? atStart : atEnd;
       }
       function getCurrentIndex() {
         const items = Array.from(strip.querySelectorAll('.proj-media-item'));
@@ -644,11 +651,13 @@
       }
       if (prev) prev.addEventListener('click', function() {
         const { index } = getCurrentIndex();
-        goTo(index - 1);
+        // In RTL, the visual arrow on this button points right (flipped via CSS),
+        // so user expects forward navigation. Swap actions in RTL.
+        goTo(isRTL() ? index + 1 : index - 1);
       });
       if (next) next.addEventListener('click', function() {
         const { index } = getCurrentIndex();
-        goTo(index + 1);
+        goTo(isRTL() ? index - 1 : index + 1);
       });
       strip.addEventListener('scroll', updateNavState, { passive: true });
       window.addEventListener('resize', updateNavState);
