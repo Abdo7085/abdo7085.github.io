@@ -557,11 +557,34 @@
         if (prev) prev.disabled = pos <= 2;
         if (next) next.disabled = pos >= max;
       }
+      function getCurrentIndex() {
+        const items = Array.from(strip.querySelectorAll('.proj-media-item'));
+        if (!items.length) return { items: [], index: 0 };
+        const stripRect = strip.getBoundingClientRect();
+        const stripCenter = stripRect.left + stripRect.width / 2;
+        let closest = 0;
+        let minDist = Infinity;
+        items.forEach(function(item, i) {
+          const r = item.getBoundingClientRect();
+          const c = r.left + r.width / 2;
+          const d = Math.abs(c - stripCenter);
+          if (d < minDist) { minDist = d; closest = i; }
+        });
+        return { items: items, index: closest };
+      }
+      function goTo(targetIndex) {
+        const items = strip.querySelectorAll('.proj-media-item');
+        if (!items.length) return;
+        const idx = Math.max(0, Math.min(items.length - 1, targetIndex));
+        items[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
       if (prev) prev.addEventListener('click', function() {
-        strip.scrollBy({ left: -stepSize(), behavior: 'smooth' });
+        const { index } = getCurrentIndex();
+        goTo(index - 1);
       });
       if (next) next.addEventListener('click', function() {
-        strip.scrollBy({ left: stepSize(), behavior: 'smooth' });
+        const { index } = getCurrentIndex();
+        goTo(index + 1);
       });
       strip.addEventListener('scroll', updateNavState, { passive: true });
       window.addEventListener('resize', updateNavState);
@@ -607,8 +630,15 @@
 
       // --- Keyboard arrow support when strip is focused ---
       strip.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight') { strip.scrollBy({ left: stepSize(), behavior: 'smooth' }); e.preventDefault(); }
-        if (e.key === 'ArrowLeft') { strip.scrollBy({ left: -stepSize(), behavior: 'smooth' }); e.preventDefault(); }
+        const { index } = getCurrentIndex();
+        if (e.key === 'ArrowRight') {
+          goTo(index + 1);
+          e.preventDefault();
+        }
+        if (e.key === 'ArrowLeft') {
+          goTo(index - 1);
+          e.preventDefault();
+        }
       });
     });
   }
