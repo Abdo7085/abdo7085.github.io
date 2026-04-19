@@ -1,0 +1,94 @@
+{
+  "id": "rg-eg105gw-x",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-EG105GW-X",
+    "fr": "Reyee RG-EG105GW-X",
+    "ar": "ريي RG-EG105GW-X"
+  },
+  "short_description": {
+    "en": "Wi-Fi 6 all-in-one business VPN router.",
+    "fr": "Routeur VPN professionnel tout-en-un Wi-Fi 6.",
+    "ar": "راوتر أعمال متكامل Wi-Fi 6 مع VPN."
+  },
+  "description": {
+    "en": "A high-performance Wi-Fi 6 router built for small businesses — offices, shops, cafés, restaurants, and hotels that need fast, reliable connectivity out of the box. It replaces an entire rack of equipment by combining a Wi-Fi 6 access point, gigabit switch, VPN gateway, and mesh controller in one compact unit. Handles up to 160 devices at once with real wire-speed performance, and four of its five Gigabit ports can be used as WAN inputs for internet redundancy and load balancing. Setup takes minutes, and the free Ruijie Cloud dashboard lets you monitor, diagnose, and control the whole network remotely from a phone or browser.",
+    "fr": "Un routeur Wi-Fi 6 haute performance conçu pour les petites entreprises — bureaux, boutiques, cafés, restaurants et hôtels qui ont besoin d'une connectivité rapide et fiable dès la sortie de la boîte. Il remplace toute une baie d'équipement en combinant un point d'accès Wi-Fi 6, un commutateur gigabit, une passerelle VPN et un contrôleur mesh dans un seul boîtier compact. Il gère jusqu'à 160 appareils simultanément à pleine vitesse, et quatre de ses cinq ports Gigabit peuvent servir d'entrées WAN pour la redondance internet et l'équilibrage de charge. La configuration prend quelques minutes, et le tableau de bord gratuit Ruijie Cloud permet de surveiller, diagnostiquer et contrôler tout le réseau à distance depuis un téléphone ou un navigateur.",
+    "ar": "راوتر Wi-Fi 6 عالي الأداء مصمم للأعمال الصغيرة — المكاتب والمحلات والمقاهي والمطاعم والفنادق التي تحتاج اتصالاً سريعاً وموثوقاً جاهزاً للاستخدام. يحل محل منظومة كاملة من الأجهزة عبر دمج نقطة وصول Wi-Fi 6، ومحوّل Gigabit، وبوابة VPN، ومتحكم mesh في جهاز واحد صغير. يتعامل مع حتى 160 جهازاً في آن واحد بسرعة كاملة، وأربعة من منافذه الخمسة Gigabit قابلة للاستخدام كمدخلات WAN لتوفير احتياطي للإنترنت وموازنة الأحمال. الإعداد يستغرق دقائق فقط، ولوحة تحكم Ruijie Cloud المجانية تتيح مراقبة الشبكة وتشخيصها والتحكم بها عن بُعد من الهاتف أو المتصفح."
+  },
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Free standing",
+  "specs": {
+    "en": {
+      "Wi-Fi Standard": "Wi-Fi 6 (802.11ax), backward compatible with 802.11a/b/g/n/ac",
+      "Max Data Rate": "2,974 Mbps",
+      "Throughput": "1,200 Mbps",
+      "Ethernet Ports": "5 × Gigabit (1 LAN + 4 WAN/LAN)",
+      "Max Concurrent Clients": "160",
+      "Processor": "Dual-core 1.3 GHz",
+      "RAM": "512 MB DDR3",
+      "Flash": "128 MB SPI NAND",
+      "Antennas": "5 × 5 dBi external",
+      "VPN": "IPSec, OpenVPN, L2TP, PPTP",
+      "Mesh": "One-Click Reyee Mesh",
+      "WAN Load Balancing": "Up to 4 WAN",
+      "Cloud Management": "Free (Ruijie Cloud)",
+      "Dimensions": "283 × 172 × 46 mm",
+      "Weight": "1.2 kg",
+      "Operating Temperature": "0°C to 40°C"
+    },
+    "fr": {
+      "Norme Wi-Fi": "Wi-Fi 6 (802.11ax), rétrocompatible 802.11a/b/g/n/ac",
+      "Débit Max": "2 974 Mbps",
+      "Débit Réel": "1 200 Mbps",
+      "Ports Ethernet": "5 × Gigabit (1 LAN + 4 WAN/LAN)",
+      "Clients Simultanés Max": "160",
+      "Processeur": "Double cœur 1,3 GHz",
+      "RAM": "512 Mo DDR3",
+      "Flash": "128 Mo SPI NAND",
+      "Antennes": "5 × 5 dBi externes",
+      "VPN": "IPSec, OpenVPN, L2TP, PPTP",
+      "Mesh": "Reyee Mesh en un clic",
+      "Équilibrage WAN": "Jusqu'à 4 WAN",
+      "Gestion Cloud": "Gratuite (Ruijie Cloud)",
+      "Dimensions": "283 × 172 × 46 mm",
+      "Poids": "1,2 kg",
+      "Température de Fonctionnement": "0°C à 40°C"
+    },
+    "ar": {
+      "معيار الواي فاي": "Wi-Fi 6 (802.11ax)، متوافق مع 802.11a/b/g/n/ac",
+      "أقصى سرعة": "2,974 ميجابت/ثانية",
+      "السرعة الفعلية": "1,200 ميجابت/ثانية",
+      "منافذ إيثرنت": "5 × Gigabit (1 LAN + 4 WAN/LAN)",
+      "أقصى عدد أجهزة متصلة": "160",
+      "المعالج": "ثنائي النواة 1.3 جيجاهرتز",
+      "الذاكرة": "512 ميجابايت DDR3",
+      "فلاش": "128 ميجابايت SPI NAND",
+      "الهوائيات": "5 × 5 dBi خارجية",
+      "VPN": "IPSec، OpenVPN، L2TP، PPTP",
+      "شبكة Mesh": "Reyee Mesh بنقرة واحدة",
+      "موازنة أحمال WAN": "حتى 4 WAN",
+      "إدارة سحابية": "مجانية (Ruijie Cloud)",
+      "الأبعاد": "283 × 172 × 46 مم",
+      "الوزن": "1.2 كجم",
+      "درجة حرارة التشغيل": "0 إلى 40 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/rg-eg105gw-x.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://reyee.ruijie.com/en-global/resources/preview/77388/"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://reyee.ruijie.com/en-global/products/reyee-router/wireless-router/eg105gwx/"
+    }
+  ]
+}

@@ -445,6 +445,28 @@
     "image": "/assets/products/rg-eg105gw-t.png"
   },
   {
+    "id": "rg-eg105gw-x",
+    "brand": "Reyee",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Free standing",
+    "title": {
+      "en": "Reyee RG-EG105GW-X",
+      "fr": "Reyee RG-EG105GW-X",
+      "ar": "ريي RG-EG105GW-X"
+    },
+    "short_description": {
+      "en": "Wi-Fi 6 all-in-one business VPN router.",
+      "fr": "Routeur VPN professionnel tout-en-un Wi-Fi 6.",
+      "ar": "راوتر أعمال متكامل Wi-Fi 6 مع VPN."
+    },
+    "category": "",
+    "image": "/assets/products/rg-eg105gw-x.png"
+  },
+  {
     "id": "rg-es220gs-lp",
     "brand": "Reyee",
     "technology": [
@@ -464,6 +486,28 @@
     },
     "category": "",
     "image": "/assets/products/rg-es220gs-lp.png"
+  },
+  {
+    "id": "rg-rap2200f",
+    "brand": "Reyee",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Network",
+    "installation": "Ceiling mounting",
+    "title": {
+      "en": "Reyee RG-RAP2200(F)",
+      "fr": "Reyee RG-RAP2200(F)",
+      "ar": "ريي RG-RAP2200(F)"
+    },
+    "short_description": {
+      "en": "Wi-Fi 5 dual-band ceiling access point.",
+      "fr": "Point d'accès plafond Wi-Fi 5 bi-bande.",
+      "ar": "نقطة وصول سقفية Wi-Fi 5 ثنائية النطاق."
+    },
+    "category": "",
+    "image": "/assets/products/rg-rap2200f.png"
   },
   {
     "id": "rg-rap62",

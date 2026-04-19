@@ -1,0 +1,91 @@
+{
+  "id": "rg-rap2200f",
+  "brand": "Reyee",
+  "title": {
+    "en": "Reyee RG-RAP2200(F)",
+    "fr": "Reyee RG-RAP2200(F)",
+    "ar": "ريي RG-RAP2200(F)"
+  },
+  "short_description": {
+    "en": "Wi-Fi 5 dual-band ceiling access point.",
+    "fr": "Point d'accès plafond Wi-Fi 5 bi-bande.",
+    "ar": "نقطة وصول سقفية Wi-Fi 5 ثنائية النطاق."
+  },
+  "description": {
+    "en": "A slim Wi-Fi 5 ceiling access point built to cover busy spaces — hotel lobbies, schools, clinics, retail shops, and offices — with fast, stable wireless. Its dual-band design and four spatial streams let it serve over 100 devices at once without slowing down. One network cable carries both data and power thanks to PoE support, making installation clean and simple. It joins a Reyee Mesh network in one click so you can blanket larger spaces with seamless coverage, and the free Ruijie Cloud dashboard lets you manage the entire deployment remotely from a phone or laptop.",
+    "fr": "Un point d'accès Wi-Fi 5 plafonnier fin, conçu pour couvrir les espaces fréquentés — halls d'hôtel, écoles, cliniques, boutiques, bureaux — avec un Wi-Fi rapide et stable. Sa conception bi-bande et ses quatre flux spatiaux lui permettent de servir plus de 100 appareils simultanément sans ralentissement. Un seul câble réseau suffit pour les données et l'alimentation grâce au PoE, ce qui rend l'installation propre et simple. Il rejoint un réseau Reyee Mesh en un clic pour couvrir de grands espaces de façon homogène, et le tableau de bord gratuit Ruijie Cloud permet de gérer tout le déploiement à distance depuis un téléphone ou un ordinateur.",
+    "ar": "نقطة وصول Wi-Fi 5 سقفية رفيعة مصممة لتغطية الأماكن المزدحمة — ردهات الفنادق والمدارس والعيادات والمحلات والمكاتب — بشبكة لاسلكية سريعة ومستقرة. تصميمها ثنائي النطاق وأربعة تدفقات مكانية يتيح خدمة أكثر من 100 جهاز في آن واحد دون تباطؤ. كابل شبكة واحد يحمل البيانات والطاقة معاً بفضل دعم PoE، مما يجعل التركيب نظيفاً وبسيطاً. تنضم إلى شبكة Reyee Mesh بنقرة واحدة لتغطية المساحات الكبيرة بسلاسة، ولوحة تحكم Ruijie Cloud المجانية تتيح إدارة الشبكة بالكامل عن بُعد من الهاتف أو الحاسوب."
+  },
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Network",
+  "installation": "Ceiling mounting",
+  "specs": {
+    "en": {
+      "Wi-Fi Standard": "Wi-Fi 5 (802.11ac Wave 2)",
+      "Max Data Rate": "1,266 Mbps",
+      "5 GHz Speed": "866 Mbps (2x2 MU-MIMO)",
+      "2.4 GHz Speed": "400 Mbps (2x2 MU-MIMO)",
+      "Spatial Streams": "4 (dual-radio)",
+      "Ethernet Ports": "2 × 10/100 Mbps",
+      "Power Supply": "PoE/PoE+ or DC 12V 1.5A",
+      "Max Concurrent Clients": "110 (64 on 2.4 GHz + 110 on 5 GHz)",
+      "Max Managed Devices": "150",
+      "Antennas": "4 × built-in omnidirectional",
+      "Mesh": "One-Click Reyee Mesh",
+      "Cloud Management": "Free (Ruijie Cloud)",
+      "Dimensions": "194 × 194 × 35 mm",
+      "Weight": "≤ 0.45 kg",
+      "Operating Temperature": "0°C to 40°C"
+    },
+    "fr": {
+      "Norme Wi-Fi": "Wi-Fi 5 (802.11ac Wave 2)",
+      "Débit Max": "1 266 Mbps",
+      "Vitesse 5 GHz": "866 Mbps (2x2 MU-MIMO)",
+      "Vitesse 2,4 GHz": "400 Mbps (2x2 MU-MIMO)",
+      "Flux Spatiaux": "4 (double radio)",
+      "Ports Ethernet": "2 × 10/100 Mbps",
+      "Alimentation": "PoE/PoE+ ou DC 12V 1,5A",
+      "Clients Simultanés Max": "110 (64 en 2,4 GHz + 110 en 5 GHz)",
+      "Appareils Gérés Max": "150",
+      "Antennes": "4 × omnidirectionnelles intégrées",
+      "Mesh": "Reyee Mesh en un clic",
+      "Gestion Cloud": "Gratuite (Ruijie Cloud)",
+      "Dimensions": "194 × 194 × 35 mm",
+      "Poids": "≤ 0,45 kg",
+      "Température de Fonctionnement": "0°C à 40°C"
+    },
+    "ar": {
+      "معيار الواي فاي": "Wi-Fi 5 (802.11ac Wave 2)",
+      "أقصى سرعة": "1,266 ميجابت/ثانية",
+      "سرعة 5 جيجاهرتز": "866 ميجابت/ثانية (2x2 MU-MIMO)",
+      "سرعة 2.4 جيجاهرتز": "400 ميجابت/ثانية (2x2 MU-MIMO)",
+      "التدفقات المكانية": "4 (راديو مزدوج)",
+      "منافذ إيثرنت": "2 × 10/100 ميجابت/ثانية",
+      "مصدر الطاقة": "PoE/PoE+ أو DC 12V 1.5A",
+      "أقصى عدد أجهزة متصلة": "110 (64 على 2.4 GHz + 110 على 5 GHz)",
+      "أقصى أجهزة مُدارة": "150",
+      "الهوائيات": "4 × مدمجة متعددة الاتجاهات",
+      "شبكة Mesh": "Reyee Mesh بنقرة واحدة",
+      "إدارة سحابية": "مجانية (Ruijie Cloud)",
+      "الأبعاد": "194 × 194 × 35 مم",
+      "الوزن": "≤ 0.45 كجم",
+      "درجة حرارة التشغيل": "0 إلى 40 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/rg-rap2200f.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet",
+      "url": "https://reyee.ruijie.com/en-global/resources/preview/rg-rap2200-f-datasheet/"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://reyee.ruijie.com/en-global/products/reyee-wireless/reyee-indoor-ap/rg-rap2200f/"
+    }
+  ]
+}
