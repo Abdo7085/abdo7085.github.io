@@ -2,28 +2,28 @@
   "id": "huerto-pool-tetouan",
   "date": "2025-07-16",
   "location": "Tetouan, Morocco",
-  "categories": ["Electrical Installation", "Network & Wi-Fi", "Security & Surveillance", "Smart Home Automation"],
-
+  "categories": [
+    "Electrical Installation",
+    "Network & Wi-Fi",
+    "Security & Surveillance",
+    "Smart Home Automation"
+  ],
   "title": {
     "en": "Turnkey smart electrical and network fit-out for HUERTO POOL, Tetouan",
     "fr": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan",
     "ar": "تجهيز متكامل — كهرباء، شبكة وأتمتة ذكية لمطعم HUERTO POOL في تطوان"
   },
-
   "short_description": {
     "en": "End-to-end electrical, network, surveillance and automation for HUERTO POOL, a luxury restaurant in Tetouan.",
     "fr": "Installation complète électricité, réseau, vidéosurveillance et domotique pour HUERTO POOL, restaurant haut de gamme à Tétouan.",
     "ar": "تركيب متكامل للكهرباء والشبكة والمراقبة والأجهزة الذكية لـ HUERTO POOL، مطعم فاخر جديد في تطوان."
   },
-
   "description": {
     "en": "HUERTO POOL, a new luxury restaurant in Tetouan featuring a rooftop lounge and a billiards room, needed a full technical fit-out starting from a bare shell. The client wanted every critical system — power distribution, guest Wi-Fi, video surveillance and automation — operational by opening night, with room to grow. We designed and installed the main electrical panel with per-circuit load monitoring so the kitchen runs safely under heavy demand. A managed network backbone was deployed with ceiling-mounted access points covering the dining room, billiards room, rooftop and kitchen, alongside a centralized video surveillance system. Smart automation orchestrates lighting scenes, motorized shutters, and zoned power control from a single dashboard for the staff. The result is a resilient system the venue can scale as the business grows.",
     "fr": "HUERTO POOL, nouveau restaurant haut de gamme à Tétouan avec un lounge en rooftop et une salle de billard, nécessitait une mise en place technique complète, partant d'un local brut. Le client souhaitait que tous les systèmes critiques — distribution électrique, Wi-Fi invité, vidéosurveillance et domotique — soient opérationnels dès l'ouverture, avec une marge d'évolution. Nous avons conçu et installé le tableau électrique principal avec supervision des charges par circuit, afin de sécuriser le fonctionnement des équipements de cuisine en pleine charge. Une infrastructure réseau managée a été déployée avec des points d'accès plafonniers couvrant la salle, la salle de billard, le rooftop et la cuisine, accompagnée d'un système de vidéosurveillance centralisé. La domotique pilote les scènes d'éclairage, les volets motorisés et la distribution d'alimentation par zone depuis un tableau de bord unique pour l'équipe. Résultat: un système évolutif prêt à grandir avec l'activité.",
     "ar": "HUERTO POOL، مطعم فاخر جديد في تطوان يضمّ لاونج على السطح وقاعة بلياردو، احتاج إلى تجهيز تقني شامل انطلاقاً من محل خام. أراد العميل أن تكون جميع الأنظمة الأساسية — توزيع الكهرباء، Wi-Fi للزبائن، كاميرات المراقبة والأتمتة — جاهزة للعمل ليلة الافتتاح، مع إمكانية التوسّع لاحقاً. صمّمنا وركّبنا اللوحة الكهربائية الرئيسية مع قياس الأحمال على مستوى كل قاطع، لتأمين تشغيل معدات المطبخ تحت الضغط العالي. نشرنا بنية شبكة مُدارة مع نقاط وصول سقفية تغطّي صالة الطعام، قاعة البلياردو، السطح، والمطبخ، إلى جانب نظام مراقبة فيديو مركزي. الأتمتة الذكية تتحكّم في مشاهد الإضاءة، الستائر الكهربائية، وتوزيع الطاقة حسب المناطق من لوحة واحدة لطاقم المطعم. النتيجة: نظام قابل للتوسّع يرافق نمو المشروع."
   },
-
   "cover": "/assets/projects/huerto-pool-tetouan/cover.webp",
-
   "media": [
     {
       "type": "image",
@@ -45,7 +45,6 @@
       }
     }
   ],
-
   "related_products": [
     "rg-rap2200f",
     "rg-eg105gw-x",
@@ -53,10 +52,13 @@
     "shelly-plus-2pm",
     "shelly-pro-dual-cover-shutter-pm"
   ],
-
-  "extra_brands": ["Dahua", "Home Assistant"],
-  "extra_protocols": ["RTSP", "PoE"],
-
+  "extra_brands": [
+    "Dahua",
+    "Home Assistant"
+  ],
+  "extra_protocols": [
+    "PoE"
+  ],
   "testimonial": {
     "author": "The Owner",
     "quote": {
@@ -65,6 +67,5 @@
       "ar": "أهلاً بك في مطعمنا — هنا يلتقي الطعام بالبلياردو."
     }
   },
-
   "duration_days": 76
 }
