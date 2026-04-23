@@ -23,7 +23,7 @@ import glob
 import re
 import html as html_module
 from pathlib import Path
-from datetime import date, datetime
+from datetime import datetime
 
 try:
     from PIL import Image
@@ -31,38 +31,12 @@ except ImportError:
     print("ERROR: Pillow is required. Install with: pip install Pillow")
     raise
 
-ROOT = Path(__file__).resolve().parent.parent
+import _lib
+from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, today
+
 PROJECTS_DIR = ROOT / "data" / "projects"
 PROJECTS_INDEX_PATH = ROOT / "data" / "projects_index.json"
 TEMPLATE_PATH = ROOT / "project.html"
-HOST = "https://smartelectricity.ma"
-LANGS = ["en", "fr", "ar"]
-OG_LOCALES = {"en": "en_US", "fr": "fr_FR", "ar": "ar_AR"}
-TODAY = date.today().isoformat()
-
-
-# ---------------- Small helpers ----------------
-
-def t(obj, lang="en"):
-    if not obj:
-        return ""
-    if isinstance(obj, str):
-        return obj
-    return obj.get(lang) or obj.get("en") or obj.get("fr") or obj.get("ar") or ""
-
-
-def make_meta_description(project, lang, max_len=160):
-    long_desc = t(project.get("description"), lang)
-    short_desc = t(project.get("short_description"), lang)
-    text = long_desc or short_desc or ""
-    text = re.sub(r"\s+", " ", text).strip()
-    if len(text) <= max_len:
-        return text
-    cut = text[:max_len]
-    sp = cut.rfind(" ")
-    if sp > 80:
-        cut = cut[:sp]
-    return cut.rstrip(",.;:") + "…"
 
 
 def get_image_dimensions(relative_src):
@@ -263,23 +237,7 @@ def generate_project_html(template_html, project, lang, products_index):
     safe_title = html_module.escape(page_title, quote=True)
     safe_desc = html_module.escape(desc_text, quote=True)
 
-    out = template_html
-
-    # <html lang dir>
-    def repl_html_tag(m):
-        tag = m.group(0)
-        tag = re.sub(r'lang="[a-zA-Z-]*"', f'lang="{lang}"', tag)
-        if lang == "ar":
-            if "dir=" in tag:
-                tag = re.sub(r'dir="[a-z]*"', 'dir="rtl"', tag)
-            else:
-                tag = tag.replace("<html", '<html dir="rtl"')
-        else:
-            if "dir=" in tag:
-                tag = re.sub(r'dir="[a-z]*"', 'dir="ltr"', tag)
-        return tag
-
-    out = re.sub(r"<html[^>]*>", repl_html_tag, out, count=1)
+    out = _lib.set_html_lang_dir(template_html, lang)
 
     out = re.sub(r"<title[^>]*>.*?</title>", f"<title>{safe_title}</title>", out, flags=re.S, count=1)
 
@@ -449,7 +407,7 @@ def write_partial_sitemap(project_ids):
             urls.append(
                 f"  <url>\n"
                 f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{TODAY}</lastmod>\n"
+                f"    <lastmod>{today()}</lastmod>\n"
                 f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
@@ -467,7 +425,7 @@ def write_partial_sitemap(project_ids):
             urls.append(
                 f"  <url>\n"
                 f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{TODAY}</lastmod>\n"
+                f"    <lastmod>{today()}</lastmod>\n"
                 f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
                 f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
