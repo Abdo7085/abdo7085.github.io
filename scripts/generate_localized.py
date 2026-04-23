@@ -15,47 +15,17 @@ import argparse
 import tempfile
 import shutil
 
-ROOT = Path(__file__).resolve().parent.parent
-LOCALES = ROOT / 'assets' / 'locales'
-# default host placeholder; can be overridden with --host or env
-HOST = 'https://smartelectricity.ma'
+import _lib
+from _lib import ROOT, OG_LOCALES, SITEMAP_EXCLUDE, load_locale
 
-OG_LOCALES = {"en": "en_US", "fr": "fr_FR", "ar": "ar_AR"}
-
-# Files to exclude from sitemap (SPA templates, verification files, error pages)
-SITEMAP_EXCLUDE = {'product.html', '404.html'}
-
-
-def load_locale(lang):
-    p = LOCALES / f'{lang}.json'
-    if not p.exists():
-        raise FileNotFoundError(p)
-    return json.loads(p.read_text(encoding='utf-8'))
+# Default host placeholder; can be overridden with --host.
+# (Duplicates _lib.HOST only so the --host CLI flag can rewrite it without
+# mutating the shared module. See main() at the bottom.)
+HOST = _lib.HOST
 
 
 def replace_head(html, dict_l, lang, filename):
-    # set <html lang="..."> while preserving other attributes like dir="rtl"
-    def repl_html(match):
-        tag = match.group(0)
-        # Update lang attribute
-        if 'lang=' in tag:
-            tag = re.sub(r'lang="[a-zA-Z-]*"', f'lang="{lang}"', tag)
-        else:
-            tag = tag.replace('<html', f'<html lang="{lang}"')
-
-        # Handle dir attribute for Arabic
-        if lang == 'ar':
-            if 'dir=' in tag:
-                tag = re.sub(r'dir="[a-z]*"', 'dir="rtl"', tag)
-            else:
-                tag = tag.replace('<html', '<html dir="rtl"')
-        else:
-            # For en/fr, ensure it's ltr or remove dir if it's there
-            if 'dir=' in tag:
-                tag = re.sub(r'dir="[a-z]*"', 'dir="ltr"', tag)
-        return tag
-
-    html = re.sub(r"<html[^>]*>", repl_html, html, count=1)
+    html = _lib.set_html_lang_dir(html, lang)
 
     stem = Path(filename).stem
     key_suffix = stem.replace('-', '_')
