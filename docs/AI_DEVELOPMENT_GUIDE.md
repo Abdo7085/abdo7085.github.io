@@ -25,10 +25,11 @@
 - `assets/projects/<slug>/`: مجلد الوسائط الخاص بكل مشروع (صور، فيديوهات، pisters الفيديو).
 - `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. تُولّد آلياً بواسطة `generate_localized.py` من القوالب الإنجليزية الجذرية. **أي تعديلات على الـ SEO أو الهيكلة يجب أن تتم في القوالب الإنجليزية ثم يُعاد تشغيل السكربت.**
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
-  - `build_products.py`: السكربت الرئيسي — يبني فهرس المنتجات + صفحات SEO + sitemap + يحقن ItemList JSON-LD في products.html.
-  - `build_projects.py`: **جديد** — يبني فهرس معرض الأعمال `data/projects_index.json` + يستخرج أبعاد كل وسائط المشروع عبر Pillow + يولّد صفحات SEO لكل مشروع في `projects/` و `fr/projects/` و `ar/projects/` + يحقن ItemList JSON-LD في `previous-work.html`.
-  - `generate_static_seo.py`: مولد صفحات HTML الثابتة للمنتجات مع SEO كامل (يُستدعى من `build_products.py`). يدمج أيضاً روابط المشاريع من `projects_index.json` في `sitemap.xml` النهائي.
-  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD + **توطين كل كتل JSON-LD** (LocalBusiness و WebSite) بالـ `url` و `inLanguage` المناسبين.
+  - `_lib.py`: **الوحدة المشتركة** — ثوابت موحّدة (`HOST`, `LANGS`, `OG_LOCALES`, `SITEMAP_EXCLUDE`) ومساعدات i18n/SEO (`t`, `make_meta_description`, `load_locale`, `set_html_lang_dir`, `og_locale_block`, `breadcrumb_jsonld`, `itemlist_jsonld`) + **`write_sitemap()`** المركزي (المولّد الوحيد لـ `sitemap.xml`، idempotent، يقرأ `products_index.json` و `projects_index.json` و `ROOT.glob('*.html')` من القرص).
+  - `build_all.py`: **المنسّق** — يستدعي المراحل الثلاث في عملية بايثون واحدة (بدون subprocess). مُستحسن لعمليات البناء الشاملة.
+  - `build_products.py`: يبني فهرس المنتجات + صفحات SEO الثابتة لكل منتج + يحقن ItemList JSON-LD في `products.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`. (سابقاً كان يستدعي `generate_static_seo.py` عبر subprocess؛ الآن مدموج داخلياً.)
+  - `build_projects.py`: يبني فهرس معرض الأعمال `data/projects_index.json` + يستخرج أبعاد كل وسائط المشروع عبر Pillow + يولّد صفحات SEO لكل مشروع في `projects/` و `fr/projects/` و `ar/projects/` + يحقن ItemList JSON-LD في `previous-work.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
+  - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD + **توطين كل كتل JSON-LD** (LocalBusiness و WebSite) بالـ `url` و `inLanguage` المناسبين + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
   - `remove_bg.py`: إزالة الخلفيات عبر الذكاء الاصطناعي (مكتبة `rembg` ونموذج U²-Net). **ملاحظة:** يتطلب التثبيت المسبق للحزمة عبر `pip install "rembg[cpu]"`.
   - `remove_bg_traditional.py`: أداة بديلة (Fallback) تستخدم خوارزمية الإغراق اللوني (Flood Fill) التقليدية للمنتجات ذات الحواف الصلبة والمسطحة (مثل الشاشات) التي يفشل الذكاء الاصطناعي في تمييزها.
   - `crop_image.py`: قص الفراغ الشفاف من صور المنتجات لتملأ بطاقة المنتج بشكل متسق (مُصمم بفلتر ذكي يتجاهل الهوامش الشبحية الناتجة عن الذكاء الاصطناعي).
@@ -107,15 +108,19 @@
    - يولّد صفحات HTML ثابتة لكل مشروع × كل لغة في `projects/`, `fr/projects/`, `ar/projects/` مع كامل SEO (مثل المنتجات): hreflang, og:locale, CreativeWork JSON-LD, BreadcrumbList, noscript H1.
    - يحقن **`window.__PROJECT__`** inline في كل صفحة حتى يبدأ `project-detail.js` بالعرض فوراً دون fetch إضافي.
    - يحقن ItemList JSON-LD في `previous-work.html` (EN/FR/AR).
-   - يكتب `sitemap.xml` مبدئياً (يُعاد كتابته لاحقاً بواسطة `build_products.py` مع دمج روابط المنتجات + المشاريع من جديد).
+   - يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` (ثابتة + منتجات + مشاريع). الـ sitemap دائماً كامل بغض النظر عن أي سكربت من الثلاثة شُغِّل آخراً.
 
-3. **ترتيب التشغيل المحدّث:**
+3. **ترتيب التشغيل:**
    ```bash
+   # الطريقة المُستحسنة — عملية بايثون واحدة:
+   python scripts/build_all.py
+
+   # أو تشغيل كل مرحلة مستقلّة (نفس الترتيب، نتيجة متطابقة):
    python scripts/generate_localized.py    # يولّد fr/ و ar/ الجذرية
    python scripts/build_projects.py         # المشاريع
-   python scripts/build_products.py         # يجب أن يُشغّل أخيراً — ينتج sitemap الكامل (ثابتة + منتجات + مشاريع)
+   python scripts/build_products.py         # المنتجات
    ```
-   `generate_static_seo.py` (الذي يُستدعى من `build_products.py`) عُدّل ليقرأ `projects_index.json` ويضيف روابط المشاريع إلى `sitemap.xml` النهائي.
+   **الترتيب لم يعد مسألة صحّة** — `_lib.write_sitemap()` يقرأ كل الفهارس من القرص في كل استدعاء، فـ `sitemap.xml` يبقى كاملاً بغض النظر عن أي سكربت شُغِّل آخراً. الترتيب مقترح فقط لأسباب الوضوح والأداء.
 
 4. **استراتيجية Reels:**
    - يتم استضافة مقاطع الريل محلياً كملفات MP4 في مسار `/assets/reels/<project-slug>.mp4` لضمان الاستقرار وسرعة التحميل وبدون الاعتماد على Instagram iframe embeds.
@@ -164,21 +169,26 @@
 
 ### قالب product.html
 - مُعلّم بـ `noindex, nofollow` — لأنه قالب SPA فارغ.
-- `generate_static_seo.py` يتجاوز هذا آلياً ويضع `index, follow` في الصفحات المولّدة.
+- `build_products.py` يتجاوز هذا آلياً ويضع `index, follow` في الصفحات المولّدة.
 
 ### ترتيب تشغيل السكربتات (Build Order)
-عند تعديل أي شيء يؤثر على SEO:
+عند تعديل أي شيء يؤثر على SEO، الطريقة المُستحسنة:
+```bash
+python scripts/build_all.py
 ```
-1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + sitemap مبدئي
-2. python scripts/build_projects.py         ← معرض الأعمال (إذا كانت هناك مشاريع)
-3. python scripts/build_products.py         ← يجب أن يُشغّل أخيراً (ينتج sitemap كامل: ثابتة + منتجات + مشاريع)
+أو بخطوات يدوية مستقلّة:
 ```
-**ملاحظة حرجة:** الثلاثة يكتبون `sitemap.xml`. `build_products.py` هو المحرر النهائي — يقرأ `projects_index.json` + ينتج sitemap شامل. لذلك **يجب أن يُشغّل دائماً آخراً**.
+1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + يكتب sitemap
+2. python scripts/build_projects.py         ← معرض الأعمال + يكتب sitemap
+3. python scripts/build_products.py         ← المنتجات + يكتب sitemap
+```
+**ملاحظة:** `_lib.write_sitemap()` مركزي و idempotent — كل سكربت يكتب `sitemap.xml` كاملاً يشمل (ثابتة + منتجات + مشاريع) بغض النظر عن الترتيب. لذلك، تشغيل أي سكربت مستقلاً ينتج sitemap صالحاً وكاملاً (لم يعد هناك "محرر نهائي").
+
+### ItemList injection ordering (ترتيب حقن ItemList)
+`build_projects.py` يحقن ItemList في `previous-work.html`، و`build_products.py` يحقن ItemList في `products.html`. الاثنان يعدّلان ملفات تنتجها `generate_localized.py` — لذا **للحصول على ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` قبلها**. هذا قيد ترتيبي حقيقي (وليس مجرد مسألة sitemap). `build_all.py` يضمن هذا الترتيب آلياً.
 
 ### ملفات مستثناة من sitemap
-- `product.html` (قالب SPA — noindex)
-- `404.html` (صفحة خطأ)
-- `yandex_*.html` (ملفات تحقق)
+محدّدة في `_lib.SITEMAP_EXCLUDE = {"product.html", "project.html", "404.html"}`. `_lib.write_sitemap()` يعتمد على `ROOT.glob('*.html')` ناقص هذه المجموعة — أي صفحة جذرية جديدة تُضاف تدخل sitemap آلياً دون تعديل كود.
 
 ---
 
@@ -191,13 +201,13 @@
   - اتبع ذلك دائماً بـ `python scripts/crop_image.py` لقص الهوامش الشفافة وإظهار المنتج في المركز بانسجام.
 - **الحفاظ على قوة المصطلحات الاصطلاحية:** أثناء توليد المحتوى العربي، يجب صيانة المصطلحات التقنية الأساسية (Wi-Fi، KNX، Router، MQTT) وإبقاؤها بلغتها الانجليزية لضمان عدم ضياع المعنى التقني الدقيق.
 - **تجنب التعديلات اليدوية المحكوم عليها بالضياع:** أي صفحات مصممة تلقائياً (Auto-generated) كصفحات المنتجات المنفردة `.html` في مجلداتها، وملفات الـ `products_index.json` و `sitemap.xml`، يُحظر التعديل اليدوي عليها. لأن سكريبت البناء سيستبدلها بالكامل دائماً بناءً على ملفات `data/products/`.
-- **التعديلات على القوالب الجذرية:** أي تغيير في `index.html` أو `products.html` أو `previous-work.html` (مثل إضافة meta tags، أو تعديل JSON-LD) يجب أن يتبعه تشغيل `generate_localized.py` ثم `build_products.py` لنشر التغيير لكل اللغات.
+- **التعديلات على القوالب الجذرية:** أي تغيير في `index.html` أو `products.html` أو `previous-work.html` (مثل إضافة meta tags، أو تعديل JSON-LD) يجب أن يتبعه تشغيل `python scripts/build_all.py` (أو `generate_localized.py` ثم `build_products.py`) لنشر التغيير لكل اللغات.
 - **og:image يجب أن يكون PNG/JPG دائماً** — لا تستخدم SVG لأن Facebook و Twitter لا يدعمانه.
 - **حذار Tailwind في SPA Bundle:** قبل إضافة أي كلاس Tailwind جديد داخل `index-CGMiSPUa.js`، تحقق من وجوده في `assets/index-CJ3jXuVd.css`. خلاف ذلك فضِّل inline styles. راجع قسم 7 للتفاصيل.
 - **Schema JSON-LD يجب أن يطابق المحتوى المرئي دائماً:** خاصة `FAQPage` — أي تعديل بصري في أسئلة FAQ **يُلزمك** بتحديث JSON-LD + مفاتيح `faq_q*/a*` في القواميس. عدم التطابق يخالف إرشادات Google.
 - **عند تعديل أي JSON-LD schema في قالب جذري:** تأكد أن `generate_localized.py` يعالج `@type` الجديد (الدالة `process_json_ld_block` في السطر ~130). السكربت الحالي يعرف `LocalBusiness` و `WebSite` و `FAQPage` فقط.
 - **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
-  - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + إعادة تشغيل سكربتات البناء الثلاثة بالترتيب.
+  - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
 
 ---
@@ -229,7 +239,7 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 لتغيير أي صورة في الصفحة الرئيسية:
 1. ضع الصورة الجديدة في `assets/` بصيغة `.webp` (الأمثل للويب).
 2. إذا تغيّر اسم الملف، عدّل المسار في `assets/index-CGMiSPUa.js` مباشرة (ابحث عن اسم الملف القديم).
-3. أعد تشغيل `python scripts/generate_localized.py` ثم `python scripts/build_products.py` لنشر التغييرات.
+3. أعد تشغيل `python scripts/build_all.py` (أو `generate_localized.py` ثم `build_products.py`) لنشر التغييرات.
 4. **لا حاجة لإعادة بناء الـ SPA** — الصور مُشار إليها بمسارات نسبية ثابتة.
 
 ### أبعاد الصور الموصى بها
@@ -314,5 +324,5 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 2. ✅ حدِّث `faq_q1..4` / `faq_a1..4` في `en.json` و `fr.json` و `ar.json` (نفس الترتيب!).
 3. ✅ عدِّل `FAQPage` JSON-LD في `index.html` يدوياً (النسخة الإنجليزية).
 4. ✅ إن غيّرت عدد الأسئلة، عدِّل المصفوفة `e` داخل `nv` في `index-CGMiSPUa.js`.
-5. ✅ شغِّل `generate_localized.py` ثم `build_products.py`.
+5. ✅ شغِّل `python scripts/build_all.py` (أو `generate_localized.py` ثم `build_products.py`).
 6. ✅ اختبر `https://site/#faq-0` و `#faq-3` للتأكد من صحة deep-linking.
