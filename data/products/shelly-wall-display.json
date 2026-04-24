@@ -1,0 +1,100 @@
+{
+  "id": "shelly-wall-display",
+  "brand": "Shelly",
+  "title": {
+    "en": "Shelly Wall Display",
+    "fr": "Shelly Wall Display",
+    "ar": "شاشة الحائط من شيلي"
+  },
+  "short_description": {
+    "en": "4-inch smart touch panel with built-in relay and sensors.",
+    "fr": "Ecran tactile 4 pouces avec relais et capteurs integres.",
+    "ar": "شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة."
+  },
+  "description": {
+    "en": "The Shelly Wall Display is a smart home control panel that replaces an ordinary light switch with a 4-inch touchscreen. From a single screen on the wall, you can control lights, shutters, scenes, and any Shelly device in your home, all without picking up your phone. It also includes a built-in relay so the same panel can directly switch a light or appliance, plus integrated sensors that read room temperature, humidity, and ambient light to drive automations. The home screen is fully customizable with widgets, and the display works seamlessly alongside Alexa, Google Home, MQTT, and the Shelly app, making it a clean, modern centerpiece for any smart home setup.",
+    "fr": "Le Shelly Wall Display est un panneau de controle pour maison intelligente qui remplace un interrupteur classique par un ecran tactile de 4 pouces. Depuis un seul ecran mural, vous controlez l'eclairage, les volets, les scenes et tous les appareils Shelly de la maison, sans sortir votre telephone. Il integre aussi un relais pour commuter directement une lumiere ou un appareil, ainsi que des capteurs de temperature, d'humidite et de luminosite qui pilotent les automatisations. L'ecran d'accueil est entierement personnalisable avec des widgets, et le produit fonctionne avec Alexa, Google Home, MQTT et l'application Shelly, pour devenir l'element central et moderne de votre maison intelligente.",
+    "ar": "Shelly Wall Display هي لوحة تحكم للمنزل الذكي تستبدل مفتاح الاضاءة العادي بشاشة لمس قياس 4 بوصة. من شاشة واحدة على الحائط يمكنك التحكم في الاضاءة والستائر والمشاهد وكل اجهزة Shelly في المنزل، دون الحاجة الى الهاتف. تتضمن ايضا مرحلا مدمجا يسمح للوحة بتشغيل لمبة او جهاز مباشرة، اضافة الى مستشعرات لقياس درجة الحرارة والرطوبة والاضاءة المحيطة لتشغيل الاوامر التلقائية. الشاشة الرئيسية قابلة للتخصيص الكامل بالـ widgets، وتعمل بسلاسة مع Alexa و Google Home و MQTT وتطبيق Shelly، لتصبح المحور الانيق والعصري لاي منزل ذكي."
+  },
+  "technology": [
+    "Wi-Fi",
+    "Bluetooth"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "specs": {
+    "en": {
+      "Display": "4\" color touchscreen",
+      "Processor": "MTK6580 CPU",
+      "RAM": "1 GB",
+      "Flash Storage": "8 GB",
+      "Built-in Sensors": "Temperature, Humidity, Ambient Light",
+      "Integrated Relay Output": "Max 230 VAC, 5 A",
+      "Power Supply": "230 VAC, 50/60 Hz",
+      "Power Consumption": "< 1 W",
+      "Wi-Fi": "802.11 b/g/n (2.4 GHz)",
+      "Bluetooth": "4.2",
+      "MQTT": "Supported",
+      "Schedules": "20",
+      "Webhooks": "20 (2 URLs each)",
+      "Dimensions": "85 × 85 × 30 mm",
+      "Weight": "180 g",
+      "Operating Temperature": "-20°C to 40°C",
+      "Conductor Cross-section": "0.5–2.5 mm²",
+      "Available Colors": "Black, White"
+    },
+    "fr": {
+      "Ecran": "Ecran tactile couleur 4 pouces",
+      "Processeur": "CPU MTK6580",
+      "RAM": "1 Go",
+      "Stockage Flash": "8 Go",
+      "Capteurs Integres": "Temperature, Humidite, Luminosite",
+      "Sortie Relais Integree": "Max 230 VAC, 5 A",
+      "Alimentation": "230 VAC, 50/60 Hz",
+      "Consommation": "< 1 W",
+      "Wi-Fi": "802.11 b/g/n (2,4 GHz)",
+      "Bluetooth": "4.2",
+      "MQTT": "Supporte",
+      "Programmations": "20",
+      "Webhooks": "20 (2 URLs chacun)",
+      "Dimensions": "85 × 85 × 30 mm",
+      "Poids": "180 g",
+      "Temperature de Fonctionnement": "-20°C a 40°C",
+      "Section de Conducteur": "0,5–2,5 mm²",
+      "Couleurs Disponibles": "Noir, Blanc"
+    },
+    "ar": {
+      "الشاشة": "شاشة لمس ملونة 4 بوصة",
+      "المعالج": "MTK6580 CPU",
+      "الذاكرة العشوائية": "1 GB",
+      "ذاكرة Flash": "8 GB",
+      "المستشعرات المدمجة": "درجة الحرارة، الرطوبة، الاضاءة المحيطة",
+      "خرج المرحل المدمج": "حد اقصى 230 فولت متردد، 5 امبير",
+      "مصدر الطاقة": "230 فولت متردد، 50/60 Hz",
+      "استهلاك الطاقة": "< 1 واط",
+      "Wi-Fi": "802.11 b/g/n (2.4 GHz)",
+      "Bluetooth": "4.2",
+      "MQTT": "مدعوم",
+      "الجداول الزمنية": "20",
+      "Webhooks": "20 (رابطين لكل واحد)",
+      "الابعاد": "85 × 85 × 30 مم",
+      "الوزن": "180 غرام",
+      "درجة حرارة التشغيل": "-20 الى 40 درجة مئوية",
+      "مقطع الموصل": "0.5–2.5 مم²",
+      "الالوان المتوفرة": "اسود، ابيض"
+    }
+  },
+  "images": [
+    "/assets/products/shelly-wall-display.png"
+  ],
+  "files": [
+    {
+      "name": "Knowledge Base",
+      "url": "https://kb.shelly.cloud/knowledge-base/shelly-wall-display"
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.shelly.com/blogs/documentation/shelly-wall-display"
+    }
+  ]
+}

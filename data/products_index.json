@@ -755,6 +755,28 @@
     "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
   },
   {
+    "id": "shelly-wall-display",
+    "brand": "Shelly",
+    "technology": [
+      "Wi-Fi",
+      "Bluetooth"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Shelly Wall Display",
+      "fr": "Shelly Wall Display",
+      "ar": "شاشة الحائط من شيلي"
+    },
+    "short_description": {
+      "en": "4-inch smart touch panel with built-in relay and sensors.",
+      "fr": "Ecran tactile 4 pouces avec relais et capteurs integres.",
+      "ar": "شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة."
+    },
+    "category": "",
+    "image": "/assets/products/shelly-wall-display.png"
+  },
+  {
     "id": "sonoff-mini-zb2gs-l",
     "brand": "SONOFF",
     "technology": [
