@@ -8,8 +8,10 @@ You are managing the "Previous Work" project portfolio for the Smart Electricity
 data/projects/             → Individual project JSON files (one per case study)
 data/projects_index.json   → Aggregated index (auto-generated, never edit manually)
 assets/projects/<slug>/    → Project media: photos, mp4 videos, video posters
+scripts/_lib.py            → Shared helpers (i18n, SEO, JSON-LD, sitemap). Single source of truth
+scripts/build_all.py       → One-shot orchestrator (runs all 3 stages in one Python process)
 scripts/build_projects.py  → Unified build: index + static SEO pages + sitemap + ItemList injection
-scripts/generate_static_seo.py → Shared SEO helpers (reused by build_projects.py)
+scripts/build_products.py  → Products catalog build
 scripts/generate_localized.py  → Root-page localization (index.html, previous-work.html, etc.)
 
 projects/                  → Static project HTML pages (EN, auto-generated)
@@ -285,15 +287,13 @@ This single command:
   - `<h1>` + `<p>` inside `<noscript>` so crawlers that don't execute JS still get the core content.
   - Inline `<script>window.__PROJECT__ = {...}</script>` with the enriched project data (so `project-detail.js` renders instantly without a second fetch).
 - Injects ItemList JSON-LD into `previous-work.html` (EN/FR/AR) for portfolio rich results.
-- Appends all project URLs + lastmod + hreflang alternates to `sitemap.xml`.
+- Writes the complete `sitemap.xml` via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk. The sitemap is always complete regardless of which script ran last.
 
-**⚠️ Build order matters:** `sitemap.xml` is rewritten by both `build_products.py` and `build_projects.py`. If you modified root pages AND projects AND products in the same session, run in this order so the final sitemap is complete:
+**If you also modified root pages or products in the same session**, use the orchestrator for a clean rebuild:
 ```bash
-python scripts/generate_localized.py    # root pages + partial sitemap
-python scripts/build_projects.py         # projects appended to sitemap
-python scripts/build_products.py         # MUST run LAST (products + final sitemap merge)
+python scripts/build_all.py    # runs generate_localized → build_projects → build_products in one process
 ```
-`build_products.py` is the authoritative final writer — it reads `projects_index.json` and merges project URLs into its sitemap output so nothing is lost.
+Or run each stage manually in that order. Sitemap correctness no longer depends on run order (every stage writes a complete sitemap). The order only matters for ItemList injection — `build_projects.py` injects into `previous-work.html` produced by `generate_localized.py`, so localized pages must exist first.
 
 ### Editing an Existing Project
 

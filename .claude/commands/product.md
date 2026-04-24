@@ -10,9 +10,11 @@ data/products_index.json → Aggregated index (auto-generated, never edit manual
 assets/products/        → Product images
 assets/locales/ar.json  → Arabic translations (filter values)
 assets/locales/fr.json  → French translations (filter values)
-scripts/build_products.py → Unified build: index + static SEO pages + sitemap
-scripts/generate_static_seo.py → SEO page generator (called by build_products.py) — full hreflang, og:locale, JSON-LD, robots override, noscript H1
-scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD + partial sitemap
+scripts/_lib.py           → Shared helpers (i18n, SEO, JSON-LD, sitemap). Single source of truth
+scripts/build_all.py      → One-shot orchestrator (runs all 3 stages in one Python process)
+scripts/build_products.py → Unified build: index + static SEO pages + sitemap + ItemList injection
+scripts/build_projects.py → Projects portfolio build
+scripts/generate_localized.py → Generates fr/ and ar/ root pages + translates FAQ JSON-LD
 scripts/remove_bg.py      → AI background removal (rembg/U²-Net) → transparent PNG
 scripts/remove_bg_traditional.py → Traditional Fallback (Flood Fill) for flat screens/panels
 scripts/crop_image.py     → Auto-crop transparent padding so product fills the card
@@ -86,7 +88,7 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 **About the `rating` field**: This drives the `aggregateRating` block in the product's JSON-LD, which Google requires for `Product` rich-result eligibility (alongside `offers` or `review`). Since the site is a catalog (no prices), `aggregateRating` is the only viable path.
 
 - **Always try first** to find a real average rating from credible sources: Amazon listings of the same model, manufacturer's own product page, AliExpress, professional review sites, or trade reviews. If you find a real number, use it (e.g. Amazon shows 4.4 stars from 89 reviews → `{"value": 4.4, "count": 89}`).
-- **Only if no real data exists**, omit the `rating` field entirely. The build scripts (`generate_static_seo.py` and `assets/product-detail.js`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
+- **Only if no real data exists**, omit the `rating` field entirely. The build script (`build_products.py`) and `assets/product-detail.js` will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
 2. **Remove the background from the product image** — Most manufacturer images have a studio background. Choose the right tool **before** running — do NOT try AI first and fall back; pick based on product type:
@@ -136,13 +138,13 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
      - <meta name="robots" content="index, follow"> (overrides the noindex template)
      - <h1> inside <noscript> with product name — for crawlers that don't execute JS
    - Injects ItemList JSON-LD into products.html (EN/FR/AR) for catalog rich results
-   - Updates sitemap.xml with all product URLs + lastmod dates + hreflang alternates
+   - Writes the complete sitemap.xml via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk, so nothing is ever dropped regardless of which script ran last
 
-   **⚠️ Build order matters:** If you also modified root pages (index.html, products.html, previous-work.html), you must run `generate_localized.py` **first**, then `build_products.py` **last** — because both scripts write `sitemap.xml`, and `build_products.py` produces the complete sitemap (static pages + products):
+   **If you also modified root pages** (index.html, products.html, previous-work.html) **or projects** in the same session, use the orchestrator for a clean rebuild:
    ```bash
-   python scripts/generate_localized.py    # ← generates fr/ and ar/ root pages + partial sitemap
-   python scripts/build_products.py         # ← must run LAST (produces complete sitemap)
+   python scripts/build_all.py    # runs generate_localized → build_projects → build_products in one process
    ```
+   Or run each stage manually in that order. Sitemap correctness no longer depends on run order (every stage writes a complete sitemap). The order only matters for ItemList injection — `build_products.py` injects into `products.html` produced by `generate_localized.py`, so localized pages must exist first.
 
 ### Editing an Existing Product
 
