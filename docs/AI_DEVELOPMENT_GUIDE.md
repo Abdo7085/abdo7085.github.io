@@ -34,6 +34,24 @@
   - `remove_bg_traditional.py`: أداة بديلة (Fallback) تستخدم خوارزمية الإغراق اللوني (Flood Fill) التقليدية للمنتجات ذات الحواف الصلبة والمسطحة (مثل الشاشات) التي يفشل الذكاء الاصطناعي في تمييزها.
   - `crop_image.py`: قص الفراغ الشفاف من صور المنتجات لتملأ بطاقة المنتج بشكل متسق (مُصمم بفلتر ذكي يتجاهل الهوامش الشبحية الناتجة عن الذكاء الاصطناعي).
 
+### جدول مرجعي سريع لسكربتات `scripts/` (Scripts Quick Reference)
+
+| السكربت | النوع | الدور | المدخلات | المخرجات | متى تشغّله |
+|---|---|---|---|---|---|
+| `_lib.py` | وحدة مشتركة (مكتبة) | ثوابت + مساعدات i18n/SEO + `write_sitemap()` المركزي | — (يُستورد من السكربتات الأخرى) | — | لا يُشغَّل مباشرة |
+| `build_all.py` | منسّق (Orchestrator) | يستدعي المراحل الثلاث بترتيبها في عملية بايثون واحدة | — | كل المخرجات أدناه | **الأمر المُستحسن لأي بناء شامل** |
+| `generate_localized.py` | بناء (Build) | توليد نسخ `fr/` و `ar/` من الصفحات الجذرية + توطين JSON-LD (LocalBusiness/WebSite/FAQPage) | `index.html`, `products.html`, `previous-work.html`, `assets/locales/*.json` | `fr/*.html`, `ar/*.html`, `sitemap.xml` | عند تعديل قالب جذري أو قاموس ترجمة |
+| `build_projects.py` | بناء (Build) | فهرسة المشاريع + استخراج أبعاد الوسائط (Pillow) + توليد صفحات SEO + حقن ItemList في `previous-work.html` | `data/projects/*.json`, `assets/projects/<slug>/*` | `data/projects_index.json`, `projects/*.html`, `fr/projects/*.html`, `ar/projects/*.html`, `previous-work.html` (محقون), `sitemap.xml` | عند إضافة/تعديل مشروع |
+| `build_products.py` | بناء (Build) | فهرسة المنتجات + توليد صفحات SEO الثابتة + حقن ItemList في `products.html` (دمج `generate_static_seo.py` سابقاً) | `data/products/*.json` | `data/products_index.json`, `products/*.html`, `fr/products/*.html`, `ar/products/*.html`, `products.html` (محقون), `sitemap.xml` | عند إضافة/تعديل منتج |
+| `remove_bg.py` | معالجة صور (AI) | إزالة خلفية صورة باستخدام `rembg` + U²-Net | صورة PNG/JPG | صورة PNG بخلفية شفافة | قبل إضافة صورة منتج جديد (الحالة العامة) |
+| `remove_bg_traditional.py` | معالجة صور (تقليدية) | إزالة خلفية عبر Flood Fill (بديل) | صورة PNG/JPG | صورة PNG بخلفية شفافة | للمنتجات ذات الشاشات/الأسطح المستوية التي يفشل فيها AI |
+| `crop_image.py` | معالجة صور | قص الهامش الشفاف حول المنتج وتمركزه | صورة PNG شفافة | صورة PNG مقصوصة | بعد `remove_bg*.py` دائماً |
+
+**ملاحظات مهمة على الجدول:**
+- **Idempotence**: كل من `generate_localized.py`, `build_projects.py`, `build_products.py` يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` — الترتيب لم يعد يؤثر على صحة الـ sitemap.
+- **ترتيب ItemList**: `build_projects.py` و `build_products.py` يحقنان في ملفات ينتجها `generate_localized.py` — لذا لضمان ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` **أولاً** (وهذا ما يضمنه `build_all.py` آلياً).
+- **سكربتات الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً قبل إضافة أصول الصور إلى `assets/products/`.
+
 ---
 
 ## 2. نظام الترجمة وتعدد اللغات (i18n System)
