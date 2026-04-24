@@ -30,7 +30,7 @@ import re
 from pathlib import Path
 
 import _lib
-from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, today
+from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PRODUCTS_DIR = ROOT / "data" / "products"
 INDEX_PATH = ROOT / "data" / "products_index.json"
@@ -362,96 +362,8 @@ def inject_products_page_jsonld(all_products):
 
 
 # ---------------- Sitemap ----------------
-
-def generate_sitemap(all_product_ids):
-    """Generate the final sitemap.xml: static pages + products + projects.
-    Reads data/projects_index.json if present to include project URLs."""
-    urls = []
-
-    # Static pages (exclude product.html SPA template and 404.html)
-    static_pages = [
-        {"suffix": "", "file": "index.html"},  # Home
-        {"suffix": "previous-work.html", "file": "previous-work.html"},
-        {"suffix": "products.html", "file": "products.html"},
-    ]
-
-    td = today()
-    for page in static_pages:
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            loc = f"{HOST}{prefix}/{page['suffix']}"
-            en_href = f"{HOST}/{page['suffix']}"
-            fr_href = f"{HOST}/fr/{page['suffix']}"
-            ar_href = f"{HOST}/ar/{page['suffix']}"
-            urls.append(
-                f"  <url>\n"
-                f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{td}</lastmod>\n"
-                f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
-                f"  </url>"
-            )
-
-    # Product pages
-    for pid in sorted(all_product_ids):
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            loc = f"{HOST}{prefix}/products/{pid}.html"
-            en_href = f"{HOST}/products/{pid}.html"
-            fr_href = f"{HOST}/fr/products/{pid}.html"
-            ar_href = f"{HOST}/ar/products/{pid}.html"
-            urls.append(
-                f"  <url>\n"
-                f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{td}</lastmod>\n"
-                f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
-                f"  </url>"
-            )
-
-    # Project pages — read data/projects_index.json if it exists so that this
-    # script (which is always the last step) produces the authoritative,
-    # complete sitemap including all project URLs.
-    projects_index_path = ROOT / "data" / "projects_index.json"
-    if projects_index_path.exists():
-        try:
-            project_entries = json.loads(projects_index_path.read_text(encoding="utf-8"))
-        except Exception:
-            project_entries = []
-        for entry in project_entries:
-            pid = entry.get("id")
-            if not pid:
-                continue
-            lastmod = entry.get("date") or td
-            for lang in LANGS:
-                prefix = "" if lang == "en" else f"/{lang}"
-                loc = f"{HOST}{prefix}/projects/{pid}.html"
-                en_href = f"{HOST}/projects/{pid}.html"
-                fr_href = f"{HOST}/fr/projects/{pid}.html"
-                ar_href = f"{HOST}/ar/projects/{pid}.html"
-                urls.append(
-                    f"  <url>\n"
-                    f"    <loc>{loc}</loc>\n"
-                    f"    <lastmod>{lastmod}</lastmod>\n"
-                    f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
-                    f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
-                    f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
-                    f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
-                    f"  </url>"
-                )
-
-    sitemap = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
-        'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
-        + "\n".join(urls) + "\n"
-        "</urlset>\n"
-    )
-    return sitemap
+# Sitemap writing is delegated to _lib.write_sitemap(), which is idempotent
+# and reads product/project indexes from disk. No local generator needed.
 
 
 # ---------------- Entry point ----------------
@@ -492,9 +404,8 @@ def generate_static_pages():
 
     inject_products_page_jsonld(products)
 
-    sitemap = generate_sitemap(all_product_ids)
-    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-    print(f"\nOK Generated sitemap.xml with {len(all_product_ids) * 3} product URLs + static pages.")
+    write_sitemap()
+    print(f"\nOK Wrote sitemap.xml (complete — static + products + projects).")
 
     return True
 

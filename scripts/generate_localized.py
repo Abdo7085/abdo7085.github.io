@@ -16,7 +16,7 @@ import tempfile
 import shutil
 
 import _lib
-from _lib import ROOT, OG_LOCALES, SITEMAP_EXCLUDE, load_locale
+from _lib import ROOT, OG_LOCALES, load_locale, write_sitemap
 
 # Default host placeholder; can be overridden with --host.
 # (Duplicates _lib.HOST only so the --host CLI flag can rewrite it without
@@ -214,37 +214,11 @@ def generate():
 
     en = load_locale('en')
 
-    # sitemap collector
-    sitemap_urls = []
-
     for filename in files_to_localize:
         source_path = ROOT / filename
         base_html = source_path.read_text(encoding='utf-8')
 
-        for lang in ['en', 'fr', 'ar']:
-            page_suffix = "" if filename == 'index.html' else filename
-            def get_url(l, suffix):
-                b = f"{HOST}/{l}/" if l != 'en' else f"{HOST}/"
-                return b + suffix
-
-            loc = get_url(lang, page_suffix)
-
-            # Only add to sitemap if not excluded
-            if filename not in SITEMAP_EXCLUDE and filename != '404.html':
-                en_href = get_url("en", page_suffix)
-                fr_href = get_url("fr", page_suffix)
-                ar_href = get_url("ar", page_suffix)
-                alts = [
-                    f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />',
-                    f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />',
-                    f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />',
-                    f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />'
-                ]
-                sitemap_urls.append(f"  <url>\n    <loc>{loc}</loc>\n" + "\n".join(alts) + "\n  </url>")
-
-            if lang == 'en':
-                continue # source is already English
-
+        for lang in ['fr', 'ar']:
             # Output directory for localized versions
             outdir = ROOT / lang
             dict_l = {**en, **load_locale(lang)}
@@ -262,13 +236,15 @@ def generate():
             shutil.move(tmp_path, str(target))
             print('Wrote', target)
 
-    sitemap = f'''<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{"\n".join(sitemap_urls)}
-</urlset>
-'''
-    (ROOT / 'sitemap.xml').write_text(sitemap, encoding='utf-8')
+    # Sitemap is written by _lib.write_sitemap() — idempotent, order-independent,
+    # reads product/project indexes from disk so any script can produce a
+    # complete authoritative sitemap regardless of execution order.
+    write_sitemap()
     print('Wrote sitemap.xml')
+
+
+def main():
+    generate()
 
 
 if __name__ == '__main__':

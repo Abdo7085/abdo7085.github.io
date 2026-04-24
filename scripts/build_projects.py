@@ -32,7 +32,7 @@ except ImportError:
     raise
 
 import _lib
-from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, today
+from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PROJECTS_DIR = ROOT / "data" / "projects"
 PROJECTS_INDEX_PATH = ROOT / "data" / "projects_index.json"
@@ -384,64 +384,10 @@ def inject_previous_work_itemlist(projects):
         print(f"  Injected ItemList JSON-LD into {page_path.relative_to(ROOT)}")
 
 
-# ---------------- Sitemap (partial — merged later by build_products.py) ----------------
-
-def write_partial_sitemap(project_ids):
-    """Write a sitemap.xml covering static pages + project URLs.
-    build_products.py will rewrite this later including product URLs too,
-    so this only matters when the user runs build_projects.py standalone."""
-    urls = []
-
-    static_pages = [
-        {"suffix": ""},
-        {"suffix": "previous-work.html"},
-        {"suffix": "products.html"},
-    ]
-    for page in static_pages:
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            loc = f"{HOST}{prefix}/{page['suffix']}"
-            en_href = f"{HOST}/{page['suffix']}"
-            fr_href = f"{HOST}/fr/{page['suffix']}"
-            ar_href = f"{HOST}/ar/{page['suffix']}"
-            urls.append(
-                f"  <url>\n"
-                f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{today()}</lastmod>\n"
-                f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
-                f"  </url>"
-            )
-
-    for pid in sorted(project_ids):
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            loc = f"{HOST}{prefix}/projects/{pid}.html"
-            en_href = f"{HOST}/projects/{pid}.html"
-            fr_href = f"{HOST}/fr/projects/{pid}.html"
-            ar_href = f"{HOST}/ar/projects/{pid}.html"
-            urls.append(
-                f"  <url>\n"
-                f"    <loc>{loc}</loc>\n"
-                f"    <lastmod>{today()}</lastmod>\n"
-                f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
-                f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
-                f"  </url>"
-            )
-
-    sitemap = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
-        'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
-        + "\n".join(urls) + "\n"
-        "</urlset>\n"
-    )
-    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-    print(f"\nOK Wrote sitemap.xml (static + {len(project_ids)} project URLs). build_products.py will merge product URLs in.")
+# ---------------- Sitemap ----------------
+# Sitemap writing is delegated to _lib.write_sitemap(), which is idempotent
+# and reads product/project indexes from disk. No partial writer needed —
+# running this script alone still produces a complete, correct sitemap.
 
 
 # ---------------- Entry point ----------------
@@ -469,9 +415,10 @@ def main():
     print(f"\n[3/3] Injecting ItemList JSON-LD into previous-work.html...")
     inject_previous_work_itemlist(projects)
 
-    write_partial_sitemap([p.get("id") for p in projects])
+    write_sitemap()
+    print("\nOK Wrote sitemap.xml (complete — static + products + projects).")
 
-    print("\n=== Project build complete. Run `python scripts/build_products.py` afterwards to finalize the sitemap. ===")
+    print("\n=== Project build complete. ===")
 
 
 if __name__ == "__main__":

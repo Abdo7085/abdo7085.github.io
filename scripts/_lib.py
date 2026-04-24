@@ -148,9 +148,17 @@ def og_locale_block(lang: str) -> str:
 # ---------------- </head> injection ----------------
 
 def inject_before_head_close(html: str, snippet: str) -> str:
-    """Insert `snippet` immediately before the first </head>. Idempotent only in
-    the trivial sense — callers must ensure they don't inject duplicates."""
-    return html.replace("</head>", f"{snippet}\n  </head>", 1)
+    """Insert `snippet` immediately before the first </head>.
+
+    Idempotent in the trivial sense — callers must ensure they don't inject
+    duplicates (if the snippet is re-injectable, strip old copies first with a
+    regex and then call this).
+
+    Collapses any trailing whitespace that immediately precedes </head> so that
+    repeated injections don't cause indentation drift (bug: each run was adding
+    2 spaces of leading whitespace before the injected tag).
+    """
+    return re.sub(r"[ \t]*</head>", f"  {snippet}\n  </head>", html, count=1)
 
 
 # ---------------- JSON-LD builders ----------------
@@ -181,6 +189,108 @@ def itemlist_jsonld(items: list, list_name: str) -> dict:
             for i, it in enumerate(items, 1)
         ],
     }
+
+
+# ---------------- Sitemap ----------------
+
+def _sitemap_url_block(loc: str, lastmod: str, suffix: str) -> str:
+    """One <url>…</url> block with hreflang alternates (en/fr/ar/x-default)."""
+    en_href = f"{HOST}/{suffix}" if suffix else f"{HOST}/"
+    fr_href = f"{HOST}/fr/{suffix}" if suffix else f"{HOST}/fr/"
+    ar_href = f"{HOST}/ar/{suffix}" if suffix else f"{HOST}/ar/"
+    return (
+        f"  <url>\n"
+        f"    <loc>{loc}</loc>\n"
+        f"    <lastmod>{lastmod}</lastmod>\n"
+        f'    <xhtml:link rel="alternate" hreflang="en" href="{en_href}" />\n'
+        f'    <xhtml:link rel="alternate" hreflang="fr" href="{fr_href}" />\n'
+        f'    <xhtml:link rel="alternate" hreflang="ar" href="{ar_href}" />\n'
+        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_href}" />\n'
+        f"  </url>"
+    )
+
+
+def write_sitemap() -> None:
+    """Write the authoritative sitemap.xml covering: static root pages,
+    every product, every project.
+
+    Idempotent and order-independent: reads everything from disk, so it
+    doesn't matter which of build_products / build_projects / generate_localized
+    ran last. Callers can invoke this from any script without fearing that a
+    later script will overwrite and drop entries.
+
+    URL ordering (preserved from the legacy pipeline so golden-diffs stay clean):
+      1. Static pages (index, previous-work, products) × (en, fr, ar)
+      2. Products, sorted by id (ascending) × (en, fr, ar)
+      3. Projects, in the order stored in data/projects_index.json × (en, fr, ar)
+
+    lastmod policy:
+      - static pages: today()
+      - products: today()
+      - projects: entry["date"] if set, else today()
+    """
+    td = today()
+    urls: list = []
+
+    # 1. Static root pages. Uses ROOT.glob('*.html') minus SITEMAP_EXCLUDE and
+    # 404.html, matching generate_localized.py's source of truth — so adding a
+    # new root page automatically flows into the sitemap.
+    root_pages = sorted(
+        f.name for f in ROOT.glob("*.html")
+        if f.name not in SITEMAP_EXCLUDE and f.name != "404.html"
+    )
+    # Preserve canonical order: index first, then alphabetical.
+    if "index.html" in root_pages:
+        root_pages = ["index.html"] + [p for p in root_pages if p != "index.html"]
+    for filename in root_pages:
+        suffix = "" if filename == "index.html" else filename
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"/{lang}"
+            loc = f"{HOST}{prefix}/{suffix}"
+            urls.append(_sitemap_url_block(loc, td, suffix))
+
+    # 2. Products (sorted by id, matching legacy behavior).
+    products_dir = ROOT / "data" / "products"
+    product_ids: list = []
+    if products_dir.exists():
+        for pf in sorted(products_dir.glob("*.json")):
+            try:
+                pid = json.loads(pf.read_text(encoding="utf-8")).get("id")
+            except Exception:
+                continue
+            if pid:
+                product_ids.append(pid)
+    for pid in sorted(product_ids):
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"/{lang}"
+            loc = f"{HOST}{prefix}/products/{pid}.html"
+            urls.append(_sitemap_url_block(loc, td, f"products/{pid}.html"))
+
+    # 3. Projects (order preserved from projects_index.json — date desc).
+    projects_index_path = ROOT / "data" / "projects_index.json"
+    if projects_index_path.exists():
+        try:
+            entries = json.loads(projects_index_path.read_text(encoding="utf-8"))
+        except Exception:
+            entries = []
+        for entry in entries:
+            pid = entry.get("id")
+            if not pid:
+                continue
+            lastmod = entry.get("date") or td
+            for lang in LANGS:
+                prefix = "" if lang == "en" else f"/{lang}"
+                loc = f"{HOST}{prefix}/projects/{pid}.html"
+                urls.append(_sitemap_url_block(loc, lastmod, f"projects/{pid}.html"))
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        + "\n".join(urls) + "\n"
+        "</urlset>\n"
+    )
+    (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
 
 
 # ---------------- Export a safe escape alias for consumers ----------------
