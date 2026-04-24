@@ -116,6 +116,16 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    ```
    This trims all transparent padding and adds a small uniform margin (4% of the longest side). The product should fill most of the image canvas — compare with existing product images like `rcu0808-room-control-unit.png` for reference. This step is **mandatory** for every product image, even if it already has a transparent background.
 
+   **Polish edges after `remove_bg_traditional.py`** — The traditional flood-fill cuts pixels in a binary on/off way (alpha = 0 or 255), which leaves visibly jagged "stairstep" edges around the product's silhouette. After cropping, apply a tiny Gaussian blur to the **alpha channel only** to soften those edges without touching the product's RGB pixels:
+   ```bash
+   python -c "from PIL import Image, ImageFilter; img = Image.open('assets/products/<product-slug>.png').convert('RGBA'); r,g,b,a = img.split(); a = a.filter(ImageFilter.GaussianBlur(radius=0.8)); Image.merge('RGBA',(r,g,b,a)).save('assets/products/<product-slug>.png','PNG',optimize=True)"
+   ```
+   Use radius `0.8` — small enough to keep the silhouette crisp, large enough to anti-alias the staircase. Higher values (1.5+) make the product look out-of-focus.
+
+   This step is **only needed for traditional output**. The AI tool (`remove_bg.py`) already produces soft, anti-aliased edges and should not be re-blurred.
+
+   **Lesson learned:** When the original image has a non-white background that flood-fill cannot reach (e.g. dark/textured surfaces between two devices in the same shot), parts of the original background will remain in the output. In that case there's no fix in post-processing — the only options are (a) accept the residue if it's small and visually acceptable, (b) find a cleaner source image, or (c) manually mask in an external editor. Do NOT fall back to AI just to remove residue if the AI clips the product itself.
+
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
    - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
 
