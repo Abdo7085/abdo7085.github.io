@@ -11953,7 +11953,7 @@ const Xh = re("Zap", [["polygon", {
                         children: ""
                     })]
                 }), u.jsxs("a", {
-                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); return (m ? '/' + m[1].toLowerCase() : '') + '#services'; })(),
+                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); return (m ? '/' + m[1].toLowerCase() + '/' : '/') + '#services'; })(),
                     className: "proj-cta-btn proj-cta-btn-secondary",
                     children: [u.jsx("span", {
                         "data-i18n": "spa_cta_discover_services",
