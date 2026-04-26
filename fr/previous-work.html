@@ -103,6 +103,26 @@
     <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
     <link rel="stylesheet" href="/assets/i18n.css">
     <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
     <link rel="stylesheet" href="/assets/homepage-products.css">
     <script defer src="/assets/homepage-products.js"></script>
     <!-- Projects CSS included for the Need a Custom Solution CTA styles -->
@@ -124,7 +144,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "wa9td0m3ds");
     </script>
-                                  <script type="application/ld+json" id="projects-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Réalisations", "numberOfItems": 5, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/projects/villa-knx-tetouan.html", "name": "Villa Intelligente KNX — Tétouan"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/fr/projects/retail-surveillance-tangier.html", "name": "Surveillance de Magasin — Tanger"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/fr/projects/mesh-wifi-casablanca-apt.html", "name": "Refonte Wi-Fi Mesh — Appartement à Casablanca"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/fr/projects/office-electrical-rabat.html", "name": "Rénovation Électrique de Bureau — Rabat"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/fr/projects/huerto-pool-tetouan.html", "name": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan"}]}</script>
+                                        <script type="application/ld+json" id="projects-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Réalisations", "numberOfItems": 5, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/projects/villa-knx-tetouan.html", "name": "Villa Intelligente KNX — Tétouan"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/fr/projects/retail-surveillance-tangier.html", "name": "Surveillance de Magasin — Tanger"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/fr/projects/mesh-wifi-casablanca-apt.html", "name": "Refonte Wi-Fi Mesh — Appartement à Casablanca"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/fr/projects/office-electrical-rabat.html", "name": "Rénovation Électrique de Bureau — Rabat"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/fr/projects/huerto-pool-tetouan.html", "name": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan"}]}</script>
   </head>
   <body>
     <div class="lang-switch" aria-hidden="false">

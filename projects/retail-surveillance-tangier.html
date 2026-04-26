@@ -45,6 +45,26 @@
     <!-- Localization Script -->
     <link rel="stylesheet" href="/assets/i18n.css">
     <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
 
     <!-- Project specific logic and styling -->
     <link rel="stylesheet" href="/assets/projects.css">

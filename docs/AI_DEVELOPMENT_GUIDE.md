@@ -19,6 +19,7 @@
   - `projects.css`: **ملف CSS مشترك (Shared CSS)** — يحتوي على أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة) **بالإضافة إلى** تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta`, `.proj-cta-inner`, `.proj-cta-btn` إلخ). هذا القسم يُعرض عبر مكوّن `Od` داخل الـ SPA في الصفحة الرئيسية وعبر `renderCta()` في `project-detail.js`. **لذلك يجب تحميل هذا الملف في كل صفحات الموقع التي تستخدم الـ SPA** (بما فيها قوالب المنتجات `product.html` و `products.html`).
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
+  - `find-solution.js` + `find-solution.css`: ويزارد "Find Your Solution" المنبثق متعدّد الخطوات الذي يساعد العميل على تحديد حاجته ويولّد رسالة واتساب جاهزة بلغته. يُفعَّل عبر `data-trigger="find-solution"` على أي عنصر، ومرتبط حالياً بزر "احجز استشارة مجانية" في قسم About. **راجع القسم 9 للتفاصيل الكاملة.**
 - **`assets/index-CGMiSPUa.js` (ملاحظة غاية في الأهمية):** هذا الملف الكودي (SPA Bundle) ليس مجرد مخرجات تجميعية (Build Output) قياسية مهملة، **بل هو ملف ثابت (Hardcoded) تم التعديل عليه يدوياً ودمجه مع الموقع المصدري**. يُعتبر الآن كملف برمجي أساسي (Static Source File). إحذر عند التعديل عليه حيث تتطلب أي محاولة لتغيير هيكلية (React) بداخله تركيزاً ودقة عالية، وتجرى التعديلات فيه مباشرة وبشكل دقيق.
 - `data/products/`: قاعـدة بيانات المنتجات، حيث يخصص لكل منتج ملف JSON مستقل.
 - `data/projects/`: قاعـدة بيانات معرض الأعمال — لكل مشروع ملف JSON مستقل بنفس نمط المنتجات. يدعم مصفوفة `media` غير متجانسة تجمع `image` (صور) و `video` (فيديوهات MP4 ذاتية الإنتاج مع poster) و `reel` (ريلزات إنستغرام غير مملوكة لنا — تُضمَّن عبر blockquote الرسمي وليس إعادة استضافة).
@@ -68,11 +69,15 @@
 3. **اندماج הـ SPA المخصص مع الترجمة:** بدلاً من انتظار تفاعل قسري، **تم التعديل برمجياً على `index-CGMiSPUa.js`** ليحتوي في تركيبته الأصلية على مفاتيح ترجمة (مثل `spa_a_sell_products`) وسمات `data-i18n` مدمجة باحترافية بداخل مصفوفاته وكائناته البرمجية، ليتحول من مجرد قالب أصم إلى نظام يتفاعل بانسجام وثيق مع قاموس الـ `i18n.js`.
 4. **النصوص الصامتة (Text Nodes Map):** للجمل والتراكيب التفاعلية التي لا تمتلك أوسمة محددة في الـ SPA، يستخدم `i18n.js` قائمة برمجية تدعى `textReplacementMap` كآلية بديلة لتحويل النص الإنجليزي المعروض تلقائياً لنص مترجم.
 5. **التقاط اللغة الفعالة:** النظام يلتقط اللغة من الروابط الفرعية (`/ar/`)، أو يستدعي الاختيار المفضل من التخزين المحلي `localStorage` إذا كان الزائر يتصفح الصفحة الرئيسية.
-6. **⚠️ استثناء الحاويات ذات الترجمة الذاتية (Self-Translated Containers):** دالة `replaceTextNodesWithDict` تستخدم `TreeWalker` لاستبدال النصوص الإنجليزية بالمترجمة. لكن صفحات المنتجات والمشاريع تقرأ المحتوى المترجم مباشرةً من ملفات JSON ثلاثية اللغة عبر دالة `t()`. لذلك **يتم استثناء** الحاويات التالية من الترجمة التلقائية تماماً:
-   - `#custom-products-root-wrapper` — كتالوج المنتجات.
-   - `#custom-product-detail-wrapper` — تفاصيل المنتج.
-   - `#custom-project-detail-wrapper` — تفاصيل المشروع.
-   **عند إضافة أي حاوية SPA جديدة تقرأ محتواها من JSON ثلاثي اللغة، يجب إضافة الـ `id` الخاص بها لهذه القائمة في `i18n.js` (سطر ~373) لمنع الترجمة المزدوجة أو تشويه المحتوى.**
+6. **⚠️ استثناء الحاويات ذات النصوص الديناميكية (Self-Translated / Dynamic Containers):** دالة `replaceTextNodesWithDict` تستخدم `TreeWalker` لاستبدال النصوص الإنجليزية بالمترجمة. **والأخطر:** تحفظ النص الأصلي في `parent.dataset.i18nOrigText` عند أول رؤية، ثم في كل تغيير DOM لاحق تستخدمه كـ baseline وتُعيد كتابة النص — مما يَعكس أي تحديث ديناميكي بنص ثابت من نفس العنصر. لذلك **يتم استثناء** الحاويات التالية من الـ TreeWalker تماماً:
+   - `#custom-products-root-wrapper` — كتالوج المنتجات (يقرأ JSON ثلاثي اللغة).
+   - `#custom-product-detail-wrapper` — تفاصيل المنتج (يقرأ JSON).
+   - `#custom-project-detail-wrapper` — تفاصيل المشروع (يقرأ JSON).
+   - `#fs-modal-root` — ويزارد "Find Your Solution" (نصوص ديناميكية مُولَّدة عبر `t()` وقت الـ render، مع تحديثات مستمرّة لشريط التقدّم/رقم الخطوة).
+
+   **عند إضافة أي حاوية SPA جديدة تقرأ من JSON ثلاثي اللغة _أو_ تحدّث نصوصها ديناميكياً (counter, progress, live state)، يجب إضافة الـ `id` الخاص بها لقائمة الاستثناء في `i18n.js` (سطر ~373) لمنع الترجمة المزدوجة أو عودة النص لقيمته الأولى.**
+
+   **درس مستفاد (Lesson learned):** ويزارد Find Your Solution كان رقم الخطوة فيه يبقى عالقاً على "الخطوة 1 من 4" رغم أن الجسم وشريط التقدّم يتقدّمان. السبب: textContent للنص يتغيّر، لكن الـ MutationObserver في i18n.js يُطلَق بعد 120ms ويُعيد كتابة النص للقيمة المحفوظة في `dataset.i18nOrigText`. الإصلاح: إضافة `fs-modal-root` لقائمة الاستثناء.
 
 ### إدارة المكونات العائمة (Floating Action Buttons)
 لضمان التناسق البصري ونظافة الكود، تم توحيد تصميم الأزرار العائمة (زر تبديل اللغة `.lang-switch` وزر الواتساب `.mobile-dialer`) مركزياً داخل ملف **`assets/i18n.css`**:
@@ -224,6 +229,11 @@ python scripts/build_all.py
 - **حذار Tailwind في SPA Bundle:** قبل إضافة أي كلاس Tailwind جديد داخل `index-CGMiSPUa.js`، تحقق من وجوده في `assets/index-CJ3jXuVd.css`. خلاف ذلك فضِّل inline styles. راجع قسم 7 للتفاصيل.
 - **Schema JSON-LD يجب أن يطابق المحتوى المرئي دائماً:** خاصة `FAQPage` — أي تعديل بصري في أسئلة FAQ **يُلزمك** بتحديث JSON-LD + مفاتيح `faq_q*/a*` في القواميس. عدم التطابق يخالف إرشادات Google.
 - **عند تعديل أي JSON-LD schema في قالب جذري:** تأكد أن `generate_localized.py` يعالج `@type` الجديد (الدالة `process_json_ld_block` في السطر ~130). السكربت الحالي يعرف `LocalBusiness` و `WebSite` و `FAQPage` فقط.
+- **⚠️ ملفات الويزارد (Find Your Solution) مُشتركة عبر كل القوالب:** أي قالب جذري جديد يُحمّل SPA يجب أن يضيف **ثلاثة عناصر** في `<head>`:
+  1. `<link rel="stylesheet" href="/assets/find-solution.css">`
+  2. `<script defer src="/assets/find-solution.js"></script>`
+  3. **inline bootstrap script** الذي يلتقط النقرة قبل تحميل defer (انظر القسم 9 للنموذج الكامل).
+  بدون البوتستراب الـ inline، النقر السريع على زر "احجز استشارة مجانية" قد لا يفتح الويزارد على بعض الأجهزة البطيئة. بدون CSS، الـ Modal يظهر مكسور التنسيق.
 - **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
@@ -344,3 +354,109 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 4. ✅ إن غيّرت عدد الأسئلة، عدِّل المصفوفة `e` داخل `nv` في `index-CGMiSPUa.js`.
 5. ✅ شغِّل `python scripts/build_all.py` (أو `generate_localized.py` ثم `build_products.py`).
 6. ✅ اختبر `https://site/#faq-0` و `#faq-3` للتأكد من صحة deep-linking.
+
+---
+
+## 9. ويزارد "Find Your Solution" (المساعد التفاعلي)
+
+ويزارد متعدّد الخطوات يساعد العميل على تحديد ما يحتاجه (نوع المبنى → الخدمات → أسئلة فرعية → تفاصيل المشروع → ملخّص + رسالة واتساب جاهزة بلغته). الغاية الاستراتيجية: العميل المغربي العادي لا يعرف الفرق بين KNX و Wi-Fi ولا أنواع الكاميرات، لذا الويزارد يقود الحوار بدلاً من سؤال مفتوح "ماذا تريد؟".
+
+### المكوّنات والملفات
+
+| الملف | الدور |
+|---|---|
+| `assets/find-solution.js` | منطق الويزارد كاملاً (state, step sequence, render, validation, WhatsApp message). ملف مستقل بدون أي إطار عمل. |
+| `assets/find-solution.css` | تصميم Modal ملء الشاشة، RTL-aware، responsive، ألوان البراند، حركات `fade-in`. |
+| `assets/locales/{en,fr,ar}.json` | ~85 مفتاح بـ prefix `wizard_*` لكل خطوات الويزارد ورسائل الواتساب. |
+| Inline bootstrap script | داخل `<head>` كل قالب جذري — يلتقط النقرة فوراً ويُعيد محاولة الفتح حتى تجاهز `window.FindSolution`. |
+| استثناء `i18n.js` | `#fs-modal-root` مُضاف لقائمة استثناء `replaceTextNodesWithDict` (سطر 373) — راجع القسم 2.6 للـ "لماذا". |
+| تعديل SPA bundle | زر "احجز استشارة مجانية" في قسم About محوَّل من `<a href="tel:...">` إلى `<button data-trigger="find-solution">` بأيقونة Sparkles. |
+
+### آلية التفعيل (Trigger Mechanism)
+
+أي عنصر يحمل **`data-trigger="find-solution"`** على أي صفحة تُحمّل `find-solution.js` يفتح الويزارد آلياً عند النقر. لا حاجة لتعديل JS — فقط أضف السمة.
+
+كذلك يلتقط الويزارد كل نقرة على أي عنصر يحمل `[data-i18n="spa_cta_book_visit"]` (الزر الموجود في قسم About بـ SPA bundle) — للتوافق العكسي.
+
+### Inline bootstrap (سبب وجوده — race condition)
+
+`find-solution.js` يُحمَّل بـ `defer`، مما يعني أنه ينفّذ بعد انتهاء HTML parse. المشكلة: إذا نقر المستخدم بسرعة جداً بعد reload (خاصة بعد cache clear)، النقرة قد تصيب الزر **قبل** تسجيل مستمع النقر → النقرة تنفّذ السلوك الافتراضي (مثلاً `tel:` لو كان موجوداً).
+
+الإصلاح ثُلاثي الطبقات:
+1. **حذف `tel:` تماماً من الزر** عبر تعديل SPA bundle → حتى لو فشل JS كلياً، الزر لن يُجري اتصالاً.
+2. **inline bootstrap script** في `<head>` كل قالب جذري → يُسجَّل مستمع النقر أثناء HTML parse (قبل defer)، يلتقط النقرة، ويُعيد محاولة `window.FindSolution.open()` كل 80ms (50 محاولة = ~4 ثوان).
+3. **مستمع داخل `find-solution.js` مُزال** → لتجنّب double-trigger (الـ bootstrap كافٍ).
+
+```html
+<!-- النموذج المُكرَّر في رأس كل قالب جذري -->
+<link rel="stylesheet" href="/assets/find-solution.css">
+<script defer src="/assets/find-solution.js"></script>
+<script>
+  (function () {
+    document.addEventListener('click', function (e) {
+      var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+      if (!hit) return;
+      e.preventDefault();
+      e.stopPropagation();
+      (function tryOpen(retries) {
+        if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+          window.FindSolution.open();
+        } else if (retries > 0) {
+          setTimeout(function () { tryOpen(retries - 1); }, 80);
+        }
+      })(50);
+    }, true);
+  })();
+</script>
+```
+
+### بنية الـ State والـ Step Sequence
+
+```js
+state = {
+  buildingType: null,        // villa, apartment, shop, office, restaurant, farm, other
+  services: [],              // ['smart_home','electrical','cameras','network'] — متعدد
+  smartHome: [],             // sub-controls (lighting, climate, ...)
+  electrical: null,          // single (new_install, full_renovation, ...)
+  cameras: [],               // sub-equipment (indoor, outdoor, doorbell, lock, alarm)
+  cameraCount: null,         // '1-2' | '3-5' | '6+'
+  network: [],               // sub-issues
+  networkOther: '',          // free text إذا اختار "أخرى"
+  projectStage: null,        // building, renovating, completed, planning
+  city: '', name: '',        // اختياري
+  budget: null               // اختياري + شرطي (انظر shouldShowBudget)
+};
+```
+
+تسلسل الخطوات (`stepSequence`) **ديناميكي** يُعاد بناؤه عبر `buildStepSequence()` بناء على ما اختاره المستخدم في الخطوة 2:
+- ثابتة: `['building', 'services', ..., 'details', 'summary']`
+- متغيّرة: تُحقن خطوة فرعية واحدة لكل خدمة مختارة (`smart_home`, `electrical`, `cameras`, `network`).
+- المجموع: من 4 خطوات (لا خدمات) إلى 8 خطوات (كل الخدمات).
+
+### منطق الميزانية الشرطي
+
+`shouldShowBudget()` يُظهر سؤال الميزانية فقط إذا تحقّق أحد:
+- ⚡ كهرباء: `new_install` أو `full_renovation`
+- 🏠 المنزل الذكي: أي اختيار
+- 📡 شبكة: `new_setup`
+
+في الحالات البسيطة (إصلاح عطل، تجديد جزئي، 1-2 كاميرا) → **لا يظهر السؤال إطلاقاً** — لتجنّب إحراج العميل بسؤال غير مناسب لحجم الطلب.
+
+### توليد رسالة الواتساب
+
+`buildWhatsAppHref()` يبني رسالة منسّقة بـ bullet style مع emojis، تُرَتَّب فيها كل اختيارات المستخدم بلغته الفعّالة، تنتهي برابط `https://wa.me/212654132112?text=<encoded>`. الحقول الاختيارية الفارغة لا تظهر في الرسالة.
+
+### قواعد التعديل
+
+- **إضافة خيار جديد لخطوة موجودة:** أضف entry لمصفوفة الـ OPTIONS المناسبة (`SMART_HOME_OPTS`, `CAMERA_OPTS`, إلخ) + أضف مفاتيح الترجمة الثلاث في `wizard_{prefix}_{id}` بـ `en/fr/ar.json`.
+- **إضافة خطوة فرعية جديدة:** عدّل `buildStepSequence()` + أضف `if (stepKey === '...')` block في `renderStep()` + أضف case في `isCurrentStepValid()` + أضف rows في `renderSummary()` + أضف rows في `buildWhatsAppHref()`.
+- **تعديل صياغة سؤال:** غيّر القيمة في `assets/locales/{lang}.json` (مفاتيح `wizard_q_*`). **لا تعدّل النص داخل `find-solution.js`** — هو fallback فقط.
+- **إضافة زر مُحفِّز جديد على أي صفحة:** أضف `data-trigger="find-solution"` للعنصر. يفتح الويزارد آلياً.
+- **حذف الويزارد من صفحة معيّنة:** احذف `<link>` و `<script>` لـ find-solution من القالب الجذري المعني.
+
+### ⚠️ تحذيرات
+
+- **لا تستخدم `data-i18n` داخل عناصر الويزارد** — الترجمة تتم وقت الـ render عبر `t()` المحلي. أي `data-i18n` سيُطلِق مسار `applyTranslations` في i18n.js ويتعارض.
+- **لا تنزع `id="fs-modal-root"`** عن حاوية الويزارد — هو السبيل الوحيد لاستثنائها من الـ TreeWalker (انظر القسم 2.6).
+- **لا تُعِد إضافة `<a href="tel:...">` لزر "احجز استشارة مجانية"** — سيُعيد المشكلة الأصلية (race condition + اتصال هاتفي عند النقر السريع). الزر مخصّص حصرياً لفتح الويزارد.
+- **عند تشغيل أي build script** بعد تعديل القوالب الجذرية، ستنتشر التغييرات تلقائياً لكل النسخ الفرنسية والعربية وصفحات المنتجات/المشاريع المُولَّدة.
