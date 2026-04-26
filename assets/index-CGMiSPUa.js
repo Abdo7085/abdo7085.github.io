@@ -11432,7 +11432,7 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4 w-full",
                 children: [u.jsxs("a", {
-                    href: "https://wa.me/212654132112?text=Hello%2C%20I%27d%20like%20a%20free%20consultation%20about%20smart%20home%20installation.",
+                    href: "https://wa.me/212654132112",
                     target: "_blank",
                     rel: "noopener noreferrer",
                     "aria-label": "Contact us on WhatsApp",
@@ -11937,7 +11937,7 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "proj-cta-actions fade-in",
                 children: [u.jsxs("a", {
-                    href: "https://wa.me/212654132112",
+                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); const lang = m ? m[1].toLowerCase() : 'en'; const msgs = { en: "Hello, I'd like a consultation about your services.", fr: "Bonjour, je souhaite une consultation concernant vos services.", ar: "مرحباً، أود استشارة بخصوص خدماتكم." }; return "https://wa.me/212654132112?text=" + encodeURIComponent(msgs[lang] || msgs.en); })(),
                     target: "_blank",
                     rel: "noopener noreferrer",
                     className: "proj-cta-btn proj-cta-btn-primary",
