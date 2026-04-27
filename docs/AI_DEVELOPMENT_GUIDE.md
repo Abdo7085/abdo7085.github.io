@@ -155,6 +155,13 @@
 5. **تكامل صفحة `previous-work.html`:**
    الشبكة الـ 9-خانات التي كانت مكتوبة يدوياً في `index-CGMiSPUa.js` (السطر ~12358) استُبدلت بـ `S.useState` + `S.useEffect` يجلب `data/projects_index.json` ويعرض كل مشروع كبطاقة تشير إلى `/projects/<id>.html` (أو `/fr/...` / `/ar/...` حسب لغة الزائر). المهمة في الـ SPA bundle صارت: عرض ديناميكي مع روابط ذاتية اللغة.
 
+6. **قسم Related Products على صفحة المشروع — دائماً 4 منتجات:**
+   دالة `pickRelatedProducts(project, productsIndex)` في `assets/project-detail.js` تضمن أن القسم يعرض **4 بطاقات بالضبط** بغض النظر عن محتوى `related_products` في الـ JSON. الخوارزمية ثلاثية المسارات:
+   - **القائمة الصريحة ≥ 4:** تُؤخذ أول 4 فقط (مع dedupe والتحقق من وجودها في `products_index.json`).
+   - **القائمة الصريحة 1-3:** تُكمَّل الـ 4 بنظام نقاط ضد بقية الكتالوج: `+3` للـ brand مطابق، `+2` لكل technology مشترك، `+1` للـ product_type مطابق. ترتيب تنازلي.
+   - **القائمة فارغة (0):** يُحسب hash بسيط (djb2 variant) من `project.id` يولّد offset حتمياً داخل `productsIndex` — كل مشروع يعرض شريحة ثابتة-ولكن-مختلفة من الكتالوج بدل أن يعرض جميع المشاريع نفس أول 4.
+   - **التصميم:** البطاقات تستخدم كلاسات `.prod-card` و `.prod-grid` من `assets/products.css` (لا `proj-related-card*`) لتطابق صفحة المنتج بصرياً. لذلك `project.html` يُحمِّل `products.css` كذلك (راجع القسم 5 لاعتمادية CSS).
+
 ---
 
 ## 4. بنية SEO للموقع (SEO Architecture)
@@ -237,6 +244,7 @@ python scripts/build_all.py
 - **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
+  - **`products.css` على `project.html`:** صفحة المشروع تُحمِّل أيضاً `assets/products.css` لأن قسم Related Products فيها يستخدم كلاسات `.prod-card` و `.prod-grid` (مطابقة بصرية لصفحة المنتج). إن أزال أحدهم هذا الـ link مستقبلاً ظاناً أنه دخيل، ستظهر بطاقات Related Products بدون تنسيق. المرجع الكامل في القسم 3.1 نقطة 6.
 
 ---
 

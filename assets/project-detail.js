@@ -475,31 +475,91 @@
     );
   }
 
+  function pickRelatedProducts(project, productsIndex) {
+    const TARGET = 4;
+    if (!productsIndex || productsIndex.length === 0) return [];
+
+    const seen = {};
+    const picked = [];
+    (project.related_products || []).forEach(function(id) {
+      if (!id || seen[id]) return;
+      const p = productsIndex.find(function(x) { return x.id === id; });
+      if (!p) return;
+      seen[id] = true;
+      picked.push(p);
+    });
+
+    if (picked.length >= TARGET) return picked.slice(0, TARGET);
+
+    if (picked.length > 0) {
+      const brandSet = {}, techSet = {}, typeSet = {};
+      picked.forEach(function(p) {
+        if (p.brand) brandSet[p.brand] = true;
+        if (Array.isArray(p.technology)) p.technology.forEach(function(tech) { techSet[tech] = true; });
+        if (p.product_type) typeSet[p.product_type] = true;
+      });
+
+      const scored = productsIndex
+        .filter(function(p) { return !seen[p.id]; })
+        .map(function(p) {
+          let score = 0;
+          if (p.brand && brandSet[p.brand]) score += 3;
+          if (Array.isArray(p.technology)) {
+            p.technology.forEach(function(tech) { if (techSet[tech]) score += 2; });
+          }
+          if (p.product_type && typeSet[p.product_type]) score += 1;
+          return { p: p, score: score };
+        })
+        .sort(function(a, b) { return b.score - a.score; });
+
+      for (let i = 0; i < scored.length && picked.length < TARGET; i++) {
+        picked.push(scored[i].p);
+        seen[scored[i].p.id] = true;
+      }
+    } else {
+      // No seed: deterministic offset from project.id so each project shows a
+      // stable-but-different slice of the catalog instead of always the first 4.
+      let h = 0;
+      const pid = String(project.id || '');
+      for (let i = 0; i < pid.length; i++) {
+        h = ((h << 5) - h + pid.charCodeAt(i)) | 0;
+      }
+      const offset = Math.abs(h) % productsIndex.length;
+      for (let i = 0; i < productsIndex.length && picked.length < TARGET; i++) {
+        const p = productsIndex[(offset + i) % productsIndex.length];
+        if (seen[p.id]) continue;
+        seen[p.id] = true;
+        picked.push(p);
+      }
+    }
+
+    return picked.slice(0, TARGET);
+  }
+
   function renderRelatedProducts(project, productsIndex) {
-    if (!project.related_products || project.related_products.length === 0) return '';
-    if (!productsIndex || productsIndex.length === 0) return '';
+    const items = pickRelatedProducts(project, productsIndex);
+    if (items.length === 0) return '';
 
     const prefix = getLangPrefix();
-    const cards = project.related_products.map(function(pid) {
-      const p = productsIndex.find(function(x) { return x.id === pid; });
-      if (!p) return '';
-      const img = p.image || (p.images && p.images[0]) || '/assets/S‑ELECTRICITY-LOGO.svg';
+    const cards = items.map(function(p) {
+      const title = t(p.title);
+      const image = p.image || (p.images && p.images[0]) || '/assets/S‑ELECTRICITY-LOGO.svg';
       return (
-        '<a href="' + prefix + '/products/' + p.id + '.html" class="proj-related-card">' +
-          '<div class="proj-related-card-img"><img src="' + escapeHtml(img) + '" alt="' + escapeHtml(t(p.title)) + '" loading="lazy" /></div>' +
-          '<div class="proj-related-card-body">' +
-            (p.brand ? '<div class="proj-related-card-brand">' + escapeHtml(p.brand) + '</div>' : '') +
-            '<h3 class="proj-related-card-title">' + escapeHtml(t(p.title)) + '</h3>' +
+        '<a href="' + prefix + '/products/' + p.id + '.html" class="prod-card link-transition">' +
+          '<div class="prod-card-img-wrapper" style="height:180px;">' +
+            '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(title) + '" class="prod-card-img" loading="lazy" />' +
+          '</div>' +
+          '<div class="prod-card-content" style="padding:1rem;">' +
+            '<h4 style="font-size:1.1rem; color: #1f2937; margin:0;">' + escapeHtml(title) + '</h4>' +
           '</div>' +
         '</a>'
       );
     }).join('');
 
-    if (!cards) return '';
     return (
       '<section class="proj-related">' +
         '<h2 class="proj-section-title" data-i18n="related_products">Related Products</h2>' +
-        '<div class="proj-related-grid">' + cards + '</div>' +
+        '<div class="prod-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">' + cards + '</div>' +
       '</section>'
     );
   }
