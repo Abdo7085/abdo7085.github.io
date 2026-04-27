@@ -378,6 +378,24 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 
 كذلك يلتقط الويزارد كل نقرة على أي عنصر يحمل `[data-i18n="spa_cta_book_visit"]` (الزر الموجود في قسم About بـ SPA bundle) — للتوافق العكسي.
 
+**نقاط التفعيل الفعلية في الموقع** (للمراجعة السريعة):
+| الموقع | المكوّن | الملف |
+|---|---|---|
+| زر "احجز استشارة مجانية" في قسم About (Hero الثاني) | SPA component | `assets/index-CGMiSPUa.js` (`spa_cta_book_visit`) |
+| زر "Find Your Solution" داخل بانر "Need a Custom Solution?" — الصفحة الرئيسية | SPA component (`Od`) | `assets/index-CGMiSPUa.js` (~11939) |
+| زر "Find Your Solution" داخل بانر "Need a Custom Solution?" — صفحات المشاريع | `renderCta()` | `assets/project-detail.js` (~520) |
+
+**ملاحظة CSS (button vs anchor):** عند تحويل عنصر CTA يستخدم كلاسات الموقع (مثل `.proj-cta-btn`) من `<a>` إلى `<button>`، تَسرَّب أنماط المتصفّح الافتراضية للزر (border, font-family, line-height). الـ reset الكافي:
+```css
+button.proj-cta-btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+}
+```
+استخدم نفس الفكرة لأي كلاس CTA مشترك بين `<a>` و `<button>` في المستقبل (لا تضع border:none على `.proj-cta-btn` نفسه — ستكسر `.proj-cta-btn-secondary` التي تحتاج border للحدود البيضاء).
+
 ### Inline bootstrap (سبب وجوده — race condition)
 
 `find-solution.js` يُحمَّل بـ `defer`، مما يعني أنه ينفّذ بعد انتهاء HTML parse. المشكلة: إذا نقر المستخدم بسرعة جداً بعد reload (خاصة بعد cache clear)، النقرة قد تصيب الزر **قبل** تسجيل مستمع النقر → النقرة تنفّذ السلوك الافتراضي (مثلاً `tel:` لو كان موجوداً).
