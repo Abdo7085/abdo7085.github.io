@@ -21,68 +21,6 @@
     "media_count": 3
   },
   {
-    "id": "retail-surveillance-tangier",
-    "date": "2026-02-14",
-    "location": "Tangier, Morocco",
-    "categories": [
-      "Security & Surveillance",
-      "Network & Wi-Fi"
-    ],
-    "title": {
-      "en": "Retail Store Surveillance — Tangier",
-      "fr": "Surveillance de Magasin — Tanger",
-      "ar": "مراقبة متجر تجاري — طنجة"
-    },
-    "short_description": {
-      "en": "12-camera CCTV with mobile alerts and dedicated VLAN for a high-traffic store.",
-      "fr": "CCTV 12 caméras avec alertes mobiles et VLAN dédié pour un magasin à fort trafic.",
-      "ar": "نظام CCTV من 12 كاميرا مع تنبيهات للهاتف وVLAN مخصص لمتجر ذي حركة عالية."
-    },
-    "cover": "/assets/camera-man.webp",
-    "media_count": 3
-  },
-  {
-    "id": "mesh-wifi-casablanca-apt",
-    "date": "2026-01-08",
-    "location": "Casablanca, Morocco",
-    "categories": [
-      "Network & Wi-Fi"
-    ],
-    "title": {
-      "en": "Mesh Wi-Fi Revamp — Casablanca Apartment",
-      "fr": "Refonte Wi-Fi Mesh — Appartement à Casablanca",
-      "ar": "تجديد شبكة Wi-Fi mesh — شقة في الدار البيضاء"
-    },
-    "short_description": {
-      "en": "Three-node mesh with a dedicated IoT SSID for a 180m² triplex apartment.",
-      "fr": "Mesh à trois nœuds avec un SSID IoT dédié pour un triplex de 180 m².",
-      "ar": "شبكة mesh من ثلاث عقد مع SSID مخصّص لأجهزة IoT في شقة دوبلكس 180م²."
-    },
-    "cover": "/assets/hometheatre2.webp",
-    "media_count": 2
-  },
-  {
-    "id": "office-electrical-rabat",
-    "date": "2025-11-18",
-    "location": "Rabat, Morocco",
-    "categories": [
-      "Electrical Installation",
-      "Lighting Design"
-    ],
-    "title": {
-      "en": "Office Electrical Overhaul — Rabat",
-      "fr": "Rénovation Électrique de Bureau — Rabat",
-      "ar": "تجديد كهربائي لمكتب — الرباط"
-    },
-    "short_description": {
-      "en": "New distribution panel, LED retrofit, and structured cabling for a 400m² office.",
-      "fr": "Nouveau tableau de distribution, rétrofit LED et câblage structuré pour un bureau de 400 m².",
-      "ar": "لوحة توزيع جديدة، تحديث إضاءة LED، وتمديدات منظّمة لمكتب بمساحة 400م²."
-    },
-    "cover": "/assets/hometheatre1.webp",
-    "media_count": 3
-  },
-  {
     "id": "huerto-pool-tetouan",
     "date": "2025-07-16",
     "location": "Tetouan, Morocco",
