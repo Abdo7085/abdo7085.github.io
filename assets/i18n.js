@@ -270,7 +270,7 @@
     "Our team of experts is ready to design a tailored smart home or commercial solution that perfectly fits your needs and budget.": "spa_team",
     "Your Trusted Partner in Smart Home & Security Solutions": "spa_trusted_partner",
     "Smart Home Automation": "spa_smart_home_automation",
-    "What We Do": "spa_smart_home_automation",
+    "Smart Home": "spa_smart_home_automation",
     "Complete Smart Home Integration": "spa_complete_integration",
     "End-to-End Smart Solutions": "spa_complete_integration",
     "Transform your house into an intelligent Smart Home with seamless automation, voice control, and cutting-edge tech that adapts to your lifestyle. Full control, no contracts, no confusion.": "spa_transform_house",

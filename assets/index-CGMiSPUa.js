@@ -11654,8 +11654,20 @@ const Xh = re("Zap", [["polygon", {
         , [e]); // re-run when the active tab changes so new elements get observed
         const r = {
         residential: [{
-                        icon: u.jsx(rl, {
-                                className: "w-8 h-8 text-primary"
+                        // Smart Home — Lucide house-wifi (matches wizard icon)
+                        icon: u.jsx("svg", {
+                                className: "w-8 h-8 text-primary",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                "aria-hidden": "true",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                dangerouslySetInnerHTML: {
+                                    __html: '<path d="M9.5 13.866a4 4 0 0 1 5 .01"/><path d="M12 17h.01"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 10.754a8 8 0 0 1 10 0"/>'
+                                }
                         }),
             titleKey: "spa_smart_home_automation",
             descriptionKey: "spa_desc_smart_home"
@@ -11666,8 +11678,20 @@ const Xh = re("Zap", [["polygon", {
             titleKey: "spa_title_smart_locks",
             descriptionKey: "spa_desc_smart_locks"
                 }, {
-                        icon: u.jsx(rl, {
-                                className: "w-8 h-8 text-primary"
+                        // Thermostat — Lucide thermometer (replaces stale Home icon)
+                        icon: u.jsx("svg", {
+                                className: "w-8 h-8 text-primary",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                "aria-hidden": "true",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                dangerouslySetInnerHTML: {
+                                    __html: '<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>'
+                                }
                         }),
             titleKey: "spa_title_thermostat",
             descriptionKey: "spa_desc_thermostat"
@@ -11678,8 +11702,20 @@ const Xh = re("Zap", [["polygon", {
             titleKey: "spa_title_security_cameras",
             descriptionKey: "spa_desc_security_cameras"
                 }, {
-                        icon: u.jsx(qa, {
-                                className: "w-8 h-8 text-primary"
+                        // Voice Assistant — Lucide mic (replaces Speaker; clearer "voice" signal)
+                        icon: u.jsx("svg", {
+                                className: "w-8 h-8 text-primary",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                "aria-hidden": "true",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                dangerouslySetInnerHTML: {
+                                    __html: '<path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/>'
+                                }
                         }),
             titleKey: "spa_title_voice_integration",
             descriptionKey: "spa_desc_voice_integration"
@@ -11690,7 +11726,8 @@ const Xh = re("Zap", [["polygon", {
             titleKey: "spa_title_network",
             descriptionKey: "spa_desc_network"
                 }, {
-                        icon: u.jsx(rl, {
+                        // Smart Lighting — Lightbulb (Vh, already in bundle, used by Electrical tab)
+                        icon: u.jsx(Vh, {
                                 className: "w-8 h-8 text-primary"
                         }),
             titleKey: "spa_title_smart_lighting",
