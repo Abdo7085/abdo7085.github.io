@@ -604,3 +604,134 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 - ❌ "What's the issue?" → ✅ "What's the network or Wi-Fi issue?"
 
 **فائدة هذا النمط:** لا حاجة لإضافة "بادج" بصري فوق السؤال (أقل فوضى)، والمستخدم يعرف موقعه في التسلسل من السؤال نفسه.
+
+---
+
+## 10. تغيير اللون التجاري على الموقع كاملاً (Brand Color Swap)
+
+عند طلب تغيير اللون التجاري الأساسي، **لا يوجد متغيّر CSS واحد يُحدَّث**. اللون مُكرَّر بصيغ هندسية مختلفة عبر سبعة ملفات. هذا القسم يختصر الجولة.
+
+### ⚠️ القيمة الواحدة للون لها صيغتان مختلفتان قليلاً
+
+اللون التجاري الحالي **`#b86c25`** يظهر بصيغتين متقاربتين لكن غير متطابقتين:
+- **`#b86c25`** = `rgb(184, 108, 37)` — قيمة الـ`--primary-color` ومعظم متغيّرات الـCSS المخصّصة.
+- **`rgb(187, 118, 31)`** = `#bb761f` — قيمة Tailwind المُجمَّعة مسبقاً في `index-CJ3jXuVd.css`.
+
+السببب: الـTailwind compile أُجري بإعداد لون مختلف بقليل، ولم يُعد التجميع. **عند الـswap، يجب استبدال الـHex والـRGB كليهما.**
+
+### خريطة كاملة لمواقع اللون التجاري
+
+| الملف | الاستعمال | عدد المرّات |
+|---|---|---|
+| `assets/index-CJ3jXuVd.css` | `--primary-color: #b86c25` + كل Tailwind classes (`.bg-primary`, `.text-primary`, `.border-primary`, `.from-primary`, `.to-primary`, `.shadow-primary/*`, `.ring-primary/*`, `.hover:*-primary`, `.btn-primary`) عبر صيغة `rgb(187 118 31)` | ~20 |
+| `assets/projects.css` | `--proj-primary` + `--proj-primary-hover` + ~7 ظلال `rgba(184, 108, 37, …)` | ~10 |
+| `assets/products.css` | `--prod-primary` + ~14 ظلال rgba | ~15 |
+| `assets/find-solution.css` | `--fs-orange` (لون الويزارد) | 1 |
+| `assets/homepage-products.css` | hex مباشر + `rgb(187, 118, 31)` (FAQ outline + بادجات + زرّ CTA) | ~5 |
+| `assets/i18n.css` | `rgb(187, 118, 31)` للأزرار العائمة (تبديل اللغة + WhatsApp dialer) في الزوايا | ~5 |
+| `assets/index-CGMiSPUa.js` | inline في SPA bundle: FAQ outline + لون category badge | 2 |
+
+### وصفة الـSwap بأمر واحد
+
+```bash
+# استبدِل OLD_HEX و NEW_HEX و OLD_HEX_HOVER و NEW_HEX_HOVER
+# كذلك القيم العشرية المرافقة (تنبيه: Tailwind = "187 118 31" بمسافات؛
+# باقي الملفات = "184, 108, 37" بفواصل + مسافات)
+
+FILES="assets/index-CJ3jXuVd.css assets/index-CGMiSPUa.js \
+       assets/projects.css assets/products.css \
+       assets/find-solution.css assets/homepage-products.css \
+       assets/i18n.css"
+
+for f in $FILES; do
+  sed -i \
+    -e 's/#b86c25/#NEW_HEX/g' \
+    -e 's/#9c5a1e/#NEW_HEX_HOVER/g' \
+    -e 's/184, *108, *37/NEW_R, NEW_G, NEW_B/g' \
+    -e 's/184,108,37/NEW_R,NEW_G,NEW_B/g' \
+    -e 's/187 118 31/NEW_R NEW_G NEW_B/g' \
+    -e 's/#bb761f/#NEW_HEX/g' \
+    "$f"
+done
+
+# تحقّق نهائي — يجب أن يكون فارغاً
+grep -rn "b86c25\|9c5a1e\|184, *108, *37\|187 118 31\|bb761f" assets/
+```
+
+### الخلفيات الداكنة في الـSPA (ليست لها متغيّر)
+
+ثلاثة مقاطع داكنة في الـSPA bundle تستخدم رمادي **بارد** Tailwind (`bg-gradient-to-br from-gray-900 via-black to-gray-900` أو `linear-gradient(..., #111827, #000000, #111827)`):
+
+| المقطع | المكان | كيفية التغيير |
+|---|---|---|
+| `#example` ("Your home at your fingertips") | `index-CGMiSPUa.js` ~11546 — Tailwind classes | إما تعديل classes في الـbundle مباشرة، أو override في CSS بـ `!important` لأن Tailwind gradients عبر `--tw-gradient-*` vars عالية الأولوية |
+| `#homepage-products-section` | `assets/homepage-products.css` السطر 4 | تعديل قيمة `background:` مباشرة |
+| ✅ `.proj-cta` (CTA banner) | `assets/projects.css` ~723 | فعلاً يستخدم متغيّرات قابلة للتخصيص |
+
+**درس مستفاد:** عند تغيير لون الأكسنت (مثلاً برتقالي → ذهبي)، يجب التأكّد أن الخلفيات الداكنة دافئة (warm-dark) لا باردة (cool-gray) — الذهبي على رمادي بارد يبدو غير منسجم. لون داكن دافئ مقترح: `oklch(0.16 0.012 60)` أو fallback `#1a140a`.
+
+### ⚠️ اللون التجاري يظهر مرّتين بدرجتين متقاربتين عمداً (not a bug)
+
+في بعض الأماكن نحتاج درجتين من نفس اللون:
+- **درجة فاتحة** للـbackgrounds الكبيرة (تحتاج تباين جيّد مع نصّ أبيض → ينبغي ألا تكون فاتحة جداً)
+- **درجة أعمق** للنصوص على الخلفيات البيضاء (text-on-light contrast)
+
+التصميم الذي قدّمه claude.ai/design يُعرّف هذا صراحة بـ`--accent` (فاتح، on-dark) و`--accent-text` (أعمق، on-light). إذا حدث طلب اعتماد نظام مزدوج، أنشئ متغيّرين منفصلين بدل تخمين أيّهما الأصحّ في كل موقع.
+
+---
+
+## 11. استلام تصميم من claude.ai/design (Design Handoff)
+
+عندما يُمرّر المستخدم رابطاً بصيغة `https://api.anthropic.com/v1/design/h/<hash>?open_file=<file>`، **النتيجة ليست HTML قابلة للقراءة بل أرشيف tar مضغوط بـgzip**.
+
+### وصفة الفكّ
+
+```bash
+# WebFetch يحفظ المحتوى البايني تلقائياً في tool-results/*.bin
+# ابحث عن آخر ملف bin أُنشئ، ثم:
+
+mkdir -p /tmp/design-fetch && cd /tmp/design-fetch
+cp <PATH_TO_LATEST_BIN> archive.gz
+gunzip -f archive.gz   # ينتج "archive" (POSIX tar)
+mkdir -p extracted
+tar -xf archive -C extracted
+find extracted -type f
+```
+
+### بنية الأرشيف المتوقّعة
+
+```
+<project-name>/
+├── README.md            ← ابدأ من هنا (تعليمات للوكيل)
+├── chats/
+│   └── chat<N>.md       ← المحادثات بين المستخدم والمصمّم — اقرأها كاملةً
+└── project/
+    ├── *.html           ← صفحات HTML النموذجية
+    ├── assets/
+    │   ├── styles.css   ← نظام التصميم (tokens + utilities)
+    │   ├── partials.js  ← header/footer renderer
+    │   └── shared.js    ← منطق مشترك
+    ├── screenshots/     ← مرجع بصري
+    └── uploads/         ← صور رفعها المستخدم
+```
+
+### قواعد التعامل
+
+- **اقرأ README ثم chats قبل أيّ شيء** — الـchat هو المكان الذي يكشف نوايا المستخدم الحقيقية ومراحل التكرار التي وصلوا إليها.
+- **التصميم prototype وليس production code.** لا تنقل البنية حرفياً — انقل التأثير البصري بما يناسب البنية الحالية للموقع.
+- **لا تشغّل الـHTML في متصفّح ولا تأخذ screenshots** — الأبعاد والألوان والـlayout مكتوبة في المصدر؛ القراءة المباشرة أكفأ.
+- **حدّد الفجوة بين التصميم والبنية الحالية:** التصاميم من claude.ai/design عادةً صفحات HTML ساكنة بدون i18n حقيقي، بدون SSG للمنتجات، بدون wizard. **الـ literal port يفقد كل هذا.** اقترح نهجاً هجيناً يحتفظ بالبنية ويتبنّى البصريات.
+
+### ما يستحقّ الاستعارة عادةً
+
+من تجربة الـhandoff الأولى (claude.ai/design لـS-ELECTRICITY 2026-04):
+- **نظام tokens موحّد بـoklch** أنظف بكثير من Hex متناثرة.
+- **Eyebrow markers (monospace + hairline)** فوق العناوين — تأثير "فخامة" بسيط.
+- **Section rhythm** (تناوب dark/cream) لمنع الكتل الطويلة المملّة.
+- **CTA banners ذات gradient شعاعي** بدل الفلات الموحّد.
+
+### ما لا يستحقّ النقل عادةً
+
+- **Visual stub language toggle** (يُبدّل label فقط بدون ترجمة) — الموقع لديه نظام i18n حقيقي.
+- **Hardcoded products** بدلاً من الـSSG.
+- **Reset كامل للـbundle** — تكلفة عالية، فائدة منخفضة.
