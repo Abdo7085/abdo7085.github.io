@@ -460,3 +460,129 @@ state = {
 - **لا تنزع `id="fs-modal-root"`** عن حاوية الويزارد — هو السبيل الوحيد لاستثنائها من الـ TreeWalker (انظر القسم 2.6).
 - **لا تُعِد إضافة `<a href="tel:...">` لزر "احجز استشارة مجانية"** — سيُعيد المشكلة الأصلية (race condition + اتصال هاتفي عند النقر السريع). الزر مخصّص حصرياً لفتح الويزارد.
 - **عند تشغيل أي build script** بعد تعديل القوالب الجذرية، ستنتشر التغييرات تلقائياً لكل النسخ الفرنسية والعربية وصفحات المنتجات/المشاريع المُولَّدة.
+
+### استراتيجية إعادة الرسم (Render Strategy) — لا تستدعِ `renderStep` داخل `onPick`
+
+**القاعدة:** كل callback نقر على خيار يجب أن يحدّث **حالة العناصر المتأثرة فقط** بدون إعادة بناء الخطوة كاملة. السبب التقني: حاوية كل خطوة هي `<div class="fs-step-fade">` وتشتغل عليها CSS animation `fsFadeIn 0.3s`. كل استدعاء لـ `renderStep(stepKey, body)` يفعل `body.innerHTML = ''` ثم يُنشئ wrapper جديداً → تُعاد الانيميشن → **رمش بصري ملحوظ** يكسر الانطباع الاحترافي.
+
+**النمط الصحيح:** helper `updateOptionStates(grid, isSelected)` يمرّ على الأزرار في الشبكة فقط ويبدّل `class="fs-selected"` و `aria-pressed`:
+```js
+function updateOptionStates(grid, isSelected) {
+  grid.querySelectorAll('.fs-option').forEach(function (btn) {
+    var sel = !!isSelected(btn.getAttribute('data-id'));
+    btn.classList.toggle('fs-selected', sel);
+    btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+  });
+}
+```
+ثم في كل خطوة، احفظ مرجع الشبكة محلياً واستخدمه في `onPick`:
+```js
+const grid = renderOptionGrid(BUILDING_TYPES, {
+  isSelected: function (id) { return state.buildingType === id; },
+  onPick: function (id) {
+    state.buildingType = id;
+    updateOptionStates(grid, function (x) { return state.buildingType === x; });
+    updateFooter(); // فقط تحديث footer + progress
+  }
+});
+```
+الـ `renderStep` الكامل يُستدعى **فقط** عند: `goNext`, `goBack`, `open()` — أي عند انتقال خطوة فعلي.
+
+### نمط الأقسام الفرعية الشرطية (Conditional Sub-Sections)
+
+عندما يحتاج اختيار في الخطوة إلى إظهار/إخفاء قسم فرعي (مثل: اختيار "Other" يُظهر input حر، أو اختيار كاميرا يُظهر سؤال العدد)، **لا تعتمد على `renderStep` كاملاً** — استخدم نمط `sync` موضعي:
+
+```js
+let countSection = null;            // مرجع للقسم الفرعي
+function buildCountSection() { /* يبني ويعيد الـ DOM node */ }
+function syncCountSection() {
+  const need = hasActualCamera();
+  if (need && !countSection) {
+    countSection = buildCountSection();
+    wrap.appendChild(countSection);
+  } else if (!need && countSection) {
+    countSection.remove();
+    countSection = null;
+    state.cameraCount = null;       // **مهم:** صفّر الحالة عند الإخفاء لتجنّب بيانات شبحية
+  }
+}
+// استدعِ syncCountSection() في onPick + مرة عند الـ initial mount
+```
+
+**ميزات النمط:** الشبكة الأم لا تُعاد رسمها (لا رمش)، الانيميشن لا تُعاد، الحالة المرتبطة بالقسم المُخفى تُصفَّر تلقائياً.
+
+### نمط Logical Gating للأسئلة الفرعية
+
+ليست كل اختيارات المستخدم تستدعي نفس السؤال التالي. مثال محسوس: في خطوة `cameras`، سؤال "تقريباً كم كاميرا؟" مطلوب فقط لـ `indoor`/`outdoor` (كاميرات حقيقية). أما `doorbell`/`lock`/`alarm` فهي وحدات مفردة لا تحتاج عدّاً.
+
+**النمط:** عرّف whitelist واضحاً + helper:
+```js
+const ACTUAL_CAMERA_IDS = ['indoor', 'outdoor'];
+function hasActualCamera() {
+  return state.cameras.some(function (c) {
+    return ACTUAL_CAMERA_IDS.indexOf(c) !== -1;
+  });
+}
+```
+استخدمه في **ثلاثة مواضع** متزامنة:
+1. `syncCountSection()` للظهور/الإخفاء في الـ UI.
+2. `isCurrentStepValid()` للتحقق من صحة الخطوة (هل العدد مطلوب؟).
+3. `renderSummary()` و `buildWhatsAppHref()` لمنع إظهار قيمة شبحية في الملخّص/الواتساب.
+
+**درس مستفاد:** الـ gating logic يعيش في 3-4 أماكن — ضع الشرط في helper واحد وادعُه من كل مكان، لا تكرّر الشرط.
+
+### نظام الأيقونات (Lucide + Tabler SVG)
+
+**القاعدة:** الويزارد يستخدم أيقونات SVG inline من مصادر مفتوحة (Lucide + Tabler — كلاهما MIT). ممنوع الإيموجي في بطاقات الخيارات (غير احترافي). الإيموجي يُحفَظ فقط للملخّص ورسالة الواتساب (نص خام).
+
+**النمط (Dual-icon Pattern):** كل entry في مصفوفات الخيارات يحمل حقلين:
+```js
+{ id: 'villa', icon: ICONS.home, emoji: '🏡', label: 'wizard_b_villa' }
+```
+- `icon` → SVG string، يُعرض في بطاقة الويزارد عبر `el('span', { html: item.icon })`.
+- `emoji` → نص بسيط، يُستخدم في `renderSummary()` و `buildWhatsAppHref()`.
+
+**قاموس `ICONS`:** كل الأيقونات في كائن واحد بأعلى الملف. helper:
+```js
+function svg(content) {
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + content + '</svg>';
+}
+const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
+```
+
+**استخدام `currentColor`:** SVG لا يحدّد لوناً ثابتاً — الـ CSS يتحكّم:
+```css
+.fs-option-icon { color: var(--fs-orange); }
+.fs-option-icon svg { width: 28px; height: 28px; display: block; }
+.fs-options-list .fs-option-icon svg { width: 22px; height: 22px; }
+.fs-option.fs-selected .fs-option-icon { color: var(--fs-orange-dark); }
+```
+هذا يضمن: لون موحّد طبيعي + أغمق عند الاختيار + يستجيب لأي تغيير في الـ brand color مستقبلاً.
+
+**`el()` helper يدعم `html`:** السبب التقني لتمرير SVG كـ string عبر `el('span', { html: '<svg>...</svg>' })`. الـ helper يفعل `node.innerHTML = attrs.html`. لا تستخدم `children` لـ SVG لأنه سيتحوّل إلى text node فيُعرض كنص.
+
+#### ⚠️ لا تكتب مسارات SVG من الذاكرة — اجلبها من المصدر الرسمي
+
+**درس مستفاد قاسٍ:** كتبتُ مسار `siren` من الذاكرة، فاختلطت أجزاء من أيقونتين مختلفتين، وانتهت أيقونة "Alarm System" بشكل عشوائي معطوب يظهر للزائر. تكرّر الأمر مع `cctv` (مسار قديم لا يرسم بشكل صحيح).
+
+**القاعدة:** قبل إضافة أي أيقونة جديدة، اجلب المسار الرسمي مباشرة من المصدر:
+- **Lucide:** `https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/<name>.svg`
+- **Tabler:** `https://raw.githubusercontent.com/tabler/tabler-icons/main/icons/outline/<name>.svg`
+
+استخدم `WebFetch` بـ prompt: `"Return the raw SVG content exactly as-is."`. انسخ الـ `<path>` الداخلي فقط (بدون `<svg>` wrapper) ومرّره لـ `svg()` helper.
+
+#### اختيار الأيقونات — قواعد التمييز الدلالي
+
+- **Indoor vs Outdoor cameras:** يجب أن تُميَّز بصرياً. حالياً: indoor = Tabler `device-cctv` (شكل قبّة سقف)، outdoor = Lucide `cctv` (مثبَّتة على حامل جانبي).
+- **Smart Home (خدمة) vs Villa (مبنى):** كلاهما "منزل". لا تستخدم نفس الأيقونة. حالياً: Villa = Lucide `home`, Smart Home = Lucide `house-wifi` (موجات Wi-Fi داخل المنزل).
+- **تجنّب التكرار في خطوات مختلفة:** كان `hammer` مستخدماً في `full_renovation` (electrical) و `renovating` (project stage) — أُبدل الثاني بـ `paint-roller` للتمييز.
+- **`HelpCircle` (?)** مكرّر مقبول في `other` (building) و `other` (network issue) لأنهما في خطوات مختلفة، لا تعارض بصري.
+
+### تحديث صياغة الأسئلة الفرعية — اجعلها ذاتية الوصف
+
+**درس مستفاد:** الأسئلة العامّة مثل "What do you need?" أو "What's the issue?" تُفقد المستخدم السياق عندما تكون موزّعة على عدّة خطوات فرعية. الأفضل: ضمّن اسم الخدمة في السؤال نفسه:
+- ❌ "What would you like to control?" → ✅ "What smart home features would you like to control?"
+- ❌ "What do you need?" → ✅ "What security equipment do you need?"
+- ❌ "What's the issue?" → ✅ "What's the network or Wi-Fi issue?"
+
+**فائدة هذا النمط:** لا حاجة لإضافة "بادج" بصري فوق السؤال (أقل فوضى)، والمستخدم يعرف موقعه في التسلسل من السؤال نفسه.

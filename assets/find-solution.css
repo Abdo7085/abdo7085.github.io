@@ -235,6 +235,18 @@ body.fs-open { overflow: hidden; }
 .fs-option-icon {
   font-size: 1.6rem;
   line-height: 1;
+  color: var(--fs-orange);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fs-option-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+.fs-option.fs-selected .fs-option-icon {
+  color: var(--fs-orange-dark);
 }
 .fs-option-label {
   line-height: 1.2;
@@ -256,6 +268,10 @@ body.fs-open { overflow: hidden; }
 }
 .fs-options-list .fs-option-icon {
   font-size: 1.3rem;
+}
+.fs-options-list .fs-option-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* Text input */

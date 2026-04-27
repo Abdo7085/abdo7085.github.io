@@ -84,68 +84,132 @@
   let modalEl = null;
   let lang = DEFAULT_LANG;
 
+  // ---------- Icon registry (Lucide + Tabler SVG, both MIT) ----------
+  // SVG strings use stroke="currentColor" so .fs-option-icon CSS controls
+  // color (orange normally, dark-orange when fs-selected). Each option
+  // also keeps an `emoji` field used by the summary list and the WhatsApp
+  // text message — contexts where SVG is not useful.
+  function svg(content) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + content + '</svg>';
+  }
+  function dot(color) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="' + color + '" aria-hidden="true"><circle cx="12" cy="12" r="6"/></svg>';
+  }
+  const ICONS = {
+    home:        svg('<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>'),
+    building:    svg('<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>'),
+    store:       svg('<path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/>'),
+    briefcase:   svg('<rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>'),
+    utensils:    svg('<path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/>'),
+    sprout:      svg('<path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/>'),
+    helpCircle:  svg('<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>'),
+    zap:         svg('<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>'),
+    shieldCheck: svg('<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>'),
+    wifi:        svg('<path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/>'),
+    lightbulb:   svg('<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>'),
+    thermometer: svg('<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>'),
+    blinds:      svg('<path d="M3 3h18"/><path d="M20 7H8"/><path d="M20 11H8"/><path d="M10 19h10"/><path d="M8 15h12"/><path d="M4 3v14"/><circle cx="4" cy="19" r="2"/>'),
+    volume:      svg('<path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/>'),
+    film:        svg('<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/>'),
+    mic:         svg('<rect x="9" y="2" width="6" height="13" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>'),
+    plug:        svg('<path d="M12 22v-5"/><path d="M15 8V2"/><path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z"/><path d="M9 8V2"/>'),
+    hammer:      svg('<path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/>'),
+    wrench:      svg('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>'),
+    paintRoller: svg('<rect width="16" height="6" x="2" y="2" rx="2"/><path d="M10 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="4" height="6" x="8" y="16" rx="1"/>'),
+    lifeBuoy:    svg('<circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/>'),
+    panel:       svg('<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/>'),
+    // Tabler device-cctv — ceiling/dome IP camera shape (good for indoor)
+    camera:      svg('<path d="M3 4a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1l0 -2"/><path d="M8 14a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M19 7v7a7 7 0 0 1 -14 0v-7"/><path d="M12 14l.01 0"/>'),
+    // Lucide cctv — wall-mounted security camera with bracket (clearly outdoor)
+    cctv:        svg('<path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97"/><path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z"/><path d="M2 19h3.76a2 2 0 0 0 1.8-1.1L9 15"/><path d="M2 21v-4"/><path d="M7 9h.01"/>'),
+    // Lucide house-wifi — house with Wi-Fi arcs inside, unmistakable smart-home semantic
+    smartHome:   svg('<path d="M9.5 13.866a4 4 0 0 1 5 .01"/><path d="M12 17h.01"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 10.754a8 8 0 0 1 10 0"/>'),
+    bell:        svg('<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>'),
+    lock:        svg('<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>'),
+    siren:       svg('<path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/><path d="M21 12h1"/><path d="M18.5 4.5 18 5"/><path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/>'),
+    signalLow:   svg('<path d="M2 20h.01"/><path d="M7 20v-4"/>'),
+    wifiOff:     svg('<path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/>'),
+    turtle:      svg('<path d="m12 10 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a8 8 0 1 0-16 0v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3l2-4h4Z"/><path d="M4.82 7.9 8 10"/><path d="M15.18 7.9 12 10"/><path d="M16.93 10H20a2 2 0 0 1 0 4H2"/>'),
+    plusCircle:  svg('<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>'),
+    hardHat:     svg('<path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/>'),
+    checkCircle: svg('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>'),
+    calendar:    svg('<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/>'),
+    dotGreen:    dot('#10b981'),
+    dotYellow:   dot('#f59e0b'),
+    dotRed:      dot('#ef4444')
+  };
+
   // ---------- Configuration ----------
   const BUILDING_TYPES = [
-    { id: 'villa',      icon: '🏡', label: 'wizard_b_villa' },
-    { id: 'apartment',  icon: '🏢', label: 'wizard_b_apartment' },
-    { id: 'shop',       icon: '🏬', label: 'wizard_b_shop' },
-    { id: 'office',     icon: '🏤', label: 'wizard_b_office' },
-    { id: 'restaurant', icon: '🍽️', label: 'wizard_b_restaurant' },
-    { id: 'farm',       icon: '🌾', label: 'wizard_b_farm' },
-    { id: 'other',      icon: '🏗️', label: 'wizard_b_other' }
+    { id: 'villa',      icon: ICONS.home,        emoji: '🏡', label: 'wizard_b_villa' },
+    { id: 'apartment',  icon: ICONS.building,    emoji: '🏢', label: 'wizard_b_apartment' },
+    { id: 'shop',       icon: ICONS.store,       emoji: '🏬', label: 'wizard_b_shop' },
+    { id: 'office',     icon: ICONS.briefcase,   emoji: '🏤', label: 'wizard_b_office' },
+    { id: 'restaurant', icon: ICONS.utensils,    emoji: '🍽️', label: 'wizard_b_restaurant' },
+    { id: 'farm',       icon: ICONS.sprout,      emoji: '🌾', label: 'wizard_b_farm' },
+    { id: 'other',      icon: ICONS.helpCircle,  emoji: '🏗️', label: 'wizard_b_other' }
   ];
 
   const SERVICES = [
-    { id: 'smart_home', icon: '🏠', label: 'wizard_s_smart_home' },
-    { id: 'electrical', icon: '⚡', label: 'wizard_s_electrical' },
-    { id: 'cameras',    icon: '📹', label: 'wizard_s_cameras' },
-    { id: 'network',    icon: '📡', label: 'wizard_s_network' }
+    { id: 'smart_home', icon: ICONS.smartHome,   emoji: '🏠', label: 'wizard_s_smart_home' },
+    { id: 'electrical', icon: ICONS.zap,         emoji: '⚡', label: 'wizard_s_electrical' },
+    { id: 'cameras',    icon: ICONS.shieldCheck, emoji: '📹', label: 'wizard_s_cameras' },
+    { id: 'network',    icon: ICONS.wifi,        emoji: '📡', label: 'wizard_s_network' }
   ];
 
   const SMART_HOME_OPTS = [
-    { id: 'lighting', icon: '💡', label: 'wizard_sh_lighting' },
-    { id: 'climate',  icon: '🌡️', label: 'wizard_sh_climate' },
-    { id: 'curtains', icon: '🪟', label: 'wizard_sh_curtains' },
-    { id: 'audio',    icon: '🔊', label: 'wizard_sh_audio' },
-    { id: 'scenes',   icon: '🎬', label: 'wizard_sh_scenes' },
-    { id: 'voice',    icon: '🗣️', label: 'wizard_sh_voice' }
+    { id: 'lighting', icon: ICONS.lightbulb,   emoji: '💡', label: 'wizard_sh_lighting' },
+    { id: 'climate',  icon: ICONS.thermometer, emoji: '🌡️', label: 'wizard_sh_climate' },
+    { id: 'curtains', icon: ICONS.blinds,      emoji: '🪟', label: 'wizard_sh_curtains' },
+    { id: 'audio',    icon: ICONS.volume,      emoji: '🔊', label: 'wizard_sh_audio' },
+    { id: 'scenes',   icon: ICONS.film,        emoji: '🎬', label: 'wizard_sh_scenes' },
+    { id: 'voice',    icon: ICONS.mic,         emoji: '🗣️', label: 'wizard_sh_voice' }
   ];
 
   const ELECTRICAL_OPTS = [
-    { id: 'new_install',    icon: '🔌', label: 'wizard_e_new_install' },
-    { id: 'full_renovation',icon: '🛠️', label: 'wizard_e_full_renov' },
-    { id: 'partial_renovation', icon: '🔧', label: 'wizard_e_partial_renov' },
-    { id: 'repair',         icon: '🛟', label: 'wizard_e_repair' },
-    { id: 'panel',          icon: '⚡', label: 'wizard_e_panel' }
+    { id: 'new_install',        icon: ICONS.plug,     emoji: '🔌', label: 'wizard_e_new_install' },
+    { id: 'full_renovation',    icon: ICONS.hammer,   emoji: '🛠️', label: 'wizard_e_full_renov' },
+    { id: 'partial_renovation', icon: ICONS.wrench,   emoji: '🔧', label: 'wizard_e_partial_renov' },
+    { id: 'repair',             icon: ICONS.lifeBuoy, emoji: '🛟', label: 'wizard_e_repair' },
+    { id: 'panel',              icon: ICONS.panel,    emoji: '⚡', label: 'wizard_e_panel' }
   ];
 
   const CAMERA_OPTS = [
-    { id: 'indoor',   icon: '📹', label: 'wizard_c_indoor' },
-    { id: 'outdoor',  icon: '🏠', label: 'wizard_c_outdoor' },
-    { id: 'doorbell', icon: '🔔', label: 'wizard_c_doorbell' },
-    { id: 'lock',     icon: '🔒', label: 'wizard_c_lock' },
-    { id: 'alarm',    icon: '🚨', label: 'wizard_c_alarm' }
+    { id: 'indoor',   icon: ICONS.camera, emoji: '📹', label: 'wizard_c_indoor' },
+    { id: 'outdoor',  icon: ICONS.cctv,   emoji: '🏠', label: 'wizard_c_outdoor' },
+    { id: 'doorbell', icon: ICONS.bell,   emoji: '🔔', label: 'wizard_c_doorbell' },
+    { id: 'lock',     icon: ICONS.lock,   emoji: '🔒', label: 'wizard_c_lock' },
+    { id: 'alarm',    icon: ICONS.siren,  emoji: '🚨', label: 'wizard_c_alarm' }
   ];
+  // Only these picks count as "real" cameras that need a quantity. Smart
+  // doorbell, smart lock and alarm system are single-unit installations.
+  const ACTUAL_CAMERA_IDS = ['indoor', 'outdoor'];
+  function hasActualCamera() {
+    for (let i = 0; i < state.cameras.length; i++) {
+      if (ACTUAL_CAMERA_IDS.indexOf(state.cameras[i]) !== -1) return true;
+    }
+    return false;
+  }
 
   const CAMERA_COUNTS = [
-    { id: '1-2', icon: '🟢', label: 'wizard_cc_few' },
-    { id: '3-5', icon: '🟡', label: 'wizard_cc_medium' },
-    { id: '6+',  icon: '🔴', label: 'wizard_cc_many' }
+    { id: '1-2', icon: ICONS.dotGreen,  emoji: '🟢', label: 'wizard_cc_few' },
+    { id: '3-5', icon: ICONS.dotYellow, emoji: '🟡', label: 'wizard_cc_medium' },
+    { id: '6+',  icon: ICONS.dotRed,    emoji: '🔴', label: 'wizard_cc_many' }
   ];
 
   const NETWORK_OPTS = [
-    { id: 'weak_signal', icon: '📶', label: 'wizard_n_weak' },
-    { id: 'dead_zones',  icon: '📵', label: 'wizard_n_dead_zones' },
-    { id: 'slow',        icon: '🐌', label: 'wizard_n_slow' },
-    { id: 'new_setup',   icon: '🆕', label: 'wizard_n_new_setup' },
-    { id: 'other',       icon: '❓', label: 'wizard_n_other' }
+    { id: 'weak_signal', icon: ICONS.signalLow,  emoji: '📶', label: 'wizard_n_weak' },
+    { id: 'dead_zones',  icon: ICONS.wifiOff,    emoji: '📵', label: 'wizard_n_dead_zones' },
+    { id: 'slow',        icon: ICONS.turtle,     emoji: '🐌', label: 'wizard_n_slow' },
+    { id: 'new_setup',   icon: ICONS.plusCircle, emoji: '🆕', label: 'wizard_n_new_setup' },
+    { id: 'other',       icon: ICONS.helpCircle, emoji: '❓', label: 'wizard_n_other' }
   ];
 
   const PROJECT_STAGES = [
-    { id: 'building',   icon: '🏗️', label: 'wizard_st_building' },
-    { id: 'renovating', icon: '🔨', label: 'wizard_st_renovating' },
-    { id: 'completed',  icon: '✅', label: 'wizard_st_completed' },
-    { id: 'planning',   icon: '📅', label: 'wizard_st_planning' }
+    { id: 'building',   icon: ICONS.hardHat,     emoji: '🏗️', label: 'wizard_st_building' },
+    { id: 'renovating', icon: ICONS.paintRoller, emoji: '🔨', label: 'wizard_st_renovating' },
+    { id: 'completed',  icon: ICONS.checkCircle, emoji: '✅', label: 'wizard_st_completed' },
+    { id: 'planning',   icon: ICONS.calendar,    emoji: '📅', label: 'wizard_st_planning' }
   ];
 
   const BUDGET_OPTS = [
@@ -236,7 +300,7 @@
           click: function () { onPick(item.id); }
         }
       }, [
-        item.icon ? el('span', { class: 'fs-option-icon', 'aria-hidden': 'true' }, item.icon) : null,
+        item.icon ? el('span', { class: 'fs-option-icon', 'aria-hidden': 'true', html: item.icon }) : null,
         el('span', { class: 'fs-option-label' }, t(item.label, item.id))
       ]);
       wrap.appendChild(btn);
@@ -362,12 +426,15 @@
         return s2;
       }
       function syncCountSection() {
-        if (state.cameras.length && !countSection) {
+        const need = hasActualCamera();
+        if (need && !countSection) {
           countSection = buildCountSection();
           wrap.appendChild(countSection);
-        } else if (!state.cameras.length && countSection) {
+        } else if (!need && countSection) {
           countSection.remove();
           countSection = null;
+          // Reset count so a stale value isn't sent if user later adds a camera
+          state.cameraCount = null;
         }
       }
 
@@ -557,7 +624,7 @@
 
     if (state.buildingType) {
       const bt = getOptionById(BUILDING_TYPES, state.buildingType);
-      addRow(bt ? bt.icon : '🏠', t('wizard_summary_building', 'Building Type'), bt ? t(bt.label, bt.id) : state.buildingType);
+      addRow(bt ? bt.emoji : '🏠', t('wizard_summary_building', 'Building Type'), bt ? t(bt.label, bt.id) : state.buildingType);
     }
     if (state.services.length) {
       addRow('🛠️', t('wizard_summary_services', 'Services'), labelsFor(SERVICES, state.services).join(' • '));
@@ -572,7 +639,7 @@
     if (state.cameras.length) {
       addRow('📹', t('wizard_summary_cameras', 'Security Setup'), labelsFor(CAMERA_OPTS, state.cameras).join(' • '));
     }
-    if (state.cameraCount) {
+    if (state.cameraCount && hasActualCamera()) {
       const cc = getOptionById(CAMERA_COUNTS, state.cameraCount);
       addRow('🔢', t('wizard_summary_camera_count', 'Number of Cameras'), cc ? t(cc.label, cc.id) : state.cameraCount);
     }
@@ -586,7 +653,7 @@
     }
     if (state.projectStage) {
       const s = getOptionById(PROJECT_STAGES, state.projectStage);
-      addRow(s ? s.icon : '🏗️', t('wizard_summary_stage', 'Project Stage'), s ? t(s.label, s.id) : state.projectStage);
+      addRow(s ? s.emoji : '🏗️', t('wizard_summary_stage', 'Project Stage'), s ? t(s.label, s.id) : state.projectStage);
     }
     if (state.city.trim()) {
       addRow('📍', t('wizard_summary_city', 'City'), state.city.trim());
@@ -618,7 +685,7 @@
 
     if (state.buildingType) {
       const bt = getOptionById(BUILDING_TYPES, state.buildingType);
-      pushRow(bt ? bt.icon : '🏠', t('wizard_summary_building', 'Building'), bt ? t(bt.label, bt.id) : state.buildingType);
+      pushRow(bt ? bt.emoji : '🏠', t('wizard_summary_building', 'Building'), bt ? t(bt.label, bt.id) : state.buildingType);
     }
     if (state.services.length) {
       pushRow('🛠️', t('wizard_summary_services', 'Services'), labelsFor(SERVICES, state.services).join(', '));
@@ -632,7 +699,7 @@
     }
     if (state.cameras.length) {
       let v = labelsFor(CAMERA_OPTS, state.cameras).join(', ');
-      if (state.cameraCount) {
+      if (state.cameraCount && hasActualCamera()) {
         const cc = getOptionById(CAMERA_COUNTS, state.cameraCount);
         v += ' (' + (cc ? t(cc.label, cc.id) : state.cameraCount) + ')';
       }
@@ -647,7 +714,7 @@
     }
     if (state.projectStage) {
       const s = getOptionById(PROJECT_STAGES, state.projectStage);
-      pushRow(s ? s.icon : '🏗️', t('wizard_summary_stage', 'Stage'), s ? t(s.label, s.id) : state.projectStage);
+      pushRow(s ? s.emoji : '🏗️', t('wizard_summary_stage', 'Stage'), s ? t(s.label, s.id) : state.projectStage);
     }
     if (state.city.trim()) {
       pushRow('📍', t('wizard_summary_city', 'City'), state.city.trim());
@@ -671,7 +738,7 @@
       case 'services':   return state.services.length > 0;
       case 'smart_home': return state.smartHome.length > 0;
       case 'electrical': return !!state.electrical;
-      case 'cameras':    return state.cameras.length > 0 && !!state.cameraCount;
+      case 'cameras':    return state.cameras.length > 0 && (!hasActualCamera() || !!state.cameraCount);
       case 'network':    return state.network.length > 0;
       case 'details':    return !!state.projectStage;
       case 'summary':    return true;
