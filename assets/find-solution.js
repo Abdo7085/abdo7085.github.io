@@ -253,6 +253,20 @@
     body.appendChild(e);
   }
 
+  // In-place update of option buttons' selected state — avoids re-rendering
+  // the whole step (and replaying its fsFadeIn animation) on every click.
+  function updateOptionStates(grid, isSelected) {
+    if (!grid) return;
+    const btns = grid.querySelectorAll('.fs-option');
+    for (let i = 0; i < btns.length; i++) {
+      const btn = btns[i];
+      const id = btn.getAttribute('data-id');
+      const sel = !!isSelected(id);
+      btn.classList.toggle('fs-selected', sel);
+      btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+    }
+  }
+
   function renderStep(stepKey, body) {
     body.innerHTML = '';
     const wrap = el('div', { class: 'fs-step-fade' });
@@ -260,54 +274,66 @@
 
     if (stepKey === 'building') {
       wrap.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_building', 'What type of building is this for?')));
-      wrap.appendChild(renderOptionGrid(BUILDING_TYPES, {
+      const grid = renderOptionGrid(BUILDING_TYPES, {
         isSelected: function (id) { return state.buildingType === id; },
-        onPick: function (id) { state.buildingType = id; renderStep(stepKey, body); updateFooter(); }
-      }));
+        onPick: function (id) {
+          state.buildingType = id;
+          updateOptionStates(grid, function (x) { return state.buildingType === x; });
+          updateFooter();
+        }
+      });
+      wrap.appendChild(grid);
       return;
     }
 
     if (stepKey === 'services') {
       wrap.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_services', 'Which services do you need?')));
       wrap.appendChild(el('p', { class: 'fs-question-hint' }, t('wizard_q_services_hint', 'Select all that apply')));
-      wrap.appendChild(renderOptionGrid(SERVICES, {
+      const grid = renderOptionGrid(SERVICES, {
         multi: true,
         isSelected: function (id) { return state.services.includes(id); },
         onPick: function (id) {
           const i = state.services.indexOf(id);
           if (i >= 0) state.services.splice(i, 1);
           else state.services.push(id);
-          renderStep(stepKey, body);
+          updateOptionStates(grid, function (x) { return state.services.includes(x); });
           updateFooter();
         }
-      }));
+      });
+      wrap.appendChild(grid);
       return;
     }
 
     if (stepKey === 'smart_home') {
       wrap.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_smart_home', 'What would you like to control?')));
       wrap.appendChild(el('p', { class: 'fs-question-hint' }, t('wizard_q_services_hint', 'Select all that apply')));
-      wrap.appendChild(renderOptionGrid(SMART_HOME_OPTS, {
+      const grid = renderOptionGrid(SMART_HOME_OPTS, {
         multi: true,
         isSelected: function (id) { return state.smartHome.includes(id); },
         onPick: function (id) {
           const i = state.smartHome.indexOf(id);
           if (i >= 0) state.smartHome.splice(i, 1);
           else state.smartHome.push(id);
-          renderStep(stepKey, body);
+          updateOptionStates(grid, function (x) { return state.smartHome.includes(x); });
           updateFooter();
         }
-      }));
+      });
+      wrap.appendChild(grid);
       return;
     }
 
     if (stepKey === 'electrical') {
       wrap.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_electrical', 'What type of electrical work?')));
-      wrap.appendChild(renderOptionGrid(ELECTRICAL_OPTS, {
+      const grid = renderOptionGrid(ELECTRICAL_OPTS, {
         layout: 'list',
         isSelected: function (id) { return state.electrical === id; },
-        onPick: function (id) { state.electrical = id; renderStep(stepKey, body); updateFooter(); }
-      }));
+        onPick: function (id) {
+          state.electrical = id;
+          updateOptionStates(grid, function (x) { return state.electrical === x; });
+          updateFooter();
+        }
+      });
+      wrap.appendChild(grid);
       return;
     }
 
@@ -316,47 +342,64 @@
       const s1 = el('div', { class: 'fs-section' });
       s1.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_cameras', 'What do you need?')));
       s1.appendChild(el('p', { class: 'fs-question-hint' }, t('wizard_q_services_hint', 'Select all that apply')));
-      s1.appendChild(renderOptionGrid(CAMERA_OPTS, {
+
+      // The count section is conditionally inserted/removed in-place when
+      // the user picks/unpicks the first camera type — never re-rendering
+      // the equipment grid above (which would replay the fade animation).
+      let countSection = null;
+      function buildCountSection() {
+        const s2 = el('div', { class: 'fs-section' });
+        s2.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_camera_count', 'Approximate number of cameras')));
+        const countGrid = renderOptionGrid(CAMERA_COUNTS, {
+          isSelected: function (id) { return state.cameraCount === id; },
+          onPick: function (id) {
+            state.cameraCount = id;
+            updateOptionStates(countGrid, function (x) { return state.cameraCount === x; });
+            updateFooter();
+          }
+        });
+        s2.appendChild(countGrid);
+        return s2;
+      }
+      function syncCountSection() {
+        if (state.cameras.length && !countSection) {
+          countSection = buildCountSection();
+          wrap.appendChild(countSection);
+        } else if (!state.cameras.length && countSection) {
+          countSection.remove();
+          countSection = null;
+        }
+      }
+
+      const camGrid = renderOptionGrid(CAMERA_OPTS, {
         multi: true,
         isSelected: function (id) { return state.cameras.includes(id); },
         onPick: function (id) {
           const i = state.cameras.indexOf(id);
           if (i >= 0) state.cameras.splice(i, 1);
           else state.cameras.push(id);
-          renderStep(stepKey, body);
+          updateOptionStates(camGrid, function (x) { return state.cameras.includes(x); });
+          syncCountSection();
           updateFooter();
         }
-      }));
+      });
+      s1.appendChild(camGrid);
       wrap.appendChild(s1);
 
-      // Section 2 — count (only if any camera type chosen)
-      if (state.cameras.length) {
-        const s2 = el('div', { class: 'fs-section' });
-        s2.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_camera_count', 'Approximate number of cameras')));
-        s2.appendChild(renderOptionGrid(CAMERA_COUNTS, {
-          isSelected: function (id) { return state.cameraCount === id; },
-          onPick: function (id) { state.cameraCount = id; renderStep(stepKey, body); updateFooter(); }
-        }));
-        wrap.appendChild(s2);
-      }
+      // Initial mount: show count section if returning to step with selections
+      syncCountSection();
       return;
     }
 
     if (stepKey === 'network') {
       wrap.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_network', "What's the issue?")));
       wrap.appendChild(el('p', { class: 'fs-question-hint' }, t('wizard_q_services_hint', 'Select all that apply')));
-      wrap.appendChild(renderOptionGrid(NETWORK_OPTS, {
-        multi: true,
-        isSelected: function (id) { return state.network.includes(id); },
-        onPick: function (id) {
-          const i = state.network.indexOf(id);
-          if (i >= 0) state.network.splice(i, 1);
-          else state.network.push(id);
-          renderStep(stepKey, body);
-          updateFooter();
-        }
-      }));
-      if (state.network.includes('other')) {
+
+      // The "Other" free-text block is inserted/removed in-place whenever
+      // the user picks/unpicks the "other" chip — without re-rendering the
+      // chips grid above.
+      let otherBlock = null;
+      function buildOtherBlock() {
         const block = el('div', { class: 'fs-section' });
         block.appendChild(el('label', {
           class: 'fs-input-label',
@@ -372,8 +415,34 @@
           value: state.networkOther,
           on: { input: function (e) { state.networkOther = e.target.value; } }
         }));
-        wrap.appendChild(block);
+        return block;
       }
+      function syncOtherBlock() {
+        const want = state.network.includes('other');
+        if (want && !otherBlock) {
+          otherBlock = buildOtherBlock();
+          wrap.appendChild(otherBlock);
+        } else if (!want && otherBlock) {
+          otherBlock.remove();
+          otherBlock = null;
+        }
+      }
+
+      const grid = renderOptionGrid(NETWORK_OPTS, {
+        multi: true,
+        isSelected: function (id) { return state.network.includes(id); },
+        onPick: function (id) {
+          const i = state.network.indexOf(id);
+          if (i >= 0) state.network.splice(i, 1);
+          else state.network.push(id);
+          updateOptionStates(grid, function (x) { return state.network.includes(x); });
+          syncOtherBlock();
+          updateFooter();
+        }
+      });
+      wrap.appendChild(grid);
+
+      syncOtherBlock();
       return;
     }
 
@@ -381,10 +450,15 @@
       // Stage (required)
       const s1 = el('div', { class: 'fs-section' });
       s1.appendChild(el('h3', { class: 'fs-question' }, t('wizard_q_stage', 'Project stage')));
-      s1.appendChild(renderOptionGrid(PROJECT_STAGES, {
+      const stageGrid = renderOptionGrid(PROJECT_STAGES, {
         isSelected: function (id) { return state.projectStage === id; },
-        onPick: function (id) { state.projectStage = id; renderStep(stepKey, body); updateFooter(); }
-      }));
+        onPick: function (id) {
+          state.projectStage = id;
+          updateOptionStates(stageGrid, function (x) { return state.projectStage === x; });
+          updateFooter();
+        }
+      });
+      s1.appendChild(stageGrid);
       wrap.appendChild(s1);
 
       // City (optional)
@@ -426,15 +500,16 @@
           t('wizard_q_budget', 'Approximate budget'),
           el('span', { class: 'fs-input-optional' }, ' ' + t('wizard_optional', '(optional)'))
         ]));
-        s4.appendChild(renderOptionGrid(BUDGET_OPTS, {
+        const budgetGrid = renderOptionGrid(BUDGET_OPTS, {
           layout: 'list',
           isSelected: function (id) { return state.budget === id; },
           onPick: function (id) {
             state.budget = (state.budget === id) ? null : id;
-            renderStep(stepKey, body);
+            updateOptionStates(budgetGrid, function (x) { return state.budget === x; });
             updateFooter();
           }
-        }));
+        });
+        s4.appendChild(budgetGrid);
         wrap.appendChild(s4);
       }
       return;
