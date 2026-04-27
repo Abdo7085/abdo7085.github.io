@@ -808,6 +808,15 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   width: 100%;
   transition: transform var(--proj-transition), background var(--proj-transition), color var(--proj-transition), box-shadow var(--proj-transition), border-color var(--proj-transition);
 }
+/* When .proj-cta-btn is rendered as <button> (Find Your Solution wizard
+   trigger), strip native button defaults so it visually matches the <a>
+   variant used elsewhere in the same row. */
+button.proj-cta-btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+}
 @media (min-width: 640px) {
   .proj-cta-btn {
     width: auto;

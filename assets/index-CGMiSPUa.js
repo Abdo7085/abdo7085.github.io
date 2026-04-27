@@ -11398,7 +11398,7 @@ const Xh = re("Zap", [["polygon", {
 }]])
   , Zh = () => {
     const e = () => {
-        const t = document.getElementById("smart-home-focus");
+        const t = document.getElementById("services");
         t && t.scrollIntoView({
             behavior: "smooth"
         })
@@ -11432,22 +11432,24 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4 w-full",
                 children: [u.jsxs("a", {
-                    href: "https://wa.me/212654132112",
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    "aria-label": "Contact us on WhatsApp",
+                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); return (m ? '/' + m[1].toLowerCase() : '') + '/products.html'; })(),
+                    "aria-label": "Browse Our Products",
                     className: "btn-primary text-base sm:text-base cta-button-animation inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105",
                     children: [u.jsx("svg", {
                         className: "w-5 h-5 btn-icon-before",
                         viewBox: "0 0 24 24",
-                        fill: "currentColor",
+                        fill: "none",
+                        stroke: "currentColor",
+                        strokeWidth: "2",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
                         "aria-hidden": "true",
                         xmlns: "http://www.w3.org/2000/svg",
-                        children: u.jsx("path", {
-                            d: "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.463 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"
-                        })
+                        dangerouslySetInnerHTML: {
+                            __html: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>'
+                        }
                     }), u.jsx("span", {
-                        "data-i18n": "spa_cta_whatsapp",
+                        "data-i18n": "spa_browse_products",
                         children: ""
                     })]
                 }), u.jsxs("button", {
@@ -11936,20 +11938,23 @@ const Xh = re("Zap", [["polygon", {
                 children: ""
             }), u.jsxs("div", {
                 className: "proj-cta-actions fade-in",
-                children: [u.jsxs("a", {
-                    href: (() => { const m = window.location.pathname.match(/^\/(fr|ar|en)(\/|$)/i); const lang = m ? m[1].toLowerCase() : 'en'; const msgs = { en: "Hello, I'd like a consultation about your services.", fr: "Bonjour, je souhaite une consultation concernant vos services.", ar: "مرحباً، أود استشارة بخصوص خدماتكم." }; return "https://wa.me/212654132112?text=" + encodeURIComponent(msgs[lang] || msgs.en); })(),
-                    target: "_blank",
-                    rel: "noopener noreferrer",
+                children: [u.jsxs("button", {
+                    type: "button",
+                    "data-trigger": "find-solution",
                     className: "proj-cta-btn proj-cta-btn-primary",
                     children: [u.jsx("svg", {
                         viewBox: "0 0 24 24",
-                        fill: "currentColor",
+                        fill: "none",
+                        stroke: "currentColor",
+                        strokeWidth: "2",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
                         "aria-hidden": "true",
                         dangerouslySetInnerHTML: {
-                            __html: '<path d="M20.52 3.48A11.85 11.85 0 0 0 12.04 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.12 1.59 5.92L0 24l6.4-1.68a11.86 11.86 0 0 0 5.64 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.39-8.4zM12.04 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.44 4.43-9.87 9.87-9.87 2.64 0 5.11 1.03 6.97 2.9a9.79 9.79 0 0 1 2.89 6.98c0 5.44-4.43 9.87-9.87 9.87zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.35.19 1.86.12.57-.08 1.76-.72 2.01-1.41.24-.7.24-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>'
+                            __html: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>'
                         }
                     }), u.jsx("span", {
-                        "data-i18n": "spa_cta_whatsapp",
+                        "data-i18n": "spa_cta_find_solution",
                         children: ""
                     })]
                 }), u.jsxs("a", {
