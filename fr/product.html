@@ -67,6 +67,43 @@
         }, true);
       })();
     </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
 
     <!-- Products specific logic and styling -->
     <link rel="stylesheet" href="/assets/products.css">

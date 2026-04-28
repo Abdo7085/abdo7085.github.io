@@ -20,6 +20,7 @@
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
   - `find-solution.js` + `find-solution.css`: ويزارد "Find Your Solution" المنبثق متعدّد الخطوات الذي يساعد العميل على تحديد حاجته ويولّد رسالة واتساب جاهزة بلغته. يُفعَّل عبر `data-trigger="find-solution"` على أي عنصر، ومرتبط حالياً بزر "احجز استشارة مجانية" في قسم About. **راجع القسم 9 للتفاصيل الكاملة.**
+  - `cart.js` + `cart.css`: سلّة تسوّق "WhatsApp-cart" — تجمع منتجات من الكتالوج وتولّد رسالة واتساب جاهزة بقائمة المنتجات + الكميات + الروابط + ملاحظات اختيارية. لا backend، لا أسعار، لا checkout حقيقي. تخزين في `localStorage` تحت `se_cart_v1`. أيقونة في النڤ-بار (Desktop + Mobile) مع badge عدّاد. **راجع القسم 12 للتفاصيل الكاملة.**
 - **`assets/index-CGMiSPUa.js` (ملاحظة غاية في الأهمية):** هذا الملف الكودي (SPA Bundle) ليس مجرد مخرجات تجميعية (Build Output) قياسية مهملة، **بل هو ملف ثابت (Hardcoded) تم التعديل عليه يدوياً ودمجه مع الموقع المصدري**. يُعتبر الآن كملف برمجي أساسي (Static Source File). إحذر عند التعديل عليه حيث تتطلب أي محاولة لتغيير هيكلية (React) بداخله تركيزاً ودقة عالية، وتجرى التعديلات فيه مباشرة وبشكل دقيق.
 - `data/products/`: قاعـدة بيانات المنتجات، حيث يخصص لكل منتج ملف JSON مستقل.
 - `data/projects/`: قاعـدة بيانات معرض الأعمال — لكل مشروع ملف JSON مستقل بنفس نمط المنتجات. يدعم مصفوفة `media` غير متجانسة تجمع `image` (صور) و `video` (فيديوهات MP4 ذاتية الإنتاج مع poster) و `reel` (ريلزات إنستغرام غير مملوكة لنا — تُضمَّن عبر blockquote الرسمي وليس إعادة استضافة).
@@ -69,15 +70,19 @@
 3. **اندماج הـ SPA المخصص مع الترجمة:** بدلاً من انتظار تفاعل قسري، **تم التعديل برمجياً على `index-CGMiSPUa.js`** ليحتوي في تركيبته الأصلية على مفاتيح ترجمة (مثل `spa_a_sell_products`) وسمات `data-i18n` مدمجة باحترافية بداخل مصفوفاته وكائناته البرمجية، ليتحول من مجرد قالب أصم إلى نظام يتفاعل بانسجام وثيق مع قاموس الـ `i18n.js`.
 4. **النصوص الصامتة (Text Nodes Map):** للجمل والتراكيب التفاعلية التي لا تمتلك أوسمة محددة في الـ SPA، يستخدم `i18n.js` قائمة برمجية تدعى `textReplacementMap` كآلية بديلة لتحويل النص الإنجليزي المعروض تلقائياً لنص مترجم.
 5. **التقاط اللغة الفعالة:** النظام يلتقط اللغة من الروابط الفرعية (`/ar/`)، أو يستدعي الاختيار المفضل من التخزين المحلي `localStorage` إذا كان الزائر يتصفح الصفحة الرئيسية.
-6. **⚠️ استثناء الحاويات ذات النصوص الديناميكية (Self-Translated / Dynamic Containers):** دالة `replaceTextNodesWithDict` تستخدم `TreeWalker` لاستبدال النصوص الإنجليزية بالمترجمة. **والأخطر:** تحفظ النص الأصلي في `parent.dataset.i18nOrigText` عند أول رؤية، ثم في كل تغيير DOM لاحق تستخدمه كـ baseline وتُعيد كتابة النص — مما يَعكس أي تحديث ديناميكي بنص ثابت من نفس العنصر. لذلك **يتم استثناء** الحاويات التالية من الـ TreeWalker تماماً:
+6. **⚠️ استثناء الحاويات ذات النصوص الديناميكية (Self-Translated / Dynamic Containers):** دالة `replaceTextNodesWithDict` تستخدم `TreeWalker` لاستبدال النصوص الإنجليزية بالمترجمة. **والأخطر:** تحفظ النص الأصلي في `parent.dataset.i18nOrigText` عند أول رؤية، ثم في كل تغيير DOM لاحق تستخدمه كـ baseline وتُعيد كتابة النص — مما يَعكس أي تحديث ديناميكي بنص ثابت من نفس العنصر. لذلك **يتم استثناء** الحاويات/العناصر التالية من الـ TreeWalker تماماً:
    - `#custom-products-root-wrapper` — كتالوج المنتجات (يقرأ JSON ثلاثي اللغة).
    - `#custom-product-detail-wrapper` — تفاصيل المنتج (يقرأ JSON).
    - `#custom-project-detail-wrapper` — تفاصيل المشروع (يقرأ JSON).
    - `#fs-modal-root` — ويزارد "Find Your Solution" (نصوص ديناميكية مُولَّدة عبر `t()` وقت الـ render، مع تحديثات مستمرّة لشريط التقدّم/رقم الخطوة).
+   - `#cart-modal-root` — مودال السلّة (نصوص ديناميكية + أرقام الكميات +/-).
+   - **أي عنصر يحمل `data-cart-badge`** — عدّاد السلّة في النڤ-بار. هذا استثناء بـ **سمة** وليس بـ id لأن الـ badge عنصر مفرد ليس له wrapper، ولأن هناك بادج واحد على Desktop وآخر على Mobile، وكلاهما يحتاج نفس الحماية. الشيك: `el.hasAttribute && el.hasAttribute('data-cart-badge')` في الـ `acceptNode`.
 
-   **عند إضافة أي حاوية SPA جديدة تقرأ من JSON ثلاثي اللغة _أو_ تحدّث نصوصها ديناميكياً (counter, progress, live state)، يجب إضافة الـ `id` الخاص بها لقائمة الاستثناء في `i18n.js` (سطر ~373) لمنع الترجمة المزدوجة أو عودة النص لقيمته الأولى.**
+   **عند إضافة أي حاوية SPA جديدة تقرأ من JSON ثلاثي اللغة _أو_ تحدّث نصوصها ديناميكياً (counter, progress, live state)، يجب إضافة الـ `id` الخاص بها لقائمة الاستثناء في `i18n.js` (سطر ~373) لمنع الترجمة المزدوجة أو عودة النص لقيمته الأولى.** للعناصر بلا id (مثل بادج عدّاد متكرّر)، استخدم سمة مميّزة وافحصها بـ `hasAttribute`.
 
-   **درس مستفاد (Lesson learned):** ويزارد Find Your Solution كان رقم الخطوة فيه يبقى عالقاً على "الخطوة 1 من 4" رغم أن الجسم وشريط التقدّم يتقدّمان. السبب: textContent للنص يتغيّر، لكن الـ MutationObserver في i18n.js يُطلَق بعد 120ms ويُعيد كتابة النص للقيمة المحفوظة في `dataset.i18nOrigText`. الإصلاح: إضافة `fs-modal-root` لقائمة الاستثناء.
+   **دروس مستفادة (Lessons learned):**
+   - ويزارد Find Your Solution كان رقم الخطوة فيه يبقى عالقاً على "الخطوة 1 من 4" رغم أن الجسم وشريط التقدّم يتقدّمان. السبب: textContent للنص يتغيّر، لكن الـ MutationObserver في i18n.js يُطلَق بعد 120ms ويُعيد كتابة النص للقيمة المحفوظة في `dataset.i18nOrigText`. الإصلاح: إضافة `fs-modal-root` لقائمة الاستثناء.
+   - **بادج السلّة كان "يرتدّ" لقيمة سابقة** بعد كل إضافة منتج جديد (مثلاً يصبح 21 لجزء من الثانية ثم يعود إلى 18). نفس الجذر السابق: i18n.js التقط القيمة الأولى كـ baseline على parent الـ badge عند أول مسح، ثم أعاد كتابتها فوق كل تحديث `cart.js`. الإصلاح: إضافة شيك `data-cart-badge` لقائمة الاستثناء. **الـ badge ليس داخل `cart-modal-root`** — هو في الـ SPA navbar مباشرة، فاستثناء المودال وحده غير كافٍ.
 
 ### إدارة المكونات العائمة (Floating Action Buttons)
 لضمان التناسق البصري ونظافة الكود، تم توحيد تصميم الأزرار العائمة (زر تبديل اللغة `.lang-switch` وزر الواتساب `.mobile-dialer`) مركزياً داخل ملف **`assets/i18n.css`**:
@@ -241,6 +246,7 @@ python scripts/build_all.py
   2. `<script defer src="/assets/find-solution.js"></script>`
   3. **inline bootstrap script** الذي يلتقط النقرة قبل تحميل defer (انظر القسم 9 للنموذج الكامل).
   بدون البوتستراب الـ inline، النقر السريع على زر "احجز استشارة مجانية" قد لا يفتح الويزارد على بعض الأجهزة البطيئة. بدون CSS، الـ Modal يظهر مكسور التنسيق.
+- **⚠️ ملفات السلّة (WhatsApp Cart) مُشتركة كذلك عبر كل القوالب:** نفس النمط بالضبط — `cart.css` + `cart.js` + inline bootstrap (يلتقط `[data-trigger="cart-open"]` و `[data-trigger="cart-add"]`). بدون CSS، أيقونة السلّة في النڤ-بار تظهر بلا تنسيق وكذلك زر `+` على بطاقة المنتج وصف qty على صفحة التفاصيل. **انظر القسم 12 للنموذج الكامل.** ملاحظة: حتى الصفحات بلا منتجات (مثل `previous-work.html` و `project.html`) يجب أن تُحمّل ملفات السلّة لأن الـ SPA navbar (مع زر السلّة) يظهر فيها.
 - **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
@@ -297,7 +303,16 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 - **`u.jsx` / `u.jsxs`** = دوال JSX runtime (من `react/jsx-runtime`).
   - `u.jsx` لعنصر بطفل واحد (أو بدون أطفال).
   - `u.jsxs` لعنصر بعدة أطفال (array of children).
-- **المكوّنات** تحمل أسماء مختصرة ومُحرَّمة للقراءة: مثل `nv` (FAQ)، `Od` (Need a Custom Solution)، `rv` (Smart Home Focus). اعثر على المكوّن المطلوب دائماً عبر البحث عن مفتاح `data-i18n` مميّز داخله.
+- **المكوّنات** تحمل أسماء مختصرة ومُحرَّمة للقراءة: مثل `nv` (FAQ)، `Od` (Need a Custom Solution)، `rv` (Smart Home Focus)، `av` (Navbar). اعثر على المكوّن المطلوب دائماً عبر البحث عن مفتاح `data-i18n` مميّز داخله.
+
+### بنية الـ Navbar (مكوّن `av`)
+الـ navbar حالياً يحتوي 4 أطفال داخل الـ `<div className="container...">` (سطر ~12647):
+1. `<Mt to="/">` — اللوغو.
+2. `<nav className="hidden md:flex...">` — روابط Desktop + **زر السلّة Desktop** (آخر طفل، بـ `data-trigger="cart-open"`).
+3. `<div className="md:hidden flex items-center">` — wrapper يجمع **زر السلّة Mobile** + **الهامبرغر** ليبقيا مرئيين معاً على الموبايل (لأن `justify-between` على الأب كان سيوزّعهما).
+4. القائمة المنسدلة (`<div className="md:hidden bg-secondary...">`) — تحوي روابط Mobile فقط (بلا CTA — زر "Call Now" حُذف نهائياً عند إضافة السلّة في 2026-04).
+
+**درس مستفاد:** عند إضافة عنصر مرئي على الموبايل بجانب الهامبرغر داخل `justify-between` parent، يجب لفّهما في wrapper مشترك بـ `flex items-center`. وإلا الـ flex parent سيوزّعهما عبر العرض كله.
 
 ### تحذير Tailwind CSS (الأهم عند التعديل)
 `assets/index-CJ3jXuVd.css` هو ملف CSS **مُجمَّع مسبقاً** (Pre-built Tailwind). يحتوي فقط على الكلاسات التي كانت مستخدمة في الكود المصدري الأصلي وقت البناء. **أي كلاس Tailwind جديد تضيفه داخل `index-CGMiSPUa.js` قد لا يعمل** لأنه ببساطة غير موجود في CSS.
@@ -635,6 +650,7 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 | `assets/projects.css` | `--proj-primary` + `--proj-primary-hover` + ~7 ظلال `rgba(184, 108, 37, …)` | ~10 |
 | `assets/products.css` | `--prod-primary` + ~14 ظلال rgba | ~15 |
 | `assets/find-solution.css` | `--fs-orange` (لون الويزارد) | 1 |
+| `assets/cart.css` | `--cart-orange` + `--cart-orange-dark` + `--cart-orange-light` + ~4 ظلال `rgba(184, 108, 37, …)` (نڤ-بار button + badge + أزرار qty + Add to Cart) | ~8 |
 | `assets/homepage-products.css` | hex مباشر + `rgb(187, 118, 31)` (FAQ outline + بادجات + زرّ CTA) | ~5 |
 | `assets/i18n.css` | `rgb(187, 118, 31)` للأزرار العائمة (تبديل اللغة + WhatsApp dialer) في الزوايا | ~5 |
 | `assets/index-CGMiSPUa.js` | inline في SPA bundle: FAQ outline + لون category badge | 2 |
@@ -648,8 +664,8 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 
 FILES="assets/index-CJ3jXuVd.css assets/index-CGMiSPUa.js \
        assets/projects.css assets/products.css \
-       assets/find-solution.css assets/homepage-products.css \
-       assets/i18n.css"
+       assets/find-solution.css assets/cart.css \
+       assets/homepage-products.css assets/i18n.css"
 
 for f in $FILES; do
   sed -i \
@@ -663,7 +679,7 @@ for f in $FILES; do
 done
 
 # تحقّق نهائي — يجب أن يكون فارغاً
-grep -rn "b86c25\|9c5a1e\|184, *108, *37\|187 118 31\|bb761f" assets/
+grep -rn "b86c25\|9a5a1f\|9c5a1e\|184, *108, *37\|187 118 31\|bb761f" assets/
 ```
 
 ### الخلفيات الداكنة في الـSPA (ليست لها متغيّر)
@@ -743,3 +759,158 @@ find extracted -type f
 - **Visual stub language toggle** (يُبدّل label فقط بدون ترجمة) — الموقع لديه نظام i18n حقيقي.
 - **Hardcoded products** بدلاً من الـSSG.
 - **Reset كامل للـbundle** — تكلفة عالية، فائدة منخفضة.
+
+---
+
+## 12. سلّة WhatsApp (WhatsApp Cart)
+
+سلّة تسوّق خفيفة تجمع منتجات من الكتالوج وتولّد رسالة واتساب جاهزة لإرسالها للمالك. **ليست checkout حقيقي** — لا أسعار، لا backend، لا دفع. الفلسفة: العميل المغربي العادي يفضّل التفاوض على واتساب، فالسلّة تقتصر على "مساعدة في صياغة الطلب".
+
+### المكوّنات والملفات
+
+| الملف | الدور |
+|---|---|
+| `assets/cart.js` | منطق السلّة كاملاً. IIFE يكشف `window.Cart`. ~480 سطر. |
+| `assets/cart.css` | تنسيق المودال + زر النڤ-بار + badge + زر `+` على بطاقة المنتج + qty stepper على صفحة التفاصيل + toast، RTL-aware. |
+| `assets/locales/{en,fr,ar}.json` | ~22 مفتاح بـ prefix `cart_*` لكل لغة. |
+| Inline bootstrap script | في `<head>` كل قالب جذري — يلتقط النقرة فوراً ويُعيد المحاولة حتى يجاهز `window.Cart`. |
+| استثناء `i18n.js` | `#cart-modal-root` + شيك `data-cart-badge` مُضافان لقائمة استثناء `replaceTextNodesWithDict` (سطر ~373). |
+| تعديل SPA bundle | زر "Call Now" Desktop في `av` استُبدل بزر سلّة دائري بـ badge؛ زر "Call Now" Mobile في القائمة المنسدلة حُذف نهائياً؛ زر سلّة جديد أُضيف بجانب الهامبرغر داخل wrapper `md:hidden flex items-center`. |
+| تعديل `products.js` | `renderCard()` يضيف `<button class="prod-card-add" data-trigger="cart-add" data-product-id="..." data-i18n-attr="aria-label:cart_aria_add_btn">` فوق الصورة. |
+| تعديل `product-detail.js` | `renderProductContent()` يضيف `<div class="pd-cart-row" data-cart-row>` بـ qty +/- + زر "Add to Cart". قسم "Quantity +/- buttons" في `attachLinkTransitions()` يربط الـ +/-. |
+
+### آلية التفعيل (Trigger Mechanism)
+
+عناصر بسمات معروفة يلتقطها الـ inline bootstrap الموجود في `<head>` كل قالب:
+
+| السمة | الفعل |
+|---|---|
+| `data-trigger="cart-open"` | يفتح المودال (`Cart.open()`). |
+| `data-trigger="cart-add"` + `data-product-id="<id>"` | يضيف منتجاً واحداً بالـ id. الكمية الافتراضية 1. |
+| `data-trigger="cart-add"` + `data-product-id="<id>"` + `data-qty-source` | يقرأ الكمية من أقرب `.pd-qty-input` أو `.cart-qty-input` داخل `.pd-cart-row` أو `[data-cart-row]` ثم يستدعي `Cart.add(id, qty)`. |
+
+**نقاط التفعيل الفعلية:**
+| الموقع | السمة | الملف |
+|---|---|---|
+| زر السلّة في النڤ-بار (Desktop + Mobile) | `data-trigger="cart-open"` | `assets/index-CGMiSPUa.js` (داخل `av`) |
+| زر `+` على بطاقة المنتج في الكتالوج | `data-trigger="cart-add"` | `assets/products.js` (`renderCard`) |
+| زر "Add to Cart" في صفحة المنتج | `data-trigger="cart-add"` + `data-qty-source` | `assets/product-detail.js` (`renderProductContent`) |
+| **بادج العدّاد** | `data-cart-badge=""` | `assets/index-CGMiSPUa.js` (داخل زر السلّة في النڤ-بار، Desktop + Mobile) |
+
+### الـ Public API (`window.Cart`)
+
+```js
+window.Cart = {
+  open(),                  // يفتح المودال (يحمّل الترجمة + index المنتجات قبل الفتح)
+  close(),
+  add(id, qty),            // qty افتراضياً 1، يُحدُّ بـ [1, 99]
+  remove(id),
+  setQty(id, qty),         // qty=0 تحذف العنصر
+  clear(),
+  count(),                 // المجموع لكل البادجات
+  getItems()               // [{id, qty}, ...] (نسخة)
+}
+```
+
+### بنية الـ State + التخزين
+
+```js
+state = { items: [{ id: 'zennio-z50-knx-touch-panel-5', qty: 2 }, ...] };
+```
+- يُحفظ في `localStorage` تحت مفتاح **`se_cart_v1`** بصيغة `{v: 1, items: [...]}`. الإصدار `v: 1` لتسهيل أي migration مستقبلي.
+- على فشل JSON.parse → state فارغ صامت (لا UX rejection).
+- localStorage يحفظ `id + qty` فقط. الأسماء/الصور/البراند تُقرأ من `data/products_index.json` (مرّة واحدة في الذاكرة عبر `loadProductsIndex()`).
+- **التصفية الذاتية:** عند بدء التحميل، أي عنصر `id` لا يطابق منتجاً في الفهرس يُحذف صامتاً. هذا يحمي السلّة من المنتجات المحذوفة لاحقاً.
+
+### رسالة الواتساب (`buildWhatsAppHref()`)
+
+```
+🛒 Order from smartelectricity.ma
+
+1) [Brand] Product Title
+   • Quantity: 2
+   • https://smartelectricity.ma/products/<id>.html
+
+2) ...
+
+📝 Notes: <نص اختياري>
+
+Awaiting your quote, thank you.
+```
+- العناوين باللغة الفعّالة عبر `pickLangText(product.title, lang)`.
+- الروابط بالـ prefix الصحيح (`/`, `/fr/`, `/ar/`).
+- الملاحظات: `textarea` اختياري في جسم المودال (`#cart-notes`).
+- ترميز نهائي بـ `encodeURIComponent` (نفس نمط `find-solution`).
+
+### Inline bootstrap (race condition)
+
+نفس المنطق المشروح في القسم 9 (Find Your Solution): `cart.js` مُحمَّل بـ `defer`، نقرة سريعة قد تَسبق التحميل. الـ bootstrap inline يلتقط النقرة في فاز الـ capture، يُجمّع الـ pending action (open أو add)، ويُعيد المحاولة كل 80ms (50 محاولة) حتى يجاهز `window.Cart`.
+
+```html
+<!-- النموذج الموحَّد في كل قالب جذري -->
+<link rel="stylesheet" href="/assets/cart.css">
+<script defer src="/assets/cart.js"></script>
+<script>
+  (function () {
+    document.addEventListener('click', function (e) {
+      var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+      if (!hit) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var pending;
+      if (hit.getAttribute('data-trigger') === 'cart-add') {
+        var id = hit.getAttribute('data-product-id');
+        var qty = 1;
+        if (hit.hasAttribute('data-qty-source')) {
+          var row = hit.closest('[data-cart-row], .pd-cart-row');
+          var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+          if (input) {
+            var v = parseInt(input.value, 10);
+            qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+          }
+        }
+        pending = { type: 'add', id: id, qty: qty };
+      } else {
+        pending = { type: 'open' };
+      }
+      (function tryRun(retries) {
+        if (window.Cart) {
+          if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+          else window.Cart.open();
+        } else if (retries > 0) {
+          setTimeout(function () { tryRun(retries - 1); }, 80);
+        }
+      })(50);
+    }, true);
+  })();
+</script>
+```
+
+### تحديث الـ badge عبر Mutation Observer
+
+`cart.js` يُسجّل `MutationObserver` على `document.body` يلاحظ إضافة عناصر تحمل `data-cart-badge` (أو تحوي عناصر كذلك). السبب: الـ SPA navbar (مكوّن `av`) يُركَّب بعد تحميل bundle React، أحياناً بعد أن يكون `cart.js` نفّذ `refreshBadges()` الأولي. بدون هذا الـ observer، الـ badge يظهر فارغاً حتى أول `add` رغم وجود عناصر في localStorage.
+
+### نمط الكتابة في `cart.js`
+
+نفس قواعد `find-solution.js` (راجع القسم 9):
+- IIFE واحد، يكشف **`window.Cart`** فقط.
+- helpers مماثلة: `detectLang()`, `loadLocale()`, `t()`, `el()`.
+- **نمط `el()` helper** (DOM builder) يدعم: `class`, `html` (innerHTML)، `on` (event listeners)، `style` (object)، plus standard attributes.
+- نمط الـ `requestAnimationFrame` لـ open/close + `body.cart-open` لقفل scroll.
+- esc-to-close, click-outside-to-close.
+
+### قواعد التعديل
+
+- **إضافة منتج للسلّة برمجياً من السكربت:** `window.Cart.add(productId, qty)`. لا تعدّل localStorage مباشرة.
+- **ترقية الـ schema:** غيّر الإصدار في `STORAGE_KEY` (`se_cart_v2`) وأضف منطق migration في `loadState()`.
+- **تغيير صياغة رسالة الواتساب:** عدّل قيم المفاتيح `cart_msg_*` في `assets/locales/{en,fr,ar}.json`. لا تعدّل الكود.
+- **إضافة محفّز جديد على أي صفحة:** أضف `data-trigger="cart-add"` + `data-product-id="<id>"` للعنصر. الـ bootstrap يلتقطه آلياً.
+- **حذف ميزة الكميات (تبسيط):** بسّط `cart.js`: احذف `setQty` + `cart-qty-*` من DOM، اضبط qty=1 في `add()` دائماً، بسّط رسالة الواتساب. ولا تنسَ المفاتيح `cart_aria_increase`/`decrease`/`item_qty`.
+
+### ⚠️ تحذيرات
+
+- **لا تستخدم `data-i18n` على نصوص ديناميكية داخل المودال** — الترجمة تتم وقت الـ render عبر `t()`. أي `data-i18n` سيُطلق i18n.js TreeWalker ويتعارض. هذا قد يكون آمناً اليوم لأن `#cart-modal-root` مُستثنى، لكن الاعتماد على الاستثناء فقط هشّ.
+- **لا تنزع `id="cart-modal-root"` ولا `data-cart-badge=""`** — كلاهما sentinel للـ TreeWalker. حذف أحدهما يُعيد bug "البادج المرتدّ" أو "نص المودال يرجع إنجليزياً".
+- **زر `+` على بطاقة المنتج موجود داخل `<a class="product-link">`** — لذلك الـ inline bootstrap يستدعي `e.preventDefault()` و `e.stopPropagation()` في فاز الـ capture لمنع التنقل. إن غيّرت بنية البطاقة بحيث الزر خرج من `<a>`، تظل الـ stopPropagation آمنة (لا تكسر شيئاً) لكنها أصبحت غير ضرورية.
+- **عند إضافة قالب HTML جذري جديد**، يجب إضافة 3 عناصر في `<head>`: `cart.css` + `cart.js` + inline bootstrap. حتى لو القالب لا يعرض منتجات (مثل `previous-work.html`)، الـ navbar (المُحمَّل من SPA bundle) يحوي زر السلّة، فالـ click handler ضروري.
+- **بعد تعديل أي قالب جذري** أو ملف `cart.js`/`cart.css`، شغّل `python scripts/build_all.py` لنشر التغييرات على نسخ `fr/` و `ar/` وكل صفحات المنتجات والمشاريع المُولَّدة.

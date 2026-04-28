@@ -12694,25 +12694,51 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link",
                     "data-i18n": "spa_contact",
                     children: ""
-                }), u.jsxs("a", {
-                    href: "tel:0654132112",
-                    className: "btn-primary ml-3 text-sm",
-                    children: [u.jsx(Sn, {
-                        className: "w-3 h-3 mr-1"
-                    }), u.jsx("span", {
-                        "data-i18n": "spa_cta_call_now",
-                        children: ""
-                    })]
+                }), u.jsx("button", {
+                    type: "button",
+                    "data-trigger": "cart-open",
+                    className: "cart-nav-btn cart-nav-btn-desktop ml-3",
+                    "aria-label": "Open cart",
+                    "data-i18n-attr": "aria-label:cart_aria_open",
+                    children: u.jsxs("span", {
+                        className: "cart-nav-btn-inner",
+                        children: [u.jsx("span", {
+                            "aria-hidden": "true",
+                            dangerouslySetInnerHTML: { __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>' }
+                        }), u.jsx("span", {
+                            className: "cart-nav-badge",
+                            "data-cart-badge": ""
+                        })]
+                    })
                 })]
-            }), u.jsx("button", {
-                className: "md:hidden text-white focus:outline-none",
-                onClick: o,
-                "aria-label": "Toggle menu",
-                children: n ? u.jsx(Gh, {
-                    className: "w-5 h-5"
-                }) : u.jsx(Qh, {
-                    className: "w-5 h-5"
-                })
+            }), u.jsxs("div", {
+                className: "md:hidden flex items-center",
+                children: [u.jsx("button", {
+                    type: "button",
+                    "data-trigger": "cart-open",
+                    className: "cart-nav-btn cart-nav-btn-mobile",
+                    "aria-label": "Open cart",
+                    "data-i18n-attr": "aria-label:cart_aria_open",
+                    children: u.jsxs("span", {
+                        className: "cart-nav-btn-inner",
+                        children: [u.jsx("span", {
+                            "aria-hidden": "true",
+                            dangerouslySetInnerHTML: { __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>' }
+                        }), u.jsx("span", {
+                            className: "cart-nav-badge",
+                            "data-cart-badge": ""
+                        })]
+                    })
+                }), u.jsx("button", {
+                    className: "text-white focus:outline-none",
+                    onClick: o,
+                    "aria-label": "Toggle menu",
+                    children: n ? u.jsx(Gh, {
+                        className: "w-5 h-5"
+                    }) : u.jsx(Qh, {
+                        className: "w-5 h-5"
+                    })
+                })]
             })]
         }), u.jsx("div", {
             className: `md:hidden bg-secondary bg-opacity-95 absolute top-full left-0 w-full transition-all duration-300 ease-in-out shadow-md ${n ? "max-h-screen opacity-100 py-3" : "max-h-0 opacity-0 overflow-hidden"}`,
@@ -12755,15 +12781,6 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link text-base py-1 text-left",
                     "data-i18n": "spa_contact",
                     children: ""
-                }), u.jsxs("a", {
-                    href: "tel:0654132112",
-                    className: "btn-primary w-full justify-center text-sm",
-                    children: [u.jsx(Sn, {
-                        className: "w-3 h-3 mr-1"
-                    }), u.jsx("span", {
-                        "data-i18n": "spa_cta_call_now",
-                        children: ""
-                    })]
                 })]
             })
         })]

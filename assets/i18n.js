@@ -370,7 +370,7 @@
         // translated via the multilingual JSON data and the t() helper.
         var el = node.parentElement;
         while(el) {
-          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper' || el.id === 'fs-modal-root') {
+          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper' || el.id === 'fs-modal-root' || el.id === 'cart-modal-root' || (el.hasAttribute && el.hasAttribute('data-cart-badge'))) {
             return NodeFilter.FILTER_REJECT;
           }
           el = el.parentElement;

@@ -123,6 +123,43 @@
         }, true);
       })();
     </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
     <link rel="stylesheet" href="/assets/homepage-products.css">
     <script defer src="/assets/homepage-products.js"></script>
     <!-- Projects CSS included for the Need a Custom Solution CTA styles -->
@@ -144,7 +181,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "wa9td0m3ds");
     </script>
-                                                    <script type="application/ld+json" id="projects-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Réalisations", "numberOfItems": 2, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/projects/villa-knx-tetouan.html", "name": "Villa Intelligente KNX — Tétouan"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/fr/projects/huerto-pool-tetouan.html", "name": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan"}]}</script>
+                                                      <script type="application/ld+json" id="projects-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Réalisations", "numberOfItems": 2, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/projects/villa-knx-tetouan.html", "name": "Villa Intelligente KNX — Tétouan"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/fr/projects/huerto-pool-tetouan.html", "name": "Installation clé-en-main électricité, réseau et automatisation pour HUERTO POOL, Tétouan"}]}</script>
   </head>
   <body>
     <div class="lang-switch" aria-hidden="false">
