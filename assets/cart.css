@@ -15,7 +15,7 @@
   --cart-wa-dark: #1ebe57;
 }
 
-/* ---------- Navbar cart button (replaces Call Now) ---------- */
+/* ---------- Navbar cart button — minimal line-art (Loxone-style) ---------- */
 .cart-nav-btn {
   position: relative;
   display: inline-flex;
@@ -25,20 +25,18 @@
   height: 40px;
   padding: 0;
   border: none;
-  background: var(--cart-orange);
+  background: transparent;
   color: #ffffff;
-  border-radius: 999px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: 0 4px 14px rgba(184, 108, 37, 0.35);
+  transition: background 0.18s ease, color 0.18s ease;
 }
 .cart-nav-btn:hover {
-  background: var(--cart-orange-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(184, 108, 37, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cart-orange);
 }
 .cart-nav-btn:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--cart-orange);
   outline-offset: 2px;
 }
 .cart-nav-btn-inner {
@@ -50,32 +48,32 @@
   height: 100%;
 }
 .cart-nav-btn-inner svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: block;
+  stroke-width: 1.75;
 }
 
 .cart-nav-btn-mobile {
-  margin-inline-end: 8px;
+  margin-inline-end: 6px;
 }
 
 .cart-nav-badge {
   position: absolute;
-  top: -6px;
-  inset-inline-end: -6px;
-  min-width: 20px;
-  height: 20px;
+  top: 2px;
+  inset-inline-end: 0;
+  min-width: 18px;
+  height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  background: #ffffff;
-  color: var(--cart-orange);
+  background: var(--cart-orange);
+  color: #ffffff;
   font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 18px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  border: 2px solid var(--cart-orange);
+  border: 2px solid #000;
   box-sizing: border-box;
   display: none;
   pointer-events: none;
@@ -97,43 +95,47 @@
 .prod-card-img-wrapper { position: relative; }
 .prod-card-add {
   position: absolute;
-  top: 12px;
-  inset-inline-end: 12px;
-  width: 36px;
-  height: 36px;
+  top: 10px;
+  inset-inline-end: 10px;
+  width: 38px;
+  height: 38px;
   padding: 0;
-  border: none;
-  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   color: var(--cart-orange);
   border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
   z-index: 5;
 }
 .prod-card-add:hover {
   background: var(--cart-orange);
   color: #ffffff;
-  transform: scale(1.08);
+  border-color: var(--cart-orange);
 }
 .prod-card-add svg {
   width: 18px;
   height: 18px;
   display: block;
+  stroke-width: 2;
 }
 .prod-card-add.cart-just-added {
   background: var(--cart-orange);
   color: #ffffff;
+  border-color: var(--cart-orange);
 }
 
 /* ---------- Product detail page: qty + Add to Cart row ---------- */
 .pd-cart-row {
   display: flex;
   align-items: stretch;
-  gap: 12px;
+  gap: 10px;
   margin-top: 18px;
   flex-wrap: wrap;
 }
@@ -141,19 +143,20 @@
   display: inline-flex;
   align-items: stretch;
   border: 1.5px solid var(--cart-border);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--cart-bg);
+  height: 52px;
 }
 .pd-qty-btn {
-  width: 40px;
+  width: 44px;
   border: none;
   background: transparent;
   color: var(--cart-text);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
   font-family: inherit;
 }
 .pd-qty-btn:hover {
@@ -161,7 +164,7 @@
   color: var(--cart-orange);
 }
 .pd-qty-input {
-  width: 56px;
+  width: 52px;
   border: none;
   border-inline: 1.5px solid var(--cart-border);
   text-align: center;
@@ -184,35 +187,40 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 22px;
+  gap: 10px;
+  padding: 0 26px;
+  height: 52px;
   border: none;
   background: var(--cart-orange);
   color: #ffffff;
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 10px;
+  letter-spacing: 0.01em;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: 0 4px 14px rgba(184, 108, 37, 0.25);
+  transition: background 0.18s ease;
   flex: 1 1 auto;
   min-width: 200px;
 }
 .pd-add-to-cart:hover {
   background: var(--cart-orange-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(184, 108, 37, 0.35);
 }
 .pd-add-to-cart svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: block;
+  stroke-width: 1.75;
 }
 @media (max-width: 540px) {
-  .pd-cart-row { flex-direction: column; align-items: stretch; }
-  .pd-qty { align-self: flex-start; }
-  .pd-add-to-cart { width: 100%; min-width: 0; }
+  .pd-cart-row { gap: 10px; }
+  .pd-qty { flex: 0 0 auto; }
+  .pd-add-to-cart {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 16px;
+    font-size: 0.9rem;
+  }
 }
 
 /* ---------- Toast ---------- */
