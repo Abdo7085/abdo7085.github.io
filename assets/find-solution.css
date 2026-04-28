@@ -360,7 +360,7 @@ body.fs-open { overflow: hidden; }
   background: var(--fs-bg);
 }
 .fs-btn-whatsapp {
-  background: #25D366;
+  background: var(--fs-orange);
   color: white;
   width: 100%;
   justify-content: center;
@@ -368,7 +368,7 @@ body.fs-open { overflow: hidden; }
   font-size: 1rem;
 }
 .fs-btn-whatsapp:hover {
-  background: #1ebe57;
+  background: var(--fs-orange-dark);
   transform: translateY(-1px);
 }
 .fs-btn[disabled],
