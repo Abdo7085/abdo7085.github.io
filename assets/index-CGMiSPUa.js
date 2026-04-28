@@ -12730,13 +12730,13 @@ const Xh = re("Zap", [["polygon", {
                         })]
                     })
                 }), u.jsx("button", {
-                    className: "text-white focus:outline-none",
+                    className: "cart-nav-btn",
                     onClick: o,
                     "aria-label": "Toggle menu",
                     children: n ? u.jsx(Gh, {
-                        className: "w-5 h-5"
+                        className: "w-6 h-6"
                     }) : u.jsx(Qh, {
-                        className: "w-5 h-5"
+                        className: "w-6 h-6"
                     })
                 })]
             })]
