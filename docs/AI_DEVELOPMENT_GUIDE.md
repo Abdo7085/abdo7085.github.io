@@ -334,7 +334,7 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 
 ### قيم التصميم المرجعية
 - **اللون الأساسي**: `--primary-color: #b86c25` (برتقالي-بُنّي نحاسي). استخدم `text-primary` أو `bg-primary` في Tailwind، أو `#b86c25` في inline styles.
-- **Fonts**: `font-exo` (خط Exo) للعناوين الكبيرة.
+- **Fonts**: `font-exo` و `font-poppins` (Tailwind aliases) — كلاهما يُحلّ الآن إلى **`Readex Pro`** (variable font، عائلة واحدة تغطي Latin + Arabic). تغيير 2026-04-29 لتوحيد التيبوغرافي عبر EN/FR/AR. الأوزان: 400/500/600/700. **سبب الاختيار:** rendering ناعم على Windows/Chrome (IBM Plex Arabic كان يبدو "مبكسلاً" في الأحجام الصغيرة).
 
 ### آلية `fade-in` العامة
 يوجد `IntersectionObserver` مشترك في مكوّنات مثل `Od` و `rv` يلاحظ كل `.fade-in` في الصفحة ويضيف كلاس `.visible` عند الظهور في viewport. إذا أضفت عنصراً بـ `className: "fade-in"`، سيستفيد تلقائياً من هذا النظام بدون إعداد إضافي.
@@ -702,6 +702,60 @@ grep -rn "b86c25\|9a5a1f\|9c5a1e\|184, *108, *37\|187 118 31\|bb761f" assets/
 
 التصميم الذي قدّمه claude.ai/design يُعرّف هذا صراحة بـ`--accent` (فاتح، on-dark) و`--accent-text` (أعمق، on-light). إذا حدث طلب اعتماد نظام مزدوج، أنشئ متغيّرين منفصلين بدل تخمين أيّهما الأصحّ في كل موقع.
 
+### 🆎 Typography — تبديل الخط على الموقع كاملاً (Font Swap)
+
+نفس فلسفة Brand Color Swap: **لا يوجد متغيّر CSS واحد للخط**، الإعلانات موزّعة على عدّة ملفات + رابط Google Fonts في كل قالب جذري + inline style واحد في SPA bundle.
+
+**الخط الحالي (2026-04-29):** `Readex Pro` (variable font، عائلة واحدة تغطي Latin + Arabic + diacritics). الأوزان: 400/500/600/700.
+
+**سبب الاختيار التاريخي:**
+- **سابقاً:** Exo 2 (عناوين) + Poppins (جسم) + Tajawal (عربي). ثلاثة خطوط من فلسفات مختلفة، فالعناوين والجسم في الصفحة العربية ينقلبان كلاهما لـ Tajawal فيضعف التسلسل البصري.
+- **محاولة وسطى:** IBM Plex Sans + Plex Sans Arabic. حلّ مشكلة عدم التزامن لكن **rendering Plex Arabic على Windows/Chrome ظهر "مبكسلاً"** في الأحجام الصغيرة (body 14-16px) بسبب hinting صارم.
+- **الحلّ النهائي:** Readex Pro — variable font حديث، rendering ناعم، عائلة واحدة لكل اللغات → تيبوغرافي موحَّد بصرياً عبر EN/FR/AR.
+
+**خريطة كاملة لمواقع الخط:**
+
+| الملف | الاستعمال | عدد المرّات |
+|---|---|---|
+| 5 قوالب HTML جذرية (`index.html`, `products.html`, `product.html`, `project.html`, `previous-work.html`) | رابط Google Fonts (`<link href="...">`) | 5 |
+| `assets/index-CJ3jXuVd.css` | `body`, `h1-h6`, `.font-exo`, `.font-poppins` | 4 |
+| `assets/projects.css` | `#custom-project-detail-wrapper`, RTL variant، `.proj-cta-title`، RTL variant | 4 |
+| `assets/products.css` | `#custom-products-container` | 1 |
+| `assets/homepage-products.css` | `.hp-products-section` | 1 |
+| `assets/cart.css` | badge، CTA button، modal body، `.cart-title` | 4 |
+| `assets/find-solution.css` | modal root، `.fs-title` | 2 |
+| `assets/i18n.css` | `[dir="rtl"] body`، `[dir="rtl"] h1-h6` | 2 |
+| `assets/index-CGMiSPUa.js` | inline style — السطر ~12597 (`fontFamily: "..."`) | 1 |
+
+**وصفة الـSwap بأمر واحد (مع Readex Pro كمثال للحالي):**
+
+```bash
+# 1. رابط Google Fonts في القوالب الجذرية الـ5
+OLD_URL="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap"
+NEW_URL="https://fonts.googleapis.com/css2?family=NEW_FONT:wght@400;500;600;700&display=swap"
+
+for f in index.html products.html product.html project.html previous-work.html; do
+  sed -i "s|$OLD_URL|$NEW_URL|g" "$f"
+done
+
+# 2. font-family في كل ملفات CSS + SPA bundle
+sed -i "s/'Readex Pro'/'NEW_FONT'/g; s/\"Readex Pro\"/\"NEW_FONT\"/g" \
+  assets/*.css assets/index-CGMiSPUa.js
+
+# 3. تشغيل البناء لنشر التغيير على fr/, ar/, products/, projects/
+python scripts/build_all.py
+
+# 4. تحقّق نهائي — يجب أن يكون فارغاً (ما عدا التوثيق)
+grep -rn "Readex Pro" assets/ *.html
+```
+
+**ملاحظات حرجة عند التبديل:**
+- **رابط Google Fonts** يتكرّر بحرفيته في كل القوالب الجذرية الـ5 → استبدله مرة واحدة بـ sed.
+- **القوالب المُولَّدة في `fr/`, `ar/`, `products/`, `projects/` لا تُعدَّل يدوياً** — `build_all.py` يعيد توليدها من القوالب الجذرية.
+- **`.font-exo` و `.font-poppins` في `index-CJ3jXuVd.css`** أُبقيا كأسماء كلاسات (موجودة في SPA bundle) لكن قيمتهما تشير الآن للخط الجديد. لا تحذف الكلاسات نفسها.
+- **عند اختيار خط جديد لمواقع تستهدف العربية على Windows/Chrome**، تجنّب IBM Plex Arabic (مبكسل). البدائل المُختبَرة: Readex Pro (الأنعم)، Cairo، Tajawal، Noto Sans Arabic.
+- **SPA inline style واحد في السطر ~12597** سهل النسيان — تأكّد من تضمينه.
+
 ---
 
 ## 11. استلام تصميم من claude.ai/design (Design Handoff)
@@ -906,7 +960,7 @@ Awaiting your quote, thank you.
 | العنصر | الأبعاد | الخلفية | اللون | Hover |
 |---|---|---|---|---|
 | `.cart-nav-btn` (نڤ-بار) | 40×40 | شفاف | أبيض، الأيقونة 24px stroke 1.75 | bg `rgba(255,255,255,0.08)` + لون برتقالي |
-| `.cart-nav-badge` (عدّاد) | min 18×18 | برتقالي ممتلئ | أبيض، 10px Poppins bold | حدّ أسود 2px ليبدو "مُنطبع" على النڤ-بار الداكن |
+| `.cart-nav-badge` (عدّاد) | min 18×18 | برتقالي ممتلئ | أبيض، 10px Readex Pro bold | حدّ أسود 2px ليبدو "مُنطبع" على النڤ-بار الداكن |
 | `.prod-card-add` (زر `+` على البطاقة) | 38×38، أعلى-يمين 10px | `rgba(255,255,255,0.95)` + `backdrop-filter: blur(6px)` | برتقالي، أيقونة 18px | يصير برتقالي ممتلئ مع لون أبيض |
 | `.pd-qty` (stepper الكمية) | ارتفاع 52px موحَّد مع الزر، radius 12px | أبيض | `--cart-text` | bg ناعم + لون برتقالي |
 | `.pd-add-to-cart` | ارتفاع 52px، padding 0 26px، radius 12px | برتقالي ممتلئ | أبيض | برتقالي أعمق، **بدون transform/shadow** |

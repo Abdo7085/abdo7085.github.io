@@ -35,7 +35,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 5.5rem 1.5rem 4rem;
-  font-family: 'Poppins', 'Exo 2', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--prod-text-main);
   background-color: #ffffff;
   min-height: 70vh;

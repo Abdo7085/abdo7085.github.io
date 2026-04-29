@@ -12594,7 +12594,7 @@ const Xh = re("Zap", [["polygon", {
                                         fontWeight: 600,
                                         lineHeight: 1.35,
                                         textShadow: "0 2px 8px rgba(0,0,0,0.6)",
-                                        fontFamily: "'Exo 2', system-ui, sans-serif"
+                                        fontFamily: "'Readex Pro', system-ui, sans-serif"
                                     },
                                     children: t.title
                                 })]

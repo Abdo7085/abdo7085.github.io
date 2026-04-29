@@ -68,7 +68,7 @@
   border-radius: 999px;
   background: var(--cart-orange);
   color: #ffffff;
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
   font-size: 10px;
   font-weight: 700;
   line-height: 18px;
@@ -236,7 +236,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
   font-size: 0.92rem;
   font-weight: 500;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -274,7 +274,7 @@ body.cart-open { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
   color: var(--cart-text);
   opacity: 0;
   visibility: hidden;
@@ -349,7 +349,7 @@ body.cart-open { overflow: hidden; }
   flex-shrink: 0;
 }
 .cart-title {
-  font-family: 'Exo', 'Poppins', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   margin: 0 0 4px;

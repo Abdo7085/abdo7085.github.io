@@ -1082,11 +1082,11 @@ img,video {
 }
 
 .font-exo {
-    font-family: "Exo 2",sans-serif
+    font-family: "Readex Pro",system-ui,sans-serif
 }
 
 .font-poppins {
-    font-family: Poppins,sans-serif
+    font-family: "Readex Pro",system-ui,sans-serif
 }
 
 .text-2xl {
@@ -1317,14 +1317,16 @@ html {
 }
 
 body {
-    font-family: Poppins,sans-serif;
+    font-family: "Readex Pro",system-ui,sans-serif;
     color: #333;
     overflow-x: hidden;
     font-size: 14px
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: "Exo 2",sans-serif
+    font-family: "Readex Pro",system-ui,sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em
 }
 
 .section-padding {

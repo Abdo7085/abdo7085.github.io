@@ -34,7 +34,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 5.5rem 1.5rem 4rem;
-  font-family: 'Poppins', 'Exo 2', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--proj-text-main);
   background-color: #ffffff;
   min-height: 70vh;
@@ -63,7 +63,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
 }
 
 [dir="rtl"] #custom-project-detail-wrapper {
-  font-family: 'Tajawal', 'Poppins', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
 }
 
 /* ============ Breadcrumbs ============ */
@@ -714,10 +714,10 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   font-weight: 700;
   letter-spacing: -0.015em;
   margin: 0;
-  font-family: 'Exo 2', 'Poppins', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
 }
 [dir="rtl"] .proj-cta-title {
-  font-family: 'Tajawal', 'Exo 2', sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
 }
 .proj-cta-lead {
   font-size: 1.02rem;
