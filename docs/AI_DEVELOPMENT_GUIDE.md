@@ -342,6 +342,47 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 
 **درس مستفاد (Floating → Navbar Migration, 2026-04-30):** زر اللغة كان FAB في الزاوية السفلى (`.lang-switch` بـ `position: fixed`). عند التمرير، النڤ-بار يتقلّص من `py-3` إلى `py-2` فترتفع السلّة والهامبرغر 4px، بينما الـ FAB ثابت → اختلال محاذاة. **الحلّ الجذري:** حقن الزر داخل React navbar بنفس النمط الذي أُضيفت به السلّة. الآن الزر flex item — يتحرّك مع النڤ-بار آلياً. القائمة المنسدلة `#langMenuRoot` تبقى في `<body>` لكن موضعها يُحسَب ديناميكياً عبر `getBoundingClientRect()` على الـ trigger. **القاعدة العامة:** أيّ عنصر تفاعلي في النڤ-بار يجب حقنه داخل React navbar؛ الـ FABs الخارجية تنفع فقط للعناصر المنفصلة كلياً (مثل `.mobile-dialer` للواتساب).
 
+### النڤ-بار الشفّاف عند الأعلى وإدارة class `home-page` (2026-04-30)
+
+**السلوك المطلوب:**
+- على `/` و `/previous-work` (الصفحة الرئيسية ومعرض الأعمال): النڤ-بار **شفّاف تماماً** عند `scrollY ≤ 50`، ويتحوّل لخلفية داكنة (`bg-secondary bg-opacity-95`) عند التمرير.
+- على باقي الصفحات (`products.html`, `product.html`, `project.html`، إلخ): النڤ-بار **داكن دائماً** بغضّ النظر عن scroll.
+
+**آلية القسر للداكن في الصفحات الداخلية:**
+كلا `assets/products.css` و `assets/projects.css` يحويان نفس قاعدة CSS:
+```css
+body:not(.home-page) header.fixed.top-0.z-50 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(4px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+```
+أي: لو body **لا يحمل** class `home-page`، الـ navbar داكن إجبارياً (يفوز على Tailwind `bg-transparent` بـ `!important`).
+
+**المشكلة قبل الإصلاح:**
+`index.html` فقط يحمل `<body class="home-page">` ثابتاً. باقي القوالب الجذرية (`previous-work.html`, `products.html`, `product.html`, `project.html`) تحمل `<body>` فارغاً. لمّا ينتقل المستخدم من `products.html` إلى `/` عبر SPA Link (`<Mt to="/">`)، الـ URL يتحوّل لـ `/` لكن الـ document يبقى `products.html` ومعه `products.css` و body **بدون** `home-page` → القاعدة تفوز → النڤ-بار يبقى داكناً رغم أن `/` مفروض شفّاف.
+
+**الحلّ — إدارة `home-page` ديناميكياً من React:**
+في مكوّن `av` (السطر ~12624)، useEffect ثاني يدير الـ class بناءً على `i.pathname` من React Router:
+```js
+S.useEffect(() => {
+    const p = i.pathname,
+        isHomeLike = p === "/" || p === "/index.html" || p === "/previous-work" || p === "/previous-work.html";
+    if (isHomeLike) document.body.classList.add("home-page");
+    else document.body.classList.remove("home-page");
+}, [i.pathname]);
+```
+
+هذا يجعل `home-page` **حقيقة الـ runtime** المرتبطة بالمسار، لا حقيقة الـ document. النڤ-بار يستجيب صحيحاً بصرف النظر عن أيّ HTML محمّل (لأنّ الـ SPA يخدم home و previous-work routes من أيّ document).
+
+**إصلاح ثانٍ مرتبط — حالة scroll العالقة عبر تنقّل SPA:**
+`useState` الأولية كانت `false` ثابتة و `useEffect` بـ `[]` deps. عند تنقّل SPA من صفحة مُمرَّرة لأسفل إلى أخرى، الـ scroll listener كان مُعلَّقاً بدون إعادة تقييم. الإصلاح:
+- `useState(() => window.scrollY > 50)` — قيمة ابتدائية تعكس scroll الفعلي (تصلح حالات browser scroll restoration).
+- استدعاء `a()` فوراً داخل effect.
+- تغيير deps إلى `[i.pathname]` — أي تنقّل مسار يُعيد تقييم scroll.
+
+**عند إضافة قالب جذري جديد:** قرّر هل هو "home-like" (شفّاف عند الأعلى) أم "internal" (داكن دائماً). لو home-like، أضِف مساره لمصفوفة الفحص أعلاه. لو internal، لا حاجة لتعديل — body بدون `home-page` يُفعّل القاعدة آلياً.
+
 ### تحذير Tailwind CSS (الأهم عند التعديل)
 `assets/index-CJ3jXuVd.css` هو ملف CSS **مُجمَّع مسبقاً** (Pre-built Tailwind). يحتوي فقط على الكلاسات التي كانت مستخدمة في الكود المصدري الأصلي وقت البناء. **أي كلاس Tailwind جديد تضيفه داخل `index-CGMiSPUa.js` قد لا يعمل** لأنه ببساطة غير موجود في CSS.
 

@@ -12621,6 +12621,13 @@ const Xh = re("Zap", [["polygon", {
         () => window.removeEventListener("scroll", a)
     }
     , [i.pathname]);
+    S.useEffect( () => {
+        const p = i.pathname,
+            isHomeLike = p === "/" || p === "/index.html" || p === "/previous-work" || p === "/previous-work.html";
+        if (isHomeLike) document.body.classList.add("home-page");
+        else document.body.classList.remove("home-page")
+    }
+    , [i.pathname]);
     const o = () => {
         r(!n)
     }
