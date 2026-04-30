@@ -12607,7 +12607,7 @@ const Xh = re("Zap", [["polygon", {
     })
 }
   , av = () => {
-    const [e,t] = S.useState(!1)
+    const [e,t] = S.useState(() => typeof window !== "undefined" && window.scrollY > 50)
       , [n,r] = S.useState(!1)
       , l = Cs()
       , i = Qt();
@@ -12616,10 +12616,11 @@ const Xh = re("Zap", [["polygon", {
             window.scrollY > 50 ? t(!0) : t(!1)
         }
         ;
+        a();
         return window.addEventListener("scroll", a),
         () => window.removeEventListener("scroll", a)
     }
-    , []);
+    , [i.pathname]);
     const o = () => {
         r(!n)
     }
