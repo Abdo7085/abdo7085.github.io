@@ -1,0 +1,104 @@
+/*
+ * section-eyebrows.css — small uppercase markers above main h2 titles
+ *
+ * Adds "— 01 / SERVICES" style eyebrow above key sections via CSS ::before
+ * pseudo-elements. No SPA bundle modification required.
+ *
+ * Sections covered:
+ *   01 — #services (Services grid)
+ *   02 — #example (Showcase / Your home at fingertips)
+ *   03 — #homepage-products-section (Our Products)
+ *   04 — #faq (Frequently Asked Questions)
+ *
+ * Translations via :lang() selectors. Arabic uses Hindi-Arabic numerals.
+ */
+
+/* ============ Shared eyebrow style ============ */
+section#services > .container > div:first-child::before,
+section#example > .container > div > div:first-child::before,
+section#homepage-products-section .hp-products-header::before,
+section#faq > .container > h2::before {
+  display: block;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand, #b86c25);
+  margin-bottom: 0.65rem;
+  line-height: 1.2;
+  opacity: 0.9;
+  text-align: center;
+  white-space: nowrap;
+  animation: eyebrowFade 0.6s ease both;
+}
+
+@keyframes eyebrowFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 0.9; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section#services > .container > div:first-child::before,
+  section#example > .container > div > div:first-child::before,
+  section#homepage-products-section .hp-products-header::before,
+  section#faq > .container > h2::before {
+    animation: none;
+  }
+}
+
+/* ============ English (default) ============
+ * Eyebrow labels are intentionally DIFFERENT from section headings so they
+ * complement (not duplicate) the heading. e.g., "Expertise" eyebrow above
+ * "Our Services" heading reads as a category framing, not a repetition.
+ */
+section#services > .container > div:first-child::before {
+  content: '— 01 / Expertise';
+}
+section#example > .container > div > div:first-child::before {
+  content: '— 02 / Showcase';
+}
+section#homepage-products-section .hp-products-header::before {
+  content: '— 03 / Catalog';
+}
+section#faq > .container > h2::before {
+  content: '— 04 / Answers';
+}
+
+/* ============ French ============ */
+:lang(fr) section#services > .container > div:first-child::before {
+  content: '— 01 / Expertise';
+}
+:lang(fr) section#example > .container > div > div:first-child::before {
+  content: '— 02 / Vitrine';
+}
+:lang(fr) section#homepage-products-section .hp-products-header::before {
+  content: '— 03 / Catalogue';
+}
+:lang(fr) section#faq > .container > h2::before {
+  content: '— 04 / Réponses';
+}
+
+/* ============ Arabic — Hindi-Arabic numerals + no uppercase/letter-spacing ============ */
+:lang(ar) section#services > .container > div:first-child::before,
+:lang(ar) section#example > .container > div > div:first-child::before,
+:lang(ar) section#homepage-products-section .hp-products-header::before,
+:lang(ar) section#faq > .container > h2::before {
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+:lang(ar) section#services > .container > div:first-child::before {
+  content: '— ٠١ / خبرتنا';
+}
+:lang(ar) section#example > .container > div > div:first-child::before {
+  content: '— ٠٢ / المعرض';
+}
+:lang(ar) section#homepage-products-section .hp-products-header::before {
+  content: '— ٠٣ / الكتالوج';
+}
+:lang(ar) section#faq > .container > h2::before {
+  content: '— ٠٤ / إجابات';
+}

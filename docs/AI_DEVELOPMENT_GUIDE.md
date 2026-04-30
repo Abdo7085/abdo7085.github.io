@@ -14,6 +14,7 @@
 - `previous-work.html`: صفحة معرض الأعمال السابقة — شبكة المشاريع فيها تُحمَّل ديناميكياً من `data/projects_index.json` داخل الـ SPA bundle.
 - `assets/`: مجلد الموارد ويحتوي على الصور، وملفات الترجمة (locales)، والسكربتات التأسيسية:
   - **`brand.css`** ⭐ (Single Source of Truth للتصميم): يُعرّف كل tokens البراند (`--brand`, `--brand-deep`, `--warm-dark*`, `--ink`, `--cream` إلخ) في مكان واحد. يُحمَّل **أوّلاً** في كل القوالب الجذرية الـ6 قبل `index-CJ3jXuVd.css`. الملفات الأخرى (`cart.css`, `find-solution.css`, `products.css`, `projects.css`, `homepage-products.css`) تستخدم هذه التوكنات عبر `var(--brand, fallback)` مع fallback يحفظ القيم الأصلية. **راجع القسم 10 لكامل التفاصيل والوصفة.**
+  - **`section-eyebrows.css`** (2026-04-30): علامات صغيرة بصيغة `— 01 / Expertise` فوق عناوين 4 أقسام رئيسية في الصفحة الرئيسية. CSS pseudo-elements (`::before`) + `:lang()` selectors للترجمة. لا تلمس SPA bundle. **راجع القسم 10.**
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
   - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA).
@@ -823,6 +824,43 @@ grep -rn "Readex Pro" assets/ *.html
 - **`.font-exo` و `.font-poppins` في `index-CJ3jXuVd.css`** أُبقيا كأسماء كلاسات (موجودة في SPA bundle) لكن قيمتهما تشير الآن للخط الجديد. لا تحذف الكلاسات نفسها.
 - **عند اختيار خط جديد لمواقع تستهدف العربية على Windows/Chrome**، تجنّب IBM Plex Arabic (مبكسل). البدائل المُختبَرة: Readex Pro (الأنعم)، Cairo، Tajawal، Noto Sans Arabic.
 - **SPA inline style واحد في السطر ~12597** سهل النسيان — تأكّد من تضمينه.
+
+### 🏷️ Section Eyebrows — علامات صغيرة فوق عناوين الأقسام
+
+**ملف مستقلّ:** `assets/section-eyebrows.css` (2026-04-30) يضيف "eyebrow markers" صغيرة بصيغة `— 01 / Expertise` فوق عناوين 4 أقسام رئيسية في الصفحة الرئيسية. تستخدم CSS pseudo-elements (`::before`) **بدون لمس SPA bundle** — صفر مخاطرة.
+
+**الأقسام المُغطّاة:**
+
+| القسم | EN | FR | AR |
+|---|---|---|---|
+| `#services` | `— 01 / Expertise` | `— 01 / Expertise` | `— ٠١ / خبرتنا` |
+| `#example` | `— 02 / Showcase` | `— 02 / Vitrine` | `— ٠٢ / المعرض` |
+| `#homepage-products-section` | `— 03 / Catalog` | `— 03 / Catalogue` | `— ٠٣ / الكتالوج` |
+| `#faq` | `— 04 / Answers` | `— 04 / Réponses` | `— ٠٤ / إجابات` |
+
+**الترجمة:** عبر `:lang()` selectors (يقرأ `<html lang>` المُحدَّث من i18n.js). لا حاجة لـ JSON locale keys.
+
+**التحميل:** `<link>` في كل القوالب الجذرية الـ6 بعد `i18n.css` (لتسمح لـ RTL rules بالتجاوز إن لزم).
+
+**معالجات RTL:**
+- العربية تستخدم Readex Pro (لا monospace) لأن uppercase وletter-spacing لا يناسبان الأبجدية العربية.
+- الأرقام الهندية-العربية (`٠١, ٠٢, ٠٣, ٠٤`) — أكثر "أصالة" بصرياً مع النصّ العربي.
+- الـ em-dash يُوضع في **بداية source string** للعربية (`— ٠١ / ...`) ليظهر على اليمين بصرياً (بداية القراءة في RTL).
+
+**درس مستفاد:** المحاولة الأولى استخدمت نصاً يكرّر العنوان (`— ٠١ / الخدمات` فوق `الخدمات`) — ظهر كتكرار بصري خاصة في العربية حيث العناوين قصيرة (لا "Our X" prefix كالإنجليزية). الإصلاح: استخدام مسمّيات **مختلفة عن العنوان** تكمّله بدل أن تردّده (Expertise بدل Services، Catalog بدل Products، Answers بدل FAQ).
+
+**القاعدة:** عند إضافة eyebrow لقسم جديد، اختر اسماً يكون **category framing** للقسم بدل أن يكرّر العنوان. مثال صحيح: `Workflow` فوق "How We Work". مثال خاطئ: `How We Work` فوق "How We Work".
+
+**إضافة eyebrow لقسم جديد:**
+```css
+/* في assets/section-eyebrows.css */
+section#NEW_ID > .container > .HEADER_WRAPPER::before { /* selector شاملة */
+  /* style block المشترك يُطبَّق آلياً عبر comma-separated rule */
+}
+section#NEW_ID > .container > .HEADER_WRAPPER::before { content: '— 05 / NEW_LABEL'; }
+:lang(fr) section#NEW_ID ... ::before { content: '— 05 / NEW_LABEL_FR'; }
+:lang(ar) section#NEW_ID ... ::before { content: '— ٠٥ / NEW_LABEL_AR'; }
+```
 
 ---
 
