@@ -2,17 +2,19 @@
    Brand orange #b86c25. RTL aware via [dir="rtl"]. */
 
 :root {
-  --cart-orange: #b86c25;
-  --cart-orange-dark: #9a5a1f;
-  --cart-orange-light: #f5e7d8;
-  --cart-text: #1a1a1a;
-  --cart-text-muted: #6b7280;
-  --cart-border: #e5e7eb;
-  --cart-bg: #ffffff;
-  --cart-bg-soft: #fafafa;
-  --cart-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --cart-wa: #b86c25;
-  --cart-wa-dark: #9a5a1f;
+  /* Brand colors reference assets/brand.css (single source of truth).
+     Fallbacks ensure no visual regression if brand.css fails to load. */
+  --cart-orange:        var(--brand, #b86c25);
+  --cart-orange-dark:   var(--brand-deep, #9c5a1e);
+  --cart-orange-light:  var(--brand-pale, #f5e7d8);
+  --cart-text:          #1a1a1a;
+  --cart-text-muted:    var(--ink-muted, #6b7280);
+  --cart-border:        #e5e7eb;
+  --cart-bg:            var(--paper, #ffffff);
+  --cart-bg-soft:       #fafafa;
+  --cart-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --cart-wa:            var(--brand, #b86c25);
+  --cart-wa-dark:       var(--brand-deep, #9c5a1e);
 }
 
 /* ---------- Navbar cart button — minimal line-art (Loxone-style) ---------- */

@@ -13,6 +13,7 @@
 - `project.html`: قالب SPA لعرض صفحة مشروع مفرد من معرض الأعمال. **مُعلّم بـ `noindex, nofollow`** — الصفحات الفعلية المفهرسة هي المولّدة في `projects/` (مع `index, follow` آلياً).
 - `previous-work.html`: صفحة معرض الأعمال السابقة — شبكة المشاريع فيها تُحمَّل ديناميكياً من `data/projects_index.json` داخل الـ SPA bundle.
 - `assets/`: مجلد الموارد ويحتوي على الصور، وملفات الترجمة (locales)، والسكربتات التأسيسية:
+  - **`brand.css`** ⭐ (Single Source of Truth للتصميم): يُعرّف كل tokens البراند (`--brand`, `--brand-deep`, `--warm-dark*`, `--ink`, `--cream` إلخ) في مكان واحد. يُحمَّل **أوّلاً** في كل القوالب الجذرية الـ6 قبل `index-CJ3jXuVd.css`. الملفات الأخرى (`cart.css`, `find-solution.css`, `products.css`, `projects.css`, `homepage-products.css`) تستخدم هذه التوكنات عبر `var(--brand, fallback)` مع fallback يحفظ القيم الأصلية. **راجع القسم 10 لكامل التفاصيل والوصفة.**
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
   - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA).
@@ -251,6 +252,10 @@ python scripts/build_all.py
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
   - **`products.css` على `project.html`:** صفحة المشروع تُحمِّل أيضاً `assets/products.css` لأن قسم Related Products فيها يستخدم كلاسات `.prod-card` و `.prod-grid` (مطابقة بصرية لصفحة المنتج). إن أزال أحدهم هذا الـ link مستقبلاً ظاناً أنه دخيل، ستظهر بطاقات Related Products بدون تنسيق. المرجع الكامل في القسم 3.1 نقطة 6.
+- **⚠️ اعتمادية JS+CSS pair dependency (Cross-Page JS Dependency):** القاعدة السابقة عن CSS تنطبق **بنفس القوة** على الـ JS scripts التي تتحكّم بمحتوى ديناميكي يظهر عبر SPA navigation. مثال محسوس: `homepage-products.js` يحقن قسم "Our Products" في الصفحة الرئيسية عبر MutationObserver + patched `pushState`. السكربت يبقى مقيماً في الذاكرة عبر SPA navigation طالما حُمِّل **مرّة واحدة على الأقل**.
+  - **درس مستفاد (Lesson learned):** سيناريو الفشل: زائر يفتح صفحة مشروع مباشرة (`/projects/villa-knx-tetouan.html` من بحث Google أو رابط مشاركة) → يضغط "الرئيسية" في النڤ-بار → SPA navigation للرئيسية. **لكن** قسم "Our Products" لم يظهر! السبب: `project.html` كان يُحمِّل `homepage-products.css` فقط (أُضيف ضمن جولة توحيد CSS) لكن **بلا** `homepage-products.js`. بدون السكربت، لا أحد يحقن القسم. CSS وحده لا يفعل شيئاً عندما لا يوجد DOM ليُلوِّنه.
+  - **القاعدة الموسَّعة:** أي ملف JS يتحكّم بمحتوى يظهر على صفحة محدّدة (مثل الرئيسية) عبر SPA navigation **يجب** تحميله أيضاً على كل القوالب التي يمكن للمستخدم البدء منها كـ entry point ثم الانتقال لتلك الصفحة. عملياً: `index.html`, `products.html`, `product.html`, `project.html`, `previous-work.html` يجب أن تُحمّل **نفس مجموعة CSS+JS** (مع استثناءات محدّدة جداً).
+  - **Pattern check:** قبل دمج أي تغيير يضيف `<link>` لـ CSS، اسأل: "هل لهذا الـ CSS سكربت مرافق؟ إذا نعم، هل أضفته كذلك؟"
 
 ---
 
@@ -333,7 +338,8 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 4. لا تحاول إعادة بناء Tailwind — ستكسر الموقع.
 
 ### قيم التصميم المرجعية
-- **اللون الأساسي**: `--primary-color: #b86c25` (برتقالي-بُنّي نحاسي). استخدم `text-primary` أو `bg-primary` في Tailwind، أو `#b86c25` في inline styles.
+- **اللون الأساسي**: `--primary-color: #b86c25` (برتقالي-بُنّي نحاسي). استخدم `text-primary` أو `bg-primary` في Tailwind، أو `var(--brand, #b86c25)` في CSS مخصّص (يقرأ من `assets/brand.css`)، أو `#b86c25` في inline styles داخل SPA bundle. **`brand.css` هو المصدر الواحد لكل لون البراند منذ 2026-04-30 — راجع §10.**
+- **Tailwind opacity variants — تحذير:** الـ classes مثل `bg-primary/10`, `from-primary`, `border-primary/20` كانت تستخدم لون أزرق رمادي قديم (`#3a7ca5`) بسبب Tailwind drift. صُحِّحت في 2026-04-30 لكن **عند أي تعديل مستقبلي على هذه الـ variants تأكّد من القيمة الفعلية**.
 - **Fonts**: `font-exo` و `font-poppins` (Tailwind aliases) — كلاهما يُحلّ الآن إلى **`Readex Pro`** (variable font، عائلة واحدة تغطي Latin + Arabic). تغيير 2026-04-29 لتوحيد التيبوغرافي عبر EN/FR/AR. الأوزان: 400/500/600/700. **سبب الاختيار:** rendering ناعم على Windows/Chrome (IBM Plex Arabic كان يبدو "مبكسلاً" في الأحجام الصغيرة).
 
 ### آلية `fade-in` العامة
@@ -632,7 +638,41 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 
 ## 10. تغيير اللون التجاري على الموقع كاملاً (Brand Color Swap)
 
-عند طلب تغيير اللون التجاري الأساسي، **لا يوجد متغيّر CSS واحد يُحدَّث**. اللون مُكرَّر بصيغ هندسية مختلفة عبر سبعة ملفات. هذا القسم يختصر الجولة.
+### 🎯 ابدأ من هنا: `assets/brand.css` (Single Source of Truth)
+
+**منذ 2026-04-30**، الموقع يحتوي على **`assets/brand.css`** الذي يُعرِّف كل tokens البراند مرّة واحدة:
+
+```css
+:root {
+  --brand:        #b86c25;   /* اللون الأساسي */
+  --brand-deep:   #9c5a1e;   /* hover/active */
+  --brand-pale:   #f5e7d8;   /* tint backgrounds */
+  --brand-tint:   rgba(184, 108, 37, 0.1);
+  --brand-glow:   rgba(184, 108, 37, 0.45);
+  --warm-dark:        #1a140d;   /* dark hero/section bg */
+  --warm-dark-deep:   #0f0a05;
+  --warm-dark-light:  #3d2e1f;
+  --ink:       #1f2937;
+  --ink-muted: #6b7280;
+  --paper:     #ffffff;
+  --cream:     #f8fafc;
+}
+```
+
+**يُحمَّل أوّلاً** في كل القوالب الجذرية الـ6 (`index`, `products`, `product`, `project`, `previous-work`, `404`) قبل `index-CJ3jXuVd.css`.
+
+**الملفات الـ4 الأخرى** (`cart.css`, `find-solution.css`, `products.css`, `projects.css`, `homepage-products.css`) تستخدم هذه التوكنات عبر `var(--brand, #b86c25)` مع fallback يحفظ نفس القيمة الأصلية لو فشل التحميل.
+
+**النتيجة العملية:** لتبديل لون البراند الآن، **عدِّل قيمة `--brand` في `brand.css` فقط** — كل CSS ينتشر آلياً عبر `var()` references.
+
+**استثناءات لا تزال خارج النظام (تتطلّب التغيير اليدوي + sed):**
+- `assets/index-CJ3jXuVd.css` — Tailwind compiled (12 موقع `#b86c25` hardcoded). إعادة compile تكسر الموقع.
+- `assets/index-CGMiSPUa.js` — SPA bundle (inline `#b86c25` في category badge ~السطر 12565، و gradient background للقسم `#example`).
+- إعدادات Google Analytics و meta tags لا تتأثر باللون.
+
+### وصفة الـSwap الكاملة (للتغيير الشامل بما فيه Tailwind drift)
+
+عند طلب **تغيير لون البراند الجذري** (مثلاً من برتقالي لذهبي)، الـ`brand.css` وحده لا يكفي. اللون مُكرَّر بصيغ هندسية مختلفة عبر سبعة ملفات. هذا القسم يختصر الجولة.
 
 ### ⚠️ القيمة الواحدة للون لها صيغتان مختلفتان قليلاً
 
@@ -657,6 +697,8 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 
 ### وصفة الـSwap بأمر واحد
 
+**الطريقة الموصى بها (إن أردت تجربة سريعة):** عدِّل `assets/brand.css` فقط (4 سطور: `--brand`, `--brand-deep`, `--brand-pale`, plus tints) ثم اختبر بصرياً. هذا يغطّي 90% من الموقع. للحالات المتبقّية (Tailwind compiled + SPA bundle inline)، استخدم sed أدناه:
+
 ```bash
 # استبدِل OLD_HEX و NEW_HEX و OLD_HEX_HOVER و NEW_HEX_HOVER
 # كذلك القيم العشرية المرافقة (تنبيه: Tailwind = "187 118 31" بمسافات؛
@@ -665,7 +707,8 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 FILES="assets/index-CJ3jXuVd.css assets/index-CGMiSPUa.js \
        assets/projects.css assets/products.css \
        assets/find-solution.css assets/cart.css \
-       assets/homepage-products.css assets/i18n.css"
+       assets/homepage-products.css assets/i18n.css \
+       assets/brand.css"
 
 for f in $FILES; do
   sed -i \
@@ -682,17 +725,42 @@ done
 grep -rn "b86c25\|9a5a1f\|9c5a1e\|184, *108, *37\|187 118 31\|bb761f" assets/
 ```
 
+### ⚠️ Tailwind drift trap — تحذير من lesson learned مهم
+
+في 2026-04-30 اكتُشف **bug قديم خطير**: الـ Tailwind classes التي تستخدم opacity modifiers (`/10`, `/20`, `/30`, `/50`, `/90`) كانت تشير لـ **`#3a7ca5` (أزرق رمادي)** بدل البرتقالي. هذا تسرّب من إعداد Tailwind سابق قبل تبديل البراند للبرتقالي. الـ classes الـ"plain" (`.bg-primary`, `.text-primary`) كانت محدّثة، لكن الـ opacity variants نُسِيت.
+
+**الأماكن المتأثّرة سابقاً:** 9 مواقع في `index-CJ3jXuVd.css` (`.from-primary`, `.bg-primary/10`, `.bg-primary/5`, `.bg-primary/90`, `.border-primary/20`, `.border-primary/30`, ظلال box-shadow, إلخ). الـbug تجلّى بصرياً كأزرق-رمادي على Hero `previous-work.html` (الذي يستخدم `from-primary via-secondary to-primary`).
+
+**الإصلاح:** سُحب كل `#3a7ca5` و `#3A7CA5` → `#b86c25` بـ `replace_all`.
+
+**الدرس:** عند **أي** تبديل لون مستقبلي، أضف خطوة تحقّق ضمن الـ checklist:
+```bash
+# ابحث عن أي بقايا من الألوان السابقة في Tailwind compiled CSS
+grep -i "OLD_HEX_PARTIAL" assets/index-CJ3jXuVd.css
+```
+خاصةً عند فحص opacity variants المُولَّدة آلياً (`.bg-primary\/10`, إلخ) — قد لا تتحدّث مع `--primary-color`.
+
 ### الخلفيات الداكنة في الـSPA (ليست لها متغيّر)
 
 ثلاثة مقاطع داكنة في الـSPA bundle تستخدم رمادي **بارد** Tailwind (`bg-gradient-to-br from-gray-900 via-black to-gray-900` أو `linear-gradient(..., #111827, #000000, #111827)`):
 
 | المقطع | المكان | كيفية التغيير |
 |---|---|---|
-| `#example` ("Your home at your fingertips") | `index-CGMiSPUa.js` ~11546 — Tailwind classes | إما تعديل classes في الـbundle مباشرة، أو override في CSS بـ `!important` لأن Tailwind gradients عبر `--tw-gradient-*` vars عالية الأولوية |
-| `#homepage-products-section` | `assets/homepage-products.css` السطر 4 | تعديل قيمة `background:` مباشرة |
-| ✅ `.proj-cta` (CTA banner) | `assets/projects.css` ~723 | فعلاً يستخدم متغيّرات قابلة للتخصيص |
+| `#example` ("Your home at your fingertips") | `index-CGMiSPUa.js` ~11546 — Tailwind classes | ✅ تم: override في `homepage-products.css` بـ `!important` يستخدم `var(--warm-dark, #1a140d)` |
+| `#homepage-products-section` | `assets/homepage-products.css` السطر 4 | ✅ تم: gradient warm-dark عبر `var(--warm-dark, ...)` |
+| `.prod-hero` (products page) | `assets/products.css` ~46 | ✅ تم: warm gradient `var(--warm-dark-deep) → var(--warm-dark) → var(--warm-dark-light)` |
+| `.proj-hero` (project case-study) | `assets/projects.css` ~100 | ✅ تم: نفس warm gradient |
+| `.proj-cta` (CTA banner) | `assets/projects.css` ~723 | يستخدم `var(--proj-primary)` = البرتقالي (دافئ أصلاً) |
+| `previous-work.html` Hero | SPA `index-CGMiSPUa.js` ~12476 | برتقالي (`from-primary via-secondary to-primary`) — دافئ أصلاً |
 
-**درس مستفاد:** عند تغيير لون الأكسنت (مثلاً برتقالي → ذهبي)، يجب التأكّد أن الخلفيات الداكنة دافئة (warm-dark) لا باردة (cool-gray) — الذهبي على رمادي بارد يبدو غير منسجم. لون داكن دافئ مقترح: `oklch(0.16 0.012 60)` أو fallback `#1a140a`.
+**جولة "Warm-dark Pass" (2026-04-30):** الأقسام الأربعة الأولى أعلاه كانت تستخدم cool gray (`#111827`, slate-800/900). تم تبديلها لـ warm-dark spectrum محدَّد في `brand.css`:
+- `--warm-dark: #1a140d` (base)
+- `--warm-dark-deep: #0f0a05` (deepest)
+- `--warm-dark-light: #3d2e1f` (lightest)
+
+نفس تدرّج الـ luminance للسلسلة الـ slate القديمة، لكن في الفضاء الـ warm. النتيجة: البرتقالي يبدو "مولوداً من الخلفية" بدل "مصطدماً بها".
+
+**درس مستفاد:** عند تغيير لون الأكسنت (مثلاً برتقالي → ذهبي)، يجب التأكّد أن الخلفيات الداكنة تحافظ على نفس "الـ hue family" — الذهبي على رمادي بارد يبدو غير منسجم. عدِّل قيم `--warm-dark*` في `brand.css` بما يناسب اللون الجديد.
 
 ### ⚠️ اللون التجاري يظهر مرّتين بدرجتين متقاربتين عمداً (not a bug)
 

@@ -1,0 +1,32 @@
+/*
+ * brand.css — single source of truth for brand tokens
+ *
+ * Loaded FIRST in every root template <head>, before all other CSS files.
+ * To change brand color/dark backgrounds across the entire site, edit values
+ * here only. Local tokens in products.css, projects.css, cart.css,
+ * find-solution.css, and i18n.css all reference these via var(--brand, ...).
+ *
+ * Tailwind compiled tokens in index-CJ3jXuVd.css remain hardcoded — those
+ * require the full brand-color-swap recipe documented in §10 of
+ * docs/AI_DEVELOPMENT_GUIDE.md.
+ */
+
+:root {
+  /* ===== Brand orange (copper) — primary identity ===== */
+  --brand:        #b86c25;
+  --brand-deep:   #9c5a1e;                    /* hover/active darker */
+  --brand-pale:   #f5e7d8;                    /* tint backgrounds (cream-orange) */
+  --brand-tint:   rgba(184, 108, 37, 0.1);    /* subtle wash */
+  --brand-glow:   rgba(184, 108, 37, 0.45);   /* shadow accent */
+
+  /* ===== Warm-dark spectrum (for dark hero/section backgrounds) ===== */
+  --warm-dark:        #1a140d;
+  --warm-dark-deep:   #0f0a05;
+  --warm-dark-light:  #3d2e1f;
+
+  /* ===== Neutrals ===== */
+  --ink:       #1f2937;
+  --ink-muted: #6b7280;
+  --paper:     #ffffff;
+  --cream:     #f8fafc;
+}

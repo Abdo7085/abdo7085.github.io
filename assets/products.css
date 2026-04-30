@@ -5,19 +5,20 @@
  */
 
 :root {
-  --prod-bg: #f8fafc;
-  --prod-card-bg: #ffffff;
-  --prod-text-main: #1f2937;
-  --prod-text-muted: #6b7280;
-  --prod-border: #e5e7eb;
-  --prod-primary: #b86c25;
-  --prod-primary-hover: #9c5a1e;
-  --prod-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --prod-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --prod-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --transition-fast: 0.2s ease;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  /* Brand colors reference assets/brand.css (single source of truth). */
+  --prod-bg:            var(--cream, #f8fafc);
+  --prod-card-bg:       var(--paper, #ffffff);
+  --prod-text-main:     var(--ink, #1f2937);
+  --prod-text-muted:    var(--ink-muted, #6b7280);
+  --prod-border:        #e5e7eb;
+  --prod-primary:       var(--brand, #b86c25);
+  --prod-primary-hover: var(--brand-deep, #9c5a1e);
+  --prod-shadow:        0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --prod-shadow-lg:     0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --prod-shadow-xl:     0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition-fast:    0.2s ease;
+  --radius-md:          12px;
+  --radius-lg:          16px;
 }
 
 /* Force the SPA top navigation header to always have a solid dark background on non-homepage pages */
@@ -43,7 +44,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
 
 /* Hero Banner */
 .prod-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, var(--warm-dark, #1f1610) 50%, var(--warm-dark-light, #3d2e1f) 100%);
   border-radius: var(--radius-lg);
   padding: 2.5rem 2.5rem 2rem;
   margin-bottom: 0.5rem;

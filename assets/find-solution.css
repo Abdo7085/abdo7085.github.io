@@ -2,15 +2,16 @@
    Self-contained styles. Brand orange #b86c25. RTL aware via [dir="rtl"]. */
 
 :root {
-  --fs-orange: #b86c25;
-  --fs-orange-dark: #9a5a1f;
-  --fs-orange-light: #f5e7d8;
-  --fs-text: #1a1a1a;
-  --fs-text-muted: #6b7280;
-  --fs-border: #e5e7eb;
-  --fs-bg: #ffffff;
-  --fs-bg-soft: #fafafa;
-  --fs-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  /* Brand colors reference assets/brand.css (single source of truth). */
+  --fs-orange:        var(--brand, #b86c25);
+  --fs-orange-dark:   var(--brand-deep, #9c5a1e);
+  --fs-orange-light:  var(--brand-pale, #f5e7d8);
+  --fs-text:          #1a1a1a;
+  --fs-text-muted:    var(--ink-muted, #6b7280);
+  --fs-border:        #e5e7eb;
+  --fs-bg:            var(--paper, #ffffff);
+  --fs-bg-soft:       #fafafa;
+  --fs-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 /* Lock body scroll when modal open */

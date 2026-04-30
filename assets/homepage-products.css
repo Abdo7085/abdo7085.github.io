@@ -1,9 +1,16 @@
 /* Homepage Products Section */
 .hp-products-section {
   padding: 4rem 0;
-  background: linear-gradient(to bottom right, #111827, #000000, #111827);
+  background: linear-gradient(to bottom right, var(--warm-dark, #1a140d), #000000, var(--warm-dark, #1a140d));
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: #ffffff;
+}
+
+/* Warm-dark override for #example ("Your home at your fingertips") section
+   in SPA bundle. SPA uses Tailwind from-gray-900/via-black/to-gray-900 (cool
+   grays). We swap to warm-brown to harmonize with the copper brand color. */
+section#example {
+  background: linear-gradient(to bottom right, var(--warm-dark, #1a140d), #000000, var(--warm-dark, #1a140d)) !important;
 }
 .hp-products-inner {
   max-width: 1200px;
@@ -20,7 +27,7 @@
   color: #ffffff;
   margin: 0 0 0.75rem;
   display: inline-block;
-  border-bottom: 2px solid rgb(187, 118, 31);
+  border-bottom: 2px solid var(--brand, #b86c25);
   padding-bottom: 2px;
   line-height: 1.3;
 }
@@ -90,7 +97,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #b86c25;
+  color: var(--brand, #b86c25);
   margin-bottom: 0.35rem;
 }
 .hp-product-card-title {
@@ -118,7 +125,7 @@
 .hp-products-btn {
   display: inline-block;
   padding: 0.85rem 2.5rem;
-  background: #b86c25;
+  background: var(--brand, #b86c25);
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
@@ -128,7 +135,7 @@
   font-family: inherit;
 }
 .hp-products-btn:hover {
-  background: #9c5a1e;
+  background: var(--brand-deep, #9c5a1e);
   transform: translateY(-2px);
 }
 

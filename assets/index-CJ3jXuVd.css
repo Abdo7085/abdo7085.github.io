@@ -816,7 +816,7 @@ img,video {
 }
 
 .border-primary\/20 {
-    border-color: #3a7ca533
+    border-color: #b86c2533
 }
 
 .bg-black {
@@ -850,15 +850,15 @@ img,video {
 }
 
 .bg-primary\/10 {
-    background-color: #3a7ca51a
+    background-color: #b86c251a
 }
 
 .bg-primary\/5 {
-    background-color: #3a7ca50d
+    background-color: #b86c250d
 }
 
 .bg-primary\/90 {
-    background-color: #3a7ca5e6
+    background-color: #b86c25e6
 }
 
 .bg-secondary {
@@ -926,8 +926,8 @@ img,video {
 }
 
 .from-primary {
-    --tw-gradient-from: #3A7CA5 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(187 118 31 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-from: #b86c25 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(184 108 37 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
 }
 
@@ -967,7 +967,7 @@ img,video {
 }
 
 .to-primary {
-    --tw-gradient-to: #3A7CA5 var(--tw-gradient-to-position)
+    --tw-gradient-to: #b86c25 var(--tw-gradient-to-position)
 }
 
 .to-secondary {
@@ -1514,15 +1514,15 @@ h1,h2,h3,h4,h5,h6 {
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 #3a7ca5b3
+        box-shadow: 0 0 #b86c25b3
     }
 
     70% {
-        box-shadow: 0 0 0 10px #3a7ca500
+        box-shadow: 0 0 0 10px #b86c2500
     }
 
     to {
-        box-shadow: 0 0 #3a7ca500
+        box-shadow: 0 0 #b86c2500
     }
 }
 
@@ -1610,7 +1610,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .hover\:border-primary\/30:hover {
-    border-color: #3a7ca54d
+    border-color: #b86c254d
 }
 
 .hover\:bg-gray-200:hover {
@@ -1624,7 +1624,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .hover\:bg-primary\/90:hover {
-    background-color: #3a7ca5e6
+    background-color: #b86c25e6
 }
 
 .hover\:text-primary:hover {

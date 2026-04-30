@@ -6,19 +6,20 @@
  */
 
 :root {
-  --proj-bg: #f8fafc;
-  --proj-card-bg: #ffffff;
-  --proj-text-main: #1f2937;
-  --proj-text-muted: #6b7280;
-  --proj-border: #e5e7eb;
-  --proj-primary: #b86c25;
-  --proj-primary-hover: #9c5a1e;
-  --proj-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --proj-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --proj-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --proj-radius-md: 12px;
-  --proj-radius-lg: 16px;
-  --proj-transition: 0.2s ease;
+  /* Brand colors reference assets/brand.css (single source of truth). */
+  --proj-bg:            var(--cream, #f8fafc);
+  --proj-card-bg:       var(--paper, #ffffff);
+  --proj-text-main:     var(--ink, #1f2937);
+  --proj-text-muted:    var(--ink-muted, #6b7280);
+  --proj-border:        #e5e7eb;
+  --proj-primary:       var(--brand, #b86c25);
+  --proj-primary-hover: var(--brand-deep, #9c5a1e);
+  --proj-shadow:        0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --proj-shadow-lg:     0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --proj-shadow-xl:     0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --proj-radius-md:     12px;
+  --proj-radius-lg:     16px;
+  --proj-transition:    0.2s ease;
 }
 
 /* Force the SPA top navigation header to always have a solid dark background on non-homepage pages */
@@ -97,7 +98,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, var(--warm-dark, #1f1610) 50%, var(--warm-dark-light, #3d2e1f) 100%);
   border-radius: var(--proj-radius-lg);
   color: #fff;
   position: relative;
