@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch", "description": "The MINI-ZBRBS is a tiny smart controller that turns your existing roller shutters, blinds, or curtains into smart ones — without changing the look of your wall switch. It slips behind your current shutter switch and lets you raise, lower, or stop your shutters from your phone, on a schedule, or by voice. Best of all, you can set them to any exact position (like 60% open) with a simple tap, perfect for letting in just the right amount of light. Once paired with Home Assistant, Zigbee2MQTT, or another Zigbee hub, your shutters can react to sunrise, sunset, weather, or any scene you create — and because commands run locally over Zigbee, everything keeps working even if your internet goes down. It also strengthens the rest of your Zigbee mesh network as a router.", "sku": "sonoff-mini-zbrbs", "url": "https://smartelectricity.ma/products/sonoff-mini-zbrbs.html", "brand": {"@type": "Brand", "name": "SONOFF"}, "category": "Shutter", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "22", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/sonoff-mini-zbrbs.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://smartelectricity.ma/products.html"}, {"@type": "ListItem", "position": 3, "name": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch", "item": "https://smartelectricity.ma/products/sonoff-mini-zbrbs.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Zennio MAXinBOX 88 KNX Actuator", "description": "The Zennio MAXinBOX 88 is the most versatile member of the MAXinBOX family, combining 8 independent 16 A relay outputs with 8 analog/digital inputs in a compact 4-unit DIN-rail module. Each output can be configured as a switching channel, shutter pair, or fan coil controller, while the inputs accept binary push buttons, temperature probes, and motion sensors — so a single device can handle lights, blinds, climate, and room sensing. Four built-in room thermostats let you manage heating and cooling without additional controllers. Tungsten pre-contacts handle inrush currents up to 800 A for reliable operation with LED drivers and electronic transformers. Manual push buttons and LED indicators on the cover allow quick override without any KNX panel. With 10 logic functions and KNX Secure support, it is ideal for compact installations where both sensing and actuating are needed from one module.", "sku": "zennio-maxinbox-88", "url": "https://smartelectricity.ma/products/zennio-maxinbox-88.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Actuator", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "15", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-maxinbox-88.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://smartelectricity.ma/products.html"}, {"@type": "ListItem", "position": 3, "name": "Zennio MAXinBOX 88 KNX Actuator", "item": "https://smartelectricity.ma/products/zennio-maxinbox-88.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

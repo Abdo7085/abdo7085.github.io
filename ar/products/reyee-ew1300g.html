@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "ريي RG-EW1300G", "description": "راوتر Wi-Fi 5 ثنائي النطاق مصمم للمنازل والشقق والمكاتب الصغيرة التي تحتاج تغطية موثوقة بدون تعقيد. بفضل خمس هوائيات عالية الكسب وتقنية MU-MIMO، يوفر إشارة قوية في المساحات الكبيرة ويتعامل مع حتى 96 جهاز في آن واحد. يدعم Reyee Mesh، مما يتيح إقرانه مع راوترات Reyee أخرى لتغطية Wi-Fi سلسة في كامل المنزل بدون مناطق ميتة. الإعداد والإدارة سهلان عبر تطبيق Reyee أو لوحة تحكم Ruijie Cloud المجانية — لا حاجة لخبرة تقنية.", "sku": "reyee-ew1300g", "url": "https://smartelectricity.ma/ar/products/reyee-ew1300g.html", "brand": {"@type": "Brand", "name": "Reyee"}, "category": "Network", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.8", "reviewCount": "20", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/reyee-ew1300g.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/ar/"}, {"@type": "ListItem", "position": 2, "name": "المنتجات", "item": "https://smartelectricity.ma/ar/products.html"}, {"@type": "ListItem", "position": 3, "name": "ريي RG-EW1300G", "item": "https://smartelectricity.ma/ar/products/reyee-ew1300g.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

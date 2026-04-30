@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Écran Tactile Zennio Z100 KNX", "description": "Le Zennio Z100 est un écran tactile couleur capacitif de 10 pouces qui sert de hub central pour votre maison connectée KNX. Son affichage haute résolution permet de contrôler l'éclairage, le climat, les stores, la sécurité et le multimédia depuis jusqu'à 12 pages personnalisables — le tout avec des gestes fluides et intuitifs. Deux thermostats intégrés indépendants gèrent les zones de chauffage et de climatisation directement depuis l'écran, tandis que les capteurs de proximité et de luminosité ajustent automatiquement la luminosité et réveillent l'écran à votre approche. Un port Ethernet permet le contrôle à distance optionnel depuis un smartphone ou un navigateur, et quatre entrées analogiques/numériques permettent de raccorder des interrupteurs ou capteurs conventionnels. Disponible en blanc, noir et argent pour s'adapter à tout intérieur.", "sku": "zennio-z100-touch-panel", "url": "https://smartelectricity.ma/fr/products/zennio-z100-touch-panel.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Touch Panel", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "19", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-z100-touch-panel.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Produits", "item": "https://smartelectricity.ma/fr/products.html"}, {"@type": "ListItem", "position": 3, "name": "Écran Tactile Zennio Z100 KNX", "item": "https://smartelectricity.ma/fr/products/zennio-z100-touch-panel.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -158,6 +158,12 @@
       // also update any selects
       const sel = document.getElementById('langSelect') || document.getElementById('langSelect404') || document.getElementById('langSelectPW');
       if(sel) sel.value = lang;
+      // Update navbar language code labels (EN/FR/AR) on the in-navbar button(s)
+      try{
+        document.querySelectorAll('[data-lang-label]').forEach(function(el){
+          el.textContent = (lang || 'en').toUpperCase();
+        });
+      }catch(e){}
     }catch(e){}
   }
   function detect(){
@@ -592,110 +598,86 @@
       if(!el) return;
       el.addEventListener('change',(e)=>{ changeTo(e.target.value); });
     });
-    // Helper to close both menus
-    function closeLanguageMenus(){
+    // ============================================================
+    // Unified language menu — toggled by [data-trigger="lang-toggle"]
+    // buttons rendered inside the SPA navbar (Desktop + Mobile).
+    // ============================================================
+    const langMenuRoot = document.getElementById('langMenuRoot');
+    let lastLangTrigger = null;
+
+    function closeLangMenu(){
+      if(!langMenuRoot) return;
+      langMenuRoot.hidden = true;
       try{
-        const db = document.getElementById('langDesktopBtn');
-        const dm = document.getElementById('langDesktopMenu');
-        const mb = document.getElementById('langToggleBtn');
-        const mm = document.getElementById('langMenu');
-        if(db && dm){ db.setAttribute('aria-expanded','false'); dm.hidden = true; }
-        if(mb && mm){ mb.setAttribute('aria-expanded','false'); mm.hidden = true; }
+        document.querySelectorAll('[data-trigger="lang-toggle"]').forEach(b=>{
+          b.setAttribute('aria-expanded','false');
+        });
       }catch(e){}
     }
 
-    // Helper to sync menu width to its button so menu always matches button size
-    function syncMenuWidth(btn, menu){
+    function positionLangMenu(triggerBtn){
+      if(!langMenuRoot || !triggerBtn) return;
+      const rect = triggerBtn.getBoundingClientRect();
+      const isRtl = document.documentElement.dir === 'rtl';
+      // Anchor below the button. Use right-edge alignment in LTR (left-edge in RTL)
+      // so the menu opens toward the inside of the screen.
+      langMenuRoot.style.top = (rect.bottom + 6) + 'px';
+      if(isRtl){
+        langMenuRoot.style.left = rect.left + 'px';
+        langMenuRoot.style.right = 'auto';
+      } else {
+        langMenuRoot.style.right = (window.innerWidth - rect.right) + 'px';
+        langMenuRoot.style.left = 'auto';
+      }
+    }
+
+    // Click delegation: catches the trigger even though the navbar buttons
+    // are rendered async by the SPA after this listener is attached.
+    document.addEventListener('click', (ev)=>{
       try{
-        if(!btn || !menu) return;
-        // compute width including padding and border
-        const rect = btn.getBoundingClientRect();
-        // set minWidth so menu is at least as wide as button
-        menu.style.minWidth = Math.ceil(rect.width) + 'px';
-      }catch(e){}
-    }
-
-    // Mobile custom language menu wiring
-    const mobileBtn = document.getElementById('langToggleBtn');
-    const langMenu = document.getElementById('langMenu');
-    if(mobileBtn && langMenu){
-      mobileBtn.addEventListener('click', (ev)=>{
-        const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-        if(expanded){
-          mobileBtn.setAttribute('aria-expanded','false');
-          langMenu.hidden = true;
-        } else {
-          closeLanguageMenus();
-          mobileBtn.setAttribute('aria-expanded','true');
-          // ensure menu is at least as wide as the button
-          syncMenuWidth(mobileBtn, langMenu);
-          langMenu.hidden = false;
-        }
-      });
-
-      // menu item clicks
-      langMenu.querySelectorAll('button[data-lang]').forEach(b=>{
-        b.addEventListener('click', ()=>{
-          const chosen = b.getAttribute('data-lang');
-          if(chosen) changeTo(chosen);
-          closeLanguageMenus();
-        });
-      });
-    }
-
-    // Desktop modern dropdown wiring
-    const desktopBtn = document.getElementById('langDesktopBtn');
-    const desktopMenu = document.getElementById('langDesktopMenu');
-    if(desktopBtn && desktopMenu){
-      desktopBtn.addEventListener('click', (ev)=>{
-        const expanded = desktopBtn.getAttribute('aria-expanded') === 'true';
-        if(expanded){
-          desktopBtn.setAttribute('aria-expanded','false');
-          desktopMenu.hidden = true;
-        } else {
-          closeLanguageMenus();
-          desktopBtn.setAttribute('aria-expanded','true');
-          // ensure desktop menu matches button width
-          syncMenuWidth(desktopBtn, desktopMenu);
-          desktopMenu.hidden = false;
-        }
-      });
-
-      desktopMenu.querySelectorAll('button[data-lang]').forEach(b=>{
-        b.addEventListener('click', ()=>{
-          const chosen = b.getAttribute('data-lang');
-          if(chosen) changeTo(chosen);
-          closeLanguageMenus();
-        });
-      });
-    }
-
-    // click outside to close (use capture to be robust)
-    document.addEventListener('click', (e)=>{
-      try{
-        const target = e.target;
-        const db = document.getElementById('langDesktopBtn');
-        const dm = document.getElementById('langDesktopMenu');
-        const mb = document.getElementById('langToggleBtn');
-        const mm = document.getElementById('langMenu');
-        if(dm && !dm.hidden){
-          if(!(db && db.contains(target)) && !(dm && dm.contains(target))){
-            closeLanguageMenus();
+        const trigger = ev.target.closest && ev.target.closest('[data-trigger="lang-toggle"]');
+        if(trigger){
+          ev.preventDefault();
+          ev.stopPropagation();
+          if(!langMenuRoot) return;
+          const willOpen = langMenuRoot.hidden;
+          if(willOpen){
+            lastLangTrigger = trigger;
+            positionLangMenu(trigger);
+            langMenuRoot.hidden = false;
+            trigger.setAttribute('aria-expanded','true');
+          } else {
+            closeLangMenu();
           }
+          return;
         }
-        if(mm && !mm.hidden){
-          if(!(mb && mb.contains(target)) && !(mm && mm.contains(target))){
-            closeLanguageMenus();
+        // Language choice click inside the menu
+        const choice = ev.target.closest && ev.target.closest('#langMenuRoot button[data-lang]');
+        if(choice){
+          const chosen = choice.getAttribute('data-lang');
+          if(chosen) changeTo(chosen);
+          closeLangMenu();
+          return;
+        }
+        // Click outside menu+trigger → close
+        if(langMenuRoot && !langMenuRoot.hidden){
+          if(!langMenuRoot.contains(ev.target)){
+            closeLangMenu();
           }
         }
       }catch(e){}
     }, true);
 
-    // Close menus on resize/scroll/orientation change and ESC key
+    // Reposition / close on viewport changes
     ['resize','orientationchange','scroll'].forEach(evt=>{
-      window.addEventListener(evt, closeLanguageMenus);
+      window.addEventListener(evt, ()=>{
+        if(langMenuRoot && !langMenuRoot.hidden){
+          if(evt === 'scroll') closeLangMenu();
+          else positionLangMenu(lastLangTrigger);
+        }
+      }, { passive: true });
     });
-    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLanguageMenus(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLangMenu(); });
   });
 
   // expose for console/debug

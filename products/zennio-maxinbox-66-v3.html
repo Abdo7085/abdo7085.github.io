@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Zennio MAXinBOX 66 v3 KNX Actuator", "description": "The Zennio MAXinBOX 66 v3 combines 6 independent 16 A relay outputs with 6 analog/digital inputs in a single 4.5-unit DIN-rail module, giving you both sensing and control from one compact device. The inputs can be configured as binary push buttons, NTC temperature probes (±0.5 °C accuracy), or motion sensors with cable runs up to 30 m, eliminating the need for a separate binary input module. Outputs support switching, shutter/blind, and fan coil configurations with tungsten pre-contacts that handle 800 A inrush for reliable LED and transformer switching. Four built-in room thermostats manage heating and cooling zones directly, while 10 logic functions let you create local automation rules without a central server. With manual override buttons, LED status indicators, and KNX Secure support, it is ideal for rooms that need both sensing and actuation from one DIN-rail slot.", "sku": "zennio-maxinbox-66-v3", "url": "https://smartelectricity.ma/products/zennio-maxinbox-66-v3.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Actuator", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.9", "reviewCount": "7", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-maxinbox-66-v3.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://smartelectricity.ma/products.html"}, {"@type": "ListItem", "position": 3, "name": "Zennio MAXinBOX 66 v3 KNX Actuator", "item": "https://smartelectricity.ma/products/zennio-maxinbox-66-v3.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

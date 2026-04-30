@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Zennio Tecla 70 KNX Touch Switch X1/X2/X4/X6", "description": "The Zennio Tecla 70 is a backlit capacitive touch switch designed for standard 70×70 mm frames, available in X1, X2, X4, and X6 variants to suit any room. Its PC-ABS housing is slim at just 22.6 mm deep, and each button is individually backlit for use in low light. Built-in temperature (±0.5 °C accuracy), proximity, and brightness sensors allow the panel to auto-adjust its backlight and manage a built-in PI thermostat for precise climate control. Two analog/digital inputs connect push buttons or motion sensors via cables up to 30 m. Acoustic feedback gives a soft click on each press. KNX Secure support makes it suitable for installations with strict security requirements. Available in White, Silver, Anthracite, and a custom color option.", "sku": "zennio-tecla-70", "url": "https://smartelectricity.ma/products/zennio-tecla-70.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Switch", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.8", "reviewCount": "14", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-tecla-70.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://smartelectricity.ma/products.html"}, {"@type": "ListItem", "position": 3, "name": "Zennio Tecla 70 KNX Touch Switch X1/X2/X4/X6", "item": "https://smartelectricity.ma/products/zennio-tecla-70.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "RCU1600 Unité de contrôle de pièce", "description": "Le RCU1600 est un contrôleur de pièce KNX haute capacité conçu pour les grands espaces comme les salles de conférence, les suites hôtelières de luxe ou les bureaux ouverts avec de nombreux circuits d'éclairage et groupes de stores. Ses 16 sorties relais peuvent piloter jusqu'à 8 canaux de stores et 4 canaux de ventilo-convecteurs, offrant un contrôle étendu depuis un seul appareil sur rail DIN. Sans entrées embarquées, il se combine avec des claviers KNX externes, des écrans tactiles et des capteurs, vous laissant choisir les dispositifs d'entrée les mieux adaptés à l'espace.", "sku": "rcu1600-room-control-unit", "url": "https://smartelectricity.ma/fr/products/rcu1600-room-control-unit.html", "brand": {"@type": "Brand", "name": "EAE Technology"}, "category": "Actuator", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.9", "reviewCount": "12", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/rcu1600-room-control-unit.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Produits", "item": "https://smartelectricity.ma/fr/products.html"}, {"@type": "ListItem", "position": 3, "name": "RCU1600 Unité de contrôle de pièce", "item": "https://smartelectricity.ma/fr/products/rcu1600-room-control-unit.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "مصدر طاقة KNX Zennio KUPSupply 160mA", "description": "Zennio KUPSupply 160mA هو أصغر أفراد عائلة KUPSupply، مصمم للتركيبات الصغيرة حيث لا يحتاج سوى عدد محدود من أجهزة الناقل إلى التغذية. يقبل دخلاً 110–240 فولت تيار متردد ويوفر 29 فولت تيار مستمر بتيار إجمالي حتى 250 mA (حتى 160 mA لناقل KNX والباقي للخرج المساعد)، مما يجعله خياراً فعالاً للشقق والمناطق التجارية الصغيرة. عرضه النحيف 2 وحدة DIN يوفر مساحة اللوحة، بينما تضمن الحمايات من قصر الدارة والجهد الزائد تشغيلاً موثوقاً طويل الأمد.", "sku": "zennio-kupsupply-160ma", "url": "https://smartelectricity.ma/ar/products/zennio-kupsupply-160ma.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Power Supply", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.1", "reviewCount": "7", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-kupsupply-160ma.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/ar/"}, {"@type": "ListItem", "position": 2, "name": "المنتجات", "item": "https://smartelectricity.ma/ar/products.html"}, {"@type": "ListItem", "position": 3, "name": "مصدر طاقة KNX Zennio KUPSupply 160mA", "item": "https://smartelectricity.ma/ar/products/zennio-kupsupply-160ma.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

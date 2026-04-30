@@ -1,9 +1,12 @@
-/* Simple language switcher styles and RTL helpers */
+/* i18n + RTL helpers + language menu (in-navbar) styles
+   The language toggle button is now part of the SPA navbar (alongside cart);
+   styling lives next to .cart-nav-btn rules in cart.css. This file owns the
+   dropdown menu, the small label inside the button, and global RTL helpers. */
 
 /* --------------------------------------------------------------------------
-   UNIFIED FLOATING ACTION BUTTONS (WhatsApp & Language)
+   WhatsApp floating dialer (independent FAB — unrelated to language)
    -------------------------------------------------------------------------- */
-.lang-switch, .mobile-dialer {
+.mobile-dialer {
   position: fixed !important;
   bottom: 24px !important;
   top: auto !important;
@@ -19,77 +22,136 @@
   justify-content: center !important;
   text-decoration: none !important;
   margin: 0 !important;
-}
-
-/* LTR Positioning (Default) */
-.lang-switch {
-  right: 24px !important;
-  left: auto !important;
-  padding: 0 16px !important;
-  border-radius: 9999px !important;
-  gap: 8px !important;
-  width: auto !important;
-}
-.mobile-dialer {
   left: 24px !important;
   right: auto !important;
   width: 52px !important;
   border-radius: 50% !important;
   padding: 0 !important;
-  animation: none !important; /* Disable the old tw pulse if it exists */
-}
-
-/* RTL Positioning Constraints */
-[dir="rtl"] .lang-switch {
-  right: auto !important;
-  left: 24px !important;
+  animation: none !important;
 }
 [dir="rtl"] .mobile-dialer {
   left: auto !important;
   right: 24px !important;
 }
-
-/* Mobile Adjustments (Make both circular) */
-@media (max-width: 767px){
-  .lang-switch {
-    width: 52px !important;
-    padding: 0 !important;
-    gap: 0 !important;
-  }
-}
-
-/* Hover effects */
 @media (hover: hover) and (pointer: fine) {
-  .lang-switch:hover, .mobile-dialer:hover {
+  .mobile-dialer:hover {
     transform: translateY(-4px) !important;
     box-shadow: 0 12px 30px rgba(187, 118, 31, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
     background: rgb(200, 128, 38) !important;
   }
-  .lang-switch:hover .lang-globe svg {
-    transform: rotate(20deg) scale(1.05) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Language button label (EN/FR/AR) — visible inside the navbar lang button.
+   The button itself uses .cart-nav-btn (shared with cart) for layout.
+   -------------------------------------------------------------------------- */
+.lang-nav-btn .lang-nav-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: white;
+  margin-inline-start: 6px;
+  line-height: 1;
+}
+/* Mobile: hide the label, keep only the globe icon (icons-only navbar) */
+@media (max-width: 767px){
+  .lang-nav-btn .lang-nav-label { display: none; }
+}
+/* Desktop: button grows wider to fit the icon + EN/FR/AR label.
+   Compound selector (.cart-nav-btn.lang-nav-btn) raises specificity above
+   cart.css's bare .cart-nav-btn { width: 40px } since cart.css loads later. */
+@media (min-width: 768px){
+  .cart-nav-btn.lang-nav-btn {
+    width: auto;
+    min-width: 40px;
+    padding: 0 12px;
+    gap: 4px;
+  }
+  .cart-nav-btn.lang-nav-btn .cart-nav-btn-inner {
+    width: auto;
+    gap: 4px;
   }
 }
-
-.lang-switch select{
-  border:0;
-  background:transparent;
-  font-weight:700;
-  padding:6px 8px 6px 0;
-  border-radius:6px;
-  font-size:0.95rem;
-  appearance:none;
-  -webkit-appearance:none;
-  color:white;
+/* Force the SVG inside the lang button to use white stroke regardless of any
+   inline stroke attributes on the source SVG paths */
+.lang-nav-btn svg,
+.lang-nav-btn svg * {
+  stroke: currentColor;
 }
-.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
-/* Basic RTL adjustments: these are minimal — adapt to your real stylesheet */
-[dir="rtl"] body{direction:rtl; font-family: 'Readex Pro', system-ui, sans-serif;}
+/* --------------------------------------------------------------------------
+   Language dropdown menu — matches the dark navbar theme.
+   Anchored via inline `top` / `right` (set by i18n.js positionLangMenu).
+   -------------------------------------------------------------------------- */
+.lang-menu {
+  position: fixed;
+  z-index: 60;
+  background: rgba(15, 23, 42, 0.96);  /* matches bg-secondary @ 96% */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform-origin: top right;
+  animation: lang-menu-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lang-menu[hidden] { display: none !important; }
+[dir="rtl"] .lang-menu { transform-origin: top left; }
 
-/* Tailwind RTL fixes */
+@keyframes lang-menu-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.lang-menu button {
+  border: 0;
+  background: transparent;
+  padding: 9px 14px;
+  border-radius: 8px;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: start;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lang-menu button:hover {
+  background: rgba(187, 118, 31, 0.18);
+  color: rgb(220, 145, 60);
+}
+.lang-menu button:focus-visible {
+  outline: 2px solid rgba(187, 118, 31, 0.5);
+  outline-offset: 1px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   RTL helpers — page-wide
+   -------------------------------------------------------------------------- */
+[dir="rtl"] body {
+  direction: rtl;
+  font-family: 'Readex Pro', system-ui, sans-serif;
+}
 [dir="rtl"] {
-  line-height: 1.8; /* Improve Arabic readability */
+  line-height: 1.8; /* improve Arabic readability */
 }
+
 /* space-x-* uses margin-left in LTR; flip to margin-right for RTL.
    Direct margin overrides because the bundled CSS resets --tw-space-x-reverse after this file loads. */
 [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
@@ -109,7 +171,7 @@
   font-family: 'Readex Pro', system-ui, sans-serif;
 }
 
-/* Keep decorative underline with small gap, not touching description text below */
+/* Decorative underline under section headings */
 h2 .border-b-2 {
   display: inline-block !important;
   padding-bottom: 4px !important;
@@ -120,17 +182,9 @@ h2:has(.border-b-2) {
   margin-bottom: 1.25rem !important;
 }
 
-/* Show floating call button on desktop for all languages */
-
-/* RTL: move call button to right side */
-
 /* Flip rounded corners on button groups for RTL */
-[dir="rtl"] .rounded-l-lg {
-  border-radius: 0 0.5rem 0.5rem 0 !important;
-}
-[dir="rtl"] .rounded-r-lg {
-  border-radius: 0.5rem 0 0 0.5rem !important;
-}
+[dir="rtl"] .rounded-l-lg { border-radius: 0 0.5rem 0.5rem 0 !important; }
+[dir="rtl"] .rounded-r-lg { border-radius: 0.5rem 0 0 0.5rem !important; }
 
 /* Fix physical margin classes to behave like logical properties in RTL */
 [dir="rtl"] .ml-3 { margin-left: 0; margin-right: 0.75rem; }
@@ -141,208 +195,22 @@ h2:has(.border-b-2) {
 /* CTA icon spacing helpers (logical, RTL-aware automatically) */
 .btn-icon-before { margin-inline-end: 0.5rem; flex-shrink: 0; }
 .btn-icon-after  { margin-inline-start: 0.5rem; flex-shrink: 0; }
-/* Flip horizontally-directional icons (arrows, right-chevrons) in RTL */
 [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
 
-/* Fix absolute positioned elements and text alignment */
-[dir="rtl"] .nav-link:after {
-  left: auto;
-  right: 0;
-}
+[dir="rtl"] .nav-link:after { left: auto; right: 0; }
 [dir="rtl"] .text-left { text-align: right; }
 [dir="rtl"] .md\:text-left { text-align: right; }
-
-/* Fix floating elements and other common RTL regressions */
 [dir="rtl"] .left-0 { left: auto; right: 0; }
 [dir="rtl"] .right-0 { right: auto; left: 0; }
 
-/* Responsive: keep selector out of the header / mobile menu area */
-@media (max-width: 767px){
-  
-  .lang-switch .lang-globe {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .lang-switch .lang-globe svg {
-    width: 22px;
-    height: 22px;
-    stroke-width: 1.8;
-  }
-  .lang-mobile-btn {
-    /* Hide text visually but keep the button clickable over the entire circle */
-    position: absolute;
-    inset: 0;
-    width: 100% !important;
-    min-width: 0 !important;
-    height: 100%;
-    opacity: 0;
-    z-index: 10;
-    cursor: pointer;
-    font-size: 0; /* Ensures width calculations don't overflow */
-    padding: 0 !important;
-  }
-}
-
-/* small globe icon style */
-.lang-switch .lang-globe svg {
-  display:block;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.lang-switch .lang-globe svg * {
-  stroke: white !important; /* Force override inline SVG strokes */
-}
-
-/* Only apply the small hover "lift" on pointer-capable devices to avoid
-   the floating control jumping on touch when the menu opens. */
-
-/* focus styles for accessibility */
-.lang-switch select:focus{outline:2px solid rgba(59,130,246,0.25);outline-offset:4px}
-
-/* Ensure language toggle buttons explicitly use white color so
-  they don't accidentally inherit dark text globally. */
-.lang-desktop-btn, .lang-mobile-btn { color: white; }
-
-/* Ensure menu item buttons inherit the menu color (dark) and are not
-  overridden by other button styles elsewhere in the project. */
-.lang-desktop-menu, .lang-mobile-menu { color: #0f172a; }
-.lang-desktop-menu button, .lang-mobile-menu button { color: inherit; }
-
-/* Desktop vs Mobile controls */
-.lang-desktop{display:none}
-.lang-desktop-btn{display:none} /* hide desktop-styled button by default (mobile first) */
-.lang-mobile-btn{display:inline-flex} /* Initial display, gets overridden in the new mobile block above */
-
-/* Desktop: show modern dropdown button/menu */
-@media (min-width: 768px){
-  .lang-desktop{display:none}
-  .lang-mobile-btn{display:none}
-  .lang-desktop-btn{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;font-weight:700;color:white;padding:6px 10px;border-radius:9999px}
-  .lang-desktop-btn:hover{background:rgba(255,255,255,0.1)}
-
-  .lang-desktop-menu{
-    position: absolute;
-    bottom: calc(100% + 12px);
-    right: 0;
-    transform-origin: bottom right;
-    animation: menu-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    color: #0f172a;
-    border-radius: 14px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-    padding: 8px;
-    display:flex;
-    flex-direction:column;
-    gap: 4px;
-    z-index:60;
-    width: max-content; /* fit to content */
-    min-width: 140px;
-    align-items:stretch;
-  }
-  @keyframes menu-slide-up {
-    0% { opacity: 0; transform: translateY(10px) scale(0.95); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  /* Respect the `hidden` attribute: CSS should not force menus visible when JS sets hidden=true */
-  .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{
-    display: none !important;
-  }
-
-  .lang-desktop-menu button{
-    border:0;
-    background:transparent;
-    padding:8px 12px;
-    border-radius:8px;
-    font-weight:600;
-    font-size: 0.95rem;
-    text-align:left;
-    white-space:nowrap;
-    transition: all 0.2s ease;
-  }
-
-  .lang-desktop-menu button:hover{
-    background: rgba(187, 118, 31, 0.08); /* Light orange hover */
-    color: rgb(187, 118, 31); /* Text turns orange */
-    transform: translateX(4px); /* Slight bump right */
-  }
-  .lang-desktop-menu button:focus{outline:2px solid rgba(187, 118, 31, 0.3)}
-}
-
-/* Mobile menu: make it match desktop dropdown and open above the floating button */
-@media (max-width: 767px){
-  .lang-mobile-btn{display:inline-flex}
-  .lang-desktop-btn{display:none}
-
-  .lang-mobile-menu{
-    position: absolute;
-    bottom: calc(100% + 12px); /* open upward */
-    right: 0; /* align to right edge of the floating container */
-    transform-origin: bottom right;
-    animation: menu-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    color: #0f172a;
-    border-radius:14px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-    padding: 8px;
-    display:flex;
-    flex-direction:column;
-    gap: 4px;
-    z-index:60;
-    width: max-content;
-    min-width: 140px;
-    align-items:stretch;
-  }
-
-  [dir="rtl"] .lang-mobile-menu{
-    right: auto;
-    left: 0;
-  }
-
-[dir="rtl"] .lang-desktop-menu button,
-[dir="rtl"] .lang-mobile-menu button{
-    text-align: right !important;
-  }
-
-  .lang-mobile-menu button{
-    border:0;
-    background:transparent;
-    padding:8px 12px;
-    border-radius:8px;
-    font-weight:600;
-    font-size: 0.95rem;
-    text-align:right;
-    white-space:nowrap;
-    transition: all 0.2s ease;
-  }
-
-  .lang-mobile-menu button:hover{
-    background: rgba(187, 118, 31, 0.08); /* Light orange hover */
-    color: rgb(187, 118, 31); /* Text turns orange */
-  }
-  .lang-mobile-menu button:focus{outline:2px solid rgba(187, 118, 31, 0.3)}
-
-  .lang-desktop-menu[hidden], .lang-mobile-menu[hidden]{ display: none !important; }
-}
-
-/* Hero subtitle: forced to own line via JS (Tailwind loads after CSS, so
-   inline styles are needed — see i18n.js heroSubtitleFix). */
-
-/* ── "What We Do" section override ──
-   The React bundle renders the subsection title (spa_smart_home_automation)
-   at the same size as the main heading. Reduce it and remove the underline
-   so it reads as a proper subsection label, not a duplicate heading. */
+/* --------------------------------------------------------------------------
+   "What We Do" section overrides (unchanged from previous version)
+   -------------------------------------------------------------------------- */
 h2:has(> [data-i18n="spa_smart_home_automation"]) {
   font-size: 1.15rem !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #6b7280 !important; /* gray-500 — softer than orange */
+  color: #6b7280 !important;
   margin-bottom: 0.75rem !important;
   display: inline-block !important;
 }
@@ -350,23 +218,20 @@ h2:has(> [data-i18n="spa_smart_home_automation"]) span {
   border-bottom: none !important;
   padding-bottom: 0 !important;
 }
-/* Orange accent line under "WHAT WE DO" — fits text width only */
 h2:has(> [data-i18n="spa_smart_home_automation"])::after {
   content: "";
   display: block;
   width: 100%;
   height: 3px;
-  background: #6b7280; /* match "WHAT WE DO" text color */
+  background: #6b7280;
   border-radius: 2px;
   margin-top: 0.15rem;
 }
 
-/* Make the badge ("End-to-End Smart Solutions") more prominent since
-   the title is now a small label */
 [data-i18n="spa_complete_integration"] {
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: #111827 !important; /* near-black */
+  color: #111827 !important;
   background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
@@ -376,7 +241,7 @@ h2:has(> [data-i18n="spa_smart_home_automation"])::after {
   display: block;
   width: 48px;
   height: 3px;
-  background: #bb761f; /* brand orange */
+  background: #bb761f;
   border-radius: 2px;
   margin-bottom: 0.5rem;
 }

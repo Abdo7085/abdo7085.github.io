@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Zennio KUPSupply 640mA KNX Power Supply", "description": "The Zennio KUPSupply 640mA is a universal KNX system power supply designed for medium to large KNX installations. It accepts a wide-range AC input (110–240 V) so it can be deployed in any country without an adapter, and delivers 29 V DC SELV with a total combined output of 640 mA shared between the KNX bus and an auxiliary 29 V DC output — ideal for powering bus-powered sensors or additional low-voltage devices directly from the same unit. Onboard short-circuit and overvoltage protection keep the installation safe, and a front-panel LED instantly signals any overload condition so faults are spotted at a glance. The 4.5 DIN-module footprint fits neatly in a standard electrical enclosure alongside actuators and other DIN-rail equipment.", "sku": "zennio-kupsupply-640ma", "url": "https://smartelectricity.ma/products/zennio-kupsupply-640ma.html", "brand": {"@type": "Brand", "name": "Zennio"}, "category": "Power Supply", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.4", "reviewCount": "18", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/zennio-kupsupply-640ma.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://smartelectricity.ma/products.html"}, {"@type": "ListItem", "position": 3, "name": "Zennio KUPSupply 640mA KNX Power Supply", "item": "https://smartelectricity.ma/products/zennio-kupsupply-640ma.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "مفتاح ذكي SONOFF MINI DUO ZB2GS بقناتين Zigbee", "description": "MINI DUO ZB2GS هو مفتاح ذكي صغير جداً بقناتين يُركَّب خلف مفتاح الحائط الموجود لديك ويتيح لك التحكم بإضاءتين أو جهازين منفصلَين — كل واحد على حدة — من جهاز واحد مدمج. إنه الترقية المثالية لمفتاح الحائط المزدوج: احتفظ بالمفتاح المألوف على الحائط، وفجأة تصبح كلتا الإضاءتين ذكيتين يمكن التحكم بهما من هاتفك أو وفق جدول زمني أو بالصوت. ولأنه يستعمل Zigbee فإنه يعمل أيضاً كـ repeater يقوّي شبكة mesh في منزلك الذكي ويحسّن استقرار الأجهزة المجاورة. يتكامل مع Home Assistant وZigbee2MQTT ومعظم Zigbee hubs، ويعمل مع Alexa وGoogle Home للأوامر الصوتية.", "sku": "sonoff-mini-zb2gs", "url": "https://smartelectricity.ma/ar/products/sonoff-mini-zb2gs.html", "brand": {"@type": "Brand", "name": "SONOFF"}, "category": "Smart Relay", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "23", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/sonoff-mini-zb2gs.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/ar/"}, {"@type": "ListItem", "position": 2, "name": "المنتجات", "item": "https://smartelectricity.ma/ar/products.html"}, {"@type": "ListItem", "position": 3, "name": "مفتاح ذكي SONOFF MINI DUO ZB2GS بقناتين Zigbee", "item": "https://smartelectricity.ma/ar/products/sonoff-mini-zb2gs.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

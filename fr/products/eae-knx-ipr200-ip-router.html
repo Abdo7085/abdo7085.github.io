@@ -133,30 +133,11 @@
   <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Routeur IP KNX EAE IPR200", "description": "L'EAE IPR200 est un routeur IP KNX qui transfère les télégrammes KNX entre différentes lignes KNX TP en utilisant le réseau local comme backbone IP rapide — remplaçant les coupleurs de ligne traditionnels avec un débit bien supérieur. Il prend en charge 5 connexions tunneling KNXnet/IP simultanées, permettant à plusieurs installateurs de programmer et superviser le système via ETS en même temps. Avec seulement 1 module DIN (18 mm) de large et entièrement alimenté par le bus KNX, il ajoute le routage IP complet et le tunneling à tout tableau sans espace ni alimentation supplémentaire. Les protocoles Ethernet standard assurent une intégration transparente avec l'infrastructure réseau existante.", "sku": "eae-knx-ipr200-ip-router", "url": "https://smartelectricity.ma/fr/products/eae-knx-ipr200-ip-router.html", "brand": {"@type": "Brand", "name": "EAE Technology"}, "category": "Gateway", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.8", "reviewCount": "6", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/eae-knx-ipr200-ip-router.png"}</script>
   <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Produits", "item": "https://smartelectricity.ma/fr/products.html"}, {"@type": "ListItem", "position": 3, "name": "Routeur IP KNX EAE IPR200", "item": "https://smartelectricity.ma/fr/products/eae-knx-ipr200-ip-router.html"}]}</script>
   </head>
-  <body>
-    <div class="lang-switch" aria-hidden="false">
-      <!-- Same language switch implementation -->
-      <label for="langDesktopBtn" class="visually-hidden">Language</label>
-      <span class="lang-globe" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" stroke="#111827" stroke-width="1.5" fill="none"/>
-          <ellipse cx="12" cy="12" rx="4" ry="10" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M2 12h20" stroke="#111827" stroke-width="1" fill="none"/>
-          <path d="M4.5 6.5h15M4.5 17.5h15" stroke="#111827" stroke-width="0.75" fill="none" opacity="0.6"/>
-        </svg>
-      </span>
-      <button id="langDesktopBtn" class="lang-desktop-btn" aria-expanded="false" aria-controls="langDesktopMenu">Language ▾</button>
-      <div id="langDesktopMenu" class="lang-desktop-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
-      <button id="langToggleBtn" class="lang-mobile-btn" aria-expanded="false" aria-controls="langMenu">Language</button>
-      <div id="langMenu" class="lang-mobile-menu" hidden>
-        <button type="button" data-lang="en">English</button>
-        <button type="button" data-lang="fr">Français</button>
-        <button type="button" data-lang="ar">العربية</button>
-      </div>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
     </div>
     
     <!-- Original Root injected here by SPA -->

@@ -12696,6 +12696,24 @@ const Xh = re("Zap", [["polygon", {
                     children: ""
                 }), u.jsx("button", {
                     type: "button",
+                    "data-trigger": "lang-toggle",
+                    className: "cart-nav-btn cart-nav-btn-desktop lang-nav-btn ml-3",
+                    "aria-label": "Switch language",
+                    "aria-haspopup": "menu",
+                    "aria-expanded": "false",
+                    children: u.jsxs("span", {
+                        className: "cart-nav-btn-inner",
+                        children: [u.jsx("span", {
+                            "aria-hidden": "true",
+                            dangerouslySetInnerHTML: { __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>' }
+                        }), u.jsx("span", {
+                            className: "lang-nav-label",
+                            "data-lang-label": "1",
+                            children: "EN"
+                        })]
+                    })
+                }), u.jsx("button", {
+                    type: "button",
                     "data-trigger": "cart-open",
                     className: "cart-nav-btn cart-nav-btn-desktop ml-3",
                     "aria-label": "Open cart",
@@ -12714,6 +12732,20 @@ const Xh = re("Zap", [["polygon", {
             }), u.jsxs("div", {
                 className: "md:hidden flex items-center",
                 children: [u.jsx("button", {
+                    type: "button",
+                    "data-trigger": "lang-toggle",
+                    className: "cart-nav-btn cart-nav-btn-mobile lang-nav-btn",
+                    "aria-label": "Switch language",
+                    "aria-haspopup": "menu",
+                    "aria-expanded": "false",
+                    children: u.jsx("span", {
+                        className: "cart-nav-btn-inner",
+                        children: u.jsx("span", {
+                            "aria-hidden": "true",
+                            dangerouslySetInnerHTML: { __html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>' }
+                        })
+                    })
+                }), u.jsx("button", {
                     type: "button",
                     "data-trigger": "cart-open",
                     className: "cart-nav-btn cart-nav-btn-mobile",

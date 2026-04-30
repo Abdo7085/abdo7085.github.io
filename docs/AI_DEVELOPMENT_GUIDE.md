@@ -86,11 +86,31 @@
    - ويزارد Find Your Solution كان رقم الخطوة فيه يبقى عالقاً على "الخطوة 1 من 4" رغم أن الجسم وشريط التقدّم يتقدّمان. السبب: textContent للنص يتغيّر، لكن الـ MutationObserver في i18n.js يُطلَق بعد 120ms ويُعيد كتابة النص للقيمة المحفوظة في `dataset.i18nOrigText`. الإصلاح: إضافة `fs-modal-root` لقائمة الاستثناء.
    - **بادج السلّة كان "يرتدّ" لقيمة سابقة** بعد كل إضافة منتج جديد (مثلاً يصبح 21 لجزء من الثانية ثم يعود إلى 18). نفس الجذر السابق: i18n.js التقط القيمة الأولى كـ baseline على parent الـ badge عند أول مسح، ثم أعاد كتابتها فوق كل تحديث `cart.js`. الإصلاح: إضافة شيك `data-cart-badge` لقائمة الاستثناء. **الـ badge ليس داخل `cart-modal-root`** — هو في الـ SPA navbar مباشرة، فاستثناء المودال وحده غير كافٍ.
 
-### إدارة المكونات العائمة (Floating Action Buttons)
-لضمان التناسق البصري ونظافة الكود، تم توحيد تصميم الأزرار العائمة (زر تبديل اللغة `.lang-switch` وزر الواتساب `.mobile-dialer`) مركزياً داخل ملف **`assets/i18n.css`**:
-- **مصدر واحد للتعديل (Single Source of Truth):** الخصائص المشتركة كدرجة اللون البرتقالي المخصصة للـ Brand، الظلال، وأبعاد الأزرار (كالدائرة بحجم `52px` للموبايل) موجودة في بلوك CSS موحد بأعلى الملف لتسهيل أي تغيير في تصميمها لاحقاً بخطوة واحدة.
-- **التوازي والتوازن (Symmetrical Alignment):** صُمِّمت الأزرار لترتفع بمسافات متطابقة مليميترياً عن حافة الشاشة مقاسها `24px` للحفاظ على النظافة البصرية.
-- **توجيه RTL التلقائي:** يتم عكس أماكن الأزرار وتوازنها تلقائياً (اليمين يصبح يساراً والعكس) عند تغيير اللغة من/إلى العربية بفضل قواعد `dir="rtl"` في نفس الملف. **لتسهيل الصيانة المستقبلية، يمنع إضافة خصائص عشوائية لهذه الأزرار عبر React ويفضل الاعتماد المباشر على `assets/i18n.css`.**
+### مبدّل اللغة داخل النڤ-بار (Language Switcher in Navbar) — 2026-04-30
+
+**التغيير الجذري (2026-04-30):** المبدّل لم يعد FAB عائماً في الزاوية. أُدمج الزر داخل React navbar بنفس الأسلوب الذي تعمل به السلّة والهامبرغر — يرث flex layout للنڤ-بار، يبقى محاذياً عند التمرير، ويستجيب طبيعياً لـ RTL.
+
+**المعمارية:**
+1. **زر داخل SPA bundle:** `<button data-trigger="lang-toggle" class="cart-nav-btn lang-nav-btn">` مع globe SVG + `<span class="lang-nav-label" data-lang-label>` يحمل `EN/FR/AR`. مُدرَج قبل زر السلّة في كلتا كتلتي navbar (Desktop `<nav>` و Mobile cluster). يستخدم نفس كلاس `.cart-nav-btn` فيتطابق بصرياً مع باقي أزرار الأيقونات.
+2. **القائمة المنسدلة:** عنصر `<div id="langMenuRoot" class="lang-menu" hidden>` في `<body>` كل قالب جذري — يحوي 3 أزرار `[data-lang]`. الموضع مُحسَب ديناميكياً بـ `position: fixed` نسبة لـ trigger button الذي نُقر (عبر `getBoundingClientRect()`).
+3. **JS موحَّد في `assets/i18n.js`:** `addEventListener('click')` بـ delegation يلتقط:
+   - `[data-trigger="lang-toggle"]` → يحسب موضع القائمة ويُظهرها.
+   - `#langMenuRoot button[data-lang]` → يستدعي `changeTo(lang)` ويُغلق القائمة.
+   - أي نقرة خارج → يُغلق القائمة. كذلك على `Escape`/`scroll`/`resize`.
+4. **تحديث `[data-lang-label]`:** دالة `updateLanguageButtons(lang)` تمرّ على كل العناصر بسمة `data-lang-label` وتضع `lang.toUpperCase()` (EN/FR/AR).
+5. **CSS:**
+   - `.cart-nav-btn.lang-nav-btn` على Desktop يتوسّع `width: auto; padding: 0 12px` ليتسع للنص. **compound selector ضروري** لأن `cart.css` يُحمَّل بعد `i18n.css` — بدون compound، `.cart-nav-btn { width: 40px }` يفوز.
+   - `.lang-nav-label { display: none }` على الموبيل (icons-only).
+   - `.lang-menu` بخلفية `rgba(15, 23, 42, 0.96)` + backdrop-blur لتطابق `bg-secondary` للنڤ-بار.
+
+**درس مستفاد (Lesson learned — Specificity Trap):** أيّ override على `.cart-nav-btn` من ملفات أخرى يجب استخدام **compound selector** (`.cart-nav-btn.X`) لرفع specificity فوق cart.css، **لا يكفي ترتيب التحميل** لأن cart.css يُحمَّل بعد i18n.css في كل القوالب الجذرية.
+
+**نقاط الإدماج عند إضافة قالب جذري جديد:**
+1. تحميل `cart.css` و `i18n.css` و `i18n.js` (موجودة سلفاً عبر النمط القياسي).
+2. وضع `<div id="langMenuRoot" class="lang-menu" hidden>` في `<body>` (مع 3 أزرار `[data-lang]`).
+3. الزر داخل SPA bundle — موجود تلقائياً لأن النڤ-بار مكوّن واحد مشترك.
+
+**زر الواتساب `.mobile-dialer`:** يبقى FAB عائم في الزاوية السفلى — مستقلّ عن مبدّل اللغة. يحافظ على نمطه القديم (52px circle، خلفية برتقالية، ظلال).
 
 ---
 
@@ -314,11 +334,13 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 ### بنية الـ Navbar (مكوّن `av`)
 الـ navbar حالياً يحتوي 4 أطفال داخل الـ `<div className="container...">` (سطر ~12647):
 1. `<Mt to="/">` — اللوغو.
-2. `<nav className="hidden md:flex...">` — روابط Desktop + **زر السلّة Desktop** (آخر طفل، بـ `data-trigger="cart-open"`).
-3. `<div className="md:hidden flex items-center">` — wrapper يجمع **زر السلّة Mobile** + **الهامبرغر** ليبقيا مرئيين معاً على الموبايل (لأن `justify-between` على الأب كان سيوزّعهما).
+2. `<nav className="hidden md:flex...">` — روابط Desktop + **زر اللغة Desktop** (`data-trigger="lang-toggle"`) + **زر السلّة Desktop** (`data-trigger="cart-open"`). كلاهما يستخدم كلاس `cart-nav-btn` نفسه. زر اللغة قبل السلّة.
+3. `<div className="md:hidden flex items-center">` — wrapper يجمع **زر اللغة Mobile** + **زر السلّة Mobile** + **الهامبرغر** ليبقوا مرئيين معاً على الموبايل (لأن `justify-between` على الأب كان سيوزّعهم). الترتيب: لغة → سلّة → هامبرغر.
 4. القائمة المنسدلة (`<div className="md:hidden bg-secondary...">`) — تحوي روابط Mobile فقط (بلا CTA — زر "Call Now" حُذف نهائياً عند إضافة السلّة في 2026-04).
 
 **درس مستفاد:** عند إضافة عنصر مرئي على الموبايل بجانب الهامبرغر داخل `justify-between` parent، يجب لفّهما في wrapper مشترك بـ `flex items-center`. وإلا الـ flex parent سيوزّعهما عبر العرض كله.
+
+**درس مستفاد (Floating → Navbar Migration, 2026-04-30):** زر اللغة كان FAB في الزاوية السفلى (`.lang-switch` بـ `position: fixed`). عند التمرير، النڤ-بار يتقلّص من `py-3` إلى `py-2` فترتفع السلّة والهامبرغر 4px، بينما الـ FAB ثابت → اختلال محاذاة. **الحلّ الجذري:** حقن الزر داخل React navbar بنفس النمط الذي أُضيفت به السلّة. الآن الزر flex item — يتحرّك مع النڤ-بار آلياً. القائمة المنسدلة `#langMenuRoot` تبقى في `<body>` لكن موضعها يُحسَب ديناميكياً عبر `getBoundingClientRect()` على الـ trigger. **القاعدة العامة:** أيّ عنصر تفاعلي في النڤ-بار يجب حقنه داخل React navbar؛ الـ FABs الخارجية تنفع فقط للعناصر المنفصلة كلياً (مثل `.mobile-dialer` للواتساب).
 
 ### تحذير Tailwind CSS (الأهم عند التعديل)
 `assets/index-CJ3jXuVd.css` هو ملف CSS **مُجمَّع مسبقاً** (Pre-built Tailwind). يحتوي فقط على الكلاسات التي كانت مستخدمة في الكود المصدري الأصلي وقت البناء. **أي كلاس Tailwind جديد تضيفه داخل `index-CGMiSPUa.js` قد لا يعمل** لأنه ببساطة غير موجود في CSS.
@@ -693,7 +715,7 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
 | `assets/find-solution.css` | `--fs-orange` (لون الويزارد) | 1 |
 | `assets/cart.css` | `--cart-orange` + `--cart-orange-dark` + `--cart-orange-light` + ~4 ظلال `rgba(184, 108, 37, …)` (نڤ-بار button + badge + أزرار qty + Add to Cart) | ~8 |
 | `assets/homepage-products.css` | hex مباشر + `rgb(187, 118, 31)` (FAQ outline + بادجات + زرّ CTA) | ~5 |
-| `assets/i18n.css` | `rgb(187, 118, 31)` للأزرار العائمة (تبديل اللغة + WhatsApp dialer) في الزوايا | ~5 |
+| `assets/i18n.css` | `rgb(187, 118, 31)` لـ WhatsApp dialer (FAB) + hover القائمة المنسدلة للغة (`.lang-menu button:hover`) + accent تحت "WHAT WE DO" | ~3 |
 | `assets/index-CGMiSPUa.js` | inline في SPA bundle: FAQ outline + لون category badge | 2 |
 
 ### وصفة الـSwap بأمر واحد
