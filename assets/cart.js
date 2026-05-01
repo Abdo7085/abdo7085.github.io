@@ -113,6 +113,13 @@
   let lang = DEFAULT_LANG;
   let modalEl = null;
 
+  // Eagerly detect language and pre-load the dictionary so that toasts shown
+  // by add() (which can fire before the modal is ever opened) display in the
+  // active language. Without this, `dict` stays empty until open() runs and
+  // showAddedToast falls back to the hard-coded English string.
+  lang = detectLang();
+  loadLocale(lang).then(function (d) { if (d) dict = d; });
+
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -275,7 +282,7 @@
       'aria-hidden': 'true',
       html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
     }));
-    toast.appendChild(el('span', { class: 'cart-toast-text' }, t('cart_added_toast', 'Added to cart')));
+    toast.appendChild(el('span', { class: 'cart-toast-text' }, t('cart_added_toast', 'Added to your quote request')));
     requestAnimationFrame(function () { toast.classList.add('cart-toast-visible'); });
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(function () {
@@ -292,7 +299,7 @@
   // ---------- WhatsApp message ----------
   function buildWhatsAppHref() {
     const lines = [];
-    lines.push(t('cart_msg_header', '🛒 Order from smartelectricity.ma'));
+    lines.push(t('cart_msg_header', '🛒 Quote request from smartelectricity.ma'));
     lines.push('');
 
     const prefix = langPrefix(lang);
@@ -401,7 +408,7 @@
       'aria-hidden': 'true',
       html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>'
     }));
-    wrap.appendChild(el('p', { class: 'cart-empty-text' }, t('cart_empty', 'Your cart is empty')));
+    wrap.appendChild(el('p', { class: 'cart-empty-text' }, t('cart_empty', 'Your quote request is empty')));
     const prefix = langPrefix(lang);
     wrap.appendChild(el('a', {
       class: 'cart-btn cart-btn-primary',
@@ -475,7 +482,7 @@
         'aria-hidden': 'true',
         html: '<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.52 3.48A11.85 11.85 0 0 0 12.04 0C5.5 0 .18 5.32.18 11.87c0 2.09.55 4.12 1.59 5.92L0 24l6.4-1.68a11.86 11.86 0 0 0 5.64 1.43h.01c6.54 0 11.86-5.32 11.86-11.87 0-3.17-1.23-6.15-3.39-8.4zM12.04 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.44 4.43-9.87 9.87-9.87 2.64 0 5.11 1.03 6.97 2.9a9.79 9.79 0 0 1 2.89 6.98c0 5.44-4.43 9.87-9.87 9.87zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.35.19 1.86.12.57-.08 1.76-.72 2.01-1.41.24-.7.24-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>'
       }),
-      el('span', null, t('cart_send_whatsapp', 'Send via WhatsApp'))
+      el('span', null, t('cart_send_whatsapp', 'Send Request via WhatsApp'))
     ]);
     footer.appendChild(waBtn);
   }
@@ -498,13 +505,13 @@
     panel.appendChild(el('button', {
       type: 'button',
       class: 'cart-close',
-      'aria-label': t('cart_aria_close', 'Close cart'),
+      'aria-label': t('cart_aria_close', 'Close quote request'),
       html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>',
       on: { click: close }
     }));
 
     const header = el('header', { class: 'cart-header' });
-    header.appendChild(el('h2', { id: 'cart-title', class: 'cart-title' }, t('cart_title', 'Your Cart')));
+    header.appendChild(el('h2', { id: 'cart-title', class: 'cart-title' }, t('cart_title', 'Your Quote Request')));
     header.appendChild(el('p', { class: 'cart-count' }, ''));
     panel.appendChild(header);
 
