@@ -985,22 +985,28 @@ find extracted -type f
 
 ---
 
-## 12. سلّة WhatsApp (WhatsApp Cart)
+## 12. سلّة WhatsApp / طلب عرض السعر (WhatsApp Quote Request)
 
-سلّة تسوّق خفيفة تجمع منتجات من الكتالوج وتولّد رسالة واتساب جاهزة لإرسالها للمالك. **ليست checkout حقيقي** — لا أسعار، لا backend، لا دفع. الفلسفة: العميل المغربي العادي يفضّل التفاوض على واتساب، فالسلّة تقتصر على "مساعدة في صياغة الطلب".
+أداة خفيفة تجمع منتجات من الكتالوج وتولّد رسالة واتساب جاهزة لإرسالها للمالك. **ليست checkout حقيقي** — لا أسعار، لا backend، لا دفع. الفلسفة: العميل المغربي العادي يفضّل التفاوض على واتساب، فالأداة تقتصر على "مساعدة في صياغة طلب عرض السعر".
+
+**⚠️ ملاحظة على التسمية (Naming Rebrand — 2026-05-01):**
+- **الكود يُبقي على "cart"** كاسم تقني: ملفات `cart.js`/`cart.css`، prefix `cart_*` للمفاتيح، `window.Cart` API، `data-trigger="cart-*"`, `--cart-*` CSS variables، `STORAGE_KEY = 'se_cart_v1'`. هذا يحفظ تاريخ Git ويتجنّب طوفاناً من الـ renames.
+- **الواجهة (Visible Copy) تتحدّث بلغة "Quote Request":** عنوان المودال "Your Quote Request / Votre demande de devis / طلب عرض السعر"، زر CTA "Add to Quote Request / Ajouter au devis / أضف إلى طلب العرض"، toast "Added to your quote request / ...".
+- **السبب:** السلّة كانت توحي بـ checkout تقليدي، فيتردّد الزائر خوفاً من شراء تلقائي. الواقع التقني (لا أسعار، رسالة واتساب فقط) يطابق "طلب عرض سعر" — التسمية الجديدة تُلغي التنافر بين التوقّع والوظيفة.
+- **عند إضافة كود جديد:** استخدم "cart" في أسماء الـ identifiers، و"quote request"/"devis"/"طلب العرض" في النصوص المرئية للزائر.
 
 ### المكوّنات والملفات
 
 | الملف | الدور |
 |---|---|
-| `assets/cart.js` | منطق السلّة كاملاً. IIFE يكشف `window.Cart`. ~480 سطر. |
-| `assets/cart.css` | تنسيق المودال + زر النڤ-بار + badge + زر `+` على بطاقة المنتج + qty stepper على صفحة التفاصيل + toast، RTL-aware. |
-| `assets/locales/{en,fr,ar}.json` | ~22 مفتاح بـ prefix `cart_*` لكل لغة. |
+| `assets/cart.js` | منطق السلّة كاملاً. IIFE يكشف `window.Cart`. ~485 سطر. |
+| `assets/cart.css` | تنسيق المودال + زر النڤ-بار + badge + زر `+` على بطاقة المنتج + qty stepper على صفحة التفاصيل + toast + `.pd-cart-hint`، RTL-aware. |
+| `assets/locales/{en,fr,ar}.json` | ~23 مفتاح بـ prefix `cart_*` لكل لغة (يشمل `cart_pd_hint` للنصّ المساعد تحت زر CTA). |
 | Inline bootstrap script | في `<head>` كل قالب جذري — يلتقط النقرة فوراً ويُعيد المحاولة حتى يجاهز `window.Cart`. |
 | استثناء `i18n.js` | `#cart-modal-root` + شيك `data-cart-badge` مُضافان لقائمة استثناء `replaceTextNodesWithDict` (سطر ~373). |
 | تعديل SPA bundle | زر "Call Now" Desktop في `av` استُبدل بزر سلّة دائري بـ badge؛ زر "Call Now" Mobile في القائمة المنسدلة حُذف نهائياً؛ زر سلّة جديد أُضيف بجانب الهامبرغر داخل wrapper `md:hidden flex items-center`. |
 | تعديل `products.js` | `renderCard()` يضيف `<button class="prod-card-add" data-trigger="cart-add" data-product-id="..." data-i18n-attr="aria-label:cart_aria_add_btn">` فوق الصورة. |
-| تعديل `product-detail.js` | `renderProductContent()` يضيف `<div class="pd-cart-row" data-cart-row>` بـ qty +/- + زر "Add to Cart". قسم "Quantity +/- buttons" في `attachLinkTransitions()` يربط الـ +/-. |
+| تعديل `product-detail.js` | `renderProductContent()` يضيف `<div class="pd-cart-row" data-cart-row>` بـ qty +/- + زر **"Add to Quote Request"** + سطر `<p class="pd-cart-hint">` تحته يحوي SVG WhatsApp + `<span data-i18n="cart_pd_hint">`. قسم "Quantity +/- buttons" في `attachLinkTransitions()` يربط الـ +/-. |
 
 ### آلية التفعيل (Trigger Mechanism)
 
@@ -1048,7 +1054,7 @@ state = { items: [{ id: 'zennio-z50-knx-touch-panel-5', qty: 2 }, ...] };
 ### رسالة الواتساب (`buildWhatsAppHref()`)
 
 ```
-🛒 Order from smartelectricity.ma
+🛒 Quote request from smartelectricity.ma
 
 1) [Brand] Product Title
    • Quantity: 2
@@ -1113,6 +1119,55 @@ Awaiting your quote, thank you.
 
 `cart.js` يُسجّل `MutationObserver` على `document.body` يلاحظ إضافة عناصر تحمل `data-cart-badge` (أو تحوي عناصر كذلك). السبب: الـ SPA navbar (مكوّن `av`) يُركَّب بعد تحميل bundle React، أحياناً بعد أن يكون `cart.js` نفّذ `refreshBadges()` الأولي. بدون هذا الـ observer، الـ badge يظهر فارغاً حتى أول `add` رغم وجود عناصر في localStorage.
 
+### ⚠️ Eager Locale Loading — `dict` يجب أن يُحمَّل قبل أوّل `add()`، لا فقط عند `open()`
+
+**درس مستفاد قاسٍ (2026-05-01):** بعد reload لصفحة منتج، نقرة "Add to Quote Request" مباشرة كانت تُظهر toast بنصّ `"Added to cart"` (الفولباك الإنجليزي الصلب) بدل النصّ المترجَم. لكن إن فتح المستخدم المودال مرة واحدة (حتى دون فعل شيء) ثم نقر، يظهر النصّ المترجَم صحيحاً.
+
+**الجذر:**
+- `let dict = {};` ابتدائياً فارغ.
+- التحميل الفعلي كان يحدث **داخل `open()` فقط**: `dict = await loadLocale(lang)`.
+- لكن `add()` → `showAddedToast()` → `t('cart_added_toast', 'Added to cart')` → `dict[key]` غير موجود → fallback.
+- بعد فتح المودال، `dict` يُملَأ ويبقى مُمَلَّى لبقية الجلسة.
+- نفس البق لـ `lang` الذي كان `DEFAULT_LANG = 'en'` حتى يُكتشف داخل `open()` — أي حتى toast لا يحترم لغة الصفحة.
+
+**الإصلاح (Module-init eager load):**
+```js
+let lang = DEFAULT_LANG;
+let modalEl = null;
+
+// Eagerly detect language and pre-load the dictionary so that toasts shown
+// by add() (which can fire before the modal is ever opened) display in the
+// active language.
+lang = detectLang();
+loadLocale(lang).then(function (d) { if (d) dict = d; });
+```
+
+`loadLocale()` آمن للاستدعاء المتعدّد لأن `localeCache[lang]` يحفظ الـ Promise. `open()` يُبقى كما هو — استدعاؤه الثاني للـ `loadLocale` يعود فوراً من الكاش.
+
+**القاعدة العامة:** أيّ helper module يقدّم API عام (`window.X`) ويعتمد على ترجمات JSON، يجب أن يكون لديه **eager init phase** يحمّل القاموس فوراً عند تحميل السكربت، لا تأجيله للاستدعاء الأوّل لـ `open()`/`render()`. الفولباك الصلب يجب أن يبقى آخر دفاع، لا الواجهة الأولى.
+
+**Defense-in-depth (تحديث الـ fallbacks):** بالإضافة للـ eager load، حُدِّثت كل الفولباكات الإنجليزية الصلبة في `cart.js` لتطابق التسمية الجديدة (`'Added to your quote request'`, `'Your Quote Request'`, `'Quote request from smartelectricity.ma'`, إلخ). هكذا حتى لو فشل الـ fetch كلياً (offline، CDN down)، الزائر يرى نصّاً متّسقاً مع باقي الواجهة بدل "Added to cart" قديم.
+
+**Pattern check قبل أيّ helper مماثل (`find-solution.js`, future modules):** ابحث عن `dict = {}` ثم تحقّق هل هناك سطر `loadLocale(lang).then(...)` خارج `open()`/`init()` — لو لا، أضِفه.
+
+### ✨ النصّ المساعد تحت زر CTA (`.pd-cart-hint`) — تخفيف القلق الشرائي
+
+**الفلسفة:** زائر العادي يضغط "Add to ..." بقلق "هل سأدفع تلقائياً؟". النصّ المساعد يُلغي هذا القلق بصراحة قبل النقر:
+
+> 🟢 *"Request a free quote — we'll reply within hours via WhatsApp"*
+> 🟢 *"Demandez un devis gratuit — réponse en quelques heures via WhatsApp"*
+> 🟢 *"اطلب عرض سعر مجاني — نرد عليك خلال ساعات عبر واتساب"*
+
+**التطبيق:**
+- موقع DOM: `<p class="pd-cart-hint">` مباشرة بعد `</div>` لـ `.pd-cart-row` في `assets/product-detail.js` (السطر ~385).
+- البنية: SVG WhatsApp (14×14) + `<span data-i18n="cart_pd_hint">`. الـ SVG **خارج** `data-i18n` لأن `data-i18n` على `<p>` كان سيمسحه (i18n.js يستبدل `textContent` كاملاً).
+- لون SVG: `#25d366` (WhatsApp green) — إشارة بصرية ضمنية بدون حشو نصّي.
+- لون النصّ: `var(--cart-text-muted, #6b7280)` — هادئ، لا ينافس الزر البرتقالي.
+- حجم: 0.82rem (LTR) / 0.86rem (RTL) — العربية تحتاج زيادة 4% للقراءة المريحة.
+- `flex inline + gap 8px` — الأيقونة والنصّ في سطر واحد دائماً.
+
+**القاعدة:** لإضافة هذا النمط على CTA آخر (مثلاً زر "Find Your Solution" المستقبلي)، استعمل نفس class `.pd-cart-hint` (الاسم وُسِّع دلالياً ليصبح "post-CTA reassurance hint"). أو خصِّص class جديد لو السياق مختلف، لكن لا تكرّر الـ CSS.
+
 ### نمط الكتابة في `cart.js`
 
 نفس قواعد `find-solution.js` (راجع القسم 9):
@@ -1132,7 +1187,8 @@ Awaiting your quote, thank you.
 | `.cart-nav-badge` (عدّاد) | min 18×18 | برتقالي ممتلئ | أبيض، 10px Readex Pro bold | حدّ أسود 2px ليبدو "مُنطبع" على النڤ-بار الداكن |
 | `.prod-card-add` (زر `+` على البطاقة) | 38×38، أعلى-يمين 10px | `rgba(255,255,255,0.95)` + `backdrop-filter: blur(6px)` | برتقالي، أيقونة 18px | يصير برتقالي ممتلئ مع لون أبيض |
 | `.pd-qty` (stepper الكمية) | ارتفاع 52px موحَّد مع الزر، radius 12px | أبيض | `--cart-text` | bg ناعم + لون برتقالي |
-| `.pd-add-to-cart` | ارتفاع 52px، padding 0 26px، radius 12px | برتقالي ممتلئ | أبيض | برتقالي أعمق، **بدون transform/shadow** |
+| `.pd-add-to-cart` | ارتفاع 52px، padding 0 26px، radius 12px | برتقالي ممتلئ | أبيض، أيقونة clipboard-check | برتقالي أعمق، **بدون transform/shadow** |
+| `.pd-cart-hint` (نصّ مساعد) | margin-top 10px، gap 8px | شفاف | `var(--cart-text-muted)` 0.82rem (RTL: 0.86rem)، أيقونة WhatsApp green `#25d366` 14×14 | — (نصّ ثابت، ليس tap target) |
 
 **قواعد التموضع:**
 - زر السلّة في النڤ-بار: داخل مكوّن `av` بـ `data-trigger="cart-open"` + الـ inner span + الـ badge مع `data-cart-badge=""`. على Desktop: ضمن `<nav>` بعد روابط النافيغ. على Mobile: ضمن wrapper `md:hidden flex items-center` يجمعه مع زرّ الهامبرغر، مع `margin-inline-end: 6px` للفصل البصري.
@@ -1173,8 +1229,10 @@ Awaiting your quote, thank you.
 - **إضافة منتج للسلّة برمجياً من السكربت:** `window.Cart.add(productId, qty)`. لا تعدّل localStorage مباشرة.
 - **ترقية الـ schema:** غيّر الإصدار في `STORAGE_KEY` (`se_cart_v2`) وأضف منطق migration في `loadState()`.
 - **تغيير صياغة رسالة الواتساب:** عدّل قيم المفاتيح `cart_msg_*` في `assets/locales/{en,fr,ar}.json`. لا تعدّل الكود.
+- **تغيير صياغة النصّ المساعد تحت CTA:** عدّل قيمة `cart_pd_hint` في الـ 3 locales. لا تعدّل HTML في `product-detail.js` (الـ fallback فقط هناك).
 - **إضافة محفّز جديد على أي صفحة:** أضف `data-trigger="cart-add"` + `data-product-id="<id>"` للعنصر. الـ bootstrap يلتقطه آلياً.
 - **حذف ميزة الكميات (تبسيط):** بسّط `cart.js`: احذف `setQty` + `cart-qty-*` من DOM، اضبط qty=1 في `add()` دائماً، بسّط رسالة الواتساب. ولا تنسَ المفاتيح `cart_aria_increase`/`decrease`/`item_qty`.
+- **استبدال أيقونة زر السلّة في النڤ-بار (SPA bundle):** الأيقونة الحالية تظلّ "shopping cart". بعد الـ rebrand لـ "quote request"، يمكن استبدالها بأيقونة clipboard/document-text لتقوية الإشارة البصرية. الموقع: `assets/index-CGMiSPUa.js` ~12565 — surgical patching فقط (راجع القسم 7). تذكّر تحديث القاعدة الخاصة بـ `cart-nav-badge` (يستخدم `right: 0` لأن العربة أحادية الاتجاه) — الأيقونة الجديدة قد تتطلّب موضع badge مختلفاً إن كانت متماثلة.
 
 ### ⚠️ تحذيرات
 
