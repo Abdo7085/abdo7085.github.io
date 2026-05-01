@@ -225,6 +225,25 @@
   }
 }
 
+/* Helper hint under Add-to-Quote button — sets honest expectation */
+.pd-cart-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--cart-text-muted, #6b7280);
+}
+.pd-cart-hint svg {
+  flex-shrink: 0;
+  color: #25d366; /* WhatsApp green — small visual signal */
+  stroke-width: 2;
+}
+[dir="rtl"] .pd-cart-hint { font-size: 0.86rem; }
+
 /* ---------- Toast ---------- */
 .cart-toast {
   position: fixed;
