@@ -72,7 +72,11 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
     "ar": { "اسم المواصفة": "القيمة" }
   },
 
-  "images": ["/assets/products/<product-slug>.jpg"],
+  "images": [
+    "/assets/products/<product-slug>.png",
+    "/assets/products/<product-slug>-2.jpg",
+    "/assets/products/<product-slug>-3.jpg"
+  ],
 
   "rating": {
     "value": 4.3,
@@ -125,6 +129,25 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    This step is **only needed for traditional output**. The AI tool (`remove_bg.py`) already produces soft, anti-aliased edges and should not be re-blurred.
 
    **Lesson learned:** When the original image has a non-white background that flood-fill cannot reach (e.g. dark/textured surfaces between two devices in the same shot), parts of the original background will remain in the output. In that case there's no fix in post-processing — the only options are (a) accept the residue if it's small and visually acceptable, (b) find a cleaner source image, or (c) manually mask in an external editor. Do NOT fall back to AI just to remove residue if the AI clips the product itself.
+
+### Adding Multiple Images (Product Gallery)
+
+The product detail page **fully supports multi-image galleries** with clickable thumbnails, CSS transitions, and crossfade effects — no special configuration needed. The `images` array in JSON drives this:
+
+- **Image 0 (first)** is the **primary image** — the one shown on product cards and in SEO meta tags. Always process it with `remove_bg.py` + `crop_image.py` as described above.
+- **Images 1+** are **secondary images** — shown only in the product detail gallery as alternate views. Download them and add to the array **as-is** (no background removal, no cropping). They retain their original background since they appear in their natural context (different angles, packaging, in-room shots, port close-ups, etc.).
+
+**File naming convention:**
+```
+assets/products/<slug>.png       ← Primary (processed, transparent)
+assets/products/<slug>-2.jpg     ← Secondary (raw download)
+assets/products/<slug>-3.jpg     ← Secondary (raw download)
+...
+```
+
+The gallery (`renderGallery()` in `product-detail.js`) generates vertical thumbnails on desktop (horizontal scroll on mobile) with `data-idx` attributes for click-to-swap. The CSS classes `.pd-thumbs`, `.pd-thumb`, `.pd-thumb-active`, and `.pd-gallery` are already styled in `products.css`.
+
+
 
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
    - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
@@ -223,5 +246,6 @@ When researching a new product, actively search the manufacturer's site for `fil
 - The `id` field MUST match the filename (without `.json`)
 - All text fields (`title`, `short_description`, `description`, `specs`) MUST have `en`, `fr`, and `ar` versions
 - Images should be optimized for web — prefer `.avif` when the source provides it (much smaller than PNG/JPG). Use `.png` or `.jpg` as fallback. Don't convert `.avif` to `.png` unnecessarily
+- The first image in `images` is the primary (processed with background removal + crop). Additional images are secondary — keep them as-is (raw download, no processing)
 - **Always run `python scripts/build_products.py` after any changes** — this is the single command that updates index, SEO pages, and sitemap
 - Never manually edit `data/products_index.json`, `sitemap.xml`, or files in `products/`, `fr/products/`, `ar/products/` — they are all auto-generated
