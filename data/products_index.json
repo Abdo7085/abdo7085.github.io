@@ -233,6 +233,30 @@
     "image": "/assets/products/eae-knx-ui108-universal-interface.png"
   },
   {
+    "id": "moes-matter-zigbee-gateway",
+    "brand": "Tuya",
+    "technology": [
+      "Zigbee",
+      "Matter",
+      "Thread",
+      "LAN"
+    ],
+    "product_type": "Gateway",
+    "installation": "Free standing",
+    "title": {
+      "en": "Tuya Matter Zigbee Gateway Hub",
+      "fr": "Passerelle Matter Zigbee Tuya",
+      "ar": "موزع Tuya متعدد البروتوكولات Matter و Zigbee"
+    },
+    "short_description": {
+      "en": "Multi-protocol smart home hub with Matter, Zigbee & Thread.",
+      "fr": "Hub domotique multi-protocole avec Matter, Zigbee & Thread.",
+      "ar": "موزع منزلي ذكي متعدد البروتوكولات — Matter و Zigbee و Thread."
+    },
+    "category": "",
+    "image": "/assets/products/moes-matter-zigbee-gateway.png"
+  },
+  {
     "id": "rcu0800-room-control-unit",
     "brand": "EAE Technology",
     "technology": [

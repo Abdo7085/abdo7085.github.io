@@ -1,0 +1,76 @@
+{
+  "id": "moes-matter-zigbee-gateway",
+  "brand": "Tuya",
+  "technology": ["Zigbee", "Matter", "Thread", "LAN"],
+  "product_type": "Gateway",
+  "installation": "Free standing",
+
+  "title": {
+    "en": "Tuya Matter Zigbee Gateway Hub",
+    "fr": "Passerelle Matter Zigbee Tuya",
+    "ar": "موزع Tuya متعدد البروتوكولات Matter و Zigbee"
+  },
+
+  "short_description": {
+    "en": "Multi-protocol smart home hub with Matter, Zigbee & Thread.",
+    "fr": "Hub domotique multi-protocole avec Matter, Zigbee & Thread.",
+    "ar": "موزع منزلي ذكي متعدد البروتوكولات — Matter و Zigbee و Thread."
+  },
+
+  "description": {
+    "en": "The Tuya Matter Gateway is a wired smart home hub that connects a wide range of smart devices under one roof. Supporting up to 128 Zigbee sub-devices alongside Matter and Thread protocols, it works natively with Apple Home, Google Home, Amazon Alexa, and SmartThings without additional bridges. The wired Ethernet connection ensures rock-solid stability — no Wi-Fi dropouts — while TLS encryption and local storage keep your data private. Simply plug it into your router, power it via USB-C, and start building a truly interoperable smart home.",
+    "fr": "La passerelle Matter Tuya est un hub domotique filaire qui unifie une large gamme d'appareils connectés sous un seul toit. Prenant en charge jusqu'à 128 appareils Zigbee ainsi que les protocoles Matter et Thread, il fonctionne nativement avec Apple Home, Google Home, Amazon Alexa et SmartThings sans ponts supplémentaires. La connexion Ethernet filaire garantit une stabilité inébranlable — sans coupure Wi-Fi — tandis que le chiffrement TLS et le stockage local protègent vos données. Branchez-le simplement à votre routeur, alimentez-le via USB-C, et commencez à construire une maison intelligente véritablement interopérable.",
+    "ar": "موزع Tuya Matter Gateway هو مركز تحكم منزلي ذكي سلكي يوحّد مجموعة واسعة من الأجهزة المتصلة تحت سقف واحد. يدعم حتى 128 جهاز Zigbee فرعي إلى جانب بروتوكولي Matter و Thread، ويعمل بشكل أصلي مع Apple Home و Google Home و Amazon Alexa و SmartThings دون الحاجة لجسور إضافية. يضمن اتصال Ethernet السلكي استقراراً ثابتاً — بدون انقطاعات Wi-Fi — بينما يحمي تشفير TLS والتخزين المحلي خصوصية بياناتك. ببساطة قم بتوصيله بالراوتر، وشغّله عبر USB-C، وابدأ في بناء منزل ذكي متكامل ومتوافق مع جميع المنصات."
+  },
+
+  "specs": {
+    "en": {
+      "Wireless Protocol": "Zigbee, Matter, Thread",
+      "Network": "Ethernet RJ45, 10/100 Mbit/s",
+      "Max Sub-devices": "128 (Zigbee)",
+      "Power Input": "5V 1A",
+      "Power Interface": "USB Type-C",
+      "Dimensions": "90 × 90 × 22 mm",
+      "Weight": "65 g",
+      "Operating Temperature": "-10°C to 55°C",
+      "Operating Humidity": "10% to 90% RH (non-condensing)",
+      "Encryption": "TLS two-way, device-level random keys",
+      "Platform Support": "Apple Home, Google Home, Amazon Alexa, SmartThings, Home Assistant"
+    },
+    "fr": {
+      "Protocole Sans Fil": "Zigbee, Matter, Thread",
+      "Réseau": "Ethernet RJ45, 10/100 Mbit/s",
+      "Appareils Max": "128 (Zigbee)",
+      "Alimentation": "5V 1A",
+      "Interface d'Alimentation": "USB Type-C",
+      "Dimensions": "90 × 90 × 22 mm",
+      "Poids": "65 g",
+      "Température de Fonctionnement": "-10°C à 55°C",
+      "Humidité de Fonctionnement": "10% à 90% HR (sans condensation)",
+      "Chiffrement": "TLS bidirectionnel, clés aléatoires par appareil",
+      "Plateformes Supportées": "Apple Home, Google Home, Amazon Alexa, SmartThings, Home Assistant"
+    },
+    "ar": {
+      "البروتوكول اللاسلكي": "Zigbee, Matter, Thread",
+      "الشبكة": "Ethernet RJ45، 10/100 Mbit/s",
+      "الأجهزة الفرعية القصوى": "128 (Zigbee)",
+      "مصدر الطاقة": "5V 1A",
+      "منفذ الطاقة": "USB Type-C",
+      "الأبعاد": "90 × 90 × 22 مم",
+      "الوزن": "65 غرام",
+      "درجة حرارة التشغيل": "-10 إلى 55 درجة مئوية",
+      "رطوبة التشغيل": "10% إلى 90% (بدون تكثف)",
+      "التشفير": "TLS ثنائي الاتجاه، مفاتيح عشوائية لكل جهاز",
+      "المنصات المدعومة": "Apple Home، Google Home، Amazon Alexa، SmartThings، Home Assistant"
+    }
+  },
+
+  "images": ["/assets/products/moes-matter-zigbee-gateway.png"],
+
+  "files": [
+    {
+      "name": "Product Page",
+      "url": "https://moeshouse.com/products/tuya-zigbee-matter-thread-gateway-smart-home-bridge-matter-hub"
+    }
+  ]
+}

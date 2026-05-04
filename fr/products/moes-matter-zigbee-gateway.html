@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="La passerelle Matter Tuya est un hub domotique filaire qui unifie une large gamme d&#x27;appareils connectés sous un seul toit. Prenant en charge jusqu&#x27;à 128…" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products/moes-matter-zigbee-gateway.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/products/moes-matter-zigbee-gateway.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/products/moes-matter-zigbee-gateway.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html" />
+    <meta property="og:title" content="Passerelle Matter Zigbee Tuya | S‑ELECTRICITY Maroc" />
+    <meta property="og:description" content="La passerelle Matter Tuya est un hub domotique filaire qui unifie une large gamme d&#x27;appareils connectés sous un seul toit. Prenant en charge jusqu&#x27;à 128…" />
+    <meta property="og:url" content="https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html" />
+    <meta property="og:type" content="product" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/products/moes-matter-zigbee-gateway.png" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Passerelle Matter Zigbee Tuya | S‑ELECTRICITY Maroc" />
+    <meta name="twitter:description" content="La passerelle Matter Tuya est un hub domotique filaire qui unifie une large gamme d&#x27;appareils connectés sous un seul toit. Prenant en charge jusqu&#x27;à 128…" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/products/moes-matter-zigbee-gateway.png" />
+    <meta name="robots" content="index, follow" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <title>Passerelle Matter Zigbee Tuya | S‑ELECTRICITY Maroc</title>
+    
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+    
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Products specific logic and styling -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <script defer src="/assets/product-detail.js"></script>
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Passerelle Matter Zigbee Tuya", "description": "La passerelle Matter Tuya est un hub domotique filaire qui unifie une large gamme d'appareils connectés sous un seul toit. Prenant en charge jusqu'à 128 appareils Zigbee ainsi que les protocoles Matter et Thread, il fonctionne nativement avec Apple Home, Google Home, Amazon Alexa et SmartThings sans ponts supplémentaires. La connexion Ethernet filaire garantit une stabilité inébranlable — sans coupure Wi-Fi — tandis que le chiffrement TLS et le stockage local protègent vos données. Branchez-le simplement à votre routeur, alimentez-le via USB-C, et commencez à construire une maison intelligente véritablement interopérable.", "sku": "moes-matter-zigbee-gateway", "url": "https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html", "brand": {"@type": "Brand", "name": "Tuya"}, "category": "Gateway", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.8", "reviewCount": "27", "bestRating": "5", "worstRating": "1"}, "image": "https://smartelectricity.ma/assets/products/moes-matter-zigbee-gateway.png"}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Produits", "item": "https://smartelectricity.ma/fr/products.html"}, {"@type": "ListItem", "position": 3, "name": "Passerelle Matter Zigbee Tuya", "item": "https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html"}]}</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+    
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>Passerelle Matter Zigbee Tuya</h1>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

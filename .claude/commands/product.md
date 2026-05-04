@@ -177,8 +177,8 @@ List files in `data/products/` to show available products. Read individual files
 
 These are the values currently in use across products. Always prefer reusing existing values:
 
-**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`, `Zennio`
-**Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`
+**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`, `Zennio`, `Tuya`
+**Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`, `Matter`, `Thread`
 **Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`, `Universal Interface`, `Gateway`
 **Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
 
