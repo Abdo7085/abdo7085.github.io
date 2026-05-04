@@ -452,6 +452,8 @@
           setTimeout(() => {
             mainImg.src = img.src;
             mainImg.classList.toggle('pd-main-img-fill', idx !== 0);
+            const gallery = mainImg.closest('.pd-gallery');
+            if (gallery) gallery.style.padding = idx !== 0 ? '0.3rem' : '';
             mainImg.style.opacity = '1';
           }, 200);
         }
