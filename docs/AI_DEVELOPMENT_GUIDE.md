@@ -17,7 +17,7 @@
   - **`section-eyebrows.css`** (2026-04-30): علامات صغيرة بصيغة `— 01 / Expertise` فوق عناوين 4 أقسام رئيسية في الصفحة الرئيسية. CSS pseudo-elements (`::before`) + `:lang()` selectors للترجمة. لا تلمس SPA bundle. **راجع القسم 10.**
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
-  - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA).
+  - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA). **⚠️ يحتوي على قاموس أيقونات التقنيات (~السطر 320):** عند إضافة تقنية جديدة (`technology`) لمنتج، يجب إضافة أيقونة SVG مطابقة لها داخل دالة `renderProductContent()` — استخدم الشعار الرسمي للبروتوكولات المعروفة (Zigbee, Matter, Thread) أو أيقونة Lucide للباقي. بدون ذلك، يظهر اسم التقنية كنص طويل داخل دائرة 38×38 في شريط Key Features مما يخرب التنسيق.
   - `projects.css`: **ملف CSS مشترك (Shared CSS)** — يحتوي على أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة) **بالإضافة إلى** تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta`, `.proj-cta-inner`, `.proj-cta-btn` إلخ). هذا القسم يُعرض عبر مكوّن `Od` داخل الـ SPA في الصفحة الرئيسية وعبر `renderCta()` في `project-detail.js`. **لذلك يجب تحميل هذا الملف في كل صفحات الموقع التي تستخدم الـ SPA** (بما فيها قوالب المنتجات `product.html` و `products.html`).
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
