@@ -638,10 +638,6 @@ html[dir="rtl"] .prod-breadcrumbs {
   top: 100px;
 }
 
-html[dir="rtl"] .pd-gallery-wrapper {
-  flex-direction: row-reverse;
-}
-
 .pd-thumbs {
   display: flex;
   flex-direction: column;
@@ -1302,14 +1298,11 @@ html[dir="rtl"] .prod-count-badge {
     position: static;
   }
 
-  html[dir="rtl"] .pd-gallery-wrapper {
-    flex-direction: column-reverse;
-  }
-
   .pd-thumbs {
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 0.25rem;
+    justify-content: center;
   }
 
   .pd-thumb {
