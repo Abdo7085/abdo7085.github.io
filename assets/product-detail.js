@@ -451,6 +451,7 @@
           mainImg.style.opacity = '0';
           setTimeout(() => {
             mainImg.src = img.src;
+            mainImg.classList.toggle('pd-main-img-fill', idx !== 0);
             mainImg.style.opacity = '1';
           }, 200);
         }
