@@ -106,11 +106,12 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    - **`remove_bg_traditional.py` (Flood Fill)** — Use for any product where the AI model would misread part of the product as background. In particular:
      - **Products with thin protruding parts** — wireless routers with external antennas, devices with whip/rod antennas, thin cables or leads extending from the body. The AI model crops out these thin elements as noise, destroying key product features.
      - **Products with a visible screen or large dark/black surface** — touch panels, room control units with displays, tablets, monitors. The AI model treats dark bezels and screens as background and removes them.
+     - **Dark-colored products** — even without a screen, products with a dark/black housing (e.g. Anthracite switches, black relays) against a white studio background. The AI model can clip thin edges of dark objects, "eating" a few pixels from the outline. Flood Fill preserves the full silhouette.
      ```bash
      python scripts/remove_bg_traditional.py assets/products/<product-slug>.<ext>
      ```
 
-   **Decision rule:** If the product image shows (a) a screen/display/large dark face, OR (b) thin protruding parts like external antennas → always use `remove_bg_traditional.py`. For everything else → use `remove_bg.py`.
+   **Decision rule:** If the product image shows (a) a screen/display/large dark face, OR (b) thin protruding parts like external antennas, OR (c) a dark/black housing → always use `remove_bg_traditional.py`. For everything else (light-colored compact products with no screen) → use `remove_bg.py`.
 
    Both tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
 
@@ -128,7 +129,9 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 
    This step is **only needed for traditional output**. The AI tool (`remove_bg.py`) already produces soft, anti-aliased edges and should not be re-blurred.
 
-   **Lesson learned:** When the original image has a non-white background that flood-fill cannot reach (e.g. dark/textured surfaces between two devices in the same shot), parts of the original background will remain in the output. In that case there's no fix in post-processing — the only options are (a) accept the residue if it's small and visually acceptable, (b) find a cleaner source image, or (c) manually mask in an external editor. Do NOT fall back to AI just to remove residue if the AI clips the product itself.
+    **Lesson learned:** When the original image has a non-white background that flood-fill cannot reach (e.g. dark/textured surfaces between two devices in the same shot), parts of the original background will remain in the output. In that case there's no fix in post-processing — the only options are (a) accept the residue if it's small and visually acceptable, (b) find a cleaner source image, or (c) manually mask in an external editor. Do NOT fall back to AI just to remove residue if the AI clips the product itself.
+
+    **Lesson learned (dark-colored products):** The EAE Oria 4-fold Anthracite (black) switch was processed with `remove_bg.py` (AI) first, which "ate" the top edge of the switch — the dark plastic housing was misread as background. Re-processing with `remove_bg_traditional.py` (Flood Fill) produced a clean, intact silhouette. The takeaway: dark-colored products (especially black/Anthracite) should default to Flood Fill, even if they have no screen. The white-studio-background contrast that seems like it should help AI actually works against it — the model's semantic segmentation sometimes clips dark object boundaries against bright backgrounds.
 
 ### Adding Multiple Images (Product Gallery)
 
