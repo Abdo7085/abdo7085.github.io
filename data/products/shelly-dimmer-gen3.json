@@ -76,7 +76,10 @@
     }
   },
   "images": [
-    "/assets/products/shelly-dimmer-gen3.png"
+    "/assets/products/shelly-dimmer-gen3.png",
+    "/assets/products/shelly-dimmer-gen3-2.jpg",
+    "/assets/products/shelly-dimmer-gen3-3.jpg",
+    "/assets/products/shelly-dimmer-gen3-4.jpg"
   ],
   "rating": {
     "value": 4.5,

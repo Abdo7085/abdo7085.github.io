@@ -50,7 +50,10 @@
     }
   },
   "images": [
-    "/assets/products/shelly-pro-4pm.png"
+    "/assets/products/shelly-pro-4pm.png",
+    "/assets/products/shelly-pro-4pm-2.jpg",
+    "/assets/products/shelly-pro-4pm-3.jpg",
+    "/assets/products/shelly-pro-4pm-4.jpg"
   ],
   "files": [
     {

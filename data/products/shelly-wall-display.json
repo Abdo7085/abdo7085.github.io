@@ -85,7 +85,11 @@
     }
   },
   "images": [
-    "/assets/products/shelly-wall-display.png"
+    "/assets/products/shelly-wall-display.png",
+    "/assets/products/shelly-wall-display-2.jpg",
+    "/assets/products/shelly-wall-display-3.jpg",
+    "/assets/products/shelly-wall-display-4.jpg",
+    "/assets/products/shelly-wall-display-5.jpg"
   ],
   "files": [
     {

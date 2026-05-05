@@ -76,7 +76,10 @@
     }
   },
   "images": [
-    "/assets/products/shelly-2pm-gen3.png"
+    "/assets/products/shelly-2pm-gen3.png",
+    "/assets/products/shelly-2pm-gen3-2.jpg",
+    "/assets/products/shelly-2pm-gen3-3.jpg",
+    "/assets/products/shelly-2pm-gen3-4.jpg"
   ],
   "files": [
     {

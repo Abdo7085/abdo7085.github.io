@@ -202,8 +202,40 @@ Download the remaining URLs as secondary images, following the naming convention
 |---|---|---|---|
 | Zennio | `zennio.com/product/<slug>/` | `wp-content/uploads/YYYY/MM/` | Elementor gallery, images have size suffixes |
 | MOES/Tuya | `moeshouse.com/products/<slug>` | `cdn.shopify.com/.../files/` | Shopify CDN, remove `&width=` param |
-| Shelly | `shelly.com/...` or `kb.shelly.cloud/...` | Direct on site | Simpler HTML, cleaner |
+| Shelly | `shelly.com/products/<handle>` | `cdn.shopify.com/.../files/` | **Use `.js` endpoint** (see Step 0 below) — server-rendered HTML only contains the main image |
 | SONOFF | `sonoff.tech/product/...` | Direct on site | Similar to Shelly |
+
+#### Step 0 — Shopify `.js` endpoint (use this FIRST for any Shopify-powered site)
+
+**For any manufacturer that runs on Shopify** (Shelly, MOES, and many others), skip the HTML extraction steps below entirely. Shopify exposes a clean JSON endpoint that lists ALL product images (including gallery images that are loaded via JS and invisible in server-rendered HTML):
+
+```bash
+# Fetch the product JSON — returns images[], media[], and all gallery URLs
+Invoke-WebRequest -Uri "https://store.com/products/<handle>.js" | Select-Object -ExpandProperty Content
+```
+
+The `.js` endpoint returns a JSON object with:
+- `"images"` — array of relative image URLs (`//cdn.shopify.com/s/files/.../filename.ext`)
+- `"media"` — array of all media items with `media_type` (image/video), `src` URL, and dimensions (`width`/`height`)
+- `"title"`, `"description"`, `"tags"` — product metadata
+
+**Extract secondary image URLs** (skip `images[0]` which is the main/primary image):
+
+```bash
+# From the response, grab images beyond the first
+# Prepend "https:" to make full URLs, then download with Invoke-WebRequest
+```
+
+**⚠️ Handle may differ from product slug:** The Shopify `handle` in the URL is sometimes different from the product slug used in your catalog. For example:
+- Our product ID: `shelly-plus-1` → Shopify handle: `shelly-plus-1-x1`
+- Our product ID: `shelly-plus-2pm` → Shopify handle: `shelly-plus-2pm` (same)
+
+If the `.js` endpoint returns 404, check the product's actual page on the manufacturer site and use the URL slug from there.
+
+**Why this is superior:**
+- **One request** gets ALL images (product page HTML scraping misses JS-loaded gallery images)
+- **Clean JSON** — no need for regex HTML parsing
+- **Dimensions included** — `media[*].width` and `media[*].height` are useful for aspect ratio
 
 
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.

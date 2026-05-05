@@ -76,7 +76,9 @@
     }
   },
   "images": [
-    "/assets/products/shelly-1pm-gen3.png"
+    "/assets/products/shelly-1pm-gen3.png",
+    "/assets/products/shelly-1pm-gen3-2.jpg",
+    "/assets/products/shelly-1pm-gen3-3.jpg"
   ],
   "files": [
     {

@@ -79,7 +79,11 @@
     }
   },
   "images": [
-    "/assets/products/shelly-plus-2pm.png"
+    "/assets/products/shelly-plus-2pm.png",
+    "/assets/products/shelly-plus-2pm-2.jpg",
+    "/assets/products/shelly-plus-2pm-3.jpg",
+    "/assets/products/shelly-plus-2pm-4.jpg",
+    "/assets/products/shelly-plus-2pm-5.jpg"
   ],
   "files": [
     {
