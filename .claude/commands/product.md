@@ -135,17 +135,20 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 The product detail page **fully supports multi-image galleries** with clickable thumbnails, CSS transitions, and crossfade effects — no special configuration needed. The `images` array in JSON drives this:
 
 - **Image 0 (first)** is the **primary image** — the one shown on product cards and in SEO meta tags. Always process it with `remove_bg.py` + `crop_image.py` as described above.
-- **Images 1+** are **secondary images** — shown only in the product detail gallery as alternate views. Download them and add to the array **as-is** (no background removal, no cropping). They retain their original background since they appear in their natural context (different angles, packaging, in-room shots, port close-ups, etc.).
+- **Images 1–5** are **secondary images** — shown only in the product detail gallery as alternate views. Download them and add to the array **as-is** (no background removal, no cropping). They retain their original background since they appear in their natural context (different angles, packaging, in-room shots, port close-ups, etc.).
+- **Maximum 6 images total** — 1 primary + up to 5 secondary. The gallery UI is optimised for this count.
 
 **File naming convention:**
 ```
 assets/products/<slug>.png       ← Primary (processed, transparent)
 assets/products/<slug>-2.jpg     ← Secondary (raw download)
-assets/products/<slug>-3.jpg     ← Secondary (raw download)
-...
+assets/products/<slug>-3.jpg     ← Secondary
+assets/products/<slug>-4.jpg     ← Secondary
+assets/products/<slug>-5.jpg     ← Secondary
+assets/products/<slug>-6.jpg     ← Secondary (max)
 ```
 
-The gallery (`renderGallery()` in `product-detail.js`) generates vertical thumbnails on desktop (horizontal scroll on mobile) with `data-idx` attributes for click-to-swap. The CSS classes `.pd-thumbs`, `.pd-thumb`, `.pd-thumb-active`, and `.pd-gallery` are already styled in `products.css`.
+The gallery (`renderGallery()` in `product-detail.js`) generates vertical thumbnails on desktop (right-aligned in RTL, left-aligned in LTR) with horizontal scroll on mobile and `justify-content: center`. The CSS classes `.pd-thumbs`, `.pd-thumb`, `.pd-thumb-active`, and `.pd-gallery` are already styled in `products.css`. On click, secondary images fill the full gallery area (`contain` at 100%) with minimal padding (`0.3rem`) while the primary image stays at 85% with gradient background.
 
 
 
