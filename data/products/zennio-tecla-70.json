@@ -86,7 +86,14 @@
     }
   },
 
-  "images": ["/assets/products/zennio-tecla-70.png"],
+  "images": [
+    "/assets/products/zennio-tecla-70.png",
+    "/assets/products/zennio-tecla-70-2.png",
+    "/assets/products/zennio-tecla-70-3.png",
+    "/assets/products/zennio-tecla-70-4.png",
+    "/assets/products/zennio-tecla-70-5.png",
+    "/assets/products/zennio-tecla-70-6.png"
+  ],
 
   "files": [
     {
