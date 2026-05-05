@@ -150,6 +150,60 @@ assets/products/<slug>-6.jpg     ← Secondary (max)
 
 The gallery (`renderGallery()` in `product-detail.js`) generates vertical thumbnails on desktop (right-aligned in RTL, left-aligned in LTR) with horizontal scroll on mobile and `justify-content: center`. The CSS classes `.pd-thumbs`, `.pd-thumb`, `.pd-thumb-active`, and `.pd-gallery` are already styled in `products.css`. On click, secondary images fill the full gallery area (`contain` at 100%) with minimal padding (`0.3rem`) while the primary image stays at 85% with gradient background.
 
+### Extracting Images from Hard-to-Scrape Manufacturer Sites
+
+Some manufacturer sites (Zennio, MOES/Shopify, Elementor-based sites) serve heavily cluttered HTML — mega-menus, cookie banners, JavaScript slideshows. `WebFetch` often returns useless gibberish. Use this methodology instead:
+
+#### Step 1 — Save the raw view-source locally
+
+```bash
+# Use view-source: URL or Invoke-WebRequest to get clean HTML
+Invoke-WebRequest -Uri "https://www.zennio.com/product/<slug>/" -OutFile "data/zennio-pages/<slug>.html"
+```
+
+#### Step 2 — Extract ALL image URLs by file type (the universal method)
+
+**Do NOT search for brand-specific patterns** (like `ZVIT` or `data-thumbnail`). Instead, search by **image file extension** — this works identically on every site:
+
+```bash
+Select-String -Path "data/zennio-pages/<slug>.html" -Pattern "https?://[^\"'<>]+\.(png|jpg|jpeg|webp|avif)" -AllMatches |
+  ForEach-Object { $_.Matches.Value } |
+  Sort-Object -Unique
+```
+
+**Why file-type search is superior:**
+- **Universal** — works on Zennio, MOES, Shopify, any manufacturer
+- **No prior knowledge needed** — you don't need to know each brand's SKU prefix (ZVIT, ZVI, ZVIFR, etc.)
+- **Faster** — one pattern covers everything
+- **Complete** — catches images served from CDN, subdomains, and nested elements that brand-specific searches miss
+
+#### Step 3 — Filter out non-product images
+
+The results will include logos, icons, favicons, and UI elements. Remove them:
+
+```bash
+... | Where-Object { $_ -notmatch "logo|icon|favicon|avatar|flag|arrow|placeholder|default\.(png|jpg)" }
+```
+
+#### Step 4 — Remove size constraints from URLs
+
+Manufacturer sites often serve thumbnails with size suffixes (e.g. `-370x361.png`, `-300x293.png`, `?width=493`). Strip these to get full-resolution originals when possible:
+
+- WordPress size suffix: remove `-NNNxNNN` before `.png`/`.jpg`
+- Shopify: remove `&width=NNN` and `_NNNxNNN` from URL query/filename
+
+#### Step 5 — Download the filtered images
+
+Download the remaining URLs as secondary images, following the naming convention above.
+
+#### Quick reference for common sites
+
+| Manufacturer | Product page pattern | Image CDN | Notes |
+|---|---|---|---|
+| Zennio | `zennio.com/product/<slug>/` | `wp-content/uploads/YYYY/MM/` | Elementor gallery, images have size suffixes |
+| MOES/Tuya | `moeshouse.com/products/<slug>` | `cdn.shopify.com/.../files/` | Shopify CDN, remove `&width=` param |
+| Shelly | `shelly.com/...` or `kb.shelly.cloud/...` | Direct on site | Simpler HTML, cleaner |
+| SONOFF | `sonoff.tech/product/...` | Direct on site | Similar to Shelly |
 
 
 3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
