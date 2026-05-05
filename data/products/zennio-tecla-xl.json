@@ -1,28 +1,26 @@
 {
   "id": "zennio-tecla-xl",
   "brand": "Zennio",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Switch",
   "installation": "Wall mount",
-
   "title": {
     "en": "Zennio Tecla XL KNX Touch Switch X4/X6/X8/X10",
     "fr": "Interrupteur tactile KNX Zennio Tecla XL X4/X6/X8/X10",
     "ar": "مفتاح لمسي KNX Zennio Tecla XL X4/X6/X8/X10"
   },
-
   "short_description": {
     "en": "Large-format backlit capacitive KNX touch switch, 4–10 buttons.",
     "fr": "Interrupteur tactile KNX capacitif grand format rétroéclairé, 4–10 boutons.",
     "ar": "مفتاح لمسي KNX سعوي مضيء بحجم كبير، 4 إلى 10 أزرار."
   },
-
   "description": {
     "en": "The Zennio Tecla XL is a large-format KNX capacitive push-button switch that fits standard European, British, Italian, Australian, and American back boxes and can be mounted in portrait or landscape orientation to suit any installation. Available in X4, X6, X8, and X10 variants, each button is individually backlit for easy use in the dark, and all variants share the same polycarbonate housing. Built-in sensors — temperature (±0.5 °C accuracy), proximity, and brightness — allow the panel to adjust its backlight automatically and feed a built-in thermostat for climate control. Two analog/digital inputs extend the system with push buttons or motion sensors at distances up to 30 m. KNX Secure is supported for encrypted bus communication in security-sensitive projects. Available in White, Silver, Anthracite, and a custom color option.",
     "fr": "Le Zennio Tecla XL est un interrupteur tactile KNX capacitif grand format qui s'adapte aux boîtes encastrées européennes, britanniques, italiennes, australiennes et américaines standard et peut être monté en orientation portrait ou paysage selon l'installation. Disponible en variantes X4, X6, X8 et X10, chaque bouton est individuellement rétroéclairé pour une utilisation facile dans l'obscurité. Les capteurs intégrés — température (précision ±0,5 °C), proximité et luminosité — permettent au panneau d'ajuster son rétroéclairage automatiquement et alimentent un thermostat intégré pour le contrôle climatique. Deux entrées analogiques/numériques étendent le système avec des boutons-poussoirs ou des détecteurs de mouvement jusqu'à 30 m. KNX Secure est supporté pour la communication bus cryptée. Disponible en Blanc, Argent, Anthracite et couleur personnalisée.",
     "ar": "Zennio Tecla XL هو مفتاح ضغط لمسي KNX سعوي كبير الحجم يتناسب مع علب الحائط القياسية الأوروبية والبريطانية والإيطالية والأسترالية والأمريكية، ويمكن تركيبه عمودياً أو أفقياً حسب التركيب. متاح بأربع نسخ X4 وX6 وX8 وX10، كل زر مضاء بشكل مستقل للاستخدام في الظلام. تتيح الحساسات المدمجة — الحرارة (دقة ±0.5 درجة مئوية)، الاقتراب، والسطوع — للوحة ضبط إضاءتها الخلفية تلقائياً وتغذية منظم حرارة مدمج للتحكم المناخي. مدخلان تناظريان/رقميان يوسّعان النظام بأزرار ضغط أو كاشفات حركة حتى 30 متراً. يدعم KNX Secure للاتصال المشفر عبر الناقل. متاح بألوان أبيض وفضي وأنثراسيت وخيار لون مخصص."
   },
-
   "specs": {
     "en": {
       "Variants": "X4, X6, X8, X10 (4, 6, 8, or 10 buttons)",
@@ -82,9 +80,14 @@
       "الأمان": "KNX Secure"
     }
   },
-
-  "images": ["/assets/products/zennio-tecla-xl.png"],
-
+  "images": [
+    "/assets/products/zennio-tecla-xl.png",
+    "/assets/products/zennio-tecla-xl-2.png",
+    "/assets/products/zennio-tecla-xl-3.png",
+    "/assets/products/zennio-tecla-xl-4.png",
+    "/assets/products/zennio-tecla-xl-5.png",
+    "/assets/products/zennio-tecla-xl-6.png"
+  ],
   "files": [
     {
       "name": "Product Page (Manuals & Downloads)",

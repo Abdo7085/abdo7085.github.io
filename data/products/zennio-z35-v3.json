@@ -1,28 +1,26 @@
 {
   "id": "zennio-z35-v3",
   "brand": "Zennio",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Touch Panel",
   "installation": "Wall mount",
-
   "title": {
     "en": "Zennio Z35 v3 KNX Touch Panel 3.5\"",
     "fr": "Panneau tactile KNX Zennio Z35 v3 3,5\"",
     "ar": "لوحة تحكم لمسية KNX Zennio Z35 v3 بشاشة 3.5\""
   },
-
   "short_description": {
     "en": "3.5-inch KNX touch panel with humidity sensor and KNX Secure.",
     "fr": "Panneau tactile KNX 3,5 pouces avec sonde d'humidité et KNX Secure.",
     "ar": "لوحة تحكم لمسية KNX بحجم 3.5 بوصات مع حساس رطوبة وKNX Secure."
   },
-
   "description": {
     "en": "The Zennio Z35 v3 is a compact 3.5-inch KNX touch panel that goes beyond standard climate control by adding a built-in humidity sensor alongside the usual temperature probe — letting it display and act on both temperature and humidity readings directly. It offers 56 control points across 7 pages for lights, blinds, scenes, and HVAC, and its 4 analog/digital inputs can connect push buttons, motion sensors, or additional probes with cables up to 30 m. A proximity sensor wakes the screen on approach, a brightness sensor auto-adjusts the backlight, and 2 independent thermostats manage heating and cooling zones. With KNX Secure support for encrypted bus communication, it is suitable for projects with strict security requirements. Available in four finishes including a unique Champagne color option.",
     "fr": "Le Zennio Z35 v3 est un panneau tactile KNX compact de 3,5 pouces qui va au-delà du contrôle climatique standard en ajoutant un capteur d'humidité intégré à la sonde de température habituelle — lui permettant d'afficher et d'agir sur les lectures de température et d'humidité directement. Il offre 56 points de contrôle sur 7 pages pour les lumières, les stores, les scènes et la CVC, et ses 4 entrées analogiques/numériques peuvent connecter des boutons, des détecteurs de mouvement ou des sondes supplémentaires avec des câbles jusqu'à 30 m. Un capteur de proximité réveille l'écran à l'approche, un capteur de luminosité ajuste automatiquement le rétroéclairage, et 2 thermostats indépendants gèrent les zones. Avec le support KNX Secure pour la communication bus cryptée, il convient aux projets à exigences de sécurité strictes. Disponible en quatre finitions dont un Champagne unique.",
     "ar": "Zennio Z35 v3 هو لوحة تحكم لمسية KNX مدمجة بحجم 3.5 بوصات تتجاوز التحكم المناخي القياسي بإضافة حساس رطوبة مدمج إلى جانب حساس الحرارة المعتاد — مما يتيح لها عرض قراءات الحرارة والرطوبة والتصرف بناءً عليها مباشرة. تقدم 56 نقطة تحكم على 7 صفحات للإضاءة والستائر والمشاهد والتكييف، وتصل مداخلها الأربعة التناظرية/الرقمية الأزرار وكاشفات الحركة والحساسات الإضافية بكابلات تصل إلى 30 متراً. يُنشّط حساس الاقتراب الشاشة عند الاقتراب، وحساس السطوع يضبط الإضاءة الخلفية تلقائياً، ومنظما حرارة مستقلان يديران مناطق التدفئة والتبريد. مع دعم KNX Secure للتواصل المشفر عبر الناقل. متاح بأربعة ألوان بما يشمل لون Champagne الفريد."
   },
-
   "specs": {
     "en": {
       "Display": "3.5\" color capacitive touch, 320 × 240 px",
@@ -85,9 +83,14 @@
       "الأمان": "KNX Secure"
     }
   },
-
-  "images": ["/assets/products/zennio-z35-v3.png"],
-
+  "images": [
+    "/assets/products/zennio-z35-v3.png",
+    "/assets/products/zennio-z35-v3-2.png",
+    "/assets/products/zennio-z35-v3-3.png",
+    "/assets/products/zennio-z35-v3-4.png",
+    "/assets/products/zennio-z35-v3-5.png",
+    "/assets/products/zennio-z35-v3-6.png"
+  ],
   "files": [
     {
       "name": "Product Page (Manuals & Downloads)",

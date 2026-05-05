@@ -1,28 +1,26 @@
 {
   "id": "zennio-z100-touch-panel",
   "brand": "Zennio",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Touch Panel",
   "installation": "Wall mount",
-
   "title": {
     "en": "Zennio Z100 KNX Touch Panel",
     "fr": "Écran Tactile Zennio Z100 KNX",
     "ar": "شاشة لمس Zennio Z100 KNX"
   },
-
   "short_description": {
     "en": "10\" capacitive color touch panel with thermostat and intercom.",
     "fr": "Écran tactile couleur capacitif 10\" avec thermostat et interphone.",
     "ar": "شاشة لمس ملونة سعوية 10 بوصة مع ترموستات واتصال داخلي."
   },
-
   "description": {
     "en": "The Zennio Z100 is a 10-inch color capacitive touch panel that serves as the central hub for your KNX smart home. Its high-resolution display lets you control lighting, climate, blinds, security, and multimedia from up to 12 customizable pages — all with smooth, intuitive gestures. Two independent built-in thermostats handle heating and cooling zones directly from the panel, while proximity and light sensors automatically adjust the screen brightness and wake it when you approach. An Ethernet port enables optional remote control from a smartphone or web browser, and four analog/digital inputs let you wire conventional switches or sensors directly. Available in white, black, and silver to match any interior.",
     "fr": "Le Zennio Z100 est un écran tactile couleur capacitif de 10 pouces qui sert de hub central pour votre maison connectée KNX. Son affichage haute résolution permet de contrôler l'éclairage, le climat, les stores, la sécurité et le multimédia depuis jusqu'à 12 pages personnalisables — le tout avec des gestes fluides et intuitifs. Deux thermostats intégrés indépendants gèrent les zones de chauffage et de climatisation directement depuis l'écran, tandis que les capteurs de proximité et de luminosité ajustent automatiquement la luminosité et réveillent l'écran à votre approche. Un port Ethernet permet le contrôle à distance optionnel depuis un smartphone ou un navigateur, et quatre entrées analogiques/numériques permettent de raccorder des interrupteurs ou capteurs conventionnels. Disponible en blanc, noir et argent pour s'adapter à tout intérieur.",
     "ar": "شاشة Zennio Z100 هي لوحة لمس سعوية ملونة بحجم 10 بوصات تعمل كمركز تحكم رئيسي لمنزلك الذكي KNX. تتيح لك شاشتها عالية الدقة التحكم في الإضاءة والمناخ والستائر والأمان والوسائط المتعددة من خلال 12 صفحة قابلة للتخصيص — بإيماءات سلسة وبديهية. يتولى ترموستاتان مدمجان مستقلان إدارة مناطق التدفئة والتبريد مباشرة من اللوحة، بينما تضبط مستشعرات التقارب والإضاءة سطوع الشاشة تلقائياً وتوقظها عند اقترابك. يتيح منفذ Ethernet التحكم عن بُعد اختيارياً من الهاتف أو المتصفح، وتسمح أربع مداخل تناظرية/رقمية بتوصيل المفاتيح أو المستشعرات التقليدية مباشرة. متوفرة بالأبيض والأسود والفضي لتتناسب مع أي ديكور."
   },
-
   "specs": {
     "en": {
       "Screen": "10\" capacitive LCD, 1280 × 800 px, 16M colors",
@@ -64,9 +62,14 @@
       "الألوان": "أبيض (RAL 9016)، أسود (RAL 9004)، فضي (RAL 9006)"
     }
   },
-
-  "images": ["/assets/products/zennio-z100-touch-panel.png"],
-
+  "images": [
+    "/assets/products/zennio-z100-touch-panel.png",
+    "/assets/products/zennio-z100-2.png",
+    "/assets/products/zennio-z100-3.png",
+    "/assets/products/zennio-z100-4.png",
+    "/assets/products/zennio-z100-5.png",
+    "/assets/products/zennio-z100-6.png"
+  ],
   "files": [
     {
       "name": "Datasheet (PDF)",

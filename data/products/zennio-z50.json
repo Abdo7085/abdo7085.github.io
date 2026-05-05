@@ -1,28 +1,26 @@
 {
   "id": "zennio-z50",
   "brand": "Zennio",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Touch Panel",
   "installation": "Wall mount",
-
   "title": {
     "en": "Zennio Z50 KNX Touch Panel 5\"",
     "fr": "Panneau tactile KNX Zennio Z50 5\"",
     "ar": "لوحة تحكم لمسية KNX Zennio Z50 بشاشة 5\""
   },
-
   "short_description": {
     "en": "5-inch color capacitive KNX touch panel with 12 pages.",
     "fr": "Panneau tactile KNX couleur 5 pouces avec 12 pages.",
     "ar": "لوحة تحكم لمسية KNX ملونة بحجم 5 بوصات و12 صفحة."
   },
-
   "description": {
     "en": "The Zennio Z50 is a sleek 5-inch KNX touch panel that delivers full smart home control through 12 fully customizable pages. Its vivid 480×854 color display responds to touch with 16 million colors, while a proximity sensor wakes the screen automatically as you approach and the built-in light sensor adjusts brightness to the room's ambient light. An internal temperature probe and 2 independent thermostats let it manage heating and cooling directly, and built-in speakers provide audio notifications for alarms or doorbells. Ethernet and USB ports make programming and updates quick and hassle-free. It fits any standard European or British back box and comes in four finishes — with optional licenses unlocking smartphone remote access, video intercom, and voice control via ZenVoice.",
     "fr": "Le Zennio Z50 est un panneau tactile KNX élégant de 5 pouces qui offre le contrôle complet de la maison intelligente à travers 12 pages entièrement personnalisables. Son écran couleur vif en 480×854 répond au toucher avec 16 millions de couleurs, tandis qu'un capteur de proximité réveille l'écran automatiquement à votre approche et que le capteur de luminosité intégré ajuste la luminosité à la lumière ambiante. Une sonde de température interne et 2 thermostats indépendants lui permettent de gérer directement le chauffage et la climatisation, et des haut-parleurs intégrés fournissent des notifications audio. Des ports Ethernet et USB facilitent la programmation. Il s'adapte à toute boîte encastrée européenne ou britannique standard et est disponible en quatre finitions.",
     "ar": "Zennio Z50 هو لوحة تحكم لمسية KNX أنيقة بحجم 5 بوصات توفر التحكم الكامل بالمنزل الذكي عبر 12 صفحة قابلة للتخصيص الكامل. تستجيب شاشتها الملونة الزاهية بدقة 480×854 للمس بـ 16 مليون لون، بينما يُنشّط حساس الاقتراب الشاشة تلقائياً عند اقترابك ويضبط حساس الضوء المدمج السطوع حسب إضاءة الغرفة. يتيح حساس حرارة داخلي ومنظمان حرارة مستقلان إدارة التدفئة والتبريد مباشرة، والمكبرات الصوتية المدمجة توفر إشعارات صوتية للإنذارات والأجراس. منافذ Ethernet وUSB تجعل البرمجة والتحديثات سهلة. يتناسب مع أي علبة حائط أوروبية أو بريطانية قياسية ومتاح بأربعة ألوان."
   },
-
   "specs": {
     "en": {
       "Display": "5\" full-color capacitive touch, 480 × 854 px, 16M colors",
@@ -85,9 +83,14 @@
       "التراخيص الاختيارية": "تحكم عبر الهاتف، جرس الفيديو، ZenVoice"
     }
   },
-
-  "images": ["/assets/products/zennio-z50.png"],
-
+  "images": [
+    "/assets/products/zennio-z50.png",
+    "/assets/products/zennio-z50-2.png",
+    "/assets/products/zennio-z50-3.png",
+    "/assets/products/zennio-z50-4.png",
+    "/assets/products/zennio-z50-5.png",
+    "/assets/products/zennio-z50-6.png"
+  ],
   "files": [
     {
       "name": "Product Page (Manuals & Downloads)",

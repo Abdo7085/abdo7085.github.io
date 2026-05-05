@@ -1,28 +1,26 @@
 {
   "id": "zennio-flat-70",
   "brand": "Zennio",
-  "technology": ["KNX"],
+  "technology": [
+    "KNX"
+  ],
   "product_type": "Switch",
   "installation": "Wall mount",
-
   "title": {
     "en": "Zennio Flat 70 KNX Glass Touch Switch X1/X2/X4/X6",
     "fr": "Interrupteur tactile en verre KNX Zennio Flat 70 X1/X2/X4/X6",
     "ar": "مفتاح لمسي زجاجي KNX Zennio Flat 70 X1/X2/X4/X6"
   },
-
   "short_description": {
     "en": "Premium glass capacitive KNX touch switch for 70 mm frames.",
     "fr": "Interrupteur tactile KNX en verre capacitif premium pour cadres 70 mm.",
     "ar": "مفتاح لمسي زجاجي KNX سعوي فاخر لإطارات 70 مم."
   },
-
   "description": {
     "en": "The Zennio Flat 70 brings a premium glass finish to the 70×70 mm frame format, offering the same smart features as the Tecla 70 but with a sleek, flush glass front panel that elevates any interior. Available in X1, X2, X4, and X6 variants, the ultra-flat design at just 21.6 mm deep sits nearly flush with the wall for a seamless look. Built-in temperature, proximity, and light sensors enable automatic backlight adjustment and a built-in thermostat for climate control. Two analog/digital inputs connect push buttons or sensors at distances up to 30 m, and KNX Secure support ensures encrypted communication for security-conscious installations. Available in White, Silver, Anthracite, and a custom color option — each with the distinctive glass surface that sets it apart from standard polycarbonate switches.",
     "fr": "Le Zennio Flat 70 apporte une finition en verre premium au format cadre 70×70 mm, offrant les mêmes fonctionnalités intelligentes que le Tecla 70 mais avec un panneau avant en verre lisse et affleurant qui sublime tout intérieur. Disponible en variantes X1, X2, X4 et X6, le design ultra-plat à seulement 21,6 mm de profondeur s'intègre presque à fleur de mur pour un look sans couture. Des capteurs de température, de proximité et de luminosité intégrés permettent l'ajustement automatique du rétroéclairage et un thermostat intégré pour le contrôle climatique. Deux entrées analogiques/numériques connectent des boutons-poussoirs ou des capteurs jusqu'à 30 m. KNX Secure est supporté. Disponible en Blanc, Argent, Anthracite et couleur personnalisée.",
     "ar": "Zennio Flat 70 يضفي لمسة زجاجية فاخرة على حجم إطار 70×70 مم، مقدماً نفس المميزات الذكية لـ Tecla 70 ولكن بواجهة زجاجية ملساء ومستوية ترتقي بأي ديكور داخلي. متاح بنسخ X1 وX2 وX4 وX6، التصميم فائق النحافة بعمق 21.6 مم فقط يجعله شبه مستوٍ مع الحائط لمظهر متكامل. الحساسات المدمجة — الحرارة والاقتراب والضوء — تضبط الإضاءة الخلفية تلقائياً وتُشغّل منظم حرارة مدمج للتحكم المناخي. مدخلان تناظريان/رقميان يصلان أزرار أو حساسات حتى 30 متراً. يدعم KNX Secure للاتصال المشفر. متاح بألوان أبيض وفضي وأنثراسيت وخيار مخصص — بسطح زجاجي مميز يميزه عن المفاتيح البلاستيكية العادية."
   },
-
   "specs": {
     "en": {
       "Variants": "X1, X2, X4, X6 (1, 2, 4, or 6 buttons)",
@@ -82,9 +80,14 @@
       "الأمان": "KNX Secure"
     }
   },
-
-  "images": ["/assets/products/zennio-flat-70.png"],
-
+  "images": [
+    "/assets/products/zennio-flat-70.png",
+    "/assets/products/zennio-flat-70-2.png",
+    "/assets/products/zennio-flat-70-3.png",
+    "/assets/products/zennio-flat-70-4.png",
+    "/assets/products/zennio-flat-70-5.png",
+    "/assets/products/zennio-flat-70-6.png"
+  ],
   "files": [
     {
       "name": "Product Page (Manuals & Downloads)",
