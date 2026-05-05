@@ -42,7 +42,12 @@
     }
   },
   "images": [
-    "/assets/products/eae-knx-rosa-thermostat.png"
+    "/assets/products/eae-knx-rosa-thermostat.png",
+    "/assets/products/eae-knx-rosa-thermostat-2.jpg",
+    "/assets/products/eae-knx-rosa-thermostat-3.jpg",
+    "/assets/products/eae-knx-rosa-thermostat-4.jpg",
+    "/assets/products/eae-knx-rosa-thermostat-5.jpg",
+    "/assets/products/eae-knx-rosa-thermostat-6.jpg"
   ],
   "files": [
     {
