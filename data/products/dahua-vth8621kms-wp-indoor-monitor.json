@@ -1,0 +1,115 @@
+{
+  "id": "dahua-vth8621kms-wp-indoor-monitor",
+  "brand": "Dahua",
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "title": {
+    "en": "Dahua VTH8621KMS-WP IP & Wi-Fi Indoor Monitor",
+    "fr": "Moniteur Intérieur IP & Wi-Fi Dahua VTH8621KMS-WP",
+    "ar": "شاشة داخلية IP و Wi-Fi من Dahua VTH8621KMS-WP"
+  },
+  "short_description": {
+    "en": "Ultra-series 7\" touch indoor monitor with Wi-Fi, PoE and alarm integration.",
+    "fr": "Moniteur intérieur tactile 7\" série Ultra avec Wi-Fi, PoE et alarme intégrée.",
+    "ar": "شاشة داخلية لمسية 7\" بتقنية Wi-Fi و PoE وإنذار متكامل."
+  },
+  "description": {
+    "en": "The Dahua VTH8621KMS-WP is an Ultra-series IP & Wi-Fi indoor monitor featuring a sleek aluminum alloy design with a 7-inch capacitive touch screen at 1024×600 resolution. Built on embedded Linux, it handles video calls from door stations with crisp two-way audio thanks to a high-performance speaker and microphone with echo suppression. Dual connectivity — Wi-Fi (802.11b/g/n) and wired LAN with standard PoE — provides flexible installation options. Six wired alarm inputs and one alarm output enable comprehensive home security integration, while SOS messaging alerts the management center in emergencies. The customizable Do Not Disturb mode silences calls during set periods. With support for up to 9 extensions in villa mode or 4 in apartment mode, plus Wi-Fi extension monitors, it scales from single homes to multi-unit buildings. A Micro SD slot (up to 64 GB) stores call snapshots and video messages. The ONVIF and SDK compatibility ensures seamless integration with third-party systems.",
+    "fr": "Le Dahua VTH8621KMS-WP est un moniteur intérieur IP & Wi-Fi série Ultra au design élégant en alliage d'aluminium avec écran tactile capacitif 7 pouces en résolution 1024×600. Fonctionnant sous Linux embarqué, il gère les appels vidéo des stations de porte avec un audio bidirectionnel net grâce à un haut-parleur et microphone haute performance avec suppression d'écho. La double connectivité — Wi-Fi (802.11b/g/n) et LAN filaire avec PoE standard — offre des options d'installation flexibles. Six entrées d'alarme filaires et une sortie d'alarme permettent une intégration complète de sécurité domestique, tandis que la messagerie SOS alerte le centre de gestion en cas d'urgence. Le mode Ne Pas Déranger personnalisable coupe les appels pendant les périodes définies. Avec la prise en charge de jusqu'à 9 extensions en mode villa ou 4 en mode appartement, plus les moniteurs d'extension Wi-Fi, il s'adapte des maisons individuelles aux immeubles collectifs. Un emplacement Micro SD (jusqu'à 64 Go) stocke les captures d'appel et messages vidéo. La compatibilité ONVIF et SDK assure une intégration transparente avec les systèmes tiers.",
+    "ar": "شاشة Dahua VTH8621KMS-WP من السلسلة الفائقة Ultra بتقنية IP و Wi-Fi، بتصميم أنيق من سبائك الألومنيوم مع شاشة لمس سعوية بحجم 7 بوصات ودقة 1024×600. تعمل بنظام Linux المدمج، وتدير مكالمات الفيديو من محطات الباب بصوت ثنائي الاتجاه واضح بفضل سماعة وميكروفون عاليي الأداء مع إلغاء الصدى. يوفر الاتصال المزدوج — Wi-Fi (802.11b/g/n) وشبكة LAN سلكية مع PoE قياسي — خيارات تركيب مرنة. تتيح ستة مداخل إنذار سلكية ومخرج إنذار واحد تكاملاً أمنياً منزلياً شاملاً، بينما تنبه رسائل SOS مركز الإدارة في حالات الطوارئ. يكتم وضع عدم الإزعاج القابل للتخصيص المكالمات خلال الفترات المحددة. مع دعم حتى 9 امتدادات في وضع الفيلا أو 4 في وضع الشقة، بالإضافة إلى شاشات الامتداد عبر Wi-Fi، تتوسع من المنازل الفردية إلى المباني متعددة الوحدات. تخزن فتحة Micro SD (حتى 64 جيجابايت) لقطات المكالمات والرسائل المرئية. يضمن توافق ONVIF و SDK تكاملاً سلساً مع أنظمة الطرف الثالث."
+  },
+  "specs": {
+    "en": {
+      "Display": "7\" TFT capacitive touch, 1024 × 600 px",
+      "Operating System": "Embedded Linux",
+      "Connectivity": "Wi-Fi (802.11b/g/n) + 1 × RJ-45 LAN (PoE)",
+      "Audio": "Built-in speaker + microphone, two-way, echo suppression",
+      "Audio Compression": "G.711a / G.711u / PCM",
+      "Alarm Inputs": "6 (wired)",
+      "Alarm Outputs": "1",
+      "SOS": "Yes",
+      "DND Mode": "Yes, customizable periods",
+      "Extensions": "Villa: 9, Apartment: 4, Wi-Fi: 1 main + 2 ext.",
+      "Storage": "Micro SD (up to 64 GB)",
+      "Casing": "Aluminum alloy, silver",
+      "Power Supply": "12 V DC / 1 A or PoE (36–57 V)",
+      "Power Consumption": "Standby ≤ 3 W, working ≤ 7 W",
+      "Dimensions": "185 × 147 × 22.4 mm",
+      "Weight": "0.39 kg (net)",
+      "Certifications": "CE, FCC",
+      "Interoperability": "ONVIF, SDK",
+      "Operating Temperature": "-10 °C to +55 °C"
+    },
+    "fr": {
+      "Écran": "TFT capacitif 7\", 1024 × 600 px",
+      "Système d'exploitation": "Linux embarqué",
+      "Connectivité": "Wi-Fi (802.11b/g/n) + 1 × RJ-45 LAN (PoE)",
+      "Audio": "Haut-parleur + microphone intégrés, bidirectionnel, suppression d'écho",
+      "Compression audio": "G.711a / G.711u / PCM",
+      "Entrées d'alarme": "6 (filaires)",
+      "Sorties d'alarme": "1",
+      "SOS": "Oui",
+      "Mode NPD": "Oui, périodes personnalisables",
+      "Extensions": "Villa: 9, Appartement: 4, Wi-Fi: 1 principal + 2 ext.",
+      "Stockage": "Micro SD (jusqu'à 64 Go)",
+      "Boîtier": "Alliage d'aluminium, argent",
+      "Alimentation": "12 V DC / 1 A ou PoE (36–57 V)",
+      "Consommation": "Veille ≤ 3 W, fonctionnement ≤ 7 W",
+      "Dimensions": "185 × 147 × 22,4 mm",
+      "Poids": "0,39 kg (net)",
+      "Certifications": "CE, FCC",
+      "Interopérabilité": "ONVIF, SDK",
+      "Température de fonctionnement": "-10 °C à +55 °C"
+    },
+    "ar": {
+      "الشاشة": "TFT سعوية 7\"، 1024 × 600 بكسل",
+      "نظام التشغيل": "Linux مدمج",
+      "الاتصال": "Wi-Fi (802.11b/g/n) + 1 × RJ-45 LAN (PoE)",
+      "الصوت": "سماعة + ميكروفون مدمجان، ثنائي الاتجاه، إلغاء الصدى",
+      "ضغط الصوت": "G.711a / G.711u / PCM",
+      "مداخل الإنذار": "6 (سلكية)",
+      "مخارج الإنذار": "1",
+      "SOS": "نعم",
+      "وضع عدم الإزعاج": "نعم، فترات قابلة للتخصيص",
+      "الامتدادات": "فيلا: 9، شقة: 4، Wi-Fi: 1 رئيسية + 2 امتداد",
+      "التخزين": "Micro SD (حتى 64 جيجابايت)",
+      "الهيكل": "سبائك الألومنيوم، فضي",
+      "مصدر الطاقة": "12 فولت DC / 1 أمبير أو PoE (36–57 فولت)",
+      "استهلاك الطاقة": "استعداد ≤ 3 واط، عمل ≤ 7 واط",
+      "الأبعاد": "185 × 147 × 22.4 مم",
+      "الوزن": "0.39 كجم (صافي)",
+      "الشهادات": "CE، FCC",
+      "التوافقية": "ONVIF، SDK",
+      "درجة حرارة التشغيل": "-10 إلى +55 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor.png",
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-2.png",
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-3.png",
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-4.png",
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-5.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/VTH8621KMS-WP_datasheet_20230914.pdf"
+    },
+    {
+      "name": "User Manual (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Digital_VTH_(Version_4.8.1)_User_Manual_V1.0.1.pdf"
+    },
+    {
+      "name": "Quick Start Guide (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Video_Door_Phone_(Version_4.8.1)_(VTO_2c_VTS_2c_DSS_Agile_VDP_2c_DMSS_2c_DoLynk_Care_2c_and_DoLynk_Pro)_Quick_Start_Guide_V1.0.2.pdf"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://www.dahuasecurity.com/sa/products/All-Products/Video-Intercoms/IP-Series/Indoor-Monitor/Ultra-Series/VTH8621KMS-WP"
+    }
+  ]
+}

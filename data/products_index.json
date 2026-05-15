@@ -21,6 +21,49 @@
     "image": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png"
   },
   {
+    "id": "dahua-vth2621gb-gw-ip-indoor-monitor",
+    "brand": "Dahua",
+    "technology": [
+      "LAN"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Dahua VTH2621GB-P/GW-P 7\" IP Indoor Monitor",
+      "fr": "Moniteur Intérieur IP Dahua VTH2621GB-P/GW-P 7\"",
+      "ar": "شاشة داخلية IP من Dahua VTH2621GB-P/GW-P بحجم 7\""
+    },
+    "short_description": {
+      "en": "Lite-series 7\" touch indoor monitor with H.265, PoE and alarm integration.",
+      "fr": "Moniteur intérieur tactile 7\" série Lite avec H.265, PoE et alarme intégrée.",
+      "ar": "شاشة داخلية لمسية 7\" مع H.265 و PoE وإنذار متكامل."
+    },
+    "category": "",
+    "image": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png"
+  },
+  {
+    "id": "dahua-vth8621kms-wp-indoor-monitor",
+    "brand": "Dahua",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Dahua VTH8621KMS-WP IP & Wi-Fi Indoor Monitor",
+      "fr": "Moniteur Intérieur IP & Wi-Fi Dahua VTH8621KMS-WP",
+      "ar": "شاشة داخلية IP و Wi-Fi من Dahua VTH8621KMS-WP"
+    },
+    "short_description": {
+      "en": "Ultra-series 7\" touch indoor monitor with Wi-Fi, PoE and alarm integration.",
+      "fr": "Moniteur intérieur tactile 7\" série Ultra avec Wi-Fi, PoE et alarme intégrée.",
+      "ar": "شاشة داخلية لمسية 7\" بتقنية Wi-Fi و PoE وإنذار متكامل."
+    },
+    "category": "",
+    "image": "/assets/products/dahua-vth8621kms-wp-indoor-monitor.png"
+  },
+  {
     "id": "dahua-vto3311q-wp-villa-door-station",
     "brand": "Dahua",
     "technology": [

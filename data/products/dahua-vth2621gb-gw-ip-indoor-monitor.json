@@ -1,0 +1,113 @@
+{
+  "id": "dahua-vth2621gb-gw-ip-indoor-monitor",
+  "brand": "Dahua",
+  "technology": [
+    "LAN"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "title": {
+    "en": "Dahua VTH2621GB-P/GW-P 7\" IP Indoor Monitor",
+    "fr": "Moniteur Intérieur IP Dahua VTH2621GB-P/GW-P 7\"",
+    "ar": "شاشة داخلية IP من Dahua VTH2621GB-P/GW-P بحجم 7\""
+  },
+  "short_description": {
+    "en": "Lite-series 7\" touch indoor monitor with H.265, PoE and alarm integration.",
+    "fr": "Moniteur intérieur tactile 7\" série Lite avec H.265, PoE et alarme intégrée.",
+    "ar": "شاشة داخلية لمسية 7\" مع H.265 و PoE وإنذار متكامل."
+  },
+  "description": {
+    "en": "The Dahua VTH2621GB-P (black) and VTH2621GW-P (white) are Lite-series IP indoor monitors built for cost-effective video intercom systems. A 7-inch capacitive touch screen at 1024×600 resolution provides a clear interface for answering door station calls, monitoring IP cameras, and managing home security. The dual-core 1.2 GHz processor with 128 MB RAM and embedded Linux enables smooth H.265 and H.264 video decoding. Six wired alarm inputs and one alarm output integrate seamlessly with door sensors, smoke detectors, and emergency triggers, while customizable Do Not Disturb periods silence calls when needed. Standard PoE or 12V DC power simplifies wiring, and ONVIF/SDK compatibility ensures interoperability with third-party systems. The compact PC+ABS casing weighs just 0.34 kg and mounts easily on any interior wall, with support for up to 9 extensions in villa mode or 4 in apartment mode.",
+    "fr": "Les Dahua VTH2621GB-P (noir) et VTH2621GW-P (blanc) sont des moniteurs intérieurs IP série Lite conçus pour des systèmes d'interphone vidéo économiques. Un écran tactile capacitif 7 pouces en résolution 1024×600 offre une interface claire pour répondre aux appels de la station de porte, surveiller les caméras IP et gérer la sécurité domestique. Le processeur double cœur 1,2 GHz avec 128 Mo de RAM et Linux embarqué permet un décodage fluide H.265 et H.264. Six entrées d'alarme filaires et une sortie d'alarme s'intègrent parfaitement aux capteurs de porte, détecteurs de fumée et déclencheurs d'urgence, tandis que les périodes Ne Pas Déranger personnalisables coupent les appels au besoin. L'alimentation PoE standard ou 12V DC simplifie le câblage, et la compatibilité ONVIF/SDK assure l'interopérabilité avec les systèmes tiers. Le boîtier compact en PC+ABS ne pèse que 0,34 kg et se monte facilement sur tout mur intérieur, avec prise en charge jusqu'à 9 extensions en mode villa ou 4 en mode appartement.",
+    "ar": "شاشات Dahua VTH2621GB-P (أسود) و VTH2621GW-P (أبيض) هي شاشات داخلية IP من سلسلة Lite مصممة لأنظمة اتصال داخلي بالفيديو اقتصادية التكلفة. توفر شاشة لمس سعوية بحجم 7 بوصات ودقة 1024×600 واجهة واضحة للرد على مكالمات محطة الباب ومراقبة كاميرات IP وإدارة أمن المنزل. يتيح المعالج ثنائي النواة بسرعة 1.2 جيجاهرتز مع ذاكرة 128 ميجابايت ونظام Linux المدمج فك ترميز سلس للفيديو بتنسيق H.265 و H.264. تتكامل ستة مداخل إنذار سلكية ومخرج إنذار واحد بسلاسة مع حساسات الأبواب وكواشف الدخان ومشغلات الطوارئ، بينما تكتم فترات عدم الإزعاج القابلة للتخصيص المكالمات عند الحاجة. يبسط مصدر الطاقة PoE القياسي أو 12V DC التمديدات، ويضمن توافق ONVIF/SDK العمل المشترك مع أنظمة الطرف الثالث. يزن الهيكل المدمج المصنوع من PC+ABS 0.34 كجم فقط ويُركب بسهولة على أي جدار داخلي، مع دعم حتى 9 امتدادات في وضع الفيلا أو 4 في وضع الشقة."
+  },
+  "specs": {
+    "en": {
+      "Display": "7\" TFT capacitive touch, 1024 × 600 px",
+      "CPU": "Dual core 1.2 GHz, 128 MB RAM / 128 MB ROM",
+      "Operating System": "Embedded Linux",
+      "Video Decoding": "H.265, H.264",
+      "Audio": "Built-in speaker + microphone, two-way, echo suppression",
+      "Alarm Inputs": "6",
+      "Alarm Outputs": "1",
+      "DND Mode": "Yes, customizable periods",
+      "Extensions": "Villa: 9, Apartment: 4",
+      "Storage": "Micro SD (up to 64 GB)",
+      "Network": "1 × RJ-45 (10/100 Mbps)",
+      "Casing": "PC + ABS (Black or White)",
+      "Power Supply": "12 V DC / 1 A or PoE (36–57 V)",
+      "Power Consumption": "Standby ≤ 2 W, working ≤ 6 W",
+      "Dimensions": "189.6 × 134.6 × 26.0 mm",
+      "Weight": "0.34 kg (net)",
+      "Certifications": "CE, FCC",
+      "Interoperability": "ONVIF, SDK",
+      "Operating Temperature": "-10 °C to +55 °C"
+    },
+    "fr": {
+      "Écran": "TFT capacitif 7\", 1024 × 600 px",
+      "CPU": "Double cœur 1,2 GHz, 128 Mo RAM / 128 Mo ROM",
+      "Système d'exploitation": "Linux embarqué",
+      "Décodage vidéo": "H.265, H.264",
+      "Audio": "Haut-parleur + microphone intégrés, bidirectionnel, suppression d'écho",
+      "Entrées d'alarme": "6",
+      "Sorties d'alarme": "1",
+      "Mode NPD": "Oui, périodes personnalisables",
+      "Extensions": "Villa: 9, Appartement: 4",
+      "Stockage": "Micro SD (jusqu'à 64 Go)",
+      "Réseau": "1 × RJ-45 (10/100 Mbps)",
+      "Boîtier": "PC + ABS (Noir ou Blanc)",
+      "Alimentation": "12 V DC / 1 A ou PoE (36–57 V)",
+      "Consommation": "Veille ≤ 2 W, fonctionnement ≤ 6 W",
+      "Dimensions": "189,6 × 134,6 × 26,0 mm",
+      "Poids": "0,34 kg (net)",
+      "Certifications": "CE, FCC",
+      "Interopérabilité": "ONVIF, SDK",
+      "Température de fonctionnement": "-10 °C à +55 °C"
+    },
+    "ar": {
+      "الشاشة": "TFT سعوية 7\"، 1024 × 600 بكسل",
+      "المعالج": "ثنائي النواة 1.2 جيجاهرتز، 128 ميجابايت RAM / 128 ميجابايت ROM",
+      "نظام التشغيل": "Linux مدمج",
+      "فك ترميز الفيديو": "H.265، H.264",
+      "الصوت": "سماعة + ميكروفون مدمجان، ثنائي الاتجاه، إلغاء الصدى",
+      "مداخل الإنذار": "6",
+      "مخارج الإنذار": "1",
+      "وضع عدم الإزعاج": "نعم، فترات قابلة للتخصيص",
+      "الامتدادات": "فيلا: 9، شقة: 4",
+      "التخزين": "Micro SD (حتى 64 جيجابايت)",
+      "الشبكة": "1 × RJ-45 (10/100 Mbps)",
+      "الهيكل": "PC + ABS (أسود أو أبيض)",
+      "مصدر الطاقة": "12 فولت DC / 1 أمبير أو PoE (36–57 فولت)",
+      "استهلاك الطاقة": "استعداد ≤ 2 واط، عمل ≤ 6 واط",
+      "الأبعاد": "189.6 × 134.6 × 26.0 مم",
+      "الوزن": "0.34 كجم (صافي)",
+      "الشهادات": "CE، FCC",
+      "التوافقية": "ONVIF، SDK",
+      "درجة حرارة التشغيل": "-10 إلى +55 درجة مئوية"
+    }
+  },
+  "images": [
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png",
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-2.png",
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-3.png",
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-4.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/VTH2621G(W)-P_datasheet_20230228.pdf"
+    },
+    {
+      "name": "User Manual (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Digital_VTH_(Version_4.8.1)_User_Manual_V1.0.1.pdf"
+    },
+    {
+      "name": "Quick Start Guide (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Video_Door_Phone_(Version_4.8.1)_(VTO_2c_VTS_2c_DSS_Agile_VDP_2c_DMSS_2c_DoLynk_Care_2c_and_DoLynk_Pro)_Quick_Start_Guide_V1.0.2.pdf"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://www.dahuasecurity.com/sa/products/All-Products/Video-Intercoms/IP-Series/Indoor-Monitor/Lite-Series/VTH2621GB-P/VTH2621GW-P"
+    }
+  ]
+}
