@@ -1,0 +1,104 @@
+{
+  "id": "dahua-vto3311q-wp-villa-door-station",
+  "brand": "Dahua",
+  "technology": [
+    "Wi-Fi",
+    "LAN"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "title": {
+    "en": "Dahua VTO3311Q-WP IP & Wi-Fi Villa Door Station",
+    "fr": "Station de Porte Villa IP & Wi-Fi Dahua VTO3311Q-WP",
+    "ar": "محطة باب خارجية IP و Wi-Fi من Dahua طراز VTO3311Q-WP"
+  },
+  "short_description": {
+    "en": "Ultra-series IP & Wi-Fi villa door station with 2MP camera and two-way audio.",
+    "fr": "Station de porte villa IP & Wi-Fi série Ultra avec caméra 2MP et audio bidirectionnel.",
+    "ar": "محطة باب خارجية بتقنية IP و Wi-Fi مع كاميرا 2MP وصوت ثنائي الاتجاه."
+  },
+  "description": {
+    "en": "The Dahua VTO3311Q-WP is an Ultra-series IP & Wi-Fi villa door station built for premium residential entrances. Its 2MP wide-angle camera delivers crisp 1080p video with IR night vision up to 5 meters, ensuring clear visitor identification day or night. Dual connectivity options — Wi-Fi and wired LAN — simplify installation without sacrificing reliability. The built-in microphone and speaker enable hands-free two-way communication, while the IK07 vandal-resistant and IP65 weatherproof aluminum housing withstands harsh outdoor conditions. A backlit nameplate, integrated card reader for access control, and tamper alarm make this a complete, security-focused front-door solution. Compatible with Dahua indoor monitors and the DMSS mobile app for remote answering.",
+    "fr": "La Dahua VTO3311Q-WP est une station de porte villa IP & Wi-Fi de série Ultra conçue pour les entrées résidentielles haut de gamme. Sa caméra grand angle 2MP offre une vidéo 1080p nette avec vision nocturne IR jusqu'à 5 mètres, garantissant une identification claire des visiteurs de jour comme de nuit. La double connectivité — Wi-Fi et LAN filaire — simplifie l'installation sans compromettre la fiabilité. Le microphone et le haut-parleur intégrés permettent une communication bidirectionnelle mains libres, tandis que le boîtier en aluminium résistant au vandalisme IK07 et protégé contre les intempéries IP65 résiste aux conditions extérieures difficiles. Une plaque nominative rétroéclairée, un lecteur de carte intégré pour le contrôle d'accès et une alarme anti-sabotage en font une solution de porte d'entrée complète axée sur la sécurité. Compatible avec les moniteurs intérieurs Dahua et l'application mobile DMSS pour répondre à distance.",
+    "ar": "محطة باب فيلا Dahua VTO3311Q-WP من السلسلة الفائقة Ultra بتقنية IP و Wi-Fi، مصممة للمداخل السكنية الفاخرة. توفر كاميرتها واسعة الزاوية بدقة 2MP فيديو واضح 1080p مع رؤية ليلية بالأشعة تحت الحمراء حتى 5 أمتار، مما يضمن تحديد هوية الزائر بوضوح ليلاً ونهاراً. خيارات الاتصال المزدوجة — Wi-Fi وشبكة LAN السلكية — تبسط التركيب دون التضحية بالموثوقية. يتيح الميكروفون والسماعة المدمجان اتصالاً ثنائي الاتجاه بدون استخدام اليدين، بينما يتحمل الهيكل المصنوع من الألومنيوم المقاوم للتخريب IK07 والمقاوم للعوامل الجوية IP65 الظروف الخارجية القاسية. لوحة اسم مضيئة، قارئ بطاقات مدمج للتحكم في الدخول، وإنذار عبث تجعل من هذه المحطة حلاً أمنياً متكاملاً للباب الأمامي. متوافقة مع الشاشات الداخلية من Dahua وتطبيق DMSS للرد عن بُعد."
+  },
+  "specs": {
+    "en": {
+      "Camera": "2MP CMOS, 1080p full HD",
+      "Lens": "Wide-angle, fixed focal",
+      "Night Vision": "IR LED, up to 5 m",
+      "Connectivity": "Wi-Fi (2.4 GHz) + 1 × RJ-45 LAN",
+      "Audio": "Built-in microphone + speaker, two-way talk",
+      "Access Control": "Integrated card reader (Mifare)",
+      "Weather Rating": "IP65",
+      "Vandal Resistance": "IK07",
+      "Material": "Aluminum alloy casing",
+      "Nameplate": "Backlit",
+      "Tamper Alarm": "Yes",
+      "Power Supply": "PoE (802.3af) or DC 12 V",
+      "Dimensions": "142 × 55 × 30 mm",
+      "Operating Temperature": "-30 °C to +60 °C",
+      "App Support": "DMSS (iOS & Android)"
+    },
+    "fr": {
+      "Caméra": "CMOS 2MP, Full HD 1080p",
+      "Objectif": "Grand angle, focale fixe",
+      "Vision nocturne": "LED IR, jusqu'à 5 m",
+      "Connectivité": "Wi-Fi (2,4 GHz) + 1 × RJ-45 LAN",
+      "Audio": "Microphone + haut-parleur intégrés, conversation bidirectionnelle",
+      "Contrôle d'accès": "Lecteur de carte intégré (Mifare)",
+      "Indice de protection": "IP65",
+      "Résistance au vandalisme": "IK07",
+      "Matériau": "Boîtier en alliage d'aluminium",
+      "Plaque nominative": "Rétroéclairée",
+      "Alarme anti-sabotage": "Oui",
+      "Alimentation": "PoE (802.3af) ou DC 12 V",
+      "Dimensions": "142 × 55 × 30 mm",
+      "Température de fonctionnement": "-30 °C à +60 °C",
+      "Support applicatif": "DMSS (iOS & Android)"
+    },
+    "ar": {
+      "الكاميرا": "CMOS 2MP، Full HD 1080p",
+      "العدسة": "زاوية واسعة، بؤرة ثابتة",
+      "الرؤية الليلية": "LED بالأشعة تحت الحمراء، حتى 5 أمتار",
+      "الاتصال": "Wi-Fi (2.4 GHz) + 1 × RJ-45 LAN",
+      "الصوت": "ميكروفون + سماعة مدمجة، محادثة ثنائية الاتجاه",
+      "التحكم في الدخول": "قارئ بطاقات مدمج (Mifare)",
+      "مقاومة العوامل الجوية": "IP65",
+      "مقاومة التخريب": "IK07",
+      "الخامة": "هيكل من سبائك الألومنيوم",
+      "لوحة الاسم": "مضيئة خلفية",
+      "إنذار العبث": "نعم",
+      "مصدر الطاقة": "PoE (802.3af) أو DC 12 فولت",
+      "الأبعاد": "142 × 55 × 30 مم",
+      "درجة حرارة التشغيل": "-30 إلى +60 درجة مئوية",
+      "دعم التطبيق": "DMSS (iOS و Android)"
+    }
+  },
+  "images": [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station.png",
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-2.png",
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-3.png",
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-4.png",
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-5.png",
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-6.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/VTO3311Q-WP_datasheet_20211215.pdf"
+    },
+    {
+      "name": "User Manual (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010956/3480009/Villa_Door_Station_User_Manual_V1.0.3.pdf"
+    },
+    {
+      "name": "Quick Start Guide (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Video_Door_Phone_(Version_4.8.1)_(VTO_2c_VTS_2c_DSS_Agile_VDP_2c_DMSS_2c_DoLynk_Care_2c_and_DoLynk_Pro)_Quick_Start_Guide_V1.0.2.pdf"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://www.dahuasecurity.com/sa/products/All-Products/Video-Intercoms/IP-Series/Villa-Door-Station/Ultra-Series/VTO3311Q-WP"
+    }
+  ]
+}

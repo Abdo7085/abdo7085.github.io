@@ -1,0 +1,106 @@
+{
+  "id": "dahua-vth2421fb-fw-ip-indoor-monitor",
+  "brand": "Dahua",
+  "technology": [
+    "LAN"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "title": {
+    "en": "Dahua VTH2421FB-P/FW-P 7\" IP Indoor Monitor",
+    "fr": "Moniteur Intérieur IP Dahua VTH2421FB-P/FW-P 7\"",
+    "ar": "شاشة داخلية IP من Dahua طراز VTH2421FB-P/FW-P بحجم 7\""
+  },
+  "short_description": {
+    "en": "7-inch touch screen IP indoor monitor with two-way audio and alarm integration.",
+    "fr": "Moniteur intérieur IP à écran tactile 7 pouces avec audio bidirectionnel et alarme intégrée.",
+    "ar": "شاشة داخلية IP تعمل باللمس بحجم 7 بوصات مع صوت ثنائي الاتجاه ونظام إنذار متكامل."
+  },
+  "description": {
+    "en": "The Dahua VTH2421FB-P/VTH2421FW-P is a versatile 7-inch indoor monitor designed for IP video intercom systems. Its capacitive touch screen delivers crisp visuals at 1024×600 resolution, while the built-in microphone and 1.5W loudspeaker enable hands-free two-way communication with visitors at your door. The device supports live IPC surveillance, allowing you to monitor IP camera feeds directly from the screen. With 6 alarm inputs, 1 alarm output, and SOS support, it integrates seamlessly with residential security systems. An embedded 8 GB microSD card stores call logs, snapshots, and text messages. The monitor connects via standard PoE (RJ-45) for both power and data, supports up to 9 substation door stations, and can receive and display notifications pushed from the management center. Its slim PC+ABS casing mounts cleanly on any interior wall.",
+    "fr": "Le Dahua VTH2421FB-P/VTH2421FW-P est un moniteur intérieur polyvalent de 7 pouces conçu pour les systèmes d'interphone vidéo IP. Son écran tactile capacitif offre des visuels nets en résolution 1024×600, tandis que le microphone intégré et le haut-parleur de 1,5 W permettent une communication bidirectionnelle mains libres avec les visiteurs à votre porte. L'appareil prend en charge la surveillance IPC en direct, vous permettant de visualiser les flux de caméras IP directement depuis l'écran. Avec 6 entrées d'alarme, 1 sortie d'alarme et la prise en charge SOS, il s'intègre parfaitement aux systèmes de sécurité résidentiels. Une carte microSD intégrée de 8 Go stocke les journaux d'appels, les captures d'écran et les messages texte. Le moniteur se connecte via PoE standard (RJ-45) pour l'alimentation et les données, prend en charge jusqu'à 9 postes de porte, et peut recevoir et afficher les notifications envoyées par le centre de gestion. Son boîtier fin en PC+ABS se monte proprement sur tout mur intérieur.",
+    "ar": "شاشة Dahua VTH2421FB-P/VTH2421FW-P هي شاشة داخلية متعددة الاستخدامات بحجم 7 بوصات مصممة لأنظمة الاتصال الداخلي عبر IP. توفر شاشتها اللمسية السعوية صوراً واضحة بدقة 1024×600، بينما يتيح الميكروفون المدمج والسماعة بقوة 1.5 واط اتصالاً ثنائي الاتجاه بدون استخدام اليدين مع الزوار عند باب منزلك. يدعم الجهاز مراقبة كاميرات IP مباشرة من الشاشة. مع 6 مداخل إنذار ومخرج إنذار واحد ودعم SOS، يتكامل بسلاسة مع أنظمة الأمان السكنية. تخزن بطاقة microSD المدمجة بسعة 8 جيجابايت سجلات المكالمات واللقطات والرسائل النصية. تتصل الشاشة عبر PoE قياسي (RJ-45) للطاقة والبيانات معاً، وتدعم حتى 9 محطات باب فرعية، ويمكنها استقبال وعرض الإشعارات المرسلة من مركز الإدارة. يتم تركيب هيكلها النحيف المصنوع من PC+ABS بشكل أنيق على أي جدار داخلي."
+  },
+  "specs": {
+    "en": {
+      "Display": "7\" TFT capacitive touch screen, 1024 × 600 px",
+      "Processor": "High-performance embedded processor",
+      "Operating System": "Embedded Linux OS",
+      "Video Compression": "H.264",
+      "Audio": "Built-in microphone + 1.5 W loudspeaker, two-way talk",
+      "Audio Compression": "G.711A / G.711U / PCM",
+      "Alarm Inputs": "6 (switch quantity)",
+      "Alarm Outputs": "1",
+      "SOS Alarm": "Yes",
+      "Sub-station Capacity": "Up to 9 door stations",
+      "Network": "1 × RJ-45 (10/100 Mbps), PoE",
+      "Storage": "Embedded 8 GB Micro SD (up to 32 GB)",
+      "Casing": "PC+ABS",
+      "Power Supply": "Standard PoE or DC 12 V / 1 A",
+      "Power Consumption": "Standby ≤ 4 W, working ≤ 6 W",
+      "Dimensions": "119.6 × 221.5 × 21.5 mm (4.71\" × 8.72\" × 0.85\")",
+      "Weight": "0.35 kg",
+      "Operating Temperature": "-10 °C to +55 °C",
+      "Messages": "Leave video/voice messages, DND mode",
+      "Notifications": "Receive and display center-pushed information"
+    },
+    "fr": {
+      "Écran": "TFT capacitif 7\", 1024 × 600 px",
+      "Processeur": "Processeur embarqué haute performance",
+      "Système d'exploitation": "Linux embarqué",
+      "Compression vidéo": "H.264",
+      "Audio": "Microphone intégré + haut-parleur 1,5 W, communication bidirectionnelle",
+      "Compression audio": "G.711A / G.711U / PCM",
+      "Entrées d'alarme": "6 (contact sec)",
+      "Sorties d'alarme": "1",
+      "Alarme SOS": "Oui",
+      "Capacité postes": "Jusqu'à 9 postes de porte",
+      "Réseau": "1 × RJ-45 (10/100 Mbps), PoE",
+      "Stockage": "Micro SD 8 Go intégrée (jusqu'à 32 Go)",
+      "Boîtier": "PC+ABS",
+      "Alimentation": "PoE standard ou DC 12 V / 1 A",
+      "Consommation": "Veille ≤ 4 W, fonctionnement ≤ 6 W",
+      "Dimensions": "119,6 × 221,5 × 21,5 mm",
+      "Poids": "0,35 kg",
+      "Température de fonctionnement": "-10 °C à +55 °C",
+      "Messages": "Messages vidéo/vocaux, mode NPD",
+      "Notifications": "Réception et affichage des informations du centre"
+    },
+    "ar": {
+      "الشاشة": "شاشة TFT سعوية 7 بوصات، 1024 × 600 بكسل",
+      "المعالج": "معالج مدمج عالي الأداء",
+      "نظام التشغيل": "Linux مدمج",
+      "ضغط الفيديو": "H.264",
+      "الصوت": "ميكروفون مدمج + سماعة 1.5 واط، محادثة ثنائية الاتجاه",
+      "ضغط الصوت": "G.711A / G.711U / PCM",
+      "مداخل الإنذار": "6 (كمية تحويل)",
+      "مخارج الإنذار": "1",
+      "إنذار SOS": "نعم",
+      "سعة المحطات الفرعية": "حتى 9 محطات باب",
+      "الشبكة": "1 × RJ-45 (10/100 Mbps)، PoE",
+      "التخزين": "بطاقة Micro SD مدمجة 8 جيجابايت (حتى 32 جيجابايت)",
+      "الهيكل": "PC+ABS",
+      "مصدر الطاقة": "PoE قياسي أو DC 12 فولت / 1 أمبير",
+      "استهلاك الطاقة": "وضع الاستعداد ≤ 4 واط، العمل ≤ 6 واط",
+      "الأبعاد": "119.6 × 221.5 × 21.5 مم",
+      "الوزن": "0.35 كجم",
+      "درجة حرارة التشغيل": "-10 إلى +55 درجة مئوية",
+      "الرسائل": "رسائل فيديو/صوتية، وضع عدم الإزعاج",
+      "الإشعارات": "استقبال وعرض المعلومات المرسلة من المركز"
+    }
+  },
+  "images": [
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png",
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-2.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/VTH2421FB(W)-P_S0_datasheet_20230614.pdf"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://www.dahuasecurity.com/sa/products/All-Products/Video-Intercoms/IP-Series/Indoor-Monitor/Pro-Series/VTH2421FB-P/VTH2421FW-P"
+    }
+  ]
+}

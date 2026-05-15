@@ -1,5 +1,69 @@
 [
   {
+    "id": "dahua-vth2421fb-fw-ip-indoor-monitor",
+    "brand": "Dahua",
+    "technology": [
+      "LAN"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Dahua VTH2421FB-P/FW-P 7\" IP Indoor Monitor",
+      "fr": "Moniteur Intérieur IP Dahua VTH2421FB-P/FW-P 7\"",
+      "ar": "شاشة داخلية IP من Dahua طراز VTH2421FB-P/FW-P بحجم 7\""
+    },
+    "short_description": {
+      "en": "7-inch touch screen IP indoor monitor with two-way audio and alarm integration.",
+      "fr": "Moniteur intérieur IP à écran tactile 7 pouces avec audio bidirectionnel et alarme intégrée.",
+      "ar": "شاشة داخلية IP تعمل باللمس بحجم 7 بوصات مع صوت ثنائي الاتجاه ونظام إنذار متكامل."
+    },
+    "category": "",
+    "image": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png"
+  },
+  {
+    "id": "dahua-vto3311q-wp-villa-door-station",
+    "brand": "Dahua",
+    "technology": [
+      "Wi-Fi",
+      "LAN"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Dahua VTO3311Q-WP IP & Wi-Fi Villa Door Station",
+      "fr": "Station de Porte Villa IP & Wi-Fi Dahua VTO3311Q-WP",
+      "ar": "محطة باب خارجية IP و Wi-Fi من Dahua طراز VTO3311Q-WP"
+    },
+    "short_description": {
+      "en": "Ultra-series IP & Wi-Fi villa door station with 2MP camera and two-way audio.",
+      "fr": "Station de porte villa IP & Wi-Fi série Ultra avec caméra 2MP et audio bidirectionnel.",
+      "ar": "محطة باب خارجية بتقنية IP و Wi-Fi مع كاميرا 2MP وصوت ثنائي الاتجاه."
+    },
+    "category": "",
+    "image": "/assets/products/dahua-vto3311q-wp-villa-door-station.png"
+  },
+  {
+    "id": "dahua-vto6541h-s2-apartment-door-station",
+    "brand": "Dahua",
+    "technology": [
+      "LAN"
+    ],
+    "product_type": "Touch Panel",
+    "installation": "Wall mount",
+    "title": {
+      "en": "Dahua VTO6541H-S2 IP Face Recognition Apartment Door Station",
+      "fr": "Station de Porte IP à Reconnaissance Faciale Dahua VTO6541H-S2",
+      "ar": "محطة باب خارجية IP بتقنية التعرف على الوجه من Dahua VTO6541H-S2"
+    },
+    "short_description": {
+      "en": "IP apartment door station with face, fingerprint, card and password access.",
+      "fr": "Station de porte IP avec accès par visage, empreinte, carte et code.",
+      "ar": "محطة باب خارجية IP مع دخول بالوجه والبصمة والبطاقة وكلمة المرور."
+    },
+    "category": "",
+    "image": "/assets/products/dahua-vto6541h-s2-apartment-door-station.png"
+  },
+  {
     "id": "eae-knx-ipi200-ip-interface",
     "brand": "EAE Technology",
     "technology": [

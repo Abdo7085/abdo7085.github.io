@@ -1,0 +1,120 @@
+{
+  "id": "dahua-vto6541h-s2-apartment-door-station",
+  "brand": "Dahua",
+  "technology": [
+    "LAN"
+  ],
+  "product_type": "Touch Panel",
+  "installation": "Wall mount",
+  "title": {
+    "en": "Dahua VTO6541H-S2 IP Face Recognition Apartment Door Station",
+    "fr": "Station de Porte IP à Reconnaissance Faciale Dahua VTO6541H-S2",
+    "ar": "محطة باب خارجية IP بتقنية التعرف على الوجه من Dahua VTO6541H-S2"
+  },
+  "short_description": {
+    "en": "IP apartment door station with face, fingerprint, card and password access.",
+    "fr": "Station de porte IP avec accès par visage, empreinte, carte et code.",
+    "ar": "محطة باب خارجية IP مع دخول بالوجه والبصمة والبطاقة وكلمة المرور."
+  },
+  "description": {
+    "en": "The Dahua VTO6541H-S2 is a Lite-series IP face recognition apartment door station that combines four access methods — face, fingerprint, IC card, and password — in one sleek panel. Its 2MP HD dual-lens camera with white light illuminators delivers clear identification day and night, while the 4.3-inch LCD screen provides visual feedback to visitors. The AI engine stores up to 20,000 face templates, 20,000 cards, and 10,000 fingerprints, matching faces with 99.9% accuracy in just 0.2 seconds at distances from 0.3 m to 2.0 m. Liveness detection blocks photo and video spoof attempts, and the device supports duress, tamper, and door-detection alarms for enhanced security. Built-in two-way audio allows visitors to communicate with residents, and unanswered calls can leave video messages when paired with a Dahua indoor monitor. With RS-485 and Wiegand ports, 2 alarm inputs, 2 alarm outputs, and a 12V power output for extension modules, this door station integrates easily into any access control system. The IP65-rated PC+ABS housing withstands harsh weather, and both PoE and 12V DC power options simplify installation.",
+    "fr": "La Dahua VTO6541H-S2 est une station de porte IP à reconnaissance faciale de série Lite qui combine quatre méthodes d'accès — visage, empreinte digitale, carte IC et mot de passe — dans un panneau élégant. Sa caméra HD double objectif 2MP avec illuminateurs à lumière blanche offre une identification claire de jour comme de nuit, tandis que l'écran LCD 4,3 pouces fournit un retour visuel aux visiteurs. Le moteur IA stocke jusqu'à 20 000 gabarits faciaux, 20 000 cartes et 10 000 empreintes digitales, avec une précision de 99,9 % en seulement 0,2 seconde à des distances de 0,3 m à 2,0 m. La détection de vivacité bloque les tentatives d'usurpation par photo et vidéo, et l'appareil prend en charge les alarmes de contrainte, sabotage et détection de porte pour une sécurité renforcée. L'audio bidirectionnel intégré permet aux visiteurs de communiquer avec les résidents, et les appels sans réponse peuvent laisser des messages vidéo lorsqu'ils sont associés à un moniteur intérieur Dahua. Avec des ports RS-485 et Wiegand, 2 entrées d'alarme, 2 sorties d'alarme et une sortie d'alimentation 12V pour modules d'extension, cette station s'intègre facilement dans tout système de contrôle d'accès. Le boîtier PC+ABS classé IP65 résiste aux intempéries, et les options d'alimentation PoE et 12V DC simplifient l'installation.",
+    "ar": "محطة باب Dahua VTO6541H-S2 من سلسلة Lite بتقنية IP والتعرف على الوجه، تجمع أربع طرق للدخول — الوجه والبصمة والبطاقة وكلمة المرور — في لوحة أنيقة واحدة. توفر كاميرتها المزدوجة العدسة بدقة 2MP HD مع إضاءة الضوء الأبيض تعريفاً واضحاً ليلاً ونهاراً، بينما تقدم شاشة LCD بحجم 4.3 بوصة تغذية بصرية للزوار. يخزن محرك الذكاء الاصطناعي حتى 20,000 قالب وجه و20,000 بطاقة و10,000 بصمة إصبع، مع دقة 99.9% في 0.2 ثانية فقط على مسافات من 0.3 م إلى 2.0 م. يمنع كشف الحيوية محاولات الاحتيال بالصور والفيديو، ويدعم الجهاز إنذارات الإكراه والعبث وكشف الباب لتعزيز الأمان. يتيح الصوت المدمج ثنائي الاتجاه للزوار التواصل مع السكان، ويمكن للمكالمات غير المجابة ترك رسائل فيديو عند الاقتران بشاشة Dahua الداخلية. مع منافذ RS-485 وWiegand ومدخلي إنذار ومخرجي إنذار ومخرج طاقة 12V للوحدات الإضافية، تتكامل هذه المحطة بسهولة مع أي نظام تحكم في الدخول. يتحمل الهيكل المصنوع من PC+ABS والمعتمد IP65 الظروف الجوية القاسية، وخيارات الطاقة PoE و12V DC تبسط التركيب."
+  },
+  "specs": {
+    "en": {
+      "Display": "4.3\" LCD, 800 × 480 px",
+      "Camera": "2MP HD dual-lens CMOS, white light illuminators",
+      "Field of View": "H: 95°, V: 50°, D: 110°",
+      "WDR": "120 dB",
+      "Face Recognition": "AI engine, 20,000 faces, 99.9% accuracy, 0.2 s",
+      "Face Distance": "0.3 m – 2.0 m",
+      "Fingerprint": "Capacitive sensor, 10,000 prints",
+      "Card Capacity": "20,000 (IC/Mifare)",
+      "Access Methods": "Face, fingerprint, card, password, QR code, remote",
+      "Liveness Detection": "Yes (blocks photo/video spoof)",
+      "Audio": "Built-in mic + speaker, two-way, echo suppression",
+      "Alarms": "Duress, tamper, emergency, door detector",
+      "Ports": "RS-485, Wiegand, 2 alarm in, 2 alarm out, 12V output",
+      "Network": "1 × RJ-45 (10/100 Mbps)",
+      "Power Supply": "PoE (802.3af/at) or 12 V DC / 2 A",
+      "Power Consumption": "≤ 5 W (standby), ≤ 18 W (working)",
+      "Weather Rating": "IP65",
+      "Casing": "PC + ABS, silver",
+      "Dimensions": "389 × 145 × 43 mm",
+      "Weight": "1.50 kg",
+      "Operating Temperature": "-30 °C to +60 °C",
+      "Installation": "Flush mount or wall mount"
+    },
+    "fr": {
+      "Écran": "LCD 4,3\", 800 × 480 px",
+      "Caméra": "CMOS HD double objectif 2MP, illuminateurs lumière blanche",
+      "Champ de vision": "H: 95°, V: 50°, D: 110°",
+      "WDR": "120 dB",
+      "Reconnaissance faciale": "Moteur IA, 20 000 visages, précision 99,9 %, 0,2 s",
+      "Distance faciale": "0,3 m – 2,0 m",
+      "Empreinte digitale": "Capteur capacitif, 10 000 empreintes",
+      "Capacité cartes": "20 000 (IC/Mifare)",
+      "Méthodes d'accès": "Visage, empreinte, carte, code, QR code, à distance",
+      "Détection de vivacité": "Oui (bloque photo/vidéo)",
+      "Audio": "Micro + haut-parleur intégrés, bidirectionnel, suppression d'écho",
+      "Alarmes": "Contrainte, sabotage, urgence, détecteur de porte",
+      "Ports": "RS-485, Wiegand, 2 entrées alarme, 2 sorties alarme, sortie 12V",
+      "Réseau": "1 × RJ-45 (10/100 Mbps)",
+      "Alimentation": "PoE (802.3af/at) ou 12 V DC / 2 A",
+      "Consommation": "≤ 5 W (veille), ≤ 18 W (fonctionnement)",
+      "Indice de protection": "IP65",
+      "Boîtier": "PC + ABS, argent",
+      "Dimensions": "389 × 145 × 43 mm",
+      "Poids": "1,50 kg",
+      "Température de fonctionnement": "-30 °C à +60 °C",
+      "Installation": "Encastré ou montage mural"
+    },
+    "ar": {
+      "الشاشة": "LCD 4.3 بوصة، 800 × 480 بكسل",
+      "الكاميرا": "CMOS مزدوجة العدسة 2MP HD، إضاءة بيضاء",
+      "مجال الرؤية": "أفقي: 95°، عمودي: 50°، قطري: 110°",
+      "WDR": "120 dB",
+      "التعرف على الوجه": "محرك ذكاء اصطناعي، 20,000 وجه، دقة 99.9%، 0.2 ثانية",
+      "مسافة التعرف على الوجه": "0.3 م – 2.0 م",
+      "البصمة": "مستشعر سعوي، 10,000 بصمة",
+      "سعة البطاقات": "20,000 (IC/Mifare)",
+      "طرق الدخول": "وجه، بصمة، بطاقة، كلمة مرور، QR code، عن بُعد",
+      "كشف الحيوية": "نعم (يمنع الاحتيال بالصور/الفيديو)",
+      "الصوت": "ميكروفون + سماعة مدمجة، ثنائي الاتجاه، إلغاء الصدى",
+      "الإنذارات": "إكراه، عبث، طوارئ، كشف الباب",
+      "المنافذ": "RS-485، Wiegand، 2 مدخل إنذار، 2 مخرج إنذار، مخرج 12V",
+      "الشبكة": "1 × RJ-45 (10/100 Mbps)",
+      "مصدر الطاقة": "PoE (802.3af/at) أو 12 فولت DC / 2 أمبير",
+      "استهلاك الطاقة": "≤ 5 واط (استعداد)، ≤ 18 واط (عمل)",
+      "مقاومة العوامل الجوية": "IP65",
+      "الهيكل": "PC + ABS، فضي",
+      "الأبعاد": "389 × 145 × 43 مم",
+      "الوزن": "1.50 كجم",
+      "درجة حرارة التشغيل": "-30 إلى +60 درجة مئوية",
+      "التركيب": "مدمج في الحائط أو تثبيت حائطي"
+    }
+  },
+  "images": [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station.png",
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-2.png"
+  ],
+  "files": [
+    {
+      "name": "Datasheet (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/VTO6541H-S2_datasheet_20241126.pdf"
+    },
+    {
+      "name": "User Manual (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010953/202506/Unit_VTO_(Version_4.8.1)_User_Manual_V1.0.1.pdf"
+    },
+    {
+      "name": "Quick Start Guide (PDF)",
+      "url": "https://materialfile.dahuasecurity.com/uploads/cpq/85431/user_manual/Video_Door_Phone_(Version_4.8.1)_(VTO_2c_VTS_2c_DSS_Agile_VDP_2c_DMSS_2c_DoLynk_Care_2c_and_DoLynk_Pro)_Quick_Start_Guide_V1.0.2.pdf"
+    },
+    {
+      "name": "Product Page",
+      "url": "https://www.dahuasecurity.com/sa/products/All-Products/Video-Intercoms/IP-Series/Apartment-Door-Station/Lite-Series/VTO6541H-S2"
+    }
+  ]
+}
