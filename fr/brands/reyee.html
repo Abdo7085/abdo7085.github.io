@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Reyee est la gamme résidentielle et petites entreprises de Ruijie Networks, conçue pour amener du mesh Wi-Fi de qualité opérateur et du switching managé dans…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/brands/reyee.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/brands/reyee.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/brands/reyee.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/reyee.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/fr/brands/reyee.html" id="meta-canonical" />
+    <meta property="og:title" content="Reyee | S‑ELECTRICITY Maroc" id="meta-og-title" />
+    <meta property="og:description" content="Reyee est la gamme résidentielle et petites entreprises de Ruijie Networks, conçue pour amener du mesh Wi-Fi de qualité opérateur et du switching managé dans…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/fr/brands/reyee.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reyee | S‑ELECTRICITY Maroc" id="meta-twitter-title" />
+    <meta name="twitter:description" content="Reyee est la gamme résidentielle et petites entreprises de Ruijie Networks, conçue pour amener du mesh Wi-Fi de qualité opérateur et du switching managé dans…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Reyee | S‑ELECTRICITY Maroc</title>
+
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/brands.css">
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+    <script defer src="/assets/brands-list.js"></script>
+    <script defer src="/assets/brand-detail.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="brand-jsonld">{"@context": "https://schema.org", "@type": "Brand", "name": "Reyee", "description": "Reyee est la gamme résidentielle et petites entreprises de Ruijie Networks, conçue pour amener du mesh Wi-Fi de qualité opérateur et du switching managé dans les maisons et bureaux sans le tarif entreprise. La gamme associe des points d'accès Wi-Fi 6 haut débit (RAP2200, RAP62) à des passerelles managées (EG105GW-T, EG105GW-X) et des switches PoE (ES220GS-LP), tous gérés centralement via Reyee Cloud ou le contrôleur local Ruijie Cloud. Le matériel se positionne précisément là où la plupart des marques grand public s'effondrent — grandes villas marocaines aux murs épais en béton, appartements multi-étages, espaces commerciaux et petits bureaux qui ont besoin de 20+ appareils simultanés sans que le réseau s'étouffe. Le roaming entre points d'accès est transparent (mêmes standards 802.11k/v/r que les grands fournisseurs entreprise), les VLAN sont des citoyens de première classe, et le dashboard cloud permet aux installateurs de gérer des dizaines de sites à distance depuis un seul écran. Pour tout projet où le routeur fourni par l'opérateur ne couvre pas le bâtiment, Reyee est le chemin de mise à niveau qui livre du networking professionnel à un prix qui reste sensé pour une seule maison.", "url": "https://smartelectricity.ma/fr/brands/reyee.html", "sameAs": ["https://www.ireyee.com"]}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Marques", "item": "https://smartelectricity.ma/fr/brands.html"}, {"@type": "ListItem", "position": 3, "name": "Reyee", "item": "https://smartelectricity.ma/fr/brands/reyee.html"}]}</script>
+  <script type="application/ld+json" id="brand-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Reyee products", "numberOfItems": 6, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/products/reyee-ew1300g.html", "name": "Reyee RG-EW1300G"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/fr/products/rg-eg105gw-t.html", "name": "Reyee RG-EG105GW(T)"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/fr/products/rg-eg105gw-x.html", "name": "Reyee RG-EG105GW-X"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/fr/products/rg-es220gs-lp.html", "name": "Reyee RG-ES220GS-LP"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/fr/products/rg-rap2200f.html", "name": "Reyee RG-RAP2200(F)"}, {"@type": "ListItem", "position": 6, "url": "https://smartelectricity.ma/fr/products/rg-rap62.html", "name": "Reyee RG-RAP62"}]}</script>
+  <script id="brand-preload">window.__BRAND__ = {"id": "reyee", "brand": "Reyee", "country_of_origin": "China", "founded": 2019, "website": "https://www.ireyee.com", "logo": null, "tagline": {"en": "Enterprise-grade Wi-Fi and managed networking, priced for residential and SMB projects.", "fr": "Wi-Fi de niveau entreprise et réseau managé, à des prix adaptés aux projets résidentiels et PME.", "ar": "Wi-Fi بجودة المؤسسات وشبكات مُدارة، بأسعار تناسب المشاريع السكنية والشركات الصغيرة."}, "description": {"en": "Reyee is Ruijie Networks' residential and small-business line, designed to bring carrier-grade mesh Wi-Fi and managed switching into homes and offices without the enterprise price tag. The lineup pairs high-throughput Wi-Fi 6 access points (RAP2200, RAP62) with managed gateways (EG105GW-T, EG105GW-X) and PoE switches (ES220GS-LP), all managed centrally through Reyee Cloud or the local Ruijie Cloud controller. The hardware sits in the sweet spot where most consumer brands fall apart — large Moroccan villas with thick concrete walls, multi-floor apartments, retail spaces, and small offices that need 20+ simultaneous devices without the network choking. Roaming between access points is seamless (the same standard 802.11k/v/r the big enterprise vendors use), VLANs are first-class citizens, and the cloud dashboard lets installers manage dozens of sites remotely from one screen. For any project where the existing ISP router can't cover the building, Reyee is the upgrade path that delivers professional networking at a price that still makes sense for a single home.", "fr": "Reyee est la gamme résidentielle et petites entreprises de Ruijie Networks, conçue pour amener du mesh Wi-Fi de qualité opérateur et du switching managé dans les maisons et bureaux sans le tarif entreprise. La gamme associe des points d'accès Wi-Fi 6 haut débit (RAP2200, RAP62) à des passerelles managées (EG105GW-T, EG105GW-X) et des switches PoE (ES220GS-LP), tous gérés centralement via Reyee Cloud ou le contrôleur local Ruijie Cloud. Le matériel se positionne précisément là où la plupart des marques grand public s'effondrent — grandes villas marocaines aux murs épais en béton, appartements multi-étages, espaces commerciaux et petits bureaux qui ont besoin de 20+ appareils simultanés sans que le réseau s'étouffe. Le roaming entre points d'accès est transparent (mêmes standards 802.11k/v/r que les grands fournisseurs entreprise), les VLAN sont des citoyens de première classe, et le dashboard cloud permet aux installateurs de gérer des dizaines de sites à distance depuis un seul écran. Pour tout projet où le routeur fourni par l'opérateur ne couvre pas le bâtiment, Reyee est le chemin de mise à niveau qui livre du networking professionnel à un prix qui reste sensé pour une seule maison.", "ar": "Reyee هي السلسلة السكنية وللشركات الصغيرة من Ruijie Networks، مصمَّمة لتقدّم mesh Wi-Fi بجودة المشغّلين وswitching مُداراً للمنازل والمكاتب من دون سعر منتجات المؤسسات. تجمع التشكيلة بين Wi-Fi 6 access points عالية الأداء (RAP2200 وRAP62) وgateways مُدارة (EG105GW-T وEG105GW-X) وPoE switches (ES220GS-LP)، كلها مُدارة مركزياً عبر Reyee Cloud أو الـ controller المحلي Ruijie Cloud. العتاد يستهدف بدقّة المنطقة التي تنهار فيها معظم العلامات الاستهلاكية — الفيلات المغربية الواسعة ذات الجدران الخرسانية السميكة، الشقق متعددة الطوابق، الفضاءات التجارية، والمكاتب الصغيرة التي تحتاج 20 جهازاً أو أكثر بشكل متزامن دون أن تختنق الشبكة. التجوال بين access points سلس (نفس معايير 802.11k/v/r التي تستعملها كبرى علامات المؤسسات)، VLANs مدعومة بشكل أصيل، وdashboard الـ cloud يتيح للمركّبين إدارة عشرات المواقع عن بُعد من شاشة واحدة. لأي مشروع لا يغطّي فيه راوتر مزوّد الإنترنت الحالي المبنى، Reyee هي مسار الترقية الذي يقدّم networking احترافياً بسعر يبقى منطقياً لمنزل واحد."}, "products": [{"id": "reyee-ew1300g", "brand": "Reyee", "technology": ["Wi-Fi", "LAN"], "product_type": "Network", "installation": "Free standing", "title": {"en": "Reyee RG-EW1300G", "fr": "Reyee RG-EW1300G", "ar": "ريي RG-EW1300G"}, "short_description": {"en": "Dual-band Gigabit mesh router for homes.", "fr": "Routeur mesh Gigabit double bande pour la maison.", "ar": "راوتر mesh ثنائي النطاق للمنازل."}, "category": "", "image": "/assets/products/reyee-ew1300g.png"}, {"id": "rg-eg105gw-t", "brand": "Reyee", "technology": ["Wi-Fi", "LAN"], "product_type": "Network", "installation": "Free standing", "title": {"en": "Reyee RG-EG105GW(T)", "fr": "Reyee RG-EG105GW(T)", "ar": "ريي RG-EG105GW(T)"}, "short_description": {"en": "Wi-Fi 5 all-in-one business wireless router.", "fr": "Routeur professionnel tout-en-un Wi-Fi 5.", "ar": "راوتر أعمال متكامل Wi-Fi 5."}, "category": "", "image": "/assets/products/rg-eg105gw-t.png"}, {"id": "rg-eg105gw-x", "brand": "Reyee", "technology": ["Wi-Fi", "LAN"], "product_type": "Network", "installation": "Free standing", "title": {"en": "Reyee RG-EG105GW-X", "fr": "Reyee RG-EG105GW-X", "ar": "ريي RG-EG105GW-X"}, "short_description": {"en": "Wi-Fi 6 all-in-one business VPN router.", "fr": "Routeur VPN professionnel tout-en-un Wi-Fi 6.", "ar": "راوتر أعمال متكامل Wi-Fi 6 مع VPN."}, "category": "", "image": "/assets/products/rg-eg105gw-x.png"}, {"id": "rg-es220gs-lp", "brand": "Reyee", "technology": ["LAN"], "product_type": "Network", "installation": "Free standing", "title": {"en": "Reyee RG-ES220GS-LP", "fr": "Reyee RG-ES220GS-LP", "ar": "ريي RG-ES220GS-LP"}, "short_description": {"en": "20-port Gigabit PoE+ smart CCTV switch.", "fr": "Switch PoE+ Gigabit 20 ports pour vidéosurveillance.", "ar": "سويتش PoE+ ذكي 20 منفذ للمراقبة بالفيديو."}, "category": "", "image": "/assets/products/rg-es220gs-lp.png"}, {"id": "rg-rap2200f", "brand": "Reyee", "technology": ["Wi-Fi", "LAN"], "product_type": "Network", "installation": "Ceiling mounting", "title": {"en": "Reyee RG-RAP2200(F)", "fr": "Reyee RG-RAP2200(F)", "ar": "ريي RG-RAP2200(F)"}, "short_description": {"en": "Wi-Fi 5 dual-band ceiling access point.", "fr": "Point d'accès plafond Wi-Fi 5 bi-bande.", "ar": "نقطة وصول سقفية Wi-Fi 5 ثنائية النطاق."}, "category": "", "image": "/assets/products/rg-rap2200f.png"}, {"id": "rg-rap62", "brand": "Reyee", "technology": ["Wi-Fi", "LAN"], "product_type": "Network", "installation": "Ceiling mounting", "title": {"en": "Reyee RG-RAP62", "fr": "Reyee RG-RAP62", "ar": "ريي RG-RAP62"}, "short_description": {"en": "Wi-Fi 6 dual-band ceiling access point.", "fr": "Point d'accès plafond Wi-Fi 6 bi-bande.", "ar": "نقطة وصول سقفية Wi-Fi 6 ثنائية النطاق."}, "category": "", "image": "/assets/products/rg-rap62.png"}]};</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>Reyee</h1>
+      <p>Wi-Fi de niveau entreprise et réseau managé, à des prix adaptés aux projets résidentiels et PME.</p>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

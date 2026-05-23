@@ -285,5 +285,27 @@
   "cart_aria_decrease": "Diminuer la quantité",
   "cart_aria_add_btn": "Ajouter au devis",
   "cart_pd_add_btn": "Ajouter au devis",
-  "cart_pd_hint": "Demandez un devis gratuit — réponse en quelques heures via WhatsApp"
+  "cart_pd_hint": "Demandez un devis gratuit — réponse en quelques heures via WhatsApp",
+
+  "page_title_brands": "Marques installées | S‑ELECTRICITY Maroc",
+  "meta_description_brands": "Découvrez les marques de domotique et d'électricité que nous installons au Maroc — KNX (EAE Technology, Zennio), Shelly Wi-Fi, Reyee réseaux, Dahua vidéosurveillance, SONOFF Zigbee, Tuya.",
+  "page_title_brand": "Détails de la marque | S‑ELECTRICITY Maroc",
+  "nav_brands": "Marques",
+  "brands_hero_title": "Marques que nous installons",
+  "brands_hero_subtitle": "Des fabricants soigneusement sélectionnés, en qui nous avons confiance pour les maisons et entreprises marocaines.",
+  "noscript_h1_brands": "Marques de domotique | S‑ELECTRICITY Maroc",
+  "noscript_text_brands": "Parcourez les marques que nous installons — KNX, Wi-Fi, vidéosurveillance, réseaux.",
+  "brands_empty": "Aucune marque disponible pour le moment.",
+  "brand_about": "À propos",
+  "brand_tech_focus": "Technologies",
+  "brand_category_focus": "Spécialisation",
+  "brand_products_title": "Produits",
+  "brand_view_products": "Voir tous les produits",
+  "brand_view_in_catalog": "Voir dans le catalogue",
+  "brand_visit_website": "Visiter le site",
+  "brand_products_count": "{count} produits dans notre catalogue",
+  "brand_founded": "Fondée en {year}",
+  "brand_no_products": "Aucun produit de cette marque pour le moment.",
+  "brand_not_found": "Marque introuvable",
+  "brand_not_found_desc": "La marque que vous recherchez n'existe pas ou a été supprimée."
 }

@@ -212,22 +212,24 @@ def _sitemap_url_block(loc: str, lastmod: str, suffix: str) -> str:
 
 def write_sitemap() -> None:
     """Write the authoritative sitemap.xml covering: static root pages,
-    every product, every project.
+    every product, every project, every brand.
 
     Idempotent and order-independent: reads everything from disk, so it
-    doesn't matter which of build_products / build_projects / generate_localized
-    ran last. Callers can invoke this from any script without fearing that a
-    later script will overwrite and drop entries.
+    doesn't matter which of build_products / build_projects / build_brands /
+    generate_localized ran last. Callers can invoke this from any script
+    without fearing that a later script will overwrite and drop entries.
 
     URL ordering (preserved from the legacy pipeline so golden-diffs stay clean):
-      1. Static pages (index, previous-work, products) × (en, fr, ar)
+      1. Static pages (index, previous-work, products, brands) × (en, fr, ar)
       2. Products, sorted by id (ascending) × (en, fr, ar)
       3. Projects, in the order stored in data/projects_index.json × (en, fr, ar)
+      4. Brands, in the order stored in data/brands_index.json × (en, fr, ar)
 
     lastmod policy:
       - static pages: today()
       - products: today()
       - projects: entry["date"] if set, else today()
+      - brands: today()
     """
     td = today()
     urls: list = []
@@ -282,6 +284,22 @@ def write_sitemap() -> None:
                 prefix = "" if lang == "en" else f"/{lang}"
                 loc = f"{HOST}{prefix}/projects/{pid}.html"
                 urls.append(_sitemap_url_block(loc, lastmod, f"projects/{pid}.html"))
+
+    # 4. Brands (order preserved from brands_index.json — product_count desc).
+    brands_index_path = ROOT / "data" / "brands_index.json"
+    if brands_index_path.exists():
+        try:
+            entries = json.loads(brands_index_path.read_text(encoding="utf-8"))
+        except Exception:
+            entries = []
+        for entry in entries:
+            bid = entry.get("id")
+            if not bid:
+                continue
+            for lang in LANGS:
+                prefix = "" if lang == "en" else f"/{lang}"
+                loc = f"{HOST}{prefix}/brands/{bid}.html"
+                urls.append(_sitemap_url_block(loc, td, f"brands/{bid}.html"))
 
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'

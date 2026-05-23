@@ -226,6 +226,9 @@
   }
 
   function applyTranslations(dict){
+    // Expose the active dict so renderers (brand-detail.js etc.) can interpolate
+    // templates with placeholders like {count}/{year} that data-i18n alone can't handle.
+    try { window.__site_i18n_dict = dict; } catch(_) {}
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n');
       if(key && dict[key]) el.textContent = dict[key];
@@ -376,7 +379,7 @@
         // translated via the multilingual JSON data and the t() helper.
         var el = node.parentElement;
         while(el) {
-          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper' || el.id === 'fs-modal-root' || el.id === 'cart-modal-root' || (el.hasAttribute && el.hasAttribute('data-cart-badge'))) {
+          if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper' || el.id === 'custom-brands-root-wrapper' || el.id === 'custom-brand-detail-wrapper' || el.id === 'fs-modal-root' || el.id === 'cart-modal-root' || (el.hasAttribute && el.hasAttribute('data-cart-badge'))) {
             return NodeFilter.FILTER_REJECT;
           }
           el = el.parentElement;

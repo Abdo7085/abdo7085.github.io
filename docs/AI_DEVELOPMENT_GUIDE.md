@@ -23,16 +23,23 @@
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
   - `find-solution.js` + `find-solution.css`: ويزارد "Find Your Solution" المنبثق متعدّد الخطوات الذي يساعد العميل على تحديد حاجته ويولّد رسالة واتساب جاهزة بلغته. يُفعَّل عبر `data-trigger="find-solution"` على أي عنصر، ومرتبط حالياً بزر "احجز استشارة مجانية" في قسم About. **راجع القسم 9 للتفاصيل الكاملة.**
   - `cart.js` + `cart.css`: سلّة تسوّق "WhatsApp-cart" — تجمع منتجات من الكتالوج وتولّد رسالة واتساب جاهزة بقائمة المنتجات + الكميات + الروابط + ملاحظات اختيارية. لا backend، لا أسعار، لا checkout حقيقي. تخزين في `localStorage` تحت `se_cart_v1`. أيقونة في النڤ-بار (Desktop + Mobile) مع badge عدّاد. **راجع القسم 12 للتفاصيل الكاملة.**
+  - `brands-list.js` + `brand-detail.js` + `brands.css` (2026-05): صفحات العلامات التجارية. `brands-list.js` يُصيّر شبكة بطاقات `brands.html` بقراءة `data/brands_index.json`. `brand-detail.js` يُصيّر الصفحة الفردية بقراءة `window.__BRAND__` المحقون مسبقاً من `build_brands.py` (مع fallback لـ fetch). يدعم pagination 12/صفحة عبر `?page=N` ويعيد استخدام `.prod-card`/`.prod-grid`/`.prod-pagination` من `products.css`. **يشتقّ Technologies + Specialization تلقائياً من المنتجات** (الكتالوج المصدر الواحد للحقيقة). راجع القسم 3.2.
 - **`assets/index-CGMiSPUa.js` (ملاحظة غاية في الأهمية):** هذا الملف الكودي (SPA Bundle) ليس مجرد مخرجات تجميعية (Build Output) قياسية مهملة، **بل هو ملف ثابت (Hardcoded) تم التعديل عليه يدوياً ودمجه مع الموقع المصدري**. يُعتبر الآن كملف برمجي أساسي (Static Source File). إحذر عند التعديل عليه حيث تتطلب أي محاولة لتغيير هيكلية (React) بداخله تركيزاً ودقة عالية، وتجرى التعديلات فيه مباشرة وبشكل دقيق.
 - `data/products/`: قاعـدة بيانات المنتجات، حيث يخصص لكل منتج ملف JSON مستقل.
 - `data/projects/`: قاعـدة بيانات معرض الأعمال — لكل مشروع ملف JSON مستقل بنفس نمط المنتجات. يدعم مصفوفة `media` غير متجانسة تجمع `image` (صور) و `video` (فيديوهات MP4 ذاتية الإنتاج مع poster) و `reel` (ريلزات إنستغرام غير مملوكة لنا — تُضمَّن عبر blockquote الرسمي وليس إعادة استضافة).
+- `data/brands/`: قاعدة بيانات العلامات التجارية (2026-05) — لكل علامة (Shelly, Zennio, EAE Technology, …) ملف JSON ثلاثي اللغة مع `id`, `brand`, `country_of_origin`, `founded`, `website`, `logo`, `tagline`, `description`. **حقول `tech_focus` و `category_focus` تُحسب آلياً من المنتجات** (لم تعد تُكتب يدوياً في JSON). راجع القسم 3.2 للتفاصيل.
+- `assets/brands/<slug>.<ext>`: شعارات العلامات التجارية (اختيارية). إن لم يوجد شعار، يُعرض اسم العلامة كنص بديل أنيق.
 - `assets/projects/<slug>/`: مجلد الوسائط الخاص بكل مشروع (صور، فيديوهات، pisters الفيديو).
+- `brands.html` + `brand.html`: قالبا الجذر — الأول صفحة الفهرس (مفهرس)، الثاني قالب SPA لصفحات العلامة الفردية (`noindex,nofollow` — يتجاوزها `build_brands.py` آلياً للصفحات المولّدة).
+- `brands/<slug>.html` + `fr/brands/<slug>.html` + `ar/brands/<slug>.html`: 21 صفحة علامة مولّدة آلياً.
 - `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. تُولّد آلياً بواسطة `generate_localized.py` من القوالب الإنجليزية الجذرية. **أي تعديلات على الـ SEO أو الهيكلة يجب أن تتم في القوالب الإنجليزية ثم يُعاد تشغيل السكربت.**
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
   - `_lib.py`: **الوحدة المشتركة** — ثوابت موحّدة (`HOST`, `LANGS`, `OG_LOCALES`, `SITEMAP_EXCLUDE`) ومساعدات i18n/SEO (`t`, `make_meta_description`, `load_locale`, `set_html_lang_dir`, `og_locale_block`, `breadcrumb_jsonld`, `itemlist_jsonld`) + **`write_sitemap()`** المركزي (المولّد الوحيد لـ `sitemap.xml`، idempotent، يقرأ `products_index.json` و `projects_index.json` و `ROOT.glob('*.html')` من القرص).
   - `build_all.py`: **المنسّق** — يستدعي المراحل الثلاث في عملية بايثون واحدة (بدون subprocess). مُستحسن لعمليات البناء الشاملة.
   - `build_products.py`: يبني فهرس المنتجات + صفحات SEO الثابتة لكل منتج + يحقن ItemList JSON-LD في `products.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`. (سابقاً كان يستدعي `generate_static_seo.py` عبر subprocess؛ الآن مدموج داخلياً.)
   - `build_projects.py`: يبني فهرس معرض الأعمال `data/projects_index.json` + يستخرج أبعاد كل وسائط المشروع عبر Pillow + يولّد صفحات SEO لكل مشروع في `projects/` و `fr/projects/` و `ar/projects/` + يحقن ItemList JSON-LD في `previous-work.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
+  - `build_brands.py` (2026-05): يبني فهرس العلامات `data/brands_index.json` (مع `tech_focus`/`category_focus` المحسوبة آلياً من المنتجات، مرتّبة حسب التكرار تنازلياً) + يولّد صفحات SEO لكل علامة × 3 لغات في `brands/`, `fr/brands/`, `ar/brands/` مع `Brand` + `BreadcrumbList` + `ItemList` JSON-LD + يحقن `window.__BRAND__` للهيدريشن الفوري + يحقن ItemList في `brands.html` + يكتب `sitemap.xml`.
+  - `patch_navbar_brands.py` (2026-05): سكربت **idempotent** أُجرى مرّة واحدة لإدراج رابط "Brands" في navbar SPA bundle (Desktop + Mobile + Footer). يفحص sentinel `to: "/brands"` قبل أي تعديل ويتجاهل إن وُجد. **مرجع مفيد لأي جراحة navbar مستقبلية** — يوضّح نمط الـ "extract-target-as-literal + verify-count + replace" المشروح في القسم 7.
   - `generate_localized.py`: توليد نسخ الصفحات الجذرية المترجمة (`fr/index.html`، `ar/index.html`، إلخ) + ترجمة FAQ JSON-LD + **توطين كل كتل JSON-LD** (LocalBusiness و WebSite) بالـ `url` و `inLanguage` المناسبين + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
   - `remove_bg.py`: إزالة الخلفيات عبر الذكاء الاصطناعي (مكتبة `rembg` ونموذج U²-Net). **ملاحظة:** يتطلب التثبيت المسبق للحزمة عبر `pip install "rembg[cpu]"`.
   - `remove_bg_traditional.py`: أداة بديلة (Fallback) تستخدم خوارزمية الإغراق اللوني (Flood Fill) التقليدية للمنتجات ذات الحواف الصلبة والمسطحة (مثل الشاشات) التي يفشل الذكاء الاصطناعي في تمييزها.
@@ -47,13 +54,16 @@
 | `generate_localized.py` | بناء (Build) | توليد نسخ `fr/` و `ar/` من الصفحات الجذرية + توطين JSON-LD (LocalBusiness/WebSite/FAQPage) | `index.html`, `products.html`, `previous-work.html`, `assets/locales/*.json` | `fr/*.html`, `ar/*.html`, `sitemap.xml` | عند تعديل قالب جذري أو قاموس ترجمة |
 | `build_projects.py` | بناء (Build) | فهرسة المشاريع + استخراج أبعاد الوسائط (Pillow) + توليد صفحات SEO + حقن ItemList في `previous-work.html` | `data/projects/*.json`, `assets/projects/<slug>/*` | `data/projects_index.json`, `projects/*.html`, `fr/projects/*.html`, `ar/projects/*.html`, `previous-work.html` (محقون), `sitemap.xml` | عند إضافة/تعديل مشروع |
 | `build_products.py` | بناء (Build) | فهرسة المنتجات + توليد صفحات SEO الثابتة + حقن ItemList في `products.html` (دمج `generate_static_seo.py` سابقاً) | `data/products/*.json` | `data/products_index.json`, `products/*.html`, `fr/products/*.html`, `ar/products/*.html`, `products.html` (محقون), `sitemap.xml` | عند إضافة/تعديل منتج |
+| `build_brands.py` | بناء (Build) | فهرسة العلامات + اشتقاق `tech_focus`/`category_focus` من المنتجات + توليد صفحات SEO الثابتة + حقن ItemList في `brands.html` + حقن `window.__BRAND__` | `data/brands/*.json`, `data/products_index.json` | `data/brands_index.json`, `brands/*.html`, `fr/brands/*.html`, `ar/brands/*.html`, `brands.html` (محقون), `sitemap.xml` | عند إضافة/تعديل علامة (**ويُستحسن أيضاً بعد إضافة/تعديل المنتجات** لأن الاشتقاق يتأثّر) |
+| `patch_navbar_brands.py` | جراحة لمرّة واحدة | إدراج رابط "Brands" في SPA bundle navbar (Desktop + Mobile + Footer) — idempotent (sentinel `to: "/brands"`) | `assets/index-CGMiSPUa.js` | نفس الملف (محقون) | شُغِّل مرّة واحدة. مرجع لجراحة navbar مستقبلية |
 | `remove_bg.py` | معالجة صور (AI) | إزالة خلفية صورة باستخدام `rembg` + U²-Net | صورة PNG/JPG | صورة PNG بخلفية شفافة | قبل إضافة صورة منتج جديد (الحالة العامة) |
 | `remove_bg_traditional.py` | معالجة صور (تقليدية) | إزالة خلفية عبر Flood Fill (بديل) | صورة PNG/JPG | صورة PNG بخلفية شفافة | للمنتجات ذات الشاشات/الأسطح المستوية أو الهياكل الداكنة التي يفشل فيها AI |
 | `crop_image.py` | معالجة صور | قص الهامش الشفاف حول المنتج وتمركزه | صورة PNG شفافة | صورة PNG مقصوصة | بعد `remove_bg*.py` دائماً |
 
 **ملاحظات مهمة على الجدول:**
-- **Idempotence**: كل من `generate_localized.py`, `build_projects.py`, `build_products.py` يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` — الترتيب لم يعد يؤثر على صحة الـ sitemap.
-- **ترتيب ItemList**: `build_projects.py` و `build_products.py` يحقنان في ملفات ينتجها `generate_localized.py` — لذا لضمان ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` **أولاً** (وهذا ما يضمنه `build_all.py` آلياً).
+- **Idempotence**: كل من `generate_localized.py`, `build_projects.py`, `build_products.py`, `build_brands.py` يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` (الذي يضمّ الآن العلامات أيضاً) — الترتيب لم يعد يؤثر على صحة الـ sitemap.
+- **ترتيب ItemList**: `build_projects.py`, `build_products.py`, `build_brands.py` يحقنون في ملفات ينتجها `generate_localized.py` (`previous-work.html`, `products.html`, `brands.html`) — لذا لضمان ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` **أولاً** (وهذا ما يضمنه `build_all.py` آلياً عبر التسلسل: localize → projects → products → brands).
+- **اعتمادية `build_brands.py` على `build_products.py`**: `build_brands.py` يقرأ `data/products_index.json` ليشتقّ Tech/Categories ويعدّ المنتجات. لذا **يجب** أن يُشغَّل `build_products.py` **قبله**. `build_all.py` يضمن هذا الترتيب.
 - **سكربتات الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً قبل إضافة أصول الصور إلى `assets/products/`.
 
 ---
@@ -76,11 +86,15 @@
    - `#custom-products-root-wrapper` — كتالوج المنتجات (يقرأ JSON ثلاثي اللغة).
    - `#custom-product-detail-wrapper` — تفاصيل المنتج (يقرأ JSON).
    - `#custom-project-detail-wrapper` — تفاصيل المشروع (يقرأ JSON).
+   - `#custom-brands-root-wrapper` — فهرس العلامات التجارية (يقرأ `brands_index.json` ثلاثي اللغة).
+   - `#custom-brand-detail-wrapper` — صفحة علامة فردية (يقرأ `window.__BRAND__` ثلاثي اللغة + يحدّث صفحة المنتجات عبر pagination).
    - `#fs-modal-root` — ويزارد "Find Your Solution" (نصوص ديناميكية مُولَّدة عبر `t()` وقت الـ render، مع تحديثات مستمرّة لشريط التقدّم/رقم الخطوة).
    - `#cart-modal-root` — مودال السلّة (نصوص ديناميكية + أرقام الكميات +/-).
    - **أي عنصر يحمل `data-cart-badge`** — عدّاد السلّة في النڤ-بار. هذا استثناء بـ **سمة** وليس بـ id لأن الـ badge عنصر مفرد ليس له wrapper، ولأن هناك بادج واحد على Desktop وآخر على Mobile، وكلاهما يحتاج نفس الحماية. الشيك: `el.hasAttribute && el.hasAttribute('data-cart-badge')` في الـ `acceptNode`.
 
-   **عند إضافة أي حاوية SPA جديدة تقرأ من JSON ثلاثي اللغة _أو_ تحدّث نصوصها ديناميكياً (counter, progress, live state)، يجب إضافة الـ `id` الخاص بها لقائمة الاستثناء في `i18n.js` (سطر ~373) لمنع الترجمة المزدوجة أو عودة النص لقيمته الأولى.** للعناصر بلا id (مثل بادج عدّاد متكرّر)، استخدم سمة مميّزة وافحصها بـ `hasAttribute`.
+   **عند إضافة أي حاوية SPA جديدة تقرأ من JSON ثلاثي اللغة _أو_ تحدّث نصوصها ديناميكياً (counter, progress, live state)، يجب إضافة الـ `id` الخاص بها لقائمة الاستثناء في `i18n.js` (سطر ~379) لمنع الترجمة المزدوجة أو عودة النص لقيمته الأولى.** للعناصر بلا id (مثل بادج عدّاد متكرّر)، استخدم سمة مميّزة وافحصها بـ `hasAttribute`.
+
+   **`window.__site_i18n_dict` للتنسيقات الديناميكية (2026-05):** `applyTranslations(dict)` في `i18n.js` يُعرّض القاموس الفعّال على `window.__site_i18n_dict` بعد كل استبدال. يُستخدم من مُصيّرات JS التي تحتاج تنسيقاً ديناميكياً لقوالب فيها placeholders مثل `{count}` أو `{year}` (والتي لا يستطيع `data-i18n` التقاطها لأنه يستبدل النص بحرفيته). مثال (من `brand-detail.js`): `dictLookup('brand_founded', 'Founded {year}').replace('{year}', 2017)`. **القاعدة:** لأي قالب فيه placeholder، استخدم هذا النمط بدل `data-i18n`؛ ولكل سلسلة ثابتة بلا placeholder، استخدم `data-i18n` كالعادة.
 
    **دروس مستفادة (Lessons learned):**
    - ويزارد Find Your Solution كان رقم الخطوة فيه يبقى عالقاً على "الخطوة 1 من 4" رغم أن الجسم وشريط التقدّم يتقدّمان. السبب: textContent للنص يتغيّر، لكن الـ MutationObserver في i18n.js يُطلَق بعد 120ms ويُعيد كتابة النص للقيمة المحفوظة في `dataset.i18nOrigText`. الإصلاح: إضافة `fs-modal-root` لقائمة الاستثناء.
@@ -191,6 +205,154 @@
 
 ---
 
+## 3.2 إدارة العلامات التجارية (Brand Pages) — 2026-05
+
+نظام صفحات العلامات يتبع **نفس** فلسفة كتالوج المنتجات ومعرض الأعمال (JSON + SSG ثلاثي اللغة + SEO ثابت)، لكن مع تخصّصات هامة:
+- **Tech/Categories مُشتقّة آلياً** من المنتجات (الكتالوج هو المصدر الواحد للحقيقة — لا يوجد تكرار يدوي للبيانات).
+- **Pagination 12/صفحة** مع `?page=N` URL state (نسخة 1:1 من نمط `products.html`).
+- **Breadcrumbs خارج Hero** (نمط صفحة المشروع، ليس نمط `products.html`).
+- **CTA لاصقة بالـ footer** عبر `margin-bottom: -4rem` على `.proj-cta`.
+
+### الأرشيتكتشر السريع
+
+```
+data/brands/<slug>.json   →  ملف لكل علامة (يدوي)
+data/brands_index.json    →  فهرس آلي (لا تعدّله يدوياً)
+assets/brands/<slug>.<ext> →  شعار اختياري (الأنماط `null` = نص بديل)
+brands.html               →  قالب جذر للفهرس (مفهرس)
+brand.html                →  قالب SPA للصفحة الفردية (noindex — يتجاوزها build_brands.py)
+brands/<slug>.html        →  21 صفحة مولّدة (7 علامات × 3 لغات)
+fr/brands/<slug>.html
+ar/brands/<slug>.html
+assets/brands-list.js     →  مُصيّر فهرس العلامات
+assets/brand-detail.js    →  مُصيّر الصفحة الفردية + pagination
+assets/brands.css         →  تنسيقات مخصّصة (يعيد استخدام .prod-card/.prod-grid/.prod-pagination)
+scripts/build_brands.py   →  Build
+```
+
+### Schema لـ `data/brands/<slug>.json`
+
+```json
+{
+  "id": "shelly",                       
+  "brand": "Shelly",                    
+  "country_of_origin": "Bulgaria",
+  "founded": 2017,
+  "website": "https://www.shelly.com",  
+  "logo": null,                         
+  "tagline":     { "en": "...", "fr": "...", "ar": "..." },
+  "description": { "en": "...", "fr": "...", "ar": "..." }
+}
+```
+
+**قواعد الـ Schema الحيوية:**
+- `id` **يجب** أن يطابق اسم الملف بدون `.json` (نفس قيد المنتجات والمشاريع).
+- `brand` **يجب** أن يطابق **بالحرف** القيمة الموجودة في `data/products/<id>.json` حقل `brand`. هذا هو مفتاح الـ JOIN. أيّ اختلاف (مسافة زائدة، تغيير casing) يكسر اشتقاق المنتجات.
+- `logo`: `null` أو مسار مطلق مثل `/assets/brands/shelly.svg`. عند `null` تُعرض بطاقة نصّية أنيقة باسم العلامة.
+- **لا تكتب `tech_focus` أو `category_focus` يدوياً** — `build_brands.py` يحسبهما من المنتجات (مرتبة حسب التكرار تنازلياً). إذا أضفتها، يتجاهلها السكربت ويستبدلها بالقيم المحسوبة.
+
+### Mirroring مع `build_products.py` (للمراجعة السريعة)
+
+| المرحلة | `build_products.py` | `build_brands.py` |
+|---|---|---|
+| فهرس آلي | `data/products_index.json` | `data/brands_index.json` |
+| Hydration inline | لا | `<script id="brand-preload">window.__BRAND__ = {...}</script>` |
+| JSON-LD النوع | `Product` + `BreadcrumbList` | `Brand` + `BreadcrumbList` + `ItemList` (منتجات العلامة) |
+| Pre-embed المنتجات | لا | نعم — `brand.products` ضمن `window.__BRAND__` (لا fetch ثانية) |
+| ItemList حقن في | `products.html` | `brands.html` |
+| Sitemap | يضاف عبر `_lib.write_sitemap()` | نفس الشيء (يقرأ `brands_index.json`) |
+| hreflang + og:locale + noscript H1 + canonical + robots index,follow | كلاهما متطابق |
+
+### Pagination Pattern (نسخ من products.js)
+
+`brand-detail.js` يفصل التصيير عن التشغيل:
+- `renderProductsSection()` يُنشئ shell فيها `<div id="brand-products-grid-container">` (لا منتجات داخلها).
+- `updateProductsGrid(brandProducts, currentPage)` يحقن الشبكة + count + أزرار pagination داخل الـ container، ثم يربط `click` listeners. **يُستدعى بعد `renderPage()`** ومن callback أزرار prev/next.
+- URL state: `readPageFromURL()` يقرأ `?page=N`، `writePageToURL(n)` يحدّث بـ `history.replaceState` دون reload.
+- Smooth scroll عند تغيير الصفحة: `window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' })`.
+- الكلاسات `.prod-pagination`, `.prod-page-btn`, `.prod-page-info` **معاد استخدامها** من `products.css`. لذا `brands.css` لا تحتاج تنسيقات pagination خاصة بها.
+
+### Auto-derive Pattern (مهم جداً)
+
+`deriveChips(brandProducts)` موجودة بنسختين متطابقتين:
+1. **Python** في `scripts/build_brands.py` — للفهرس + JSON-LD وقت البناء.
+2. **JavaScript** في `assets/brand-detail.js` — للعرض وقت التصيير (للسلامة لو فُتحت الصفحة بدون الـ index pre-embed).
+
+كلاهما يُرتّب النتائج حسب التكرار تنازلياً مع كسر التعادل أبجدياً. **إذا غيّرت منطق الترتيب في إحداهما، حدّث الأخرى** لتفادي عدم الاتساق بين JSON-LD والـ DOM.
+
+### Hero Pattern — Breadcrumbs خارج Hero
+
+**القاعدة (مطبّقة على صفحة المشروع والعلامة، لكن ليس products.html):**
+- `.brand-breadcrumbs` (أو `.proj-breadcrumbs`) عنصر مستقل **قبل** الـ Hero الداكن، على خلفية بيضاء بنص رمادي.
+- `.brand-hero` (أو `.proj-hero`) يبدأ بعدها، مع `margin-top: -1.75rem` (موبايل) أو `-2.5rem` (Desktop) ليحضنها بصرياً.
+
+**الهيكلة المرئية:**
+```
+[Navbar داكن]
+[breadcrumbs رمادي على أبيض]
+[Hero card داكن]
+[About / Chips / Products / ...]
+[CTA برتقالي full-bleed لاصق بالـ footer]
+[Footer أسود]
+```
+
+**سبب الاختلاف عن products.html:** `products.html` يستخدم `.prod-hero` بـ breadcrumbs بيضاء داخل البطاقة الداكنة (نمط قديم). صفحات العلامات والمشاريع تتبع النمط الأحدث الموصى به.
+
+### Spacing & Layout (Flex + Gap بدل margins يدوية)
+
+`#custom-brand-detail-container` و `#custom-brands-container` كلاهما:
+```css
+display: flex;
+flex-direction: column;
+gap: 3rem;          /* mobile */
+/* gap: 4rem; على ≥ 768px */
+```
+
+**النتيجة:** كل قسم (breadcrumbs, hero, about, chips, products, CTA) يحصل على إيقاع موحّد دون margins يدوية على كل قسم. **لا تضع `margin: 2.5rem 0` على أقسام داخلية** — سيكسر الإيقاع.
+
+**CTA flush-to-footer**: 
+```css
+#custom-brand-detail-container > .proj-cta,
+#custom-brands-container > .proj-cta {
+  margin-bottom: -4rem;     /* يلغي padding-bottom 4rem للحاوية */
+}
+```
+بدون هذه القاعدة يظهر فراغ أبيض بين الـ CTA البرتقالي والـ footer الأسود.
+
+### رابط Brand chip على صفحة المنتج
+
+في `product-detail.js` (~السطر 359): chip العلامة في صفحة المنتج يُحيل لـ `/brands/<slug>.html` عبر **اشتقاق الـ slug من الـ brand name**:
+```js
+`${prefix}/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}.html`
+```
+هذا الاشتقاق يعتمد على الاصطلاح: `"EAE Technology"` → `eae-technology`, `"Shelly"` → `shelly`. **إذا أضفت علامة جديدة، تأكّد أن slug ملف JSON يتبع نفس القاعدة** (lowercase + spaces→dashes).
+
+### إضافة علامة جديدة (Quick Recipe)
+
+1. أنشئ `data/brands/<slug>.json` (تطابق `slug` مع `brand.toLowerCase().replace(/\s+/g, '-')`).
+2. **اختياري:** ضع شعاراً في `assets/brands/<slug>.svg` (أو `.png`) وحدّث `"logo"` من `null` إلى المسار.
+3. تحقّق أن **`brand` field يطابق بالحرف** القيمة الموجودة في منتجات الكتالوج.
+4. شغّل `python scripts/build_all.py`.
+5. النتيجة: صفحة جديدة في `brands/<slug>.html` + `fr/brands/<slug>.html` + `ar/brands/<slug>.html`، مع pagination تلقائي إن > 12 منتج، وchips مُشتقّة من الكتالوج.
+
+### حذف علامة
+
+1. احذف `data/brands/<slug>.json`.
+2. احذف `brands/<slug>.html`, `fr/brands/<slug>.html`, `ar/brands/<slug>.html`.
+3. شغّل `python scripts/build_all.py` (لتحديث الفهرس + sitemap + ItemList).
+4. (اختياري) احذف الشعار إن وُجد.
+
+### درس مستفاد: SPA Bundle Navbar Patches
+
+عند إضافة "Brands" لـ navbar كان لابد من جراحة `assets/index-CGMiSPUa.js` في 3 مواقع:
+- Desktop nav (~12688)
+- Mobile nav (~12808)
+- Footer (~12329)
+
+**الفخّ:** نمط Desktop وMobile متطابقان تقريباً (نفس `to: "/previous-work"`)، يميّزهما فقط `className` للزر التالي (`"nav-link"` للـ Desktop vs `"nav-link text-base py-1 text-left"` للموبايل). **يجب تمديد المرساة إلى className لتجنّب التطابق المزدوج.** راجع `scripts/patch_navbar_brands.py` كمرجع — السكربت idempotent ويتحقّق من count قبل أي استبدال.
+
+---
+
 ## 4. بنية SEO للموقع (SEO Architecture)
 
 ### صفحات المنتجات المولّدة (Auto-generated Product Pages)
@@ -238,11 +400,15 @@ python scripts/build_all.py
 1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + يكتب sitemap
 2. python scripts/build_projects.py         ← معرض الأعمال + يكتب sitemap
 3. python scripts/build_products.py         ← المنتجات + يكتب sitemap
+4. python scripts/build_brands.py           ← العلامات التجارية + يكتب sitemap
 ```
-**ملاحظة:** `_lib.write_sitemap()` مركزي و idempotent — كل سكربت يكتب `sitemap.xml` كاملاً يشمل (ثابتة + منتجات + مشاريع) بغض النظر عن الترتيب. لذلك، تشغيل أي سكربت مستقلاً ينتج sitemap صالحاً وكاملاً (لم يعد هناك "محرر نهائي").
+**ملاحظة:** `_lib.write_sitemap()` مركزي و idempotent — كل سكربت يكتب `sitemap.xml` كاملاً يشمل (ثابتة + منتجات + مشاريع + علامات) بغض النظر عن الترتيب. لذلك، تشغيل أي سكربت مستقلاً ينتج sitemap صالحاً وكاملاً (لم يعد هناك "محرر نهائي").
 
 ### ItemList injection ordering (ترتيب حقن ItemList)
-`build_projects.py` يحقن ItemList في `previous-work.html`، و`build_products.py` يحقن ItemList في `products.html`. الاثنان يعدّلان ملفات تنتجها `generate_localized.py` — لذا **للحصول على ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` قبلها**. هذا قيد ترتيبي حقيقي (وليس مجرد مسألة sitemap). `build_all.py` يضمن هذا الترتيب آلياً.
+`build_projects.py` يحقن ItemList في `previous-work.html`، و`build_products.py` يحقن في `products.html`، و`build_brands.py` يحقن في `brands.html`. **الثلاثة** يعدّلون ملفات تنتجها `generate_localized.py` — لذا **للحصول على ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` قبلها**. هذا قيد ترتيبي حقيقي. `build_all.py` يضمن هذا الترتيب آلياً.
+
+### ترتيب `build_brands.py` بعد `build_products.py` (اعتمادية حقيقية)
+`build_brands.py` يقرأ `data/products_index.json` ليشتقّ Tech/Categories ويعدّ منتجات كل علامة. **يجب** تشغيل `build_products.py` قبله. `build_all.py` يضمن التسلسل: localize → projects → products → brands.
 
 ### ملفات مستثناة من sitemap
 محدّدة في `_lib.SITEMAP_EXCLUDE = {"product.html", "project.html", "404.html"}`. `_lib.write_sitemap()` يعتمد على `ROOT.glob('*.html')` ناقص هذه المجموعة — أي صفحة جذرية جديدة تُضاف تدخل sitemap آلياً دون تعديل كود.
@@ -273,8 +439,10 @@ python scripts/build_all.py
 - **⚠️ ملفات السلّة (WhatsApp Cart) مُشتركة كذلك عبر كل القوالب:** نفس النمط بالضبط — `cart.css` + `cart.js` + inline bootstrap (يلتقط `[data-trigger="cart-open"]` و `[data-trigger="cart-add"]`). بدون CSS، أيقونة السلّة في النڤ-بار تظهر بلا تنسيق وكذلك زر `+` على بطاقة المنتج وصف qty على صفحة التفاصيل. **انظر القسم 12 للنموذج الكامل.** ملاحظة: حتى الصفحات بلا منتجات (مثل `previous-work.html` و `project.html`) يجب أن تُحمّل ملفات السلّة لأن الـ SPA navbar (مع زر السلّة) يظهر فيها.
 - **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
-  - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`) لضمان اتساق المظهر أثناء التنقل SPA.
-  - **`products.css` على `project.html`:** صفحة المشروع تُحمِّل أيضاً `assets/products.css` لأن قسم Related Products فيها يستخدم كلاسات `.prod-card` و `.prod-grid` (مطابقة بصرية لصفحة المنتج). إن أزال أحدهم هذا الـ link مستقبلاً ظاناً أنه دخيل، ستظهر بطاقات Related Products بدون تنسيق. المرجع الكامل في القسم 3.1 نقطة 6.
+  - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`, `brands.html`, `brand.html`) لضمان اتساق المظهر أثناء التنقل SPA.
+  - **`products.css` على `project.html` + `brand.html` + `brands.html`:** هذه الصفحات الثلاث تُحمِّل أيضاً `assets/products.css` لأنها تستخدم كلاسات `.prod-card` و `.prod-grid` و `.prod-pagination` لشبكات المنتجات (Related Products على المشروع، Brand Products على العلامة). إن أزال أحدهم هذا الـ link مستقبلاً ظاناً أنه دخيل، ستظهر بطاقات المنتجات بدون تنسيق + لن يعمل pagination. المرجع الكامل في القسم 3.1 نقطة 6 وفي القسم 3.2.
+  - **`brands.css` على `brand.html` + `brands.html` فقط:** يحتوي تنسيقات حصرية لصفحات العلامات (`.brand-hero`, `.brand-card`, `.brand-chips`, `.brand-breadcrumbs`...). لا داعي لتحميله على باقي الصفحات.
+  - **`brands-list.js` + `brand-detail.js` على `brand.html` + `brands.html`:** بحكم أن كلاهما يستخدم `locationchange` + MutationObserver للتحميل/الإلغاء، يمكن تحميلهما على باقي القوالب لكن الأكثر براغماتية تحميلهما حصراً على قوالب brand لتقليل الـ payload. **تنبيه:** كل سكربت يتحقّق من المسار قبل المونت، فحمله على صفحة أخرى لن يكسر شيئاً.
 - **⚠️ اعتمادية JS+CSS pair dependency (Cross-Page JS Dependency):** القاعدة السابقة عن CSS تنطبق **بنفس القوة** على الـ JS scripts التي تتحكّم بمحتوى ديناميكي يظهر عبر SPA navigation. مثال محسوس: `homepage-products.js` يحقن قسم "Our Products" في الصفحة الرئيسية عبر MutationObserver + patched `pushState`. السكربت يبقى مقيماً في الذاكرة عبر SPA navigation طالما حُمِّل **مرّة واحدة على الأقل**.
   - **درس مستفاد (Lesson learned):** سيناريو الفشل: زائر يفتح صفحة مشروع مباشرة (`/projects/villa-knx-tetouan.html` من بحث Google أو رابط مشاركة) → يضغط "الرئيسية" في النڤ-بار → SPA navigation للرئيسية. **لكن** قسم "Our Products" لم يظهر! السبب: `project.html` كان يُحمِّل `homepage-products.css` فقط (أُضيف ضمن جولة توحيد CSS) لكن **بلا** `homepage-products.js`. بدون السكربت، لا أحد يحقن القسم. CSS وحده لا يفعل شيئاً عندما لا يوجد DOM ليُلوِّنه.
   - **القاعدة الموسَّعة:** أي ملف JS يتحكّم بمحتوى يظهر على صفحة محدّدة (مثل الرئيسية) عبر SPA navigation **يجب** تحميله أيضاً على كل القوالب التي يمكن للمستخدم البدء منها كـ entry point ثم الانتقال لتلك الصفحة. عملياً: `index.html`, `products.html`, `product.html`, `project.html`, `previous-work.html` يجب أن تُحمّل **نفس مجموعة CSS+JS** (مع استثناءات محدّدة جداً).
@@ -417,6 +585,21 @@ S.useEffect(() => {
 2. **صناعة الكود البديل (Replacement):** اكتب الكود الجديد مع الالتزام الصارم بصيغة `react/jsx-runtime` (`u.jsx`, `u.jsxs`) واستخدم `className` بدلاً من `class`. لدمج الرسوميات كـ SVG يُفضل استخدام `dangerouslySetInnerHTML: { __html: '<svg>...</svg>'}` لضمان عملها بشكل سليم.
 3. **الاستبدال الآمن:** قم باستبدال الـ `target` بـ `replacement` برمجياً بالاعتماد على التتطابق النصي 100% (`text.replace`) والتأكد من نجاحه وتجنب كسر الـ React Bundle. 
 4. **فائدة هذه الطريقة:** تضمن هذه الممارسة دمج التعديلات الجديدة (كالتصميم الموحد للـ CTA) كأجزاء أساسية ومدمجة أصلياً (Native) في الموقع، لتتدفق بسلاسة تامة أثاء تنقل الزائر في تطبيق الصفحة الواحدة (SPA) دون اللجوء لحلول ترقيعية خارجية مثل الـ `MutationObserver` التي تسبب وميضاً.
+
+### إضافة رابط جديد لـ navbar — Routine آمنة (مرجع: `patch_navbar_brands.py`)
+
+`scripts/patch_navbar_brands.py` (2026-05) هو **مرجع عملي** لأي جراحة navbar مستقبلية. النمط القياسي:
+
+1. **Sentinel للـ idempotence**: قبل أي تعديل، افحص إذا كان السنتينل (مثلاً `to: "/brands"`) موجوداً مسبقاً. إن وُجد، اخرج كـ no-op.
+2. **تعريف الـ patches الثلاثة** كثلاثيات (target, replacement, expected_count):
+   - Desktop nav (~12688): `to: "/previous-work"` block المنتهي بـ `className: "nav-link"` للزر التالي.
+   - Mobile nav (~12808): نفس البنية لكن className منتهٍ بـ `"nav-link text-base py-1 text-left"`.
+   - Footer (~12329): بنية أكثر تداخلاً مع `u.jsx("li", { children: u.jsx(Mt, ...) })`.
+3. **افحص count قبل الاستبدال**: لكل patch، احسب `text.count(target)` وتأكّد أنه يساوي `expected_count` (عادة 1). إن لم يكن، اخرج بدون تعديل.
+4. **الفخّ الأهم:** Desktop وMobile متطابقان في `to: "/previous-work"` وكل ما بعده حتى className للزر التالي. **يجب** أن تمدّ مرساة Desktop لتشمل className الفعلي للزر التالي (`className: "nav-link", "data-i18n": "spa_contact"`) لتجنّب التطابق المزدوج. هذا الخطأ بالضبط حدث في الجولة الأولى — انتقل من 2 matches إلى 1 بإضافة سطرين من السياق.
+5. **اكتب النتيجة مرّة واحدة** بعد نجاح كل الـ patches (لا تحرّر الملف وسط الرحلة).
+
+**عينة الاستخدام:** انسخ السكربت كقالب، استبدل القيم الثلاث الجديدة (target/replacement/sentinel)، وشغّله. الـ idempotence يحميك من إعادة التشغيل بالخطأ.
 
 ---
 

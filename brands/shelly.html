@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shelly&#x27;s whole product philosophy is that you shouldn&#x27;t need to rip out your existing electrical setup to get a smart home — their compact relays slip behind…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/brands/shelly.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/brands/shelly.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/brands/shelly.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/shelly.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/brands/shelly.html" id="meta-canonical" />
+    <meta property="og:title" content="Shelly | S‑ELECTRICITY Morocco" id="meta-og-title" />
+    <meta property="og:description" content="Shelly&#x27;s whole product philosophy is that you shouldn&#x27;t need to rip out your existing electrical setup to get a smart home — their compact relays slip behind…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/brands/shelly.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shelly | S‑ELECTRICITY Morocco" id="meta-twitter-title" />
+    <meta name="twitter:description" content="Shelly&#x27;s whole product philosophy is that you shouldn&#x27;t need to rip out your existing electrical setup to get a smart home — their compact relays slip behind…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Shelly | S‑ELECTRICITY Morocco</title>
+
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/brands.css">
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+    <script defer src="/assets/brands-list.js"></script>
+    <script defer src="/assets/brand-detail.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="brand-jsonld">{"@context": "https://schema.org", "@type": "Brand", "name": "Shelly", "description": "Shelly's whole product philosophy is that you shouldn't need to rip out your existing electrical setup to get a smart home — their compact relays slip behind any standard wall switch and turn it into a fully controllable, energy-metered, automation-ready device. The lineup spans the entry-level Plus series, the higher-power Pro DIN-rail range, dimmers, shutter controllers, and the new Wall Display touchscreen. Every device works with the Shelly cloud app out of the box, but also speaks open protocols — MQTT, REST, Matter — so it integrates with Home Assistant, Zigbee2MQTT, or any custom smart-home stack without lock-in. The Pro series adds Ethernet and Bluetooth on top of Wi-Fi, which makes large installations far more reliable than Wi-Fi-only competitors. For Moroccan retrofits, where pulling new wires is rarely an option, Shelly is the go-to retrofit brand: install in 10 minutes, control from anywhere, and add advanced power monitoring with no extra hardware.", "url": "https://smartelectricity.ma/brands/shelly.html", "sameAs": ["https://www.shelly.com"]}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Brands", "item": "https://smartelectricity.ma/brands.html"}, {"@type": "ListItem", "position": 3, "name": "Shelly", "item": "https://smartelectricity.ma/brands/shelly.html"}]}</script>
+  <script type="application/ld+json" id="brand-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Shelly products", "numberOfItems": 11, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/products/shelly-1-gen3.html", "name": "Shelly 1 Gen3"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/products/shelly-1pm-gen3.html", "name": "Shelly 1PM Gen3"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/products/shelly-2pm-gen3.html", "name": "Shelly 2PM Gen3"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/products/shelly-dimmer-gen3.html", "name": "Shelly Dimmer Gen3"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/products/shelly-plus-1.html", "name": "Shelly Plus 1"}, {"@type": "ListItem", "position": 6, "url": "https://smartelectricity.ma/products/shelly-plus-1pm.html", "name": "Shelly Plus 1PM"}, {"@type": "ListItem", "position": 7, "url": "https://smartelectricity.ma/products/shelly-plus-2pm.html", "name": "Shelly Plus 2PM"}, {"@type": "ListItem", "position": 8, "url": "https://smartelectricity.ma/products/shelly-pro-3.html", "name": "Shelly Pro 3"}, {"@type": "ListItem", "position": 9, "url": "https://smartelectricity.ma/products/shelly-pro-4pm.html", "name": "Shelly Pro 4PM"}, {"@type": "ListItem", "position": 10, "url": "https://smartelectricity.ma/products/shelly-pro-dual-cover-shutter-pm.html", "name": "Shelly Pro Dual Cover/Shutter PM"}, {"@type": "ListItem", "position": 11, "url": "https://smartelectricity.ma/products/shelly-wall-display.html", "name": "Shelly Wall Display"}]}</script>
+  <script id="brand-preload">window.__BRAND__ = {"id": "shelly", "brand": "Shelly", "country_of_origin": "Bulgaria", "founded": 2017, "website": "https://www.shelly.com", "logo": null, "tagline": {"en": "Wi-Fi smart relays that retrofit any wall switch in minutes.", "fr": "Relais intelligents Wi-Fi qui s'installent derrière n'importe quel interrupteur.", "ar": "ريليهات Wi-Fi ذكية تُركَّب خلف أي مفتاح حائط في دقائق."}, "description": {"en": "Shelly's whole product philosophy is that you shouldn't need to rip out your existing electrical setup to get a smart home — their compact relays slip behind any standard wall switch and turn it into a fully controllable, energy-metered, automation-ready device. The lineup spans the entry-level Plus series, the higher-power Pro DIN-rail range, dimmers, shutter controllers, and the new Wall Display touchscreen. Every device works with the Shelly cloud app out of the box, but also speaks open protocols — MQTT, REST, Matter — so it integrates with Home Assistant, Zigbee2MQTT, or any custom smart-home stack without lock-in. The Pro series adds Ethernet and Bluetooth on top of Wi-Fi, which makes large installations far more reliable than Wi-Fi-only competitors. For Moroccan retrofits, where pulling new wires is rarely an option, Shelly is the go-to retrofit brand: install in 10 minutes, control from anywhere, and add advanced power monitoring with no extra hardware.", "fr": "Toute la philosophie produit de Shelly repose sur une idée simple : vous ne devriez pas avoir à arracher votre installation électrique pour avoir une maison intelligente — leurs relais compacts se glissent derrière n'importe quel interrupteur standard et le transforment en appareil entièrement pilotable, mesuré en énergie et prêt pour l'automatisation. La gamme couvre la série d'entrée Plus, la gamme Pro plus puissante sur rail DIN, des variateurs, des contrôleurs de volets, et le nouveau Wall Display tactile. Chaque appareil fonctionne dès la sortie de la boîte avec l'app cloud Shelly, mais parle aussi des protocoles ouverts — MQTT, REST, Matter — pour s'intégrer à Home Assistant, Zigbee2MQTT ou n'importe quelle stack smart home personnalisée, sans verrouillage. La série Pro ajoute Ethernet et Bluetooth en plus du Wi-Fi, ce qui rend les grandes installations bien plus fiables que les concurrents Wi-Fi seul. Pour les rénovations marocaines, où tirer de nouveaux fils est rarement possible, Shelly est la marque retrofit par excellence : installation en 10 minutes, contrôle depuis n'importe où, et mesure de puissance avancée sans matériel supplémentaire.", "ar": "فلسفة Shelly كلها قائمة على فكرة بسيطة: ليس عليك أن تنزع تركيبتك الكهربائية الحالية لتحصل على منزل ذكي — ريليهاتها المدمجة تنزلق خلف أي مفتاح حائط قياسي وتحوّله إلى جهاز قابل للتحكم الكامل، قياس استهلاك الطاقة، وجاهز للأتمتة. تغطّي اللائحة سلسلة Plus للمستوى الأساسي، وسلسلة Pro الأقوى لـ DIN Rail، والـ dimmers، ومتحكّمات الستائر، إضافة إلى Wall Display الجديد بشاشة لمس. كل جهاز يعمل مع Shelly cloud app مباشرة بعد إخراجه من العلبة، لكنه أيضاً يتكلّم بروتوكولات مفتوحة — MQTT وREST وMatter — ليندمج مع Home Assistant أو Zigbee2MQTT أو أي بنية ذكية مخصّصة دون أي قيود. سلسلة Pro تضيف Ethernet وBluetooth فوق Wi-Fi، ما يجعل التركيبات الكبيرة أكثر موثوقية بكثير من المنافسين الذين يعتمدون Wi-Fi فقط. لتجديدات المنازل المغربية، حيث نادراً ما يكون سحب أسلاك جديدة خياراً عملياً، Shelly هي العلامة الأولى للـ retrofit: تركيب في 10 دقائق، تحكّم من أي مكان، وقياس استهلاك متقدّم دون عتاد إضافي."}, "products": [{"id": "shelly-1-gen3", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly 1 Gen3", "fr": "Shelly 1 Gen3", "ar": "شيلي 1 الجيل الثالث"}, "short_description": {"en": "Gen3 single-channel smart relay switch.", "fr": "Relais intelligent Gen3 mono-canal.", "ar": "مرحل ذكي الجيل الثالث بقناة واحدة."}, "category": "", "image": "/assets/products/shelly-1-gen3.png"}, {"id": "shelly-1pm-gen3", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly 1PM Gen3", "fr": "Shelly 1PM Gen3", "ar": "شيلي 1PM الجيل الثالث"}, "short_description": {"en": "Gen3 smart relay with power metering.", "fr": "Relais intelligent Gen3 avec mesure de puissance.", "ar": "مرحل ذكي الجيل الثالث مع قياس الطاقة."}, "category": "", "image": "/assets/products/shelly-1pm-gen3.png"}, {"id": "shelly-2pm-gen3", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly 2PM Gen3", "fr": "Shelly 2PM Gen3", "ar": "شيلي 2PM الجيل الثالث"}, "short_description": {"en": "Gen3 2-channel smart relay with power metering.", "fr": "Relais intelligent Gen3 2 canaux avec mesure de puissance.", "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."}, "category": "", "image": "/assets/products/shelly-2pm-gen3.png"}, {"id": "shelly-dimmer-gen3", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Dimmer", "installation": "Behind wall switch", "title": {"en": "Shelly Dimmer Gen3", "fr": "Shelly Dimmer Gen3", "ar": "شيلي ديمر الجيل الثالث"}, "short_description": {"en": "Gen3 smart dimmer, up to 200W.", "fr": "Variateur intelligent Gen3, jusqu'à 200W.", "ar": "مخفت إضاءة ذكي الجيل الثالث، حتى 200 واط."}, "category": "", "image": "/assets/products/shelly-dimmer-gen3.png"}, {"id": "shelly-plus-1", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly Plus 1", "fr": "Shelly Plus 1", "ar": "شيلي بلس 1"}, "short_description": {"en": "1-channel smart relay switch.", "fr": "Relais intelligent mono-canal.", "ar": "مرحل ذكي بقناة واحدة."}, "category": "", "image": "/assets/products/shelly-plus-1.png"}, {"id": "shelly-plus-1pm", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly Plus 1PM", "fr": "Shelly Plus 1PM", "ar": "شيلي بلس 1PM"}, "short_description": {"en": "1-channel smart relay with power metering.", "fr": "Relais intelligent 1 canal avec mesure de puissance.", "ar": "مرحل ذكي بقناة واحدة مع قياس الطاقة."}, "category": "", "image": "/assets/products/shelly-plus-1pm.png"}, {"id": "shelly-plus-2pm", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "Shelly Plus 2PM", "fr": "Shelly Plus 2PM", "ar": "شيلي بلس 2PM"}, "short_description": {"en": "2-channel smart relay with power metering.", "fr": "Relais intelligent 2 canaux avec mesure de puissance.", "ar": "مرحل ذكي بقناتين مع قياس الطاقة."}, "category": "", "image": "/assets/products/shelly-plus-2pm.png"}, {"id": "shelly-pro-3", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth", "LAN"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "Shelly Pro 3", "fr": "Shelly Pro 3", "ar": "شيلي برو 3"}, "short_description": {"en": "3-channel DIN rail smart relay switch.", "fr": "Relais intelligent 3 canaux sur rail DIN.", "ar": "مرحل ذكي بـ 3 قنوات على سكة DIN."}, "category": "", "image": "/assets/products/shelly-pro-3.png"}, {"id": "shelly-pro-4pm", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth", "LAN"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "Shelly Pro 4PM", "fr": "Shelly Pro 4PM", "ar": "شيلي برو 4PM"}, "short_description": {"en": "4-channel DIN rail smart switch with power measurement.", "fr": "Interrupteur intelligent rail DIN 4 canaux avec mesure de puissance.", "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."}, "category": "", "image": "/assets/products/shelly-pro-4pm.png"}, {"id": "shelly-pro-dual-cover-shutter-pm", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth", "LAN"], "product_type": "Shutter", "installation": "DIN Rail mounting", "title": {"en": "Shelly Pro Dual Cover/Shutter PM", "fr": "Shelly Pro Dual Cover/Shutter PM", "ar": "شيلي برو للستائر والمصاريع المزدوجة PM"}, "short_description": {"en": "Dual cover/shutter controller with power metering.", "fr": "Contrôleur double volet/store avec mesure de puissance.", "ar": "وحدة تحكم مزدوجة للستائر مع قياس الطاقة."}, "category": "", "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"}, {"id": "shelly-wall-display", "brand": "Shelly", "technology": ["Wi-Fi", "Bluetooth"], "product_type": "Touch Panel", "installation": "Wall mount", "title": {"en": "Shelly Wall Display", "fr": "Shelly Wall Display", "ar": "شاشة الحائط من شيلي"}, "short_description": {"en": "4-inch smart touch panel with built-in relay and sensors.", "fr": "Ecran tactile 4 pouces avec relais et capteurs integres.", "ar": "شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة."}, "category": "", "image": "/assets/products/shelly-wall-display.png"}]};</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>Shelly</h1>
+      <p>Wi-Fi smart relays that retrofit any wall switch in minutes.</p>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

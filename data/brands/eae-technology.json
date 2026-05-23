@@ -1,0 +1,18 @@
+{
+  "id": "eae-technology",
+  "brand": "EAE Technology",
+  "country_of_origin": "Turkey",
+  "founded": 1973,
+  "website": "https://www.eaetechnology.com",
+  "logo": null,
+  "tagline": {
+    "en": "European-grade KNX building automation, engineered in Turkey.",
+    "fr": "Automatisation KNX de qualité européenne, conçue en Turquie.",
+    "ar": "أتمتة المباني KNX بمعايير أوروبية، تصنيع تركي."
+  },
+  "description": {
+    "en": "EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power supplies — all built to wire and program inside the global KNX standard. The brand stands out for combining real European engineering quality with prices that make KNX accessible for Moroccan homes and mid-size commercial projects, where competing premium German brands are often out of budget. Their touch panel lineup (Miola, TD4, Rosa Metal) is what most installers reach for when a project needs an in-wall control surface that looks as good as it performs. Every device is ETS-programmable, which means it integrates seamlessly with any KNX project — no vendor lock-in, no proprietary cloud. For installers in Morocco, EAE is the workhorse: reliable hardware, comprehensive documentation, and KNX certification that holds up under audit.",
+    "fr": "EAE Technology conçoit et fabrique un écosystème complet d'appareils certifiés KNX — panneaux tactiles, contrôleurs de pièce, interfaces universelles, routeurs IP et alimentations — tous prêts à câbler et programmer dans le standard mondial KNX. La marque se distingue en combinant une vraie qualité d'ingénierie européenne avec des prix qui rendent KNX accessible pour les maisons marocaines et les projets commerciaux de taille moyenne, là où les marques allemandes haut de gamme sont souvent hors budget. Sa gamme de panneaux tactiles (Miola, TD4, Rosa Metal) est ce que la plupart des installateurs choisissent quand un projet nécessite une surface de contrôle murale aussi belle qu'efficace. Chaque appareil est programmable ETS, ce qui signifie qu'il s'intègre parfaitement dans tout projet KNX — sans verrouillage propriétaire, sans cloud fermé. Pour les installateurs au Maroc, EAE est le cheval de bataille : matériel fiable, documentation complète et certification KNX qui tient face à un audit.",
+    "ar": "تصمّم EAE Technology وتصنّع منظومة كاملة من الأجهزة المعتمدة KNX — Touch Panels، Room Controllers، Universal Interfaces، IP Routers، ومزوّدات الطاقة — مهيّأة كلها للتوصيل والبرمجة داخل معيار KNX العالمي. تتميّز العلامة بأنها تجمع بين جودة هندسية أوروبية حقيقية وأسعار تُتيح KNX للمنازل المغربية والمشاريع التجارية المتوسطة، حيث تكون العلامات الألمانية الفاخرة المنافسة خارج الميزانية في الغالب. لائحة Touch Panels (Miola وTD4 وRosa Metal) هي ما يلجأ إليه معظم المركّبين حين يحتاج المشروع لواجهة تحكم حائطية تجمع بين الجمال والأداء. كل جهاز قابل للبرمجة عبر ETS، ما يعني اندماجاً سلساً داخل أي مشروع KNX دون قيود الشركة المصنّعة ودون cloud مغلق. بالنسبة للمركّبين في المغرب، EAE هي الخيار العملي: عتاد موثوق، توثيق شامل، واعتماد KNX يصمد أمام أي تدقيق."
+  }
+}

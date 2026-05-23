@@ -1,0 +1,18 @@
+{
+  "id": "shelly",
+  "brand": "Shelly",
+  "country_of_origin": "Bulgaria",
+  "founded": 2017,
+  "website": "https://www.shelly.com",
+  "logo": null,
+  "tagline": {
+    "en": "Wi-Fi smart relays that retrofit any wall switch in minutes.",
+    "fr": "Relais intelligents Wi-Fi qui s'installent derrière n'importe quel interrupteur.",
+    "ar": "ريليهات Wi-Fi ذكية تُركَّب خلف أي مفتاح حائط في دقائق."
+  },
+  "description": {
+    "en": "Shelly's whole product philosophy is that you shouldn't need to rip out your existing electrical setup to get a smart home — their compact relays slip behind any standard wall switch and turn it into a fully controllable, energy-metered, automation-ready device. The lineup spans the entry-level Plus series, the higher-power Pro DIN-rail range, dimmers, shutter controllers, and the new Wall Display touchscreen. Every device works with the Shelly cloud app out of the box, but also speaks open protocols — MQTT, REST, Matter — so it integrates with Home Assistant, Zigbee2MQTT, or any custom smart-home stack without lock-in. The Pro series adds Ethernet and Bluetooth on top of Wi-Fi, which makes large installations far more reliable than Wi-Fi-only competitors. For Moroccan retrofits, where pulling new wires is rarely an option, Shelly is the go-to retrofit brand: install in 10 minutes, control from anywhere, and add advanced power monitoring with no extra hardware.",
+    "fr": "Toute la philosophie produit de Shelly repose sur une idée simple : vous ne devriez pas avoir à arracher votre installation électrique pour avoir une maison intelligente — leurs relais compacts se glissent derrière n'importe quel interrupteur standard et le transforment en appareil entièrement pilotable, mesuré en énergie et prêt pour l'automatisation. La gamme couvre la série d'entrée Plus, la gamme Pro plus puissante sur rail DIN, des variateurs, des contrôleurs de volets, et le nouveau Wall Display tactile. Chaque appareil fonctionne dès la sortie de la boîte avec l'app cloud Shelly, mais parle aussi des protocoles ouverts — MQTT, REST, Matter — pour s'intégrer à Home Assistant, Zigbee2MQTT ou n'importe quelle stack smart home personnalisée, sans verrouillage. La série Pro ajoute Ethernet et Bluetooth en plus du Wi-Fi, ce qui rend les grandes installations bien plus fiables que les concurrents Wi-Fi seul. Pour les rénovations marocaines, où tirer de nouveaux fils est rarement possible, Shelly est la marque retrofit par excellence : installation en 10 minutes, contrôle depuis n'importe où, et mesure de puissance avancée sans matériel supplémentaire.",
+    "ar": "فلسفة Shelly كلها قائمة على فكرة بسيطة: ليس عليك أن تنزع تركيبتك الكهربائية الحالية لتحصل على منزل ذكي — ريليهاتها المدمجة تنزلق خلف أي مفتاح حائط قياسي وتحوّله إلى جهاز قابل للتحكم الكامل، قياس استهلاك الطاقة، وجاهز للأتمتة. تغطّي اللائحة سلسلة Plus للمستوى الأساسي، وسلسلة Pro الأقوى لـ DIN Rail، والـ dimmers، ومتحكّمات الستائر، إضافة إلى Wall Display الجديد بشاشة لمس. كل جهاز يعمل مع Shelly cloud app مباشرة بعد إخراجه من العلبة، لكنه أيضاً يتكلّم بروتوكولات مفتوحة — MQTT وREST وMatter — ليندمج مع Home Assistant أو Zigbee2MQTT أو أي بنية ذكية مخصّصة دون أي قيود. سلسلة Pro تضيف Ethernet وBluetooth فوق Wi-Fi، ما يجعل التركيبات الكبيرة أكثر موثوقية بكثير من المنافسين الذين يعتمدون Wi-Fi فقط. لتجديدات المنازل المغربية، حيث نادراً ما يكون سحب أسلاك جديدة خياراً عملياً، Shelly هي العلامة الأولى للـ retrofit: تركيب في 10 دقائق، تحكّم من أي مكان، وقياس استهلاك متقدّم دون عتاد إضافي."
+  }
+}

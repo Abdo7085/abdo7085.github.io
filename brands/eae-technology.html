@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/brands/eae-technology.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/brands/eae-technology.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/brands/eae-technology.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/eae-technology.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/brands/eae-technology.html" id="meta-canonical" />
+    <meta property="og:title" content="EAE Technology | S‑ELECTRICITY Morocco" id="meta-og-title" />
+    <meta property="og:description" content="EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/brands/eae-technology.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EAE Technology | S‑ELECTRICITY Morocco" id="meta-twitter-title" />
+    <meta name="twitter:description" content="EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>EAE Technology | S‑ELECTRICITY Morocco</title>
+
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/brands.css">
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+    <script defer src="/assets/brands-list.js"></script>
+    <script defer src="/assets/brand-detail.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="brand-jsonld">{"@context": "https://schema.org", "@type": "Brand", "name": "EAE Technology", "description": "EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power supplies — all built to wire and program inside the global KNX standard. The brand stands out for combining real European engineering quality with prices that make KNX accessible for Moroccan homes and mid-size commercial projects, where competing premium German brands are often out of budget. Their touch panel lineup (Miola, TD4, Rosa Metal) is what most installers reach for when a project needs an in-wall control surface that looks as good as it performs. Every device is ETS-programmable, which means it integrates seamlessly with any KNX project — no vendor lock-in, no proprietary cloud. For installers in Morocco, EAE is the workhorse: reliable hardware, comprehensive documentation, and KNX certification that holds up under audit.", "url": "https://smartelectricity.ma/brands/eae-technology.html", "sameAs": ["https://www.eaetechnology.com"]}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Brands", "item": "https://smartelectricity.ma/brands.html"}, {"@type": "ListItem", "position": 3, "name": "EAE Technology", "item": "https://smartelectricity.ma/brands/eae-technology.html"}]}</script>
+  <script type="application/ld+json" id="brand-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "EAE Technology products", "numberOfItems": 19, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/products/eae-knx-ipi200-ip-interface.html", "name": "EAE IPI200 KNX IP Interface"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/products/eae-knx-ipr200-ip-router.html", "name": "EAE IPR200 KNX IP Router"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/products/eae-knx-lc200-line-coupler.html", "name": "EAE LC200 KNX Line Coupler"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/products/eae-knx-miola-touch-panel.html", "name": "EAE Miola 10\" KNX Touch Panel"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/products/eae-knx-oria-push-switches.html", "name": "EAE Oria KNX Push Switches"}, {"@type": "ListItem", "position": 6, "url": "https://smartelectricity.ma/products/eae-knx-power-supply-ps640.html", "name": "EAE KNX Power Supply 640mA"}, {"@type": "ListItem", "position": 7, "url": "https://smartelectricity.ma/products/eae-knx-ps320-power-supply.html", "name": "EAE KNX Power Supply PS320 320mA"}, {"@type": "ListItem", "position": 8, "url": "https://smartelectricity.ma/products/eae-knx-rosa-switches.html", "name": "EAE Rosa Metal KNX Switch"}, {"@type": "ListItem", "position": 9, "url": "https://smartelectricity.ma/products/eae-knx-rosa-thermostat.html", "name": "EAE Rosa Metal KNX Thermostat"}, {"@type": "ListItem", "position": 10, "url": "https://smartelectricity.ma/products/eae-knx-td4-touch-panel.html", "name": "EAE TD4-KNX 4\" Touch Panel"}, {"@type": "ListItem", "position": 11, "url": "https://smartelectricity.ma/products/eae-knx-ui108-universal-interface.html", "name": "EAE UI108 Universal Interface"}, {"@type": "ListItem", "position": 12, "url": "https://smartelectricity.ma/products/rcu0800-room-control-unit.html", "name": "RCU0800 Room Control Unit"}, {"@type": "ListItem", "position": 13, "url": "https://smartelectricity.ma/products/rcu0808-room-control-unit.html", "name": "RCU0808 Room Control Unit"}, {"@type": "ListItem", "position": 14, "url": "https://smartelectricity.ma/products/rcu1200-room-control-unit.html", "name": "RCU1200 Room Control Unit"}, {"@type": "ListItem", "position": 15, "url": "https://smartelectricity.ma/products/rcu1212-room-control-unit.html", "name": "RCU1212 Room Control Unit"}, {"@type": "ListItem", "position": 16, "url": "https://smartelectricity.ma/products/rcu1600-room-control-unit.html", "name": "RCU1600 Room Control Unit"}, {"@type": "ListItem", "position": 17, "url": "https://smartelectricity.ma/products/rcu1616-room-control-unit.html", "name": "RCU1616 Room Control Unit"}, {"@type": "ListItem", "position": 18, "url": "https://smartelectricity.ma/products/rcu2000-room-control-unit.html", "name": "RCU2000 Room Control Unit"}, {"@type": "ListItem", "position": 19, "url": "https://smartelectricity.ma/products/rcu2018-room-control-unit.html", "name": "RCU2018 Room Control Unit"}]}</script>
+  <script id="brand-preload">window.__BRAND__ = {"id": "eae-technology", "brand": "EAE Technology", "country_of_origin": "Turkey", "founded": 1973, "website": "https://www.eaetechnology.com", "logo": null, "tagline": {"en": "European-grade KNX building automation, engineered in Turkey.", "fr": "Automatisation KNX de qualité européenne, conçue en Turquie.", "ar": "أتمتة المباني KNX بمعايير أوروبية، تصنيع تركي."}, "description": {"en": "EAE Technology designs and manufactures a full ecosystem of KNX-certified devices — touch panels, room controllers, universal interfaces, IP routers, and power supplies — all built to wire and program inside the global KNX standard. The brand stands out for combining real European engineering quality with prices that make KNX accessible for Moroccan homes and mid-size commercial projects, where competing premium German brands are often out of budget. Their touch panel lineup (Miola, TD4, Rosa Metal) is what most installers reach for when a project needs an in-wall control surface that looks as good as it performs. Every device is ETS-programmable, which means it integrates seamlessly with any KNX project — no vendor lock-in, no proprietary cloud. For installers in Morocco, EAE is the workhorse: reliable hardware, comprehensive documentation, and KNX certification that holds up under audit.", "fr": "EAE Technology conçoit et fabrique un écosystème complet d'appareils certifiés KNX — panneaux tactiles, contrôleurs de pièce, interfaces universelles, routeurs IP et alimentations — tous prêts à câbler et programmer dans le standard mondial KNX. La marque se distingue en combinant une vraie qualité d'ingénierie européenne avec des prix qui rendent KNX accessible pour les maisons marocaines et les projets commerciaux de taille moyenne, là où les marques allemandes haut de gamme sont souvent hors budget. Sa gamme de panneaux tactiles (Miola, TD4, Rosa Metal) est ce que la plupart des installateurs choisissent quand un projet nécessite une surface de contrôle murale aussi belle qu'efficace. Chaque appareil est programmable ETS, ce qui signifie qu'il s'intègre parfaitement dans tout projet KNX — sans verrouillage propriétaire, sans cloud fermé. Pour les installateurs au Maroc, EAE est le cheval de bataille : matériel fiable, documentation complète et certification KNX qui tient face à un audit.", "ar": "تصمّم EAE Technology وتصنّع منظومة كاملة من الأجهزة المعتمدة KNX — Touch Panels، Room Controllers، Universal Interfaces، IP Routers، ومزوّدات الطاقة — مهيّأة كلها للتوصيل والبرمجة داخل معيار KNX العالمي. تتميّز العلامة بأنها تجمع بين جودة هندسية أوروبية حقيقية وأسعار تُتيح KNX للمنازل المغربية والمشاريع التجارية المتوسطة، حيث تكون العلامات الألمانية الفاخرة المنافسة خارج الميزانية في الغالب. لائحة Touch Panels (Miola وTD4 وRosa Metal) هي ما يلجأ إليه معظم المركّبين حين يحتاج المشروع لواجهة تحكم حائطية تجمع بين الجمال والأداء. كل جهاز قابل للبرمجة عبر ETS، ما يعني اندماجاً سلساً داخل أي مشروع KNX دون قيود الشركة المصنّعة ودون cloud مغلق. بالنسبة للمركّبين في المغرب، EAE هي الخيار العملي: عتاد موثوق، توثيق شامل، واعتماد KNX يصمد أمام أي تدقيق."}, "products": [{"id": "eae-knx-ipi200-ip-interface", "brand": "EAE Technology", "technology": ["KNX", "LAN"], "product_type": "Gateway", "installation": "DIN Rail mounting", "title": {"en": "EAE IPI200 KNX IP Interface", "fr": "Interface IP KNX EAE IPI200", "ar": "واجهة IP KNX EAE IPI200"}, "short_description": {"en": "KNXnet/IP tunneling interface for programming and monitoring.", "fr": "Interface tunneling KNXnet/IP pour programmation et supervision.", "ar": "واجهة KNXnet/IP tunneling للبرمجة والمراقبة."}, "category": "", "image": "/assets/products/eae-knx-ipi200-ip-interface.png"}, {"id": "eae-knx-ipr200-ip-router", "brand": "EAE Technology", "technology": ["KNX", "LAN"], "product_type": "Gateway", "installation": "DIN Rail mounting", "title": {"en": "EAE IPR200 KNX IP Router", "fr": "Routeur IP KNX EAE IPR200", "ar": "راوتر IP KNX EAE IPR200"}, "short_description": {"en": "KNX IP router with 5 simultaneous tunneling connections.", "fr": "Routeur IP KNX avec 5 connexions tunneling simultanées.", "ar": "راوتر IP KNX مع 5 اتصالات tunneling متزامنة."}, "category": "", "image": "/assets/products/eae-knx-ipr200-ip-router.png"}, {"id": "eae-knx-lc200-line-coupler", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Gateway", "installation": "DIN Rail mounting", "title": {"en": "EAE LC200 KNX Line Coupler", "fr": "Coupleur de ligne KNX EAE LC200", "ar": "رابط خطوط KNX EAE LC200"}, "short_description": {"en": "Compact KNX line/backbone coupler with galvanic isolation.", "fr": "Coupleur de ligne/backbone KNX compact avec isolation galvanique.", "ar": "رابط خطوط/عمود فقري KNX مدمج مع عزل كلفاني."}, "category": "", "image": "/assets/products/eae-knx-lc200-line-coupler.png"}, {"id": "eae-knx-miola-touch-panel", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Touch Panel", "installation": "Wall mount", "title": {"en": "EAE Miola 10\" KNX Touch Panel", "fr": "Écran Tactile EAE Miola 10\" KNX", "ar": "شاشة لمس EAE Miola مقاس 10 بوصة KNX"}, "short_description": {"en": "10.1\" smart home control panel with intercom and security.", "fr": "Écran de contrôle domotique 10,1\" avec interphone et sécurité.", "ar": "لوحة تحكم ذكية 10.1 بوصة مع اتصال داخلي ونظام أمان."}, "category": "", "image": "/assets/products/eae-knx-miola-touch-panel.png"}, {"id": "eae-knx-oria-push-switches", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Switch", "installation": "Wall mount", "title": {"en": "EAE Oria KNX Push Switches", "fr": "Interrupteurs poussoirs KNX EAE Oria", "ar": "مفاتيح ضغط KNX EAE Oria"}, "short_description": {"en": "Elegant capacitive KNX push switch, 1 to 5 fold variants.", "fr": "Interrupteur poussoir KNX capacitif élégant, variantes 1 à 5 touches.", "ar": "مفتاح ضغط KNX أنيق بتصميم لمسي، من 1 إلى 5 أزرار."}, "category": "", "image": "/assets/products/eae-knx-oria-push-switches.png"}, {"id": "eae-knx-power-supply-ps640", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Power Supply", "installation": "DIN Rail mounting", "title": {"en": "EAE KNX Power Supply 640mA", "fr": "Alimentation EAE KNX 640mA", "ar": "مزود طاقة EAE KNX 640mA"}, "short_description": {"en": "Stable 30V DC power supply for KNX TP lines with integrated choke.", "fr": "Alimentation stable 30V DC pour lignes KNX TP avec self intégrée.", "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."}, "category": "", "image": "/assets/products/eae-knx-power-supply-ps640.png"}, {"id": "eae-knx-ps320-power-supply", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Power Supply", "installation": "DIN Rail mounting", "title": {"en": "EAE KNX Power Supply PS320 320mA", "fr": "Alimentation KNX EAE PS320 320mA", "ar": "مزود طاقة KNX EAE PS320 320mA"}, "short_description": {"en": "320 mA KNX bus power supply with additional 30 V output.", "fr": "Alimentation bus KNX 320 mA avec sortie 30 V supplémentaire.", "ar": "مزود طاقة ناقل KNX بقدرة 320 mA مع خرج 30 فولت إضافي."}, "category": "", "image": "/assets/products/eae-knx-ps320-power-supply.png"}, {"id": "eae-knx-rosa-switches", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Switch", "installation": "Wall mount", "title": {"en": "EAE Rosa Metal KNX Switch", "fr": "Interrupteur EAE Rosa Métal KNX", "ar": "مفتاح EAE Rosa المعدني KNX"}, "short_description": {"en": "Premium brushed metal KNX touch switch with frameless design.", "fr": "Interrupteur tactile KNX en métal brossé premium avec design sans cadre.", "ar": "مفتاح لمس KNX فاخر من المعدن المصقول وتصميم أنيق بدون إطار."}, "category": "", "image": "/assets/products/eae-knx-rosa-switches.png"}, {"id": "eae-knx-rosa-thermostat", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Thermostat", "installation": "Wall mount", "title": {"en": "EAE Rosa Metal KNX Thermostat", "fr": "Thermostat Métallique EAE Rosa KNX", "ar": "ترموستات EAE Rosa المعدني KNX"}, "short_description": {"en": "Premium metal touch thermostat with integrated room temperature controller.", "fr": "Thermostat tactile en métal premium avec contrôleur de température ambiante intégré.", "ar": "منظم حرارة معدني فاخر يعمل باللمس مع جهاز تحكم مدمج لدرجة حرارة الغرفة."}, "category": "", "image": "/assets/products/eae-knx-rosa-thermostat.png"}, {"id": "eae-knx-td4-touch-panel", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Touch Panel", "installation": "Wall mount", "title": {"en": "EAE TD4-KNX 4\" Touch Panel", "fr": "Écran Tactile EAE TD4-KNX 4\"", "ar": "شاشة لمس EAE TD4-KNX مقاس 4 بوصة"}, "short_description": {"en": "4-inch capacitive touch panel with built-in sensors, RGB control, and thermostat functions.", "fr": "Écran tactile capacitif de 4 pouces avec capteurs intégrés, contrôle RGB et fonctions thermostat.", "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."}, "category": "", "image": "/assets/products/eae-knx-td4-touch-panel.png"}, {"id": "eae-knx-ui108-universal-interface", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Universal Interface", "installation": "Behind wall switch", "title": {"en": "EAE UI108 Universal Interface", "fr": "Interface universelle EAE UI108", "ar": "واجهة EAE UI108 العامة"}, "short_description": {"en": "8-channel KNX binary input for conventional switches.", "fr": "Entrée binaire KNX 8 canaux pour interrupteurs conventionnels.", "ar": "مدخل ثنائي KNX بـ 8 قنوات للمفاتيح التقليدية."}, "category": "", "image": "/assets/products/eae-knx-ui108-universal-interface.png"}, {"id": "rcu0800-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU0800 Room Control Unit", "fr": "RCU0800 Unité de contrôle de pièce", "ar": "RCU0800 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu0800-room-control-unit.png"}, {"id": "rcu0808-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU0808 Room Control Unit", "fr": "RCU0808 Unité de contrôle de pièce", "ar": "RCU0808 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu0808-room-control-unit.png"}, {"id": "rcu1200-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU1200 Room Control Unit", "fr": "RCU1200 Unité de contrôle de pièce", "ar": "RCU1200 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu1200-room-control-unit.png"}, {"id": "rcu1212-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU1212 Room Control Unit", "fr": "RCU1212 Unité de contrôle de pièce", "ar": "RCU1212 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu1212-room-control-unit.png"}, {"id": "rcu1600-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU1600 Room Control Unit", "fr": "RCU1600 Unité de contrôle de pièce", "ar": "RCU1600 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu1600-room-control-unit.png"}, {"id": "rcu1616-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU1616 Room Control Unit", "fr": "RCU1616 Unité de contrôle de pièce", "ar": "RCU1616 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu1616-room-control-unit.png"}, {"id": "rcu2000-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU2000 Room Control Unit", "fr": "RCU2000 Unité de contrôle de pièce", "ar": "RCU2000 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu2000-room-control-unit.png"}, {"id": "rcu2018-room-control-unit", "brand": "EAE Technology", "technology": ["KNX"], "product_type": "Actuator", "installation": "DIN Rail mounting", "title": {"en": "RCU2018 Room Control Unit", "fr": "RCU2018 Unité de contrôle de pièce", "ar": "RCU2018 وحدة التحكم بالغرفة"}, "short_description": {"en": "All-in-one KNX device for unified room control.", "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.", "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."}, "category": "", "image": "/assets/products/rcu2018-room-control-unit.png"}]};</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>EAE Technology</h1>
+      <p>European-grade KNX building automation, engineered in Turkey.</p>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

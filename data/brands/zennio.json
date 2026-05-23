@@ -1,0 +1,18 @@
+{
+  "id": "zennio",
+  "brand": "Zennio",
+  "country_of_origin": "Spain",
+  "founded": 2006,
+  "website": "https://www.zennio.com",
+  "logo": null,
+  "tagline": {
+    "en": "Spanish KNX engineering — premium touch panels and the densest actuator range on the market.",
+    "fr": "Ingénierie KNX espagnole — panneaux tactiles premium et la gamme d'actionneurs la plus dense du marché.",
+    "ar": "هندسة KNX إسبانية — Touch Panels فاخرة وأوسع تشكيلة Actuators في السوق."
+  },
+  "description": {
+    "en": "Zennio is the brand installers reach for when a KNX project needs to feel premium — the Z-series touch panels (Z28, Z35, Z40, Z50, Z70, Z100) cover every screen size from a compact thermostat replacement to a full-room control surface, all with capacitive glass and configurable layouts. Beyond touch panels, Zennio's actuator and dimmer range (MAXinBOX, MINiBOX, inBOX, NarrowDIM, DIMinBOX) is arguably the most comprehensive in the KNX world, with channel counts and form factors for every panel size — from a small apartment to a 200-room hotel. Their Flat 70 and Tecla series of capacitive glass switches replace traditional pushbuttons with elegant scene-control surfaces. All devices are ETS-certified and fit cleanly into any KNX project alongside other manufacturers' hardware. For high-end Moroccan villas and commercial projects where the client expects the control surfaces to look like part of the architecture, Zennio is the natural choice.",
+    "fr": "Zennio est la marque que les installateurs choisissent quand un projet KNX doit avoir un rendu premium — la série Z de panneaux tactiles (Z28, Z35, Z40, Z50, Z70, Z100) couvre toutes les tailles d'écran, du remplacement compact de thermostat à la surface de contrôle pleine pièce, le tout en verre capacitif avec layouts configurables. Au-delà des panneaux tactiles, la gamme d'actionneurs et variateurs Zennio (MAXinBOX, MINiBOX, inBOX, NarrowDIM, DIMinBOX) est sans doute la plus complète du monde KNX, avec un nombre de canaux et des formats pour chaque taille de tableau — du petit appartement à l'hôtel de 200 chambres. Leurs séries Flat 70 et Tecla d'interrupteurs verre capacitif remplacent les boutons-poussoirs traditionnels par des surfaces élégantes de contrôle de scènes. Tous les appareils sont certifiés ETS et s'intègrent proprement à tout projet KNX aux côtés de matériel d'autres fabricants. Pour les villas marocaines haut de gamme et les projets commerciaux où le client attend que les surfaces de contrôle fassent partie de l'architecture, Zennio est le choix naturel.",
+    "ar": "Zennio هي العلامة التي يلجأ إليها المركّبون حين يحتاج مشروع KNX إلى إحساس فاخر — سلسلة Z من Touch Panels (Z28 وZ35 وZ40 وZ50 وZ70 وZ100) تغطّي كل أحجام الشاشات، من بديل ترموستات صغير إلى سطح تحكم لغرفة كاملة، كلها بزجاج capacitive وتنسيقات قابلة للتعديل. إلى جانب Touch Panels، تُعدّ تشكيلة Zennio من Actuators وDimmers (MAXinBOX وMINiBOX وinBOX وNarrowDIM وDIMinBOX) الأشمل في عالم KNX على الأرجح، بعدد قنوات وقياسات لكل حجم لوحة — من شقة صغيرة إلى فندق بـ 200 غرفة. سلسلتا Flat 70 وTecla من المفاتيح الزجاجية capacitive تستبدل الأزرار التقليدية بأسطح أنيقة للتحكم في المشاهد. كل الأجهزة معتمدة ETS وتندمج بنظافة داخل أي مشروع KNX إلى جانب عتاد مصنّعين آخرين. للفيلات المغربية الفاخرة والمشاريع التجارية التي يتوقع فيها العميل أن تكون أسطح التحكم جزءاً من العمارة، Zennio هي الخيار الطبيعي."
+  }
+}

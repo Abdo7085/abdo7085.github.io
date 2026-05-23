@@ -12338,6 +12338,13 @@ const Xh = re("Zap", [["polygon", {
                                 "data-i18n": "spa_previous_work",
                                 children: ""
                             })
+                        }), u.jsx("li", {
+                            children: u.jsx(Mt, {
+                                to: "/brands",
+                                className: "text-gray-400 hover:text-primary transition-colors",
+                                "data-i18n": "nav_brands",
+                                children: ""
+                            })
                         })]
                     })]
                 }), u.jsxs("div", {
@@ -12697,6 +12704,11 @@ const Xh = re("Zap", [["polygon", {
                     className: "nav-link",
                     "data-i18n": "spa_previous_work",
                     children: ""
+                }), u.jsx(Mt, {
+                    to: "/brands",
+                    className: "nav-link",
+                    "data-i18n": "nav_brands",
+                    children: ""
                 }), u.jsx("button", {
                     onClick: () => s("contact"),
                     className: "nav-link",
@@ -12815,6 +12827,11 @@ const Xh = re("Zap", [["polygon", {
                     ,
                     className: "nav-link",
                     "data-i18n": "spa_previous_work",
+                    children: ""
+                }), u.jsx(Mt, {
+                    to: "/brands",
+                    className: "nav-link text-base py-1 text-left",
+                    "data-i18n": "nav_brands",
                     children: ""
                 }), u.jsx("button", {
                     onClick: () => s("contact"),

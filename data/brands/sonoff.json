@@ -1,0 +1,18 @@
+{
+  "id": "sonoff",
+  "brand": "SONOFF",
+  "country_of_origin": "China",
+  "founded": 2015,
+  "website": "https://sonoff.tech",
+  "logo": null,
+  "tagline": {
+    "en": "Affordable Zigbee smart switches and relays that just work with any hub.",
+    "fr": "Interrupteurs et relais Zigbee abordables, compatibles avec n'importe quel hub.",
+    "ar": "مفاتيح وريليهات Zigbee اقتصادية تعمل مع أي hub."
+  },
+  "description": {
+    "en": "SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series of behind-the-switch Zigbee relays cost a fraction of their Wi-Fi competitors and integrate natively with any Zigbee 3.0 coordinator (Home Assistant ZHA, Zigbee2MQTT, SmartThings, Hue Bridge, Alexa, Google). Beyond simple on/off relays, the lineup includes Zigbee dimmers (ZBDIM), roller shutter controllers (ZBRBS), and the unique MINI DUO series that gives two independent gangs in a single backbox — the only practical solution when retrofitting a single deep wall box with multiple circuits. Zigbee is the right protocol here: every SONOFF device joins a mesh that strengthens with each new device, latency is sub-100ms (vs Wi-Fi's variable delay), and the network keeps working even if the internet drops. For Moroccan homeowners who want a smart-switch retrofit on a tight budget but refuse to be locked into yet another phone app, SONOFF + a local Zigbee hub is the most pragmatic stack on the market.",
+    "fr": "SONOFF s'est forgé sa réputation en rendant le smart switching véritablement abordable sans transiger sur le support des protocoles — les séries ZBMINI Extreme et MINI ZB de relais Zigbee derrière interrupteur coûtent une fraction de leurs concurrents Wi-Fi et s'intègrent nativement à n'importe quel coordinateur Zigbee 3.0 (Home Assistant ZHA, Zigbee2MQTT, SmartThings, Hue Bridge, Alexa, Google). Au-delà des simples relais on/off, la gamme inclut des variateurs Zigbee (ZBDIM), des contrôleurs de volet roulant (ZBRBS), et la série unique MINI DUO qui propose deux gangs indépendants dans une seule boîte d'encastrement — la seule solution pratique quand on rénove une boîte murale profonde unique avec plusieurs circuits. Zigbee est le bon protocole ici : chaque appareil SONOFF rejoint un mesh qui se renforce avec chaque nouvel appareil, la latence est sous 100ms (vs le délai variable du Wi-Fi), et le réseau continue de fonctionner même si internet tombe. Pour les propriétaires marocains qui veulent un retrofit smart switch avec un budget serré mais refusent d'être enfermés dans encore une app téléphone, SONOFF + un hub Zigbee local est la stack la plus pragmatique du marché.",
+    "ar": "بَنَت SONOFF سمعتها بجعل smart switching ميسوراً فعلاً دون التضحية بدعم البروتوكولات — سلسلتا ZBMINI Extreme وMINI ZB من ريليهات Zigbee التي تُركَّب خلف المفتاح تكلّفان جزءاً يسيراً من منافستهما Wi-Fi وتندمجان أصلياً مع أي Zigbee 3.0 coordinator (Home Assistant ZHA وZigbee2MQTT وSmartThings وHue Bridge وAlexa وGoogle). إلى جانب الريليهات البسيطة، تشمل التشكيلة Zigbee dimmers (ZBDIM) ومتحكّمات roller shutter (ZBRBS)، وسلسلة MINI DUO الفريدة التي تقدّم gangs مستقلّتين في علبة جدارية واحدة — وهي الحل العملي الوحيد حين يكون التجديد على علبة جدارية عميقة واحدة بعدة دوائر. Zigbee هو البروتوكول الصحيح هنا: كل جهاز SONOFF ينضم إلى mesh يقوى مع كل جهاز جديد، الـ latency أقل من 100ms (مقابل التأخّر المتغيّر في Wi-Fi)، والشبكة تواصل العمل حتى لو سقط الإنترنت. لأصحاب المنازل في المغرب الذين يريدون smart switch retrofit بميزانية محدودة لكنهم يرفضون أن يُحبَسوا داخل تطبيق هاتف جديد، SONOFF + Zigbee hub محلي هو الـ stack الأكثر براغماتية في السوق."
+  }
+}

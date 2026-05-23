@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/brands/sonoff.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/brands/sonoff.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/brands/sonoff.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/sonoff.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/brands/sonoff.html" id="meta-canonical" />
+    <meta property="og:title" content="SONOFF | S‑ELECTRICITY Morocco" id="meta-og-title" />
+    <meta property="og:description" content="SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/brands/sonoff.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SONOFF | S‑ELECTRICITY Morocco" id="meta-twitter-title" />
+    <meta name="twitter:description" content="SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>SONOFF | S‑ELECTRICITY Morocco</title>
+
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/brands.css">
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+    <script defer src="/assets/brands-list.js"></script>
+    <script defer src="/assets/brand-detail.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="brand-jsonld">{"@context": "https://schema.org", "@type": "Brand", "name": "SONOFF", "description": "SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series of behind-the-switch Zigbee relays cost a fraction of their Wi-Fi competitors and integrate natively with any Zigbee 3.0 coordinator (Home Assistant ZHA, Zigbee2MQTT, SmartThings, Hue Bridge, Alexa, Google). Beyond simple on/off relays, the lineup includes Zigbee dimmers (ZBDIM), roller shutter controllers (ZBRBS), and the unique MINI DUO series that gives two independent gangs in a single backbox — the only practical solution when retrofitting a single deep wall box with multiple circuits. Zigbee is the right protocol here: every SONOFF device joins a mesh that strengthens with each new device, latency is sub-100ms (vs Wi-Fi's variable delay), and the network keeps working even if the internet drops. For Moroccan homeowners who want a smart-switch retrofit on a tight budget but refuse to be locked into yet another phone app, SONOFF + a local Zigbee hub is the most pragmatic stack on the market.", "url": "https://smartelectricity.ma/brands/sonoff.html", "sameAs": ["https://sonoff.tech"]}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Brands", "item": "https://smartelectricity.ma/brands.html"}, {"@type": "ListItem", "position": 3, "name": "SONOFF", "item": "https://smartelectricity.ma/brands/sonoff.html"}]}</script>
+  <script type="application/ld+json" id="brand-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "SONOFF products", "numberOfItems": 6, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/products/sonoff-mini-zb2gs-l.html", "name": "SONOFF MINI DUO-L ZB2GS-L 2-Gang Zigbee Smart Switch"}, {"@type": "ListItem", "position": 2, "url": "https://smartelectricity.ma/products/sonoff-mini-zb2gs.html", "name": "SONOFF MINI DUO ZB2GS 2-Gang Zigbee Smart Switch"}, {"@type": "ListItem", "position": 3, "url": "https://smartelectricity.ma/products/sonoff-mini-zbdim.html", "name": "SONOFF MINI Extreme ZBDIM Zigbee Dimmer"}, {"@type": "ListItem", "position": 4, "url": "https://smartelectricity.ma/products/sonoff-mini-zbrbs.html", "name": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch"}, {"@type": "ListItem", "position": 5, "url": "https://smartelectricity.ma/products/sonoff-zbmini-extreme-l2.html", "name": "SONOFF ZBMINI Extreme ZBMINIL2"}, {"@type": "ListItem", "position": 6, "url": "https://smartelectricity.ma/products/sonoff-zbmini-extreme.html", "name": "SONOFF ZBMINI Extreme"}]}</script>
+  <script id="brand-preload">window.__BRAND__ = {"id": "sonoff", "brand": "SONOFF", "country_of_origin": "China", "founded": 2015, "website": "https://sonoff.tech", "logo": null, "tagline": {"en": "Affordable Zigbee smart switches and relays that just work with any hub.", "fr": "Interrupteurs et relais Zigbee abordables, compatibles avec n'importe quel hub.", "ar": "مفاتيح وريليهات Zigbee اقتصادية تعمل مع أي hub."}, "description": {"en": "SONOFF earned its reputation by making smart switching genuinely affordable without cutting corners on protocol support — the ZBMINI Extreme and MINI ZB series of behind-the-switch Zigbee relays cost a fraction of their Wi-Fi competitors and integrate natively with any Zigbee 3.0 coordinator (Home Assistant ZHA, Zigbee2MQTT, SmartThings, Hue Bridge, Alexa, Google). Beyond simple on/off relays, the lineup includes Zigbee dimmers (ZBDIM), roller shutter controllers (ZBRBS), and the unique MINI DUO series that gives two independent gangs in a single backbox — the only practical solution when retrofitting a single deep wall box with multiple circuits. Zigbee is the right protocol here: every SONOFF device joins a mesh that strengthens with each new device, latency is sub-100ms (vs Wi-Fi's variable delay), and the network keeps working even if the internet drops. For Moroccan homeowners who want a smart-switch retrofit on a tight budget but refuse to be locked into yet another phone app, SONOFF + a local Zigbee hub is the most pragmatic stack on the market.", "fr": "SONOFF s'est forgé sa réputation en rendant le smart switching véritablement abordable sans transiger sur le support des protocoles — les séries ZBMINI Extreme et MINI ZB de relais Zigbee derrière interrupteur coûtent une fraction de leurs concurrents Wi-Fi et s'intègrent nativement à n'importe quel coordinateur Zigbee 3.0 (Home Assistant ZHA, Zigbee2MQTT, SmartThings, Hue Bridge, Alexa, Google). Au-delà des simples relais on/off, la gamme inclut des variateurs Zigbee (ZBDIM), des contrôleurs de volet roulant (ZBRBS), et la série unique MINI DUO qui propose deux gangs indépendants dans une seule boîte d'encastrement — la seule solution pratique quand on rénove une boîte murale profonde unique avec plusieurs circuits. Zigbee est le bon protocole ici : chaque appareil SONOFF rejoint un mesh qui se renforce avec chaque nouvel appareil, la latence est sous 100ms (vs le délai variable du Wi-Fi), et le réseau continue de fonctionner même si internet tombe. Pour les propriétaires marocains qui veulent un retrofit smart switch avec un budget serré mais refusent d'être enfermés dans encore une app téléphone, SONOFF + un hub Zigbee local est la stack la plus pragmatique du marché.", "ar": "بَنَت SONOFF سمعتها بجعل smart switching ميسوراً فعلاً دون التضحية بدعم البروتوكولات — سلسلتا ZBMINI Extreme وMINI ZB من ريليهات Zigbee التي تُركَّب خلف المفتاح تكلّفان جزءاً يسيراً من منافستهما Wi-Fi وتندمجان أصلياً مع أي Zigbee 3.0 coordinator (Home Assistant ZHA وZigbee2MQTT وSmartThings وHue Bridge وAlexa وGoogle). إلى جانب الريليهات البسيطة، تشمل التشكيلة Zigbee dimmers (ZBDIM) ومتحكّمات roller shutter (ZBRBS)، وسلسلة MINI DUO الفريدة التي تقدّم gangs مستقلّتين في علبة جدارية واحدة — وهي الحل العملي الوحيد حين يكون التجديد على علبة جدارية عميقة واحدة بعدة دوائر. Zigbee هو البروتوكول الصحيح هنا: كل جهاز SONOFF ينضم إلى mesh يقوى مع كل جهاز جديد، الـ latency أقل من 100ms (مقابل التأخّر المتغيّر في Wi-Fi)، والشبكة تواصل العمل حتى لو سقط الإنترنت. لأصحاب المنازل في المغرب الذين يريدون smart switch retrofit بميزانية محدودة لكنهم يرفضون أن يُحبَسوا داخل تطبيق هاتف جديد، SONOFF + Zigbee hub محلي هو الـ stack الأكثر براغماتية في السوق."}, "products": [{"id": "sonoff-mini-zb2gs-l", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "SONOFF MINI DUO-L ZB2GS-L 2-Gang Zigbee Smart Switch", "fr": "Interrupteur Intelligent SONOFF MINI DUO-L ZB2GS-L 2 Canaux Zigbee", "ar": "مفتاح ذكي SONOFF MINI DUO-L ZB2GS-L بقناتين Zigbee"}, "short_description": {"en": "Dual-channel no-neutral smart switch for older wiring.", "fr": "Interrupteur double canal sans neutre pour anciens câblages.", "ar": "مفتاح ذكي بقناتين بدون سلك محايد للتركيبات القديمة."}, "category": "", "image": "/assets/products/sonoff-mini-zb2gs-l.png"}, {"id": "sonoff-mini-zb2gs", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "SONOFF MINI DUO ZB2GS 2-Gang Zigbee Smart Switch", "fr": "Interrupteur Intelligent SONOFF MINI DUO ZB2GS 2 Canaux Zigbee", "ar": "مفتاح ذكي SONOFF MINI DUO ZB2GS بقناتين Zigbee"}, "short_description": {"en": "Compact dual-channel smart switch for two loads.", "fr": "Interrupteur intelligent double canal compact.", "ar": "مفتاح ذكي مدمج بقناتين للتحكم بحملين."}, "category": "", "image": "/assets/products/sonoff-mini-zb2gs.png"}, {"id": "sonoff-mini-zbdim", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Dimmer", "installation": "Behind wall switch", "title": {"en": "SONOFF MINI Extreme ZBDIM Zigbee Dimmer", "fr": "Variateur Zigbee SONOFF MINI Extreme ZBDIM", "ar": "مخفت إضاءة Zigbee سونوف MINI Extreme ZBDIM"}, "short_description": {"en": "Compact behind-wall smart dimmer for warm lighting.", "fr": "Variateur intelligent encastré pour une lumière modulable.", "ar": "مخفت إضاءة ذكي مدمج خلف الحائط لإضاءة هادئة."}, "category": "", "image": "/assets/products/sonoff-mini-zbdim.png"}, {"id": "sonoff-mini-zbrbs", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Shutter", "installation": "Behind wall switch", "title": {"en": "SONOFF MINI-ZBRBS Smart Roller Shutter Switch", "fr": "Interrupteur Volet Roulant Intelligent SONOFF MINI-ZBRBS", "ar": "مفتاح ستائر ذكي SONOFF MINI-ZBRBS"}, "short_description": {"en": "Compact behind-wall smart roller shutter controller.", "fr": "Contrôleur de volet roulant intelligent compact, encastré.", "ar": "وحدة تحكم ذكية مدمجة بالستائر، تُركَّب خلف الحائط."}, "category": "", "image": "/assets/products/sonoff-mini-zbrbs.png"}, {"id": "sonoff-zbmini-extreme-l2", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "SONOFF ZBMINI Extreme ZBMINIL2", "fr": "SONOFF ZBMINI Extreme ZBMINIL2", "ar": "سونوف ZBMINI Extreme ZBMINIL2"}, "short_description": {"en": "No-neutral smart switch for older wiring.", "fr": "Interrupteur intelligent sans neutre pour anciens câblages.", "ar": "مفتاح ذكي بدون سلك محايد للتركيبات القديمة."}, "category": "", "image": "/assets/products/sonoff-zbmini-extreme-l2.png"}, {"id": "sonoff-zbmini-extreme", "brand": "SONOFF", "technology": ["Zigbee"], "product_type": "Smart Relay", "installation": "Behind wall switch", "title": {"en": "SONOFF ZBMINI Extreme", "fr": "SONOFF ZBMINI Extreme", "ar": "سونوف ZBMINI Extreme"}, "short_description": {"en": "Ultra-compact Zigbee 3.0 smart switch.", "fr": "Interrupteur intelligent Zigbee 3.0 ultra-compact.", "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."}, "category": "", "image": "/assets/products/sonoff-zbmini-extreme.png"}]};</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>SONOFF</h1>
+      <p>Affordable Zigbee smart switches and relays that just work with any hub.</p>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

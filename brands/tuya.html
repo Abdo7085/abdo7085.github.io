@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tuya isn&#x27;t a hardware company in the traditional sense — it&#x27;s the IoT cloud platform that powers thousands of white-label smart-home brands worldwide…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/brands/tuya.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/brands/tuya.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/brands/tuya.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/tuya.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/brands/tuya.html" id="meta-canonical" />
+    <meta property="og:title" content="Tuya | S‑ELECTRICITY Morocco" id="meta-og-title" />
+    <meta property="og:description" content="Tuya isn&#x27;t a hardware company in the traditional sense — it&#x27;s the IoT cloud platform that powers thousands of white-label smart-home brands worldwide…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/brands/tuya.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tuya | S‑ELECTRICITY Morocco" id="meta-twitter-title" />
+    <meta name="twitter:description" content="Tuya isn&#x27;t a hardware company in the traditional sense — it&#x27;s the IoT cloud platform that powers thousands of white-label smart-home brands worldwide…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Tuya | S‑ELECTRICITY Morocco</title>
+
+    <!-- SPA Integration -->
+    <script type="module" crossorigin src="/assets/index-CGMiSPUa.js"></script>
+    <link rel="stylesheet" href="/assets/brand.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
+
+    <!-- Localization Script -->
+    <link rel="stylesheet" href="/assets/i18n.css">
+    <link rel="stylesheet" href="/assets/section-eyebrows.css">
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <link rel="stylesheet" href="/assets/products.css">
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/brands.css">
+    <link rel="stylesheet" href="/assets/homepage-products.css">
+    <script defer src="/assets/homepage-products.js"></script>
+    <script defer src="/assets/brands-list.js"></script>
+    <script defer src="/assets/brand-detail.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json" id="brand-jsonld">{"@context": "https://schema.org", "@type": "Brand", "name": "Tuya", "description": "Tuya isn't a hardware company in the traditional sense — it's the IoT cloud platform that powers thousands of white-label smart-home brands worldwide, including a huge portion of what's sold on Amazon and AliExpress under names like MOES, BlitzWolf, and dozens of regional brands. Devices that carry the Tuya stack share a common app (Smart Life / Tuya Smart), a common cloud, and increasingly common protocol support including Matter and Zigbee 3.0. Our catalog carries the Matter Zigbee Gateway Hub — a multi-protocol bridge that lets older Tuya/Zigbee devices appear as Matter devices to Apple Home, Google Home, and Alexa, which is exactly the upgrade path that makes existing Tuya installations future-proof. For Moroccan customers who've already built a smart-home stack out of mixed Tuya devices over the years, this gateway is what ties everything into the modern Matter ecosystem without throwing away the existing hardware.", "url": "https://smartelectricity.ma/brands/tuya.html", "sameAs": ["https://www.tuya.com"]}</script>
+  <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/"}, {"@type": "ListItem", "position": 2, "name": "Brands", "item": "https://smartelectricity.ma/brands.html"}, {"@type": "ListItem", "position": 3, "name": "Tuya", "item": "https://smartelectricity.ma/brands/tuya.html"}]}</script>
+  <script type="application/ld+json" id="brand-itemlist-jsonld">{"@context": "https://schema.org", "@type": "ItemList", "name": "Tuya products", "numberOfItems": 1, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/products/moes-matter-zigbee-gateway.html", "name": "Tuya Matter Zigbee Gateway Hub"}]}</script>
+  <script id="brand-preload">window.__BRAND__ = {"id": "tuya", "brand": "Tuya", "country_of_origin": "China", "founded": 2014, "website": "https://www.tuya.com", "logo": null, "tagline": {"en": "The IoT platform behind thousands of smart-home brands worldwide.", "fr": "La plateforme IoT derrière des milliers de marques smart home dans le monde.", "ar": "منصة IoT التي يقوم عليها آلاف العلامات الذكية حول العالم."}, "description": {"en": "Tuya isn't a hardware company in the traditional sense — it's the IoT cloud platform that powers thousands of white-label smart-home brands worldwide, including a huge portion of what's sold on Amazon and AliExpress under names like MOES, BlitzWolf, and dozens of regional brands. Devices that carry the Tuya stack share a common app (Smart Life / Tuya Smart), a common cloud, and increasingly common protocol support including Matter and Zigbee 3.0. Our catalog carries the Matter Zigbee Gateway Hub — a multi-protocol bridge that lets older Tuya/Zigbee devices appear as Matter devices to Apple Home, Google Home, and Alexa, which is exactly the upgrade path that makes existing Tuya installations future-proof. For Moroccan customers who've already built a smart-home stack out of mixed Tuya devices over the years, this gateway is what ties everything into the modern Matter ecosystem without throwing away the existing hardware.", "fr": "Tuya n'est pas une entreprise de matériel au sens traditionnel — c'est la plateforme cloud IoT qui anime des milliers de marques smart home en marque blanche dans le monde, dont une énorme part de ce qui se vend sur Amazon et AliExpress sous des noms comme MOES, BlitzWolf et des dizaines de marques régionales. Les appareils portant la stack Tuya partagent une app commune (Smart Life / Tuya Smart), un cloud commun, et un support croissant de protocoles communs incluant Matter et Zigbee 3.0. Notre catalogue propose le Matter Zigbee Gateway Hub — un pont multi-protocole qui permet aux anciens appareils Tuya/Zigbee d'apparaître comme appareils Matter pour Apple Home, Google Home et Alexa, soit exactement le chemin de mise à niveau qui rend les installations Tuya existantes pérennes. Pour les clients marocains qui ont déjà construit une stack smart home composée d'appareils Tuya mixtes au fil des années, cette gateway est ce qui relie tout à l'écosystème Matter moderne sans jeter le matériel existant.", "ar": "Tuya ليست شركة عتاد بالمعنى التقليدي — إنها منصة IoT cloud التي تشغّل آلاف العلامات الذكية بـ white-label حول العالم، بما فيها حصّة ضخمة ممّا يُباع على Amazon وAliExpress تحت أسماء مثل MOES وBlitzWolf وعشرات العلامات الإقليمية. الأجهزة التي تحمل stack Tuya تتقاسم تطبيقاً مشتركاً (Smart Life / Tuya Smart) وcloud مشتركاً ودعماً متنامياً للبروتوكولات المشتركة بما فيها Matter وZigbee 3.0. كتالوجنا يحمل Matter Zigbee Gateway Hub — جسراً متعدّد البروتوكولات يتيح للأجهزة القديمة Tuya/Zigbee أن تظهر كأجهزة Matter لـ Apple Home وGoogle Home وAlexa، وهو بالضبط مسار الترقية الذي يضمن استمرارية تركيبات Tuya القائمة. للعملاء في المغرب الذين بنوا منذ سنوات منظومة smart home من أجهزة Tuya مختلفة، هذا الـ gateway هو ما يربط كل شيء بمنظومة Matter الحديثة دون التخلّص من العتاد القائم."}, "products": [{"id": "moes-matter-zigbee-gateway", "brand": "Tuya", "technology": ["Zigbee", "Matter", "Thread", "LAN"], "product_type": "Gateway", "installation": "Free standing", "title": {"en": "Tuya Matter Zigbee Gateway Hub", "fr": "Passerelle Matter Zigbee Tuya", "ar": "موزع Tuya متعدد البروتوكولات Matter و Zigbee"}, "short_description": {"en": "Multi-protocol smart home hub with Matter, Zigbee & Thread.", "fr": "Hub domotique multi-protocole avec Matter, Zigbee & Thread.", "ar": "موزع منزلي ذكي متعدد البروتوكولات — Matter و Zigbee و Thread."}, "category": "", "image": "/assets/products/moes-matter-zigbee-gateway.png"}]};</script>
+  </head>
+  <body>    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
+    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
+      <button type="button" data-lang="en" role="menuitem">English</button>
+      <button type="button" data-lang="fr" role="menuitem">Français</button>
+      <button type="button" data-lang="ar" role="menuitem">العربية</button>
+    </div>
+
+    <!-- Original Root injected here by SPA -->
+    <div id="root"></div>
+
+    <noscript>
+      <style>
+        #root { padding: 20px; text-align: center; }
+      </style>
+      <h1>Tuya</h1>
+      <p>The IoT platform behind thousands of smart-home brands worldwide.</p>
+      <p>S‑ELECTRICITY - Smart Home Solutions</p>
+    </noscript>
+  </body>
+</html>

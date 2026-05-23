@@ -285,5 +285,27 @@
   "cart_aria_decrease": "إنقاص الكمية",
   "cart_aria_add_btn": "أضف إلى طلب العرض",
   "cart_pd_add_btn": "أضف إلى طلب العرض",
-  "cart_pd_hint": "اطلب عرض سعر مجاني — نرد عليك خلال ساعات عبر واتساب"
+  "cart_pd_hint": "اطلب عرض سعر مجاني — نرد عليك خلال ساعات عبر واتساب",
+
+  "page_title_brands": "العلامات التجارية التي نركّبها | S‑ELECTRICITY المغرب",
+  "meta_description_brands": "اكتشف علامات المنزل الذكي والكهرباء التي نركّبها في المغرب — KNX (EAE Technology وZennio) وShelly Wi-Fi وReyee للشبكات وDahua للمراقبة وSONOFF Zigbee وTuya.",
+  "page_title_brand": "تفاصيل العلامة التجارية | S‑ELECTRICITY المغرب",
+  "nav_brands": "العلامات التجارية",
+  "brands_hero_title": "العلامات التي نركّبها",
+  "brands_hero_subtitle": "مصنّعون مختارون بعناية نثق بهم للمنازل والشركات المغربية.",
+  "noscript_h1_brands": "علامات المنزل الذكي | S‑ELECTRICITY المغرب",
+  "noscript_text_brands": "تصفّح العلامات التي نركّبها — KNX وWi-Fi والمراقبة والشبكات.",
+  "brands_empty": "لا توجد علامات متاحة حالياً.",
+  "brand_about": "نبذة",
+  "brand_tech_focus": "التقنيات",
+  "brand_category_focus": "التخصّص",
+  "brand_products_title": "المنتجات",
+  "brand_view_products": "عرض كل المنتجات",
+  "brand_view_in_catalog": "عرض في الكتالوج",
+  "brand_visit_website": "زيارة الموقع",
+  "brand_products_count": "{count} منتج في كتالوجنا",
+  "brand_founded": "تأسّست سنة {year}",
+  "brand_no_products": "لا توجد منتجات لهذه العلامة بعد.",
+  "brand_not_found": "العلامة غير موجودة",
+  "brand_not_found_desc": "العلامة التي تبحث عنها غير موجودة أو تم حذفها."
 }

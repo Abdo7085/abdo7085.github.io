@@ -272,5 +272,27 @@
   "cart_aria_decrease": "Decrease quantity",
   "cart_aria_add_btn": "Add to quote request",
   "cart_pd_add_btn": "Add to Quote Request",
-  "cart_pd_hint": "Request a free quote — we'll reply within hours via WhatsApp"
+  "cart_pd_hint": "Request a free quote — we'll reply within hours via WhatsApp",
+
+  "page_title_brands": "Smart Home Brands We Install | S‑ELECTRICITY Morocco",
+  "meta_description_brands": "Discover the smart home and electrical brands we install across Morocco — KNX (EAE Technology, Zennio), Shelly Wi-Fi, Reyee networking, Dahua surveillance, SONOFF Zigbee, Tuya.",
+  "page_title_brand": "Brand Details | S‑ELECTRICITY Morocco",
+  "nav_brands": "Brands",
+  "brands_hero_title": "Brands We Install",
+  "brands_hero_subtitle": "Hand-picked manufacturers we trust for Moroccan homes and businesses.",
+  "noscript_h1_brands": "Smart Home Brands | S‑ELECTRICITY Morocco",
+  "noscript_text_brands": "Browse the brands we install — KNX, Wi-Fi, surveillance, networking.",
+  "brands_empty": "No brands available yet.",
+  "brand_about": "About",
+  "brand_tech_focus": "Technologies",
+  "brand_category_focus": "Specialization",
+  "brand_products_title": "Products",
+  "brand_view_products": "View All Products",
+  "brand_view_in_catalog": "View in catalog",
+  "brand_visit_website": "Visit Website",
+  "brand_products_count": "{count} products in our catalog",
+  "brand_founded": "Founded {year}",
+  "brand_no_products": "No products from this brand yet.",
+  "brand_not_found": "Brand Not Found",
+  "brand_not_found_desc": "The brand you are looking for does not exist or has been removed."
 }

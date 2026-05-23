@@ -1,0 +1,154 @@
+[
+  {
+    "id": "zennio",
+    "brand": "Zennio",
+    "tagline": {
+      "en": "Spanish KNX engineering — premium touch panels and the densest actuator range on the market.",
+      "fr": "Ingénierie KNX espagnole — panneaux tactiles premium et la gamme d'actionneurs la plus dense du marché.",
+      "ar": "هندسة KNX إسبانية — Touch Panels فاخرة وأوسع تشكيلة Actuators في السوق."
+    },
+    "logo": null,
+    "tech_focus": [
+      "KNX"
+    ],
+    "category_focus": [
+      "Actuator",
+      "Touch Panel",
+      "Switch",
+      "Universal Interface",
+      "Dimmer",
+      "Power Supply"
+    ],
+    "country_of_origin": "Spain",
+    "product_count": 36
+  },
+  {
+    "id": "eae-technology",
+    "brand": "EAE Technology",
+    "tagline": {
+      "en": "European-grade KNX building automation, engineered in Turkey.",
+      "fr": "Automatisation KNX de qualité européenne, conçue en Turquie.",
+      "ar": "أتمتة المباني KNX بمعايير أوروبية، تصنيع تركي."
+    },
+    "logo": null,
+    "tech_focus": [
+      "KNX",
+      "LAN"
+    ],
+    "category_focus": [
+      "Actuator",
+      "Gateway",
+      "Power Supply",
+      "Switch",
+      "Touch Panel",
+      "Thermostat",
+      "Universal Interface"
+    ],
+    "country_of_origin": "Turkey",
+    "product_count": 19
+  },
+  {
+    "id": "shelly",
+    "brand": "Shelly",
+    "tagline": {
+      "en": "Wi-Fi smart relays that retrofit any wall switch in minutes.",
+      "fr": "Relais intelligents Wi-Fi qui s'installent derrière n'importe quel interrupteur.",
+      "ar": "ريليهات Wi-Fi ذكية تُركَّب خلف أي مفتاح حائط في دقائق."
+    },
+    "logo": null,
+    "tech_focus": [
+      "Bluetooth",
+      "Wi-Fi",
+      "LAN"
+    ],
+    "category_focus": [
+      "Smart Relay",
+      "Actuator",
+      "Dimmer",
+      "Shutter",
+      "Touch Panel"
+    ],
+    "country_of_origin": "Bulgaria",
+    "product_count": 11
+  },
+  {
+    "id": "reyee",
+    "brand": "Reyee",
+    "tagline": {
+      "en": "Enterprise-grade Wi-Fi and managed networking, priced for residential and SMB projects.",
+      "fr": "Wi-Fi de niveau entreprise et réseau managé, à des prix adaptés aux projets résidentiels et PME.",
+      "ar": "Wi-Fi بجودة المؤسسات وشبكات مُدارة، بأسعار تناسب المشاريع السكنية والشركات الصغيرة."
+    },
+    "logo": null,
+    "tech_focus": [
+      "LAN",
+      "Wi-Fi"
+    ],
+    "category_focus": [
+      "Network"
+    ],
+    "country_of_origin": "China",
+    "product_count": 6
+  },
+  {
+    "id": "sonoff",
+    "brand": "SONOFF",
+    "tagline": {
+      "en": "Affordable Zigbee smart switches and relays that just work with any hub.",
+      "fr": "Interrupteurs et relais Zigbee abordables, compatibles avec n'importe quel hub.",
+      "ar": "مفاتيح وريليهات Zigbee اقتصادية تعمل مع أي hub."
+    },
+    "logo": null,
+    "tech_focus": [
+      "Zigbee"
+    ],
+    "category_focus": [
+      "Smart Relay",
+      "Dimmer",
+      "Shutter"
+    ],
+    "country_of_origin": "China",
+    "product_count": 6
+  },
+  {
+    "id": "dahua",
+    "brand": "Dahua",
+    "tagline": {
+      "en": "Professional IP video intercoms and surveillance — the global pro-installer standard.",
+      "fr": "Interphones vidéo IP professionnels et vidéosurveillance — le standard mondial des installateurs pros.",
+      "ar": "أنظمة intercom فيديو IP وكاميرات مراقبة احترافية — المعيار العالمي للمركّبين المحترفين."
+    },
+    "logo": null,
+    "tech_focus": [
+      "LAN",
+      "Wi-Fi"
+    ],
+    "category_focus": [
+      "Touch Panel",
+      "Door Station"
+    ],
+    "country_of_origin": "China",
+    "product_count": 5
+  },
+  {
+    "id": "tuya",
+    "brand": "Tuya",
+    "tagline": {
+      "en": "The IoT platform behind thousands of smart-home brands worldwide.",
+      "fr": "La plateforme IoT derrière des milliers de marques smart home dans le monde.",
+      "ar": "منصة IoT التي يقوم عليها آلاف العلامات الذكية حول العالم."
+    },
+    "logo": null,
+    "tech_focus": [
+      "LAN",
+      "Matter",
+      "Thread",
+      "Zigbee"
+    ],
+    "category_focus": [
+      "Gateway"
+    ],
+    "country_of_origin": "China",
+    "product_count": 1
+  }
+]
