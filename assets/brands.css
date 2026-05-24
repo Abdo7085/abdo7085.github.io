@@ -573,3 +573,87 @@
   color: var(--brand-text-muted);
   margin-bottom: 1.5rem;
 }
+
+/* ============================================================
+ * 2026-05-24 — Hero atmosphere, card corner accent, focus rings
+ * Pure additive layer (mirrors projects.css / products.css polish).
+ * ============================================================ */
+
+/* Grain over the dark brand hero — paired with the existing radial accent
+   (::before) for depth that matches projects.css / products.css. */
+.brands-hero::after,
+.brand-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-svg);
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Brand card top-edge accent on hover — same pattern as .prod-card::before */
+.brand-card {
+  position: relative;
+}
+.brand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--brand, #b86c25) 40%,
+    var(--brand, #b86c25) 60%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+  border-top-left-radius: var(--brand-radius-lg);
+  border-top-right-radius: var(--brand-radius-lg);
+}
+.brand-card:hover::before,
+.brand-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Warmer logo area — replaces flat slate gradient with hint of cream */
+.brand-card-logo-area {
+  background:
+    radial-gradient(ellipse at 50% 90%, rgba(184, 108, 37, 0.04) 0%, transparent 60%),
+    linear-gradient(135deg, #fbf8f4 0%, #f1ede5 100%);
+}
+
+/* Tech chip hover — small lift, brand-tinted */
+.brand-chip-tech {
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.brand-chip-tech:hover {
+  transform: translateY(-1px);
+  background: rgba(184, 108, 37, 0.16);
+  border-color: rgba(184, 108, 37, 0.4);
+}
+
+/* Focus-visible rings */
+.brand-card:focus-visible,
+.brand-hero-btn:focus-visible,
+.brand-products-link:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.brand-breadcrumbs a:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+/* On the dark hero, brand-orange rings vanish — use a soft white instead */
+.brand-hero .brand-hero-btn:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.75);
+}

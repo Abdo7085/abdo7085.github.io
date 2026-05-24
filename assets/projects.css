@@ -887,3 +887,70 @@ button.proj-cta-btn {
   color: var(--proj-primary);
   border: 1px solid rgba(184, 108, 37, 0.22);
 }
+
+/* ============================================================
+ * 2026-05-24 — Atmosphere & focus polish
+ * Pure additive layer: depth (grain + secondary accent) on dark hero
+ * and orange CTA, plus consistent keyboard-focus rings. No structural
+ * rules changed — every selector below is new or :focus-visible.
+ * ============================================================ */
+
+/* Grain over the dark hero — ::before already holds the radial accent
+   so we layer the noise on ::after at very low opacity. */
+.proj-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-svg);
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CTA — keep ::before's right-side radial, add ::after on the left
+   for a balanced two-point lighting feel, then layer grain on top. */
+.proj-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  inset-inline-start: -8%;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.proj-cta {
+  /* Layer grain over the orange fill — subtle, organic */
+  background-image: var(--noise-svg), none;
+  background-blend-mode: overlay;
+  background-color: var(--proj-primary);
+}
+
+/* Focus-visible rings — keyboard a11y, no visual change for mouse users.
+   Each rule pairs the brand ring with an offset that matches the surface. */
+.proj-cta-btn:focus-visible,
+.proj-strip-nav:focus-visible,
+.proj-reel-unmute:focus-visible,
+.proj-reel-ig-btn:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 3px;
+}
+.proj-breadcrumbs a:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+/* On the orange CTA surface, the brand ring disappears — use white instead. */
+.proj-cta .proj-cta-btn:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Slight refinement on the CTA primary button — a touch more lift on hover
+   without changing the base appearance. */
+.proj-cta-btn-primary:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08);
+}

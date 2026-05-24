@@ -301,8 +301,9 @@
     if (products.length === 0) {
       return `
         <div class="prod-empty">
-          <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin: 0 auto 1rem; color: #9ca3af;">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m-1.6-8L3 3m4 10a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z"></path>
+          <svg class="prod-empty-icon" width="56" height="56" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+             <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35"></path>
           </svg>
           <p data-i18n="no_products_found">No products found matching your criteria.</p>
         </div>

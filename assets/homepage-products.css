@@ -1,16 +1,34 @@
-/* Homepage Products Section */
+/* Homepage Products Section — deep warm-dark gradient + warm-cream grain.
+ * Outer stops use --warm-dark-deep (#0f0a05) instead of --warm-dark (#1a140d)
+ * so the surface reads as near-black with a warm undertone, matching the
+ * original visual weight before grain was added. The cream grain (alpha 0.13)
+ * is calibrated to give visible texture without lifting overall luminance.
+ *
+ * Why screen + cream (not overlay + dark): dark grain × overlay on a near-
+ * black background produces no variation (dark × dark stays dark). Cream
+ * grain + screen brightens random pixels into warm highlights, preserving
+ * both the dark weight AND the brand hue. */
 .hp-products-section {
   padding: 4rem 0;
-  background: linear-gradient(to bottom right, var(--warm-dark, #1a140d), #000000, var(--warm-dark, #1a140d));
+  background-image:
+    var(--noise-svg-light),
+    linear-gradient(to bottom right, var(--warm-dark-deep, #0f0a05), #000000, var(--warm-dark-deep, #0f0a05));
+  background-blend-mode: screen, normal;
+  background-color: var(--warm-dark-deep, #0f0a05);
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: #ffffff;
 }
 
 /* Warm-dark override for #example ("Your home at your fingertips") section
-   in SPA bundle. SPA uses Tailwind from-gray-900/via-black/to-gray-900 (cool
-   grays). We swap to warm-brown to harmonize with the copper brand color. */
+ * in SPA bundle. SPA uses Tailwind from-gray-900/via-black/to-gray-900 (cool
+ * grays). We swap to a deep warm-brown gradient that harmonizes with the
+ * copper brand color, then layer cream grain for cohesive depth with .proj-cta. */
 section#example {
-  background: linear-gradient(to bottom right, var(--warm-dark, #1a140d), #000000, var(--warm-dark, #1a140d)) !important;
+  background-image:
+    var(--noise-svg-light),
+    linear-gradient(to bottom right, var(--warm-dark-deep, #0f0a05), #000000, var(--warm-dark-deep, #0f0a05)) !important;
+  background-blend-mode: screen, normal !important;
+  background-color: var(--warm-dark-deep, #0f0a05) !important;
 }
 .hp-products-inner {
   max-width: 1200px;
@@ -30,6 +48,7 @@ section#example {
   border-bottom: 2px solid var(--brand, #b86c25);
   padding-bottom: 2px;
   line-height: 1.3;
+  letter-spacing: var(--tracking-tight, -0.015em);
 }
 .hp-products-subtitle {
   font-size: 1.05rem;
@@ -188,4 +207,59 @@ section#example {
   .hp-products-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+ * 2026-05-24 — Dark-surface polish (atmosphere + accent + focus)
+ * ============================================================ */
+
+/* Grain on .hp-products-section and section#example is now applied directly
+   via background-image + background-blend-mode in the main rules above (line
+   ~3-14). That produces the same strong overlay effect as the orange .proj-cta
+   instead of the weaker pseudo-element technique used previously. */
+
+/* Card top-edge accent on hover — same pattern as .prod-card / .brand-card
+   but tuned for the dark surface (brand orange reads beautifully on glass). */
+.hp-product-card {
+  position: relative;
+}
+.hp-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--brand, #b86c25) 25%,
+    var(--brand, #b86c25) 75%,
+    transparent 100%);
+  box-shadow: 0 0 12px rgba(184, 108, 37, 0.6);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.hp-product-card:hover::before,
+.hp-product-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Refined hover border (the existing transform-only hover felt floaty —
+   adding a subtle brand-tinted border edge makes the lift feel intentional). */
+.hp-product-card:hover {
+  border-color: rgba(184, 108, 37, 0.35);
+}
+
+/* Focus-visible rings — softer on the dark surface */
+.hp-product-card:focus-visible,
+.hp-products-btn:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 3px;
+  border-radius: 12px;
 }

@@ -102,3 +102,20 @@ section#faq > .container > h2::before {
 :lang(ar) section#faq > .container > h2::before {
   content: '— ٠٤ / إجابات';
 }
+
+/* ============================================================
+ * 2026-05-24 — Decorative underline
+ * Adds a 1px brand-colored line under each eyebrow, sized to the text
+ * width via display:table + auto margins. Pure CSS, no DOM change.
+ * Reads as editorial cadence between eyebrow and heading.
+ * ============================================================ */
+section#services > .container > div:first-child::before,
+section#example > .container > div > div:first-child::before,
+section#homepage-products-section .hp-products-header::before,
+section#faq > .container > h2::before {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid currentColor;
+}

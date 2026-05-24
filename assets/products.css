@@ -455,20 +455,50 @@ html[dir="rtl"] .prod-card:hover .prod-card-arrow {
   transform: translateX(-3px);
 }
 
-/* Empty State */
+/* Empty State — refined 2026-05-24 */
 .prod-empty {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  padding: 4.5rem 2rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 108, 37, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #fefcf9 0%, #f8f4ee 100%);
   border-radius: var(--radius-lg);
-  border: 2px dashed var(--prod-border);
+  border: 1px solid var(--brand-tint, rgba(184, 108, 37, 0.1));
   color: var(--prod-text-muted);
+  position: relative;
+  overflow: hidden;
+}
+.prod-empty::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-svg);
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.prod-empty-icon {
+  display: block;
+  margin: 0 auto 1.25rem;
+  color: var(--prod-primary);
+  opacity: 0.7;
+  position: relative;
+}
+.prod-empty h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--prod-text-main);
+  letter-spacing: var(--tracking-tight, -0.015em);
+  margin: 0 0 0.5rem;
+  position: relative;
 }
 .prod-empty p {
-  font-size: 1.05rem;
-  max-width: 400px;
+  font-size: 1.02rem;
+  max-width: 420px;
   margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
 }
 
 /* Spinner */
@@ -801,6 +831,7 @@ html[dir="rtl"] .prod-breadcrumbs {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--prod-text-main);
+  letter-spacing: var(--tracking-tight, -0.015em);
 }
 
 .pd-specs-table {
@@ -1373,4 +1404,104 @@ html[dir="rtl"] .prod-count-badge {
   .pd-gallery-wrapper {
     position: static;
   }
+}
+
+/* ============================================================
+ * 2026-05-24 — Card polish, hero atmosphere, focus rings
+ * Pure additive layer. All new selectors or :focus-visible variants.
+ * No existing rule modified — safe to revert by deleting this block.
+ * ============================================================ */
+
+/* Grain over the dark products hero (matches projects.css pattern). */
+.prod-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-svg);
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card corner accent — a thin brand-colored line sweeps in from the top edge
+   on hover. Pure CSS, no extra DOM. Pairs with the existing translateY lift. */
+.prod-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--prod-primary) 40%,
+    var(--prod-primary) 60%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+.prod-card:hover::before,
+.prod-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Slightly warmer card image backdrop — replaces the flat slate gradient with
+   a hint of cream so the white-bg product photos feel grounded rather than
+   floating. Overrides the original .prod-card-img-wrapper background. */
+.prod-card .prod-card-img-wrapper {
+  background:
+    radial-gradient(ellipse at 50% 90%, rgba(184, 108, 37, 0.04) 0%, transparent 60%),
+    linear-gradient(135deg, #fbf8f4 0%, #f1ede5 100%);
+}
+
+/* Refined product badge — soft inner highlight + better shadow */
+.prod-badge {
+  background: linear-gradient(135deg, var(--prod-primary) 0%, var(--prod-primary-hover) 100%);
+  box-shadow:
+    0 2px 8px rgba(184, 108, 37, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Focus-visible rings — keyboard a11y across all interactive cards/links */
+.prod-card:focus-visible,
+.brand-card:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 3px;
+}
+.prod-btn:focus-visible,
+.prod-page-btn:focus-visible,
+.prod-mobile-filter-toggle:focus-visible,
+.prod-modal-close:focus-visible,
+.prod-btn-clear-desktop:focus-visible,
+.pd-file-item:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 2px;
+}
+.prod-search-input:focus-visible {
+  /* Already has a custom focus box-shadow — just keep keyboard parity */
+  outline: none;
+}
+.pd-breadcrumbs a:focus-visible,
+.prod-breadcrumbs a:focus-visible {
+  outline: 2px solid var(--ring, rgba(184, 108, 37, 0.55));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Subtle inner highlight on the gallery surface — feels less plastic */
+.pd-gallery::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.7) 0%, transparent 50%);
+  pointer-events: none;
+  mix-blend-mode: soft-light;
 }

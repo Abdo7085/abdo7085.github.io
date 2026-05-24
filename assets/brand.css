@@ -29,4 +29,41 @@
   --ink-muted: #6b7280;
   --paper:     #ffffff;
   --cream:     #f8fafc;
+
+  /* ===== Surface texture (added 2026-05-24) =====
+   * Two noise tokens — dark grain for light/saturated surfaces (orange CTA),
+   * warm-cream grain for dark surfaces (warm-dark sections). Same fractalNoise
+   * pattern; RGB differs. Use with `background-blend-mode`:
+   *   light bg  → --noise-svg       + overlay (dark grain darkens random pixels)
+   *   dark bg   → --noise-svg-light + screen  (cream grain lightens pixels)
+   * The "light" variant uses BRAND-PALE cream (#f5e7d8 → 0.961/0.906/0.847)
+   * instead of pure white, so screen-blending on warm-dark gradients preserves
+   * the brown hue instead of shifting toward neutral gray.
+   * 80×80 tile, ~700 bytes each, GPU-friendly. */
+  --noise-svg:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --noise-svg-light:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.961  0 0 0 0 0.906  0 0 0 0 0.847  0 0 0 0.13 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+
+  /* ===== Focus ring (a11y) =====
+   * Single token for all keyboard-focus rings across the site, so a11y stays
+   * consistent regardless of which CSS file owns the component. Use as:
+   *   outline: 2px solid var(--ring); outline-offset: 3px; */
+  --ring:        rgba(184, 108, 37, 0.55);
+  --ring-soft:   rgba(184, 108, 37, 0.25);
+
+  /* ===== Typographic tracking ===== */
+  --tracking-display: -0.025em;   /* large headings */
+  --tracking-tight:   -0.015em;   /* mid headings */
+  --tracking-eyebrow:  0.18em;    /* small uppercase labels */
+}
+
+/* ===== Reduced motion respect ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

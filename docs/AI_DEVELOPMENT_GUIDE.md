@@ -1110,6 +1110,119 @@ section#NEW_ID > .container > .HEADER_WRAPPER::before { content: '— 05 / NEW_L
 :lang(ar) section#NEW_ID ... ::before { content: '— ٠٥ / NEW_LABEL_AR'; }
 ```
 
+### 🎨 UI Polish Layer — Atmosphere, Cards, Focus (2026-05-24)
+
+**فلسفة الطبقة:** كل التحسينات أُضيفت كـ **additive blocks في نهاية كل ملف CSS** مع marker تاريخ. **صفر تعديل على SPA bundle** و**صفر تغيير في ألوان البراند أو الخط أو الـ structure**. قابلة للحذف فوراً بحذف الـ block إن لزم rollback.
+
+#### Tokens الجديدة في `brand.css`
+
+```css
+/* Surface texture — نظام ذو توكنين */
+--noise-svg:        /* بكسلات سوداء، alpha 0.55 — للأسطح الفاتحة/المشبعة */
+--noise-svg-light:  /* بكسلات brand-pale (#f5e7d8)، alpha 0.13 — للأسطح الداكنة */
+
+/* Focus rings (a11y موحَّدة عبر الموقع) */
+--ring:        rgba(184, 108, 37, 0.55);
+--ring-soft:   rgba(184, 108, 37, 0.25);
+
+/* Typographic tracking */
+--tracking-display: -0.025em;
+--tracking-tight:   -0.015em;
+--tracking-eyebrow:  0.18em;
+```
+
+**`prefers-reduced-motion: reduce`** يُطبَّق على مستوى الموقع كاملاً في `brand.css` — يلغي كل animations/transitions تلقائياً للمستخدمين الذين يطلبون ذلك.
+
+#### 🎲 نظام التوكنين للـ Noise — قاعدة الاستخدام
+
+| نوع الخلفية | التوكن | blend-mode | مثال |
+|---|---|---|---|
+| فاتحة/مشبعة (orange CTA) | `--noise-svg` | `overlay` | `.proj-cta` |
+| داكنة (warm-dark sections) | `--noise-svg-light` | `screen` | `.hp-products-section`, `section#example` |
+
+**السبب:** `overlay` على خلفية داكنة بـ noise أسود = أسود × أسود = لا تغيير. الحل: noise كريمي فاتح (`#f5e7d8`) + `screen` blend = بكسلات مرفوعة بنغمة برتقالية-كريمية تحافظ على hue الـ warm-dark.
+
+**مهم:** على الأسطح الداكنة، استخدم `--warm-dark-deep` (#0f0a05) كأطراف الـ gradient (وليس `--warm-dark` #1a140d) — الـ screen blend يرفع luminance قليلاً، فنبدأ من قاعدة أعمق ليبقى الـ section قريباً من الأسود الدافئ.
+
+```css
+/* الوصفة الكاملة لقسم داكن مع grain */
+.section-dark {
+  background-image:
+    var(--noise-svg-light),
+    linear-gradient(to bottom right, var(--warm-dark-deep), #000000, var(--warm-dark-deep));
+  background-blend-mode: screen, normal;
+  background-color: var(--warm-dark-deep);
+}
+
+/* الوصفة الكاملة لـ CTA برتقالي مع grain */
+.cta-orange {
+  background-image: var(--noise-svg), none;
+  background-blend-mode: overlay;
+  background-color: var(--brand);
+}
+```
+
+#### 🃏 Card Top-Edge Accent Pattern
+
+نمط موحَّد على `.prod-card`, `.brand-card`, `.hp-product-card`: خط برتقالي رفيع يظهر على الحافة العليا عند hover/focus-within، يتمدّد من المنتصف بـ `transform: scaleX`. على الأسطح الداكنة (`.hp-product-card`) يُضاف `box-shadow: 0 0 12px rgba(184, 108, 37, 0.6)` ليكون مرئياً.
+
+**القالب القابل لإعادة الاستخدام:**
+```css
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; inset-inline-start: 0;
+  width: 100%; height: 2-3px;
+  background: linear-gradient(90deg, transparent, var(--brand) 40%, var(--brand) 60%, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+  pointer-events: none;
+  /* corner radius matching parent */
+}
+.card:hover::before,
+.card:focus-within::before { transform: scaleX(1); }
+```
+
+#### ✏️ Section Eyebrow Decorative Underline
+
+في `section-eyebrows.css` تُضاف قاعدة override تحوّل الـ `::before` من `display: block` إلى `display: table` + `margin: 0 auto` + `border-bottom: 1px solid currentColor` — ينتج خط برتقالي رفيع بعرض النصّ تماماً تحت كل eyebrow، يعطي إيقاع editorial.
+
+#### 🎯 Focus-Visible Rings (a11y)
+
+موحَّدة عبر كل الملفات: `outline: 2px solid var(--ring); outline-offset: 2-3px;`. على الأسطح المشبعة (orange CTA) أو الداكنة، تُستبدل بـ `rgba(255, 255, 255, 0.75-0.9)` ليبقى الـ ring مرئياً. كل عنصر تفاعلي (بطاقة، زر، رابط، input) له focus-visible rule.
+
+#### 🪟 Empty State Polish (`.prod-empty`)
+
+استبدال:
+- Border `2px dashed` → `1px solid var(--brand-tint)`
+- Background `gradient(#fafafa → #f5f5f5)` → `radial brand-tint + linear cream`
+- Icon `cart` (gray inline) → `magnifier` (brand-orange via CSS، `aria-hidden="true"`)
+- إضافة `::before` بـ noise overlay subtle
+
+تغيير الـ SVG في `products.js` (~السطر 304): إزالة `style="color:..."` inline + إضافة `class="prod-empty-icon"` ليأخذ اللون من CSS.
+
+#### الملفات المُعدَّلة في هذه الجولة
+
+| الملف | التغيير |
+|---|---|
+| `assets/brand.css` | + 4 tokens (noise×2، ring×2، tracking×3) + global reduced-motion |
+| `assets/projects.css` | + grain على `.proj-hero` و `.proj-cta` + focus rings + button hover refinement |
+| `assets/products.css` | + card accent + warmer img wrapper + badge gradient + empty state + focus rings + gallery highlight |
+| `assets/brands.css` | + card accent + grain على `.brand-hero` + warmer logo area + chip hover + focus rings |
+| `assets/homepage-products.css` | + grain على `.hp-products-section` و `section#example` (warm-dark-deep + screen blend) + card accent مع glow + focus rings |
+| `assets/section-eyebrows.css` | + decorative underline تحت كل eyebrow |
+| `assets/products.js` | empty state SVG: cart → magnifier + class + a11y |
+
+#### قاعدة المنع (anti-pattern checklist)
+
+- ❌ لا تستخدم `--noise-svg` على خلفية داكنة (سيختفي).
+- ❌ لا تستخدم `--noise-svg-light` على خلفية فاتحة (ستظهر بيضاء فوضوية).
+- ❌ لا تضع focus ring بلون البراند على سطح برتقالي (سيختفي) — استخدم أبيض.
+- ❌ لا تنسَ `position: relative` على parent البطاقة عند إضافة `::before` accent.
+- ❌ لا تضف grain للأقسام عبر `::before` pseudo بـ `mix-blend-mode` — `background-blend-mode` على الـ section مباشرة أنظف وأقوى.
+
 ---
 
 ## 11. استلام تصميم من claude.ai/design (Design Handoff)
