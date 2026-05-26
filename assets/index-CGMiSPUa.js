@@ -11568,9 +11568,9 @@ const Xh = re("Zap", [["polygon", {
                                         className: "flex items-center justify-center",
                                         children: t.map((n, r) => u.jsxs("div", {
                                                 className: `
-                                    inline-block bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm
-                                    border border-gray-700/50 rounded-2xl p-3 md:p-8 transition-all duration-500
-                                    hover:transform hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30
+                                    inline-block bg-transparent
+                                    rounded-2xl p-3 md:p-8 transition-all duration-500
+                                    hover:transform hover:-translate-y-2
                                     fade-in group
                                 `,
                                                 style: {
