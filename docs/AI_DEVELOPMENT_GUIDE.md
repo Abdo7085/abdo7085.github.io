@@ -351,6 +351,29 @@ gap: 3rem;          /* mobile */
 
 **الفخّ:** نمط Desktop وMobile متطابقان تقريباً (نفس `to: "/previous-work"`)، يميّزهما فقط `className` للزر التالي (`"nav-link"` للـ Desktop vs `"nav-link text-base py-1 text-left"` للموبايل). **يجب تمديد المرساة إلى className لتجنّب التطابق المزدوج.** راجع `scripts/patch_navbar_brands.py` كمرجع — السكربت idempotent ويتحقّق من count قبل أي استبدال.
 
+### درس مستفاد: روابط navbar لقوالب غير-SPA (Non-SPA targets) — 2026-05-26
+
+**الأعراض:** النقر على "Brands" من navbar يُظهر شيلّ فارغ (navbar + footer فقط بدون محتوى)، لكن Reload أو الرجوع من صفحة علامة فردية (`/brands.html` بالامتداد الصريح) يعمل بشكل سليم.
+
+**السبب الجذري:** SPA bundle يسجّل `<Routes>` فقط لـ `/`, `/index.html`, `/previous-work`, `/previous-work.html` (راجع `assets/index-CGMiSPUa.js` ~12880). صفحة `brands.html` **قالب جذري مستقل** خارج SPA — يصيّرها `brands-list.js` ضمن `#custom-brands-root-wrapper` في الـ DOM المُحمَّل من الخادم. عند استخدام React Router `<Link to="/brands">`، يعترض الراوتر النقر client-side ويُحدّث URL إلى `/brands` لكن لا يطابق أي Route → outlet فارغ → شيلّ ظاهر بلا محتوى.
+
+**القاعدة:** عند إضافة رابط navbar لصفحة **خارج** SPA Routes (قالب root مستقل: `brands.html`, مستقبلاً أيّ قوالب جذرية أخرى)، استخدم:
+```js
+u.jsx(Mt, {
+    to: "/brands.html",
+    reloadDocument: true,    // ⬅ يجبر full reload بدل client-side navigation
+    className: "...",
+    "data-i18n": "...",
+    children: ""
+})
+```
+
+`reloadDocument: true` (متاح في react-router-dom v6.4+) يحوّل النقر إلى `window.location` navigation كاملة، فالخادم يخدم القالب الحقيقي. الـ basename للراوتر يحافظ على بادئة اللغة تلقائياً (`/fr/brands.html`, `/ar/brands.html`).
+
+**متى لا تحتاج `reloadDocument`:** عندما يكون الهدف صفحة SPA-routed لها مكوّن مسجَّل في `<Routes>` (مثل `/previous-work` التي يخدمها مكوّن `sv`). client-side navigation العادي يكفي لتلك الحالات لأن React سيُصيّر المكوّن داخل outlet.
+
+**كيف تميّز الحالتين:** إذا كان للقالب ملف JS مخصّص يبحث عن `#custom-X-root-wrapper` (مثل `brands-list.js`, `products.js`, `project-detail.js`, `product-detail.js`, `brand-detail.js`) فهو غالباً قالب root مستقل خارج SPA — استخدم `reloadDocument`.
+
 ---
 
 ## 4. بنية SEO للموقع (SEO Architecture)

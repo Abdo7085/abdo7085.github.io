@@ -18,10 +18,11 @@ import sys
 ROOT = Path(__file__).resolve().parent.parent
 BUNDLE = ROOT / "assets" / "index-CGMiSPUa.js"
 
-# Sentinel: if "/brands" is already present as a Link target, the bundle is
+# Sentinel: if "/brands.html" is already present as a Link target, the bundle is
 # already patched. (We check the route as a literal string — the navbar uses
-# `to: "/brands"`.)
-SENTINEL = 'to: "/brands"'
+# `to: "/brands.html"` with `reloadDocument: true` because brands is a separate
+# root template, not an SPA-routed component.)
+SENTINEL = 'to: "/brands.html"'
 
 
 # ---- Patch 1: Desktop navbar — insert "Brands" Link after Previous Work ----
@@ -58,7 +59,8 @@ DESKTOP_PW_NEW = (
     '                    "data-i18n": "spa_previous_work",\n'
     '                    children: ""\n'
     '                }), u.jsx(Mt, {\n'
-    '                    to: "/brands",\n'
+    '                    to: "/brands.html",\n'
+    '                    reloadDocument: true,\n'
     '                    className: "nav-link",\n'
     '                    "data-i18n": "nav_brands",\n'
     '                    children: ""\n'
@@ -102,7 +104,8 @@ MOBILE_PW_NEW = (
     '                    "data-i18n": "spa_previous_work",\n'
     '                    children: ""\n'
     '                }), u.jsx(Mt, {\n'
-    '                    to: "/brands",\n'
+    '                    to: "/brands.html",\n'
+    '                    reloadDocument: true,\n'
     '                    className: "nav-link text-base py-1 text-left",\n'
     '                    "data-i18n": "nav_brands",\n'
     '                    children: ""\n'
@@ -150,7 +153,8 @@ FOOTER_PW_NEW = (
     '                            })\n'
     '                        }), u.jsx("li", {\n'
     '                            children: u.jsx(Mt, {\n'
-    '                                to: "/brands",\n'
+    '                                to: "/brands.html",\n'
+    '                                reloadDocument: true,\n'
     '                                className: "text-gray-400 hover:text-primary transition-colors",\n'
     '                                "data-i18n": "nav_brands",\n'
     '                                children: ""\n'
