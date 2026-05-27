@@ -63,23 +63,26 @@ Never ask for things you can find out yourself (country of origin, founding year
 
 #### Phase B — Draft generation (still NO files written)
 
-1. **Assemble the brand JSON** from your knowledge of the manufacturer, structured per the schema below. Specifically:
-   - `country_of_origin`, `founded`, `website` → look up from your training; if uncertain, ask once.
+1. **Source the positioning from the official brand site.** Before drafting, fetch the brand's official About / Company page (via `WebFetch`) and synthesise the identity from how the brand describes itself. Don't rely on training knowledge alone for positioning language — manufacturers often refresh their messaging, and drawing from the official source is the user's stated preference. Cite the URL you used when presenting the draft. If the About page 404s, try `/`, `/about`, `/company`, `/about-us`, `/en/about`, or a parent-company page (e.g. `ruijie.com` for Reyee). Acceptable fallbacks: a sister page on the official domain, or general public knowledge (note it as such).
+
+2. **Assemble the brand JSON** structured per the schema below. Specifically:
+   - `country_of_origin`, `founded`, `website` → from the official site; if uncertain, ask once.
    - `logo` → set to `null` unless the user has already provided a path. The page renders an elegant text-name card when logo is absent; the user can drop a file in `assets/brands/<slug>.<ext>` later and update `logo`.
-   - `tagline` (en/fr/ar) — one short professional sentence capturing the brand's positioning (e.g. "European-grade KNX building automation, engineered in Turkey.").
-   - `description` (en/fr/ar) — 3–5 sentences following the structure in **"Writing Style"** below. **MUST cover the brand as a whole, NOT just the SKUs we currently sell.**
+   - `tagline` (en/fr/ar) — one short professional sentence capturing the brand's positioning (e.g. "KNX building automation and lighting control, engineered and manufactured in Türkiye.").
+   - `description` (en/fr/ar) — 3–5 sentences following the structure in **"Writing Style"** below. **MUST cover the brand as a whole, NOT just the SKUs we currently sell. Use generic product categories only — no model names, series names, or SKU numbers.**
    - **Do NOT include `tech_focus` or `category_focus`** — these are auto-derived from `data/products_index.json` by `build_brands.py` and `brand-detail.js`, sorted by frequency descending. Manual values would be ignored.
 
-2. **Present the draft** to the user in a human-readable form (NOT raw JSON):
+3. **Present the draft** to the user in a human-readable form (NOT raw JSON):
    - Proposed `id` slug + match check (does it align with how products reference this brand?)
    - Brand name + country + founded year + website
+   - Source URL used (the official page you fetched)
    - Tagline EN / FR / AR
    - First two lines of description EN / FR / AR
    - Logo: present (path) or absent (text fallback) — and the recipe to add one later
    - **Auto-derived preview**: a note about which `tech_focus` and `category_focus` values will appear, computed from products currently in the catalog with `brand === "<name>"`. (Read `data/products_index.json` and filter.)
    Close with: **"هل نعدّل أي شيء قبل إنشاء الملفات؟"**
 
-3. **Iterate on corrections.** Free-form: "اقصر الوصف", "غيّر الـ tagline إلى…", "اذكر RG-RAP62 في الوصف", "احذف ذكر hospitality لأننا لا نستهدفه", etc. Apply in place and re-show until approved.
+4. **Iterate on corrections.** Free-form: "اقصر الوصف", "غيّر الـ tagline إلى…", "احذف ذكر hospitality لأننا لا نستهدفه", etc. Apply in place and re-show until approved.
 
 Do not proceed to Phase C before explicit approval.
 
@@ -194,51 +197,59 @@ The Python implementation is `deriveChips()` in `scripts/build_brands.py`. The J
 
 ## Writing Style
 
+### Source of truth: the manufacturer's own positioning
+
+The brand's own About / Company page is the canonical reference. Synthesise tagline and description in your own words from how the brand presents itself — don't copy phrasing verbatim, don't invent claims they don't make, and don't lean on outdated training-data positioning. If the official page doesn't load, try alternate paths (`/about`, `/company`, `/en/about`, parent-company site) before falling back to general knowledge — and note the fallback to the user when presenting the draft.
+
 ### `tagline` (one line, ~10–15 words)
 
-Position the brand in one sentence. Lead with what they're known for, in installer-grade language. Examples:
+Position the brand in one sentence. Lead with what they're known for, in installer-grade, generic language — no model names. Examples:
 
-- ✅ "European-grade KNX building automation, engineered in Turkey."
-- ✅ "Wi-Fi smart relays that retrofit any wall switch in minutes."
-- ✅ "Enterprise-grade Wi-Fi and managed networking, priced for residential and SMB projects."
+- ✅ "KNX building automation and lighting control, engineered and manufactured in Türkiye."
+- ✅ "Smart, interoperable devices that retrofit any standard electrical installation."
+- ✅ "Cloud-managed networking for small and medium businesses, by Ruijie."
 - ❌ "The best brand in the world for everything smart." (generic, no positioning)
 - ❌ "Shelly is a great company." (zero information)
+- ❌ "Smart relays (Plus 1, Pro 4PM) and Wall Display touchscreens." (model names in tagline)
 
 ### `description` (3–5 sentences, structured)
 
 Mandatory structure — same four beats in the same order:
 
 1. **Who they are** — country, year founded, market position.
-   _"Shelly is a Bulgarian smart-home and IoT manufacturer founded in 2017, known for compact Wi-Fi and Bluetooth devices that retrofit any standard electrical installation without rewiring."_
+   _"Shelly is a Bulgarian smart-home and IoT manufacturer founded in 2017, focused on compact devices that retrofit existing electrical installations without rewiring."_
 
-2. **Full portfolio with concrete model names** — cover the brand's full product range across categories, NOT just the SKUs in our catalog. Name the headline series/models that installers actually search for. Use comma-separated parenthetical lists.
-   _"The range spans smart relays (Shelly Plus 1/1PM/2PM, Gen3 1/1PM/2PM, Pro 3/4PM, Pro Dual Cover/Shutter PM), dimmers, shutter controllers, energy meters, environmental sensors, EV chargers, Wall Display touchscreens and the BLU Bluetooth line — all built around open protocols."_
+2. **Portfolio in generic categories** — cover the brand's full product range across categories, NOT just the SKUs in our catalog. Use generic category nouns only ("touch panels", "DIN-rail actuators", "video intercoms"). **Do NOT name specific models, series, or SKU numbers** — they bloat the description, age fast, and the user's stated preference is generic professional copy.
+   _"Its catalogue spans smart switching and dimming, environmental and presence sensors, thermostats, energy metering, smart plugs and lighting, door locks, and professional-grade DIN-rail controllers for electrical panels."_
 
-3. **Target solutions / customer segments** — markets, project types, customer profiles. Be specific.
-   _"Shelly targets retrofit residential, professional installers (with the Pro DIN-rail series for electrical panels), and energy-conscious users who want real-time consumption data."_
+3. **Target solutions / customer segments** — markets, project types, customer profiles. Be specific about the segment, not the SKU.
+   _"The brand serves both residential customers upgrading their homes and commercial integrators handling office and facilities projects."_
 
-4. **Distinguishing strength** — what makes the brand different from competitors. Their philosophy, business model, technical edge.
-   _"Their philosophy: no vendor lock-in — every device speaks MQTT, REST and Matter, and integrates natively with Home Assistant, Alexa, Google Home and any standards-compliant smart-home stack."_
+4. **Distinguishing strength** — what makes the brand different from competitors. Their philosophy, business model, technical edge. Protocol names (KNX, Matter, Zigbee, ONVIF…) are fine here because they're standards, not products.
+   _"Its distinguishing strength is broad interoperability: devices speak Wi-Fi, Bluetooth, Matter, Zigbee, Z-Wave, LAN and KNXnet/IP, so they slot natively into any standards-compliant smart-home or building-management stack."_
 
 ### Key rules
 
-- **Comprehensive, not catalog-limited.** Cover EVERY major product line the brand sells, even what we don't stock. A visitor researching "is Shelly a serious brand?" should get the full picture — that builds trust in our installation expertise.
-- **Concrete model names.** "Touch panels (Miola, TD4, Rosa Metal)" beats "touch panels". Model names add installer credibility AND SEO value (long-tail searches like "EAE Miola Morocco", "Dahua VTH8621KMS").
-- **Avoid sales talk.** No "best", "leading", "amazing" without substance. Use specific facts ("top-3 global networking vendor", "founded 1973", "ETS-certified").
+- **Generic categories only — no model/series/SKU names.** "Touch panels" ✅, "Touch panels (Miola, TD4, Rosa Metal)" ❌. The user's stated preference is professional generic copy free of product names. The catalog grid below the description already shows the actual SKUs we stock.
+- **Comprehensive, not catalog-limited.** Cover EVERY major product line the brand sells, even what we don't stock — described in generic terms. A visitor researching "is this a serious brand?" should get the full picture, building trust in our installation expertise.
+- **Synthesise, don't paste.** Read the official site, write the description in your own words. Never copy more than short common phrases.
+- **Avoid sales talk.** No "best", "leading", "amazing" without substance. Use specific verifiable facts ("operates in over 200 countries", "founded 1973", "KNX Association training centre since 2012").
 - **No prices, no promises.** This is a catalog brand page, not a sales pitch.
 - **3–5 sentences means 3–5.** If you can say it in 3 punchy sentences, don't pad to 5.
+- **Protocol and standard names are NOT products.** KNX, Matter, Zigbee, Wi-Fi, Bluetooth, ONVIF, RTSP, SIP, DALI, MQTT — keep these in the copy; they describe what the brand supports, not what they sell.
+- **Platform / ecosystem names are NOT products.** Home Assistant, Alexa, Google Home, SmartThings, Zigbee2MQTT — fine to mention as integration targets in the differentiator sentence.
 
 ### Tagline vs description vs page chips — what goes where
 
 | Where | What | Length |
 |---|---|---|
-| `tagline` | Brand positioning hook | 1 sentence, ~10–15 words |
+| `tagline` | Brand positioning hook (generic, no models) | 1 sentence, ~10–15 words |
 | `description` (intro line) | Identity + market position | 1 sentence |
-| `description` (middle) | Full portfolio + model names | 1–2 sentences |
+| `description` (middle) | Full portfolio in generic categories | 1–2 sentences |
 | `description` (targets) | Customer segments + markets | 1 sentence |
-| `description` (close) | Differentiator | 1 sentence |
-| `tech_focus` chips | Protocols (auto-derived) | NOT in JSON |
-| `category_focus` chips | Product types (auto-derived) | NOT in JSON |
+| `description` (close) | Differentiator (protocols/standards ok) | 1 sentence |
+| `tech_focus` chips | Protocols (auto-derived from products) | NOT in JSON |
+| `category_focus` chips | Product types (auto-derived from products) | NOT in JSON |
 | Hero meta badges | Country / founded year / product count | from JSON fields |
 
 ---
@@ -247,12 +258,13 @@ Mandatory structure — same four beats in the same order:
 
 Identical to the product and project skill rules. In Arabic (`ar`) text, **never translate** the following — keep them in their original English form:
 - **Brand names**: Shelly, EAE Technology, Zennio, Reyee, SONOFF, Dahua, Tuya, Ruijie, Itead, Hikvision, etc.
-- **Model numbers and series**: Z70, MAXinBOX 16, VTH8621KMS-WP, ZBMINI Extreme, RG-RAP62, etc.
-- **Protocol/standard names**: KNX, Wi-Fi, Bluetooth, Matter, Zigbee, Thread, LAN, MQTT, PoE, ONVIF, RTSP, SIP, etc.
+- **Protocol/standard names**: KNX, Wi-Fi, Bluetooth, Matter, Zigbee, Thread, LAN, MQTT, PoE, ONVIF, RTSP, SIP, DALI, etc.
 - **Platform / app names**: Home Assistant, Alexa, Google Home, Zigbee2MQTT, ZHA, SmartThings, Hue Bridge, Reyee Cloud, Smart Life, Tuya Smart, etc.
-- **Industry-standard English terms**: mesh, gateway, hub, switch, router, retrofit, firmware, dashboard, stack, controller, latency, etc. — when they're recognised English jargon in installer circles.
+- **Industry-standard English terms**: mesh, gateway, hub, switch, router, retrofit, firmware, dashboard, stack, controller, latency, actuator, dimmer, etc. — when they're recognised English jargon in installer circles.
 
 Only translate **common nouns and descriptive language** — e.g. "شركة" (company), "مصنّع" (manufacturer), "تأسّست سنة" (founded in), "منزل ذكي" (smart home), "تستهدف" (targets), "ميزتها الأبرز" (their distinguishing strength). When in doubt, keep the English term.
+
+**Model numbers and series should not appear at all** in the description (see Writing Style above), so the historical "don't translate model names" rule is now moot — there are no model names to translate. If you encounter one in an existing brand JSON during an edit, that's an artefact of the older style and should be removed unless the user asks to keep it.
 
 ---
 
