@@ -105,8 +105,8 @@
         '</nav>' +
         '<section class="brands-hero">' +
           '<div class="brands-hero-content">' +
-            '<h1 class="brands-hero-title" data-i18n="brands_hero_title">Brands We Install</h1>' +
-            '<p class="brands-hero-subtitle" data-i18n="brands_hero_subtitle">Hand-picked manufacturers we trust for Moroccan homes and businesses.</p>' +
+            '<h1 class="brands-hero-title" data-i18n="brands_hero_title">Our Trusted Partners</h1>' +
+            '<p class="brands-hero-subtitle" data-i18n="brands_hero_subtitle">World-class brands we proudly partner with to deliver premium smart-living solutions for Moroccan homes and businesses.</p>' +
           '</div>' +
         '</section>' +
         (cards ? ('<div class="brands-grid">' + cards + '</div>')
