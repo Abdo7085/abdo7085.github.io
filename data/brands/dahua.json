@@ -4,7 +4,7 @@
   "country_of_origin": "China",
   "founded": 2001,
   "website": "https://www.dahuasecurity.com",
-  "logo": null,
+  "logo": "/assets/brands/dahua.png",
   "tagline": {
     "en": "Professional IP video intercoms and surveillance — the global pro-installer standard.",
     "fr": "Interphones vidéo IP professionnels et vidéosurveillance — le standard mondial des installateurs pros.",

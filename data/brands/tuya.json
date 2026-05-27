@@ -4,7 +4,7 @@
   "country_of_origin": "China",
   "founded": 2014,
   "website": "https://www.tuya.com",
-  "logo": null,
+  "logo": "/assets/brands/tuya.png",
   "tagline": {
     "en": "The IoT platform behind thousands of smart-home brands worldwide.",
     "fr": "La plateforme IoT derrière des milliers de marques smart home dans le monde.",

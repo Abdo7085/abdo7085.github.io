@@ -4,7 +4,7 @@
   "country_of_origin": "China",
   "founded": 2015,
   "website": "https://sonoff.tech",
-  "logo": null,
+  "logo": "/assets/brands/sonoff.webp",
   "tagline": {
     "en": "Affordable Zigbee smart switches and relays that just work with any hub.",
     "fr": "Interrupteurs et relais Zigbee abordables, compatibles avec n'importe quel hub.",

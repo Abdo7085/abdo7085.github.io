@@ -4,7 +4,7 @@
   "country_of_origin": "Bulgaria",
   "founded": 2017,
   "website": "https://www.shelly.com",
-  "logo": null,
+  "logo": "/assets/brands/shelly.svg",
   "tagline": {
     "en": "Wi-Fi smart relays that retrofit any wall switch in minutes.",
     "fr": "Relais intelligents Wi-Fi qui s'installent derrière n'importe quel interrupteur.",

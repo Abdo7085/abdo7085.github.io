@@ -4,7 +4,7 @@
   "country_of_origin": "China",
   "founded": 2019,
   "website": "https://www.ireyee.com",
-  "logo": null,
+  "logo": "/assets/brands/reyee.webp",
   "tagline": {
     "en": "Enterprise-grade Wi-Fi and managed networking, priced for residential and SMB projects.",
     "fr": "Wi-Fi de niveau entreprise et réseau managé, à des prix adaptés aux projets résidentiels et PME.",

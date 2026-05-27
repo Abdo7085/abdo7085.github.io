@@ -7,7 +7,7 @@
       "fr": "Ingénierie KNX espagnole — panneaux tactiles premium et la gamme d'actionneurs la plus dense du marché.",
       "ar": "هندسة KNX إسبانية — Touch Panels فاخرة وأوسع تشكيلة Actuators في السوق."
     },
-    "logo": null,
+    "logo": "/assets/brands/zennio.png",
     "tech_focus": [
       "KNX"
     ],
@@ -30,7 +30,7 @@
       "fr": "Automatisation KNX de qualité européenne, conçue en Turquie.",
       "ar": "أتمتة المباني KNX بمعايير أوروبية، تصنيع تركي."
     },
-    "logo": null,
+    "logo": "/assets/brands/eae-technology.png",
     "tech_focus": [
       "KNX",
       "LAN"
@@ -55,7 +55,7 @@
       "fr": "Relais intelligents Wi-Fi qui s'installent derrière n'importe quel interrupteur.",
       "ar": "ريليهات Wi-Fi ذكية تُركَّب خلف أي مفتاح حائط في دقائق."
     },
-    "logo": null,
+    "logo": "/assets/brands/shelly.svg",
     "tech_focus": [
       "Bluetooth",
       "Wi-Fi",
@@ -79,7 +79,7 @@
       "fr": "Wi-Fi de niveau entreprise et réseau managé, à des prix adaptés aux projets résidentiels et PME.",
       "ar": "Wi-Fi بجودة المؤسسات وشبكات مُدارة، بأسعار تناسب المشاريع السكنية والشركات الصغيرة."
     },
-    "logo": null,
+    "logo": "/assets/brands/reyee.webp",
     "tech_focus": [
       "LAN",
       "Wi-Fi"
@@ -98,7 +98,7 @@
       "fr": "Interrupteurs et relais Zigbee abordables, compatibles avec n'importe quel hub.",
       "ar": "مفاتيح وريليهات Zigbee اقتصادية تعمل مع أي hub."
     },
-    "logo": null,
+    "logo": "/assets/brands/sonoff.webp",
     "tech_focus": [
       "Zigbee"
     ],
@@ -118,7 +118,7 @@
       "fr": "Interphones vidéo IP professionnels et vidéosurveillance — le standard mondial des installateurs pros.",
       "ar": "أنظمة intercom فيديو IP وكاميرات مراقبة احترافية — المعيار العالمي للمركّبين المحترفين."
     },
-    "logo": null,
+    "logo": "/assets/brands/dahua.png",
     "tech_focus": [
       "LAN",
       "Wi-Fi"
@@ -138,7 +138,7 @@
       "fr": "La plateforme IoT derrière des milliers de marques smart home dans le monde.",
       "ar": "منصة IoT التي يقوم عليها آلاف العلامات الذكية حول العالم."
     },
-    "logo": null,
+    "logo": "/assets/brands/tuya.png",
     "tech_focus": [
       "LAN",
       "Matter",

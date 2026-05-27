@@ -4,7 +4,7 @@
   "country_of_origin": "Turkey",
   "founded": 1973,
   "website": "https://www.eaetechnology.com",
-  "logo": null,
+  "logo": "/assets/brands/eae-technology.png",
   "tagline": {
     "en": "European-grade KNX building automation, engineered in Turkey.",
     "fr": "Automatisation KNX de qualité européenne, conçue en Turquie.",

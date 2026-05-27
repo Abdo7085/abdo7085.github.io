@@ -4,7 +4,7 @@
   "country_of_origin": "Spain",
   "founded": 2006,
   "website": "https://www.zennio.com",
-  "logo": null,
+  "logo": "/assets/brands/zennio.png",
   "tagline": {
     "en": "Spanish KNX engineering — premium touch panels and the densest actuator range on the market.",
     "fr": "Ingénierie KNX espagnole — panneaux tactiles premium et la gamme d'actionneurs la plus dense du marché.",
