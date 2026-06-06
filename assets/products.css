@@ -57,6 +57,14 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   position: relative;
   overflow: hidden;
 }
+/* Mobile: drop the SVG-noise + screen-blend layer — it can render as scanline/
+   static artifacts on some Android GPUs (Samsung/Mali). Keep the smooth gradient. */
+@media (max-width: 768px) {
+  .prod-hero {
+    background: linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, #000 58%, var(--warm-dark-light, #3d2e1f) 100%);
+    background-blend-mode: normal;
+  }
+}
 
 .prod-hero-content {
   position: relative;

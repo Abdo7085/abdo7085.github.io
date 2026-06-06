@@ -88,6 +88,15 @@
   overflow: hidden;
   color: #ffffff;
 }
+/* Mobile: drop the SVG-noise + screen-blend layer — it can render as scanline/
+   static artifacts on some Android GPUs (Samsung/Mali). Keep the smooth gradient. */
+@media (max-width: 768px) {
+  .brands-hero,
+  .brand-hero {
+    background: linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, #000 58%, var(--warm-dark-light, #3d2e1f) 100%);
+    background-blend-mode: normal;
+  }
+}
 
 .brands-hero-content,
 .brand-hero-content {
