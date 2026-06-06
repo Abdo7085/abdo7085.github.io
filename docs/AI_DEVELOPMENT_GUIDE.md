@@ -1105,8 +1105,9 @@ grep -rn "Readex Pro" assets/ *.html
 >   font-weight: 700; letter-spacing: 0; font-variation-settings: normal;
 > }
 > ```
-> **مُصلَح (2026-06-06):** `.prod-header-title` (هيرو المنتجات) → Fraunces 560 + `clamp(1.8rem,4vw,3rem)` + تجاوز عربي.
-> **ما زال بالعيب (sans ثقيل):** `.brands-hero-title` / `.brand-hero-title` (`brands.css`) و `.proj-hero-title` (`projects.css`) — وزن 700 بلا `font-family`. عند لمسها لاحقاً، طبّق نفس النمط.
+> **مُصلَح (2026-06-06):** `.prod-header-title` (المنتجات) + `.brands-hero-title`/`.brand-hero-title` (الماركات) + `.proj-hero-title` (المشاريع) → كلها Fraunces 560 + `clamp(1.8rem,4vw,3rem)` + تجاوز عربي.
+> **⚠️ Fraunces لم يكن مُحمَّلاً على صفحات الماركات:** `brands.html`/`brand.html` أُنشئتا قبل جولة Fraunces فكانتا تُحمّلان Readex Pro فقط — أُضيف رابط Fraunces إليهما (هذا أصلح أيضاً عناوين بطاقاتها التي كانت تسقط لـ Georgia) ثم `build_all.py` لإعادة توليد كل صفحات الماركات × 3 لغات. **عند إضافة قالب جذري جديد، تأكّد أن رابط Google Fonts يضمّ Fraunces + Readex معاً** (راجع `products.html`).
+> **ما زال بالعيب:** عنوان هيرو `previous-work` — يُرجَّح أنه داخل SPA bundle (`index-CGMiSPUa.js`)، مؤجَّل.
 
 ### 🏷️ Section Eyebrows — علامات صغيرة فوق عناوين الأقسام
 

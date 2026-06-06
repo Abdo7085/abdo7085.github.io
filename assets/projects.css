@@ -146,11 +146,24 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   letter-spacing: 0.02em;
 }
 .proj-hero-title {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  /* Fraunces display — matches the products/preview hero (was inheriting Readex
+     Pro bold, a heavy sans). Latin only; Arabic override below. */
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 560;
+  letter-spacing: var(--tracking-tight, -0.015em);
+  line-height: 1.05;
   margin: 0 0 0.75rem;
-  line-height: 1.15;
+}
+/* Fraunces has no Arabic glyphs → Arabic hero title stays Readex Pro */
+html[lang="ar"] .proj-hero-title,
+[dir="rtl"] .proj-hero-title {
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-variation-settings: normal;
 }
 .proj-hero-lead {
   font-size: 1.05rem;
