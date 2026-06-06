@@ -365,7 +365,6 @@
         '</div>' +
         protocolStrip +
         '<div class="prod-card-content">' +
-          '<div class="prod-card-brand">' + escapeHtml(product.brand || '') + '</div>' +
           '<h3 class="prod-card-title">' + escapeHtml(title) + '</h3>' +
           '<p class="prod-card-desc">' + escapeHtml(desc) + '</p>' +
           '<div class="prod-card-footer">' +

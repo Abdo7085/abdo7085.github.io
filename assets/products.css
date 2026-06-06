@@ -309,6 +309,10 @@ details[open] .prod-filter-title::after {
   position: relative;
   cursor: pointer;
   box-shadow: var(--prod-shadow);
+  /* Container for the foot: lets the brand logo + "Add to quote" button scale
+     with the CARD width via cqi units, so they shrink together on one row
+     instead of the button wrapping below (see .prod-card-footer). */
+  container-type: inline-size;
 }
 
 .prod-card:hover {
@@ -365,15 +369,6 @@ details[open] .prod-filter-title::after {
   flex-grow: 1;
 }
 
-.prod-card-brand {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--prod-primary);
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-}
-
 .prod-card-title {
   font-family: var(--font-display, 'Fraunces', Georgia, serif);
   font-size: 1.15rem;
@@ -418,14 +413,15 @@ html[lang="ar"] .prod-card-title,
   color: var(--prod-text-muted);
 }
 
-/* Card Footer — logo opposite the "Add to quote" button. Wraps the button below
-   the logo automatically when the card is too narrow to fit them side by side. */
+/* Card Footer — brand logo opposite the "Add to quote" button, ALWAYS on one row.
+   Both scale down together with the card width (cqi units on .prod-card-logo /
+   .prod-card-add) instead of the button wrapping below. No flex-wrap. */
 .prod-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
+  flex-wrap: nowrap;
+  gap: clamp(0.3rem, 4cqi, 0.75rem);
   border-top: 1px solid var(--prod-border);
   padding-top: 0.85rem;
   margin-top: auto;
@@ -460,8 +456,10 @@ html[lang="ar"] .prod-card-title,
    as one consistent size. object-fit:contain keeps each logo undistorted; it aligns
    to the foot's start edge (mirrors in RTL). */
 .prod-card-logo {
-  width: 72px;
-  height: 22px;
+  /* Scales with card width (cqi) so it shrinks in step with the button and
+     stays on one row; capped at the 72×22 box on wide cards for uniform size. */
+  width: clamp(38px, 24cqi, 72px);
+  height: clamp(12px, 7.3cqi, 22px);
   object-fit: contain;
   object-position: left center;
   opacity: 0.92;
@@ -482,12 +480,14 @@ html[lang="ar"] .prod-card-title,
    (never on card hover, per guide §7.1). Sits opposite the brand logo. */
 .prod-card-add {
   font-family: 'Readex Pro', system-ui, sans-serif;
-  font-size: 0.8rem;
+  /* Scales with card width (cqi) — text stays one line (nowrap) but the whole
+     button shrinks alongside the logo as the card narrows. */
+  font-size: clamp(0.58rem, 4cqi, 0.8rem);
   font-weight: 600;
   color: var(--prod-primary-hover);
   border: 1px solid var(--prod-primary);
   background: var(--brand-pale, #f5e7d8);
-  padding: 0.4rem 0.8rem;
+  padding: clamp(0.28rem, 2.1cqi, 0.4rem) clamp(0.45rem, 4.3cqi, 0.8rem);
   border-radius: 10px;
   cursor: pointer;
   white-space: nowrap;
@@ -1283,11 +1283,6 @@ html[dir="rtl"] .prod-count-badge {
     padding: 0.75rem 0.85rem 1rem;
   }
 
-  .prod-card-brand {
-    font-size: 0.65rem;
-    margin-bottom: 0.2rem;
-  }
-
   .prod-card-title {
     font-size: 0.85rem;
     margin-bottom: 0.35rem;
@@ -1315,23 +1310,10 @@ html[dir="rtl"] .prod-count-badge {
     gap: 0.5rem;
   }
 
-  /* Tight 2-up grid: stack the foot so the logo and the full-width "Add to
-     quote" button each get a clean row instead of being squeezed side by side. */
+  /* Foot stays on ONE row even on the tight 2-up grid — the logo and button
+     scale down together via the cqi rules above, no stacking. */
   .prod-card-footer {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.6rem;
     padding-top: 0.6rem;
-  }
-  .prod-card-add {
-    width: 100%;
-    text-align: center;
-    font-size: 0.78rem;
-    padding: 0.5rem 0.6rem;
-  }
-  .prod-card-logo {
-    width: 64px;
-    height: 20px;
   }
 
   /* Protocol strip — tighter padding to match the narrower card */

@@ -461,6 +461,7 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
 .prod-card {
   position: relative;
   overflow: hidden;
+  container-type: inline-size; /* foot (logo + button) scales with card width via cqi */
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -523,21 +524,22 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
 .protocol [data-lucide] { width: 15px; height: 15px; color: var(--brand); }
 .protocol.knx { color: var(--brand); font-weight: 800; letter-spacing: 0.04em; }   /* KNX reads copper-distinct (guide §7.2) */
 .prod-content { padding: 1rem; display: grid; gap: 0.55rem; flex: 1; }
-.prod-brand { color: var(--brand-deep); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 .prod-title { font-family: var(--font-display); font-weight: 560; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.01em; }
 .prod-desc { color: var(--ink-soft); font-size: 0.84rem; }
-.prod-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); padding-top: 0.75rem; }
+/* Foot ALWAYS one row — logo + button scale down together with the card (cqi),
+   no wrap, no stacking. */
+.prod-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: clamp(0.3rem, 4cqi, 1rem); border-top: 1px solid var(--line); padding-top: 0.75rem; }
 /* Uniform logo box — every brand SVG contained in the SAME footprint regardless
-   of native aspect ratio, so all logos read as one consistent size. */
-.prod-logo { width: 72px; height: 22px; object-fit: contain; object-position: left center; opacity: 0.9; flex: none; }
+   of native aspect ratio. Scales with card width (cqi), capped at 72×22. */
+.prod-logo { width: clamp(38px, 24cqi, 72px); height: clamp(12px, 7.3cqi, 22px); object-fit: contain; object-position: left center; opacity: 0.9; flex: none; }
 [dir="rtl"] .prod-logo { object-position: right center; }
 .prod-card:hover .prod-logo { opacity: 1; }
 /* Agreed "Add to quote" — light by default; fills copper only on its OWN hover
    (never on card hover). Sits in the foot opposite the brand logo. */
 .prod-add {
-  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; color: var(--brand-deep);
+  font-family: var(--font-body); font-size: clamp(0.58rem, 4cqi, 0.82rem); font-weight: 600; color: var(--brand-deep);
   border: 1px solid var(--brand); background: var(--brand-pale);
-  padding: 0.45rem 0.95rem; border-radius: 10px; cursor: pointer; white-space: nowrap;
+  padding: clamp(0.28rem, 2.1cqi, 0.45rem) clamp(0.45rem, 4.3cqi, 0.95rem); border-radius: 10px; cursor: pointer; white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease;
 }
 .prod-add:hover, .prod-add:active { background: var(--brand); color: #fff; }
@@ -1116,7 +1118,6 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
                   <span class="protocol"><i data-lucide="bluetooth"></i>Bluetooth</span>
                 </div>
                 <div class="prod-content">
-                  <span class="prod-brand">Shelly</span>
                   <b class="prod-title">Shelly Wall Display</b>
                   <span class="prod-desc">4-inch smart touch panel with built-in relay and sensors.</span>
                   <div class="prod-foot"><img class="prod-logo" src="../assets/brands/shelly.svg" alt="Shelly logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
@@ -1131,7 +1132,6 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
                   <span class="protocol"><i data-lucide="network"></i>Ethernet</span>
                 </div>
                 <div class="prod-content">
-                  <span class="prod-brand">EAE Technology</span>
                   <b class="prod-title">KNX Miola Touch Panel</b>
                   <span class="prod-desc">Room control panel for scenes, climate, blinds, and lighting.</span>
                   <div class="prod-foot"><img class="prod-logo" src="../assets/brands/eae-technology.svg" alt="EAE Technology logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
@@ -1146,7 +1146,6 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
                   <span class="protocol"><i data-lucide="shield-check"></i>Security</span>
                 </div>
                 <div class="prod-content">
-                  <span class="prod-brand">Dahua</span>
                   <b class="prod-title">VTH8621KMS-WP Indoor Monitor</b>
                   <span class="prod-desc">Premium IP indoor monitor for apartment and villa entry systems.</span>
                   <div class="prod-foot"><img class="prod-logo" src="../assets/brands/dahua.svg" alt="Dahua logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
@@ -1375,7 +1374,6 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
               <span class="protocol"><i data-lucide="shield-check"></i>أمن</span>
             </div>
             <div class="prod-content">
-              <span class="prod-brand">Dahua</span>
               <b class="prod-title">شاشة داخلية IP</b>
               <span class="prod-desc">شاشة فيديو داخلية لأنظمة الإنتركم في الفلل والشقق.</span>
               <div class="prod-foot"><img class="prod-logo" src="../assets/brands/dahua.svg" alt="شعار Dahua" /><button class="prod-add" type="button">+ أضف للطلب</button></div>

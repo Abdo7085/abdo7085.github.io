@@ -336,7 +336,6 @@
         </div>
         ${protocolStrip}
         <div class="prod-card-content">
-          <div class="prod-card-brand">${product.brand || ''}</div>
           <h3 class="prod-card-title">${title}</h3>
           <p class="prod-card-desc">${desc}</p>
           <div class="prod-card-footer">
