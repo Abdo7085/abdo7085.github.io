@@ -1257,7 +1257,7 @@ section#NEW_ID > .container > .HEADER_WRAPPER::before { content: '— 05 / NEW_L
 - ❌ لا تستخدم `--noise-svg-light` على خلفية فاتحة (ستظهر بيضاء فوضوية).
 - ❌ لا تضع focus ring بلون البراند على سطح برتقالي (سيختفي) — استخدم أبيض.
 - ❌ لا تنسَ `position: relative` على parent البطاقة عند إضافة `::before` accent.
-- ❌ لا تضف grain للأقسام عبر `::before/::after` pseudo بـ `mix-blend-mode` — `background-blend-mode` على الـ section مباشرة أنظف وأقوى. **مثال حيّ (2026-06-06):** `.prod-hero` كان يضيف الحُبيبات عبر `::after` بـ `opacity: 0.06` فلم تظهر إطلاقاً (`0.06 × alpha التوكن 0.13 ≈ صفر`)؛ نُقلت لطبقة خلفية بـ `background-blend-mode: screen` فظهرت. **لا تخفّض `opacity` طبقة الـ noise — الـ alpha مدمج في التوكن.**
+- ❌ لا تضف grain للأقسام/الهيروهات الداكنة عبر `::before/::after` pseudo بـ `mix-blend-mode` — `background-blend-mode: screen` بـ`--noise-svg-light` على العنصر مباشرة أنظف وأقوى. **مثال حيّ (2026-06-06):** كل الهيروهات الداكنة (`.prod-hero` + `.brands-hero`/`.brand-hero` + `.proj-hero`) كانت تضيف الحُبيبات عبر `::after` خافت (الـ noise الداكن `--noise-svg` + `opacity 0.05-0.06` = غير مرئي على سطح داكن) فلم تظهر؛ نُقلت **كلها** لطبقة خلفية العنصر بـ `background-blend-mode: screen, normal`. **القاعدتان:** (1) على الداكن استخدم `--noise-svg-light` لا `--noise-svg`؛ (2) لا تخفّض `opacity` طبقة الـ noise — الـ alpha مدمج في التوكن أصلاً.
 
 ---
 

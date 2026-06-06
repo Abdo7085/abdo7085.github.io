@@ -98,22 +98,17 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, var(--warm-dark, #1f1610) 50%, var(--warm-dark-light, #3d2e1f) 100%);
+  /* Matches .prod-hero / preview .catalog-hero: cream grain (screen) over a dark
+     espresso → BLACK midpoint → warm-light gradient (grain in the background;
+     warmth from the gradient corner only, no extra copper radial). */
+  background:
+    var(--noise-svg-light),
+    linear-gradient(135deg, var(--warm-dark-deep, #0f0a05) 0%, #000 58%, var(--warm-dark-light, #3d2e1f) 100%);
+  background-blend-mode: screen, normal;
   border-radius: var(--proj-radius-lg);
   color: #fff;
   position: relative;
   overflow: hidden;
-}
-.proj-hero::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  inset-inline-end: -15%;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 108, 37, 0.18) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 @media (min-width: 900px) {
@@ -908,18 +903,9 @@ button.proj-cta-btn {
  * rules changed — every selector below is new or :focus-visible.
  * ============================================================ */
 
-/* Grain over the dark hero — ::before already holds the radial accent
-   so we layer the noise on ::after at very low opacity. */
-.proj-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: var(--noise-svg);
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Grain now lives in the .proj-hero background (background-blend-mode: screen,
+   cream noise). The old faint ::after (dark noise + 0.05 opacity = invisible on a
+   dark surface) was removed 2026-06-06 — see AI guide §10 grain rule. */
 
 /* CTA — keep ::before's right-side radial, add ::after on the left
    for a balanced two-point lighting feel, then layer grain on top. */
