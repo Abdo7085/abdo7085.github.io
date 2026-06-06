@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>S-ELECTRICITY Design System Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+<style>
+:root {
+  --brand: #b86c25;
+  --brand-deep: #9c5a1e;
+  --brand-pale: #f5e7d8;
+  --brand-tint: rgba(184, 108, 37, 0.1);
+  --brand-glow: rgba(184, 108, 37, 0.34);
+  --warm-dark: #1a140d;
+  --warm-dark-deep: #0f0a05;
+  --warm-dark-light: #3d2e1f;
+  --ink: #2a1f16;
+  --ink-soft: #6b5d4f;
+  --ink-faint: #9b8b7a;
+  --paper: #fffdf9;
+  --cream: #f4ede2;
+  --line: rgba(42, 31, 22, 0.12);
+  --line-strong: rgba(42, 31, 22, 0.2);
+  --sage: #6f7d55;
+  --verdigris: #4f7f78;
+  --steel: #53606b;
+  --shadow-sm: 0 4px 14px -8px rgba(58, 36, 14, 0.28);
+  --shadow: 0 18px 48px -24px rgba(58, 36, 14, 0.5);
+  --shadow-dark: 0 22px 60px -30px rgba(0, 0, 0, 0.68);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Readex Pro", system-ui, sans-serif;
+  --tracking-display: -0.022em;
+  --tracking-tight: -0.012em;
+  --tracking-eyebrow: 0.18em;
+  --r-sm: 8px;
+  --r: 14px;
+  --r-btn: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --r-pill: 999px;
+  --noise-dark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.48 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --noise-cream: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.961  0 0 0 0 0.906  0 0 0 0 0.847  0 0 0 0.14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image: var(--noise-dark);
+  background-blend-mode: overlay;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; }
+a { color: inherit; }
+.wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+.stack { display: grid; gap: 1rem; }
+.muted { color: var(--ink-soft); }
+.mono { font-variant-numeric: tabular-nums; }
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.7rem, 7vw, 5.4rem); max-width: 12ch; font-weight: 500; }
+h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 520; }
+h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 560; letter-spacing: var(--tracking-tight); }
+h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--brand-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.78;
+}
+.lead {
+  max-width: 68ch;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  margin: 0.85rem 0 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.72rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  font-weight: 650;
+  font-size: 0.92rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn svg, .btn [data-lucide] { width: 18px; height: 18px; flex: none; }
+.btn-primary { color: #fff; background: var(--brand); box-shadow: 0 10px 24px -14px var(--brand-glow); }
+.btn-primary:hover { background: var(--brand-deep); transform: translateY(-1px); }
+.btn-secondary { color: var(--brand-deep); background: var(--brand-pale); border-color: rgba(184, 108, 37, 0.42); }
+.btn-secondary:hover { color: #fff; background: var(--brand); border-color: var(--brand); }
+.btn-ghost { color: var(--brand-pale); background: rgba(255,255,255,0.04); border-color: rgba(245,231,216,0.26); }
+.btn-ghost:hover { background: rgba(245,231,216,0.1); border-color: rgba(245,231,216,0.48); }
+.btn-quiet { color: var(--ink); background: var(--paper); border-color: var(--line); }
+.btn-quiet:hover { border-color: var(--brand); color: var(--brand-deep); }
+.btn:focus-visible, input:focus-visible, textarea:focus-visible, .icon-btn:focus-visible {
+  outline: 2px solid rgba(184, 108, 37, 0.6);
+  outline-offset: 3px;
+}
+
+.chip-row { display: flex; gap: 0.55rem; flex-wrap: wrap; align-items: center; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  min-height: 30px;
+  padding: 0.26rem 0.72rem;
+  border-radius: var(--r-pill);
+  color: var(--ink-soft);
+  background: rgba(255,253,249,0.72);
+  border: 1px solid var(--line);
+  font-size: 0.77rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.chip.brand { color: var(--brand-deep); background: var(--brand-pale); border-color: rgba(184,108,37,0.28); }
+.chip.dark { color: var(--brand-pale); background: rgba(245,231,216,0.08); border-color: rgba(245,231,216,0.2); }
+.chip.sage { color: #41512f; background: rgba(111,125,85,0.14); border-color: rgba(111,125,85,0.25); }
+
+.masthead {
+  position: relative;
+  color: #fff;
+  min-height: 76vh;
+  display: grid;
+  align-items: end;
+  padding: 7.5rem 0 4rem;
+  background:
+    linear-gradient(180deg, rgba(15,10,5,0.2), rgba(15,10,5,0.88)),
+    linear-gradient(90deg, rgba(15,10,5,0.86), rgba(15,10,5,0.2)),
+    url("../assets/Vila-big-background.webp") center / cover;
+  overflow: hidden;
+}
+.masthead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-cream);
+  background-blend-mode: screen;
+  opacity: 0.72;
+  pointer-events: none;
+}
+.topbar {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 0;
+  inset-inline: 0;
+  border-bottom: 1px solid rgba(245,231,216,0.16);
+  background: rgba(15,10,5,0.7);
+  backdrop-filter: blur(12px);
+}
+.topbar-inner {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.brandmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.72rem;
+  color: #fff;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.brandmark img { width: 42px; height: 42px; object-fit: contain; }
+.preview-nav { display: flex; align-items: center; gap: 0.18rem; flex-wrap: wrap; justify-content: flex-end; }
+.preview-nav a {
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  font-size: 0.78rem;
+  padding: 0.45rem 0.62rem;
+  border-radius: 10px;
+}
+.preview-nav a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.masthead-content { position: relative; z-index: 1; max-width: 760px; }
+.masthead .eyebrow, .masthead h1, .masthead p { color: #fff; }
+.masthead .eyebrow { color: var(--brand-pale); }
+.masthead h1 em { color: var(--brand-pale); }
+.masthead p { color: #e1d3c4; max-width: 58ch; font-size: 1.1rem; }
+.masthead-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.7rem; }
+.masthead-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid rgba(245,231,216,0.2);
+  background: rgba(245,231,216,0.16);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  max-width: 740px;
+}
+.masthead-note span {
+  background: rgba(15,10,5,0.58);
+  padding: 0.86rem 1rem;
+  color: #e5d8ca;
+  font-size: 0.82rem;
+}
+
+.section { padding: 5rem 0; }
+.section + .section { border-top: 1px solid var(--line); }
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.52fr);
+  gap: 2.5rem;
+  align-items: end;
+  margin-bottom: 2.4rem;
+}
+.section-head p { margin: 0; }
+.plate {
+  position: relative;
+  background: rgba(255,253,249,0.82);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.plate.dark {
+  color: #fff;
+  background:
+    var(--noise-cream),
+    linear-gradient(135deg, var(--warm-dark-deep), #000 52%, var(--warm-dark));
+  background-blend-mode: screen, normal;
+  border-color: rgba(245,231,216,0.14);
+  box-shadow: var(--shadow-dark);
+}
+.plate.pad { padding: clamp(1.2rem, 3vw, 2rem); }
+.plate-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.plate-title b { font-size: 0.88rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.plate-title span { color: var(--ink-faint); font-size: 0.78rem; }
+.dark .plate-title { border-color: rgba(245,231,216,0.15); }
+.dark .plate-title span { color: #cbbcae; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; }
+
+.swatch { min-height: 150px; display: grid; grid-template-rows: 1fr auto; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+.swatch-top { min-height: 88px; padding: 0.7rem; display: flex; align-items: flex-end; color: #fff; }
+.swatch-meta { padding: 0.75rem; }
+.swatch-meta b { display: block; font-size: 0.84rem; }
+.swatch-meta code { color: var(--ink-faint); font-size: 0.78rem; }
+
+.type-spec { display: grid; gap: 1rem; }
+.type-row { padding: 1rem 0; border-bottom: 1px dashed var(--line); }
+.type-row:last-child { border-bottom: 0; }
+.type-row small { display: block; color: var(--ink-faint); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.68rem; font-weight: 700; }
+.type-hero { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: var(--tracking-display); font-variation-settings: "opsz" 144, "SOFT" 45, "WONK" 1; }
+.type-ar { direction: rtl; font-size: clamp(1.65rem, 3.5vw, 2.65rem); font-weight: 700; line-height: 1.35; }
+
+.component-rack { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; }
+.button-demo, .field-demo { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.field {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.78rem 0.95rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.field::placeholder { color: var(--ink-faint); }
+.recessed {
+  position: relative;
+  max-width: 460px;
+}
+.recessed [data-lucide] {
+  position: absolute;
+  inset-inline-start: 0.95rem;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  color: rgba(184,108,37,0.86);
+}
+.recessed input {
+  width: 100%;
+  color: #fff;
+  background: rgba(245,231,216,0.07);
+  border: 1px solid rgba(245,231,216,0.24);
+  border-radius: var(--r);
+  min-height: 50px;
+  padding: 0.8rem 1rem;
+  padding-inline-start: 3rem;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 2px 10px rgba(0,0,0,0.24);
+}
+.recessed input::placeholder { color: rgba(245,231,216,0.55); }
+.recessed input:focus { border-color: var(--brand); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 3px rgba(184,108,37,0.25); }
+
+.browser-chrome {
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0 0.9rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,253,249,0.75);
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+.url-pill { margin-inline-start: 0.6rem; flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: var(--r-pill); padding: 0.28rem 0.7rem; color: var(--ink-faint); font-size: 0.74rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.home-screen {
+  min-height: 560px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(15,10,5,0.05), rgba(15,10,5,0.92)),
+    linear-gradient(90deg, rgba(15,10,5,0.82), rgba(15,10,5,0.1)),
+    url("../assets/roomwebp.webp") center / cover;
+  padding: 1.4rem;
+  display: grid;
+  align-content: space-between;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.78rem 0.95rem;
+  border: 1px solid rgba(245,231,216,0.14);
+  border-radius: var(--r);
+  background: rgba(15,10,5,0.7);
+  backdrop-filter: blur(12px);
+}
+.site-links { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.site-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 0.78rem; padding: 0.34rem 0.5rem; border-radius: 8px; }
+.site-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.08); color: var(--brand); }
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  border: 2px solid #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 15px;
+}
+.home-copy { max-width: 620px; padding: 5rem 0 1rem; }
+.home-copy h2 { color: #fff; font-size: clamp(2.3rem, 6vw, 4.5rem); max-width: 11ch; }
+.home-copy h2 em { color: var(--brand-pale); }
+.home-copy p { color: #e6d8c9; max-width: 52ch; }
+.service-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid rgba(245,231,216,0.18);
+  background: rgba(245,231,216,0.18);
+}
+.service-tile { background: rgba(15,10,5,0.62); padding: 1rem; }
+.service-tile b { display: block; color: #fff; margin-bottom: 0.15rem; }
+.service-tile span { display: block; color: #cdbfae; font-size: 0.8rem; }
+
+.catalog-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: var(--paper);
+}
+.catalog-hero {
+  grid-column: 1 / -1;
+  color: #fff;
+  border-radius: var(--r-lg);
+  padding: 2rem;
+  background:
+    var(--noise-cream),
+    linear-gradient(135deg, var(--warm-dark-deep), #000 58%, var(--warm-dark-light));
+  background-blend-mode: screen, normal;
+}
+.crumbs { display: flex; gap: 0.45rem; align-items: center; color: rgba(255,255,255,0.54); font-size: 0.78rem; margin-bottom: 0.9rem; }
+.crumbs b { color: var(--brand-pale); }
+.catalog-hero h3 { color: #fff; font-size: clamp(1.8rem, 4vw, 3rem); }
+.catalog-hero p { color: #d8c9b8; max-width: 60ch; }
+.filter-panel {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: 1rem;
+  background: #f8f1e7;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.filter-group { display: grid; gap: 0.55rem; }
+.filter-title { font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); }
+.check-row { display: flex; justify-content: space-between; gap: 0.8rem; color: var(--ink-soft); font-size: 0.86rem; }
+.check-row input { accent-color: var(--brand); }
+.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.prod-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  color: inherit;
+  text-decoration: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+/* Agreed hover: SEMI-ROUNDED copper corner-brackets framing the IMAGE only
+   (not the whole card). Concentric with the media's rounded top. 18px arms. RTL-safe. */
+.prod-media::before {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  z-index: 2;
+  border: 2px solid var(--brand);
+  border-radius: 11px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
+}
+.prod-card:hover .prod-media::before,
+.prod-card:focus-within .prod-media::before { opacity: 1; transform: scale(1); }
+.prod-media {
+  position: relative;
+  height: 188px;
+  display: grid;
+  place-items: center;
+  padding: 1.1rem;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(184,108,37,0.08), transparent 60%),
+    var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.prod-media img { max-height: 145px; width: auto; object-fit: contain; transition: transform 0.25s ease; }
+.prod-card:hover .prod-media img { transform: scale(1.04); }
+.protocol-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem 0.75rem;
+  align-items: center;
+  padding: 0.56rem 1rem;
+  background: var(--brand-pale);
+  border-bottom: 1px solid var(--line);
+}
+.protocol { display: inline-flex; align-items: center; gap: 0.32rem; color: #704b29; font-size: 0.72rem; font-weight: 700; direction: ltr; }
+.protocol [data-lucide] { width: 15px; height: 15px; color: var(--brand); }
+.protocol.knx { color: var(--brand); font-weight: 800; letter-spacing: 0.04em; }   /* KNX reads copper-distinct (guide §7.2) */
+.prod-content { padding: 1rem; display: grid; gap: 0.55rem; flex: 1; }
+.prod-brand { color: var(--brand-deep); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.prod-title { font-family: var(--font-display); font-weight: 560; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.01em; }
+.prod-desc { color: var(--ink-soft); font-size: 0.84rem; }
+.prod-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); padding-top: 0.75rem; }
+/* Uniform logo box — every brand SVG contained in the SAME footprint regardless
+   of native aspect ratio, so all logos read as one consistent size. */
+.prod-logo { width: 72px; height: 22px; object-fit: contain; object-position: left center; opacity: 0.9; flex: none; }
+[dir="rtl"] .prod-logo { object-position: right center; }
+.prod-card:hover .prod-logo { opacity: 1; }
+/* Agreed "Add to quote" — light by default; fills copper only on its OWN hover
+   (never on card hover). Sits in the foot opposite the brand logo. */
+.prod-add {
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; color: var(--brand-deep);
+  border: 1px solid var(--brand); background: var(--brand-pale);
+  padding: 0.45rem 0.95rem; border-radius: 10px; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.prod-add:hover, .prod-add:active { background: var(--brand); color: #fff; }
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+  gap: 1.4rem;
+  padding: 1.2rem;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.85rem;
+  min-width: 0;
+}
+.thumbs { display: grid; gap: 0.6rem; align-content: start; }
+.thumb {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: #f8f1e7;
+  padding: 0.35rem;
+  display: grid;
+  place-items: center;
+}
+.thumb.active { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(184,108,37,0.16); }
+.main-product {
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, #fbf5ee, #eee0d0);
+  border: 1px solid var(--line);
+  padding: 2rem;
+}
+.main-product img { max-height: 360px; object-fit: contain; }
+.detail-copy { padding: 0.6rem 0.2rem; display: grid; gap: 1rem; align-content: start; }
+.detail-copy h3 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
+.feature-bar { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.6rem; }
+.feature {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #faf5ee;
+}
+.feature span { color: var(--ink-faint); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+.feature b { font-size: 0.88rem; }
+.quote-row { display: flex; gap: 0.65rem; align-items: stretch; flex-wrap: wrap; }
+.qty {
+  display: inline-flex;
+  height: 52px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.qty button { width: 42px; border: 0; background: transparent; cursor: pointer; font-weight: 800; color: var(--ink); }
+.qty button:hover { color: var(--brand); background: #f8f1e7; }
+.qty input { width: 48px; border: 0; border-inline: 1px solid var(--line); text-align: center; font-weight: 750; color: var(--ink); background: transparent; }
+.quote-row .btn { flex: 1 1 180px; min-height: 52px; }
+.hint { display: inline-flex; gap: 0.45rem; align-items: center; color: var(--ink-soft); font-size: 0.82rem; }
+.hint [data-lucide] { color: #25d366; width: 16px; height: 16px; }
+.spec-table { display: grid; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.spec-table div { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0.75rem; padding: 0.7rem 0.85rem; background: var(--paper); }
+.spec-table div + div { border-top: 1px solid var(--line); }
+.spec-table b { font-size: 0.82rem; }
+.spec-table span { color: var(--ink-soft); font-size: 0.82rem; }
+
+.brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.brand-card {
+  position: relative;
+  display: grid;
+  min-height: 260px;
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+/* Same warm card language as the catalog: SEMI-ROUNDED copper corner-brackets on
+   hover, framing the LOGO area only (not the whole card). RTL-safe. */
+.brand-logo-area::before {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  z-index: 2;
+  border: 2px solid var(--brand);
+  border-radius: 11px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
+}
+.brand-card:hover .brand-logo-area::before,
+.brand-card:focus-within .brand-logo-area::before { opacity: 1; transform: scale(1); }
+.brand-logo-area { position: relative; display: grid; place-items: center; min-height: 130px; padding: 1.4rem; background: #f8f1e7; border-bottom: 1px solid var(--line); }
+.brand-logo-area img { max-height: 70px; max-width: 70%; object-fit: contain; }
+.brand-card-body { padding: 1rem; display: grid; gap: 0.45rem; align-content: start; }
+.brand-card-body p { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+.brand-meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.55rem; color: var(--brand-deep); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.brand-detail-hero {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+}
+.brand-detail-logo {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 1.4rem;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(245,231,216,0.16);
+  background: rgba(245,231,216,0.08);
+}
+.brand-detail-logo img { max-height: 90px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.18)); }
+.brand-detail-hero h3 { color: #fff; font-size: clamp(1.8rem, 4vw, 3rem); }
+.brand-detail-hero p { color: #d8c9b8; }
+
+.project-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 1.4rem;
+  padding: 1.2rem;
+}
+.project-copy {
+  color: #fff;
+  border-radius: var(--r-lg);
+  padding: 2rem;
+  background:
+    var(--noise-cream),
+    linear-gradient(135deg, var(--warm-dark-deep), #000 58%, var(--warm-dark));
+  background-blend-mode: screen, normal;
+}
+.project-copy h3 { color: #fff; font-size: clamp(1.8rem, 4vw, 3rem); }
+.project-copy p { color: #d8c9b8; }
+.fact-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; margin-top: 1rem; color: #d8c9b8; font-size: 0.84rem; }
+.fact-row span { display: inline-flex; gap: 0.36rem; align-items: center; }
+.media-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6rem;
+  min-height: 390px;
+}
+.media-mosaic img, .media-mosaic video { width: 100%; height: 100%; object-fit: cover; border-radius: var(--r); border: 1px solid var(--line); }
+.media-mosaic .big { grid-row: 1 / span 2; }
+.testimonial {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.2rem;
+  border-radius: var(--r-lg);
+  background: #f8f1e7;
+  border: 1px solid var(--line);
+}
+.quote-mark { font-family: var(--font-display); font-size: 4rem; line-height: 0.8; color: var(--brand); }
+.testimonial p { margin: 0; color: var(--ink-soft); }
+.testimonial b { display: block; margin-top: 0.6rem; }
+
+.commerce-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.2rem; align-items: start; }
+.cart-preview {
+  max-width: 520px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.modal-head { position: relative; padding: 1.25rem 1.4rem 0.95rem; border-bottom: 1px solid var(--line); }
+.modal-head h3 { font-family: var(--font-body); font-size: 1.2rem; letter-spacing: 0; }
+.modal-head p { margin: 0.2rem 0 0; color: var(--ink-soft); font-size: 0.84rem; }
+.close {
+  position: absolute;
+  inset-block-start: 0.8rem;
+  inset-inline-end: 0.8rem;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #f4ede2;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+}
+.cart-list { display: grid; gap: 0.75rem; padding: 1rem; }
+.cart-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: #faf5ee;
+}
+.cart-item img { width: 64px; height: 64px; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 0.2rem; }
+.cart-item small { display: block; color: var(--brand-deep); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.cart-item b { display: block; font-size: 0.9rem; }
+.cart-item .qty { height: 34px; }
+.cart-item .qty button { width: 30px; }
+.cart-item .qty input { width: 34px; }
+.notes { padding: 0 1rem 1rem; }
+.notes textarea { width: 100%; min-height: 66px; resize: vertical; border: 1px solid var(--line-strong); border-radius: var(--r); padding: 0.7rem; color: var(--ink); background: var(--paper); }
+.modal-foot { display: flex; gap: 0.65rem; padding: 0.9rem 1rem; background: #f8f1e7; border-top: 1px solid var(--line); }
+.modal-foot .btn { flex: 1; }
+.wizard-preview {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+}
+.progress { display: flex; gap: 0.75rem; align-items: center; }
+.progress-track { flex: 1; height: 7px; background: #eadfd2; border-radius: 999px; overflow: hidden; }
+.progress-bar { display: block; height: 100%; width: 62%; background: var(--brand); border-radius: inherit; }
+.option-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; }
+.option {
+  min-height: 94px;
+  border: 2px solid var(--line);
+  border-radius: var(--r);
+  background: var(--paper);
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.36rem;
+  align-content: center;
+  text-align: center;
+}
+.option.active { border-color: var(--brand); background: var(--brand-pale); color: var(--brand-deep); }
+.option [data-lucide] { margin: 0 auto; color: var(--brand); }
+
+.ticket {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  background-color: var(--brand);
+  background-image: var(--noise-dark);
+  background-blend-mode: overlay;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.ticket-main { padding: 2rem; }
+.ticket-main .eyebrow { color: #fff; }
+.ticket-main h3 { color: #fff; margin-top: 0.5rem; max-width: 24ch; }
+.ticket-main h3 em { color: var(--brand-pale); }
+.ticket-stub {
+  display: grid;
+  place-items: center;
+  gap: 0.8rem;
+  padding: 1.4rem 2rem;
+  border-inline-start: 2px dashed rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.1);
+}
+.seal {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.72);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.rtl-frame { direction: rtl; text-align: right; }
+.rtl-frame h2, .rtl-frame h3 { font-family: var(--font-body); letter-spacing: 0; line-height: 1.35; font-weight: 700; }
+.rtl-frame .eyebrow { letter-spacing: 0.04em; }
+.rtl-frame .preview-nav, .rtl-frame .site-links { justify-content: flex-start; }
+.rtl-split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.2rem; align-items: start; }
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1.2rem;
+}
+.rule-card { padding: 1.2rem; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.rule-card h3 { font-family: var(--font-body); font-size: 1.05rem; letter-spacing: 0; }
+.rule-card ul { margin: 0.8rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.52rem; }
+.rule-card li { position: relative; padding-inline-start: 1.1rem; color: var(--ink-soft); font-size: 0.9rem; }
+.rule-card li::before { content: ""; position: absolute; inset-inline-start: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+.rule-card.dont li::before { background: #8f3d2e; }
+
+.footer-preview { padding: 3rem 0; text-align: center; color: var(--ink-faint); font-size: 0.84rem; }
+
+@media (max-width: 980px) {
+  .section-head, .component-rack, .catalog-shell, .detail-layout, .project-hero, .commerce-grid, .rtl-split { grid-template-columns: 1fr; }
+  .catalog-hero { grid-column: auto; }
+  .filter-panel { position: static; }
+  .product-grid, .brand-grid, .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .masthead-note, .service-strip { grid-template-columns: 1fr; }
+  .project-hero { padding: 0.9rem; }
+}
+@media (max-width: 680px) {
+  .wrap { width: min(100% - 24px, 1180px); }
+  .topbar-inner { height: auto; min-height: 70px; align-items: flex-start; padding: 0.75rem 0; }
+  .preview-nav { display: none; }
+  .masthead { min-height: auto; padding: 7rem 0 2.6rem; }
+  .section { padding: 3.4rem 0; }
+  .grid-2, .grid-3, .grid-4, .product-grid, .brand-grid, .option-grid, .rules { grid-template-columns: 1fr; }
+  .home-screen { min-height: 640px; padding: 1rem; }
+  .site-nav { align-items: flex-start; }
+  .site-links { display: none; }
+  .gallery { grid-template-columns: 1fr; }
+  .thumbs { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .main-product { min-height: 320px; }
+  .feature-bar { grid-template-columns: 1fr; }
+  .brand-detail-hero { grid-template-columns: 1fr; padding: 1.2rem; }
+  .media-mosaic { grid-template-columns: 1fr; grid-template-rows: auto; min-height: 0; }
+  .media-mosaic .big { grid-row: auto; min-height: 260px; }
+  .cart-item { grid-template-columns: 56px 1fr; }
+  .cart-item .qty { grid-column: 2; justify-self: start; }
+  .ticket { grid-template-columns: 1fr; }
+  .ticket-stub { border-inline-start: 0; border-top: 2px dashed rgba(255,255,255,0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+  <header class="masthead" id="top">
+    <div class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brandmark" href="#top">
+          <img src="../assets/S‑ELECTRICITY-LOGO.svg" alt="S-ELECTRICITY logo" />
+          <span>S-ELECTRICITY</span>
+        </a>
+        <nav class="preview-nav" aria-label="Preview sections">
+          <a href="#foundation">Foundation</a>
+          <a href="#components">Components</a>
+          <a href="#home">Home</a>
+          <a href="#catalog">Catalog</a>
+          <a href="#detail">Product</a>
+          <a href="#brands">Brands</a>
+          <a href="#projects">Projects</a>
+          <a href="#quote">Quote</a>
+          <a href="#rtl">RTL</a>
+        </nav>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="masthead-content">
+        <span class="eyebrow">Design system preview</span>
+        <h1>Warm craft, <em>smart control</em>.</h1>
+        <p>A full-site design preview for Smart Electricity: homepage, catalog, product detail, brands, projects, quote flow, cart states, and Arabic RTL behavior.</p>
+        <div class="masthead-actions">
+          <a class="btn btn-primary" href="#home"><i data-lucide="layout-dashboard"></i> Explore surfaces</a>
+          <a class="btn btn-ghost" href="#rules"><i data-lucide="list-checks"></i> Design rules</a>
+        </div>
+      </div>
+      <div class="masthead-note" aria-label="Preview scope">
+        <span>Single copper accent</span>
+        <span>Warm neutral foundation</span>
+        <span>EN / FR / AR ready</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="foundation">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">01 / Foundation</span>
+            <h2>The tokens that hold the site <em>together</em>.</h2>
+          </div>
+          <p class="lead">The brand stays copper-led, but the cold grays become espresso, cream, paper, and warm hairlines. Secondary accents exist only for meaning, never as competing brand colors.</p>
+        </div>
+        <div class="grid-4">
+          <div class="swatch">
+            <div class="swatch-top" style="background:#b86c25;">Copper</div>
+            <div class="swatch-meta"><b>--brand</b><code>#b86c25</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#2a1f16;">Espresso</div>
+            <div class="swatch-meta"><b>--ink</b><code>#2a1f16</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#f4ede2;color:#2a1f16;">Cream</div>
+            <div class="swatch-meta"><b>--cream</b><code>#f4ede2</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#fffdf9;color:#2a1f16;">Paper</div>
+            <div class="swatch-meta"><b>--paper</b><code>#fffdf9</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#0f0a05;">Warm dark</div>
+            <div class="swatch-meta"><b>--warm-dark-deep</b><code>#0f0a05</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#6b5d4f;">Soft text</div>
+            <div class="swatch-meta"><b>--ink-soft</b><code>#6b5d4f</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#6f7d55;">Sage signal</div>
+            <div class="swatch-meta"><b>Functional</b><code>#6f7d55</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#4f7f78;">Verdigris signal</div>
+            <div class="swatch-meta"><b>Functional</b><code>#4f7f78</code></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:1.2rem;">
+          <div class="plate pad type-spec">
+            <div class="type-row">
+              <small>Display / Fraunces</small>
+              <div class="type-hero">A crafted <em>smart home</em> language.</div>
+            </div>
+            <div class="type-row">
+              <small>Body / Readex Pro</small>
+              <p class="muted">Readex Pro keeps UI copy, product data, and multilingual content calm and legible across the whole site.</p>
+            </div>
+            <div class="type-row">
+              <small>Arabic / Readex Pro</small>
+              <div class="type-ar">حرفة كهربائية أصيلة، بلمسة ذكية.</div>
+            </div>
+          </div>
+          <div class="plate pad">
+            <span class="eyebrow">Radius / motion</span>
+            <div class="grid-2" style="margin-top:1rem;">
+              <span class="chip brand">8px small controls</span>
+              <span class="chip brand">14px fields</span>
+              <span class="chip brand">16px buttons</span>
+              <span class="chip brand">22px cards</span>
+            </div>
+            <p class="lead">Buttons are semi-rounded, never full pills. Chips may use pill radius. Hover states move lightly and affect the touched element itself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="components">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">02 / Components</span>
+            <h2>Small pieces, <em>one voice</em>.</h2>
+          </div>
+          <p class="lead">Buttons, fields, chips, focus rings, and navigation controls use the same warm rules whether they appear on paper, dark surfaces, or copper CTAs.</p>
+        </div>
+        <div class="component-rack">
+          <div class="plate pad stack">
+            <div class="button-demo">
+              <button class="btn btn-primary" type="button"><i data-lucide="send"></i> Request quote</button>
+              <button class="btn btn-secondary" type="button"><i data-lucide="shopping-bag"></i> Add to quote</button>
+              <button class="btn btn-quiet" type="button"><i data-lucide="download"></i> Datasheet</button>
+            </div>
+            <div class="chip-row">
+              <span class="chip brand"><i data-lucide="zap"></i> KNX</span>
+              <span class="chip"><i data-lucide="wifi"></i> Wi-Fi</span>
+              <span class="chip sage"><i data-lucide="leaf"></i> Energy saving</span>
+              <span class="chip"><i data-lucide="shield-check"></i> Security</span>
+            </div>
+          </div>
+          <div class="plate dark pad stack">
+            <div class="recessed">
+              <i data-lucide="search"></i>
+              <input type="search" placeholder="Search products..." aria-label="Search products preview" />
+            </div>
+            <div class="button-demo">
+              <button class="btn btn-primary" type="button"><i data-lucide="calendar-check"></i> Book visit</button>
+              <button class="btn btn-ghost" type="button"><i data-lucide="images"></i> See work</button>
+            </div>
+            <p class="muted" style="color:#d7c9bb;margin:0;">Dark surfaces use warm translucent wells, copper focus rings, and cream grain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="home">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">03 / Homepage</span>
+            <h2>A first screen with <em>real atmosphere</em>.</h2>
+          </div>
+          <p class="lead">The homepage should immediately show smart-living craft: real spaces, restrained navigation, copper action, and service hints that can be scanned quickly.</p>
+        </div>
+        <div class="browser-chrome">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url-pill">smartelectricity.ma</span></div>
+          <div class="home-screen">
+            <nav class="site-nav" aria-label="Homepage preview navigation">
+              <a class="brandmark" href="#home"><img src="../assets/S‑ELECTRICITY-LOGO.svg" alt="" />S-ELECTRICITY</a>
+              <div class="site-links">
+                <a>Services</a><a>Products</a><a>Projects</a><a>Brands</a>
+                <button class="icon-btn" type="button" aria-label="Quote cart"><i data-lucide="shopping-cart"></i><span class="badge">2</span></button>
+              </div>
+            </nav>
+            <div class="home-copy">
+              <span class="eyebrow">Smart home automation</span>
+              <h2>Your home, <em>at your fingertips</em>.</h2>
+              <p>Lighting, security, climate, and scenes installed with electrical craft and smart-home standards.</p>
+              <div class="masthead-actions">
+                <a class="btn btn-primary"><i data-lucide="calendar-days"></i> Book a free visit</a>
+                <a class="btn btn-ghost"><i data-lucide="folder-open"></i> View projects</a>
+              </div>
+            </div>
+            <div class="service-strip">
+              <div class="service-tile"><b>KNX + Matter</b><span>Reliable automation foundations</span></div>
+              <div class="service-tile"><b>Security</b><span>Cameras, intercom, sensors</span></div>
+              <div class="service-tile"><b>Electrical craft</b><span>Panels, lighting, retrofit work</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">04 / Catalog</span>
+            <h2>Product discovery that feels <em>premium</em>.</h2>
+          </div>
+          <p class="lead">The catalog uses the dark hero search, warm filter panel, actual product imagery, protocol strips, brand logos, and a quiet add-to-quote control.</p>
+        </div>
+        <div class="browser-chrome">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url-pill">/products.html</span></div>
+          <div class="catalog-shell">
+            <div class="catalog-hero">
+              <div class="crumbs"><span>Home</span><span>/</span><b>Products</b></div>
+              <h3>All Products</h3>
+              <p>Explore smart panels, relays, sensors, gateways, networking, and security devices.</p>
+              <div class="recessed" style="margin-top:1.1rem;">
+                <i data-lucide="search"></i>
+                <input type="search" placeholder="Search products..." aria-label="Catalog search preview" />
+              </div>
+            </div>
+            <aside class="filter-panel" aria-label="Catalog filter preview">
+              <div class="filter-group">
+                <span class="filter-title">Technology</span>
+                <label class="check-row"><span>KNX</span><input type="checkbox" checked /></label>
+                <label class="check-row"><span>Wi-Fi</span><input type="checkbox" checked /></label>
+                <label class="check-row"><span>Zigbee</span><input type="checkbox" /></label>
+              </div>
+              <div class="filter-group">
+                <span class="filter-title">Product type</span>
+                <span class="chip brand">Touch panels</span>
+                <span class="chip">Relays</span>
+                <span class="chip">Networking</span>
+              </div>
+            </aside>
+            <div class="product-grid">
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="../assets/products/shelly-wall-display.png" alt="Shelly Wall Display" />
+                </div>
+                <div class="protocol-strip">
+                  <span class="protocol"><i data-lucide="wifi"></i>Wi-Fi</span>
+                  <span class="protocol"><i data-lucide="bluetooth"></i>Bluetooth</span>
+                </div>
+                <div class="prod-content">
+                  <span class="prod-brand">Shelly</span>
+                  <b class="prod-title">Shelly Wall Display</b>
+                  <span class="prod-desc">4-inch smart touch panel with built-in relay and sensors.</span>
+                  <div class="prod-foot"><img class="prod-logo" src="../assets/brands/shelly.svg" alt="Shelly logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
+                </div>
+              </article>
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="../assets/products/eae-knx-miola-touch-panel.png" alt="EAE Miola touch panel" />
+                </div>
+                <div class="protocol-strip">
+                  <span class="protocol knx">KNX</span>
+                  <span class="protocol"><i data-lucide="network"></i>Ethernet</span>
+                </div>
+                <div class="prod-content">
+                  <span class="prod-brand">EAE Technology</span>
+                  <b class="prod-title">KNX Miola Touch Panel</b>
+                  <span class="prod-desc">Room control panel for scenes, climate, blinds, and lighting.</span>
+                  <div class="prod-foot"><img class="prod-logo" src="../assets/brands/eae-technology.svg" alt="EAE Technology logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
+                </div>
+              </article>
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="../assets/products/dahua-vth8621kms-wp-indoor-monitor.png" alt="Dahua indoor monitor" />
+                </div>
+                <div class="protocol-strip">
+                  <span class="protocol"><i data-lucide="network"></i>IP</span>
+                  <span class="protocol"><i data-lucide="shield-check"></i>Security</span>
+                </div>
+                <div class="prod-content">
+                  <span class="prod-brand">Dahua</span>
+                  <b class="prod-title">VTH8621KMS-WP Indoor Monitor</b>
+                  <span class="prod-desc">Premium IP indoor monitor for apartment and villa entry systems.</span>
+                  <div class="prod-foot"><img class="prod-logo" src="../assets/brands/dahua.svg" alt="Dahua logo" /><button class="prod-add" type="button">+ Add to quote</button></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="detail">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">05 / Product detail</span>
+            <h2>Deep product pages without <em>store clutter</em>.</h2>
+          </div>
+          <p class="lead">The detail layout keeps the gallery, specs, files, and quote action crisp. It avoids stock promises like inventory or checkout because the site requests quotes through WhatsApp.</p>
+        </div>
+        <div class="plate">
+          <div class="detail-layout">
+            <div class="gallery">
+              <div class="thumbs">
+                <div class="thumb active"><img src="../assets/products/shelly-wall-display.png" alt="" /></div>
+                <div class="thumb"><img src="../assets/products/shelly-wall-display-2.jpg" alt="" /></div>
+                <div class="thumb"><img src="../assets/products/shelly-wall-display-3.jpg" alt="" /></div>
+                <div class="thumb"><img src="../assets/products/shelly-wall-display-4.jpg" alt="" /></div>
+              </div>
+              <div class="main-product"><img src="../assets/products/shelly-wall-display.png" alt="Shelly Wall Display main product" /></div>
+            </div>
+            <div class="detail-copy">
+              <span class="eyebrow">Shelly / Touch panel</span>
+              <h3>Shelly Wall Display</h3>
+              <p class="muted">A smart home control panel that replaces a normal light switch with a 4-inch touchscreen, relay, sensors, widgets, and app integrations.</p>
+              <div class="feature-bar">
+                <div class="feature"><span>Display</span><b>4 inch touch</b></div>
+                <div class="feature"><span>Relay</span><b>230 VAC / 5 A</b></div>
+                <div class="feature"><span>Protocols</span><b>Wi-Fi + Bluetooth</b></div>
+              </div>
+              <div>
+                <div class="quote-row">
+                  <div class="qty"><button type="button">-</button><input value="1" aria-label="Quantity preview" /><button type="button">+</button></div>
+                  <button class="btn btn-primary" type="button"><i data-lucide="clipboard-check"></i> Add to quote request</button>
+                </div>
+                <p class="hint"><i data-lucide="message-circle"></i> Request a free quote. We reply via WhatsApp.</p>
+              </div>
+              <div class="spec-table">
+                <div><b>Power supply</b><span>230 VAC, 50/60 Hz</span></div>
+                <div><b>Built-in sensors</b><span>Temperature, humidity, ambient light</span></div>
+                <div><b>Dimensions</b><span>85 x 85 x 30 mm</span></div>
+              </div>
+              <div class="button-demo">
+                <button class="btn btn-quiet" type="button"><i data-lucide="book-open"></i> Knowledge base</button>
+                <button class="btn btn-quiet" type="button"><i data-lucide="file-text"></i> Documentation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="brands">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">06 / Brands</span>
+            <h2>Brand trust, <em>not logo noise</em>.</h2>
+          </div>
+          <p class="lead">Brand cards use clean vector logos, short trust copy, product counts, and the same warm card language as the catalog.</p>
+        </div>
+        <div class="grid-2">
+          <div class="brand-grid">
+            <a class="brand-card" href="#brands">
+              <div class="brand-logo-area"><img src="../assets/brands/shelly.svg" alt="Shelly logo" /></div>
+              <div class="brand-card-body"><h3>Shelly</h3><p>Retrofit smart devices for standard electrical installations.</p><div class="brand-meta"><span>14 products</span><i data-lucide="arrow-right"></i></div></div>
+            </a>
+            <a class="brand-card" href="#brands">
+              <div class="brand-logo-area"><img src="../assets/brands/eae-technology.svg" alt="EAE Technology logo" /></div>
+              <div class="brand-card-body"><h3>EAE Technology</h3><p>Professional KNX control, automation, and panel devices.</p><div class="brand-meta"><span>12 products</span><i data-lucide="arrow-right"></i></div></div>
+            </a>
+            <a class="brand-card" href="#brands">
+              <div class="brand-logo-area"><img src="../assets/brands/dahua.svg" alt="Dahua logo" /></div>
+              <div class="brand-card-body"><h3>Dahua</h3><p>Video intercom, indoor monitors, cameras, and security systems.</p><div class="brand-meta"><span>5 products</span><i data-lucide="arrow-right"></i></div></div>
+            </a>
+          </div>
+          <div class="plate dark brand-detail-hero">
+            <div class="brand-detail-logo"><img src="../assets/brands/shelly.svg" alt="Shelly logo on dark surface" /></div>
+            <div>
+              <span class="eyebrow">Brand profile</span>
+              <h3>Shelly</h3>
+              <p>Smart, interoperable devices that retrofit any standard electrical installation.</p>
+              <div class="chip-row"><span class="chip dark">Bulgaria</span><span class="chip dark">Founded 2017</span><span class="chip dark">Wi-Fi</span><span class="chip dark">Matter</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">07 / Projects</span>
+            <h2>Case studies with <em>proof</em>.</h2>
+          </div>
+          <p class="lead">Project pages need a dark narrative hero, real media, scannable facts, a testimonial, related products, and a full-width quote CTA.</p>
+        </div>
+        <div class="plate">
+          <div class="project-hero">
+            <div class="project-copy">
+              <div class="chip-row"><span class="chip dark">Smart Home Automation</span><span class="chip dark">Lighting Design</span></div>
+              <h3 style="margin-top:1rem;">KNX Smart Villa - Tetouan</h3>
+              <p>Full KNX automation across four floors: lighting, blinds, HVAC, scenes, touch panels, and app control.</p>
+              <div class="fact-row">
+                <span><i data-lucide="map-pin"></i> Tetouan, Morocco</span>
+                <span><i data-lucide="calendar"></i> 62 days</span>
+                <span><i data-lucide="zap"></i> 12 scenes</span>
+              </div>
+            </div>
+            <div class="media-mosaic">
+              <img class="big" src="../assets/roomwebp.webp" alt="Living room with smart lighting" />
+              <img src="../assets/smart-dashboard-panel.webp" alt="Smart dashboard panel" />
+              <img src="../assets/Vila-big-background.webp" alt="Villa exterior" />
+            </div>
+          </div>
+          <div style="padding:0 1.2rem 1.2rem;">
+            <div class="testimonial">
+              <span class="quote-mark">"</span>
+              <div><p>We briefed the team on a Monday and they had the main floor running scenes by Friday. It feels like the villa read our minds.</p><b>Mr. A.B.</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="ticket" style="margin-top:1.2rem;">
+          <div class="ticket-main">
+            <span class="eyebrow">Custom solution</span>
+            <h3>Not sure where to start? <em>Let's design it together.</em></h3>
+          </div>
+          <div class="ticket-stub">
+            <span class="seal">S.E</span>
+            <button class="btn btn-quiet" type="button"><i data-lucide="send"></i> Get quote</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quote">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">08 / Quote flow</span>
+            <h2>Lead capture that stays <em>honest</em>.</h2>
+          </div>
+          <p class="lead">The cart is a quote request, not checkout. The wizard helps customers describe their need and sends the conversation toward WhatsApp.</p>
+        </div>
+        <div class="commerce-grid">
+          <div class="cart-preview">
+            <div class="modal-head">
+              <button class="close" type="button" aria-label="Close preview"><i data-lucide="x"></i></button>
+              <h3>Quote request</h3>
+              <p>2 products selected</p>
+            </div>
+            <div class="cart-list">
+              <div class="cart-item">
+                <img src="../assets/products/shelly-wall-display.png" alt="Shelly Wall Display thumbnail" />
+                <div><small>Shelly</small><b>Shelly Wall Display</b></div>
+                <div class="qty"><button type="button">-</button><input value="1" aria-label="Shelly quantity" /><button type="button">+</button></div>
+              </div>
+              <div class="cart-item">
+                <img src="../assets/products/eae-knx-miola-touch-panel.png" alt="EAE Miola thumbnail" />
+                <div><small>EAE Technology</small><b>KNX Miola Touch Panel</b></div>
+                <div class="qty"><button type="button">-</button><input value="2" aria-label="Miola quantity" /><button type="button">+</button></div>
+              </div>
+            </div>
+            <div class="notes"><textarea aria-label="Quote notes preview" placeholder="Optional notes: rooms, budget, installation date..."></textarea></div>
+            <div class="modal-foot">
+              <button class="btn btn-quiet" type="button">Clear</button>
+              <button class="btn btn-primary" type="button"><i data-lucide="message-circle"></i> Send via WhatsApp</button>
+            </div>
+          </div>
+          <div class="wizard-preview">
+            <div class="progress"><span class="filter-title">Step 3 / 5</span><span class="progress-track"><span class="progress-bar"></span></span></div>
+            <h3 style="font-family:var(--font-body);letter-spacing:0;">What do you want to automate?</h3>
+            <p class="muted" style="margin:0;">Option cards stay tactile, warm, and easy to scan on mobile.</p>
+            <div class="option-grid">
+              <button class="option active" type="button"><i data-lucide="lightbulb"></i><b>Lighting</b><span>Scenes and dimming</span></button>
+              <button class="option" type="button"><i data-lucide="shield"></i><b>Security</b><span>Cameras and sensors</span></button>
+              <button class="option" type="button"><i data-lucide="thermometer"></i><b>Climate</b><span>HVAC schedules</span></button>
+              <button class="option" type="button"><i data-lucide="router"></i><b>Network</b><span>Mesh and coverage</span></button>
+            </div>
+            <div class="button-demo">
+              <button class="btn btn-quiet" type="button"><i data-lucide="arrow-left"></i> Back</button>
+              <button class="btn btn-primary" type="button">Continue <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rtl-frame" id="rtl">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">٠٩ / العربية و RTL</span>
+            <h2>نفس النظام، <em>معكوس بعناية</em>.</h2>
+          </div>
+          <p class="lead">العربية ليست نسخة لاحقة. الخصائص المنطقية، Readex Pro، ومحاذاة البادجات والأزرار يجب أن تعمل من اليمين إلى اليسار دون كسر البطاقات أو النماذج.</p>
+        </div>
+        <div class="rtl-split">
+          <div class="plate dark pad">
+            <span class="eyebrow">صفحة المنتج</span>
+            <h3>شاشة الحائط من شيلي</h3>
+            <p style="color:#d8c9b8;">شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة للتحكم في الإضاءة والمشاهد والأجهزة.</p>
+            <div class="quote-row">
+              <div class="qty"><button type="button">-</button><input value="1" aria-label="الكمية" /><button type="button">+</button></div>
+              <button class="btn btn-primary" type="button"><i data-lucide="clipboard-check"></i> أضف إلى طلب السعر</button>
+            </div>
+            <p class="hint" style="color:#d8c9b8;"><i data-lucide="message-circle"></i> نرد عليك خلال ساعات عبر واتساب.</p>
+          </div>
+          <article class="prod-card">
+            <div class="prod-media">
+              <img src="../assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png" alt="شاشة داخلية من Dahua" />
+            </div>
+            <div class="protocol-strip">
+              <span class="protocol"><i data-lucide="network"></i>IP</span>
+              <span class="protocol"><i data-lucide="shield-check"></i>أمن</span>
+            </div>
+            <div class="prod-content">
+              <span class="prod-brand">Dahua</span>
+              <b class="prod-title">شاشة داخلية IP</b>
+              <span class="prod-desc">شاشة فيديو داخلية لأنظمة الإنتركم في الفلل والشقق.</span>
+              <div class="prod-foot"><img class="prod-logo" src="../assets/brands/dahua.svg" alt="شعار Dahua" /><button class="prod-add" type="button">+ أضف للطلب</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">10 / Rules</span>
+            <h2>What to keep, what to <em>avoid</em>.</h2>
+          </div>
+          <p class="lead">These rules keep future implementation from drifting back into generic cool-gray UI or noisy store patterns.</p>
+        </div>
+        <div class="rules">
+          <div class="rule-card">
+            <h3>Do</h3>
+            <ul>
+              <li>Use real assets: product photos, project media, and clean brand SVGs.</li>
+              <li>Route color and typography through `assets/brand.css` tokens.</li>
+              <li>Keep copper as the only dominant accent.</li>
+              <li>Test EN, FR, and AR layouts at desktop and mobile widths.</li>
+              <li>Use quote-request language instead of checkout or inventory promises.</li>
+            </ul>
+          </div>
+          <div class="rule-card dont">
+            <h3>Don't</h3>
+            <ul>
+              <li>Return to blue-gray neutrals or purple gradients.</li>
+              <li>Use full-pill buttons outside chips and badges.</li>
+              <li>Darken child buttons when hovering a whole card.</li>
+              <li>Hide brand/product/place identity below the first viewport.</li>
+              <li>Decorate with abstract blobs when real media can carry the page.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-preview">
+    <div class="wrap">
+      <p>Design system preview · `docs/design-system-preview.html` · noindex · outside the production build.</p>
+    </div>
+  </footer>
+
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  if (window.lucide) {
+    window.lucide.createIcons({ attrs: { "stroke-width": 1.8 } });
+  }
+});
+</script>
+</body>
+</html>

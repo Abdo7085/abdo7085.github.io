@@ -4,7 +4,7 @@
   "country_of_origin": "China",
   "founded": 2015,
   "website": "https://sonoff.tech",
-  "logo": "/assets/brands/sonoff.webp",
+  "logo": "/assets/brands/sonoff.svg",
   "tagline": {
     "en": "Affordable, open-protocol smart devices for retrofit homes.",
     "fr": "Des appareils intelligents abordables et ouverts pour la rénovation domotique.",

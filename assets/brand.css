@@ -24,11 +24,32 @@
   --warm-dark-deep:   #0f0a05;
   --warm-dark-light:  #3d2e1f;
 
-  /* ===== Neutrals ===== */
-  --ink:       #1f2937;
-  --ink-muted: #6b7280;
-  --paper:     #ffffff;
-  --cream:     #f8fafc;
+  /* ===== Neutrals — WARM foundation (2026-06-01: warmed per VISUAL_IDENTITY_GUIDE §3.3)
+   * Was cool slate (#1f2937 / #6b7280 / #ffffff / #f8fafc). Now a warm
+   * espresso/parchment family so neutrals tell one story with the copper accent.
+   * --ink-muted kept as an alias of --ink-soft for any legacy var() references. */
+  --ink:       #2a1f16;   /* primary text — warm espresso */
+  --ink-soft:  #6b5d4f;   /* secondary text — warm taupe */
+  --ink-muted: #6b5d4f;   /* alias of --ink-soft (legacy) */
+  --ink-faint: #9b8b7a;   /* faint text */
+  --paper:     #fffdf9;   /* card surface — warm white */
+  --cream:     #f4ede2;   /* page background — warm parchment */
+  --line:      rgba(42, 31, 22, 0.12);   /* warm hairline */
+
+  /* ===== Display font (2026-06-01) — Latin headings only; Arabic stays Readex Pro.
+   * Loaded via Google Fonts in the 5 root templates. */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* ===== Radius scale (2026-06-01) ===== */
+  --r-sm:   8px;
+  --r:      14px;
+  --r-btn:  16px;    /* buttons: semi-rounded, never full pill */
+  --r-lg:   22px;    /* cards / panels */
+  --r-pill: 999px;   /* chips / badges only */
+
+  /* ===== Warm shadows (2026-06-01: replace cool black) ===== */
+  --shadow-sm: 0 4px 14px -6px rgba(58, 36, 14, 0.30);
+  --shadow:    0 16px 44px -18px rgba(58, 36, 14, 0.45);
 
   /* ===== Surface texture (added 2026-05-24) =====
    * Two noise tokens — dark grain for light/saturated surfaces (orange CTA),

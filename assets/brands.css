@@ -6,13 +6,13 @@
  */
 
 :root {
-  --brand-card-bg:     #ffffff;
-  --brand-card-border: rgba(15, 23, 42, 0.08);
-  --brand-text-main:   #1f2937;
-  --brand-text-muted:  #6b7280;
+  --brand-card-bg:     var(--paper, #fffdf9);
+  --brand-card-border: var(--line, rgba(42, 31, 22, 0.12));   /* warm (was cool slate rgba) */
+  --brand-text-main:   var(--ink, #2a1f16);
+  --brand-text-muted:  var(--ink-soft, #6b5d4f);
   --brand-radius-lg:   12px;
-  --brand-shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --brand-shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --brand-shadow-sm:   var(--shadow-sm, 0 4px 14px -6px rgba(58, 36, 14, 0.30));
+  --brand-shadow-lg:   var(--shadow, 0 16px 44px -18px rgba(58, 36, 14, 0.45));
 }
 
 /* ---------------- Page wrapper + container ----------------
@@ -194,7 +194,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--cream, #f8fafc) 0%, #f1f5f9 100%);
+  background: linear-gradient(135deg, var(--cream, #f4ede2) 0%, #efe6d9 100%);
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -593,34 +593,36 @@
   z-index: 0;
 }
 
-/* Brand card top-edge accent on hover — same pattern as .prod-card::before */
-.brand-card {
-  position: relative;
-}
-.brand-card::before {
+/* Brand card hover accent — SEMI-ROUNDED copper corner-brackets framing the
+   LOGO AREA only (not the whole card), same warm pattern as the catalog card.
+   Replaces the rejected top-line sweep. Single ::before on the logo area,
+   18px arms, RTL-safe. (.brand-card-logo-area is already position:relative.) */
+.brand-card-logo-area::before {
   content: '';
   position: absolute;
-  top: 0;
-  inset-inline-start: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--brand, #b86c25) 40%,
-    var(--brand, #b86c25) 60%,
-    transparent 100%);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  inset: 11px;
   z-index: 2;
+  border: 2px solid var(--brand, #b86c25);
+  border-radius: 11px;
   pointer-events: none;
-  border-top-left-radius: var(--brand-radius-lg);
-  border-top-right-radius: var(--brand-radius-lg);
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  -webkit-mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 0 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 0 / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 0 100% / 18px 18px no-repeat,
+    linear-gradient(#000 0 0) 100% 100% / 18px 18px no-repeat;
 }
-.brand-card:hover::before,
-.brand-card:focus-within::before {
-  transform: scaleX(1);
+.brand-card:hover .brand-card-logo-area::before,
+.brand-card:focus-within .brand-card-logo-area::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Warmer logo area — replaces flat slate gradient with hint of cream */

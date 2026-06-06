@@ -256,6 +256,32 @@
     `;
   }
 
+  // Protocol icon+name for a single technology (shared dictionary, mirrors
+  // products.js / brand-detail.js). Reuses the same official marks as the
+  // detail-page tech-icon set above.
+  function relProtoMarkup(tech) {
+    const tl = String(tech).toLowerCase();
+    let icon = '';
+    if (tl.includes('wi-fi') || tl.includes('wifi')) {
+      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>';
+    } else if (tl.includes('bluetooth') || tl.includes('ble')) {
+      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>';
+    } else if (tl.includes('knx')) {
+      return '<span class="prod-proto prod-proto-knx">KNX</span>';
+    } else if (tl.includes('zigbee')) {
+      icon = '<svg viewBox="0 0 48 48" fill="currentColor"><path d="M32.042,9.792c4.595,1.238,4.88,3.165,5.524,5.048C34.841,17.664,17.35,35.7,17.35,35.7s10.901,1.177,23.487-1.003c-0.001,0.029-0.002,0.048-0.003,0.076C42.829,31.661,44,27.97,44,24c0-11.046-8.954-20-20-20c-5.634,0-10.715,2.338-14.35,6.087C15.489,9.124,26.89,8.403,32.042,9.792z"/><path d="M14.724,37.285c-1.982-0.347-4.212-2.131-4.707-5.302c1.437-1.239,19.994-20.507,19.994-20.507c-7.008-0.424-14.569-0.465-22.237,0.864C5.408,15.625,4,19.644,4,24c0,11.046,8.954,20,20,20c6.173,0,11.689-2.8,15.358-7.195C35.486,37.33,23.257,38.769,14.724,37.285z"/></svg>';
+    } else if (tl.includes('matter')) {
+      icon = '<svg viewBox="0 0 512 512" fill="currentColor"><path d="M152 134.4c21.5 17.5 47.1 29.2 74.4 34.2V22.9l29.7-17.1 29.6 17.1v145.6c27.3-4.9 52.9-16.7 74.5-34.2l53.8 31.1c-87.6 86.6-228.5 86.6-316.1 0zm65.5 371.8C248.7 387 178.1 264.9 59.3 232.5v62.3c25.9 9.9 48.9 26.2 66.8 47.4L0 414.9v34.2l29.7 17 126.1-72.8c9.4 26.1 12 54.2 7.6 81.5zm235.3-273.7C334 265 263.6 387.1 294.8 506.2l54-31.2c-4.4-27.4-1.7-55.4 7.6-81.5l126 72.7 29.6-17.1v-34.2l-126.1-72.8c17.9-21.2 40.9-37.5 66.8-47.4z"/></svg>';
+    } else if (tl.includes('thread')) {
+      icon = '<svg viewBox="0 0 165 165" fill="currentColor"><path d="M82.498,0C37.008,0,0,37.008,0,82.496c0,45.181,36.51,81.977,81.573,82.476V82.569l-27.002-0.002c-8.023,0-14.554,6.53-14.554,14.561c0,8.023,6.531,14.551,14.554,14.551v17.98c-17.939,0-32.534-14.595-32.534-32.531c0-17.944,14.595-32.543,32.534-32.543l27.002,0.004v-9.096c0-14.932,12.146-27.08,27.075-27.08c14.932,0,27.082,12.148,27.082,27.08c0,14.931-12.15,27.08-27.082,27.08l-9.097-0.001v80.641C136.889,155.333,165,122.14,165,82.496C165,37.008,127.99,0,82.498,0z"/><path d="M117.748,55.493c0-5.016-4.082-9.098-9.1-9.098c-5.015,0-9.097,4.082-9.097,9.098v9.097l9.097,0.001C113.666,64.591,117.748,60.51,117.748,55.493z"/></svg>';
+    } else if (tl.includes('lan') || tl.includes('ethernet')) {
+      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg>';
+    } else {
+      return '<span class="prod-proto">' + tech + '</span>';
+    }
+    return '<span class="prod-proto">' + icon + tech + '</span>';
+  }
+
   function renderRelatedProducts(allProducts, currentProduct) {
      if(!allProducts || allProducts.length === 0) return '';
      const prefix = getLangPrefix();
@@ -279,14 +305,30 @@
 
      related.forEach(p => {
         const title = t(p.title);
+        const desc = t(p.short_description);
         const image = p.image || '/assets/S‑ELECTRICITY-LOGO.svg';
+        const techs = Array.isArray(p.technology) ? p.technology : [];
+        const protocolStrip = techs.length
+          ? '<div class="prod-card-protocols">' + techs.map(relProtoMarkup).join('') + '</div>'
+          : '';
+        const slug = p.brand ? String(p.brand).toLowerCase().replace(/\s+/g, '-') : '';
+        const footBrand = p.brand
+          ? `<img class="prod-card-logo" src="/assets/brands/${slug}.svg" alt="${p.brand}" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML(&quot;afterend&quot;,&quot;<span class=\\&quot;prod-card-logo-fallback\\&quot;>${p.brand}</span>&quot;);this.remove();" />`
+          : '<span class="prod-card-logo-fallback"></span>';
         html += `
           <a href="${prefix}/products/${p.id}.html" class="prod-card link-transition">
             <div class="prod-card-img-wrapper" style="height:180px;">
               <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
             </div>
+            ${protocolStrip}
             <div class="prod-card-content" style="padding:1rem;">
-              <h4 style="font-size:1.1rem; color: #1f2937; margin:0;">${title}</h4>
+              <div class="prod-card-brand">${p.brand || ''}</div>
+              <h3 class="prod-card-title">${title}</h3>
+              <p class="prod-card-desc">${desc}</p>
+              <div class="prod-card-footer">
+                ${footBrand}
+                <button type="button" class="prod-card-add" data-trigger="cart-add" data-product-id="${p.id}" data-i18n="cart_add_to_quote" aria-label="Add to quote request" data-i18n-attr="aria-label:cart_aria_add_btn" onclick="event.preventDefault();event.stopPropagation();if(window.Cart)window.Cart.add('${p.id}',1);">+ Add to quote</button>
+              </div>
             </div>
           </a>
         `;
