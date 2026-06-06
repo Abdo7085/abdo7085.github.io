@@ -160,6 +160,26 @@ html[lang="ar"] .proj-hero-title,
   letter-spacing: 0;
   font-variation-settings: normal;
 }
+
+/* previous-work hero <h1> is rendered by the SPA bundle with class `font-exo`
+   (→ Readex Pro bold). Re-point it to Fraunces via its stable data-i18n hook —
+   no bundle edit. Attribute+type selector (0,1,1) beats Tailwind .font-exo/
+   .font-bold (0,1,0); font-size stays from the Tailwind classes. */
+h1[data-i18n="spa_previous_work"] {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-weight: 560;
+  letter-spacing: var(--tracking-tight, -0.015em);
+}
+html[lang="ar"] h1[data-i18n="spa_previous_work"],
+[dir="rtl"] h1[data-i18n="spa_previous_work"] {
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-variation-settings: normal;
+}
+
 .proj-hero-lead {
   font-size: 1.05rem;
   line-height: 1.6;
