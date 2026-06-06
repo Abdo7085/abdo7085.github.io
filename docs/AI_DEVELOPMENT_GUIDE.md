@@ -1096,6 +1096,18 @@ grep -rn "Readex Pro" assets/ *.html
 - **عند اختيار خط جديد لمواقع تستهدف العربية على Windows/Chrome**، تجنّب IBM Plex Arabic (مبكسل). البدائل المُختبَرة: Readex Pro (الأنعم)، Cairo، Tajawal، Noto Sans Arabic.
 - **SPA inline style واحد في السطر ~12597** سهل النسيان — تأكّد من تضمينه.
 
+**🆕 Fraunces — خط العرض اللاتيني للعناوين (مُضاف 2026-06-01):** أُضيف **Fraunces** (variable serif) كخط عرض للعناوين اللاتينية عبر التوكن `--font-display` في `brand.css`؛ رابط Google Fonts له مُضاف في القوالب الجذرية بجانب Readex Pro. **Readex Pro يبقى** خط الجسم **وكل العربية** (Fraunces بلا حروف عربية).
+
+> **⚠️ فخّ متكرّر — عنوان الصفحة يرث الخط الخاطئ:** أي عنوان hero/قسم لاتيني يجب أن يضبط `font-family: var(--font-display)` **صراحةً**. إن لم يفعل، يرث Readex Pro بوزن 700 = «sans عريض ثقيل» بدل Fraunces الأنيق. **ولأن Fraunces بلا عربية، أضِف دائماً تجاوزاً عربياً** (كنمط `.prod-card-title`):
+> ```css
+> html[lang="ar"] .X-title, [dir="rtl"] .X-title {
+>   font-family: 'Readex Pro', system-ui, sans-serif;
+>   font-weight: 700; letter-spacing: 0; font-variation-settings: normal;
+> }
+> ```
+> **مُصلَح (2026-06-06):** `.prod-header-title` (هيرو المنتجات) → Fraunces 560 + `clamp(1.8rem,4vw,3rem)` + تجاوز عربي.
+> **ما زال بالعيب (sans ثقيل):** `.brands-hero-title` / `.brand-hero-title` (`brands.css`) و `.proj-hero-title` (`projects.css`) — وزن 700 بلا `font-family`. عند لمسها لاحقاً، طبّق نفس النمط.
+
 ### 🏷️ Section Eyebrows — علامات صغيرة فوق عناوين الأقسام
 
 **ملف مستقلّ:** `assets/section-eyebrows.css` (2026-04-30) يضيف "eyebrow markers" صغيرة بصيغة `— 01 / Expertise` فوق عناوين 4 أقسام رئيسية في الصفحة الرئيسية. تستخدم CSS pseudo-elements (`::before`) **بدون لمس SPA bundle** — صفر مخاطرة.
@@ -1244,7 +1256,7 @@ section#NEW_ID > .container > .HEADER_WRAPPER::before { content: '— 05 / NEW_L
 - ❌ لا تستخدم `--noise-svg-light` على خلفية فاتحة (ستظهر بيضاء فوضوية).
 - ❌ لا تضع focus ring بلون البراند على سطح برتقالي (سيختفي) — استخدم أبيض.
 - ❌ لا تنسَ `position: relative` على parent البطاقة عند إضافة `::before` accent.
-- ❌ لا تضف grain للأقسام عبر `::before` pseudo بـ `mix-blend-mode` — `background-blend-mode` على الـ section مباشرة أنظف وأقوى.
+- ❌ لا تضف grain للأقسام عبر `::before/::after` pseudo بـ `mix-blend-mode` — `background-blend-mode` على الـ section مباشرة أنظف وأقوى. **مثال حيّ (2026-06-06):** `.prod-hero` كان يضيف الحُبيبات عبر `::after` بـ `opacity: 0.06` فلم تظهر إطلاقاً (`0.06 × alpha التوكن 0.13 ≈ صفر`)؛ نُقلت لطبقة خلفية بـ `background-blend-mode: screen` فظهرت. **لا تخفّض `opacity` طبقة الـ noise — الـ alpha مدمج في التوكن.**
 
 ---
 
