@@ -1486,6 +1486,13 @@ html[dir="rtl"] .prod-count-badge {
   opacity: 1;
   transform: scale(1);
 }
+/* Touch / mobile: these copper corner-brackets are a hover-only effect (never
+   shown without a hover), and their 4-layer CSS mask forces a compositing layer
+   that some Android/Mali GPUs (Samsung) mis-render as a band of colored static
+   during scroll. Drop the masked pseudo where it can't be seen anyway. */
+@media (hover: none), (max-width: 768px) {
+  .prod-card-img-wrapper::before { display: none; }
+}
 
 /* Slightly warmer card image backdrop — replaces the flat slate gradient with
    a hint of cream so the white-bg product photos feel grounded rather than
