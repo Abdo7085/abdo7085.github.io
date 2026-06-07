@@ -629,13 +629,6 @@ html[lang="ar"] .brand-hero-title,
   opacity: 1;
   transform: scale(1);
 }
-/* Touch / mobile: these copper corner-brackets are a hover-only effect (never
-   shown without a hover), and their 4-layer CSS mask forces a compositing layer
-   that some Android/Mali GPUs (Samsung) mis-render as a band of colored static
-   during scroll. Drop the masked pseudo where it can't be seen anyway. */
-@media (hover: none), (max-width: 768px) {
-  .brand-card-logo-area::before { display: none; }
-}
 
 /* Warmer logo area — replaces flat slate gradient with hint of cream */
 .brand-card-logo-area {
