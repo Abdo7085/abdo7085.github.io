@@ -7,11 +7,11 @@
   --cart-orange:        var(--brand, #b86c25);
   --cart-orange-dark:   var(--brand-deep, #9c5a1e);
   --cart-orange-light:  var(--brand-pale, #f5e7d8);
-  --cart-text:          #1a1a1a;
+  --cart-text:          var(--ink, #2a1f16);
   --cart-text-muted:    var(--ink-muted, #6b7280);
-  --cart-border:        #e5e7eb;
+  --cart-border:        var(--line-strong, rgba(42, 31, 22, 0.2));  /* warm hairline (was cool #e5e7eb) */
   --cart-bg:            var(--paper, #ffffff);
-  --cart-bg-soft:       #fafafa;
+  --cart-bg-soft:       var(--cream, #f4ede2);
   --cart-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --cart-wa:            var(--brand, #b86c25);
   --cart-wa-dark:       var(--brand-deep, #9c5a1e);
@@ -102,28 +102,31 @@
  * image-corner brackets is kept. */
 .prod-card-img-wrapper { position: relative; }
 
-/* ---------- Product detail page: qty + Add to Cart row ---------- */
+/* ---------- Product detail page: qty + Add to Cart row ----------
+ * 2026-06-10 — warmed to match the design-system preview §05 (.quote-row/.qty):
+ * warm hairline borders instead of cool #e5e7eb, semi-rounded copper button
+ * (--r-btn) with a soft glow. Spacing now comes from the .pd-info grid gap. */
 .pd-cart-row {
   display: flex;
   align-items: stretch;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 0;
   flex-wrap: wrap;
 }
 .pd-qty {
   display: inline-flex;
   align-items: stretch;
-  border: 1.5px solid var(--cart-border);
+  border: 1.5px solid var(--line-strong, rgba(42, 31, 22, 0.2));
   border-radius: 12px;
   overflow: hidden;
-  background: var(--cart-bg);
+  background: var(--paper, #fffdf9);
   height: 52px;
 }
 .pd-qty-btn {
   width: 44px;
   border: none;
   background: transparent;
-  color: var(--cart-text);
+  color: var(--ink, #2a1f16);
   font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
@@ -131,18 +134,18 @@
   font-family: inherit;
 }
 .pd-qty-btn:hover {
-  background: var(--cart-bg-soft);
+  background: var(--cream, #f4ede2);
   color: var(--cart-orange);
 }
 .pd-qty-input {
-  width: 52px;
+  width: 48px;
   border: none;
-  border-inline: 1.5px solid var(--cart-border);
+  border-inline: 1px solid var(--line, rgba(42, 31, 22, 0.12));
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
   font-family: inherit;
-  color: var(--cart-text);
+  color: var(--ink, #2a1f16);
   background: transparent;
   -moz-appearance: textfield;
   appearance: textfield;
@@ -168,14 +171,16 @@
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  border-radius: 12px;
+  border-radius: var(--r-btn, 16px);
+  box-shadow: 0 10px 24px -14px var(--brand-glow, rgba(184, 108, 37, 0.45));
   cursor: pointer;
-  transition: background 0.18s ease;
+  transition: background 0.18s ease, transform 0.2s ease;
   flex: 1 1 auto;
   min-width: 200px;
 }
 .pd-add-to-cart:hover {
   background: var(--cart-orange-dark);
+  transform: translateY(-1px);
 }
 .pd-add-to-cart svg {
   width: 20px;
@@ -407,7 +412,7 @@ body.cart-open { overflow: hidden; }
   height: 64px;
   border-radius: 8px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--paper, #fffdf9);
   border: 1px solid var(--cart-border);
   display: flex;
   align-items: center;
@@ -459,7 +464,7 @@ body.cart-open { overflow: hidden; }
   border: 1.5px solid var(--cart-border);
   border-radius: 8px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--paper, #fffdf9);
 }
 .cart-qty-btn {
   width: 32px;

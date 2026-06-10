@@ -32,9 +32,12 @@
   --ink-soft:  #6b5d4f;   /* secondary text — warm taupe */
   --ink-muted: #6b5d4f;   /* alias of --ink-soft (legacy) */
   --ink-faint: #9b8b7a;   /* faint text */
-  --paper:     #fffdf9;   /* card surface — warm white */
-  --cream:     #f4ede2;   /* page background — warm parchment */
+  --paper:      #fffdf9;  /* card surface — warm white */
+  --cream:      #f4ede2;  /* recessed tints INSIDE paper cards (image backdrops, feature cells) */
+  --cream-deep: #eae0cd;  /* page canvas — one clear step below cream/paper so cards
+                             and plates read as objects, not a same-color wash */
   --line:      rgba(42, 31, 22, 0.12);   /* warm hairline */
+  --line-strong: rgba(42, 31, 22, 0.2);  /* warm hairline — emphasized (field/qty borders) */
 
   /* ===== Display font (2026-06-01) — Latin headings only; Arabic stays Readex Pro.
    * Loaded via Google Fonts in the 5 root templates. */
@@ -45,6 +48,7 @@
   --r:      14px;
   --r-btn:  16px;    /* buttons: semi-rounded, never full pill */
   --r-lg:   22px;    /* cards / panels */
+  --r-xl:   30px;    /* large plates (e.g. product-detail specimen plate) */
   --r-pill: 999px;   /* chips / badges only */
 
   /* ===== Warm shadows (2026-06-01: replace cool black) ===== */

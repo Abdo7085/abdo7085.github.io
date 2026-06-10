@@ -21,9 +21,11 @@
   --radius-lg:          16px;
 }
 
-/* Force the SPA top navigation header to always have a solid dark background on non-homepage pages */
+/* Force the SPA top navigation header to always have a solid dark background on
+   non-homepage pages. WARM espresso-black (--warm-dark-deep), not cold #000 —
+   one dark family site-wide (matches .bg-secondary swap in index-CJ3jXuVd.css). */
 body:not(.home-page) header.fixed.top-0.z-50 {
-  background-color: rgba(0, 0, 0, 0.95) !important;
+  background-color: rgba(15, 10, 5, 0.96) !important;
   backdrop-filter: blur(4px) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
@@ -38,7 +40,9 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   padding: 5.5rem 1.5rem 4rem;
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--prod-text-main);
-  background-color: #ffffff;
+  /* transparent — the unified cream canvas comes from body (projects.css
+     body:not(.home-page) rule), so there is no max-width seam */
+  background-color: transparent;
   min-height: 70vh;
 }
 
@@ -675,7 +679,12 @@ html[dir="rtl"] .prod-breadcrumbs {
 
 /*
  * product-detail.css styles part
+ * 2026-06-10 — restyled to mirror docs/design-system-preview.html §05
+ * "Product detail" (warm specimen plate). Markup/JS behavior unchanged.
  */
+
+/* (The cream page canvas is now site-wide via projects.css
+   `body:not(.home-page)` — no per-page body class needed.) */
 
 /* Breadcrumbs */
 .pd-breadcrumbs {
@@ -684,7 +693,7 @@ html[dir="rtl"] .prod-breadcrumbs {
   gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--prod-text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 0.25rem; /* container's 1.5rem flex-gap provides the rhythm */
   flex-wrap: wrap;
 }
 .pd-breadcrumbs a {
@@ -704,44 +713,50 @@ html[dir="rtl"] .prod-breadcrumbs {
   font-weight: 500;
 }
 
-/* Layout */
+/* Layout — one warm paper "plate" holding gallery + info (preview .plate +
+   .detail-layout). Specs and files now live INSIDE the right column. */
 .pd-layout {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+  gap: 1.4rem;
   align-items: start;
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  background: var(--prod-card-bg);
+  border: 1px solid var(--prod-border);
+  border-radius: var(--r-xl, 30px);
+  box-shadow: var(--prod-shadow);
 }
 @media (max-width: 900px) {
   .pd-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
 /* Gallery Wrapper with Thumbnails */
 .pd-gallery-wrapper {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.85rem;
   position: sticky;
-  top: 100px;
+  top: 96px;
+  min-width: 0;
 }
 
 .pd-thumbs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
   flex-shrink: 0;
 }
 
 .pd-thumb {
-  width: 64px;
-  height: 64px;
-  border: 2px solid var(--prod-border);
-  border-radius: 10px;
-  background: #fff;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--prod-border);
+  border-radius: var(--r-sm, 8px);
+  background: var(--cream, #f4ede2);
   cursor: pointer;
-  padding: 4px;
+  padding: 0.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -758,19 +773,24 @@ html[dir="rtl"] .prod-breadcrumbs {
 }
 .pd-thumb-active {
   border-color: var(--prod-primary);
-  box-shadow: 0 0 0 1px var(--prod-primary);
+  box-shadow: 0 0 0 3px var(--ring-soft, rgba(184, 108, 37, 0.25));
 }
 
 .pd-gallery {
   flex: 1;
-  background: linear-gradient(145deg, #fbf6ef 0%, #f4ede2 50%, #efe6d9 100%);
+  min-width: 0;
+  /* SAME surface language as the catalog card image areas (.prod-card-img-wrapper):
+     copper glow over cream — one recessed-backdrop tint site-wide, no one-off beiges */
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(184, 108, 37, 0.08), transparent 60%),
+    var(--cream, #f4ede2);
   border: 1px solid var(--prod-border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  border-radius: var(--r-lg, 22px);
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: 430px;
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
@@ -790,178 +810,218 @@ html[dir="rtl"] .prod-breadcrumbs {
   object-fit: contain;
 }
 
-/* Product Info */
+/* Product Info — editorial column (preview .detail-copy): uniform grid gap
+   instead of per-element margins */
 .pd-info {
-  display: flex;
-  flex-direction: column;
-}
-.pd-brand {
-  color: var(--prod-primary);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-  font-size: 0.85rem;
-}
-.pd-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  color: var(--prod-text-main);
-  letter-spacing: -0.02em;
-}
-.pd-desc {
-  font-size: 1.05rem;
-  color: var(--prod-text-muted);
-  line-height: 1.7;
-  margin-bottom: 1.75rem;
-  border-bottom: 1px solid var(--prod-border);
-  padding-bottom: 1.75rem;
+  display: grid;
+  gap: 1.1rem;
+  align-content: start;
+  min-width: 0;
+  padding: 0.6rem 0.2rem;
 }
 
-/* Key Features Bar */
-.pd-features-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--brand-pale, #f5e7d8);
-  border: 1px solid var(--prod-border);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1.25rem;
-  margin-bottom: 1.5rem;
-}
-.pd-features-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--prod-text-main);
-}
-.pd-tech-icons {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.pd-tech-icon {
+/* Eyebrow — "Brand / Type" with the editorial dash (preview .eyebrow) */
+.pd-eyebrow {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--brand-pale, #f5e7d8);
+  flex-wrap: wrap;
+  gap: 0.55rem;
   color: var(--brand-deep, #9c5a1e);
-  transition: background 0.2s, color 0.2s;
-}
-.pd-tech-icon:hover {
-  background: var(--brand, #b86c25);
-  color: #fff;
-}
-
-/* Meta Items */
-.pd-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
-}
-.pd-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: var(--cream, #f4ede2);
-  padding: 0.65rem 1rem;
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  color: var(--ink-soft, #6b5d4f);
-  font-size: 0.9rem;
-  border: 1px solid var(--prod-border);
-}
-.pd-meta-item svg {
-  flex-shrink: 0;
-  color: var(--prod-primary);
-}
-
-.pd-specs-section {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.pd-section-title {
-  font-size: 1.4rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--prod-text-main);
-  letter-spacing: var(--tracking-tight, -0.015em);
+  letter-spacing: var(--tracking-eyebrow, 0.18em);
+  text-transform: uppercase;
+}
+.pd-eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.78;
+  flex: none;
+}
+.pd-brand-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.pd-brand-link:hover {
+  color: var(--brand, #b86c25);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.pd-eyebrow-sep {
+  color: var(--ink-faint, #9b8b7a);
+  font-weight: 400;
 }
 
+/* Title — Fraunces display (Latin); Arabic stays Readex Pro */
+.pd-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 560;
+  letter-spacing: var(--tracking-tight, -0.015em);
+  line-height: 1.08;
+  margin: 0;
+  color: var(--prod-text-main);
+}
+html[lang="ar"] .pd-title,
+[dir="rtl"] .pd-title {
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-variation-settings: normal;
+  line-height: 1.35;
+}
+.pd-desc {
+  font-size: 0.98rem;
+  color: var(--prod-text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Feature cells (preview .feature-bar) — Protocols / Installation plates */
+.pd-feature-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+.pd-feature {
+  display: grid;
+  gap: 0.3rem;
+  align-content: start;
+  padding: 0.75rem;
+  border: 1px solid var(--prod-border);
+  border-radius: var(--r, 14px);
+  background: var(--cream, #f4ede2);
+}
+.pd-feature-label {
+  color: var(--ink-faint, #9b8b7a);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.pd-feature-value {
+  font-size: 0.88rem;
+  color: var(--prod-text-main);
+}
+.pd-feature-protos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.8rem;
+}
+.pd-feature-protos .prod-proto {
+  font-size: 0.78rem;
+}
+
+/* Tiny editorial block label — "Specifications" / "Downloads & Manuals" */
+.pd-block-label {
+  margin: 0 0 0.6rem;
+  color: var(--ink-faint, #9b8b7a);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow, 0.18em);
+}
+
+/* Spec section — its OWN full-width paper plate below the main plate (the
+   real spec tables run 12–18 rows; keeping them in the right column left a
+   huge empty void beside them). Same plate language, hairline rows inside. */
+.pd-specs-section {
+  margin: 0;
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  background: var(--prod-card-bg);
+  border: 1px solid var(--prod-border);
+  border-radius: var(--r-xl, 30px);
+  box-shadow: var(--prod-shadow);
+}
 .pd-specs-table {
   width: 100%;
-  border-collapse: collapse;
-  background: var(--prod-card-bg);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--prod-shadow);
-  border: 1px solid var(--prod-border);
-}
-.pd-specs-table tr:nth-child(even) {
-  background-color: var(--cream, #f4ede2);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
 }
 .pd-specs-table th, .pd-specs-table td {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1rem;
   text-align: left;
+  font-size: 0.86rem;
   border-bottom: 1px solid var(--prod-border);
+}
+.pd-specs-table tr:last-child th,
+.pd-specs-table tr:last-child td {
+  border-bottom: 0;
 }
 .pd-specs-table th {
   font-weight: 600;
-  width: 40%;
+  width: 32%;
   color: var(--prod-text-main);
 }
 .pd-specs-table td {
   color: var(--prod-text-muted);
 }
-html[dir="rtl"] .pd-specs-table th, 
+html[dir="rtl"] .pd-specs-table th,
 html[dir="rtl"] .pd-specs-table td {
   text-align: right;
 }
 
+/* Files — quiet buttons in a row (preview .btn-quiet) */
 .pd-files {
-  margin-top: 2.5rem;
-}
-.pd-files h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 .pd-file-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 .pd-file-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.6rem 1.05rem;
   background: var(--prod-card-bg);
   border: 1px solid var(--prod-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--r-btn, 16px);
   text-decoration: none;
-  font-weight: 500;
-  color: var(--prod-primary);
-  transition: all 0.25s ease;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--prod-text-main);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 .pd-file-item:hover {
-  background: rgba(184, 108, 37, 0.05);
-  border-color: rgba(184, 108, 37, 0.3);
-  transform: translateX(4px);
-}
-html[dir="rtl"] .pd-file-item:hover {
-  transform: translateX(-4px);
+  border-color: var(--brand, #b86c25);
+  color: var(--brand-deep, #9c5a1e);
 }
 .pd-file-item svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* Related products — Fraunces section title (Latin); Arabic stays Readex Pro */
+.pd-related {
+  margin-top: 2rem;
+}
+.pd-related-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 560;
+  letter-spacing: var(--tracking-tight, -0.015em);
+  margin: 0 0 1.25rem;
+  color: var(--prod-text-main);
+}
+html[lang="ar"] .pd-related-title,
+[dir="rtl"] .pd-related-title {
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-variation-settings: normal;
 }
 
 /* Back link - kept for compatibility but hidden when breadcrumbs are used */
@@ -1007,7 +1067,7 @@ html[dir="rtl"] .pd-file-item:hover {
 .prod-page-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  background: #f3f4f6;
+  background: var(--cream, #f4ede2);
 }
 
 .prod-page-info {
@@ -1123,7 +1183,7 @@ html[dir="rtl"] .prod-count-badge {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: #ffffff;
+    background: var(--paper, #fffdf9);
     border: 1px solid var(--prod-border);
     border-radius: var(--radius-md);
     font-size: 0.95rem;
@@ -1148,7 +1208,7 @@ html[dir="rtl"] .prod-count-badge {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: var(--cream, #f4ede2);
+    background: var(--cream-deep, #eae0cd); /* full-screen sheet = canvas tone */
     border: none;
     border-radius: 0;
     margin: 0;
@@ -1175,7 +1235,7 @@ html[dir="rtl"] .prod-count-badge {
   }
   
   .prod-filter-group {
-    background: #ffffff;
+    background: var(--paper, #fffdf9);
     border-radius: var(--radius-md);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     padding: 0.75rem 1rem;
@@ -1191,7 +1251,7 @@ html[dir="rtl"] .prod-count-badge {
     border-bottom: 1px solid var(--prod-border);
     position: sticky;
     top: 0;
-    background: #ffffff;
+    background: var(--paper, #fffdf9);
     z-index: 10;
   }
   
@@ -1219,7 +1279,7 @@ html[dir="rtl"] .prod-count-badge {
     justify-content: space-between;
     padding: 1rem 1.5rem;
     border-top: 1px solid var(--prod-border);
-    background: #ffffff;
+    background: var(--paper, #fffdf9);
     position: sticky;
     bottom: 0;
     z-index: 10;
@@ -1364,7 +1424,12 @@ html[dir="rtl"] .prod-count-badge {
 @media (max-width: 640px) {
   .pd-breadcrumbs {
     font-size: 0.8rem;
-    margin-bottom: 1.25rem;
+  }
+
+  .pd-layout,
+  .pd-specs-section {
+    padding: 0.85rem;
+    border-radius: var(--r-lg, 22px);
   }
 
   .pd-gallery-wrapper {
@@ -1380,19 +1445,18 @@ html[dir="rtl"] .prod-count-badge {
   }
 
   .pd-thumb {
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
   }
 
   .pd-gallery {
     min-height: 260px;
     aspect-ratio: 4/3;
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
-  .pd-title {
-    font-size: 1.75rem;
-    line-height: 1.2;
+  .pd-info {
+    padding: 0.25rem 0.1rem;
   }
 
   .pd-desc {
@@ -1400,33 +1464,10 @@ html[dir="rtl"] .prod-count-badge {
     line-height: 1.6;
   }
 
-  .pd-features-bar {
-    padding: 0.7rem 1rem;
-  }
-
-  .pd-features-label {
-    font-size: 0.85rem;
-  }
-
-  .pd-tech-icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .pd-tech-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .pd-meta-item {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.85rem;
-  }
-
   .pd-specs-table th,
   .pd-specs-table td {
-    padding: 0.75rem 1rem;
-    font-size: 0.875rem;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.82rem;
   }
 
   .pd-specs-table th {
@@ -1436,10 +1477,6 @@ html[dir="rtl"] .prod-count-badge {
 
 /* Medium screens (tablets) */
 @media (min-width: 641px) and (max-width: 900px) {
-  .pd-title {
-    font-size: 2.25rem;
-  }
-
   .pd-gallery {
     min-height: 340px;
   }

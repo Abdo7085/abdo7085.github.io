@@ -223,7 +223,7 @@
 
     return `
       <div class="pd-specs-section">
-        <h3 class="pd-section-title" data-i18n="specifications">Specifications</h3>
+        <h3 class="pd-block-label" data-i18n="specifications">Specifications</h3>
         <table class="pd-specs-table">
           <tbody>
             ${rows}
@@ -239,8 +239,8 @@
     files.forEach(f => {
       items += `
         <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="pd-file-item">
-          <svg viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
           ${f.name}
         </a>
@@ -248,7 +248,7 @@
     });
     return `
       <div class="pd-files">
-        <h3 data-i18n="downloads">Downloads & Manuals</h3>
+        <h3 class="pd-block-label" data-i18n="downloads">Downloads & Manuals</h3>
         <div class="pd-file-list">
           ${items}
         </div>
@@ -276,6 +276,8 @@
       icon = '<svg viewBox="0 0 165 165" fill="currentColor"><path d="M82.498,0C37.008,0,0,37.008,0,82.496c0,45.181,36.51,81.977,81.573,82.476V82.569l-27.002-0.002c-8.023,0-14.554,6.53-14.554,14.561c0,8.023,6.531,14.551,14.554,14.551v17.98c-17.939,0-32.534-14.595-32.534-32.531c0-17.944,14.595-32.543,32.534-32.543l27.002,0.004v-9.096c0-14.932,12.146-27.08,27.075-27.08c14.932,0,27.082,12.148,27.082,27.08c0,14.931-12.15,27.08-27.082,27.08l-9.097-0.001v80.641C136.889,155.333,165,122.14,165,82.496C165,37.008,127.99,0,82.498,0z"/><path d="M117.748,55.493c0-5.016-4.082-9.098-9.1-9.098c-5.015,0-9.097,4.082-9.097,9.098v9.097l9.097,0.001C113.666,64.591,117.748,60.51,117.748,55.493z"/></svg>';
     } else if (tl.includes('lan') || tl.includes('ethernet')) {
       icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg>';
+    } else if (tl.includes('z-wave') || tl.includes('zwave')) {
+      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/><circle cx="12" cy="12" r="2"/></svg>';
     } else {
       return '<span class="prod-proto">' + tech + '</span>';
     }
@@ -299,8 +301,8 @@
 
      if (related.length === 0) return '';
 
-     let html = `<div style="margin-top: 4rem;">
-                   <h3 style="font-size: 1.5rem; margin-bottom:1.5rem;" data-i18n="related_products">Related Products</h3>
+     let html = `<div class="pd-related">
+                   <h3 class="pd-related-title" data-i18n="related_products">Related Products</h3>
                    <div class="prod-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">`;
 
      related.forEach(p => {
@@ -353,32 +355,33 @@
     const title = t(product.title);
     const techs = Array.isArray(product.technology) ? product.technology : [];
 
-    // Build technology icons
-    let techIconsHtml = '';
-    techs.forEach(tech => {
-      const tl = tech.toLowerCase();
-      let icon = '';
-      if (tl.includes('wi-fi') || tl.includes('wifi')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`;
-      } else if (tl.includes('bluetooth') || tl.includes('ble')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>`;
-      } else if (tl.includes('knx')) {
-        icon = `<span style="font-weight:700;font-size:0.75rem;letter-spacing:0.05em;">KNX</span>`;
-      } else if (tl.includes('zigbee')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M32.042,9.792c4.595,1.238,4.88,3.165,5.524,5.048C34.841,17.664,17.35,35.7,17.35,35.7 s10.901,1.177,23.487-1.003c-0.001,0.029-0.002,0.048-0.003,0.076C42.829,31.661,44,27.97,44,24c0-11.046-8.954-20-20-20 c-5.634,0-10.715,2.338-14.35,6.087C15.489,9.124,26.89,8.403,32.042,9.792z"/><path d="M14.724,37.285c-1.982-0.347-4.212-2.131-4.707-5.302c1.437-1.239,19.994-20.507,19.994-20.507 c-7.008-0.424-14.569-0.465-22.237,0.864C5.408,15.625,4,19.644,4,24c0,11.046,8.954,20,20,20c6.173,0,11.689-2.8,15.358-7.195 C35.486,37.33,23.257,38.769,14.724,37.285z"/></svg>`;
-      } else if (tl.includes('matter')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M152 134.4c21.5 17.5 47.1 29.2 74.4 34.2V22.9l29.7-17.1 29.6 17.1v145.6c27.3-4.9 52.9-16.7 74.5-34.2l53.8 31.1c-87.6 86.6-228.5 86.6-316.1 0zm65.5 371.8C248.7 387 178.1 264.9 59.3 232.5v62.3c25.9 9.9 48.9 26.2 66.8 47.4L0 414.9v34.2l29.7 17 126.1-72.8c9.4 26.1 12 54.2 7.6 81.5zm235.3-273.7C334 265 263.6 387.1 294.8 506.2l54-31.2c-4.4-27.4-1.7-55.4 7.6-81.5l126 72.7 29.6-17.1v-34.2l-126.1-72.8c17.9-21.2 40.9-37.5 66.8-47.4z"/></svg>`;
-      } else if (tl.includes('thread')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 165 165" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M82.498,0C37.008,0,0,37.008,0,82.496c0,45.181,36.51,81.977,81.573,82.476V82.569l-27.002-0.002c-8.023,0-14.554,6.53-14.554,14.561c0,8.023,6.531,14.551,14.554,14.551v17.98c-17.939,0-32.534-14.595-32.534-32.531c0-17.944,14.595-32.543,32.534-32.543l27.002,0.004v-9.096c0-14.932,12.146-27.08,27.075-27.08c14.932,0,27.082,12.148,27.082,27.08c0,14.931-12.15,27.08-27.082,27.08l-9.097-0.001v80.641C136.889,155.333,165,122.14,165,82.496C165,37.008,127.99,0,82.498,0z"/><path d="M117.748,55.493c0-5.016-4.082-9.098-9.1-9.098c-5.015,0-9.097,4.082-9.097,9.098v9.097l9.097,0.001C113.666,64.591,117.748,60.51,117.748,55.493z"/></svg>`;
-      } else if (tl.includes('lan') || tl.includes('ethernet')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg>`;
-      } else if (tl.includes('z-wave')) {
-        icon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/><circle cx="12" cy="12" r="2"/></svg>`;
-      } else {
-        icon = `<span style="font-weight:600;font-size:0.7rem;">${tech}</span>`;
-      }
-      techIconsHtml += `<span class="pd-tech-icon" title="${tech}">${icon}</span>`;
-    });
+    // Feature cells (preview .feature-bar): label + value plates.
+    // Protocols cell reuses the shared icon dictionary (relProtoMarkup);
+    // Installation cell shows the translated installation value.
+    const protoCell = techs.length ? `
+      <div class="pd-feature">
+        <span class="pd-feature-label" data-i18n="pd_protocols">Protocols</span>
+        <div class="pd-feature-protos">${techs.map(relProtoMarkup).join('')}</div>
+      </div>` : '';
+    const installCell = product.installation ? `
+      <div class="pd-feature">
+        <span class="pd-feature-label" data-i18n="pd_installation">Installation</span>
+        <b class="pd-feature-value">${tVal(product.installation)}</b>
+      </div>` : '';
+    const featureBar = (protoCell || installCell)
+      ? `<div class="pd-feature-bar">${protoCell}${installCell}</div>`
+      : '';
+
+    // Eyebrow: "Brand / Type" — brand stays a link to its brand page
+    const brandSlugLink = product.brand
+      ? `<a href="${prefix}/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}.html" class="pd-brand-link link-transition" title="About ${product.brand}">${product.brand}</a>`
+      : '';
+    const typeLabel = product.product_type
+      ? `<span class="pd-eyebrow-type">${tVal(product.product_type)}</span>`
+      : '';
+    const eyebrow = (brandSlugLink || typeLabel)
+      ? `<div class="pd-eyebrow">${brandSlugLink}${brandSlugLink && typeLabel ? '<span class="pd-eyebrow-sep" aria-hidden="true">/</span>' : ''}${typeLabel}</div>`
+      : '';
 
     return `
       <div id="custom-products-container">
@@ -397,42 +400,29 @@
 
           <!-- Right side: Info -->
           <div class="pd-info prod-fade-in">
-            ${product.brand ? `<a href="${prefix}/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}.html" class="pd-brand link-transition" style="text-decoration:none; display:inline-block; width:fit-content; align-self:flex-start;" title="About ${product.brand}">${product.brand}</a>` : `<div class="pd-brand"></div>`}
+            ${eyebrow}
             <h1 class="pd-title">${title}</h1>
             <p class="pd-desc">${t(product.description)}</p>
 
-            ${techs.length > 0 ? `
-            <div class="pd-features-bar">
-              <span class="pd-features-label" data-i18n="key_features">Key Features</span>
-              <div class="pd-tech-icons">${techIconsHtml}</div>
-            </div>` : ''}
+            ${featureBar}
 
-            <div class="pd-meta">
-              ${product.product_type ? `<div class="pd-meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                <span>${tVal(product.product_type)}</span>
-              </div>` : ''}
-              ${product.installation ? `<div class="pd-meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                <span>${tVal(product.installation)}</span>
-              </div>` : ''}
-            </div>
-
-            <div class="pd-cart-row" data-cart-row>
-              <div class="pd-qty">
-                <button type="button" class="pd-qty-btn" data-qty-dec aria-label="Decrease quantity" data-i18n-attr="aria-label:cart_aria_decrease">−</button>
-                <input type="number" class="pd-qty-input cart-qty-input" value="1" min="1" max="99" inputmode="numeric" aria-label="Quantity" data-i18n-attr="aria-label:cart_item_qty" />
-                <button type="button" class="pd-qty-btn" data-qty-inc aria-label="Increase quantity" data-i18n-attr="aria-label:cart_aria_increase">+</button>
+            <div class="pd-quote-group">
+              <div class="pd-cart-row" data-cart-row>
+                <div class="pd-qty">
+                  <button type="button" class="pd-qty-btn" data-qty-dec aria-label="Decrease quantity" data-i18n-attr="aria-label:cart_aria_decrease">−</button>
+                  <input type="number" class="pd-qty-input cart-qty-input" value="1" min="1" max="99" inputmode="numeric" aria-label="Quantity" data-i18n-attr="aria-label:cart_item_qty" />
+                  <button type="button" class="pd-qty-btn" data-qty-inc aria-label="Increase quantity" data-i18n-attr="aria-label:cart_aria_increase">+</button>
+                </div>
+                <button type="button" class="pd-add-to-cart" data-trigger="cart-add" data-product-id="${product.id}" data-qty-source>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  <span data-i18n="cart_pd_add_btn">Add to Quote Request</span>
+                </button>
               </div>
-              <button type="button" class="pd-add-to-cart" data-trigger="cart-add" data-product-id="${product.id}" data-qty-source>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                <span data-i18n="cart_pd_add_btn">Add to Quote Request</span>
-              </button>
+              <p class="pd-cart-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <span data-i18n="cart_pd_hint">Request a free quote — we'll reply within hours via WhatsApp</span>
+              </p>
             </div>
-            <p class="pd-cart-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <span data-i18n="cart_pd_hint">Request a free quote — we'll reply within hours via WhatsApp</span>
-            </p>
 
             ${renderFiles(product.files)}
           </div>
@@ -639,8 +629,7 @@
       }
     } else {
       // Cleanup products UI when navigating away
-      const wrap = document.getElementById('custom-product-detail-wrapper');
-      if (wrap) wrap.remove();
+      cleanupProductDetail();
     }
   });
 })();

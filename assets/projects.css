@@ -11,7 +11,7 @@
   --proj-card-bg:       var(--paper, #ffffff);
   --proj-text-main:     var(--ink, #1f2937);
   --proj-text-muted:    var(--ink-muted, #6b7280);
-  --proj-border:        #e5e7eb;
+  --proj-border:        var(--line, rgba(42, 31, 22, 0.12));  /* warm hairline (was cool #e5e7eb) */
   --proj-primary:       var(--brand, #b86c25);
   --proj-primary-hover: var(--brand-deep, #9c5a1e);
   --proj-shadow:        0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -22,11 +22,22 @@
   --proj-transition:    0.2s ease;
 }
 
-/* Force the SPA top navigation header to always have a solid dark background on non-homepage pages */
+/* Force the SPA top navigation header to always have a solid dark background on
+   non-homepage pages. WARM espresso-black, not cold #000 (mirrors products.css). */
 body:not(.home-page) header.fixed.top-0.z-50 {
-  background-color: rgba(0, 0, 0, 0.95) !important;
+  background-color: rgba(15, 10, 5, 0.96) !important;
   backdrop-filter: blur(4px) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ONE warm parchment canvas for every non-homepage page (2026-06-10).
+   projects.css is loaded by ALL root templates, so this single rule unifies
+   the page background site-wide — page containers are transparent and the
+   paper cards/plates sit directly on this canvas. Uses --cream-deep (a step
+   below the in-card cream tints) so cards/plates clearly detach from the
+   background instead of melting into a same-color wash. */
+body:not(.home-page) {
+  background-color: var(--cream-deep, #eae0cd);
 }
 
 
@@ -37,7 +48,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   padding: 5.5rem 1.5rem 4rem;
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--proj-text-main);
-  background-color: #ffffff;
+  background-color: transparent; /* unified cream canvas comes from body */
   min-height: 70vh;
 }
 
@@ -219,7 +230,7 @@ html[lang="ar"] h1[data-i18n="spa_previous_work"],
   overflow: hidden;
   box-shadow: var(--proj-shadow-xl);
   aspect-ratio: 4 / 3;
-  background: #0f172a;
+  background: var(--warm-dark, #1a140d); /* warm espresso letterbox (was cool slate) */
 }
 .proj-hero-cover img {
   width: 100%;
@@ -450,10 +461,10 @@ html[lang="ar"] h1[data-i18n="spa_previous_work"],
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+  border: 1px solid var(--line, rgba(42, 31, 22, 0.12));
+  background: var(--paper, #fffdf9);
   color: var(--proj-primary);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18), 0 2px 4px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 18px rgba(58, 36, 14, 0.18), 0 2px 4px rgba(58, 36, 14, 0.08);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -505,7 +516,7 @@ html[lang="ar"] h1[data-i18n="spa_previous_work"],
   height: 360px;
   border-radius: var(--proj-radius-md);
   overflow: hidden;
-  background: #0f172a;
+  background: var(--warm-dark, #1a140d); /* warm espresso letterbox (was cool slate) */
   box-shadow: var(--proj-shadow);
   transition: transform var(--proj-transition), box-shadow var(--proj-transition);
   scroll-snap-align: start;
@@ -552,7 +563,7 @@ html[lang="ar"] h1[data-i18n="spa_previous_work"],
   align-items: center;
   gap: 0.3rem;
   padding: 0.25rem 0.6rem;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 10, 5, 0.8);
   color: #fff;
   border-radius: 999px;
   font-size: 0.7rem;
@@ -808,12 +819,12 @@ button.proj-cta-btn {
 }
 /* Primary — white fill with brand-orange text (reads as the main action on the orange banner) */
 .proj-cta-btn-primary {
-  background: #ffffff;
+  background: var(--paper, #fffdf9);
   color: var(--proj-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 .proj-cta-btn-primary:hover {
-  background: #f3f4f6;
+  background: var(--brand-pale, #f5e7d8);
   color: var(--proj-primary-hover);
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
@@ -914,8 +925,8 @@ button.proj-cta-btn {
   white-space: nowrap;
 }
 .proj-brand-chip {
-  background: #f3f4f6;
-  color: #1f2937;
+  background: var(--cream, #f4ede2);
+  color: var(--ink, #2a1f16);
   border: 1px solid var(--proj-border);
 }
 .proj-protocol-chip {

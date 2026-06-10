@@ -86,9 +86,9 @@
 .lang-menu {
   position: fixed;
   z-index: 60;
-  background: rgba(15, 23, 42, 0.96);  /* matches bg-secondary @ 96% */
+  background: rgba(15, 10, 5, 0.96);  /* warm espresso — matches bg-secondary @ 96% */
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(245, 231, 216, 0.12);
   border-radius: 12px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   padding: 6px;
@@ -231,7 +231,7 @@ h2:has(> [data-i18n="spa_smart_home_automation"])::after {
 [data-i18n="spa_complete_integration"] {
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: #111827 !important;
+  color: var(--ink, #2a1f16) !important;
   background: none !important;
   padding: 0 !important;
   box-shadow: none !important;

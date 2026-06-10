@@ -32,7 +32,7 @@
   padding: 5.5rem 1.5rem 4rem;
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--brand-text-main);
-  background-color: #ffffff;
+  background-color: transparent; /* unified cream canvas comes from body */
   min-height: 70vh;
 }
 
@@ -209,7 +209,10 @@ html[lang="ar"] .brand-hero-title,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--cream, #f4ede2) 0%, #efe6d9 100%);
+  /* same recessed-backdrop language as catalog card image areas */
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(184, 108, 37, 0.08), transparent 60%),
+    var(--cream, #f4ede2);
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -496,7 +499,7 @@ html[lang="ar"] .brand-hero-title,
   align-items: center;
   padding: 0.4rem 0.85rem;
   border-radius: 99px;
-  background: #ffffff;
+  background: var(--paper, #fffdf9);
   border: 1px solid var(--brand-card-border);
   color: var(--brand-text-main);
   font-size: 0.85rem;
