@@ -25,17 +25,23 @@
   --warm-dark-light:  #3d2e1f;
 
   /* ===== Neutrals — WARM foundation (2026-06-01: warmed per VISUAL_IDENTITY_GUIDE §3.3)
-   * Was cool slate (#1f2937 / #6b7280 / #ffffff / #f8fafc). Now a warm
-   * espresso/parchment family so neutrals tell one story with the copper accent.
-   * --ink-muted kept as an alias of --ink-soft for any legacy var() references. */
+   * Was cool slate (#1f2937 / #6b7280 / #ffffff / #f8fafc). Text stays an
+   * espresso family so neutrals tell one story with the copper accent.
+   * --ink-muted kept as an alias of --ink-soft for any legacy var() references.
+   *
+   * 2026-06-10 (white-gray pass, user direction): the three SURFACE tokens
+   * moved from cream/beige to a "stone" white-gray family — gray first, with
+   * only a whisper of warmth (R>G>B) so copper + espresso chrome still belong.
+   * Token NAMES unchanged (--cream/--cream-deep) — every CSS file references
+   * them via var(); only the values shifted. Never blue-cool gray here. */
   --ink:       #2a1f16;   /* primary text — warm espresso */
   --ink-soft:  #6b5d4f;   /* secondary text — warm taupe */
   --ink-muted: #6b5d4f;   /* alias of --ink-soft (legacy) */
   --ink-faint: #9b8b7a;   /* faint text */
-  --paper:      #fffdf9;  /* card surface — warm white */
-  --cream:      #f4ede2;  /* recessed tints INSIDE paper cards (image backdrops, feature cells) */
-  --cream-deep: #eae0cd;  /* page canvas — one clear step below cream/paper so cards
-                             and plates read as objects, not a same-color wash */
+  --paper:      #fdfdfb;  /* card surface — crisp near-white */
+  --cream:      #f1efec;  /* recessed tints INSIDE paper cards (image backdrops, feature cells) */
+  --cream-deep: #e5e3df;  /* page canvas — light warm-gray "stone"; one clear step below
+                             cream/paper so cards and plates read as objects, not a wash */
   --line:      rgba(42, 31, 22, 0.12);   /* warm hairline */
   --line-strong: rgba(42, 31, 22, 0.2);  /* warm hairline — emphasized (field/qty borders) */
 

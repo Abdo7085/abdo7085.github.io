@@ -22,8 +22,9 @@
   --ink: #2a1f16;
   --ink-soft: #6b5d4f;
   --ink-faint: #9b8b7a;
-  --paper: #fffdf9;
-  --cream: #f4ede2;
+  --paper: #fdfdfb;
+  --cream: #f1efec;
+  --cream-deep: #e5e3df;
   --line: rgba(42, 31, 22, 0.12);
   --line-strong: rgba(42, 31, 22, 0.2);
   --sage: #6f7d55;
@@ -53,7 +54,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background-color: var(--cream);
+  background-color: var(--cream-deep);
   background-image: var(--noise-dark);
   background-blend-mode: overlay;
   line-height: 1.6;
@@ -737,7 +738,7 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
   height: 38px;
   border: 0;
   border-radius: 50%;
-  background: #f4ede2;
+  background: var(--cream);
   color: var(--ink);
   display: grid;
   place-items: center;
@@ -932,7 +933,7 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
             <span class="eyebrow">01 / Foundation</span>
             <h2>The tokens that hold the site <em>together</em>.</h2>
           </div>
-          <p class="lead">The brand stays copper-led, but the cold grays become espresso, cream, paper, and warm hairlines. Secondary accents exist only for meaning, never as competing brand colors.</p>
+          <p class="lead">The brand stays copper-led; text is espresso, and surfaces are a white-gray "stone" family — gray first, with only a whisper of warmth so the copper and dark chrome still belong. Secondary accents exist only for meaning, never as competing brand colors.</p>
         </div>
         <div class="grid-4">
           <div class="swatch">
@@ -944,12 +945,16 @@ h1 em, h2 em, h3 em { color: var(--brand-deep); font-style: italic; }
             <div class="swatch-meta"><b>--ink</b><code>#2a1f16</code></div>
           </div>
           <div class="swatch">
-            <div class="swatch-top" style="background:#f4ede2;color:#2a1f16;">Cream</div>
-            <div class="swatch-meta"><b>--cream</b><code>#f4ede2</code></div>
+            <div class="swatch-top" style="background:#f1efec;color:#2a1f16;">Stone tint</div>
+            <div class="swatch-meta"><b>--cream</b><code>#f1efec</code></div>
           </div>
           <div class="swatch">
-            <div class="swatch-top" style="background:#fffdf9;color:#2a1f16;">Paper</div>
-            <div class="swatch-meta"><b>--paper</b><code>#fffdf9</code></div>
+            <div class="swatch-top" style="background:#e5e3df;color:#2a1f16;">Canvas</div>
+            <div class="swatch-meta"><b>--cream-deep</b><code>#e5e3df</code></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-top" style="background:#fdfdfb;color:#2a1f16;">Paper</div>
+            <div class="swatch-meta"><b>--paper</b><code>#fdfdfb</code></div>
           </div>
           <div class="swatch">
             <div class="swatch-top" style="background:#0f0a05;">Warm dark</div>

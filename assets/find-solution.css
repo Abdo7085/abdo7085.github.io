@@ -7,10 +7,10 @@
   --fs-orange-dark:   var(--brand-deep, #9c5a1e);
   --fs-orange-light:  var(--brand-pale, #f5e7d8);
   --fs-text:          var(--ink, #2a1f16);
-  --fs-text-muted:    var(--ink-muted, #6b7280);
+  --fs-text-muted:    var(--ink-muted, #6b5d4f);
   --fs-border:        var(--line-strong, rgba(42, 31, 22, 0.2));  /* warm hairline (was cool #e5e7eb) */
   --fs-bg:            var(--paper, #ffffff);
-  --fs-bg-soft:       var(--cream, #f4ede2);
+  --fs-bg-soft:       var(--cream, #f1efec);
   --fs-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 

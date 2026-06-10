@@ -277,12 +277,12 @@ textarea {
 
 input::-moz-placeholder,textarea::-moz-placeholder {
     opacity: 1;
-    color: #9ca3af
+    color: #a99f93
 }
 
 input::placeholder,textarea::placeholder {
     opacity: 1;
-    color: #9ca3af
+    color: #a99f93
 }
 
 button,[role=button] {
@@ -802,12 +802,12 @@ img,video {
 }
 
 .border-gray-700\/50 {
-    border-color: #37415180
+    border-color: #3d2e1f80
 }
 
 .border-gray-800 {
     --tw-border-opacity: 1;
-    border-color: rgb(31 41 55 / var(--tw-border-opacity, 1))
+    border-color: rgb(26 20 13 / var(--tw-border-opacity, 1))
 }
 
 .border-primary {
@@ -826,22 +826,22 @@ img,video {
 
 .bg-gray-100 {
     --tw-bg-opacity: 1;
-    background-color: rgb(244 237 226 / var(--tw-bg-opacity, 1))
+    background-color: rgb(241 239 236 / var(--tw-bg-opacity, 1))
 }
 
 .bg-gray-50 {
     --tw-bg-opacity: 1;
-    background-color: rgb(251 247 240 / var(--tw-bg-opacity, 1))
+    background-color: rgb(250 249 247 / var(--tw-bg-opacity, 1))
 }
 
 .bg-gray-600 {
     --tw-bg-opacity: 1;
-    background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1))
+    background-color: rgb(90 76 62 / var(--tw-bg-opacity, 1))
 }
 
 .bg-gray-700 {
     --tw-bg-opacity: 1;
-    background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1))
+    background-color: rgb(74 62 49 / var(--tw-bg-opacity, 1))
 }
 
 .bg-primary {
@@ -902,14 +902,14 @@ img,video {
 }
 
 .from-gray-50 {
-    --tw-gradient-from: #f9fafb var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(249 250 251 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-from: #faf9f7 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(250 249 247 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
 }
 
 .from-gray-800\/50 {
-    --tw-gradient-from: rgb(31 41 55 / .5) var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(31 41 55 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-from: rgb(42 31 22 / .5) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(42 31 22 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
 }
 
@@ -1159,32 +1159,32 @@ img,video {
 
 .text-gray-300 {
     --tw-text-opacity: 1;
-    color: rgb(209 213 219 / var(--tw-text-opacity, 1))
+    color: rgb(214 207 198 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-400 {
     --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+    color: rgb(169 159 147 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-500 {
     --tw-text-opacity: 1;
-    color: rgb(107 114 128 / var(--tw-text-opacity, 1))
+    color: rgb(125 111 96 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-600 {
     --tw-text-opacity: 1;
-    color: rgb(75 85 99 / var(--tw-text-opacity, 1))
+    color: rgb(90 76 62 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-700 {
     --tw-text-opacity: 1;
-    color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+    color: rgb(74 62 49 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-800 {
     --tw-text-opacity: 1;
-    color: rgb(31 41 55 / var(--tw-text-opacity, 1))
+    color: rgb(42 31 22 / var(--tw-text-opacity, 1))
 }
 
 .text-green-400 {
@@ -1381,7 +1381,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .btn-secondary:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
+    background-color: rgb(241 239 236 / var(--tw-bg-opacity, 1))
 }
 
 .btn-outline {
@@ -1615,12 +1615,12 @@ h1,h2,h3,h4,h5,h6 {
 
 .hover\:bg-gray-200:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1))
+    background-color: rgb(229 227 223 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:bg-gray-600:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1))
+    background-color: rgb(90 76 62 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:bg-primary\/90:hover {

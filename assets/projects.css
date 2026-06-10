@@ -9,8 +9,8 @@
   /* Brand colors reference assets/brand.css (single source of truth). */
   --proj-bg:            var(--cream, #f8fafc);
   --proj-card-bg:       var(--paper, #ffffff);
-  --proj-text-main:     var(--ink, #1f2937);
-  --proj-text-muted:    var(--ink-muted, #6b7280);
+  --proj-text-main:     var(--ink, #2a1f16);
+  --proj-text-muted:    var(--ink-muted, #6b5d4f);
   --proj-border:        var(--line, rgba(42, 31, 22, 0.12));  /* warm hairline (was cool #e5e7eb) */
   --proj-primary:       var(--brand, #b86c25);
   --proj-primary-hover: var(--brand-deep, #9c5a1e);
@@ -37,7 +37,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
    below the in-card cream tints) so cards/plates clearly detach from the
    background instead of melting into a same-color wash. */
 body:not(.home-page) {
-  background-color: var(--cream-deep, #eae0cd);
+  background-color: var(--cream-deep, #e5e3df);
 }
 
 
@@ -462,7 +462,7 @@ html[lang="ar"] h1[data-i18n="spa_previous_work"],
   height: 44px;
   border-radius: 50%;
   border: 1px solid var(--line, rgba(42, 31, 22, 0.12));
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
   color: var(--proj-primary);
   box-shadow: 0 6px 18px rgba(58, 36, 14, 0.18), 0 2px 4px rgba(58, 36, 14, 0.08);
   display: inline-flex;
@@ -819,7 +819,7 @@ button.proj-cta-btn {
 }
 /* Primary — white fill with brand-orange text (reads as the main action on the orange banner) */
 .proj-cta-btn-primary {
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
   color: var(--proj-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
@@ -925,7 +925,7 @@ button.proj-cta-btn {
   white-space: nowrap;
 }
 .proj-brand-chip {
-  background: var(--cream, #f4ede2);
+  background: var(--cream, #f1efec);
   color: var(--ink, #2a1f16);
   border: 1px solid var(--proj-border);
 }

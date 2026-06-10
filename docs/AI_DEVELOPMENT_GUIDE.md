@@ -924,10 +924,11 @@ const ICONS = { home: svg('<path d="..."/>'), /* ... */ };
   --warm-dark:        #1a140d;   /* dark hero/section bg */
   --warm-dark-deep:   #0f0a05;
   --warm-dark-light:  #3d2e1f;
-  --ink:       #1f2937;
-  --ink-muted: #6b7280;
-  --paper:     #ffffff;
-  --cream:     #f8fafc;
+  --ink:       #2a1f16;   /* نص — إسبريسو (2026-06-01) */
+  --ink-soft:  #6b5d4f;   /* (--ink-muted = alias تاريخي) */
+  --paper:      #fdfdfb;  /* أسطح البطاقات */
+  --cream:      #f1efec;  /* tints غائرة داخل البطاقات */
+  --cream-deep: #e5e3df;  /* كانفس الصفحات — «ستون» أبيض-رمادي (2026-06-10، كان بيج #eae0cd) */
 }
 ```
 

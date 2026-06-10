@@ -8,10 +8,10 @@
   --cart-orange-dark:   var(--brand-deep, #9c5a1e);
   --cart-orange-light:  var(--brand-pale, #f5e7d8);
   --cart-text:          var(--ink, #2a1f16);
-  --cart-text-muted:    var(--ink-muted, #6b7280);
+  --cart-text-muted:    var(--ink-muted, #6b5d4f);
   --cart-border:        var(--line-strong, rgba(42, 31, 22, 0.2));  /* warm hairline (was cool #e5e7eb) */
   --cart-bg:            var(--paper, #ffffff);
-  --cart-bg-soft:       var(--cream, #f4ede2);
+  --cart-bg-soft:       var(--cream, #f1efec);
   --cart-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --cart-wa:            var(--brand, #b86c25);
   --cart-wa-dark:       var(--brand-deep, #9c5a1e);
@@ -119,7 +119,7 @@
   border: 1.5px solid var(--line-strong, rgba(42, 31, 22, 0.2));
   border-radius: 12px;
   overflow: hidden;
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
   height: 52px;
 }
 .pd-qty-btn {
@@ -134,7 +134,7 @@
   font-family: inherit;
 }
 .pd-qty-btn:hover {
-  background: var(--cream, #f4ede2);
+  background: var(--cream, #f1efec);
   color: var(--cart-orange);
 }
 .pd-qty-input {
@@ -209,7 +209,7 @@
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--cart-text-muted, #6b7280);
+  color: var(--cart-text-muted, #6b5d4f);
 }
 .pd-cart-hint svg {
   flex-shrink: 0;
@@ -412,7 +412,7 @@ body.cart-open { overflow: hidden; }
   height: 64px;
   border-radius: 8px;
   overflow: hidden;
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
   border: 1px solid var(--cart-border);
   display: flex;
   align-items: center;
@@ -464,7 +464,7 @@ body.cart-open { overflow: hidden; }
   border: 1.5px solid var(--cart-border);
   border-radius: 8px;
   overflow: hidden;
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
 }
 .cart-qty-btn {
   width: 32px;

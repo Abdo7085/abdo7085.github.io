@@ -6,7 +6,7 @@
  */
 
 :root {
-  --brand-card-bg:     var(--paper, #fffdf9);
+  --brand-card-bg:     var(--paper, #fdfdfb);
   --brand-card-border: var(--line, rgba(42, 31, 22, 0.12));   /* warm (was cool slate rgba) */
   --brand-text-main:   var(--ink, #2a1f16);
   --brand-text-muted:  var(--ink-soft, #6b5d4f);
@@ -212,7 +212,7 @@ html[lang="ar"] .brand-hero-title,
   /* same recessed-backdrop language as catalog card image areas */
   background:
     radial-gradient(120% 120% at 50% 0%, rgba(184, 108, 37, 0.08), transparent 60%),
-    var(--cream, #f4ede2);
+    var(--cream, #f1efec);
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -499,7 +499,7 @@ html[lang="ar"] .brand-hero-title,
   align-items: center;
   padding: 0.4rem 0.85rem;
   border-radius: 99px;
-  background: var(--paper, #fffdf9);
+  background: var(--paper, #fdfdfb);
   border: 1px solid var(--brand-card-border);
   color: var(--brand-text-main);
   font-size: 0.85rem;
