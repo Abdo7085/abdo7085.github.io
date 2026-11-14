@@ -329,8 +329,8 @@ def inject_brands_page_itemlist(brands):
         html = page_path.read_text(encoding="utf-8")
         ld_script = f'<script type="application/ld+json" id="brands-itemlist-jsonld">{json.dumps(ld, ensure_ascii=False)}</script>'
         html = re.sub(
-            r'<script type="application/ld\+json" id="brands-itemlist-jsonld">.*?</script>\s*',
-            '', html, flags=re.S
+            r'^[ \t]*<script type="application/ld\+json" id="brands-itemlist-jsonld">.*?</script>[ \t]*(?:\r?\n)?',
+            '', html, flags=re.S | re.M
         )
         html = html.replace("</head>", f"  {ld_script}\n  </head>", 1)
         page_path.write_text(html, encoding="utf-8")

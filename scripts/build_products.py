@@ -352,8 +352,8 @@ def inject_products_page_jsonld(all_products):
 
         # Remove old injected ItemList if present (for re-runs)
         html = re.sub(
-            r'<script type="application/ld\+json" id="itemlist-jsonld">.*?</script>\s*',
-            '', html, flags=re.S
+            r'^[ \t]*<script type="application/ld\+json" id="itemlist-jsonld">.*?</script>[ \t]*(?:\r?\n)?',
+            '', html, flags=re.S | re.M
         )
 
         html = html.replace("</head>", f"  {ld_script}\n  </head>", 1)
