@@ -1,0 +1,6 @@
+# Build pipeline (python scripts/build_all.py)
+#   pip install -r scripts/requirements.txt
+Pillow>=9.5
+
+# Optional — only for AI background removal (scripts/remove_bg.py):
+#   pip install "rembg[cpu]"

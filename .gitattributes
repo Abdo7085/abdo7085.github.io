@@ -1,0 +1,17 @@
+# Text files are stored in the repository with LF line endings, whatever
+# each machine's core.autocrlf setting is. Working-tree line endings are
+# left to the local Git configuration.
+* text=auto
+
+# Never treat media as text.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.pdf  binary
+*.woff  binary
+*.woff2 binary
