@@ -12,6 +12,7 @@ splitting into an i18n/seo/sitemap package would be premature.
 from __future__ import annotations
 
 import functools
+import hashlib
 import html as html_module
 import json
 import re
@@ -30,7 +31,20 @@ LOCALES_DIR = ROOT / "assets" / "locales"
 
 # Files that exist in the repo root but must NOT be emitted into sitemap.xml
 # (SPA templates marked noindex, error pages, and search-engine verification pages).
-SITEMAP_EXCLUDE = {"product.html", "project.html", "404.html"}
+SITEMAP_EXCLUDE = {"product.html", "project.html", "brand.html", "404.html"}
+
+_NOINDEX_RE = re.compile(
+    r"""<meta\s+name=["']robots["']\s+content=["'][^"']*noindex""", re.I
+)
+
+
+def is_noindex(html_path: Path) -> bool:
+    """True if the page tells search engines not to index it. Such a page must
+    never be listed in sitemap.xml, whether or not SITEMAP_EXCLUDE names it."""
+    try:
+        return bool(_NOINDEX_RE.search(html_path.read_text(encoding="utf-8")))
+    except Exception:
+        return False
 
 
 # ---------------- Date ----------------
@@ -210,6 +224,47 @@ def _sitemap_url_block(loc: str, lastmod: str, suffix: str) -> str:
     )
 
 
+# Build state that must survive between runs lives here (committed to git).
+STATE_DIR = ROOT / "scripts" / "state"
+SITEMAP_STATE_PATH = STATE_DIR / "sitemap.json"
+
+
+def _fingerprint(*parts) -> str:
+    """Short content hash of files (Path), strings, or bytes.
+
+    Line endings are normalised first, so the same content hashes identically
+    on Windows (CRLF working tree) and Linux (LF)."""
+    h = hashlib.sha1()
+    for part in parts:
+        if isinstance(part, Path):
+            data = part.read_bytes()
+        elif isinstance(part, str):
+            data = part.encode("utf-8")
+        else:
+            data = part
+        h.update(data.replace(b"\r\n", b"\n"))
+        h.update(b"\0")
+    return h.hexdigest()[:16]
+
+
+def _load_sitemap_state() -> dict:
+    try:
+        state = json.loads(SITEMAP_STATE_PATH.read_text(encoding="utf-8"))
+        return state if isinstance(state, dict) else {}
+    except Exception:
+        return {}
+
+
+def _existing_sitemap_lastmods() -> dict:
+    """{loc: lastmod} from the sitemap.xml already on disk. Seeds the state the
+    first time a URL is seen, so introducing the state file loses no dates."""
+    try:
+        text = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    except Exception:
+        return {}
+    return dict(re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", text))
+
+
 def write_sitemap() -> None:
     """Write the authoritative sitemap.xml covering: static root pages,
     every product, every project, every brand.
@@ -225,14 +280,33 @@ def write_sitemap() -> None:
       3. Projects, in the order stored in data/projects_index.json × (en, fr, ar)
       4. Brands, in the order stored in data/brands_index.json × (en, fr, ar)
 
-    lastmod policy:
-      - static pages: today()
-      - products: today()
-      - projects: entry["date"] if set, else today()
-      - brands: today()
+    lastmod policy — a URL's date moves only when its source content changes:
+      - static pages: the English root template (incl. its injected ItemList)
+      - products:     data/products/<id>.json
+      - projects:     data/projects/<id>.json
+      - brands:       data/brands/<id>.json + the ids of that brand's products
+    Each source's fingerprint and date are kept in scripts/state/sitemap.json.
+    Unchanged fingerprint → date kept. Changed → today. First time seen → the
+    date already in sitemap.xml if there is one, else today. Rebuilding with
+    no content change therefore rewrites sitemap.xml byte-for-byte.
     """
     td = today()
     urls: list = []
+
+    state = _load_sitemap_state()
+    seed = _existing_sitemap_lastmods()
+    new_state: dict = {}
+
+    def lastmod_for(key: str, fingerprint: str, en_loc: str) -> str:
+        prev = state.get(key)
+        if isinstance(prev, dict) and prev.get("hash") == fingerprint and prev.get("lastmod"):
+            lastmod = prev["lastmod"]
+        elif prev is None and en_loc in seed:
+            lastmod = seed[en_loc]
+        else:
+            lastmod = td
+        new_state[key] = {"hash": fingerprint, "lastmod": lastmod}
+        return lastmod
 
     # 1. Static root pages. Uses ROOT.glob('*.html') minus SITEMAP_EXCLUDE and
     # 404.html, matching generate_localized.py's source of truth — so adding a
@@ -240,33 +314,44 @@ def write_sitemap() -> None:
     root_pages = sorted(
         f.name for f in ROOT.glob("*.html")
         if f.name not in SITEMAP_EXCLUDE and f.name != "404.html"
+        and not is_noindex(f)
     )
     # Preserve canonical order: index first, then alphabetical.
     if "index.html" in root_pages:
         root_pages = ["index.html"] + [p for p in root_pages if p != "index.html"]
     for filename in root_pages:
         suffix = "" if filename == "index.html" else filename
+        lastmod = lastmod_for(
+            f"page:{filename}", _fingerprint(ROOT / filename), f"{HOST}/{suffix}"
+        )
         for lang in LANGS:
             prefix = "" if lang == "en" else f"/{lang}"
             loc = f"{HOST}{prefix}/{suffix}"
-            urls.append(_sitemap_url_block(loc, td, suffix))
+            urls.append(_sitemap_url_block(loc, lastmod, suffix))
 
     # 2. Products (sorted by id, matching legacy behavior).
     products_dir = ROOT / "data" / "products"
-    product_ids: list = []
+    product_files: dict = {}            # id -> source JSON path
+    brand_product_ids: dict = {}        # brand name -> [product ids]
     if products_dir.exists():
         for pf in sorted(products_dir.glob("*.json")):
             try:
-                pid = json.loads(pf.read_text(encoding="utf-8")).get("id")
+                pdata = json.loads(pf.read_text(encoding="utf-8"))
             except Exception:
                 continue
+            pid = pdata.get("id")
             if pid:
-                product_ids.append(pid)
-    for pid in sorted(product_ids):
+                product_files[pid] = pf
+                brand_product_ids.setdefault(pdata.get("brand"), []).append(pid)
+    for pid in sorted(product_files):
+        suffix = f"products/{pid}.html"
+        lastmod = lastmod_for(
+            f"product:{pid}", _fingerprint(product_files[pid]), f"{HOST}/{suffix}"
+        )
         for lang in LANGS:
             prefix = "" if lang == "en" else f"/{lang}"
-            loc = f"{HOST}{prefix}/products/{pid}.html"
-            urls.append(_sitemap_url_block(loc, td, f"products/{pid}.html"))
+            loc = f"{HOST}{prefix}/{suffix}"
+            urls.append(_sitemap_url_block(loc, lastmod, suffix))
 
     # 3. Projects (order preserved from projects_index.json — date desc).
     projects_index_path = ROOT / "data" / "projects_index.json"
@@ -279,11 +364,16 @@ def write_sitemap() -> None:
             pid = entry.get("id")
             if not pid:
                 continue
-            lastmod = entry.get("date") or td
+            suffix = f"projects/{pid}.html"
+            source = ROOT / "data" / "projects" / f"{pid}.json"
+            fingerprint = _fingerprint(
+                source if source.exists() else json.dumps(entry, sort_keys=True)
+            )
+            lastmod = lastmod_for(f"project:{pid}", fingerprint, f"{HOST}/{suffix}")
             for lang in LANGS:
                 prefix = "" if lang == "en" else f"/{lang}"
-                loc = f"{HOST}{prefix}/projects/{pid}.html"
-                urls.append(_sitemap_url_block(loc, lastmod, f"projects/{pid}.html"))
+                loc = f"{HOST}{prefix}/{suffix}"
+                urls.append(_sitemap_url_block(loc, lastmod, suffix))
 
     # 4. Brands (order preserved from brands_index.json — product_count desc).
     brands_index_path = ROOT / "data" / "brands_index.json"
@@ -296,10 +386,20 @@ def write_sitemap() -> None:
             bid = entry.get("id")
             if not bid:
                 continue
+            suffix = f"brands/{bid}.html"
+            source = ROOT / "data" / "brands" / f"{bid}.json"
+            # A brand page lists that brand's products, so it changes when the
+            # brand's own data changes or when a product joins/leaves the brand.
+            its_products = ",".join(sorted(brand_product_ids.get(entry.get("brand"), [])))
+            fingerprint = _fingerprint(
+                source if source.exists() else json.dumps(entry, sort_keys=True),
+                its_products,
+            )
+            lastmod = lastmod_for(f"brand:{bid}", fingerprint, f"{HOST}/{suffix}")
             for lang in LANGS:
                 prefix = "" if lang == "en" else f"/{lang}"
-                loc = f"{HOST}{prefix}/brands/{bid}.html"
-                urls.append(_sitemap_url_block(loc, td, f"brands/{bid}.html"))
+                loc = f"{HOST}{prefix}/{suffix}"
+                urls.append(_sitemap_url_block(loc, lastmod, suffix))
 
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -309,6 +409,17 @@ def write_sitemap() -> None:
         "</urlset>\n"
     )
     (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
+
+    # Persist fingerprints/dates. Only URLs seen in this run are kept, so
+    # entries for deleted products/brands/projects drop out on their own.
+    state_text = json.dumps(new_state, indent=1, sort_keys=True, ensure_ascii=False) + "\n"
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        unchanged = SITEMAP_STATE_PATH.read_text(encoding="utf-8") == state_text
+    except Exception:
+        unchanged = False
+    if not unchanged:
+        SITEMAP_STATE_PATH.write_text(state_text, encoding="utf-8")
 
 
 # ---------------- Export a safe escape alias for consumers ----------------

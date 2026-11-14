@@ -434,7 +434,15 @@ python scripts/build_all.py
 `build_brands.py` يقرأ `data/products_index.json` ليشتقّ Tech/Categories ويعدّ منتجات كل علامة. **يجب** تشغيل `build_products.py` قبله. `build_all.py` يضمن التسلسل: localize → projects → products → brands.
 
 ### ملفات مستثناة من sitemap
-محدّدة في `_lib.SITEMAP_EXCLUDE = {"product.html", "project.html", "404.html"}`. `_lib.write_sitemap()` يعتمد على `ROOT.glob('*.html')` ناقص هذه المجموعة — أي صفحة جذرية جديدة تُضاف تدخل sitemap آلياً دون تعديل كود.
+محدّدة في `_lib.SITEMAP_EXCLUDE = {"product.html", "project.html", "brand.html", "404.html"}`. `_lib.write_sitemap()` يعتمد على `ROOT.glob('*.html')` ناقص هذه المجموعة — أي صفحة جذرية جديدة تُضاف تدخل sitemap آلياً دون تعديل كود. **شبكة أمان (2026-11-14):** أي صفحة جذرية تحمل `noindex` في وسم robots تُستثنى آلياً عبر `_lib.is_noindex()` حتى لو لم تُذكر في المجموعة (كان `brand.html` مُدرجاً في sitemap بالخطأ رغم أنه `noindex`).
+
+### سياسة `lastmod` (2026-11-14)
+تاريخ كل رابط في sitemap يتغيّر **فقط عند تغيّر محتوى مصدره**، لا عند كل بناء:
+- الصفحات الجذرية ← القالب الإنجليزي (مع ItemList المحقون فيه).
+- المنتج ← `data/products/<id>.json`. المشروع ← `data/projects/<id>.json`.
+- العلامة ← `data/brands/<id>.json` + قائمة معرّفات منتجاتها.
+
+`write_sitemap()` يحفظ بصمة (hash) كل مصدر وتاريخه في **`scripts/state/sitemap.json`** (ملف مولَّد، يُحفظ في git، لا يُعدَّل يدوياً). بصمة لم تتغيّر ← التاريخ يبقى. تغيّرت ← تاريخ اليوم. رابط جديد ← تاريخ اليوم. **النتيجة: إعادة البناء دون تغيير محتوى لا تغيّر أي ملف** — إن ظهر فرق في `git status` بعد بناء «بلا تغييرات» فهذا خلل يجب تتبّعه. تعديل قالب `product.html` أو CSS لا يحرّك تواريخ المنتجات (التاريخ يعكس المحتوى لا الشكل).
 
 ---
 

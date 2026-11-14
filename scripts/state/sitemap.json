@@ -1,0 +1,390 @@
+{
+ "brand:dahua": {
+  "hash": "83b5a368c521f5eb",
+  "lastmod": "2026-07-25"
+ },
+ "brand:eae-technology": {
+  "hash": "1ed22224d3f88f58",
+  "lastmod": "2026-07-25"
+ },
+ "brand:reyee": {
+  "hash": "e4a3d7d5f3b092ec",
+  "lastmod": "2026-07-25"
+ },
+ "brand:shelly": {
+  "hash": "dbaf321f550b2534",
+  "lastmod": "2026-07-25"
+ },
+ "brand:sonoff": {
+  "hash": "7b1affaa63349b7c",
+  "lastmod": "2026-07-25"
+ },
+ "brand:tuya": {
+  "hash": "c24712edfdccbc82",
+  "lastmod": "2026-07-25"
+ },
+ "brand:zennio": {
+  "hash": "7dc274624e2002cd",
+  "lastmod": "2026-07-25"
+ },
+ "page:brands.html": {
+  "hash": "6521c431e5374574",
+  "lastmod": "2026-11-14"
+ },
+ "page:index.html": {
+  "hash": "7d3790831d2a99d2",
+  "lastmod": "2026-07-25"
+ },
+ "page:previous-work.html": {
+  "hash": "0c2ca3a2ba8446ba",
+  "lastmod": "2026-11-14"
+ },
+ "page:products.html": {
+  "hash": "e374f32f19c3ed66",
+  "lastmod": "2026-11-14"
+ },
+ "product:dahua-vth2421fb-fw-ip-indoor-monitor": {
+  "hash": "e1dc07eed43792dd",
+  "lastmod": "2026-07-25"
+ },
+ "product:dahua-vth2621gb-gw-ip-indoor-monitor": {
+  "hash": "cbcd0819bcb407c9",
+  "lastmod": "2026-07-25"
+ },
+ "product:dahua-vth8621kms-wp-indoor-monitor": {
+  "hash": "a1d22ee4bd59a5f9",
+  "lastmod": "2026-07-25"
+ },
+ "product:dahua-vto3311q-wp-villa-door-station": {
+  "hash": "ebb91e0b4115da40",
+  "lastmod": "2026-07-25"
+ },
+ "product:dahua-vto6541h-s2-apartment-door-station": {
+  "hash": "61df8f7cf6f0badb",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-ipi200-ip-interface": {
+  "hash": "ea6c777dd3bcf7fd",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-ipr200-ip-router": {
+  "hash": "99c47e5844a37af5",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-lc200-line-coupler": {
+  "hash": "367f3ba4ef89c078",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-miola-touch-panel": {
+  "hash": "b041e14ee25e4791",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-oria-push-switches": {
+  "hash": "c1f8645d1219b6ce",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-power-supply-ps640": {
+  "hash": "949fa0c123e22244",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-ps320-power-supply": {
+  "hash": "85272273be8eae8d",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-rosa-switches": {
+  "hash": "49ad2cece806a45b",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-rosa-thermostat": {
+  "hash": "70a9d0402b97ad65",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-td4-touch-panel": {
+  "hash": "916db235765df7f9",
+  "lastmod": "2026-07-25"
+ },
+ "product:eae-knx-ui108-universal-interface": {
+  "hash": "3b39d3ed9c51527f",
+  "lastmod": "2026-07-25"
+ },
+ "product:moes-matter-zigbee-gateway": {
+  "hash": "512b085f5b0ac755",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu0800-room-control-unit": {
+  "hash": "d721aa7e1758b3a6",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu0808-room-control-unit": {
+  "hash": "c99431ed40bd8f52",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu1200-room-control-unit": {
+  "hash": "35deaac977b27352",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu1212-room-control-unit": {
+  "hash": "cf7524f9478f9234",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu1600-room-control-unit": {
+  "hash": "6762fedbec5c7497",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu1616-room-control-unit": {
+  "hash": "9b5e6bf9b100909d",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu2000-room-control-unit": {
+  "hash": "170f46879ca8a46a",
+  "lastmod": "2026-07-25"
+ },
+ "product:rcu2018-room-control-unit": {
+  "hash": "664cafa491c9daf2",
+  "lastmod": "2026-07-25"
+ },
+ "product:reyee-ew1300g": {
+  "hash": "d7d5f150b907e8f9",
+  "lastmod": "2026-07-25"
+ },
+ "product:rg-eg105gw-t": {
+  "hash": "2135319241045c8d",
+  "lastmod": "2026-07-25"
+ },
+ "product:rg-eg105gw-x": {
+  "hash": "799766e4d5d1f421",
+  "lastmod": "2026-07-25"
+ },
+ "product:rg-es220gs-lp": {
+  "hash": "f63594cf1840b08b",
+  "lastmod": "2026-07-25"
+ },
+ "product:rg-rap2200f": {
+  "hash": "e929e6762ea50de4",
+  "lastmod": "2026-07-25"
+ },
+ "product:rg-rap62": {
+  "hash": "ff0bec12cead3aee",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-1-gen3": {
+  "hash": "ff591297959791e8",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-1pm-gen3": {
+  "hash": "f0b10bb2da9bd9fc",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-2pm-gen3": {
+  "hash": "4982ec64de9f4c77",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-dimmer-gen3": {
+  "hash": "bb383830e4a9bce0",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-plus-1": {
+  "hash": "b44faba6d0116931",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-plus-1pm": {
+  "hash": "2f0d66f169cca6ab",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-plus-2pm": {
+  "hash": "b0c2760e52f197cc",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-pro-3": {
+  "hash": "e1b04d6c07de91ab",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-pro-4pm": {
+  "hash": "fd503e6153d6a1d2",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-pro-dual-cover-shutter-pm": {
+  "hash": "aae56da4d973be03",
+  "lastmod": "2026-07-25"
+ },
+ "product:shelly-wall-display": {
+  "hash": "f69bead5fad70f08",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-mini-zb2gs": {
+  "hash": "b8cb178c2d96275c",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-mini-zb2gs-l": {
+  "hash": "79134150159ade26",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-mini-zbdim": {
+  "hash": "a1ce34a7c220ebf5",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-mini-zbrbs": {
+  "hash": "faa6a53581bd9f58",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-zbmini-extreme": {
+  "hash": "74a8113b2e848bc5",
+  "lastmod": "2026-07-25"
+ },
+ "product:sonoff-zbmini-extreme-l2": {
+  "hash": "e40513e3b4d6880d",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-bin-t-2x": {
+  "hash": "24851492c449e177",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-bin-t-4x": {
+  "hash": "870abbae7a7c7d42",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-bin-t-6x": {
+  "hash": "40e99216439f884e",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-bin-t-8x": {
+  "hash": "f6871e0358454054",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-diminbox-dx2": {
+  "hash": "0412e13b095d4d14",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-diminbox-dx4": {
+  "hash": "10d36de8e91092b0",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-flat-70": {
+  "hash": "f3f8361b068566ae",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-inbox-20-v3": {
+  "hash": "a3ed71834b87cc95",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-inbox-24-v3": {
+  "hash": "48d6186f29ad273c",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-kupsupply-160ma": {
+  "hash": "00af4f25a2710e4d",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-kupsupply-320ma": {
+  "hash": "fdd79a2202eaf7e4",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-kupsupply-640ma": {
+  "hash": "6b3eee6a7a637f2a",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-12": {
+  "hash": "16c8a7b2cd7b219a",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-16-v4": {
+  "hash": "d0d2732d77842b04",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-20": {
+  "hash": "e2d15583b885ce06",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-24-v2": {
+  "hash": "f2bb11e07699250e",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-66-v3": {
+  "hash": "8ad27c58755bf6f5",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-8-v4": {
+  "hash": "81a43c0bedf7d042",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-maxinbox-88": {
+  "hash": "1de539bc09349b1a",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-minibox-20-v2": {
+  "hash": "479bc81262a47c24",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-minibox-25-v3": {
+  "hash": "2aedae9f6670b218",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-minibox-40-v3": {
+  "hash": "d2bddb940228cf9b",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-minibox-45-v3": {
+  "hash": "6776a8f5ee47321d",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-narrowdim-x2": {
+  "hash": "2ac212cc16c7ecb5",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-narrowdim-x4": {
+  "hash": "74454875334fd369",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-railquad-8": {
+  "hash": "d1e6264057a75357",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-tecla": {
+  "hash": "016de365ddeb9dbf",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-tecla-55": {
+  "hash": "a2785bdad0dcac59",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-tecla-70": {
+  "hash": "4287507a0f3f2e9d",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-tecla-xl": {
+  "hash": "174e91cc194a8e99",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z100-touch-panel": {
+  "hash": "51be7b381602afd0",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z28": {
+  "hash": "1fa5eab497ac5013",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z35-v3": {
+  "hash": "34f5e47a732546fd",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z40": {
+  "hash": "499adf964705eebf",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z50": {
+  "hash": "6c802e1ff9279852",
+  "lastmod": "2026-07-25"
+ },
+ "product:zennio-z70-v2": {
+  "hash": "edbdd099508f7ea5",
+  "lastmod": "2026-07-25"
+ },
+ "project:huerto-pool-tetouan": {
+  "hash": "afc2417cbcdb3830",
+  "lastmod": "2025-07-16"
+ },
+ "project:villa-knx-tetouan": {
+  "hash": "7e66eeae6fb55022",
+  "lastmod": "2026-03-22"
+ }
+}
