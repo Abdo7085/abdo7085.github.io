@@ -22,6 +22,9 @@
   }
 
   // ---------------- Helpers ----------------
+  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
+  const SE = window.SE;
+
   function getLang() {
     return document.documentElement.lang || 'en';
   }
@@ -196,7 +199,7 @@
     const lead = escapeHtml(t(project.short_description));
     const cover = project.cover || '/assets/S‑ELECTRICITY-LOGO.svg';
     const cats = (project.categories || []).map(function(c) {
-      return '<span class="proj-cat-badge">' + escapeHtml(c) + '</span>';
+      return '<span class="proj-cat-badge">' + escapeHtml(SE.taxonomy.label('project_category', c)) + '</span>';
     }).join('');
 
     const facts = [];
@@ -858,7 +861,8 @@
     const slug = getProjectSlug();
     const [project, productsIndex] = await Promise.all([
       fetchProject(slug),
-      fetchProductsIndex()
+      fetchProductsIndex(),
+      SE.taxonomy.load()
     ]);
 
     function renderPage() {

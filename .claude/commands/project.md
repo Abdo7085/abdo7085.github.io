@@ -252,7 +252,8 @@ Rules:
 
 **Schema notes**:
 - `id` MUST match the filename (without `.json`).
-- `date` uses ISO format `YYYY-MM-DD`. Used for `datePublished` in JSON-LD and sitemap `lastmod`.
+- `date` uses ISO format `YYYY-MM-DD`. Used for `datePublished` in JSON-LD and for ordering the portfolio. (Sitemap `lastmod` is no longer taken from it: it moves only when the project's JSON content changes — see `scripts/state/sitemap.json`.)
+- `categories` — every value MUST be an `id` listed under `project_categories` in `data/taxonomy.json` (see "Project Categories" below). The build stops on any other value.
 - `cover` is the image used on the listing card and as `og:image`. It MUST be listed as `type: image` in `media` too if you also want it in the gallery (the build script does NOT auto-duplicate).
 - `media[].alt` is **required** for images and videos (accessibility + SEO). For `reel`, `alt` is used for the placeholder's aria-label only.
 - `media[].type` is one of `"image"`, `"video"`, `"reel"`. The build script extracts dimensions:
@@ -312,15 +313,13 @@ List files in `data/projects/` to show available projects. Read individual files
 3. Rebuild with `python scripts/build_projects.py`.
 4. Optionally delete the project's media folder at `assets/projects/<slug>/`.
 
-## Existing Category Values (for consistency)
+## Project Categories
 
-These are the values currently in use across projects. Always prefer reusing existing values:
+The allowed values live in **`data/taxonomy.json` → `project_categories`** — read that list before choosing; do not rely on a copy in this file. Each entry has an `id` (the English name used in the project JSON, e.g. `Smart Home Automation`) and its `en`/`fr`/`ar` label, which the project page shows in the visitor's language.
 
-**Categories**: `Smart Home Automation`, `Security & Surveillance`, `Network & Wi-Fi`, `Electrical Installation`, `Lighting Design`, `Access Control`
-
-### Self-Updating Category Values
-
-After adding any project that introduces a **new** `category` value not listed above, you MUST update this section of the skill file (`.claude/commands/project.md`) by appending the new value to the list above. This keeps the reference always in sync with the actual portfolio.
+- Always prefer an existing category.
+- To introduce a new one, add an entry with all three labels to `project_categories` in `data/taxonomy.json` **first**, then use its `id` in the project JSON. Nothing else needs updating (no locale files, no list in this skill).
+- `python scripts/build_projects.py` stops with a clear message if a project uses a category the taxonomy does not define.
 
 ## Writing Style
 

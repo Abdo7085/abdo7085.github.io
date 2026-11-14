@@ -130,7 +130,7 @@ List files in `data/brands/` to show available brands. Read individual files for
 3. Optionally delete the logo from `assets/brands/<slug>.<ext>` if present.
 4. Rebuild with `python scripts/build_all.py`.
 
-**Caution:** Deleting a brand JSON while products still reference it in their `brand` field leaves the catalog's brand filter listing the brand name with no landing page (product chips will 404 on `/brands/<slug>.html`). Either remove the products too, or leave the brand JSON in place.
+**Caution:** A brand JSON cannot be deleted while products still reference it in their `brand` field — `build_products.py` stops with "brand … has no file in data/brands/" (otherwise product chips would 404 on `/brands/<slug>.html`). Remove or re-brand those products first. For the same reason, **create the brand JSON before adding the first product of a new brand.**
 
 ---
 
@@ -178,9 +178,11 @@ Two fields shown in the brand page hero/chips are computed from the catalog, NOT
 | Field | Source | Sort |
 |---|---|---|
 | `tech_focus` | union of all `technology[]` arrays from products with `brand === <name>` | by frequency desc, ties broken alphabetically |
-| `category_focus` | set of `product_type` values from products with `brand === <name>` | by frequency desc, ties broken alphabetically |
+| `category_focus` | set of **catalog category ids** (from `data/taxonomy.json`, e.g. `actuators`, `controls`, `networking`) of the products with `brand === <name>` — each product's category is derived from its `product_type` | by frequency desc, ties broken alphabetically |
 
-The Python implementation is `deriveChips()` in `scripts/build_brands.py`. The JavaScript implementation is `deriveChips()` in `assets/brand-detail.js`. **Both must stay in sync** — if you change the sort logic in one, change it in the other.
+The "Specialization" chips on the brand page show each category's label from `data/taxonomy.json` in the visitor's language (previously they showed raw English product-type names in every language).
+
+The Python implementation is `derive_chips()` in `scripts/build_brands.py`. The JavaScript implementation is `deriveChips()` in `assets/brand-detail.js`. **Both must stay in sync** — if you change the sort logic in one, change it in the other.
 
 **Practical implication:** Adding/removing/editing a product with brand `X` automatically updates brand `X`'s chips on the next build. No brand JSON edit needed.
 

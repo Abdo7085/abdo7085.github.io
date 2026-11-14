@@ -101,19 +101,27 @@ def build_index():
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
     project_files = sorted(glob.glob(str(PROJECTS_DIR / "*.json")))
     projects = []
+    taxonomy = _lib.load_taxonomy()
+    problems = []
 
     for pf in project_files:
+        name = Path(pf).name
         try:
             with open(pf, "r", encoding="utf-8") as f:
                 data = json.load(f)
         except Exception as e:
-            print(f"  ERROR reading {pf}: {e}")
+            problems.append(f"{name}: not valid JSON ({e})")
             continue
+        # Project categories must be ones data/taxonomy.json defines (and
+        # therefore has en/fr/ar labels for).
+        problems.extend(f"{name}: {msg}" for msg in taxonomy.check_project(data))
 
         # Enrich media with dimensions (mutates the data we pass onward)
         data["media"] = enrich_media(data.get("media", []))
         projects.append(data)
         print(f"  Enriched {data.get('id')} ({len(data['media'])} media items).")
+
+    _lib.abort_on_problems(problems, "data/projects")
 
     # Sort by date desc (newer first)
     def _date_key(p):

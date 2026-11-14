@@ -8,8 +8,9 @@ You are managing the product catalog for the Smart Electricity website. This is 
 data/products/          → Individual product JSON files
 data/products_index.json → Aggregated index (auto-generated, never edit manually)
 assets/products/        → Product images
-assets/locales/ar.json  → Arabic translations (filter values)
-assets/locales/fr.json  → French translations (filter values)
+data/taxonomy.json      → SINGLE SOURCE OF TRUTH for classification: categories → product types,
+                          technologies, installation methods — with their en/fr/ar labels
+assets/site-core.js     → Shared browser helpers: reads taxonomy.json for labels + the one protocol-icon dictionary
 scripts/_lib.py           → Shared helpers (i18n, SEO, JSON-LD, sitemap). Single source of truth
 scripts/build_all.py      → One-shot orchestrator (runs all 3 stages in one Python process)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap + ItemList injection
@@ -241,12 +242,16 @@ If the `.js` endpoint returns 404, check the product's actual page on the manufa
 - **Dimensions included** — `media[*].width` and `media[*].height` are useful for aspect ratio
 
 
-3. **Check filter value consistency** — Read a few existing products in `data/products/` to match the exact casing and naming of `brand`, `product_type`, `technology`, and `installation` values. Consistency is critical for the sidebar filters to group products correctly.
-   - **Reuse existing `product_type` values when the products truly serve the same purpose and installation context.** Don't create a new type if the product is just a variant of an existing category (e.g. "Dimmer Switch" → use `"Dimmer"`). But DO create a new type when the product solves a different problem or has a fundamentally different installation method, even if the underlying technology is similar. For example: `"Smart Relay"` (compact, behind wall switch, retrofit) is distinct from `"Actuator"` (DIN rail, electrical panel, professional installation) — they serve different use cases and customers, so they deserve separate types.
+3. **Classify the product from `data/taxonomy.json`** — `product_type`, every `technology` entry and `installation` MUST be an `id` that file defines (exact spelling and casing). Read the file first; never guess from memory. The build refuses anything else. `brand` must match — character for character — the `brand` of a file in `data/brands/`.
+   - **Never add a `category` field to the product.** The category is derived from `product_type` by the taxonomy (each type sits under exactly one category) and written into `products_index.json` by the build.
+   - **Reuse an existing `product_type` when the product truly serves the same purpose and installation context.** Don't create a new type for a mere variant (e.g. "Dimmer Switch" → use `"Dimmer"`). DO create one when the product solves a different problem or installs in a fundamentally different way. Reference distinctions already made: `"Smart Relay"` (compact, behind the wall switch, retrofit) vs `"Actuator"` (DIN rail, electrical panel) vs `"Room Control Unit"` (all-in-one room controller); `"Touch Panel"` (smart-home control panel) vs `"Indoor Monitor"` (video-intercom screen); `"Router"` / `"Network Switch"` / `"Access Point"` by network role; `"IP Interface"` / `"Line Coupler"` (KNX system devices) vs `"Gateway"` (protocol hub such as Zigbee/Matter).
 
-4. **Update locale files if needed** — If you introduce a new `product_type` or `installation` value that doesn't already exist in the catalog, add its translation key to both `assets/locales/ar.json` and `assets/locales/fr.json`. The key format is `val_<Value>` where spaces become underscores:
-   - Example: product_type `"Room Control Unit"` → key `"val_Room_Control_Unit"`
-   - Example: installation `"Wall mount"` → key `"val_Wall_mount"`
+4. **Adding a new classification value** — only when step 3 found no fit. Edit `data/taxonomy.json` **before** building; it is the only file to touch (no locale keys, no list in this skill, no JS):
+   - New `product_type`: add `{ "id": "...", "label": { "en": "...", "fr": "...", "ar": "..." } }` to the `types` of the category it belongs to. If no category fits, add a new category the same way (`id` = short kebab-case slug, plus label and `types`). List order is the display order in the catalog filters.
+   - New `installation`: add an entry with its three labels to `installations`.
+   - New `technology`: add `{ "id": "..." }` to `technologies` (protocol names are never translated). For an icon on the cards, also add a branch to `protoMarkup()` in `assets/site-core.js`; without one the name is shown as plain text, which is acceptable.
+   - All three languages are mandatory — the build stops if a label is missing.
+   - Renaming or splitting an existing type: update the products, then add the old name under `aliases.product_type` so previously shared filter links keep working.
 
 5. **Build everything** (index + static SEO pages + sitemap):
    ```bash
@@ -288,20 +293,20 @@ List files in `data/products/` to show available products. Read individual files
 3. Rebuild with `python scripts/build_products.py`
 4. Optionally remove the product's images from `assets/products/`
 
-## Existing Filter Values (for consistency)
+## Classification Values
 
-These are the values currently in use across products. Always prefer reusing existing values:
+There is deliberately **no list of values in this file** — a copy here went stale (it missed a whole brand and several types). The live sources are:
 
-**Brands**: `EAE Technology`, `Shelly`, `Reyee`, `SONOFF`, `Zennio`, `Tuya`
-**Technologies**: `KNX`, `Wi-Fi`, `Bluetooth`, `LAN`, `Zigbee`, `Matter`, `Thread`
-**Product Types**: `Actuator`, `Power Supply`, `Switch`, `Smart Relay`, `Room Control Unit`, `Touch Panel`, `Network`, `Dimmer`, `Shutter`, `Thermostat`, `Universal Interface`, `Gateway`
-**Installation**: `DIN Rail mounting`, `Wall mount`, `Free standing`, `Door frame`, `Behind wall switch`, `Ceiling mounting`
+| Field | Allowed values come from |
+|---|---|
+| `product_type` | `data/taxonomy.json` → `categories[].types[].id` |
+| `technology[]` | `data/taxonomy.json` → `technologies[].id` |
+| `installation` | `data/taxonomy.json` → `installations[].id` |
+| `brand` | the `brand` field of the files in `data/brands/` (see the brand skill to add one) |
+
+`python scripts/build_products.py` validates every product against these and **stops without writing anything** if a value is unknown, naming the file, the bad value and the allowed ones. A typo can therefore no longer create a stray filter entry on the site.
 
 When the user provides product info in any language, translate it appropriately for all three languages (en, fr, ar). If the user only gives partial info, ask for the missing critical fields before creating the file.
-
-### Self-Updating Filter Values
-
-After adding any product that introduces a **new** `brand`, `technology`, `product_type`, or `installation` value not listed above, you MUST update this section of the skill file (`.claude/commands/product.md`) by appending the new value to the appropriate line. This keeps the reference list always in sync with the actual catalog, so future sessions don't need to scan all product files to discover valid values.
 
 ## Writing Style
 

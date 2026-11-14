@@ -28,7 +28,7 @@
   "lastmod": "2026-07-25"
  },
  "page:brands.html": {
-  "hash": "6521c431e5374574",
+  "hash": "dc2a5786770987e0",
   "lastmod": "2026-11-14"
  },
  "page:index.html": {
@@ -40,20 +40,20 @@
   "lastmod": "2026-11-14"
  },
  "page:products.html": {
-  "hash": "e374f32f19c3ed66",
+  "hash": "74ddfdc860e9b819",
   "lastmod": "2026-11-14"
  },
  "product:dahua-vth2421fb-fw-ip-indoor-monitor": {
-  "hash": "e1dc07eed43792dd",
-  "lastmod": "2026-07-25"
+  "hash": "6510ded3b6ae95db",
+  "lastmod": "2026-11-14"
  },
  "product:dahua-vth2621gb-gw-ip-indoor-monitor": {
-  "hash": "cbcd0819bcb407c9",
-  "lastmod": "2026-07-25"
+  "hash": "97610493853ea104",
+  "lastmod": "2026-11-14"
  },
  "product:dahua-vth8621kms-wp-indoor-monitor": {
-  "hash": "a1d22ee4bd59a5f9",
-  "lastmod": "2026-07-25"
+  "hash": "f8aff29ff4fc508e",
+  "lastmod": "2026-11-14"
  },
  "product:dahua-vto3311q-wp-villa-door-station": {
   "hash": "ebb91e0b4115da40",
@@ -64,16 +64,16 @@
   "lastmod": "2026-07-25"
  },
  "product:eae-knx-ipi200-ip-interface": {
-  "hash": "ea6c777dd3bcf7fd",
-  "lastmod": "2026-07-25"
+  "hash": "85291ce49e30e38d",
+  "lastmod": "2026-11-14"
  },
  "product:eae-knx-ipr200-ip-router": {
-  "hash": "99c47e5844a37af5",
-  "lastmod": "2026-07-25"
+  "hash": "fd95d25f1d9ef034",
+  "lastmod": "2026-11-14"
  },
  "product:eae-knx-lc200-line-coupler": {
-  "hash": "367f3ba4ef89c078",
-  "lastmod": "2026-07-25"
+  "hash": "27b3a4ef4a12e790",
+  "lastmod": "2026-11-14"
  },
  "product:eae-knx-miola-touch-panel": {
   "hash": "b041e14ee25e4791",
@@ -112,60 +112,60 @@
   "lastmod": "2026-07-25"
  },
  "product:rcu0800-room-control-unit": {
-  "hash": "d721aa7e1758b3a6",
-  "lastmod": "2026-07-25"
+  "hash": "abe5463b81b52fe2",
+  "lastmod": "2026-11-14"
  },
  "product:rcu0808-room-control-unit": {
-  "hash": "c99431ed40bd8f52",
-  "lastmod": "2026-07-25"
+  "hash": "e5116d9ea6aa02d1",
+  "lastmod": "2026-11-14"
  },
  "product:rcu1200-room-control-unit": {
-  "hash": "35deaac977b27352",
-  "lastmod": "2026-07-25"
+  "hash": "71e95bfa33f29397",
+  "lastmod": "2026-11-14"
  },
  "product:rcu1212-room-control-unit": {
-  "hash": "cf7524f9478f9234",
-  "lastmod": "2026-07-25"
+  "hash": "de0c134adfeba692",
+  "lastmod": "2026-11-14"
  },
  "product:rcu1600-room-control-unit": {
-  "hash": "6762fedbec5c7497",
-  "lastmod": "2026-07-25"
+  "hash": "80f62282f5ae3724",
+  "lastmod": "2026-11-14"
  },
  "product:rcu1616-room-control-unit": {
-  "hash": "9b5e6bf9b100909d",
-  "lastmod": "2026-07-25"
+  "hash": "269ac1a6430843a2",
+  "lastmod": "2026-11-14"
  },
  "product:rcu2000-room-control-unit": {
-  "hash": "170f46879ca8a46a",
-  "lastmod": "2026-07-25"
+  "hash": "3500fdf78c46bad4",
+  "lastmod": "2026-11-14"
  },
  "product:rcu2018-room-control-unit": {
-  "hash": "664cafa491c9daf2",
-  "lastmod": "2026-07-25"
+  "hash": "853d561e35c54fcd",
+  "lastmod": "2026-11-14"
  },
  "product:reyee-ew1300g": {
-  "hash": "d7d5f150b907e8f9",
-  "lastmod": "2026-07-25"
+  "hash": "68ff7c6f2db691e0",
+  "lastmod": "2026-11-14"
  },
  "product:rg-eg105gw-t": {
-  "hash": "2135319241045c8d",
-  "lastmod": "2026-07-25"
+  "hash": "67e06ebed7faa189",
+  "lastmod": "2026-11-14"
  },
  "product:rg-eg105gw-x": {
-  "hash": "799766e4d5d1f421",
-  "lastmod": "2026-07-25"
+  "hash": "b8934b1a100c0114",
+  "lastmod": "2026-11-14"
  },
  "product:rg-es220gs-lp": {
-  "hash": "f63594cf1840b08b",
-  "lastmod": "2026-07-25"
+  "hash": "5f43bcc42da2b318",
+  "lastmod": "2026-11-14"
  },
  "product:rg-rap2200f": {
-  "hash": "e929e6762ea50de4",
-  "lastmod": "2026-07-25"
+  "hash": "b238b3a10654868e",
+  "lastmod": "2026-11-14"
  },
  "product:rg-rap62": {
-  "hash": "ff0bec12cead3aee",
-  "lastmod": "2026-07-25"
+  "hash": "d70c57249fe68fe8",
+  "lastmod": "2026-11-14"
  },
  "product:shelly-1-gen3": {
   "hash": "ff591297959791e8",

@@ -4,7 +4,7 @@
   "technology": [
     "KNX"
   ],
-  "product_type": "Actuator",
+  "product_type": "Room Control Unit",
   "installation": "DIN Rail mounting",
   "title": {
     "en": "RCU2000 Room Control Unit",

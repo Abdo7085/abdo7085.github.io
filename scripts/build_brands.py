@@ -44,16 +44,19 @@ def derive_chips(brand_products):
     """Return (technologies, categories) — both sorted by frequency desc.
     Mirrors the deriveChips() function in assets/brand-detail.js so the
     JSON-LD / index agree with what the page renders client-side."""
-    tech_count, type_count = {}, {}
+    # "categories" are taxonomy category ids (data/taxonomy.json), read from
+    # the `category` field build_products.py derives for every index entry.
+    taxonomy = _lib.load_taxonomy()
+    tech_count, cat_count = {}, {}
     for p in brand_products:
         for tech in (p.get("technology") or []):
             if tech:
                 tech_count[tech] = tech_count.get(tech, 0) + 1
-        pt = p.get("product_type")
-        if pt:
-            type_count[pt] = type_count.get(pt, 0) + 1
+        cat = p.get("category") or taxonomy.category_of(p.get("product_type", ""))
+        if cat:
+            cat_count[cat] = cat_count.get(cat, 0) + 1
     techs = sorted(tech_count.keys(), key=lambda k: (-tech_count[k], k))
-    cats  = sorted(type_count.keys(), key=lambda k: (-type_count[k], k))
+    cats  = sorted(cat_count.keys(), key=lambda k: (-cat_count[k], k))
     return techs, cats
 
 

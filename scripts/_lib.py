@@ -205,6 +205,136 @@ def itemlist_jsonld(items: list, list_name: str) -> dict:
     }
 
 
+# ---------------- Taxonomy ----------------
+#
+# data/taxonomy.json is the single source of truth for catalog classification:
+# categories -> product types, technologies, installation methods and project
+# categories, each with its en/fr/ar label. Product JSON files store only a
+# `product_type`; the category is always derived from the taxonomy, so the two
+# can never disagree. The browser reads the same file via assets/site-core.js.
+
+TAXONOMY_PATH = ROOT / "data" / "taxonomy.json"
+
+
+class TaxonomyError(Exception):
+    """taxonomy.json itself is malformed (as opposed to a product using a
+    value the taxonomy does not define)."""
+
+
+class Taxonomy:
+    def __init__(self, raw: dict):
+        self.category_order: list = []          # category ids, display order
+        self.category_labels: dict = {}         # category id -> {lang: label}
+        self.type_order: list = []              # type ids, grouped by category
+        self.type_labels: dict = {}             # type id -> {lang: label}
+        self.type_category: dict = {}           # type id -> category id
+        for cat in raw.get("categories", []):
+            cid = cat.get("id")
+            if not cid or cid in self.category_labels:
+                raise TaxonomyError(f"category id missing or duplicated: {cid!r}")
+            self.category_order.append(cid)
+            self.category_labels[cid] = self._label(cat, f"category {cid!r}")
+            for ty in cat.get("types", []):
+                tid = ty.get("id")
+                if not tid or tid in self.type_category:
+                    raise TaxonomyError(
+                        f"product type missing or listed twice: {tid!r} (in category {cid!r})"
+                    )
+                self.type_order.append(tid)
+                self.type_category[tid] = cid
+                self.type_labels[tid] = self._label(ty, f"product type {tid!r}")
+
+        self.technologies: list = [x["id"] for x in raw.get("technologies", [])]
+        self.installation_labels: dict = {
+            x["id"]: self._label(x, f"installation {x['id']!r}")
+            for x in raw.get("installations", [])
+        }
+        self.project_category_labels: dict = {
+            x["id"]: self._label(x, f"project category {x['id']!r}")
+            for x in raw.get("project_categories", [])
+        }
+
+    @staticmethod
+    def _label(node: dict, what: str) -> dict:
+        label = node.get("label") or {}
+        missing = [lang for lang in LANGS if not label.get(lang)]
+        if missing:
+            raise TaxonomyError(f"{what} has no label for: {', '.join(missing)}")
+        return label
+
+    # ---- lookups ----
+
+    def category_of(self, product_type: str) -> str:
+        """Category id for a product type ('' if the type is unknown)."""
+        return self.type_category.get(product_type, "")
+
+    def label(self, kind: str, value: str, lang: str = "en") -> str:
+        """Display label. kind: category | type | installation | project_category.
+        Technologies are proper names and are never translated."""
+        table = {
+            "category": self.category_labels,
+            "type": self.type_labels,
+            "installation": self.installation_labels,
+            "project_category": self.project_category_labels,
+        }.get(kind, {})
+        label = table.get(value) or {}
+        return label.get(lang) or label.get("en") or value
+
+    # ---- validation ----
+
+    def check_product(self, product: dict) -> list:
+        """Human-readable problems with a product's classification fields."""
+        problems = []
+        ptype = product.get("product_type")
+        if ptype not in self.type_category:
+            problems.append(
+                f'product_type "{ptype}" is not defined in data/taxonomy.json '
+                f'(known: {", ".join(self.type_order)})'
+            )
+        for tech in product.get("technology") or []:
+            if tech not in self.technologies:
+                problems.append(
+                    f'technology "{tech}" is not defined in data/taxonomy.json '
+                    f'(known: {", ".join(self.technologies)})'
+                )
+        inst = product.get("installation")
+        if inst and inst not in self.installation_labels:
+            problems.append(
+                f'installation "{inst}" is not defined in data/taxonomy.json '
+                f'(known: {", ".join(self.installation_labels)})'
+            )
+        return problems
+
+    def check_project(self, project: dict) -> list:
+        return [
+            f'category "{c}" is not defined in data/taxonomy.json '
+            f'(known: {", ".join(self.project_category_labels)})'
+            for c in project.get("categories") or []
+            if c not in self.project_category_labels
+        ]
+
+
+@functools.lru_cache(maxsize=1)
+def load_taxonomy() -> Taxonomy:
+    try:
+        raw = json.loads(TAXONOMY_PATH.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise TaxonomyError(f"cannot read {TAXONOMY_PATH}: {exc}") from exc
+    return Taxonomy(raw)
+
+
+def abort_on_problems(problems: list, what: str) -> None:
+    """Stop the build with a readable report instead of publishing bad data."""
+    if not problems:
+        return
+    print(f"\nBUILD STOPPED - {len(problems)} problem(s) in {what}:")
+    for line in problems:
+        print(f"  - {line}")
+    print("\nFix the file(s) above, then rebuild. A new classification value is added in "
+          "data/taxonomy.json; a new brand needs a file in data/brands/.")
+    raise SystemExit(1)
+
+
 # ---------------- Sitemap ----------------
 
 def _sitemap_url_block(loc: str, lastmod: str, suffix: str) -> str:

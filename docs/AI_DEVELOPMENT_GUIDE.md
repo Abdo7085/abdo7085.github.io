@@ -17,7 +17,7 @@
   - **`section-eyebrows.css`** (2026-04-30): علامات صغيرة بصيغة `— 01 / Expertise` فوق عناوين 4 أقسام رئيسية في الصفحة الرئيسية. CSS pseudo-elements (`::before`) + `:lang()` selectors للترجمة. لا تلمس SPA bundle. **راجع القسم 10.**
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
-  - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA) — **منذ 2026-06-10 بتصميم «اللوح الورقي» المطابق للمعاينة (راجع `VISUAL_IDENTITY_GUIDE.md` §7.6)؛ كانفس الصفحة (`--cream-deep`) موحّد عبر قاعدة `body:not(.home-page)` في `projects.css` — لا صنف خاص بهذه الصفحة.** **⚠️ قاموس أيقونات التقنيات وُحِّد في دالة `relProtoMarkup()` (~السطر 262):** هو المصدر الوحيد لأيقونات البروتوكولات على هذه الصفحة — يخدم خليّة «البروتوكولات» في `.pd-feature-bar` **و**شريط بروتوكولات بطاقات Related Products معاً (أُزيل القاموس القديم لدوائر 38px في شريط Key Features). عند إضافة تقنية جديدة (`technology`)، أضف فرعاً لها في `relProtoMarkup()` — الشعار الرسمي للبروتوكولات المعروفة (Zigbee, Matter, Thread) أو أيقونة Lucide للباقي. التقنية المجهولة تظهر نصاً داخل `<span class="prod-proto">` (مقبول بصرياً). وحدّث كذلك القاموس المرآتي في `products.js`/`brand-detail.js` لبطاقات الكتالوج. **يدعم أيضاً معرض صور متعدد (~السطر 185):** دالة `renderGallery()` تولّد أزراراً مصغرة (thumbs) قابلة للنقر مع تأثير fade تلقائياً عند وجود أكثر من صورة في مصفوفة `images`. الصورة الأولى هي الرئيسية المُعالَجة (تظهر في البطاقات و SEO)، والصور الثانوية تُعرض بملء الشاشة (`contain` 100%) مع padding صغير (`0.3rem`). **مواضع thumbs:** Desktop LTR — عمودي يسار الصورة. Desktop RTL — عمودي يمين الصورة (flex row افتراضي يتعامل مع RTL بشكل طبيعي). Mobile — أفقي في المنتصف (`justify-content: center`).
+  - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA) — **منذ 2026-06-10 بتصميم «اللوح الورقي» المطابق للمعاينة (راجع `VISUAL_IDENTITY_GUIDE.md` §7.6)؛ كانفس الصفحة (`--cream-deep`) موحّد عبر قاعدة `body:not(.home-page)` في `projects.css` — لا صنف خاص بهذه الصفحة.** **⚠️ قاموس أيقونات التقنيات (منذ 2026-11-14) موجود في مكان واحد فقط: `SE.protoMarkup()` داخل `assets/site-core.js`** — يخدم خليّة «البروتوكولات» في `.pd-feature-bar` وبطاقات Related Products وبطاقات الكتالوج وصفحات العلامات معاً (أُزيلت النسخ الثلاث المتطابقة من `product-detail.js` و`products.js` و`brand-detail.js`). عند إضافة تقنية جديدة: أضفها إلى `technologies` في `data/taxonomy.json` ثم أضف فرعاً لها في `SE.protoMarkup()` — الشعار الرسمي للبروتوكولات المعروفة (Zigbee, Matter, Thread) أو أيقونة Lucide للباقي. التقنية بلا فرع تظهر نصاً داخل `<span class="prod-proto">` (مقبول بصرياً). راجع القسم 3.3. **يدعم أيضاً معرض صور متعدد (~السطر 185):** دالة `renderGallery()` تولّد أزراراً مصغرة (thumbs) قابلة للنقر مع تأثير fade تلقائياً عند وجود أكثر من صورة في مصفوفة `images`. الصورة الأولى هي الرئيسية المُعالَجة (تظهر في البطاقات و SEO)، والصور الثانوية تُعرض بملء الشاشة (`contain` 100%) مع padding صغير (`0.3rem`). **مواضع thumbs:** Desktop LTR — عمودي يسار الصورة. Desktop RTL — عمودي يمين الصورة (flex row افتراضي يتعامل مع RTL بشكل طبيعي). Mobile — أفقي في المنتصف (`justify-content: center`).
   - `projects.css`: **ملف CSS مشترك (Shared CSS)** — يحتوي على أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة) **بالإضافة إلى** تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta`, `.proj-cta-inner`, `.proj-cta-btn` إلخ). هذا القسم يُعرض عبر مكوّن `Od` داخل الـ SPA في الصفحة الرئيسية وعبر `renderCta()` في `project-detail.js`. **لذلك يجب تحميل هذا الملف في كل صفحات الموقع التي تستخدم الـ SPA** (بما فيها قوالب المنتجات `product.html` و `products.html`).
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
@@ -373,6 +373,46 @@ u.jsx(Mt, {
 **متى لا تحتاج `reloadDocument`:** عندما يكون الهدف صفحة SPA-routed لها مكوّن مسجَّل في `<Routes>` (مثل `/previous-work` التي يخدمها مكوّن `sv`). client-side navigation العادي يكفي لتلك الحالات لأن React سيُصيّر المكوّن داخل outlet.
 
 **كيف تميّز الحالتين:** إذا كان للقالب ملف JS مخصّص يبحث عن `#custom-X-root-wrapper` (مثل `brands-list.js`, `products.js`, `project-detail.js`, `product-detail.js`, `brand-detail.js`) فهو غالباً قالب root مستقل خارج SPA — استخدم `reloadDocument`.
+
+---
+
+## 3.3 التصنيف الموحّد (Taxonomy) — 2026-11-14
+
+**المصدر الوحيد لكل ما يخصّ تصنيف الكتالوج هو `data/taxonomy.json`.** لا توجد نسخة ثانية في ملفات الترجمة ولا في المهارات ولا في JavaScript.
+
+### ماذا يحتوي
+| المفتاح | المحتوى |
+|---|---|
+| `categories[]` | الفئات بترتيب عرضها. لكل فئة `id` (slug) + `label` بثلاث لغات + `types[]` |
+| `categories[].types[]` | أنواع المنتجات. `id` هو القيمة المكتوبة في `product_type` داخل ملف المنتج + `label` بثلاث لغات |
+| `technologies[]` | البروتوكولات المسموحة (`id` فقط — أسماء علم لا تُترجم) |
+| `installations[]` | طرق التركيب + `label` بثلاث لغات |
+| `project_categories[]` | فئات معرض الأعمال + `label` بثلاث لغات |
+| `aliases.product_type` | أسماء قديمة ← أسماء جديدة، حتى تبقى روابط الفلاتر المشارَكة سابقاً تعمل (مثال: `Network` ← Router + Network Switch + Access Point) |
+
+### القواعد
+- **ملف المنتج يخزّن `product_type` فقط. لا يُكتب فيه حقل `category` أبداً** — الفئة تُشتقّ من موقع النوع داخل `taxonomy.json` (كل نوع تحت فئة واحدة بالضبط)، فيستحيل أن يتعارضا. `build_products.py` يكتب الفئة المشتقّة في كل مُدخل من `products_index.json`.
+- **البناء يرفض أي قيمة غير معرَّفة ويتوقف قبل كتابة أي ملف**، مع رسالة تسمّي الملف والقيمة الخاطئة والقيم المسموحة: `product_type` / `technology` / `installation` (`build_products.py`)، علامة بلا ملف في `data/brands/` (`build_products.py`)، فئة مشروع غير معرَّفة (`build_projects.py`)، ملف JSON تالف (لم يعد يُتجاوَز بصمت). المنطق في `_lib.Taxonomy` و `_lib.abort_on_problems()`.
+- **اللغات الثلاث إلزامية** لكل `label` — ملف تصنيف ناقص يوقف البناء (`_lib.TaxonomyError`).
+- **ترتيب القوائم في الملف = ترتيب العرض** في فلاتر الكتالوج.
+
+### من يقرأه
+- **البناء (Python):** `_lib.load_taxonomy()` ← التحقق + اشتقاق `category` في الفهرس + شرائح «التخصّص» في `brands_index.json` (صارت معرّفات فئات).
+- **المتصفح (JS):** `assets/site-core.js` يعرّض `window.SE`:
+  - `SE.taxonomy.load()` — يجلب الملف مرة واحدة (لا يرفض أبداً؛ عند الفشل تُعرض القيم الخام).
+  - `SE.taxonomy.label(kind, id)` — التسمية بلغة الصفحة. `kind`: `category` | `type` | `installation` | `project_category`.
+  - `SE.taxonomy.categoryOf(type)` / `sorted(kind, values)` / `expandAlias(kind, value)`.
+  - `SE.protoMarkup(tech)` — قاموس أيقونات البروتوكولات الوحيد.
+- `site-core.js` يُحمَّل (`defer`) **بعد `i18n.js` وقبل سكربتات الصفحات** في القوالب الخمسة: `products.html`، `product.html`، `brands.html`، `brand.html`، `project.html`. **أي قالب جذري جديد يستخدم سكربت صفحة يقرأ التصنيف يجب أن يحمّله بالترتيب نفسه.** كل سكربت صفحة ينتظر `SE.taxonomy.load()` ضمن `Promise.all` مع جلب بياناته قبل أول رسم.
+
+### أثره على الواجهة
+- **فلاتر الكتالوج** (`products.js`): المحاور بالترتيب `FACETS = [category, product_type, brand, technology, installation]`. «الفئة» أولاً ومفتوحة. اختيار فئة يُبهت تلقائياً الأنواع التي لا تنتمي إليها (آلية العدّادات الموجودة أصلاً). الرابط يحمل `?category=<id>`.
+- **التسميات لم تعد تمرّ عبر `data-i18n="val_*"`** — تُكتب مباشرة بلغة الصفحة من `SE.taxonomy.label()`. مفاتيح `val_*` حُذفت من `assets/locales/*.json` (بقي فيها نصوص الواجهة فقط، ومنها عناوين المجموعات `filter_category` وأخواتها).
+- **البحث** يطابق أيضاً اسم الفئة/النوع/التركيب بلغة الزائر.
+- **شرائح «التخصّص» في صفحة العلامة** و**شارات فئات المشروع** كانت تُعرض بالإنجليزية في كل اللغات؛ صارت مترجمة.
+
+### إضافة قيمة جديدة
+عدّل `data/taxonomy.json` فقط ثم ابنِ. التفاصيل خطوة بخطوة في `.claude/commands/product.md` (الخطوة 4) و `.claude/commands/project.md`.
 
 ---
 

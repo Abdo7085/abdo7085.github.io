@@ -5,7 +5,7 @@
     "technology": [
       "LAN"
     ],
-    "product_type": "Touch Panel",
+    "product_type": "Indoor Monitor",
     "installation": "Wall mount",
     "title": {
       "en": "Dahua VTH2421FB-P/FW-P 7\" IP Indoor Monitor",
@@ -17,7 +17,7 @@
       "fr": "Moniteur intérieur IP à écran tactile 7 pouces avec audio bidirectionnel et alarme intégrée.",
       "ar": "شاشة داخلية IP تعمل باللمس بحجم 7 بوصات مع صوت ثنائي الاتجاه ونظام إنذار متكامل."
     },
-    "category": "",
+    "category": "security",
     "image": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png"
   },
   {
@@ -26,7 +26,7 @@
     "technology": [
       "LAN"
     ],
-    "product_type": "Touch Panel",
+    "product_type": "Indoor Monitor",
     "installation": "Wall mount",
     "title": {
       "en": "Dahua VTH2621GB-P/GW-P 7\" IP Indoor Monitor",
@@ -38,7 +38,7 @@
       "fr": "Moniteur intérieur tactile 7\" série Lite avec H.265, PoE et alarme intégrée.",
       "ar": "شاشة داخلية لمسية 7\" مع H.265 و PoE وإنذار متكامل."
     },
-    "category": "",
+    "category": "security",
     "image": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png"
   },
   {
@@ -48,7 +48,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Touch Panel",
+    "product_type": "Indoor Monitor",
     "installation": "Wall mount",
     "title": {
       "en": "Dahua VTH8621KMS-WP IP & Wi-Fi Indoor Monitor",
@@ -60,7 +60,7 @@
       "fr": "Moniteur intérieur tactile 7\" série Ultra avec Wi-Fi, PoE et alarme intégrée.",
       "ar": "شاشة داخلية لمسية 7\" بتقنية Wi-Fi و PoE وإنذار متكامل."
     },
-    "category": "",
+    "category": "security",
     "image": "/assets/products/dahua-vth8621kms-wp-indoor-monitor.png"
   },
   {
@@ -82,7 +82,7 @@
       "fr": "Station de porte villa IP & Wi-Fi série Ultra avec caméra 2MP et audio bidirectionnel.",
       "ar": "محطة باب خارجية بتقنية IP و Wi-Fi مع كاميرا 2MP وصوت ثنائي الاتجاه."
     },
-    "category": "",
+    "category": "security",
     "image": "/assets/products/dahua-vto3311q-wp-villa-door-station.png"
   },
   {
@@ -103,7 +103,7 @@
       "fr": "Station de porte IP avec accès par visage, empreinte, carte et code.",
       "ar": "محطة باب خارجية IP مع دخول بالوجه والبصمة والبطاقة وكلمة المرور."
     },
-    "category": "",
+    "category": "security",
     "image": "/assets/products/dahua-vto6541h-s2-apartment-door-station.png"
   },
   {
@@ -113,7 +113,7 @@
       "KNX",
       "LAN"
     ],
-    "product_type": "Gateway",
+    "product_type": "IP Interface",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "EAE IPI200 KNX IP Interface",
@@ -125,7 +125,7 @@
       "fr": "Interface tunneling KNXnet/IP pour programmation et supervision.",
       "ar": "واجهة KNXnet/IP tunneling للبرمجة والمراقبة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-ipi200-ip-interface.png"
   },
   {
@@ -135,7 +135,7 @@
       "KNX",
       "LAN"
     ],
-    "product_type": "Gateway",
+    "product_type": "IP Interface",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "EAE IPR200 KNX IP Router",
@@ -147,7 +147,7 @@
       "fr": "Routeur IP KNX avec 5 connexions tunneling simultanées.",
       "ar": "راوتر IP KNX مع 5 اتصالات tunneling متزامنة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-ipr200-ip-router.png"
   },
   {
@@ -156,7 +156,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Gateway",
+    "product_type": "Line Coupler",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "EAE LC200 KNX Line Coupler",
@@ -168,7 +168,7 @@
       "fr": "Coupleur de ligne/backbone KNX compact avec isolation galvanique.",
       "ar": "رابط خطوط/عمود فقري KNX مدمج مع عزل كلفاني."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-lc200-line-coupler.png"
   },
   {
@@ -189,7 +189,7 @@
       "fr": "Écran de contrôle domotique 10,1\" avec interphone et sécurité.",
       "ar": "لوحة تحكم ذكية 10.1 بوصة مع اتصال داخلي ونظام أمان."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/eae-knx-miola-touch-panel.png"
   },
   {
@@ -210,7 +210,7 @@
       "fr": "Interrupteur poussoir KNX capacitif élégant, variantes 1 à 5 touches.",
       "ar": "مفتاح ضغط KNX أنيق بتصميم لمسي، من 1 إلى 5 أزرار."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/eae-knx-oria-push-switches.png"
   },
   {
@@ -231,7 +231,7 @@
       "fr": "Alimentation stable 30V DC pour lignes KNX TP avec self intégrée.",
       "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-power-supply-ps640.png"
   },
   {
@@ -252,7 +252,7 @@
       "fr": "Alimentation bus KNX 320 mA avec sortie 30 V supplémentaire.",
       "ar": "مزود طاقة ناقل KNX بقدرة 320 mA مع خرج 30 فولت إضافي."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-ps320-power-supply.png"
   },
   {
@@ -273,7 +273,7 @@
       "fr": "Interrupteur tactile KNX en métal brossé premium avec design sans cadre.",
       "ar": "مفتاح لمس KNX فاخر من المعدن المصقول وتصميم أنيق بدون إطار."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/eae-knx-rosa-switches.png"
   },
   {
@@ -294,7 +294,7 @@
       "fr": "Thermostat tactile en métal premium avec contrôleur de température ambiante intégré.",
       "ar": "منظم حرارة معدني فاخر يعمل باللمس مع جهاز تحكم مدمج لدرجة حرارة الغرفة."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/eae-knx-rosa-thermostat.png"
   },
   {
@@ -315,7 +315,7 @@
       "fr": "Écran tactile capacitif de 4 pouces avec capteurs intégrés, contrôle RGB et fonctions thermostat.",
       "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/eae-knx-td4-touch-panel.png"
   },
   {
@@ -336,7 +336,7 @@
       "fr": "Entrée binaire KNX 8 canaux pour interrupteurs conventionnels.",
       "ar": "مدخل ثنائي KNX بـ 8 قنوات للمفاتيح التقليدية."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/eae-knx-ui108-universal-interface.png"
   },
   {
@@ -360,7 +360,7 @@
       "fr": "Hub domotique multi-protocole avec Matter, Zigbee & Thread.",
       "ar": "موزع منزلي ذكي متعدد البروتوكولات — Matter و Zigbee و Thread."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/moes-matter-zigbee-gateway.png"
   },
   {
@@ -369,7 +369,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU0800 Room Control Unit",
@@ -381,7 +381,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu0800-room-control-unit.png"
   },
   {
@@ -390,7 +390,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU0808 Room Control Unit",
@@ -402,7 +402,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu0808-room-control-unit.png"
   },
   {
@@ -411,7 +411,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU1200 Room Control Unit",
@@ -423,7 +423,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu1200-room-control-unit.png"
   },
   {
@@ -432,7 +432,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU1212 Room Control Unit",
@@ -444,7 +444,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu1212-room-control-unit.png"
   },
   {
@@ -453,7 +453,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU1600 Room Control Unit",
@@ -465,7 +465,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu1600-room-control-unit.png"
   },
   {
@@ -474,7 +474,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU1616 Room Control Unit",
@@ -486,7 +486,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu1616-room-control-unit.png"
   },
   {
@@ -495,7 +495,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU2000 Room Control Unit",
@@ -507,7 +507,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu2000-room-control-unit.png"
   },
   {
@@ -516,7 +516,7 @@
     "technology": [
       "KNX"
     ],
-    "product_type": "Actuator",
+    "product_type": "Room Control Unit",
     "installation": "DIN Rail mounting",
     "title": {
       "en": "RCU2018 Room Control Unit",
@@ -528,7 +528,7 @@
       "fr": "Appareil KNX tout-en-un pour un contrôle unifié de la pièce.",
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/rcu2018-room-control-unit.png"
   },
   {
@@ -538,7 +538,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Router",
     "installation": "Free standing",
     "title": {
       "en": "Reyee RG-EW1300G",
@@ -550,7 +550,7 @@
       "fr": "Routeur mesh Gigabit double bande pour la maison.",
       "ar": "راوتر mesh ثنائي النطاق للمنازل."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/reyee-ew1300g.png"
   },
   {
@@ -560,7 +560,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Router",
     "installation": "Free standing",
     "title": {
       "en": "Reyee RG-EG105GW(T)",
@@ -572,7 +572,7 @@
       "fr": "Routeur professionnel tout-en-un Wi-Fi 5.",
       "ar": "راوتر أعمال متكامل Wi-Fi 5."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/rg-eg105gw-t.png"
   },
   {
@@ -582,7 +582,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Router",
     "installation": "Free standing",
     "title": {
       "en": "Reyee RG-EG105GW-X",
@@ -594,7 +594,7 @@
       "fr": "Routeur VPN professionnel tout-en-un Wi-Fi 6.",
       "ar": "راوتر أعمال متكامل Wi-Fi 6 مع VPN."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/rg-eg105gw-x.png"
   },
   {
@@ -603,7 +603,7 @@
     "technology": [
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Network Switch",
     "installation": "Free standing",
     "title": {
       "en": "Reyee RG-ES220GS-LP",
@@ -615,7 +615,7 @@
       "fr": "Switch PoE+ Gigabit 20 ports pour vidéosurveillance.",
       "ar": "سويتش PoE+ ذكي 20 منفذ للمراقبة بالفيديو."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/rg-es220gs-lp.png"
   },
   {
@@ -625,7 +625,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Access Point",
     "installation": "Ceiling mounting",
     "title": {
       "en": "Reyee RG-RAP2200(F)",
@@ -637,7 +637,7 @@
       "fr": "Point d'accès plafond Wi-Fi 5 bi-bande.",
       "ar": "نقطة وصول سقفية Wi-Fi 5 ثنائية النطاق."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/rg-rap2200f.png"
   },
   {
@@ -647,7 +647,7 @@
       "Wi-Fi",
       "LAN"
     ],
-    "product_type": "Network",
+    "product_type": "Access Point",
     "installation": "Ceiling mounting",
     "title": {
       "en": "Reyee RG-RAP62",
@@ -659,7 +659,7 @@
       "fr": "Point d'accès plafond Wi-Fi 6 bi-bande.",
       "ar": "نقطة وصول سقفية Wi-Fi 6 ثنائية النطاق."
     },
-    "category": "",
+    "category": "networking",
     "image": "/assets/products/rg-rap62.png"
   },
   {
@@ -681,7 +681,7 @@
       "fr": "Relais intelligent Gen3 mono-canal.",
       "ar": "مرحل ذكي الجيل الثالث بقناة واحدة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-1-gen3.png"
   },
   {
@@ -703,7 +703,7 @@
       "fr": "Relais intelligent Gen3 avec mesure de puissance.",
       "ar": "مرحل ذكي الجيل الثالث مع قياس الطاقة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-1pm-gen3.png"
   },
   {
@@ -725,7 +725,7 @@
       "fr": "Relais intelligent Gen3 2 canaux avec mesure de puissance.",
       "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-2pm-gen3.png"
   },
   {
@@ -747,7 +747,7 @@
       "fr": "Variateur intelligent Gen3, jusqu'à 200W.",
       "ar": "مخفت إضاءة ذكي الجيل الثالث، حتى 200 واط."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/shelly-dimmer-gen3.png"
   },
   {
@@ -769,7 +769,7 @@
       "fr": "Relais intelligent mono-canal.",
       "ar": "مرحل ذكي بقناة واحدة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-plus-1.png"
   },
   {
@@ -791,7 +791,7 @@
       "fr": "Relais intelligent 1 canal avec mesure de puissance.",
       "ar": "مرحل ذكي بقناة واحدة مع قياس الطاقة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-plus-1pm.png"
   },
   {
@@ -813,7 +813,7 @@
       "fr": "Relais intelligent 2 canaux avec mesure de puissance.",
       "ar": "مرحل ذكي بقناتين مع قياس الطاقة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/shelly-plus-2pm.png"
   },
   {
@@ -836,7 +836,7 @@
       "fr": "Relais intelligent 3 canaux sur rail DIN.",
       "ar": "مرحل ذكي بـ 3 قنوات على سكة DIN."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/shelly-pro-3.png"
   },
   {
@@ -859,7 +859,7 @@
       "fr": "Interrupteur intelligent rail DIN 4 canaux avec mesure de puissance.",
       "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/shelly-pro-4pm.png"
   },
   {
@@ -882,7 +882,7 @@
       "fr": "Contrôleur double volet/store avec mesure de puissance.",
       "ar": "وحدة تحكم مزدوجة للستائر مع قياس الطاقة."
     },
-    "category": "",
+    "category": "shutters",
     "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
   },
   {
@@ -904,7 +904,7 @@
       "fr": "Ecran tactile 4 pouces avec relais et capteurs integres.",
       "ar": "شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/shelly-wall-display.png"
   },
   {
@@ -925,7 +925,7 @@
       "fr": "Interrupteur double canal sans neutre pour anciens câblages.",
       "ar": "مفتاح ذكي بقناتين بدون سلك محايد للتركيبات القديمة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/sonoff-mini-zb2gs-l.png"
   },
   {
@@ -946,7 +946,7 @@
       "fr": "Interrupteur intelligent double canal compact.",
       "ar": "مفتاح ذكي مدمج بقناتين للتحكم بحملين."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/sonoff-mini-zb2gs.png"
   },
   {
@@ -967,7 +967,7 @@
       "fr": "Variateur intelligent encastré pour une lumière modulable.",
       "ar": "مخفت إضاءة ذكي مدمج خلف الحائط لإضاءة هادئة."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/sonoff-mini-zbdim.png"
   },
   {
@@ -988,7 +988,7 @@
       "fr": "Contrôleur de volet roulant intelligent compact, encastré.",
       "ar": "وحدة تحكم ذكية مدمجة بالستائر، تُركَّب خلف الحائط."
     },
-    "category": "",
+    "category": "shutters",
     "image": "/assets/products/sonoff-mini-zbrbs.png"
   },
   {
@@ -1009,7 +1009,7 @@
       "fr": "Interrupteur intelligent sans neutre pour anciens câblages.",
       "ar": "مفتاح ذكي بدون سلك محايد للتركيبات القديمة."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/sonoff-zbmini-extreme-l2.png"
   },
   {
@@ -1030,7 +1030,7 @@
       "fr": "Interrupteur intelligent Zigbee 3.0 ultra-compact.",
       "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."
     },
-    "category": "",
+    "category": "smart-relays",
     "image": "/assets/products/sonoff-zbmini-extreme.png"
   },
   {
@@ -1051,7 +1051,7 @@
       "fr": "Interface 2 canaux entrée binaire/sortie LED avec sonde de température.",
       "ar": "واجهة 2 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-bin-t-2x.png"
   },
   {
@@ -1072,7 +1072,7 @@
       "fr": "Interface 4 canaux entrée binaire/sortie LED avec sonde de température.",
       "ar": "واجهة 4 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-bin-t-4x.png"
   },
   {
@@ -1093,7 +1093,7 @@
       "fr": "Interface 6 canaux entrée binaire/sortie LED avec sonde de température.",
       "ar": "واجهة 6 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-bin-t-6x.png"
   },
   {
@@ -1114,7 +1114,7 @@
       "fr": "Interface 8 canaux entrée binaire/sortie LED avec sonde de température.",
       "ar": "واجهة 8 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-bin-t-8x.png"
   },
   {
@@ -1135,7 +1135,7 @@
       "fr": "Variateur KNX universel 2 canaux, 310 W/canal, avec entrées analogiques-numériques.",
       "ar": "خافت ضوء KNX عالمي 2 قنوات، 310 واط/قناة، مع مداخل تناظرية-رقمية."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/zennio-diminbox-dx2.png"
   },
   {
@@ -1156,7 +1156,7 @@
       "fr": "Variateur KNX universel 4 canaux, 300 W/canal, jusqu'à 1200 W combiné.",
       "ar": "خافت ضوء KNX عالمي 4 قنوات، 300 واط/قناة، حتى 1200 واط مجمّعاً."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/zennio-diminbox-dx4.png"
   },
   {
@@ -1177,7 +1177,7 @@
       "fr": "Interrupteur tactile KNX en verre capacitif premium pour cadres 70 mm.",
       "ar": "مفتاح لمسي زجاجي KNX سعوي فاخر لإطارات 70 مم."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-flat-70.png"
   },
   {
@@ -1198,7 +1198,7 @@
       "fr": "Actionneur encastré 2 sorties pour boîtes murales.",
       "ar": "مشغل مدمج بمخرجين لعلب الحائط."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-inbox-20-v3.png"
   },
   {
@@ -1219,7 +1219,7 @@
       "fr": "Actionneur encastré 2 sorties / 4 entrées avec thermostats.",
       "ar": "مشغل مدمج بمخرجين و4 مداخل مع ثرموستات."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-inbox-24-v3.png"
   },
   {
@@ -1240,7 +1240,7 @@
       "fr": "Alimentation KNX universelle compacte 160 mA avec sortie auxiliaire.",
       "ar": "مصدر طاقة KNX عالمي مدمج 160 mA مع خرج مساعد."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-kupsupply-160ma.png"
   },
   {
@@ -1261,7 +1261,7 @@
       "fr": "Alimentation KNX universelle 320 mA avec sortie auxiliaire 29 V.",
       "ar": "مصدر طاقة KNX عالمي 320 mA مع خرج مساعد 29 فولت."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-kupsupply-320ma.png"
   },
   {
@@ -1282,7 +1282,7 @@
       "fr": "Alimentation KNX universelle 640 mA avec sortie auxiliaire 29 V.",
       "ar": "مصدر طاقة KNX عالمي 640 mA مع خرج مساعد 29 فولت."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-kupsupply-640ma.png"
   },
   {
@@ -1303,7 +1303,7 @@
       "fr": "Actionneur multifonction 12 sorties avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 12 مخرجاً مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-12.png"
   },
   {
@@ -1324,7 +1324,7 @@
       "fr": "Actionneur multifonction 16 sorties avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 16 مخرجاً مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-16-v4.png"
   },
   {
@@ -1345,7 +1345,7 @@
       "fr": "Actionneur multifonction 20 sorties avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 20 مخرجاً مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-20.png"
   },
   {
@@ -1366,7 +1366,7 @@
       "fr": "Actionneur multifonction 24 sorties avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 24 مخرجاً مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-24-v2.png"
   },
   {
@@ -1387,7 +1387,7 @@
       "fr": "Actionneur multifonction 6 sorties / 6 entrées avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 6 مخارج و6 مداخل مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-66-v3.png"
   },
   {
@@ -1408,7 +1408,7 @@
       "fr": "Actionneur multifonction 8 sorties avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-8-v4.png"
   },
   {
@@ -1429,7 +1429,7 @@
       "fr": "Actionneur multifonction 8 sorties / 8 entrées avec KNX Secure.",
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج و8 مداخل مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-maxinbox-88.png"
   },
   {
@@ -1450,7 +1450,7 @@
       "fr": "Actionneur DIN compact 2 sorties avec KNX Secure.",
       "ar": "مشغل DIN مدمج بمخرجين مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-minibox-20-v2.png"
   },
   {
@@ -1471,7 +1471,7 @@
       "fr": "Actionneur DIN compact 2 sorties / 5 entrées avec KNX Secure.",
       "ar": "مشغل DIN مدمج بـ 2 مخارج و5 مداخل مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-minibox-25-v3.png"
   },
   {
@@ -1492,7 +1492,7 @@
       "fr": "Actionneur DIN compact 4 sorties avec KNX Secure.",
       "ar": "مشغل DIN مدمج بـ 4 مخارج مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-minibox-40-v3.png"
   },
   {
@@ -1513,7 +1513,7 @@
       "fr": "Actionneur DIN compact 4 sorties / 5 entrées avec KNX Secure.",
       "ar": "مشغل DIN مدمج بـ 4 مخارج و5 مداخل مع KNX Secure."
     },
-    "category": "",
+    "category": "actuators",
     "image": "/assets/products/zennio-minibox-45-v3.png"
   },
   {
@@ -1534,7 +1534,7 @@
       "fr": "Variateur KNX universel 2 canaux pour charges RLC, LED et CFL.",
       "ar": "خافت ضوء KNX عالمي 2 قنوات لأحمال RLC وLED وCFL."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/zennio-narrowdim-x2.png"
   },
   {
@@ -1555,7 +1555,7 @@
       "fr": "Variateur KNX universel 4 canaux pour charges RLC, LED et CFL.",
       "ar": "خافت ضوء KNX عالمي 4 قنوات لأحمال RLC وLED وCFL."
     },
-    "category": "",
+    "category": "dimming",
     "image": "/assets/products/zennio-narrowdim-x4.png"
   },
   {
@@ -1576,7 +1576,7 @@
       "fr": "Module d'entrée KNX sur rail DIN avec 8 canaux analogiques-numériques.",
       "ar": "وحدة مداخل KNX على سكة DIN بـ 8 قنوات تناظرية-رقمية."
     },
-    "category": "",
+    "category": "system",
     "image": "/assets/products/zennio-railquad-8.png"
   },
   {
@@ -1597,7 +1597,7 @@
       "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 55 mm standard.",
       "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 55 مم القياسية."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-tecla-55.png"
   },
   {
@@ -1618,7 +1618,7 @@
       "fr": "Interrupteur tactile KNX capacitif rétroéclairé pour cadres 70 mm standard.",
       "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 70 مم القياسية."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-tecla-70.png"
   },
   {
@@ -1639,7 +1639,7 @@
       "fr": "Interrupteur tactile KNX capacitif grand format rétroéclairé, 4–10 boutons.",
       "ar": "مفتاح لمسي KNX سعوي مضيء بحجم كبير، 4 إلى 10 أزرار."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-tecla-xl.png"
   },
   {
@@ -1660,7 +1660,7 @@
       "fr": "Interrupteur tactile KNX capacitif rétroéclairé, 1 à 8 boutons personnalisables.",
       "ar": "مفتاح لمسي KNX سعوي مضيء، من 1 إلى 8 أزرار قابلة للتخصيص."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-tecla.png"
   },
   {
@@ -1681,7 +1681,7 @@
       "fr": "Écran tactile couleur capacitif 10\" avec thermostat et interphone.",
       "ar": "شاشة لمس ملونة سعوية 10 بوصة مع ترموستات واتصال داخلي."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z100-touch-panel.png"
   },
   {
@@ -1702,7 +1702,7 @@
       "fr": "Panneau tactile KNX capacitif 2,8 pouces pour cadres 70 mm standard.",
       "ar": "لوحة تحكم لمسية KNX بحجم 2.8 بوصات لإطارات 70 مم القياسية."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z28.png"
   },
   {
@@ -1723,7 +1723,7 @@
       "fr": "Panneau tactile KNX 3,5 pouces avec sonde d'humidité et KNX Secure.",
       "ar": "لوحة تحكم لمسية KNX بحجم 3.5 بوصات مع حساس رطوبة وKNX Secure."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z35-v3.png"
   },
   {
@@ -1744,7 +1744,7 @@
       "fr": "Panneau tactile KNX capacitif 4,1 pouces avec 7 pages.",
       "ar": "لوحة تحكم لمسية KNX بحجم 4.1 بوصات و7 صفحات."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z40.png"
   },
   {
@@ -1765,7 +1765,7 @@
       "fr": "Panneau tactile KNX couleur 5 pouces avec 12 pages.",
       "ar": "لوحة تحكم لمسية KNX ملونة بحجم 5 بوصات و12 صفحة."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z50.png"
   },
   {
@@ -1786,7 +1786,7 @@
       "fr": "Panneau tactile KNX couleur 7 pouces avec 56 scènes.",
       "ar": "لوحة تحكم لمسية KNX ملونة بحجم 7 بوصات و56 مشهداً."
     },
-    "category": "",
+    "category": "controls",
     "image": "/assets/products/zennio-z70-v2.png"
   }
 ]

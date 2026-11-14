@@ -1,0 +1,117 @@
+{
+  "_about": "Single source of truth for catalog classification. Categories contain product types; a product JSON stores only its product_type and the category is derived from here. Labels for every value live here (en/fr/ar) - not in assets/locales. List order is display order. Read by scripts/_lib.py (build + validation) and assets/site-core.js (filters, labels). See docs/AI_DEVELOPMENT_GUIDE.md section 3.3.",
+
+  "categories": [
+    {
+      "id": "controls",
+      "label": { "en": "Switches & Touch Panels", "fr": "Interrupteurs & écrans tactiles", "ar": "المفاتيح ولوحات التحكم" },
+      "types": [
+        { "id": "Switch", "label": { "en": "Switch", "fr": "Interrupteur", "ar": "مفتاح ذكي" } },
+        { "id": "Touch Panel", "label": { "en": "Touch Panel", "fr": "Écran tactile", "ar": "لوحة لمس" } },
+        { "id": "Thermostat", "label": { "en": "Thermostat", "fr": "Thermostat", "ar": "ترموستات" } }
+      ]
+    },
+    {
+      "id": "actuators",
+      "label": { "en": "Actuators & Room Controllers", "fr": "Actionneurs & contrôleurs de pièce", "ar": "المشغّلات ووحدات الغرف" },
+      "types": [
+        { "id": "Actuator", "label": { "en": "Actuator", "fr": "Actionneur", "ar": "مشغل كهربائي" } },
+        { "id": "Room Control Unit", "label": { "en": "Room Control Unit", "fr": "Unité de contrôle de chambre", "ar": "وحدة تحكم الغرفة" } }
+      ]
+    },
+    {
+      "id": "dimming",
+      "label": { "en": "Dimming", "fr": "Variation d'éclairage", "ar": "التعتيم" },
+      "types": [
+        { "id": "Dimmer", "label": { "en": "Dimmer", "fr": "Variateur", "ar": "مخفت إضاءة" } }
+      ]
+    },
+    {
+      "id": "shutters",
+      "label": { "en": "Shutters & Blinds", "fr": "Volets & stores", "ar": "الستائر" },
+      "types": [
+        { "id": "Shutter", "label": { "en": "Shutter Controller", "fr": "Contrôleur de volet", "ar": "متحكم ستائر" } }
+      ]
+    },
+    {
+      "id": "smart-relays",
+      "label": { "en": "Smart Relays", "fr": "Relais intelligents", "ar": "المرحّلات الذكية" },
+      "types": [
+        { "id": "Smart Relay", "label": { "en": "Smart Relay", "fr": "Relais intelligent", "ar": "مرحل ذكي" } }
+      ]
+    },
+    {
+      "id": "security",
+      "label": { "en": "Intercom & Security", "fr": "Interphonie & sécurité", "ar": "الإنتركم والأمان" },
+      "types": [
+        { "id": "Indoor Monitor", "label": { "en": "Indoor Monitor", "fr": "Moniteur intérieur", "ar": "شاشة إنتركم داخلية" } },
+        { "id": "Door Station", "label": { "en": "Door Station", "fr": "Station de porte", "ar": "محطة باب خارجية" } },
+        { "id": "Camera", "label": { "en": "Camera", "fr": "Caméra", "ar": "كاميرا مراقبة" } },
+        { "id": "Smart Lock", "label": { "en": "Smart Lock", "fr": "Serrure connectée", "ar": "قفل ذكي" } }
+      ]
+    },
+    {
+      "id": "networking",
+      "label": { "en": "Networking", "fr": "Réseau", "ar": "الشبكات" },
+      "types": [
+        { "id": "Router", "label": { "en": "Router", "fr": "Routeur", "ar": "راوتر" } },
+        { "id": "Network Switch", "label": { "en": "Network Switch", "fr": "Switch réseau", "ar": "سويتش شبكة" } },
+        { "id": "Access Point", "label": { "en": "Access Point", "fr": "Point d'accès", "ar": "نقطة وصول" } }
+      ]
+    },
+    {
+      "id": "system",
+      "label": { "en": "System & Power", "fr": "Système & alimentation", "ar": "التغذية والبنية" },
+      "types": [
+        { "id": "Power Supply", "label": { "en": "Power Supply", "fr": "Alimentation", "ar": "مزود طاقة" } },
+        { "id": "IP Interface", "label": { "en": "KNX IP Interface & Router", "fr": "Interface & routeur IP KNX", "ar": "واجهة وراوتر KNX IP" } },
+        { "id": "Line Coupler", "label": { "en": "Line Coupler", "fr": "Coupleur de ligne", "ar": "رابط خطوط KNX" } },
+        { "id": "Universal Interface", "label": { "en": "Universal Interface", "fr": "Interface universelle", "ar": "واجهة عامة" } },
+        { "id": "Gateway", "label": { "en": "Gateway", "fr": "Passerelle", "ar": "بوابة شبكة" } },
+        { "id": "Server", "label": { "en": "Server", "fr": "Serveur", "ar": "خادم مركزي" } }
+      ]
+    },
+    {
+      "id": "sensors",
+      "label": { "en": "Sensors", "fr": "Capteurs", "ar": "الحسّاسات" },
+      "types": [
+        { "id": "Sensor", "label": { "en": "Sensor", "fr": "Capteur", "ar": "مستشعر" } }
+      ]
+    }
+  ],
+
+  "technologies": [
+    { "id": "KNX" },
+    { "id": "Wi-Fi" },
+    { "id": "Bluetooth" },
+    { "id": "LAN" },
+    { "id": "Zigbee" },
+    { "id": "Matter" },
+    { "id": "Thread" },
+    { "id": "Z-Wave" }
+  ],
+
+  "installations": [
+    { "id": "DIN Rail mounting", "label": { "en": "DIN Rail mounting", "fr": "Montage Rail DIN", "ar": "لوحة توزيع DIN" } },
+    { "id": "Wall mount", "label": { "en": "Wall mount", "fr": "Montage mural", "ar": "تثبيت حائطي" } },
+    { "id": "Behind wall switch", "label": { "en": "Behind wall switch", "fr": "Derrière l'interrupteur", "ar": "خلف مفتاح الحائط" } },
+    { "id": "Ceiling mounting", "label": { "en": "Ceiling mounting", "fr": "Montage au plafond", "ar": "تثبيت في السقف" } },
+    { "id": "Free standing", "label": { "en": "Free standing", "fr": "Indépendant", "ar": "وضع حر مستقل" } },
+    { "id": "Door frame", "label": { "en": "Door frame", "fr": "Cadre de porte", "ar": "إطار الباب" } }
+  ],
+
+  "project_categories": [
+    { "id": "Smart Home Automation", "label": { "en": "Smart Home Automation", "fr": "Domotique", "ar": "أتمتة المنزل الذكي" } },
+    { "id": "Security & Surveillance", "label": { "en": "Security & Surveillance", "fr": "Sécurité & vidéosurveillance", "ar": "الأمان والمراقبة" } },
+    { "id": "Network & Wi-Fi", "label": { "en": "Network & Wi-Fi", "fr": "Réseau & Wi-Fi", "ar": "الشبكة والواي فاي" } },
+    { "id": "Electrical Installation", "label": { "en": "Electrical Installation", "fr": "Installation électrique", "ar": "التركيبات الكهربائية" } },
+    { "id": "Lighting Design", "label": { "en": "Lighting Design", "fr": "Conception d'éclairage", "ar": "تصميم الإضاءة" } },
+    { "id": "Access Control", "label": { "en": "Access Control", "fr": "Contrôle d'accès", "ar": "التحكم في الدخول" } }
+  ],
+
+  "aliases": {
+    "product_type": {
+      "Network": ["Router", "Network Switch", "Access Point"]
+    }
+  }
+}

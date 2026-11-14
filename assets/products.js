@@ -16,14 +16,31 @@
 
   const INDEX_URL = '/data/products_index.json';
 
-  let allProducts = [];
-  let filtersState = {
-    brand: new Set(),
-    technology: new Set(),
-    product_type: new Set(),
-    installation: new Set()
+  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
+  const SE = window.SE;
+
+  // Filter facets, in sidebar order. `category` and `product_type` come from
+  // data/taxonomy.json (every index entry carries its derived `category`).
+  const FACETS = ['category', 'product_type', 'brand', 'technology', 'installation'];
+  const emptyFilters = () => {
+    const state = {};
+    FACETS.forEach(key => { state[key] = new Set(); });
+    return state;
   };
+
+  let allProducts = [];
+  let filtersState = emptyFilters();
   let searchQuery = '';
+
+  // Display label for a filter value in the current language. Categories,
+  // types and installation methods are translated by the taxonomy; brands
+  // and technologies are proper names shown as they are.
+  function valueLabel(key, val) {
+    if (key === 'category') return SE.taxonomy.label('category', val);
+    if (key === 'product_type') return SE.taxonomy.label('type', val);
+    if (key === 'installation') return SE.taxonomy.label('installation', val);
+    return val;
+  }
 
   let currentPage = 1;
   const ITEMS_PER_PAGE = 12;
@@ -69,28 +86,34 @@
   // Read filters from URL params
   function readFiltersFromURL() {
     const params = new URLSearchParams(window.location.search);
-    const brandParam = params.get('brand');
-    const techParam = params.get('technology');
-    const typeParam = params.get('product_type');
-    const installParam = params.get('installation');
     const search = params.get('q');
     const page = params.get('page');
 
-    if (brandParam) brandParam.split(',').forEach(v => filtersState.brand.add(v));
-    if (techParam) techParam.split(',').forEach(v => filtersState.technology.add(v));
-    if (typeParam) typeParam.split(',').forEach(v => filtersState.product_type.add(v));
-    if (installParam) installParam.split(',').forEach(v => filtersState.installation.add(v));
+    FACETS.forEach(key => {
+      const raw = params.get(key);
+      if (raw) raw.split(',').forEach(v => { if (v) filtersState[key].add(v); });
+    });
     if (search) searchQuery = search;
     if (page) currentPage = parseInt(page, 10) || 1;
+  }
+
+  // Links saved before a product type was renamed or split keep working:
+  // e.g. ?product_type=Network now selects Router + Network Switch + Access Point.
+  // Runs once the taxonomy (which holds the alias table) has loaded.
+  function applyTypeAliases() {
+    const expanded = new Set();
+    filtersState.product_type.forEach(v => {
+      SE.taxonomy.expandAlias('product_type', v).forEach(x => expanded.add(x));
+    });
+    filtersState.product_type = expanded;
   }
 
   // Write filters to URL params (without page reload)
   function writeFiltersToURL() {
     const params = new URLSearchParams();
-    if (filtersState.brand.size > 0) params.set('brand', Array.from(filtersState.brand).join(','));
-    if (filtersState.technology.size > 0) params.set('technology', Array.from(filtersState.technology).join(','));
-    if (filtersState.product_type.size > 0) params.set('product_type', Array.from(filtersState.product_type).join(','));
-    if (filtersState.installation.size > 0) params.set('installation', Array.from(filtersState.installation).join(','));
+    FACETS.forEach(key => {
+      if (filtersState[key].size > 0) params.set(key, Array.from(filtersState[key]).join(','));
+    });
     if (searchQuery) params.set('q', searchQuery);
     if (currentPage > 1) params.set('page', currentPage);
 
@@ -125,18 +148,20 @@
   function renderSidebar() {
     const brands = getUniqueValues(allProducts, 'brand');
     const technologies = getUniqueValues(allProducts, 'technology', true);
-    const productTypes = getUniqueValues(allProducts, 'product_type');
     const installations = getUniqueValues(allProducts, 'installation');
+    // Categories and types follow the order of data/taxonomy.json, so related
+    // types sit together instead of being scattered alphabetically.
+    const categories = SE.taxonomy.sorted('category', getUniqueValues(allProducts, 'category'));
+    const productTypes = SE.taxonomy.sorted('type', getUniqueValues(allProducts, 'product_type'));
 
     const createFilterGroup = (title, key, values, isArray = false) => {
       if(values.length === 0) return '';
-      const isOpen = key === 'brand' ? 'open' : '';
+      const isOpen = (key === 'category' || key === 'brand') ? 'open' : '';
       let html = `<details class="prod-filter-group" ${isOpen}>
                     <summary class="prod-filter-title" data-i18n="filter_${key}">${title}</summary>
                     <div class="prod-filter-content">`;
       values.forEach(val => {
         const id = `filter-${key}-${val.replace(/\s+/g, '-')}`;
-        const safeVal = val.replace(/\s+/g, '_');
 
         const count = allProducts.filter(p => {
            if(!p[key]) return false;
@@ -148,8 +173,8 @@
 
         html += `
           <div class="prod-filter-item">
-            <input type="checkbox" id="${id}" data-key="${key}" value="${val}" ${isChecked}>
-            <label for="${id}" data-i18n="val_${safeVal}">${val}</label>
+            <input type="checkbox" id="${id}" data-key="${key}" value="${escapeHtml(val)}" ${isChecked}>
+            <label for="${id}">${escapeHtml(valueLabel(key, val))}</label>
             <span class="prod-count-badge">${count}</span>
           </div>
         `;
@@ -186,8 +211,9 @@
         ${mobileHeader}
         ${desktopHeader}
         <div class="prod-sidebar-scroll">
-          ${createFilterGroup('Brand', 'brand', brands)}
+          ${createFilterGroup('Category', 'category', categories)}
           ${createFilterGroup('Product Type', 'product_type', productTypes)}
+          ${createFilterGroup('Brand', 'brand', brands)}
           ${createFilterGroup('Technology', 'technology', technologies, true)}
           ${createFilterGroup('Installation', 'installation', installations)}
         </div>
@@ -200,14 +226,13 @@
     let hasFilters = false;
     let chipsHtml = '';
 
-    Object.keys(filtersState).forEach(key => {
+    FACETS.forEach(key => {
        if (filtersState[key].size > 0) {
          hasFilters = true;
          filtersState[key].forEach(val => {
-            const safeVal = val.replace(/\s+/g, '_');
             chipsHtml += `
-              <button class="prod-chip" data-key="${key}" data-val="${val}">
-                <span data-i18n="val_${safeVal}">${val}</span>
+              <button class="prod-chip" data-key="${key}" data-val="${escapeHtml(val)}">
+                <span>${escapeHtml(valueLabel(key, val))}</span>
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
             `;
@@ -271,34 +296,6 @@
      }
   }
 
-  // Protocol icon dictionary — mirrors the official-mark set in product-detail.js.
-  // Returns one "<span class=proto>icon name</span>" for a technology string.
-  function protoMarkup(tech) {
-    const tl = String(tech).toLowerCase();
-    let icon = '';
-    let cls = 'prod-proto';
-    if (tl.includes('wi-fi') || tl.includes('wifi')) {
-      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>';
-    } else if (tl.includes('bluetooth') || tl.includes('ble')) {
-      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>';
-    } else if (tl.includes('knx')) {
-      return '<span class="prod-proto prod-proto-knx">KNX</span>';
-    } else if (tl.includes('zigbee')) {
-      icon = '<svg viewBox="0 0 48 48" fill="currentColor"><path d="M32.042,9.792c4.595,1.238,4.88,3.165,5.524,5.048C34.841,17.664,17.35,35.7,17.35,35.7s10.901,1.177,23.487-1.003c-0.001,0.029-0.002,0.048-0.003,0.076C42.829,31.661,44,27.97,44,24c0-11.046-8.954-20-20-20c-5.634,0-10.715,2.338-14.35,6.087C15.489,9.124,26.89,8.403,32.042,9.792z"/><path d="M14.724,37.285c-1.982-0.347-4.212-2.131-4.707-5.302c1.437-1.239,19.994-20.507,19.994-20.507c-7.008-0.424-14.569-0.465-22.237,0.864C5.408,15.625,4,19.644,4,24c0,11.046,8.954,20,20,20c6.173,0,11.689-2.8,15.358-7.195C35.486,37.33,23.257,38.769,14.724,37.285z"/></svg>';
-    } else if (tl.includes('matter')) {
-      icon = '<svg viewBox="0 0 512 512" fill="currentColor"><path d="M152 134.4c21.5 17.5 47.1 29.2 74.4 34.2V22.9l29.7-17.1 29.6 17.1v145.6c27.3-4.9 52.9-16.7 74.5-34.2l53.8 31.1c-87.6 86.6-228.5 86.6-316.1 0zm65.5 371.8C248.7 387 178.1 264.9 59.3 232.5v62.3c25.9 9.9 48.9 26.2 66.8 47.4L0 414.9v34.2l29.7 17 126.1-72.8c9.4 26.1 12 54.2 7.6 81.5zm235.3-273.7C334 265 263.6 387.1 294.8 506.2l54-31.2c-4.4-27.4-1.7-55.4 7.6-81.5l126 72.7 29.6-17.1v-34.2l-126.1-72.8c17.9-21.2 40.9-37.5 66.8-47.4z"/></svg>';
-    } else if (tl.includes('thread')) {
-      icon = '<svg viewBox="0 0 165 165" fill="currentColor"><path d="M82.498,0C37.008,0,0,37.008,0,82.496c0,45.181,36.51,81.977,81.573,82.476V82.569l-27.002-0.002c-8.023,0-14.554,6.53-14.554,14.561c0,8.023,6.531,14.551,14.554,14.551v17.98c-17.939,0-32.534-14.595-32.534-32.531c0-17.944,14.595-32.543,32.534-32.543l27.002,0.004v-9.096c0-14.932,12.146-27.08,27.075-27.08c14.932,0,27.082,12.148,27.082,27.08c0,14.931-12.15,27.08-27.082,27.08l-9.097-0.001v80.641C136.889,155.333,165,122.14,165,82.496C165,37.008,127.99,0,82.498,0z"/><path d="M117.748,55.493c0-5.016-4.082-9.098-9.1-9.098c-5.015,0-9.097,4.082-9.097,9.098v9.097l9.097,0.001C113.666,64.591,117.748,60.51,117.748,55.493z"/></svg>';
-    } else if (tl.includes('lan') || tl.includes('ethernet')) {
-      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg>';
-    } else if (tl.includes('z-wave')) {
-      icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/><circle cx="12" cy="12" r="2"/></svg>';
-    } else {
-      return '<span class="prod-proto">' + escapeHtml(tech) + '</span>';
-    }
-    return '<span class="' + cls + '">' + icon + escapeHtml(tech) + '</span>';
-  }
-
   // Brand → clean SVG logo in the card foot. Falls back to the brand name as
   // text when the SVG fails to load (mirrors guide §7.2: logo:null → name text).
   // The onerror swaps the broken <img> for a styled text span, then clears
@@ -319,10 +316,10 @@
     const techs = Array.isArray(product.technology) ? product.technology : [];
     const prefix = getLangPrefix();
 
-    // Protocol strip — icon + name per technology (shared official-mark dictionary)
+    // Protocol strip — icon + name per technology (dictionary lives in site-core.js)
     const protocolStrip = techs.length
       ? '<div class="prod-card-protocols">' +
-          techs.map(protoMarkup).join('') +
+          techs.map(SE.protoMarkup).join('') +
         '</div>'
       : '';
 
@@ -371,6 +368,9 @@
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       let textToSearch = `${p.brand} ${p.product_type} ${p.installation} `;
+      // Also searchable by category / type / installation name in the
+      // visitor's language (e.g. an Arabic search for "ستائر").
+      textToSearch += `${valueLabel('category', p.category)} ${valueLabel('product_type', p.product_type)} ${valueLabel('installation', p.installation)} `;
       if (Array.isArray(p.technology)) textToSearch += p.technology.join(' ');
 
       const searchInField = (f) => {
@@ -406,6 +406,7 @@
        return true;
     };
 
+    if (!checkState('category', p.category)) return false;
     if (!checkState('brand', p.brand)) return false;
     if (!checkState('product_type', p.product_type)) return false;
     if (!checkState('installation', p.installation)) return false;
@@ -598,7 +599,7 @@
       if(applyBtn) applyBtn.addEventListener('click', closeMobileModal);
 
       const performClear = () => {
-         filtersState = { brand: new Set(), technology: new Set(), product_type: new Set(), installation: new Set() };
+         filtersState = emptyFilters();
          sidebar.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
          currentPage = 1;
          renderTopFiltersWrapper();
@@ -726,8 +727,11 @@
     // Initial Translation trigger
     if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
 
-    // Data Loading
-    allProducts = await fetchProducts();
+    // Data Loading — products and the taxonomy (labels, category order,
+    // aliases) are fetched together; nothing renders before both are in.
+    const loaded = await Promise.all([fetchProducts(), SE.taxonomy.load()]);
+    allProducts = loaded[0];
+    applyTypeAliases();
     // Shuffle products with a daily seed so brands appear mixed but order stays consistent per day
     (function seedShuffle(arr) {
       var d = new Date(), seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();

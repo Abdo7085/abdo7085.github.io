@@ -41,30 +41,60 @@ TEMPLATE_PATH = ROOT / "product.html"
 
 def build_index():
     PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)
-    product_files = glob.glob(str(PRODUCTS_DIR / "*.json"))
+    # Sorted so the index is identical on every OS (glob order is not).
+    product_files = sorted(glob.glob(str(PRODUCTS_DIR / "*.json")))
     products_index = []
+    taxonomy = _lib.load_taxonomy()
+    problems = []
+
+    # Brand names that have a brand page (data/brands/*.json → "brand").
+    known_brands = set()
+    for bf in sorted((ROOT / "data" / "brands").glob("*.json")):
+        try:
+            known_brands.add(json.loads(bf.read_text(encoding="utf-8")).get("brand"))
+        except Exception as e:
+            problems.append(f"brands/{bf.name}: not valid JSON ({e})")
 
     for pf in product_files:
+        name = Path(pf).name
         try:
             with open(pf, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            index_entry = {
-                "id": data.get("id"),
-                "brand": data.get("brand"),
-                "technology": data.get("technology", []),
-                "product_type": data.get("product_type", ""),
-                "installation": data.get("installation", ""),
-                "title": data.get("title", {}),
-                "short_description": data.get("short_description", {}),
-                "category": data.get("category", ""),
-            }
-            images = data.get("images", [])
-            if images:
-                index_entry["image"] = images[0]
-            products_index.append(index_entry)
-            print(f"  Added {data.get('id')} to index.")
         except Exception as e:
-            print(f"  Error processing {pf}: {e}")
+            problems.append(f"{name}: not valid JSON ({e})")
+            continue
+
+        # Classification must use values defined in data/taxonomy.json — a
+        # typo here would silently create a stray filter entry on the site.
+        problems.extend(f"{name}: {msg}" for msg in taxonomy.check_product(data))
+
+        # The product page links its brand to /brands/<slug>.html; a brand
+        # without a file in data/brands/ would make that link a 404.
+        if data.get("brand") not in known_brands:
+            problems.append(
+                f'{name}: brand "{data.get("brand")}" has no file in data/brands/ '
+                f'(known: {", ".join(sorted(b for b in known_brands if b))})'
+            )
+
+        index_entry = {
+            "id": data.get("id"),
+            "brand": data.get("brand"),
+            "technology": data.get("technology", []),
+            "product_type": data.get("product_type", ""),
+            "installation": data.get("installation", ""),
+            "title": data.get("title", {}),
+            "short_description": data.get("short_description", {}),
+            # Derived, never stored in the product file: type -> category.
+            "category": taxonomy.category_of(data.get("product_type", "")),
+        }
+        images = data.get("images", [])
+        if images:
+            index_entry["image"] = images[0]
+        products_index.append(index_entry)
+        print(f"  Added {data.get('id')} to index.")
+
+    # Nothing is written if any product is misclassified or unreadable.
+    _lib.abort_on_problems(problems, "data/products")
 
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         json.dump(products_index, f, indent=2, ensure_ascii=False)

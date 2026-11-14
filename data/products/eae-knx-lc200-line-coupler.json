@@ -2,7 +2,7 @@
   "id": "eae-knx-lc200-line-coupler",
   "brand": "EAE Technology",
   "technology": ["KNX"],
-  "product_type": "Gateway",
+  "product_type": "Line Coupler",
   "installation": "DIN Rail mounting",
 
   "title": {

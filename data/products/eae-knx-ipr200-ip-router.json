@@ -2,7 +2,7 @@
   "id": "eae-knx-ipr200-ip-router",
   "brand": "EAE Technology",
   "technology": ["KNX", "LAN"],
-  "product_type": "Gateway",
+  "product_type": "IP Interface",
   "installation": "DIN Rail mounting",
 
   "title": {

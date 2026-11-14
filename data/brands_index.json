@@ -12,12 +12,10 @@
       "KNX"
     ],
     "category_focus": [
-      "Actuator",
-      "Touch Panel",
-      "Switch",
-      "Universal Interface",
-      "Dimmer",
-      "Power Supply"
+      "actuators",
+      "controls",
+      "system",
+      "dimming"
     ],
     "country_of_origin": "Spain",
     "product_count": 36
@@ -36,13 +34,9 @@
       "LAN"
     ],
     "category_focus": [
-      "Actuator",
-      "Gateway",
-      "Power Supply",
-      "Switch",
-      "Touch Panel",
-      "Thermostat",
-      "Universal Interface"
+      "actuators",
+      "system",
+      "controls"
     ],
     "country_of_origin": "Turkey",
     "product_count": 19
@@ -62,11 +56,11 @@
       "LAN"
     ],
     "category_focus": [
-      "Smart Relay",
-      "Actuator",
-      "Dimmer",
-      "Shutter",
-      "Touch Panel"
+      "smart-relays",
+      "actuators",
+      "controls",
+      "dimming",
+      "shutters"
     ],
     "country_of_origin": "Bulgaria",
     "product_count": 11
@@ -85,7 +79,7 @@
       "Wi-Fi"
     ],
     "category_focus": [
-      "Network"
+      "networking"
     ],
     "country_of_origin": "China",
     "product_count": 6
@@ -103,9 +97,9 @@
       "Zigbee"
     ],
     "category_focus": [
-      "Smart Relay",
-      "Dimmer",
-      "Shutter"
+      "smart-relays",
+      "dimming",
+      "shutters"
     ],
     "country_of_origin": "China",
     "product_count": 6
@@ -124,8 +118,7 @@
       "Wi-Fi"
     ],
     "category_focus": [
-      "Touch Panel",
-      "Door Station"
+      "security"
     ],
     "country_of_origin": "China",
     "product_count": 5
@@ -146,7 +139,7 @@
       "Zigbee"
     ],
     "category_focus": [
-      "Gateway"
+      "system"
     ],
     "country_of_origin": "China",
     "product_count": 1
