@@ -2,5 +2,9 @@
 #   pip install -r scripts/requirements.txt
 Pillow>=9.5
 
+# Not a pip package — only needed when the homepage video in media/site/
+# changes (scripts/build_images.py, SITE_VIDEO); unchanged builds skip it:
+#   winget install Gyan.FFmpeg
+
 # Optional — only for AI background removal (scripts/remove_bg.py):
 #   pip install "rembg[cpu]"

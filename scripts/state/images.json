@@ -3236,6 +3236,13 @@
  "site/Vila-big-background.webp": {
   "fp": "a59a457770cf39be0de167b3f8854ec9a1ae4729:ae3b000e8fd7"
  },
+ "site/example01.mp4": {
+  "fp": "74122894a0f17ac570617ab17e9a039a26b1c311:54fd99039f94",
+  "size": [
+   1280,
+   720
+  ]
+ },
  "site/logocircular.webp": {
   "fp": "188d5474368697825aea46b4935dcb8c20f3a397:bd56fd1ad0ea"
  },

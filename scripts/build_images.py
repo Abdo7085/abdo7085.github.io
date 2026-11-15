@@ -7,6 +7,7 @@ Image pipeline: turn the originals in media/ into the files the site serves.
   first product image    ->  assets/og/products/<id>.jpg        1200x630 share card
   project "cover"        ->  assets/og/projects/<slug>.jpg      1200x630 share card
   media/site/<file>      ->  assets/<file>                      homepage / 404 media (SITE_MEDIA)
+  media/site/<video>     ->  assets/<video> + poster .webp      homepage video (SITE_VIDEO, ffmpeg)
 
 Nothing under assets/products/ or assets/og/ is edited by hand: the build
 deletes any file there that no product or project uses any more.
@@ -35,7 +36,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import shutil
+import subprocess
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
@@ -67,6 +71,19 @@ SITE_MEDIA = {
     "roomwebp.webp": (2400, 72),             # homepage hero (desktop), villa project cover
     "Vila-big-background.webp": (2000, 72),  # homepage hero (phones), villa project gallery
     "logocircular.webp": (256, 90),          # 404 page logo, shown at 72px
+}
+
+# Homepage video, re-encoded with ffmpeg (H.264, no audio track, +faststart;
+# aq-mode 3 keeps detail in its dark scenes) plus a poster frame. The poster
+# is what a phone that blocks autoplay (iPhone Low Power Mode) shows, so it is
+# taken from the opening scene, not frame 0 (a black fade-in). Source:
+# media/site/<name>. The <video> in assets/index-CGMiSPUa.js carries
+# data-poster (set by its lazy loader together with the video) and the
+# output width/height — update them there if the video's shape changes.
+# ffmpeg is needed only when the source or these settings change.
+SITE_VIDEO = {
+    "example01.mp4": {"max_w": 1280, "crf": 26, "aq_mode": 3,
+                      "poster": "example01-poster.webp", "poster_at": 2.0},
 }
 
 # Bump when the encoding logic changes so every output is rebuilt once.
@@ -193,6 +210,42 @@ def _og_photo(im: Image.Image) -> Image.Image:
     return ImageOps.fit(im.convert("RGB"), OG_SIZE, Image.LANCZOS, centering=(0.5, 0.5))
 
 
+def _ffmpeg() -> str:
+    """ffmpeg executable: $FFMPEG, PATH, or where `winget install Gyan.FFmpeg`
+    puts it (a shell opened before the install does not see the new PATH)."""
+    exe = os.environ.get("FFMPEG") or shutil.which("ffmpeg")
+    if exe:
+        return exe
+    winget = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "WinGet"
+    found = sorted(winget.glob("Links/ffmpeg.exe")) + sorted(winget.glob("Packages/Gyan.FFmpeg*/*/bin/ffmpeg.exe"))
+    return str(found[-1]) if found else ""
+
+
+def _encode_video(exe: str, src: Path, out: Path, poster: Path, cfg: dict) -> list:
+    """H.264 MP4 without audio, at most cfg max_w wide, moov atom first so it
+    starts playing while downloading; bitexact so a re-encode is stable.
+    Returns [width, height] of the result."""
+    tmp_video = out.with_name(out.stem + ".tmp.mp4")
+    tmp_frame = poster.with_name(poster.stem + ".tmp.png")
+    scale = f"scale='min({cfg['max_w']},iw)':-2:flags=lanczos,format=yuv420p"
+    run = lambda args: subprocess.run([exe, "-hide_banner", "-v", "error", "-y", *args], check=True)
+    try:
+        run(["-i", str(src), "-map", "0:v:0", "-an", "-sn", "-dn", "-vf", scale,
+             "-c:v", "libx264", "-preset", "slow", "-crf", str(cfg["crf"]),
+             "-aq-mode", str(cfg["aq_mode"]), "-profile:v", "high", "-movflags", "+faststart", "-map_metadata", "-1",
+             "-fflags", "+bitexact", "-flags:v", "+bitexact", str(tmp_video)])
+        run(["-ss", str(cfg["poster_at"]), "-i", str(tmp_video), "-frames:v", "1", str(tmp_frame)])
+        frame = Image.open(tmp_frame)
+        frame.load()
+        _save_webp(frame.convert("RGB"), poster, 78)
+        os.replace(tmp_video, out)
+        return [frame.width, frame.height]
+    finally:
+        for f in (tmp_video, tmp_frame):
+            if f.exists():
+                f.unlink()
+
+
 def _save_jpg(im: Image.Image, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     im.convert("RGB").save(path, "JPEG", quality=OG_QUALITY, optimize=True, progressive=True)
@@ -278,6 +331,35 @@ class Pipeline:
             else:
                 self.kept += 1
             self.state[key] = {"fp": fp}
+
+    # -- homepage video + poster --
+    def site_video(self) -> None:
+        for name, cfg in SITE_VIDEO.items():
+            src = MEDIA_SITE / name
+            if not src.exists():
+                self.warnings.append(f"media/site/{name} is missing (SITE_VIDEO in build_images.py)")
+                continue
+            key = f"site/{name}"
+            out = ROOT / "assets" / name
+            poster = ROOT / "assets" / cfg["poster"]
+            outputs = [out.relative_to(ROOT).as_posix(), poster.relative_to(ROOT).as_posix()]
+            fp = f"{_sha1(src)}:{_settings_key(cfg)}"
+            if self._fresh(key, fp, outputs):
+                self.kept += 1
+                self.state[key] = self.old_state[key]
+                continue
+            exe = _ffmpeg()
+            if not exe:
+                self.warnings.append(
+                    f"media/site/{name} changed but ffmpeg is not installed "
+                    f"(winget install Gyan.FFmpeg) — assets/{name} left as it was"
+                )
+                if key in self.old_state:
+                    self.state[key] = self.old_state[key]   # retry on the next build
+                continue
+            size = _encode_video(exe, src, out, poster, cfg)
+            self.state[key] = {"fp": fp, "size": size}
+            self.made += 1
 
     def clean_orphans(self) -> list:
         removed = []
@@ -378,6 +460,7 @@ def build() -> dict:
                 p.warnings.append(f"projects/{pf.name}: cover {cover} not found, no share image")
 
     p.site_media()
+    p.site_video()
     removed = p.clean_orphans()
 
     manifest_text = json.dumps(dict(sorted(manifest.items())), indent=1, ensure_ascii=False) + "\n"

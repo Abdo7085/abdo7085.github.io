@@ -11509,6 +11509,9 @@ const Xh = re("Zap", [["polygon", {
                         if (o && !o.src) {
                             o.src = o.getAttribute("data-src");
                         }
+                        if (i.dataset && i.dataset.poster && !i.getAttribute("poster")) {
+                            i.setAttribute("poster", i.dataset.poster);
+                        }
                         i.load();
                         i.play && i.play().catch(() => {});
                         r.unobserve(i);
@@ -11529,6 +11532,9 @@ const Xh = re("Zap", [["polygon", {
                 muted: !0,
                 playsInline: !0,
                 preload: "none",
+                width: 1280,
+                height: 720,
+                "data-poster": "/assets/example01-poster.webp",
                 style: {
                     display: "block"
                 },
