@@ -107,10 +107,16 @@
     setContent('meta-description', descText);
     setContent('meta-og-title', title + ' | S‑ELECTRICITY');
     setContent('meta-og-description', descText);
-    setContent('meta-og-image', coverUrl);
+    // Static pages already carry the 1200x630 share card made by
+    // scripts/build_images.py; only the bare template needs the cover.
+    function fillIfEmpty(id, value) {
+      const el = document.getElementById(id);
+      if (el && !el.content) el.content = value;
+    }
+    fillIfEmpty('meta-og-image', coverUrl);
     setContent('meta-twitter-title', title + ' | S‑ELECTRICITY');
     setContent('meta-twitter-description', descText);
-    setContent('meta-twitter-image', coverUrl);
+    fillIfEmpty('meta-twitter-image', coverUrl);
 
     // Update hreflang
     document.querySelectorAll('link[hreflang]').forEach(function(link) {
