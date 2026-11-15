@@ -8,8 +8,9 @@ You are managing the "Previous Work" project portfolio for the Smart Electricity
 data/projects/             → Individual project JSON files (one per case study)
 data/projects_index.json   → Aggregated index (auto-generated, never edit manually)
 assets/projects/<slug>/    → Project media: photos, mp4 videos, video posters
+scripts/validate.py        → Checks every content file; runs first in every build and stops it on any error
 scripts/_lib.py            → Shared helpers (i18n, SEO, JSON-LD, sitemap). Single source of truth
-scripts/build_all.py       → One-shot orchestrator (runs all 3 stages in one Python process)
+scripts/build_all.py       → One-shot orchestrator (validate first, then every stage in one Python process)
 scripts/build_projects.py  → Unified build: index + static SEO pages + sitemap + ItemList injection
 scripts/build_products.py  → Products catalog build
 scripts/generate_localized.py  → Root-page localization (index.html, previous-work.html, etc.)
@@ -86,7 +87,7 @@ Never re-ask for something the user already said. Never ask for things that belo
    - `title.en` → `title.fr` → `title.ar` (write EN first, then translate)
    - `short_description` (12–15 words max, lead with deliverable) in all three languages
    - `description` (4–8 sentences, case-study narrative) in all three languages
-   - `categories` from the approved list — reuse existing values (see "Existing Category Values")
+   - `categories` from the approved list — reuse existing values (see "Project Categories")
    - `related_products` — array of IDs from the catalog
    - `extra_brands` / `extra_protocols` for anything mentioned that isn't already covered by the matched products
    - `duration_days` if given
@@ -134,7 +135,7 @@ Only after receiving paths (and reel/testimonial answers), move to Phase D.
 
 4. **Write the JSON file** at `data/projects/<project-slug>.json` using the schema template below.
 
-5. **Build everything:** `python scripts/build_projects.py` (see build-order warning further down if products/root pages also changed in the same session).
+5. **Build everything:** `python scripts/build_all.py`. It first runs `scripts/validate.py`, which stops before writing anything and names the file and field if a text is missing in a language, a category is not in the taxonomy, a `related_products` id does not exist, or a cover/media/poster file is missing.
 
 6. **Report back** the three static URLs (EN/FR/AR) so the user can open them.
 
@@ -166,7 +167,7 @@ Rules:
 - **Do NOT mention specific product models, brand names, or protocols in `description` or `short_description`.** They are rendered separately by the page's **Brands & Protocols** card (fed by `related_products` + `extra_brands` + `extra_protocols`), so repeating names like "RG-EG105GW-X", "Dahua NVR", "Shelly Pro 4PM", "RTSP", "PoE", "Home Assistant" inside the narrative is redundant visual noise. Describe **what was delivered** in system-level terms instead — e.g. "a managed network backbone with ceiling-mounted Wi-Fi access points covering the whole venue", "PoE surveillance with centralized recording", "smart automation for lighting scenes, motorized shutters, and zoned power control". The reader sees the exact models in the chip rows.
 - **Propose the `id` slug** as `<primary-category-keyword>-<location-city>`, kebab-case, ASCII only. Examples: `surveillance-tangier`, `knx-villa-tetouan`, `mesh-wifi-casablanca-apt`. Before using the slug, check `data/projects/` for collisions — if a file with that slug exists, append a discriminator (`-v2`, `-2026`, or a more specific keyword).
 - **Don't pad the description.** 4–8 sentences means 4–8. If the narrative only supports 4, write 4. Do not invent client reactions or numbers not provided by the user.
-- **Categories**: pick from the approved list (see "Existing Category Values"). If the narrative genuinely doesn't fit any existing category, propose a new one to the user during draft review (do NOT silently introduce it).
+- **Categories**: pick from the approved list (see "Project Categories"). If the narrative genuinely doesn't fit any existing category, propose a new one to the user during draft review (do NOT silently introduce it).
 
 ---
 
@@ -272,35 +273,32 @@ Rules:
 #### What the Build Does
 
 ```bash
-python scripts/build_projects.py
+python scripts/build_all.py
 ```
 
-This single command:
+After `validate.py`, the project stage:
 - Runs Pillow on every image + video poster to populate `width`/`height` in the index.
 - Builds `data/projects_index.json` (sorted by `date` descending).
 - Generates static HTML pages in `projects/`, `fr/projects/`, `ar/projects/` with:
   - `<title>` + `<meta description>` translated per language.
   - hreflang tags for all 3 languages + x-default (pointing to EN).
-  - Open Graph + Twitter Card with `cover` as `og:image`.
+  - Open Graph + Twitter Card with a 1200×630 share card cut from `cover` (`assets/og/projects/<id>.jpg`, made by `build_images.py`).
   - og:locale + og:locale:alternate for each language.
   - JSON-LD `CreativeWork` (or `Article` when a written narrative dominates) + BreadcrumbList + `mentions[]` for related products.
   - `<meta name="robots" content="index, follow">` override.
   - `<h1>` + `<p>` inside `<noscript>` so crawlers that don't execute JS still get the core content.
   - Inline `<script>window.__PROJECT__ = {...}</script>` with the enriched project data (so `project-detail.js` renders instantly without a second fetch).
 - Injects ItemList JSON-LD into `previous-work.html` (EN/FR/AR) for portfolio rich results.
-- Writes the complete `sitemap.xml` via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk. The sitemap is always complete regardless of which script ran last.
+- Deletes the pages of any project whose file is gone (`_lib.remove_orphan_pages`).
+- Writes the complete `sitemap.xml` via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk.
 
-**If you also modified root pages or products in the same session**, use the orchestrator for a clean rebuild:
-```bash
-python scripts/build_all.py    # runs generate_localized → build_projects → build_products in one process
-```
-Or run each stage manually in that order. Sitemap correctness no longer depends on run order (every stage writes a complete sitemap). The order only matters for ItemList injection — `build_projects.py` injects into `previous-work.html` produced by `generate_localized.py`, so localized pages must exist first.
+Always use `build_all.py`; an unchanged rebuild changes no file.
 
 ### Editing an Existing Project
 
 1. Read the project file from `data/projects/`.
 2. Make the requested changes (preserve all three languages, keep `media` order intentional — it's the visual order in the mosaic).
-3. Rebuild with `python scripts/build_projects.py`.
+3. Rebuild with `python scripts/build_all.py`.
 
 ### Listing Projects
 
@@ -308,10 +306,8 @@ List files in `data/projects/` to show available projects. Read individual files
 
 ### Deleting a Project
 
-1. Delete the JSON file from `data/projects/`.
-2. Delete the static HTML pages: `projects/<slug>.html`, `fr/projects/<slug>.html`, `ar/projects/<slug>.html`.
-3. Rebuild with `python scripts/build_projects.py`.
-4. Optionally delete the project's media folder at `assets/projects/<slug>/`.
+1. Delete `data/projects/<slug>.json` and the project's media folder `assets/projects/<slug>/` (and its reel in `assets/reels/`, if any).
+2. `python scripts/build_all.py` — it deletes the three project pages and the share card, and drops the project from the index and sitemap by itself.
 
 ## Project Categories
 
@@ -319,7 +315,7 @@ The allowed values live in **`data/taxonomy.json` → `project_categories`** —
 
 - Always prefer an existing category.
 - To introduce a new one, add an entry with all three labels to `project_categories` in `data/taxonomy.json` **first**, then use its `id` in the project JSON. Nothing else needs updating (no locale files, no list in this skill).
-- `python scripts/build_projects.py` stops with a clear message if a project uses a category the taxonomy does not define.
+- The build (`scripts/validate.py`) stops with a clear message if a project uses a category the taxonomy does not define.
 
 ## Writing Style
 
@@ -365,5 +361,5 @@ Reels are 9:16 portrait clips that we host ourselves (the client owns the footag
   ffmpeg -i input.mp4 -c:v libx264 -profile:v baseline -c:a aac -movflags +faststart output.mp4
   ```
 - Never commit client personal data (names, addresses, door codes, network passwords) in JSON, `alt` text, or descriptions. Review every text field before building.
-- **Always run `python scripts/build_projects.py` after any changes** — this is the single command that updates index, SEO pages, and sitemap.
+- **Always run `python scripts/build_all.py` after any change** — validate, index, SEO pages, share card, sitemap and orphan cleanup in one go.
 - Never manually edit `data/projects_index.json`, `sitemap.xml`, or files in `projects/`, `fr/projects/`, `ar/projects/` — they are all auto-generated.

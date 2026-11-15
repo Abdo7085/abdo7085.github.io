@@ -8,8 +8,10 @@ You are managing the brand pages for the Smart Electricity website. Each brand w
 data/brands/             → Individual brand JSON files (one per manufacturer)
 data/brands_index.json   → Aggregated index (auto-generated, never edit manually)
 assets/brands/<slug>.<ext> → Brand logos (optional — null in JSON = text fallback)
+scripts/new_brand.py       → ADD a brand in one command: derives the id, copies the logo, writes the file, builds
+scripts/validate.py        → Checks every content file; runs first in every build and stops it on any error
 scripts/_lib.py            → Shared helpers (i18n, SEO, JSON-LD, sitemap)
-scripts/build_all.py       → One-shot orchestrator (localize → projects → products → brands)
+scripts/build_all.py       → One-shot orchestrator (validate → localize → images → projects → products → brands)
 scripts/build_brands.py    → Unified build: index + per-brand SEO pages + sitemap + ItemList injection
 scripts/build_products.py  → Products catalog build (MUST run before brands)
 scripts/patch_navbar_brands.py → One-shot SPA bundle surgery (already applied, idempotent)
@@ -90,17 +92,16 @@ Do not proceed to Phase C before explicit approval.
 
 #### Phase C — File creation + build
 
-1. **Write the JSON file** at `data/brands/<brand-slug>.json` using the schema below. Use Python (never PowerShell — see Important Rules).
+1. **Write the approved texts** into a scratch JSON file (e.g. `%TEMP%\se-brand\texts.json`): `{"tagline": {en, fr, ar}, "description": {en, fr, ar}}`. If the user supplied a logo, put it in the same folder (SVG preferred).
 
-2. **Build everything:**
+2. **Run one command** — it derives the id from the name (the same rule product pages use for the link), copies the logo to `assets/brands/<slug>.svg`, writes `data/brands/<slug>.json`, validates it and runs `build_all.py`:
    ```bash
-   python scripts/build_all.py
+   python scripts/new_brand.py "<Exact Brand Name>" --country "<Country>" --founded <year> \
+       --website https://... [--logo <scratch>/logo.svg] --content <scratch>/texts.json
    ```
-   Or if only brand JSONs changed in this session:
-   ```bash
-   python scripts/build_products.py   # required first — build_brands reads products_index.json
-   python scripts/build_brands.py
-   ```
+   Leave out any of `--country` / `--founded` / `--website` / `--logo` that is genuinely unknown — the page omits that badge (no logo = text card). Without `--content` it writes `"TODO: ..."` placeholders and the build refuses to run until they are replaced.
+
+   *Manual route (still valid):* write `data/brands/<slug>.json` per the schema below (Python, never PowerShell), then `python scripts/build_all.py`.
 
 3. **Report back** the three static URLs (EN/FR/AR) plus the brands index URL so the user can open them:
    - `https://smartelectricity.ma/brands/<slug>.html`
@@ -116,8 +117,8 @@ Do not proceed to Phase C before explicit approval.
 
 1. Read the brand file from `data/brands/<slug>.json`.
 2. Make the requested changes (preserve all three languages, never add `tech_focus`/`category_focus` manually).
-3. Rebuild with `python scripts/build_brands.py` (no need for `build_all.py` unless products also changed).
-4. If editing the `brand` field (rare), confirm the new value still matches `brand` in all relevant `data/products/*.json` files. Mismatch silently breaks the JOIN and the brand page shows zero products.
+3. Rebuild with `python scripts/build_all.py` (it stops with the reason if the edit broke anything).
+4. If editing the `brand` field (rare), the `id` and file name must change with it (`validate.py` stops otherwise), and every product using the old name must be updated — the build refuses a product whose brand has no file.
 
 ### Listing Brands
 
@@ -125,12 +126,11 @@ List files in `data/brands/` to show available brands. Read individual files for
 
 ### Deleting a Brand
 
-1. Delete the JSON file from `data/brands/`.
-2. Delete the static HTML pages: `brands/<slug>.html`, `fr/brands/<slug>.html`, `ar/brands/<slug>.html`.
-3. Optionally delete the logo from `assets/brands/<slug>.<ext>` if present.
-4. Rebuild with `python scripts/build_all.py`.
+1. Remove or re-brand its products first (`scripts/remove_product.py`) — the build refuses a product whose brand has no file (its link would 404).
+2. Delete `data/brands/<slug>.json` and the logo `assets/brands/<slug>.<ext>`.
+3. `python scripts/build_all.py` — it deletes the three brand pages and drops the brand from the index and sitemap by itself.
 
-**Caution:** A brand JSON cannot be deleted while products still reference it in their `brand` field — `build_products.py` stops with "brand … has no file in data/brands/" (otherwise product chips would 404 on `/brands/<slug>.html`). Remove or re-brand those products first. For the same reason, **create the brand JSON before adding the first product of a new brand.**
+For the same reason, **create the brand before adding the first product of a new brand.**
 
 ---
 
@@ -270,35 +270,21 @@ Only translate **common nouns and descriptive language** — e.g. "شركة" (co
 
 ---
 
-## Existing Brands (for consistency)
+## Existing Brands
 
-Current brands in `data/brands/` (7 total). Always check this list before proposing a new one — the user may be referring to an existing brand by an alternate name:
-
-| Slug | Brand (exact `brand` field) | Country | Founded |
-|---|---|---|---|
-| `eae-technology` | EAE Technology | Turkey | 1973 |
-| `shelly` | Shelly | Bulgaria | 2017 |
-| `zennio` | Zennio | Spain | 2006 |
-| `reyee` | Reyee | China | 2019 |
-| `sonoff` | SONOFF | China | 2015 |
-| `dahua` | Dahua | China | 2001 |
-| `tuya` | Tuya | China | 2014 |
-
-### Self-Updating Brand List
-
-After adding any new brand, you MUST update this section of the skill file (`.claude/commands/brand.md`) by appending the new row to the table above. This keeps the reference always in sync with the actual catalog, so future sessions don't need to scan `data/brands/` to discover existing brands.
+Never keep a list here — read the live one: `data/brands_index.json` (one row per brand: id, exact `brand` name, country, product count) or the files in `data/brands/`. Check it before proposing a new brand — the user may mean an existing one under another name.
 
 ---
 
 ## Important Rules
 
-- The `id` field MUST match the filename (without `.json`) AND match `brand.toLowerCase().replace(/\s+/g, '-')`.
+- The `id` field MUST match the filename (without `.json`) AND match `brand.toLowerCase().replace(/\s+/g, '-')` — `validate.py` enforces both (`new_brand.py` derives it for you).
 - The `brand` field MUST match — exactly — the `brand` value used in `data/products/*.json` files. Casing matters.
 - All text fields (`tagline`, `description`) MUST have `en`, `fr`, and `ar` versions.
 - **NEVER add `tech_focus` or `category_focus` to the JSON.** They are auto-derived; manual values are ignored.
 - **NEVER add a `products` array.** The build script injects it automatically into `window.__BRAND__`.
 - Logos go in `assets/brands/<slug>.<ext>` (prefer `.svg`). Reference them as absolute paths starting with `/assets/brands/...`. `null` is a valid value — the page renders a text fallback.
-- **Always run `python scripts/build_all.py` after any brand JSON change.** Or `build_products.py` then `build_brands.py` in that order (the latter reads `products_index.json` to compute counts and chips).
+- **Always run `python scripts/build_all.py` after any brand JSON change** (`new_brand.py` runs it for you).
 - Never manually edit `data/brands_index.json`, `sitemap.xml`, or files in `brands/`, `fr/brands/`, `ar/brands/` — they are all auto-generated.
 - **Never use PowerShell (`ConvertTo-Json`, `Set-Content`) to edit brand JSON files.** PowerShell 5.1 corrupts UTF-8 encoding of Arabic text, producing irrecoverable mojibake. Always use Python (`json.load` + `json.dump` with `encoding='utf-8'`) for any JSON manipulation. If you need batch changes across multiple brand files, write a small Python script — never use a PowerShell pipeline.
 - The "Brands" navbar link is **already wired** into the SPA bundle via `scripts/patch_navbar_brands.py` (one-shot, idempotent). You do NOT need to re-patch the SPA bundle when adding a new brand — the link goes to `/brands.html` and the new brand appears in the grid automatically after `build_all.py`.
@@ -308,13 +294,8 @@ After adding any new brand, you MUST update this section of the skill file (`.cl
 ## Build Pipeline Reference
 
 ```bash
-# Recommended for any session that touched brand JSONs:
 python scripts/build_all.py
-# Order: generate_localized → build_projects → build_products → build_brands
-
-# If only brands changed (rare — usually products and brands evolve together):
-python scripts/build_products.py    # required first — derives chip frequencies
-python scripts/build_brands.py
+# Order: validate → generate_localized → build_images → build_projects → build_products → build_brands
 ```
 
 **What `build_brands.py` does** (mirrors `build_products.py`):
@@ -326,6 +307,7 @@ python scripts/build_brands.py
 - Injects `window.__BRAND__` inline (full data + filtered products) for instant client-side hydration.
 - Injects `<h1>` + lead paragraph in `<noscript>` for crawlers without JS.
 - Injects ItemList JSON-LD into `brands.html` (EN/FR/AR).
+- Deletes the pages of any brand whose file is gone (`_lib.remove_orphan_pages`).
 - Writes complete `sitemap.xml` via `_lib.write_sitemap()` (idempotent, order-independent).
 
 **Order matters because:**

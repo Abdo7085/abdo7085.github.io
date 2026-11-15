@@ -1,0 +1,51 @@
+# Check-only: runs on every push and pull request, changes nothing, deploys
+# nothing. A red mark on the commit means one of:
+#   - a content file is broken (scripts/validate.py says which and why), or
+#   - the committed site is out of date with its sources: someone edited
+#     data/ or media/ without running  python scripts/build_all.py
+# GitHub Pages still publishes the branch either way; the mark (and GitHub's
+# email) is the warning to fix it.
+name: Check site
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the build tools
+        run: pip install -r scripts/requirements.txt
+
+      - name: Content files are valid
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python scripts/validate.py
+
+      - name: Generated pages match their sources
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python scripts/build_all.py > build.log 2>&1 || { tail -60 build.log; exit 1; }
+          rm build.log
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::The site is out of date with data/ or media/. Run 'python scripts/build_all.py' locally and commit what it changes."
+            git status --short | head -60
+            exit 1
+          fi
+          echo "Rebuilding changed nothing: the committed site matches its sources."

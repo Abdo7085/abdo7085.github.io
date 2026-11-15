@@ -7,6 +7,8 @@ process (no subprocess boundaries), so shared helpers in `_lib.py` stay
 warm and the `load_locale` cache hits across modules.
 
 Order:
+  0. validate           — check every content file (scripts/validate.py);
+                          any error stops the build before a page is written.
   1. generate_localized — emit /fr/ and /ar/ localized copies of root HTML.
   1b. build_images      — turn the originals in media/ into the served WebP
                           variants and 1200x630 share cards (incremental; also
@@ -19,6 +21,9 @@ Order:
                           from stage 3), write per-brand HTML, inject ItemList
                           into brands.html. Runs after build_products so the
                           freshest products_index.json is available.
+
+Stages 2-4 also delete generated pages whose source file is gone
+(`_lib.remove_orphan_pages`), and build_images deletes unused image files.
 
 Each stage writes sitemap.xml via `_lib.write_sitemap()`. Because that
 writer is idempotent and reads indexes from disk, the final sitemap is
@@ -33,6 +38,7 @@ from __future__ import annotations
 import sys
 import time
 
+import validate
 import generate_localized
 import build_images
 import build_projects
@@ -51,6 +57,7 @@ def run_stage(name: str, fn) -> None:
 
 
 def main() -> int:
+    run_stage("validate", validate.ensure)
     run_stage("generate_localized", generate_localized.main)
     run_stage("build_images", build_images.main)
     run_stage("build_projects", build_projects.main)

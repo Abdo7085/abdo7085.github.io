@@ -19,16 +19,19 @@ Static JSON-based system with trilingual support (English, French, Arabic).
 | `products/`, `fr/products/`, `ar/products/` | Auto-generated SEO pages |
 | `data/products_index.json` | Auto-generated index — **never edit manually** |
 
-### Build Command
+### Commands
 ```bash
-python scripts/build_products.py
-```
-This single command updates: web images (`build_images.py`, incremental) + index + static SEO pages + ItemList JSON-LD + sitemap.xml. It stops with a clear message on an unknown classification value, an unknown brand, or an image missing from `media/products/`.
-
-For full rebuild (after template/locale changes too):
-```bash
+# Add: checks the values, copies the images into media/products/, writes the file, rebuilds
+python scripts/new_product.py <slug> --brand "<Brand>" --type "<Type>" --tech KNX \
+    --install "<Method>" --image <scratch>/<slug>.png [--image ...] --content <scratch>/texts.json
+# Remove (shows the plan; add --yes to do it and rebuild)
+python scripts/remove_product.py <slug>
+# Rebuild after any manual edit — validates first, then images, pages, brand pages, sitemap
 python scripts/build_all.py
+# Full content report (errors stop the build; warnings do not)
+python scripts/validate.py
 ```
+`texts.json` holds `title`, `short_description`, `description`, `specs`, `files` (and optionally a real `rating`) in the schema below. Without `--content` the file gets `"TODO: ..."` placeholders and the build refuses to run until they are replaced.
 
 ### Product JSON Schema
 ```json
@@ -54,11 +57,13 @@ Originals go in `media/products/`; `images` lists **file names only**, first = p
 1. **Background removal** — choose based on product type:
    - `remove_bg.py` (AI): standard products (relays, actuators, switches, sensors)
    - `remove_bg_traditional.py` (Flood Fill): screens/panels, dark housing, thin antennas
-2. **Crop**: `python scripts/crop_image.py media/products/<slug>.png` — always
+2. **Crop**: `python scripts/crop_image.py <scratch>/<slug>.png` — always
+
+Process the primary in a scratch folder, then pass the result to `new_product.py --image`.
 3. **Edge polish**: alpha-channel Gaussian blur radius 0.8 (recommended after any background removal)
 
 ### Filter Values
-No list is kept here (copies went stale). `product_type`, `technology` and `installation` must be ids from `data/taxonomy.json`; `brand` must match the `brand` field of a file in `data/brands/`. Read those files — the build rejects anything else.
+No list is kept here (copies went stale). `product_type`, `technology` and `installation` must be ids from `data/taxonomy.json`; `brand` must match the `brand` field of a file in `data/brands/`. Read those files — `new_product.py` and the build (`validate.py`) reject anything else, naming the closest allowed value.
 
 ### Arabic Translation Rules
 Keep in English: brand names, model numbers, protocols (Wi-Fi, KNX, MQTT, Zigbee), platform names (Home Assistant, Alexa). Translate only descriptive language.
@@ -69,7 +74,7 @@ When adding a new `technology` value, add it to `data/taxonomy.json` and its SVG
 ### Critical Rules
 - **Never use PowerShell for JSON editing** — it corrupts UTF-8 Arabic text (mojibake)
 - **Never manually edit** `products_index.json`, `sitemap.xml`, or files in `products/`, `fr/products/`, `ar/products/`
-- **Always run `build_products.py`** after any product change
+- **Always run `build_all.py`** after any product change (`build_products.py` alone leaves brand pages stale)
 - **Rating**: prefer real data from Amazon/manufacturer. If none, omit field entirely (build script derives fallback 3.8-4.7 deterministically from slug hash)
 - **short_description**: max 8-10 words, focus on WHAT the product IS, not connectivity
-- When introducing a new `product_type` or `installation` value, add its `val_*` key to both `fr.json` and `ar.json`
+- A new `product_type` / `installation` / `technology` is added in `data/taxonomy.json` only, with en/fr/ar labels (no locale keys)

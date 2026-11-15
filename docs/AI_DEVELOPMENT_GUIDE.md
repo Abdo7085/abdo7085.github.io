@@ -35,7 +35,9 @@
 - `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. تُولّد آلياً بواسطة `generate_localized.py` من القوالب الإنجليزية الجذرية. **أي تعديلات على الـ SEO أو الهيكلة يجب أن تتم في القوالب الإنجليزية ثم يُعاد تشغيل السكربت.**
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
   - `_lib.py`: **الوحدة المشتركة** — ثوابت موحّدة (`HOST`, `LANGS`, `OG_LOCALES`, `SITEMAP_EXCLUDE`) ومساعدات i18n/SEO (`t`, `make_meta_description`, `load_locale`, `set_html_lang_dir`, `og_locale_block`, `breadcrumb_jsonld`, `itemlist_jsonld`) + **`write_sitemap()`** المركزي (المولّد الوحيد لـ `sitemap.xml`، idempotent، يقرأ `products_index.json` و `projects_index.json` و `ROOT.glob('*.html')` من القرص).
-  - `build_all.py`: **المنسّق** — يستدعي كل المراحل في عملية بايثون واحدة (بدون subprocess). مُستحسن لعمليات البناء الشاملة.
+  - `build_all.py`: **المنسّق** — يستدعي كل المراحل في عملية بايثون واحدة (بدون subprocess)، يبدأ بـ `validate.py`. مُستحسن لعمليات البناء الشاملة.
+  - `validate.py` (2026-11-15): **الفاحص** — يفحص كل ملفات المحتوى قبل كتابة أي صفحة، ويوقف البناء عند أي خطأ. راجع القسم 3.5.
+  - `new_product.py` / `new_brand.py` / `remove_product.py` (2026-11-15): **أوامر المحتوى** — إضافة منتج أو علامة وحذف منتج بأمر واحد. راجع القسم 3.5.
   - `build_images.py` (2026-11-15): **خط الصور** — يحوّل الأصول في `media/` إلى ما يُعرض: WebP بعروض 400/800/1200 في `assets/products/`، وبطاقة مشاركة 1200×630 JPG لكل منتج ومشروع في `assets/og/`، وصور الصفحة الرئيسية/404 المذكورة في `SITE_MEDIA`. تراكمي، ويكتب `data/product_images.json`. راجع القسم 3.4.
   - `build_products.py`: يبني فهرس المنتجات + صفحات SEO الثابتة لكل منتج + يحقن ItemList JSON-LD في `products.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`. (سابقاً كان يستدعي `generate_static_seo.py` عبر subprocess؛ الآن مدموج داخلياً.)
   - `build_projects.py`: يبني فهرس معرض الأعمال `data/projects_index.json` + يستخرج أبعاد كل وسائط المشروع عبر Pillow + يولّد صفحات SEO لكل مشروع في `projects/` و `fr/projects/` و `ar/projects/` + يحقن ItemList JSON-LD في `previous-work.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
@@ -51,7 +53,11 @@
 | السكربت | النوع | الدور | المدخلات | المخرجات | متى تشغّله |
 |---|---|---|---|---|---|
 | `_lib.py` | وحدة مشتركة (مكتبة) | ثوابت + مساعدات i18n/SEO + `write_sitemap()` المركزي | — (يُستورد من السكربتات الأخرى) | — | لا يُشغَّل مباشرة |
-| `build_all.py` | منسّق (Orchestrator) | يستدعي المراحل الثلاث بترتيبها في عملية بايثون واحدة | — | كل المخرجات أدناه | **الأمر المُستحسن لأي بناء شامل** |
+| `build_all.py` | منسّق (Orchestrator) | `validate` ثم كل المراحل بترتيبها في عملية بايثون واحدة | — | كل المخرجات أدناه | **الأمر المُستحسن لأي بناء** |
+| `validate.py` | فحص (Check) | يفحص المنتجات والعلامات والمشاريع والقواميس والتصنيف؛ الأخطاء توقف البناء والتحذيرات لا | `data/**/*.json`, `assets/locales/*.json`, `media/products/*` | تقرير فقط (لا يكتب شيئاً) | آلياً أول كل بناء؛ يدوياً للتقرير الكامل |
+| `new_product.py` | أمر محتوى | يتحقق من القيم، ينسخ الصور إلى `media/products/` بأسمائها، يكتب ملف المنتج، يبني | معرّف + قيم التصنيف + صور + `--content` | `data/products/<id>.json`, `media/products/<id>*` | لإضافة منتج |
+| `new_brand.py` | أمر محتوى | يشتقّ المعرّف من الاسم، ينسخ الشعار، يكتب ملف العلامة، يبني | الاسم + حقول اختيارية + `--content` | `data/brands/<id>.json`, `assets/brands/<id>.svg` | لإضافة علامة |
+| `remove_product.py` | أمر محتوى | يعرض ما سيُحذف، ومع `--yes` يحذف الملف والأصول ويبني | معرّف المنتج | — (البناء يزيل المولَّد) | لحذف منتج |
 | `build_images.py` | بناء (Build) | توليد صور الويب من الأصول + بطاقات المشاركة + حذف المولَّد اليتيم (تراكمي) | `media/products/*`, `media/site/*`, `data/products/*.json` (`images`), `data/projects/*.json` (`cover`) | `assets/products/*.webp`, `assets/og/**/*.jpg`, صور `SITE_MEDIA` في `assets/`, `data/product_images.json`, `scripts/state/images.json` | آلياً داخل `build_all.py` و `build_products.py` |
 | `generate_localized.py` | بناء (Build) | توليد نسخ `fr/` و `ar/` من الصفحات الجذرية + توطين JSON-LD (LocalBusiness/WebSite/FAQPage) | `index.html`, `products.html`, `previous-work.html`, `assets/locales/*.json` | `fr/*.html`, `ar/*.html`, `sitemap.xml` | عند تعديل قالب جذري أو قاموس ترجمة |
 | `build_projects.py` | بناء (Build) | فهرسة المشاريع + استخراج أبعاد الوسائط (Pillow) + توليد صفحات SEO + حقن ItemList في `previous-work.html` | `data/projects/*.json`, `assets/projects/<slug>/*` | `data/projects_index.json`, `projects/*.html`, `fr/projects/*.html`, `ar/projects/*.html`, `previous-work.html` (محقون), `sitemap.xml` | عند إضافة/تعديل مشروع |
@@ -66,7 +72,8 @@
 - **Idempotence**: كل من `generate_localized.py`, `build_projects.py`, `build_products.py`, `build_brands.py` يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` (الذي يضمّ الآن العلامات أيضاً) — الترتيب لم يعد يؤثر على صحة الـ sitemap.
 - **ترتيب ItemList**: `build_projects.py`, `build_products.py`, `build_brands.py` يحقنون في ملفات ينتجها `generate_localized.py` (`previous-work.html`, `products.html`, `brands.html`) — لذا لضمان ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` **أولاً** (وهذا ما يضمنه `build_all.py` آلياً عبر التسلسل: localize → projects → products → brands).
 - **اعتمادية `build_brands.py` على `build_products.py`**: `build_brands.py` يقرأ `data/products_index.json` ليشتقّ Tech/Categories ويعدّ المنتجات. لذا **يجب** أن يُشغَّل `build_products.py` **قبله**. `build_all.py` يضمن هذا الترتيب.
-- **سكربتات تحرير الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً على الأصل داخل `media/products/`. ما يُعرض للزائر يولّده `build_images.py` من ذلك الأصل.
+- **سكربتات تحرير الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً على الصورة في مجلد مؤقت قبل `new_product.py` (أو على الأصل داخل `media/products/` في المسار اليدوي). ما يُعرض للزائر يولّده `build_images.py` من ذلك الأصل.
+- **التنظيف الآلي للصفحات**: `build_products.py` و `build_brands.py` و `build_projects.py` تحذف أي صفحة مولَّدة (باللغات الثلاث) لم يعد لملفها مصدر (`_lib.remove_orphan_pages`). حذف منتج/علامة/مشروع = حذف ملفه ثم البناء.
 
 ---
 
@@ -134,12 +141,14 @@
 
 إدارة المنتجات مبنية على ملفات JSON وتولد بآلية المواقع الثابتة (SSG) لدعم محركات البحث بقوة. هناك ملف كامل `\.claude\commands\product.md` يفصّل طريقة إضافة المنتجات. والخلاصة:
 
-1. **التعريف البرمجي للمنتج:** يتم إنشاء أو تعديل ملف المنتج في مسار `data/products/<id>.json`. مع التأكد من احتواء حقول العناوين والوصف والمواصفات على النصوص باللغات الثلاث (en, fr, ar).
-2. **البناء والتوليد الآلي المنتظم:**
-   بعد إنشاء المنتج أو تعديله، **يجب دائماً وبلا استثناء** تنفيذ الأمر التالي في موجه الأوامر:
-   `python scripts/build_products.py`
-   
-   **العمليات التي ينجزها هذا السكريبت:**
+1. **الإضافة بأمر واحد:** `python scripts/new_product.py <id> --brand ... --type ... --tech ... --install ... --image ... --content texts.json` — يتحقق من القيم، ينسخ الصور، يكتب `data/products/<id>.json`، ثم يبني. (المسار اليدوي — كتابة الملف مباشرة — ما زال صالحاً، والبناء يفحص الأشياء نفسها.)
+2. **الحذف بأمر واحد:** `python scripts/remove_product.py <id>` (يعرض الخطة) ثم `--yes`.
+3. **بعد أي تعديل يدوي**، **يجب دائماً** تنفيذ:
+   `python scripts/build_all.py`
+   (`build_products.py` وحده لا يحدّث صفحات العلامات التي تعرض منتجاتها.)
+
+   **العمليات التي ينجزها البناء للمنتجات:**
+   - فحص كل الملفات أولاً (`validate.py`) والتوقف قبل كتابة أي شيء عند خطأ.
    - إنتاج أو تحديث ملف الفهرسة `data/products_index.json` الضروري لتشغيل واجهة البحث والفلترة.
    - بناء وإعادة كتابة الصفحات الثابتة بصيغة HTML لكل اللغات داخل مسارات مثل (`/ar/products/` الخ).
    - إلحاق المنتجات وروابطها بقاعدة الروابط الشاملة للموقع `sitemap.xml` مع `lastmod` و `hreflang` (بما فيه `x-default`).
@@ -331,18 +340,16 @@ gap: 3rem;          /* mobile */
 
 ### إضافة علامة جديدة (Quick Recipe)
 
-1. أنشئ `data/brands/<slug>.json` (تطابق `slug` مع `brand.toLowerCase().replace(/\s+/g, '-')`).
-2. **اختياري:** ضع شعاراً في `assets/brands/<slug>.svg` (أو `.png`) وحدّث `"logo"` من `null` إلى المسار.
+1. `python scripts/new_brand.py "<الاسم كما في المنتجات>" [--country ...] [--founded ...] [--website https://...] [--logo logo.svg] --content texts.json` — يشتقّ `slug` من الاسم بالقاعدة نفسها، ينسخ الشعار إلى `assets/brands/<slug>.svg`، يكتب الملف، ثم يبني.
+2. (يدوياً بدلاً من ذلك: أنشئ `data/brands/<slug>.json` ثم `python scripts/build_all.py` — `validate.py` يرفض أي `id` لا يطابق `brand.toLowerCase().replace(/\s+/g, '-')`.)
 3. تحقّق أن **`brand` field يطابق بالحرف** القيمة الموجودة في منتجات الكتالوج.
-4. شغّل `python scripts/build_all.py`.
 5. النتيجة: صفحة جديدة في `brands/<slug>.html` + `fr/brands/<slug>.html` + `ar/brands/<slug>.html`، مع pagination تلقائي إن > 12 منتج، وchips مُشتقّة من الكتالوج.
 
 ### حذف علامة
 
-1. احذف `data/brands/<slug>.json`.
-2. احذف `brands/<slug>.html`, `fr/brands/<slug>.html`, `ar/brands/<slug>.html`.
-3. شغّل `python scripts/build_all.py` (لتحديث الفهرس + sitemap + ItemList).
-4. (اختياري) احذف الشعار إن وُجد.
+1. احذف منتجاتها أولاً (`remove_product.py`) — البناء يرفض منتجاً علامته بلا ملف.
+2. احذف `data/brands/<slug>.json` والشعار.
+3. شغّل `python scripts/build_all.py` — يحذف الصفحات الثلاث ويحدّث الفهرس + sitemap + ItemList.
 
 ### درس مستفاد: SPA Bundle Navbar Patches
 
@@ -394,7 +401,7 @@ u.jsx(Mt, {
 
 ### القواعد
 - **ملف المنتج يخزّن `product_type` فقط. لا يُكتب فيه حقل `category` أبداً** — الفئة تُشتقّ من موقع النوع داخل `taxonomy.json` (كل نوع تحت فئة واحدة بالضبط)، فيستحيل أن يتعارضا. `build_products.py` يكتب الفئة المشتقّة في كل مُدخل من `products_index.json`.
-- **البناء يرفض أي قيمة غير معرَّفة ويتوقف قبل كتابة أي ملف**، مع رسالة تسمّي الملف والقيمة الخاطئة والقيم المسموحة: `product_type` / `technology` / `installation` (`build_products.py`)، علامة بلا ملف في `data/brands/` (`build_products.py`)، فئة مشروع غير معرَّفة (`build_projects.py`)، ملف JSON تالف (لم يعد يُتجاوَز بصمت). المنطق في `_lib.Taxonomy` و `_lib.abort_on_problems()`.
+- **البناء يرفض أي قيمة غير معرَّفة ويتوقف قبل كتابة أي ملف**، مع رسالة تسمّي الملف والقيمة الخاطئة والقيم المسموحة: `product_type` / `technology` / `installation` (`build_products.py`)، علامة بلا ملف في `data/brands/` (`build_products.py`)، فئة مشروع غير معرَّفة (`build_projects.py`)، ملف JSON تالف (لم يعد يُتجاوَز بصمت). المنطق في `_lib.Taxonomy`، ويستدعيه `scripts/validate.py` (القسم 3.5) أول كل بناء.
 - **اللغات الثلاث إلزامية** لكل `label` — ملف تصنيف ناقص يوقف البناء (`_lib.TaxonomyError`).
 - **ترتيب القوائم في الملف = ترتيب العرض** في فلاتر الكتالوج.
 
@@ -438,6 +445,27 @@ u.jsx(Mt, {
 - **النتيجة المقاسة (2026-11-15):** الصور الرئيسية الـ84 من 30.9MB إلى نحو 1MB (أصغر نسخة)؛ كل الصور الـ209 من 46.6MB إلى 3.3MB (نسخ ≤800). بطاقة المشاركة بمعدل 35KB.
 - **فيديو الرئيسية (`SITE_VIDEO`):** الأصل `media/site/example01.mp4` ← `assets/example01.mp4` (H.264 بلا مسار صوت، `+faststart` ليبدأ التشغيل أثناء التنزيل، CRF 26 مع `aq-mode 3` للمشاهد الداكنة؛ من 3.45MB إلى 1.32MB) + صورة غلاف `assets/example01-poster.webp` من الثانية 2 (المشهد الافتتاحي، لا الإطار 0 الأسود). الغلاف هو ما يراه هاتف يمنع التشغيل التلقائي (آيفون في وضع توفير الطاقة). عنصر `<video>` داخل الحزمة `assets/index-CGMiSPUa.js` يحمل `width: 1280, height: 720` و `data-poster`، ومحمّله الكسول يضع الغلاف مع الفيديو (فلا يكلّف زائراً لم يصل إليه). **إن تغيّر شكل الفيديو حدّث هذه القيم في الحزمة.** يحتاج ffmpeg فقط عند تغيّر الأصل أو الإعدادات (`winget install Gyan.FFmpeg`)؛ بدونه يُبقي البناء الملف الحالي ويطبع تحذيراً. الترميز حتمي: إعادة الترميز تعطي الملف نفسه بايتاً ببايت.
 - **غير مشمول بعد:** صورة مشاركة صفحات العلامات ما زالت شعار SVG (فيسبوك وواتساب لا يعرضان SVG) — تحويل SVG إلى صورة يحتاج مكتبة غير مثبّتة. ريل المشروع `assets/reels/huerto-pool-tetouan.mp4` (2.1MB، 720×1280 بمعدل 1Mbps) مرمَّز جيداً أصلاً فبقي كما هو.
+
+## 3.5 الفاحص وأوامر المحتوى (Validation & Content Commands) — 2026-11-15
+
+**الجذر:** كانت الفحوص موزّعة على ثلاثة سكربتات بناء، ولا شيء يمنع لغة ناقصة أو رابط مشروع إلى منتج محذوف أو اسم حقل خاطئ. وكانت الإضافة والحذف خطوات يدوية متعدّدة (ملف + صور + صفحات + بناء).
+
+### `scripts/validate.py`
+- يعمل **أول كل بناء** (`build_all.py` وكل `build_*.py` و `generate_localized.py` تستدعي `validate.ensure()`؛ يعمل مرة واحدة في العملية). عند أي خطأ يتوقف البناء **قبل كتابة أي صفحة** ويطبع الملف والسبب.
+- **أخطاء (توقف البناء):** حقل ناقص أو اسم حقل غير معروف (مع اقتراح الأقرب)، `id` لا يطابق اسم الملف، نص فارغ في إحدى اللغات الثلاث، عدد صفوف المواصفات يختلف بين اللغات، قيمة تصنيف غير معرَّفة، علامة بلا ملف، صورة مفقودة أو اسم غير صالح، رابط ملف لا يبدأ بـ `https://` أو `/`، نص `TODO: ...` متبقٍّ من أوامر الإضافة، `id` علامة لا يطابق اشتقاق رابطها من اسمها، شعار/غلاف/وسائط/صورة غلاف فيديو غير موجودة، منتج في `related_products` غير موجود، تاريخ مشروع غير صالح، مفتاح ترجمة في `en.json` ناقص من `fr.json` أو `ar.json` (أو مختلف بينهما)، قيمة ترجمة فارغة.
+- **تحذيرات (لا توقف البناء، يُطبع عددها فقط):** وصف قصير إنجليزي أطول من 10 كلمات (11 منتجاً الآن)، علامة بلا منتجات، شعار ليس `/assets/brands/<id>.svg` (البطاقات تبحث عن هذا المسار). `python scripts/validate.py` يطبع التقرير الكامل.
+- `rating` في المنتج اختياري و**لا يُفحص** (التقييم المشتق مقصود).
+- مفاتيح موجودة في `fr`/`ar` فقط مسموحة (`faq_*`, `noscript_h1_*` — يستعملها `generate_localized.py` للنسخ المترجمة؛ النص الإنجليزي في HTML نفسه).
+
+### أوامر المحتوى
+- **`new_product.py <id> --brand --type --tech (مكرر) --install --image (مكرر) [--content texts.json] [--no-build]`**: القيم غير حسّاسة لحالة الأحرف وتُصحَّح للتهجئة المعتمدة؛ الخطأ يوقف مع القيم المسموحة والأقرب قبل إنشاء أي ملف. الصور تُنسخ كـ `<id>.<ext>`, `<id>-2.<ext>`… وما فوق 2000px يُصغَّر. بلا `--content` تُكتب عناصر `TODO:` والبناء يرفض حتى تُملأ.
+- **`new_brand.py "<Name>" [--country] [--founded] [--website] [--logo] [--content] [--no-build]`**: `id` يُشتقّ من الاسم (`validate.brand_slug`، نفس قاعدة `product-detail.js`).
+- **`remove_product.py <id> [--yes]`**: بلا `--yes` يعرض الخطة فقط. يرفض إن كان مشروع يذكر المنتج في `related_products`. يحذف الملف والأصول التي لا يستعملها منتج آخر، ثم يبني (فتُحذف الصفحات والنسخ وبطاقة المشاركة آلياً).
+- اختُبرت كلها (2026-11-15) بمنتج وعلامة تجريبيين: إضافة ← ظهور في الكتالوج وصفحة العلامة و sitemap ← حذف ← المستودع كما كان (عدا تواريخ sitemap للعلامة، وهي تغيّر حقيقي).
+
+### فحص GitHub (`.github/workflows/check.yml`)
+- عند كل push و pull request: `validate.py` ثم `build_all.py` ثم `git status` — إن غيّر البناء أي ملف فالموقع المرفوع لا يطابق مصادره (عُدِّل `data/` أو `media/` دون بناء). **فحص فقط:** لا يكتب ولا ينشر، و GitHub Pages ينشر الفرع على أي حال؛ العلامة الحمراء (وبريد GitHub) هي التنبيه.
+- لا يحتاج ffmpeg: الصور والفيديو لا يُعاد ترميزها ما دامت بصمات `scripts/state/images.json` مطابقة.
 
 ---
 
@@ -485,6 +513,7 @@ python scripts/build_all.py
 ```
 أو بخطوات يدوية مستقلّة:
 ```
+0. python scripts/validate.py              ← يفحص كل المحتوى (كل سكربت بناء يستدعيه أيضاً، مرة واحدة)
 1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + يكتب sitemap
 1b. python scripts/build_images.py          ← صور الويب + بطاقات المشاركة (يعيده build_products.py تلقائياً)
 2. python scripts/build_projects.py         ← معرض الأعمال + يكتب sitemap

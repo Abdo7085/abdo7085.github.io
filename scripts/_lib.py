@@ -553,6 +553,47 @@ def write_sitemap() -> None:
         SITEMAP_STATE_PATH.write_text(state_text, encoding="utf-8")
 
 
+# ---------------- Orphan pages ----------------
+
+def remove_orphan_pages(section: str, ids) -> list:
+    """Delete generated pages <section>/<id>.html (and the fr/ar copies) whose
+    source file is gone, so a removed product, brand or project leaves no
+    page behind. These folders hold generated pages only. Returns the
+    removed paths."""
+    keep = {f"{i}.html" for i in ids if i}
+    removed = []
+    for lang in LANGS:
+        folder = ROOT / section if lang == "en" else ROOT / lang / section
+        if not folder.is_dir():
+            continue
+        for page in sorted(folder.glob("*.html")):
+            if page.name not in keep:
+                page.unlink()
+                removed.append(page.relative_to(ROOT).as_posix())
+    return removed
+
+
+# ---------------- Content scripts (new_product / new_brand / remove_product) ----------------
+
+def write_content_json(path: Path, data: dict) -> None:
+    """Write a data/ file the way the content scripts always do."""
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def match_choice(value: str, choices, what: str, where: str = "data/taxonomy.json") -> str:
+    """Return the allowed spelling of `value` (case-insensitive match), or stop
+    with the list of allowed values and the closest one."""
+    import difflib
+    choices = list(choices)
+    for choice in choices:
+        if choice.lower() == str(value).strip().lower():
+            return choice
+    close = difflib.get_close_matches(str(value), choices, n=1, cutoff=0.5)
+    hint = f' Did you mean "{close[0]}"?' if close else ""
+    raise SystemExit(f'\nUnknown {what} "{value}".{hint}\nAllowed: {", ".join(choices)}'
+                     f'\nA new value is added in {where} first.')
+
+
 # ---------------- Export a safe escape alias for consumers ----------------
 
 escape = html_module.escape

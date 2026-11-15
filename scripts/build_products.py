@@ -27,10 +27,10 @@ import hashlib
 import html as html_module
 import json
 import re
-from pathlib import Path
 
 import _lib
 import build_images
+import validate
 from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PRODUCTS_DIR = ROOT / "data" / "products"
@@ -47,36 +47,12 @@ def build_index(manifest):
     product_files = sorted(glob.glob(str(PRODUCTS_DIR / "*.json")))
     products_index = []
     taxonomy = _lib.load_taxonomy()
-    problems = []
 
-    # Brand names that have a brand page (data/brands/*.json → "brand").
-    known_brands = set()
-    for bf in sorted((ROOT / "data" / "brands").glob("*.json")):
-        try:
-            known_brands.add(json.loads(bf.read_text(encoding="utf-8")).get("brand"))
-        except Exception as e:
-            problems.append(f"brands/{bf.name}: not valid JSON ({e})")
-
+    # Every file was checked by validate.ensure() in main(): readable, values
+    # from data/taxonomy.json, brand has a file, images exist.
     for pf in product_files:
-        name = Path(pf).name
-        try:
-            with open(pf, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception as e:
-            problems.append(f"{name}: not valid JSON ({e})")
-            continue
-
-        # Classification must use values defined in data/taxonomy.json — a
-        # typo here would silently create a stray filter entry on the site.
-        problems.extend(f"{name}: {msg}" for msg in taxonomy.check_product(data))
-
-        # The product page links its brand to /brands/<slug>.html; a brand
-        # without a file in data/brands/ would make that link a 404.
-        if data.get("brand") not in known_brands:
-            problems.append(
-                f'{name}: brand "{data.get("brand")}" has no file in data/brands/ '
-                f'(known: {", ".join(sorted(b for b in known_brands if b))})'
-            )
+        with open(pf, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
         index_entry = {
             "id": data.get("id"),
@@ -96,9 +72,6 @@ def build_index(manifest):
             index_entry["image"] = descs[0]
         products_index.append(index_entry)
         print(f"  Added {data.get('id')} to index.")
-
-    # Nothing is written if any product is misclassified or unreadable.
-    _lib.abort_on_problems(problems, "data/products")
 
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         json.dump(products_index, f, indent=2, ensure_ascii=False)
@@ -437,6 +410,9 @@ def generate_static_pages(manifest):
             out_path.write_text(page_html, encoding="utf-8")
             print(f"  OK {out_path.relative_to(ROOT)}")
 
+    for page in _lib.remove_orphan_pages("products", all_product_ids):
+        print(f"  Removed {page} (its product file is gone)")
+
     inject_products_page_jsonld(products)
 
     write_sitemap()
@@ -447,6 +423,7 @@ def generate_static_pages(manifest):
 
 def main():
     print("=== Building Product Catalog ===\n")
+    validate.ensure()
     # Images first: it validates every product's "images" list and returns
     # the descriptors the index and the pages need (fast when nothing changed).
     manifest = build_images.build()

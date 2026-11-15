@@ -26,9 +26,9 @@ import glob
 import html as html_module
 import json
 import re
-from pathlib import Path
 
 import _lib
+import validate
 from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 BRANDS_DIR = ROOT / "data" / "brands"
@@ -299,6 +299,9 @@ def generate_all_brand_pages(brands, products_index):
             out_path.write_text(page_html, encoding="utf-8")
             print(f"  OK {out_path.relative_to(ROOT)}")
 
+    for page in _lib.remove_orphan_pages("brands", [b.get("id") for b in brands]):
+        print(f"  Removed {page} (its brand file is gone)")
+
 
 # ---------------- ItemList injection into brands.html ----------------
 
@@ -344,6 +347,7 @@ def inject_brands_page_itemlist(brands):
 
 def main():
     print("=== Building Brand Catalog ===\n")
+    validate.ensure()
 
     # Load products index — required to count products per brand and to filter
     # them onto each brand's detail page.

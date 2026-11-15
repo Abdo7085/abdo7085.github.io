@@ -14,8 +14,11 @@ data/product_images.json → Image descriptors per product (auto-generated, used
 data/taxonomy.json      → SINGLE SOURCE OF TRUTH for classification: categories → product types,
                           technologies, installation methods — with their en/fr/ar labels
 assets/site-core.js     → Shared browser helpers: reads taxonomy.json for labels + the one protocol-icon dictionary
+scripts/new_product.py    → ADD a product in one command: checks values, imports images, writes the file, builds
+scripts/remove_product.py → REMOVE a product and everything generated from it, in one command
+scripts/validate.py       → Checks every content file; runs first in every build and stops it on any error
 scripts/_lib.py           → Shared helpers (i18n, SEO, JSON-LD, sitemap). Single source of truth
-scripts/build_all.py      → One-shot orchestrator (runs all stages in one Python process)
+scripts/build_all.py      → One-shot orchestrator (validate first, then all stages in one Python process)
 scripts/build_images.py   → Image pipeline: media/ originals → WebP 400/800/1200 + share cards (incremental)
 scripts/build_products.py → Unified build: index + static SEO pages + sitemap + ItemList injection
 scripts/build_projects.py → Projects portfolio build
@@ -43,16 +46,16 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 
 ### Adding a New Product
 
-1. **Create the JSON file** at `data/products/<product-slug>.json` using this template:
+The order: **classify → prepare the images → write the texts → one command.** The command (`scripts/new_product.py`) writes `data/products/<id>.json`, so you never assemble the classification fields or image names by hand.
+
+1. **Classify** the product from `data/taxonomy.json` — see *Classification* below (and *Adding a new classification value* if nothing fits). The brand must already have a file in `data/brands/`; if not, add the brand first (brand skill / `scripts/new_brand.py`).
+
+2. **Prepare the images in a scratch folder** (e.g. `%TEMP%\se-<product-slug>\`), never directly in `media/products/`: download them, process the primary (background removal + crop, see *Primary image processing* below — run those scripts on the scratch copy), keep secondaries as downloaded. The command copies them into `media/products/` under the right names.
+
+3. **Write the texts** into a scratch JSON file (same scratch folder, e.g. `texts.json`) — the shape below. These are the only fields you write; the command adds `id`, `brand`, `technology`, `product_type`, `installation` and `images`:
 
 ```json
 {
-  "id": "<product-slug>",
-  "brand": "<Brand Name>",
-  "technology": ["<Protocol1>", "<Protocol2>"],
-  "product_type": "<Type>",
-  "installation": "<Installation Method>",
-
   "title": {
     "en": "English Title",
     "fr": "French Title",
@@ -77,12 +80,6 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
     "ar": { "اسم المواصفة": "القيمة" }
   },
 
-  "images": [
-    "<product-slug>.png",
-    "<product-slug>-2.jpg",
-    "<product-slug>-3.jpg"
-  ],
-
   "rating": {
     "value": 4.3,
     "count": 17
@@ -100,7 +97,20 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
 - **Only if no real data exists**, omit the `rating` field entirely. The build script (`build_products.py`) and `assets/product-detail.js` will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
-2. **Put the original images in `media/products/`** and list their **file names only** in `images` (first = primary). Names: lowercase letters, digits, `-`, `_`; formats `.png`, `.jpg`, `.jpeg`, `.webp` (convert `.avif` to `.png` first). Keep originals at most **2000px** on their longest side — the build warns above that. Never put files in `assets/products/`: that folder is generated, and the build deletes anything there no product uses.
+   The `specs` tables must have the same number of rows in en / fr / ar — the build checks it. `files` may be `[]`.
+
+4. **Run one command** (values are case-insensitive; a typo stops with the allowed values and the closest match, and nothing is written):
+   ```bash
+   python scripts/new_product.py <product-slug> --brand "<Brand>" --type "<product_type>" \
+       --tech KNX [--tech Zigbee] --install "<installation>" \
+       --image <scratch>/<primary>.png [--image <scratch>/<second>.jpg ...] \
+       --content <scratch>/texts.json
+   ```
+   It copies the images into `media/products/` as `<slug>.png`, `<slug>-2.jpg`, … (first = primary; anything above 2000px is shrunk), writes `data/products/<slug>.json`, validates it, and runs `build_all.py`. Report the three URLs it prints. Without `--content` it writes `"TODO: ..."` placeholders and the build refuses to run until every one is replaced — useful when the texts come later.
+
+   *Manual route (still valid):* write `data/products/<slug>.json` yourself with the fields above plus `id`, `brand`, `technology`, `product_type`, `installation` and `images` (file names only), put the originals in `media/products/`, then `python scripts/build_all.py`. The build checks exactly the same things.
+
+   **About the images** (whichever route): `images` lists **file names only** (first = primary), the files live in `media/products/`. Names: lowercase letters, digits, `-`, `_`; formats `.png`, `.jpg`, `.jpeg`, `.webp` (convert `.avif` to `.png` first). Originals at most **2000px** on their longest side. Never put files in `assets/products/`: that folder is generated, and the build deletes anything there no product uses.
 
    The build then does the rest automatically (`scripts/build_images.py`, run by `build_products.py` and `build_all.py`):
    - WebP variants at 400 / 800 / 1200px wide (never upscaled) in `assets/products/`, used through `srcset` so phones download the small one.
@@ -108,11 +118,13 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
    - Only new or changed originals are processed (the first run of a new image takes a few seconds; unchanged ones are skipped).
    - The build **stops** if an image is listed but missing from `media/products/`, has a path instead of a file name, or two files share a name (`x.png` + `x.jpg`).
 
-3. **Remove the background from the product image** — Most manufacturer images have a studio background. Choose the right tool **before** running — do NOT try AI first and fall back; pick based on product type:
+#### Primary image processing (in the scratch folder, before `new_product.py`)
+
+   **Remove the background from the product image** — Most manufacturer images have a studio background. Choose the right tool **before** running — do NOT try AI first and fall back; pick based on product type:
 
    - **`remove_bg.py` (AI)** — Use for standard products with a simple, compact housing: relays, actuators, power supplies, indoor APs, network switches, sensors — anything that's essentially a rectangular box with no thin protrusions and no large dark screen.
      ```bash
-     python scripts/remove_bg.py media/products/<product-slug>.<ext>
+     python scripts/remove_bg.py <scratch>/<product-slug>.<ext>
      ```
      *Requires: `pip install "rembg[cpu]"`. Uses rembg / U²-Net AI model.*
 
@@ -121,22 +133,22 @@ Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSO
      - **Products with a visible screen or large dark/black surface** — touch panels, room control units with displays, tablets, monitors. The AI model treats dark bezels and screens as background and removes them.
      - **Dark-colored products** — even without a screen, products with a dark/black housing (e.g. Anthracite switches, black relays) against a white studio background. The AI model can clip thin edges of dark objects, "eating" a few pixels from the outline. Flood Fill preserves the full silhouette.
      ```bash
-     python scripts/remove_bg_traditional.py media/products/<product-slug>.<ext>
+     python scripts/remove_bg_traditional.py <scratch>/<product-slug>.<ext>
      ```
 
    **Decision rule:** If the product image shows (a) a screen/display/large dark face, OR (b) thin protruding parts like external antennas, OR (c) a dark/black housing → always use `remove_bg_traditional.py`. For everything else (light-colored compact products with no screen) → use `remove_bg.py`.
 
-   Both tools produce a transparent `.png` next to the source image. Reference the `.png` in the JSON `images` array. Skip background removal only if the source image is already transparent.
+   Both tools produce a transparent `.png` next to the source image — that `.png` is the primary you pass to `new_product.py --image`. Skip background removal only if the source image is already transparent.
 
    **Always crop the final image** — Whether or not background removal was needed, always run the auto-crop script to ensure the product fills its card consistently (no wasted transparent padding):
    ```bash
-   python scripts/crop_image.py media/products/<product-slug>.png
+   python scripts/crop_image.py <scratch>/<product-slug>.png
    ```
    This trims all transparent padding and adds a small uniform margin (4% of the longest side). The product should fill most of the image canvas — compare with existing product images like `rcu0808-room-control-unit.png` for reference. This step is **mandatory** for every product image, even if it already has a transparent background.
 
    **Polish edges after `remove_bg_traditional.py`** — The traditional flood-fill cuts pixels in a binary on/off way (alpha = 0 or 255), which leaves visibly jagged "stairstep" edges around the product's silhouette. After cropping, apply a tiny Gaussian blur to the **alpha channel only** to soften those edges without touching the product's RGB pixels:
    ```bash
-   python -c "from PIL import Image, ImageFilter; img = Image.open('media/products/<product-slug>.png').convert('RGBA'); r,g,b,a = img.split(); a = a.filter(ImageFilter.GaussianBlur(radius=0.8)); Image.merge('RGBA',(r,g,b,a)).save('media/products/<product-slug>.png','PNG',optimize=True)"
+   python -c "from PIL import Image, ImageFilter; img = Image.open('<scratch>/<product-slug>.png').convert('RGBA'); r,g,b,a = img.split(); a = a.filter(ImageFilter.GaussianBlur(radius=0.8)); Image.merge('RGBA',(r,g,b,a)).save('<scratch>/<product-slug>.png','PNG',optimize=True)"
    ```
    Use radius `0.8` — small enough to keep the silhouette crisp, large enough to anti-alias the staircase. Higher values (1.5+) make the product look out-of-focus.
 
@@ -254,22 +266,28 @@ If the `.js` endpoint returns 404, check the product's actual page on the manufa
 - **Dimensions included** — `media[*].width` and `media[*].height` are useful for aspect ratio
 
 
-4. **Classify the product from `data/taxonomy.json`** — `product_type`, every `technology` entry and `installation` MUST be an `id` that file defines (exact spelling and casing). Read the file first; never guess from memory. The build refuses anything else. `brand` must match — character for character — the `brand` of a file in `data/brands/`.
+#### Classification
+
+   **Classify the product from `data/taxonomy.json`** — `product_type`, every `technology` entry and `installation` MUST be an `id` that file defines (exact spelling and casing). Read the file first; never guess from memory. The build refuses anything else. `brand` must match — character for character — the `brand` of a file in `data/brands/`.
    - **Never add a `category` field to the product.** The category is derived from `product_type` by the taxonomy (each type sits under exactly one category) and written into `products_index.json` by the build.
    - **Reuse an existing `product_type` when the product truly serves the same purpose and installation context.** Don't create a new type for a mere variant (e.g. "Dimmer Switch" → use `"Dimmer"`). DO create one when the product solves a different problem or installs in a fundamentally different way. Reference distinctions already made: `"Smart Relay"` (compact, behind the wall switch, retrofit) vs `"Actuator"` (DIN rail, electrical panel) vs `"Room Control Unit"` (all-in-one room controller); `"Touch Panel"` (smart-home control panel) vs `"Indoor Monitor"` (video-intercom screen); `"Router"` / `"Network Switch"` / `"Access Point"` by network role; `"IP Interface"` / `"Line Coupler"` (KNX system devices) vs `"Gateway"` (protocol hub such as Zigbee/Matter).
 
-5. **Adding a new classification value** — only when step 4 found no fit. Edit `data/taxonomy.json` **before** building; it is the only file to touch (no locale keys, no list in this skill, no JS):
+#### Adding a new classification value
+
+   Only when *Classification* found no fit. Edit `data/taxonomy.json` **before** building; it is the only file to touch (no locale keys, no list in this skill, no JS):
    - New `product_type`: add `{ "id": "...", "label": { "en": "...", "fr": "...", "ar": "..." } }` to the `types` of the category it belongs to. If no category fits, add a new category the same way (`id` = short kebab-case slug, plus label and `types`). List order is the display order in the catalog filters.
    - New `installation`: add an entry with its three labels to `installations`.
    - New `technology`: add `{ "id": "..." }` to `technologies` (protocol names are never translated). For an icon on the cards, also add a branch to `protoMarkup()` in `assets/site-core.js`; without one the name is shown as plain text, which is acceptable.
    - All three languages are mandatory — the build stops if a label is missing.
    - Renaming or splitting an existing type: update the products, then add the old name under `aliases.product_type` so previously shared filter links keep working.
 
-6. **Build everything** (images + index + static SEO pages + sitemap):
+#### What the build does
+
+   `python scripts/build_all.py` (run for you by `new_product.py`; run it yourself after any manual change):
    ```bash
-   python scripts/build_products.py
+   python scripts/build_all.py
    ```
-   This single command does all of the following:
+   It first runs `scripts/validate.py` (stops on any broken content file, before writing anything), then:
    - Runs the image pipeline (`build_images.py`): validates every `images` list, generates the WebP variants and share cards for new/changed originals, deletes generated files nothing uses any more, writes `data/product_images.json`
    - Builds `data/products_index.json` (product listing index; `image` = primary image descriptor `{src, srcset, width, height}`)
    - Generates static HTML pages in `products/`, `fr/products/`, `ar/products/` with full SEO:
@@ -283,17 +301,15 @@ If the `.js` endpoint returns 404, check the product's actual page on the manufa
    - Injects ItemList JSON-LD into products.html (EN/FR/AR) for catalog rich results
    - Writes the complete sitemap.xml via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk, so nothing is ever dropped regardless of which script ran last
 
-   **If you also modified root pages** (index.html, products.html, previous-work.html) **or projects** in the same session, use the orchestrator for a clean rebuild:
-   ```bash
-   python scripts/build_all.py    # runs generate_localized → build_images → build_projects → build_products → build_brands
-   ```
-   Or run each stage manually in that order. Sitemap correctness no longer depends on run order (every stage writes a complete sitemap). The order only matters for ItemList injection — `build_products.py` injects into `products.html` produced by `generate_localized.py`, so localized pages must exist first.
+   - Rebuilds the brand pages too (they list the brand's products) and deletes the pages of any product, brand or project whose file is gone.
+
+   Always use `build_all.py` — `build_products.py` alone leaves the brand pages behind. An unchanged rebuild changes no file.
 
 ### Editing an Existing Product
 
 1. Read the product file from `data/products/`
-2. Make the requested changes (preserve all three languages)
-3. Rebuild with `python scripts/build_products.py`
+2. Make the requested changes (preserve all three languages; Python only, never PowerShell — see Important Rules)
+3. Rebuild with `python scripts/build_all.py` — it stops with the file and the reason if the edit broke anything
 
 ### Listing Products
 
@@ -301,10 +317,11 @@ List files in `data/products/` to show available products. Read individual files
 
 ### Deleting a Product
 
-1. Delete the JSON file from `data/products/`
-2. Delete the static HTML pages: `products/<slug>.html`, `fr/products/<slug>.html`, `ar/products/<slug>.html`
-3. Delete the product's originals from `media/products/` (unless another product lists them)
-4. Rebuild with `python scripts/build_products.py` — it removes the generated WebP files and share card automatically
+```bash
+python scripts/remove_product.py <slug>          # shows exactly what will go — confirm with the user
+python scripts/remove_product.py <slug> --yes    # removes it and rebuilds
+```
+It deletes the product file and its originals in `media/products/` (keeping any image another product also lists); the rebuild then drops its three pages, WebP variants, share card, and its entries in the catalog, brand page and sitemap. It refuses while a project still lists the product in `related_products` — edit that project first.
 
 ## Classification Values
 
@@ -317,7 +334,7 @@ There is deliberately **no list of values in this file** — a copy here went st
 | `installation` | `data/taxonomy.json` → `installations[].id` |
 | `brand` | the `brand` field of the files in `data/brands/` (see the brand skill to add one) |
 
-`python scripts/build_products.py` validates every product against these and **stops without writing anything** if a value is unknown, naming the file, the bad value and the allowed ones. A typo can therefore no longer create a stray filter entry on the site.
+`scripts/validate.py` (first stage of every build) checks every product against these and **stops the build before anything is written** if a value is unknown, naming the file, the bad value and the closest allowed one. `new_product.py` checks them even earlier, before creating any file. Run `python scripts/validate.py` on its own any time for the full report (errors stop the build; warnings — e.g. a short description over 10 words — do not).
 
 When the user provides product info in any language, translate it appropriately for all three languages (en, fr, ar). If the user only gives partial info, ask for the missing critical fields before creating the file.
 
@@ -357,6 +374,7 @@ When researching a new product, actively search the manufacturer's site for `fil
 - All text fields (`title`, `short_description`, `description`, `specs`) MUST have `en`, `fr`, and `ar` versions
 - Originals go in `media/products/` as `.png` / `.jpg` / `.webp`, at most 2000px. Do not optimise or resize them for the web yourself — the build makes the web versions. `.avif` is not accepted (convert it to `.png`)
 - The first image in `images` is the primary (processed with background removal + crop). Additional images are secondary — keep them as-is (raw download, no processing)
-- **Always run `python scripts/build_products.py` after any changes** — this is the single command that updates index, SEO pages, and sitemap
+- **Always run `python scripts/build_all.py` after any change** — validate, images, index, pages, brand pages, sitemap, orphan cleanup in one go (`new_product.py` / `remove_product.py` run it for you)
+- A pushed commit whose content is broken or whose generated files are stale gets a red mark from the GitHub check (`.github/workflows/check.yml`); fix it locally with the same build
 - Never manually edit `data/products_index.json`, `sitemap.xml`, or files in `products/`, `fr/products/`, `ar/products/` — they are all auto-generated
 - **Never use PowerShell (`ConvertTo-Json`, `Set-Content`) to edit JSON product files.** PowerShell 5.1 corrupts UTF-8 encoding of Arabic text, producing irrecoverable mojibake (`Ù…Ø´ØºÙ` instead of `مشغل`). Always use Python (`json.load` + `json.dump` with `encoding='utf-8'`) for any JSON manipulation. If a JSON file needs batch changes (e.g., resetting all `images` arrays), write a small Python script — never use a PowerShell pipeline.

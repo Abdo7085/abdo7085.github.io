@@ -16,6 +16,7 @@ import tempfile
 import shutil
 
 import _lib
+import validate
 from _lib import ROOT, OG_LOCALES, load_locale, write_sitemap
 
 # Default host placeholder; can be overridden with --host.
@@ -244,6 +245,7 @@ def generate():
 
 
 def main():
+    validate.ensure()
     generate()
 
 
@@ -253,4 +255,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.host:
         HOST = args.host.rstrip('/')
+    validate.ensure()
     generate()

@@ -22,7 +22,6 @@ import json
 import glob
 import re
 import html as html_module
-from pathlib import Path
 from datetime import datetime
 
 try:
@@ -33,6 +32,7 @@ except ImportError:
 
 import _lib
 import build_images
+import validate
 from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PROJECTS_DIR = ROOT / "data" / "projects"
@@ -102,27 +102,17 @@ def build_index():
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
     project_files = sorted(glob.glob(str(PROJECTS_DIR / "*.json")))
     projects = []
-    taxonomy = _lib.load_taxonomy()
-    problems = []
 
+    # Every file was checked by validate.ensure() in main(): readable,
+    # categories from data/taxonomy.json, related products and media exist.
     for pf in project_files:
-        name = Path(pf).name
-        try:
-            with open(pf, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception as e:
-            problems.append(f"{name}: not valid JSON ({e})")
-            continue
-        # Project categories must be ones data/taxonomy.json defines (and
-        # therefore has en/fr/ar labels for).
-        problems.extend(f"{name}: {msg}" for msg in taxonomy.check_project(data))
+        with open(pf, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
         # Enrich media with dimensions (mutates the data we pass onward)
         data["media"] = enrich_media(data.get("media", []))
         projects.append(data)
         print(f"  Enriched {data.get('id')} ({len(data['media'])} media items).")
-
-    _lib.abort_on_problems(problems, "data/projects")
 
     # Sort by date desc (newer first)
     def _date_key(p):
@@ -355,6 +345,9 @@ def generate_all_pages(projects, products_index):
             out_path.write_text(page_html, encoding="utf-8")
             print(f"  OK {out_path.relative_to(ROOT)}")
 
+    for page in _lib.remove_orphan_pages("projects", [p.get("id") for p in projects]):
+        print(f"  Removed {page} (its project file is gone)")
+
 
 # ---------------- ItemList injection into previous-work.html ----------------
 
@@ -405,6 +398,7 @@ def inject_previous_work_itemlist(projects):
 
 def main():
     print("=== Building Project Portfolio ===\n")
+    validate.ensure()
 
     projects = build_index()
     if not projects:
