@@ -1,23 +1,13 @@
 /**
  * products.js
- * Logic for fetching products index and rendering the products listing page.
+ * The catalog page (/products.html): search, filters, paginated grid.
+ * Language, product cards, data loading and mounting come from
+ * assets/site-core.js (SE); the language redirect of /products.html lives
+ * in assets/i18n.js.
  */
 
 (function() {
-  // Auto-redirect to correct language-prefixed URL if needed
-  var _path = location.pathname || '/';
-  if (_path === '/products.html') {
-    var _lang = localStorage.getItem('site_lang');
-    if (_lang && _lang !== 'en' && (_lang === 'ar' || _lang === 'fr')) {
-      location.replace('/' + _lang + _path + location.search + location.hash);
-      return; // stop execution, page will reload
-    }
-  }
-
-  const INDEX_URL = '/data/products_index.json';
-
-  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
-  const SE = window.SE;
+  'use strict';
 
   // Filter facets, in sidebar order. `category` and `product_type` come from
   // data/taxonomy.json (every index entry carries its derived `category`).
@@ -45,36 +35,11 @@
   let currentPage = 1;
   const ITEMS_PER_PAGE = 12;
 
-  // Current language helper
-  function getLang() {
-    return document.documentElement.lang || 'en';
-  }
+  const getLang = SE.lang;
+  const getLangPrefix = SE.prefix;
+  const t = SE.t;
+  const escapeHtml = SE.escapeHtml;
 
-  // Language-aware URL prefix
-  function getLangPrefix() {
-    const lang = getLang();
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-
-  function t(obj) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    return obj[getLang()] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-
-  function escapeHtml(str) {
-    if (str == null) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  // Debounce utility
   function debounce(fn, delay) {
     let timer;
     return function(...args) {
@@ -120,17 +85,6 @@
     const qs = params.toString();
     const newUrl = window.location.pathname + (qs ? '?' + qs : '');
     history.replaceState(null, '', newUrl);
-  }
-
-  async function fetchProducts() {
-    try {
-      const response = await fetch(INDEX_URL);
-      if (!response.ok) throw new Error('Network response was not ok');
-      return await response.json();
-    } catch (error) {
-      console.error('Failed to fetch products index:', error);
-      return [];
-    }
   }
 
   function getUniqueValues(products, key, isArray = false) {
@@ -278,7 +232,7 @@
               renderTopFiltersWrapper();
               updateGrid();
               writeFiltersToURL();
-              if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
+              SE.translate();
            });
         });
 
@@ -300,46 +254,8 @@
   // text when the SVG fails to load (mirrors guide §7.2: logo:null → name text).
   // The onerror swaps the broken <img> for a styled text span, then clears
   // itself so it can't loop.
-  function brandLogoMarkup(brand) {
-    if (!brand) return '<span class="prod-card-logo-fallback"></span>';
-    const slug = String(brand).toLowerCase().replace(/\s+/g, '-');
-    const safe = escapeHtml(brand);
-    return '<img class="prod-card-logo" src="/assets/brands/' + slug + '.svg" alt="' + safe +
-      '" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML(&quot;afterend&quot;,&quot;<span class=\\&quot;prod-card-logo-fallback\\&quot;>' + safe + '</span>&quot;);this.remove();" />';
-  }
-
   function renderCard(product) {
-    const title = t(product.title);
-    const desc = t(product.short_description);
-    const techs = Array.isArray(product.technology) ? product.technology : [];
-    const prefix = getLangPrefix();
-
-    // Protocol strip — icon + name per technology (dictionary lives in site-core.js)
-    const protocolStrip = techs.length
-      ? '<div class="prod-card-protocols">' +
-          techs.map(SE.protoMarkup).join('') +
-        '</div>'
-      : '';
-
-    // Brand logo in the foot (clean SVG), balanced opposite the quote button.
-    const footBrand = brandLogoMarkup(product.brand);
-
-    return `
-      <a href="${prefix}/products/${product.id}.html" class="prod-card prod-fade-in product-link">
-        <div class="prod-card-img-wrapper">
-          ${SE.img(product.image, { box: 'card', alt: title, cls: 'prod-card-img' })}
-        </div>
-        ${protocolStrip}
-        <div class="prod-card-content">
-          <h3 class="prod-card-title">${title}</h3>
-          <p class="prod-card-desc">${desc}</p>
-          <div class="prod-card-footer">
-            ${footBrand}
-            <button type="button" class="prod-card-add" data-trigger="cart-add" data-product-id="${escapeHtml(product.id)}" data-i18n="cart_add_to_quote" aria-label="Add to quote request" data-i18n-attr="aria-label:cart_aria_add_btn" onclick="event.preventDefault();event.stopPropagation();if(window.Cart)window.Cart.add(this.getAttribute('data-product-id'),1);">+ Add to quote</button>
-          </div>
-        </div>
-      </a>
-    `;
+    return SE.productCard(product, 'grid');
   }
 
   function renderGrid(products) {
@@ -461,16 +377,7 @@
     if (filtered.length > 0) {
       const showStart = startIdx + 1;
       const showEnd = Math.min(startIdx + ITEMS_PER_PAGE, filtered.length);
-      // Build localized results text
-      const lang = getLang();
-      let resultsText = '';
-      if (lang === 'ar') {
-        resultsText = `\u0639\u0631\u0636 ${showStart}\u2013${showEnd} \u0645\u0646 \u0623\u0635\u0644 ${filtered.length} \u0645\u0646\u062a\u062c`;
-      } else if (lang === 'fr') {
-        resultsText = `Affichage de ${showStart}\u2013${showEnd} sur ${filtered.length} produits`;
-      } else {
-        resultsText = `Showing ${showStart}\u2013${showEnd} of ${filtered.length} products`;
-      }
+      const resultsText = SE.resultsText(showStart, showEnd, filtered.length);
       html += `<div class="prod-results-count" style="text-align:center; color: var(--prod-text-muted); font-size: 0.9rem; margin-top: 1rem;">${resultsText}</div>`;
     }
 
@@ -520,27 +427,10 @@
        });
     }
 
-    // Smooth transition for product links
-    document.querySelectorAll('.product-link').forEach(link => {
-       link.addEventListener('click', function(e) {
-         const anchor = e.target.closest('a');
-         if (e.ctrlKey || e.metaKey || (anchor && anchor.target === '_blank')) return;
-         e.preventDefault();
-         const href = this.getAttribute('href');
-         const container = document.getElementById('custom-products-container');
-         if (container) {
-           container.style.transition = 'opacity 0.2s ease-out';
-           container.style.opacity = '0';
-         }
-         setTimeout(() => {
-           window.location.href = href;
-         }, 200);
-       });
-    });
+    // Fade out before opening a product
+    SE.linkTransitions(gridContainer, '.product-link');
 
-    if(window.__site_i18n && typeof window.__site_i18n.init === 'function') {
-         setTimeout(()=> window.__site_i18n.init(), 50);
-    }
+    setTimeout(SE.translate, 50);
   }
 
   function closeMobileModal() {
@@ -583,7 +473,7 @@
           renderTopFiltersWrapper();
           updateGrid();
           writeFiltersToURL();
-          if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
+          SE.translate();
         }
       });
 
@@ -604,7 +494,7 @@
          updateGrid();
          writeFiltersToURL();
          closeMobileModal();
-         if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
+         SE.translate();
       };
 
       if(clearBtn) clearBtn.addEventListener('click', performClear);
@@ -652,191 +542,94 @@
     document.head.appendChild(script);
   }
 
-  let _mounted = false;
-
-  async function initApp() {
-    // Prevent double mounting
-    if (_mounted || document.getElementById('custom-products-root-wrapper')) return;
-    _mounted = true;
-
-    // Read filters from URL before rendering
-    readFiltersFromURL();
-
-    const appHtml = `
-      <div id="custom-products-container">
-        <!-- Hero Banner -->
-        <div class="prod-hero">
-          <div class="prod-hero-content">
-            <nav class="prod-breadcrumbs">
-              <a href="${getLangPrefix()}/" data-i18n="breadcrumb_home">Home</a>
-              <span class="prod-breadcrumb-sep">›</span>
-              <span class="prod-breadcrumb-current" data-i18n="breadcrumb_products">Products</span>
-            </nav>
-            <h1 class="prod-header-title" data-i18n="products_title">All Products</h1>
-            <p class="prod-header-desc" data-i18n="products_desc">Explore our premium selection of smart home devices, sensors, and actuators.</p>
-            <div class="prod-search-wrapper">
-              <svg class="prod-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <input type="text" id="prod-search" class="prod-search-input" placeholder="Search products..." data-i18n-attr="placeholder:search_placeholder" />
-            </div>
-          </div>
-        </div>
-
-        <div id="prod-top-filters-container"></div>
-
-        <div class="prod-layout" id="prod-layout-container">
-           <!-- Loading State -->
-           <div class="prod-spinner-wrapper"><div class="prod-spinner"></div></div>
-        </div>
-      </div>
-    `;
-
-    const appContainer = document.createElement('div');
-    appContainer.id = 'custom-products-root-wrapper';
-    appContainer.innerHTML = appHtml;
-
-    const root = document.getElementById('root');
-    let target = document.querySelector('main.notfound-root') || document.querySelector('main');
-
-    if(target && target.nodeName === 'MAIN') {
-       target.innerHTML = '';
-       target.appendChild(appContainer);
-    } else {
-       const footer = document.querySelector('footer');
-       if(footer) {
-         footer.parentNode.insertBefore(appContainer, footer);
-       } else if (root) {
-         root.appendChild(appContainer);
-       }
-    }
-
-    // Restore opacity when returning via browser back button (bfcache)
-    window.addEventListener('pageshow', (e) => {
-      const container = document.getElementById('custom-products-container');
-      if (container) {
-        container.style.transition = 'none';
-        container.style.opacity = '1';
-      }
-    });
-
-
-
-    // Initial Translation trigger
-    if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-
-    // Data Loading — products and the taxonomy (labels, category order,
-    // aliases) are fetched together; nothing renders before both are in.
-    const loaded = await Promise.all([fetchProducts(), SE.taxonomy.load()]);
-    allProducts = loaded[0];
-    applyTypeAliases();
-    // Shuffle products with a daily seed so brands appear mixed but order stays consistent per day
-    (function seedShuffle(arr) {
-      var d = new Date(), seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
-      function rng() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; }
-      for (var i = arr.length - 1; i > 0; i--) {
-        var j = Math.floor(rng() * (i + 1));
-        var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-      }
-    })(allProducts);
-
-    injectProductListJsonLd(allProducts);
-
-    const layoutContainer = document.getElementById('prod-layout-container');
-    if (layoutContainer) {
-      layoutContainer.innerHTML = `
-        ${renderSidebar()}
-        <div class="prod-main-content">
-          <div id="prod-grid-container"></div>
-        </div>
-      `;
-      renderTopFiltersWrapper();
-      attachListeners();
-      updateGrid();
-
-      // Final Translation
-      if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-
-      // If language dynamically changes, re-render
-      window.addEventListener('locationchange', () => {
-         if (window.location.pathname.includes('product.')) {
-             layoutContainer.innerHTML = `
-               ${renderSidebar()}
-               <div class="prod-main-content">
-                 <div id="prod-grid-container"></div>
-               </div>
-             `;
-             renderTopFiltersWrapper();
-             attachListeners();
-             updateGrid();
-             if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-         }
-      });
-    }
-  }
-
-  // Check if the current page is a products listing page
-  function isProductsPage() {
-    const path = location.pathname || '/';
+  function isProductsPage(path) {
     return path.endsWith('/products.html') || path.endsWith('/products');
   }
 
-  // Remove any leftover products content from the DOM
-  function cleanupProducts() {
-    const wrap = document.getElementById('custom-products-root-wrapper');
-    if (wrap) wrap.remove();
-  }
+  SE.mount({
+    id: 'custom-products-root-wrapper',
+    isPage: isProductsPage,
+    html: () => `
+        <div id="custom-products-container">
+          <!-- Hero Banner -->
+          <div class="prod-hero">
+            <div class="prod-hero-content">
+              <nav class="prod-breadcrumbs">
+                <a href="${getLangPrefix()}/" data-i18n="breadcrumb_home">Home</a>
+                <span class="prod-breadcrumb-sep">›</span>
+                <span class="prod-breadcrumb-current" data-i18n="breadcrumb_products">Products</span>
+              </nav>
+              <h1 class="prod-header-title" data-i18n="products_title">All Products</h1>
+              <p class="prod-header-desc" data-i18n="products_desc">Explore our premium selection of smart home devices, sensors, and actuators.</p>
+              <div class="prod-search-wrapper">
+                <svg class="prod-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                   <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="prod-search" class="prod-search-input" placeholder="Search products..." data-i18n-attr="placeholder:search_placeholder" />
+              </div>
+            </div>
+          </div>
+  
+          <div id="prod-top-filters-container"></div>
+  
+          <div class="prod-layout" id="prod-layout-container">
+             <!-- Loading State -->
+             <div class="prod-spinner-wrapper"><div class="prod-spinner"></div></div>
+          </div>
+        </div>
+  `,
+    start: async function () {
+      // Filters from the URL before anything renders
+      readFiltersFromURL();
 
-  function mountApp() {
-    // Only mount on products pages
-    if (!isProductsPage()) return;
+      // Data Loading — products and the taxonomy (labels, category order,
+      // aliases) are fetched together; nothing renders before both are in.
+      const loaded = await Promise.all([SE.data.products(), SE.taxonomy.load()]);
+      allProducts = loaded[0];
+      applyTypeAliases();
+      // Shuffle products with a daily seed so brands appear mixed but order stays consistent per day
+      (function seedShuffle(arr) {
+        var d = new Date(), seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+        function rng() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; }
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(rng() * (i + 1));
+          var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+      })(allProducts);
 
-    const tryMount = () => {
-       const mainTarget = document.querySelector('main') || document.querySelector('footer');
-       if (mainTarget) {
-          initApp();
-          return true;
-       }
-       return false;
-    };
+      injectProductListJsonLd(allProducts);
 
-    if (tryMount()) return;
+      const layoutContainer = document.getElementById('prod-layout-container');
+      if (layoutContainer) {
+        layoutContainer.innerHTML = `
+          ${renderSidebar()}
+          <div class="prod-main-content">
+            <div id="prod-grid-container"></div>
+          </div>
+        `;
+        renderTopFiltersWrapper();
+        attachListeners();
+        updateGrid();
 
-    const observer = new MutationObserver((mutations, obs) => {
-       if (tryMount()) {
-          obs.disconnect();
-       }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
+        // Final Translation
+        SE.translate();
 
-  // Cleanup when navigating away via SPA (pushState/popstate)
-  window.addEventListener('locationchange', () => {
-    if (!isProductsPage()) cleanupProducts();
-  });
-  window.addEventListener('popstate', () => {
-    if (!isProductsPage()) cleanupProducts();
-  });
-
-  // Auto mount
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mountApp);
-  } else {
-    mountApp();
-  }
-
-  // Handle SPA navigation (including browser Back/Forward via popstate)
-  window.addEventListener('locationchange', () => {
-    if (window.location.pathname.includes('product')) {
-      // Re-mount products app if it was cleaned up
-      if (!document.getElementById('custom-products-root-wrapper')) {
-        mountApp();
+        // If language dynamically changes, re-render
+        window.addEventListener('locationchange', () => {
+           if (window.location.pathname.includes('product.')) {
+               layoutContainer.innerHTML = `
+                 ${renderSidebar()}
+                 <div class="prod-main-content">
+                   <div id="prod-grid-container"></div>
+                 </div>
+               `;
+               renderTopFiltersWrapper();
+               attachListeners();
+               updateGrid();
+               SE.translate();
+           }
+        });
       }
-    } else {
-      // Cleanup products UI when navigating away
-      const wrap = document.getElementById('custom-products-root-wrapper');
-      if (wrap) wrap.remove();
     }
   });
-
 })();

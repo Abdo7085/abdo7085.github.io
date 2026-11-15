@@ -11,43 +11,15 @@
  */
 
 (function() {
-  // ---------------- Language redirect (mirrors product-detail.js) ----------------
-  var _path = location.pathname || '/';
-  if (_path === '/project.html' || (_path.startsWith('/projects/') && _path.endsWith('.html'))) {
-    var _lang = localStorage.getItem('site_lang');
-    if (_lang && _lang !== 'en' && (_lang === 'ar' || _lang === 'fr')) {
-      location.replace('/' + _lang + _path + location.search + location.hash);
-      return;
-    }
-  }
+  'use strict';
 
-  // ---------------- Helpers ----------------
-  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
-  const SE = window.SE;
-
-  function getLang() {
-    return document.documentElement.lang || 'en';
-  }
-  function getLangPrefix() {
-    const lang = getLang();
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-  function t(obj) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    return obj[getLang()] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-  function escapeHtml(str) {
-    if (str == null) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
+  // Language, text, data loading, mounting: assets/site-core.js (SE). The
+  // language redirect of unprefixed pages lives in assets/i18n.js.
+  const getLang = SE.lang;
+  const getLangPrefix = SE.prefix;
+  const t = SE.t;
+  const escapeHtml = SE.escapeHtml;
+  const HOST = 'https://smartelectricity.ma';
 
   function getProjectSlug() {
     const match = location.pathname.match(/\/projects\/([^/.]+)(?:\.html)?$/);
@@ -56,79 +28,39 @@
     return params.get('id');
   }
 
-  async function fetchProject(slug) {
+  function fetchProject(slug) {
     // Prefer the pre-embedded project (written by build_projects.py into each static page)
     if (window.__PROJECT__ && (!slug || window.__PROJECT__.id === slug)) {
-      return window.__PROJECT__;
+      return Promise.resolve(window.__PROJECT__);
     }
-    if (!slug) return null;
-    try {
-      const res = await fetch('/data/projects/' + slug + '.json');
-      if (!res.ok) throw new Error('Project not found');
-      return await res.json();
-    } catch (e) {
-      console.error('Failed to fetch project:', e);
-      return null;
-    }
-  }
-
-  async function fetchProductsIndex() {
-    try {
-      const res = await fetch('/data/products_index.json');
-      if (!res.ok) return [];
-      return await res.json();
-    } catch (e) {
-      return [];
-    }
+    return slug ? SE.data.json('/data/projects/' + slug + '.json', null) : Promise.resolve(null);
   }
 
   // ---------------- Meta / head updates ----------------
+  // <head> for the bare template; generated pages already carry these tags
+  // (their 1200x630 share card from build_images.py stays).
   function updateMeta(project) {
     const title = t(project.title);
     const descText = t(project.short_description) || t(project.description);
-    const cover = project.cover || '';
-    const coverUrl = cover ? ('https://smartelectricity.ma' + cover) : '';
+    const coverUrl = project.cover ? HOST + project.cover : '';
+    const path = '/projects/' + project.id + '.html';
 
-    const suffix = { en: 'S‑ELECTRICITY Morocco', fr: 'S‑ELECTRICITY Maroc', ar: 'S‑ELECTRICITY المغرب' };
-    document.title = title + ' | ' + (suffix[getLang()] || suffix.en);
-
-    function setContent(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.content = value;
-    }
-    function setHref(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.href = value;
-    }
-
-    const baseUrl = 'https://smartelectricity.ma';
-    const canonicalUrl = baseUrl + getLangPrefix() + '/projects/' + project.id + '.html';
-    setHref('meta-canonical', canonicalUrl);
-    setContent('meta-description', descText);
-    setContent('meta-og-title', title + ' | S‑ELECTRICITY');
-    setContent('meta-og-description', descText);
-    // Static pages already carry the 1200x630 share card made by
-    // scripts/build_images.py; only the bare template needs the cover.
-    function fillIfEmpty(id, value) {
-      const el = document.getElementById(id);
-      if (el && !el.content) el.content = value;
-    }
-    fillIfEmpty('meta-og-image', coverUrl);
-    setContent('meta-twitter-title', title + ' | S‑ELECTRICITY');
-    setContent('meta-twitter-description', descText);
-    fillIfEmpty('meta-twitter-image', coverUrl);
-
-    // Update hreflang
-    document.querySelectorAll('link[hreflang]').forEach(function(link) {
-      const lang = link.getAttribute('hreflang');
-      const prefix = (lang === 'en' || lang === 'x-default') ? '' : '/' + lang;
-      link.href = baseUrl + prefix + '/projects/' + project.id + '.html';
-    });
+    SE.meta.title(title);
+    SE.meta.set('meta-canonical', HOST + getLangPrefix() + path);
+    SE.meta.set('meta-description', descText);
+    SE.meta.set('meta-og-title', title + ' | S‑ELECTRICITY');
+    SE.meta.set('meta-og-description', descText);
+    SE.meta.fill('meta-og-image', coverUrl);
+    SE.meta.set('meta-twitter-title', title + ' | S‑ELECTRICITY');
+    SE.meta.set('meta-twitter-description', descText);
+    SE.meta.fill('meta-twitter-image', coverUrl);
+    SE.meta.hreflang(path);
   }
 
+  // CreativeWork JSON-LD for the bare template only. Generated pages carry
+  // the build's own block (#project-jsonld), which this must not replace.
   function injectJsonLd(project, productsIndex) {
-    const existing = document.getElementById('project-jsonld');
-    if (existing) existing.remove();
+    if (document.getElementById('project-jsonld')) return;
 
     const title = t(project.title);
     const descText = t(project.description) || t(project.short_description);
@@ -549,20 +481,7 @@
     const items = pickRelatedProducts(project, productsIndex);
     if (items.length === 0) return '';
 
-    const prefix = getLangPrefix();
-    const cards = items.map(function(p) {
-      const title = t(p.title);
-      return (
-        '<a href="' + prefix + '/products/' + p.id + '.html" class="prod-card link-transition">' +
-          '<div class="prod-card-img-wrapper" style="height:180px;">' +
-            SE.img(p.image, { box: 'card', alt: title, cls: 'prod-card-img' }) +
-          '</div>' +
-          '<div class="prod-card-content" style="padding:1rem;">' +
-            '<h4 style="font-size:1.1rem; color: #1f2937; margin:0;">' + escapeHtml(title) + '</h4>' +
-          '</div>' +
-        '</a>'
-      );
-    }).join('');
+    const cards = items.map(function(p) { return SE.productCard(p, 'mini'); }).join('');
 
     return (
       '<section class="proj-related">' +
@@ -806,136 +725,44 @@
     });
   }
 
-  // ---------------- Link transitions (soft fade on nav) ----------------
-  function attachLinkTransitions(container) {
-    container.querySelectorAll('a[href]').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        const anchor = e.currentTarget;
-        if (e.ctrlKey || e.metaKey || anchor.target === '_blank') return;
-        const href = anchor.getAttribute('href') || '';
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('https://wa.me')) return;
-        // Only animate same-origin transitions
-        try {
-          const u = new URL(href, location.href);
-          if (u.origin !== location.origin) return;
-        } catch(_) {}
-        e.preventDefault();
-        const wrap = document.getElementById('custom-project-detail-wrapper');
-        if (wrap) {
-          wrap.style.transition = 'opacity 0.2s ease-out';
-          wrap.style.opacity = '0';
-        }
-        setTimeout(function() { window.location.href = href; }, 200);
-      });
-    });
-  }
-
   // ---------------- Mount ----------------
-  var _mounted = false;
 
-  async function initApp() {
-    if (_mounted || document.getElementById('custom-project-detail-wrapper')) return;
-    _mounted = true;
-
-    const root = document.getElementById('root');
-    const target = document.querySelector('main.notfound-root') || document.querySelector('main');
-
-    const appContainer = document.createElement('div');
-    appContainer.id = 'custom-project-detail-wrapper';
-    appContainer.innerHTML = '<div class="proj-loading"><div class="proj-loading-spinner"></div></div>';
-
-    if (target && target.nodeName === 'MAIN') {
-      target.innerHTML = '';
-      target.appendChild(appContainer);
-    } else {
-      const footer = document.querySelector('footer');
-      if (footer) {
-        footer.parentNode.insertBefore(appContainer, footer);
-      } else if (root) {
-        root.appendChild(appContainer);
-      }
-    }
-
-    window.addEventListener('pageshow', function() {
-      appContainer.style.transition = 'none';
-      appContainer.style.opacity = '1';
-    });
-
-    if (window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-
-    const slug = getProjectSlug();
-    const [project, productsIndex] = await Promise.all([
-      fetchProject(slug),
-      fetchProductsIndex(),
-      SE.taxonomy.load()
-    ]);
-
-    function renderPage() {
-      let html;
-      if (!project) {
-        html = '<div id="custom-project-container">' + renderError() + '</div>';
-      } else {
-        updateMeta(project);
-        injectJsonLd(project, productsIndex);
-        html = renderProjectContent(project, productsIndex);
-      }
-      appContainer.innerHTML = html;
-      attachLinkTransitions(appContainer);
-      wireVideos(appContainer);
-      wireReelInteractions(appContainer);
-      wireMediaStrip(appContainer);
-
-      if (window.__site_i18n && typeof window.__site_i18n.init === 'function') {
-        setTimeout(function() { window.__site_i18n.init(); }, 50);
-      }
-    }
-
-    renderPage();
-
-    window.addEventListener('locationchange', function() {
-      if (isProjectDetailPage()) renderPage();
-    });
-  }
-
-  function isProjectDetailPage() {
-    const path = location.pathname || '/';
+  function isProjectDetailPage(path) {
     return path.endsWith('/project.html') || path.endsWith('/project') || /\/projects\/[^/]+\.html$/.test(path);
   }
 
-  function cleanupProjectDetail() {
-    const wrap = document.getElementById('custom-project-detail-wrapper');
-    if (wrap) wrap.remove();
-    _mounted = false;
-  }
+  SE.mount({
+    id: 'custom-project-detail-wrapper',
+    isPage: isProjectDetailPage,
+    html: '<div class="proj-loading"><div class="proj-loading-spinner"></div></div>',
+    start: async function (wrap) {
+      const loaded = await Promise.all([
+        fetchProject(getProjectSlug()),
+        SE.data.products(),
+        SE.taxonomy.load()
+      ]);
+      const project = loaded[0];
+      const productsIndex = loaded[1];
 
-  function mountApp() {
-    if (!isProjectDetailPage()) return;
+      function render() {
+        if (!project) {
+          wrap.innerHTML = '<div id="custom-project-container">' + renderError() + '</div>';
+        } else {
+          updateMeta(project);
+          injectJsonLd(project, productsIndex);
+          wrap.innerHTML = renderProjectContent(project, productsIndex);
+        }
+        SE.linkTransitions(wrap);
+        wireVideos(wrap);
+        wireReelInteractions(wrap);
+        wireMediaStrip(wrap);
+        setTimeout(SE.translate, 50);
+      }
 
-    const tryMount = function() {
-      const hasShell = document.querySelector('main') || document.querySelector('footer');
-      if (hasShell) { initApp(); return true; }
-      return false;
-    };
-
-    if (tryMount()) return;
-
-    const observer = new MutationObserver(function(_, obs) {
-      if (tryMount()) obs.disconnect();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-
-  window.addEventListener('locationchange', function() {
-    if (!isProjectDetailPage()) cleanupProjectDetail();
-    else if (!document.getElementById('custom-project-detail-wrapper')) mountApp();
+      render();
+      window.addEventListener('locationchange', function () {
+        if (isProjectDetailPage(location.pathname || '/')) render();
+      });
+    }
   });
-  window.addEventListener('popstate', function() {
-    if (!isProjectDetailPage()) cleanupProjectDetail();
-  });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mountApp);
-  } else {
-    mountApp();
-  }
 })();

@@ -683,15 +683,19 @@
     window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLangMenu(); });
   });
 
-  // expose for console/debug
-  window.__site_i18n = { changeTo, init };
+  // changeTo/init: used by the page scripts; loadLocale: shared with
+  // assets/site-core.js (SE.locale) so each dictionary is fetched once.
+  window.__site_i18n = { changeTo, init, loadLocale };
 
-  // Auto-redirect product pages to the correct language-prefixed URL.
-  // When the SPA navigates to /products.html or /product.html without a language
-  // prefix, detect the user's saved language and redirect to the correct path.
-  (function autoRedirectProducts() {
+  // Auto-redirect an unprefixed page to the visitor's saved language: someone
+  // who chose Arabic and opens /products/x.html lands on /ar/products/x.html.
+  (function autoRedirectLocalized() {
     const path = location.pathname || '/';
-    if (path === '/products.html' || path === '/product.html') {
+    // Every page that exists in /fr/ and /ar/ — the catalog, brand and
+    // project pages and their templates (the page scripts used to repeat this).
+    const localized = /^\/(?:products|product|brands|brand|project)\.html$/.test(path) ||
+      /^\/(?:products|brands|projects)\/[^/]+\.html$/.test(path);
+    if (localized) {
       const savedLang = localStorage.getItem('site_lang');
       if (savedLang && savedLang !== 'en' && ['ar', 'fr'].includes(savedLang)) {
         location.replace('/' + savedLang + path + location.search + location.hash);

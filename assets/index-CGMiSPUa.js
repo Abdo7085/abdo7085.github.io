@@ -12877,9 +12877,7 @@ function uv() {
     , []),
     u.jsxs(u.Fragment, {
         children: [u.jsxs(Ts, {
-            children: [u.jsx("title", {
-                children: "S‑ELECTRICITY Smart Home & Domotique"
-            }), u.jsx("meta", {
+            children: [u.jsx("meta", {
                 name: "description",
                 content: "Smart Home Automation, Domotique & Security Cameras in Morocco."
             }), u.jsx("meta", {

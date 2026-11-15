@@ -18,7 +18,8 @@
   - `i18n.js` + `i18n.css`: نظام الترجمة.
   - `products.js` + `products.css`: منطق وأسلوب صفحة كتالوج المنتجات.
   - `product-detail.js`: عرض تفاصيل المنتج الفردي (SPA) — **منذ 2026-06-10 بتصميم «اللوح الورقي» المطابق للمعاينة (راجع `VISUAL_IDENTITY_GUIDE.md` §7.6)؛ كانفس الصفحة (`--cream-deep`) موحّد عبر قاعدة `body:not(.home-page)` في `projects.css` — لا صنف خاص بهذه الصفحة.** **⚠️ قاموس أيقونات التقنيات (منذ 2026-11-14) موجود في مكان واحد فقط: `SE.protoMarkup()` داخل `assets/site-core.js`** — يخدم خليّة «البروتوكولات» في `.pd-feature-bar` وبطاقات Related Products وبطاقات الكتالوج وصفحات العلامات معاً (أُزيلت النسخ الثلاث المتطابقة من `product-detail.js` و`products.js` و`brand-detail.js`). عند إضافة تقنية جديدة: أضفها إلى `technologies` في `data/taxonomy.json` ثم أضف فرعاً لها في `SE.protoMarkup()` — الشعار الرسمي للبروتوكولات المعروفة (Zigbee, Matter, Thread) أو أيقونة Lucide للباقي. التقنية بلا فرع تظهر نصاً داخل `<span class="prod-proto">` (مقبول بصرياً). راجع القسم 3.3. **يدعم أيضاً معرض صور متعدد (~السطر 185):** دالة `renderGallery()` تولّد أزراراً مصغرة (thumbs) قابلة للنقر مع تأثير fade تلقائياً عند وجود أكثر من صورة في مصفوفة `images`. الصورة الأولى هي الرئيسية المُعالَجة (تظهر في البطاقات و SEO)، والصور الثانوية تُعرض بملء الشاشة (`contain` 100%) مع padding صغير (`0.3rem`). **مواضع thumbs:** Desktop LTR — عمودي يسار الصورة. Desktop RTL — عمودي يمين الصورة (flex row افتراضي يتعامل مع RTL بشكل طبيعي). Mobile — أفقي في المنتصف (`justify-content: center`).
-  - `projects.css`: **ملف CSS مشترك (Shared CSS)** — يحتوي على أسلوب صفحة المشروع الفردي (شبكة موزاييك للوسائط المتنوعة) **بالإضافة إلى** تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta`, `.proj-cta-inner`, `.proj-cta-btn` إلخ). هذا القسم يُعرض عبر مكوّن `Od` داخل الـ SPA في الصفحة الرئيسية وعبر `renderCta()` في `project-detail.js`. **لذلك يجب تحميل هذا الملف في كل صفحات الموقع التي تستخدم الـ SPA** (بما فيها قوالب المنتجات `product.html` و `products.html`).
+  - `site.css` (2026-11-15): **ملف CSS المشترك لكل القوالب** — توكنات `--proj-*`، الشريط الداكن، خلفية الصفحات الموحّدة (`body:not(.home-page)`)، عنوان «أعمالنا» (مسار SPA)، وقسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` داخل الـ SPA وعبر `renderCta()` في صفحات العلامات والمشاريع. **يُحمَّل في كل قالب يُحمّل الـ SPA.** نُقلت قواعده حرفياً وبترتيبها من `projects.css` ويُحمَّل في الموضع نفسه، فلم يتغيّر ترتيب CSS.
+  - `projects.css`: أسلوب صفحة المشروع الفردي فقط (شبكة موزاييك للوسائط، الريل، الشهادة…) — يُحمَّل في `project.html` (وصفحات `projects/` المولّدة منه) بعد `site.css`.
   - `project-detail.js`: عرض صفحة مشروع فردي داخل الـ SPA — يقرأ `window.__PROJECT__` المحقون مسبقاً من `build_projects.py`، ويدير تشغيل الفيديوهات الذاتية الاستضافة والريلز (`assets/reels/`) مع إيقافها تشغيلياً بـ `IntersectionObserver` لتوفير الموارد وتمكين زر كتم الصوت.
   - `homepage-products.js` + `homepage-products.css`: قسم المنتجات على الصفحة الرئيسية.
   - `find-solution.js` + `find-solution.css`: ويزارد "Find Your Solution" المنبثق متعدّد الخطوات الذي يساعد العميل على تحديد حاجته ويولّد رسالة واتساب جاهزة بلغته. يُفعَّل عبر `data-trigger="find-solution"` على أي عنصر، ومرتبط حالياً بزر "احجز استشارة مجانية" في قسم About. **راجع القسم 9 للتفاصيل الكاملة.**
@@ -412,7 +413,7 @@ u.jsx(Mt, {
   - `SE.taxonomy.label(kind, id)` — التسمية بلغة الصفحة. `kind`: `category` | `type` | `installation` | `project_category`.
   - `SE.taxonomy.categoryOf(type)` / `sorted(kind, values)` / `expandAlias(kind, value)`.
   - `SE.protoMarkup(tech)` — قاموس أيقونات البروتوكولات الوحيد.
-- `site-core.js` يُحمَّل (`defer`) **بعد `i18n.js` وقبل سكربتات الصفحات** في القوالب الخمسة: `products.html`، `product.html`، `brands.html`، `brand.html`، `project.html`. **أي قالب جذري جديد يستخدم سكربت صفحة يقرأ التصنيف يجب أن يحمّله بالترتيب نفسه.** كل سكربت صفحة ينتظر `SE.taxonomy.load()` ضمن `Promise.all` مع جلب بياناته قبل أول رسم.
+- `site-core.js` يُحمَّل (`defer`) **بعد `i18n.js` وقبل كل سكربتات الموقع الأخرى** في كل القوالب الجذرية (منذ 2026-11-15 في `index.html` و `previous-work.html` أيضاً). **أي قالب جذري جديد يجب أن يحمّله بالترتيب نفسه.** كل سكربت صفحة ينتظر `SE.taxonomy.load()` ضمن `Promise.all` مع جلب بياناته قبل أول رسم. بقية `window.SE` في القسم 3.6.
 
 ### أثره على الواجهة
 - **فلاتر الكتالوج** (`products.js`): المحاور بالترتيب `FACETS = [category, product_type, brand, technology, installation]`. «الفئة» أولاً ومفتوحة. اختيار فئة يُبهت تلقائياً الأنواع التي لا تنتمي إليها (آلية العدّادات الموجودة أصلاً). الرابط يحمل `?category=<id>`.
@@ -468,6 +469,35 @@ u.jsx(Mt, {
 - لا يحتاج ffmpeg: الصور والفيديو لا يُعاد ترميزها ما دامت بصمات `scripts/state/images.json` مطابقة.
 
 ---
+
+## 3.6 الوحدة المشتركة `site-core.js` (window.SE) — 2026-11-15
+
+**الجذر:** الدوال `getLang`/`getLangPrefix`/`t`/`escapeHtml` كانت منسوخة حرفياً في ستة سكربتات، ومنطق التركيب داخل صفحة React في خمسة، وبطاقة المنتج بأربع نسخ، وتحويل اللغة المحفوظة في خمسة، ونافذتا السلّة والمساعد تبنيان الهيكل نفسه بنسختين. الآن كل ذلك في `assets/site-core.js` مرة واحدة (نحو 830 سطراً أقل في JavaScript، دون تغيير ما يُرسم — قورنت كل صفحة بالنسخة السابقة: النص والبنية والمقاسات).
+
+| الدالة | ما تفعله |
+|---|---|
+| `SE.lang()` / `SE.prefix()` / `SE.t(obj)` | لغة الصفحة (من `<html lang>` الذي يضبطه `i18n.js`)، بادئة الروابط (`''`/`/fr`/`/ar`)، النص بلغة الزائر من `{en,fr,ar}` |
+| `SE.locale(lang?)` / `SE.msg(key, fallback, dict?)` / `SE.translate()` | القاموس (يشارك ذاكرة `i18n.js` فيُجلب مرة واحدة)، نص من القاموس، إعادة تطبيق `data-i18n` |
+| `SE.data.products()` / `.galleries()` / `.brands()` / `.json(url, fallback)` | كل ملف JSON يُجلب مرة واحدة في الصفحة؛ `products()` و `brands()` تعيدان نسخة جديدة من المصفوفة (الكتالوج يخلط نسخته دون أن يمسّ غيره) |
+| `SE.mount({id, isPage, html, start})` | تركيب تطبيق الصفحة داخل هيكل React (`main.notfound-root` ← قبل التذييل ← `#root`)، وإزالته عند مغادرة الصفحة عبر SPA، وإعادة تركيبه عند الرجوع. الغلاف يحمل `data-se-app` |
+| `SE.productCard(p, 'grid' \| 'related' \| 'mini' \| 'home')` / `SE.brandLogo(name)` / `SE.brandSlug(name)` | **كل بطاقات المنتجات في الموقع** — مكان واحد لتعديل البطاقة في المرحلة 6 |
+| `SE.resultsText(first, last, total)` | «Showing 1–12 of 40 products» بثلاث لغات |
+| `SE.linkTransitions(container, selector?)` | تلاشي الصفحة قبل اتباع رابط داخلي |
+| `SE.meta.set/fill/hreflang/title` | وسوم `<head>` للقوالب الفارغة؛ `fill` لا يكتب فوق قيمة ثابتة (بطاقة المشاركة) |
+| `SE.whatsapp(text)` / `SE.el(...)` / `SE.modal({name, id, labelledBy, closeLabel, onClose})` | رابط واتساب (الرقم في مكان واحد)، باني DOM، هيكل النافذة المشترك للسلّة (`cart-*`) والمساعد (`fs-*`) |
+
+**قواعد:**
+- سكربت صفحة جديد = `SE.mount({...})` بدل نسخ منطق التركيب. البيانات عبر `SE.data`، البطاقات عبر `SE.productCard`.
+- **تحويل الصفحات غير المسبوقة بلغة** (`/products/x.html` لزائر اختار العربية ← `/ar/products/x.html`) في مكان واحد: `autoRedirectLocalized` في `i18n.js` (كان مكرراً في خمسة سكربتات).
+- النصوص التي هي قوالب في القاموس (`{count}`، `{year}`) تُرسم بعد انتظار `SE.locale()` وتمرير القاموس إلى `SE.msg` — وإلا قد تُرسم قبل وصوله (كانت بطاقات العلامات تُظهر أحياناً «36 products» بلا ترجمة).
+- **الصفحات المولَّدة تحمل JSON-LD الخاص بها** (`#product-jsonld`, `#project-jsonld`) — السكربت لا يستبدله، ويولّد نسخته فقط في القالب الفارغ. (كان يستبدله بنسخة رابطها إنجليزي حتى في الصفحات العربية والفرنسية.)
+- **CSS المشترك** في `site.css`، وصفحات المشاريع وحدها تحمّل `projects.css` (القسم 1).
+- `brands.html` يحمّل `brands-list.js` فقط، وصفحات العلامات `brand-detail.js` فقط (لا انتقال SPA بينهما). أما `homepage-products.js` فيبقى في **كل** القوالب: شعار الشريط يفتح الرئيسية داخل React دون إعادة تحميل، من أي صفحة.
+
+**أخطاء قديمة أُصلحت أثناء التوحيد (2026-11-15):**
+- الرجوع بزر المتصفح إلى صفحة منتج بعد زيارة «أعمالنا» عبر SPA كان يعرض صفحة **فارغة** (لم يكن `product-detail.js` و `products.js` يعيدان ضبط حالة التركيب). `SE.mount` يعيد التركيب دائماً.
+- `product-detail.js` كان يعيد كتابة `hreflang="x-default"` إلى `https://smartelectricity.ma/x-default/products/…` (عنوان غير موجود) بعد التحميل.
+- الحزمة كانت تفرض عنواناً عاماً «S‑ELECTRICITY Smart Home & Domotique» على كل صفحات المنتجات والعلامات والمشاريع مع كل إعادة رسم لمكوّن React الرئيسي (انظر القسم 7).
 
 ## 4. بنية SEO للموقع (SEO Architecture)
 
@@ -563,7 +593,7 @@ python scripts/build_all.py
   3. **inline bootstrap script** الذي يلتقط النقرة قبل تحميل defer (انظر القسم 9 للنموذج الكامل).
   بدون البوتستراب الـ inline، النقر السريع على زر "احجز استشارة مجانية" قد لا يفتح الويزارد على بعض الأجهزة البطيئة. بدون CSS، الـ Modal يظهر مكسور التنسيق.
 - **⚠️ ملفات السلّة (WhatsApp Cart) مُشتركة كذلك عبر كل القوالب:** نفس النمط بالضبط — `cart.css` + `cart.js` + inline bootstrap (يلتقط `[data-trigger="cart-open"]` و `[data-trigger="cart-add"]`). بدون CSS، أيقونة السلّة في النڤ-بار تظهر بلا تنسيق وكذلك زر `+` على بطاقة المنتج وصف qty على صفحة التفاصيل. **انظر القسم 12 للنموذج الكامل.** ملاحظة: حتى الصفحات بلا منتجات (مثل `previous-work.html` و `project.html`) يجب أن تُحمّل ملفات السلّة لأن الـ SPA navbar (مع زر السلّة) يظهر فيها.
-- **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `projects.css` لا يخدم صفحات المشاريع فقط — بل يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/projects.css">` في `<head>`.** بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
+- **⚠️ اعتمادية CSS المشتركة بين الصفحات (Cross-Page CSS Dependency):** ملف `site.css` يحتوي على تنسيقات قسم CTA "Need a Custom Solution?" (`.proj-cta*`) الذي يُعرض عبر مكوّن `Od` في SPA Bundle على **كل صفحة** تُحمّل `index-CGMiSPUa.js`، وعلى خلفية الصفحات والشريط. **عند إنشاء أي قالب HTML جديد يُحمّل الـ SPA، يجب إضافة `<link rel="stylesheet" href="/assets/site.css">` في `<head>`.** (قبل 2026-11-15 كانت هذه القواعد في `projects.css`، فكان يُحمَّل في كل القوالب.) بدون ذلك، يظهر قسم الـ CTA كنص عارٍ بدون تنسيق عند التنقل عبر SPA إلى الصفحة الرئيسية.
   - **درس مستفاد (Lesson learned):** كانت صفحات المنتجات (`product.html`، `products.html`، والمُولّدة في `products/`) لا تُحمّل `projects.css`. عند انتقال المستخدم من صفحة منتج إلى الصفحة الرئيسية عبر SPA navigation (بدون إعادة تحميل كاملة)، كان قسم CTA يظهر معطوباً بصرياً (أيقونة واتساب ضخمة، بدون خلفية برتقالية، بدون تنسيق الأزرار). تم الإصلاح بإضافة `projects.css` في كل قوالب المنتجات + تشغيل `python scripts/build_all.py`.
   - **القاعدة:** كل ملفات CSS المُشار إليها في `index.html` يجب أن تكون مُحمّلة أيضاً في كل القوالب الأخرى (`product.html`, `products.html`, `project.html`, `previous-work.html`, `brands.html`, `brand.html`) لضمان اتساق المظهر أثناء التنقل SPA.
   - **`products.css` على `project.html` + `brand.html` + `brands.html`:** هذه الصفحات الثلاث تُحمِّل أيضاً `assets/products.css` لأنها تستخدم كلاسات `.prod-card` و `.prod-grid` و `.prod-pagination` لشبكات المنتجات (Related Products على المشروع، Brand Products على العلامة). إن أزال أحدهم هذا الـ link مستقبلاً ظاناً أنه دخيل، ستظهر بطاقات المنتجات بدون تنسيق + لن يعمل pagination. المرجع الكامل في القسم 3.1 نقطة 6 وفي القسم 3.2.
@@ -627,6 +657,9 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
   - `u.jsxs` لعنصر بعدة أطفال (array of children).
 - **المكوّنات** تحمل أسماء مختصرة ومُحرَّمة للقراءة: مثل `nv` (FAQ)، `Od` (Need a Custom Solution)، `rv` (Smart Home Focus)، `av` (Navbar). اعثر على المكوّن المطلوب دائماً عبر البحث عن مفتاح `data-i18n` مميّز داخله.
 
+### عنوان الصفحة و Helmet (2026-11-15)
+مكوّن التطبيق الرئيسي كان يحمل داخل `Helmet` (`Ts`) عنواناً عاماً `"S‑ELECTRICITY Smart Home & Domotique"`. المسارات التي لها عنوانها (`/` و `/previous-work`) تغلبه، لكن صفحات المنتجات والعلامات والمشاريع تُرسم عبر المسار العام فكان Helmet يعيد فرض العنوان العام فوق عنوانها مع كل إعادة رسم (ويراه Google الذي يرسم JavaScript). **حُذف العنصر `title` من ذلك الـ Helmet فقط** (وصف `meta` بقي)، فصار عنوان هذه الصفحات هو `<title>` المولَّد. لا تُعِد إضافته؛ أي مسار جديد يحتاج عنواناً يضعه في Helmet الخاص به.
+
 ### بنية الـ Navbar (مكوّن `av`)
 الـ navbar حالياً يحتوي 4 أطفال داخل الـ `<div className="container...">` (سطر ~12647):
 1. `<Mt to="/">` — اللوغو.
@@ -645,7 +678,7 @@ backgroundImage: `...url('${window.innerWidth < 768 ? "/assets/Vila-big-backgrou
 - على باقي الصفحات (`products.html`, `product.html`, `project.html`، إلخ): النڤ-بار **داكن دائماً** بغضّ النظر عن scroll.
 
 **آلية القسر للداكن في الصفحات الداخلية:**
-كلا `assets/products.css` و `assets/projects.css` يحويان نفس قاعدة CSS:
+كلا `assets/products.css` و `assets/site.css` يحويان نفس قاعدة CSS:
 ```css
 body:not(.home-page) header.fixed.top-0.z-50 {
   background-color: rgba(0, 0, 0, 0.95) !important;

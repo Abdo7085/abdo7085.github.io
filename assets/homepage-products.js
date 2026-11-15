@@ -58,24 +58,6 @@
       || p === '/ar' || p === '/ar/' || p === '/ar/index.html';
   }
 
-  function getLang() {
-    return document.documentElement.lang || 'en';
-  }
-
-  function getLangPrefix() {
-    var lang = getLang();
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-
-  function t(obj) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    var lang = getLang();
-    return obj[lang] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-
   function buildSectionShell() {
     return '<section id="homepage-products-section" class="hp-products-section">'
       + '<div class="hp-products-inner">'
@@ -85,44 +67,13 @@
       + '</div>'
       + '<div class="hp-products-grid" id="hp-products-grid"></div>'
       + '<div class="hp-products-cta">'
-      + '<a href="' + getLangPrefix() + '/products.html" class="hp-products-btn" data-i18n="hp_products_browse">Browse All Products</a>'
+      + '<a href="' + SE.prefix() + '/products.html" class="hp-products-btn" data-i18n="hp_products_browse">Browse All Products</a>'
       + '</div>'
       + '</div>'
       + '</section>';
   }
 
-  function renderCard(product) {
-    var title = t(product.title);
-    var desc = t(product.short_description);
-    var prefix = getLangPrefix();
-    var href = prefix + '/products/' + product.id + '.html';
 
-    return '<a href="' + href + '" class="hp-product-card">'
-      + '<div class="hp-product-card-img">'
-      + (window.SE
-          ? SE.img(product.image, { box: 'home', alt: title })
-          : '<img src="' + ((product.image && product.image.src) || product.image || '') + '" alt="" loading="lazy" />')
-      + '</div>'
-      + '<div class="hp-product-card-body">'
-      + '<span class="hp-product-card-brand">' + (product.brand || '') + '</span>'
-      + '<h3 class="hp-product-card-title">' + title + '</h3>'
-      + '<p class="hp-product-card-desc">' + desc + '</p>'
-      + '</div>'
-      + '</a>';
-  }
-
-  async function fetchProducts() {
-    var paths = ['/data/products_index.json', '../data/products_index.json'];
-    for (var i = 0; i < paths.length; i++) {
-      try {
-        var res = await fetch(paths[i]);
-        if (res.ok) return await res.json();
-      } catch(e) {}
-    }
-    return [];
-  }
-
-  var _cachedProducts = null;
 
   function inject() {
     // Already in DOM — nothing to do
@@ -140,22 +91,16 @@
     var sectionEl = wrapper.firstElementChild;
     faqSection.parentNode.insertBefore(sectionEl, faqSection);
 
-    // Fetch and render products (cache after first fetch)
-    var loadProducts = _cachedProducts
-      ? Promise.resolve(_cachedProducts)
-      : fetchProducts().then(function(data) { _cachedProducts = data; return data; });
-
-    loadProducts.then(function(allProducts) {
+    // Fetch (once per page, shared via SE.data) and render the products
+    SE.data.products().then(function(allProducts) {
       var featured = pickFeatured(allProducts);
 
       var grid = document.getElementById('hp-products-grid');
       if (grid && featured.length > 0) {
-        grid.innerHTML = featured.map(renderCard).join('');
+        grid.innerHTML = featured.map(function(p) { return SE.productCard(p, 'home'); }).join('');
       }
 
-      if (window.__site_i18n && window.__site_i18n.init) {
-        setTimeout(function() { window.__site_i18n.init(); }, 100);
-      }
+      setTimeout(SE.translate, 100);
     });
 
     return true;

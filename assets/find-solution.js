@@ -1,64 +1,20 @@
 /* Find Your Solution — multi-step wizard modal.
    Self-contained: opens via [data-trigger="find-solution"] or
    [data-i18n="spa_cta_book_visit"] (the existing About-section button).
-   Loads its own copy of the active locale dictionary so it works
-   even before assets/i18n.js finishes hydrating SPA content. */
+   Loads the page language's dictionary when it opens (SE.locale), so it
+   works even before assets/i18n.js finishes hydrating SPA content.
+   Language, dictionaries, the WhatsApp link, the DOM builder and the modal
+   shell come from assets/site-core.js (SE). */
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '212654132112';
-  const AVAILABLE_LANGS = ['en', 'fr', 'ar'];
-  const DEFAULT_LANG = 'en';
-
-  // ---------- Language detection (mirrors assets/i18n.js logic) ----------
-  function detectLang() {
-    try {
-      const parts = (location.pathname || '/').split('/').filter(Boolean);
-      if (parts.length) {
-        const first = parts[0].toLowerCase();
-        if (AVAILABLE_LANGS.includes(first)) return first;
-      }
-    } catch (e) {}
-    try {
-      const p = location.pathname || '/';
-      if (p === '/' || p === '') return DEFAULT_LANG;
-    } catch (e) {}
-    try {
-      const stored = localStorage.getItem('site_lang');
-      if (stored && AVAILABLE_LANGS.includes(stored)) return stored;
-    } catch (e) {}
-    return DEFAULT_LANG;
-  }
-
-  // ---------- Locale loader (independent cache) ----------
-  const localeCache = {};
-  function loadLocale(lang) {
-    if (localeCache[lang]) return localeCache[lang];
-    const candidates = [
-      '/assets/locales/' + lang + '.json',
-      'assets/locales/' + lang + '.json',
-      './assets/locales/' + lang + '.json',
-      '../assets/locales/' + lang + '.json'
-    ];
-    const promise = (async () => {
-      for (const url of candidates) {
-        try {
-          const res = await fetch(url, { cache: 'force-cache' });
-          if (res && res.ok) return await res.json();
-        } catch (e) {}
-      }
-      return {};
-    })();
-    localeCache[lang] = promise;
-    return promise;
-  }
+  const el = SE.el;
 
   // ---------- Translation helper ----------
-  let dict = {};
+  // `dict` is loaded in open(); before that SE.msg uses the page's dictionary.
+  let dict = null;
   function t(key, fallback) {
-    const v = dict[key];
-    if (typeof v === 'string' && v.length) return v;
-    return fallback != null ? fallback : key;
+    return SE.msg(key, fallback, dict);
   }
 
   // ---------- State ----------
@@ -81,8 +37,8 @@
   let state = freshState();
   let stepSequence = [];
   let currentIndex = 0;
-  let modalEl = null;
-  let lang = DEFAULT_LANG;
+  let modal = null;     // SE.modal handle while the wizard is open
+  let modalEl = null;   // its root element
 
   // ---------- Icon registry (Lucide + Tabler SVG, both MIT) ----------
   // SVG strings use stroke="currentColor" so .fs-option-icon CSS controls
@@ -252,32 +208,6 @@
   }
 
   // ---------- DOM helpers ----------
-  function el(tag, attrs, children) {
-    const node = document.createElement(tag);
-    if (attrs) {
-      for (const k in attrs) {
-        if (k === 'class') node.className = attrs[k];
-        else if (k === 'html') node.innerHTML = attrs[k];
-        else if (k === 'on') {
-          for (const ev in attrs[k]) node.addEventListener(ev, attrs[k][ev]);
-        } else if (k === 'style' && typeof attrs[k] === 'object') {
-          Object.assign(node.style, attrs[k]);
-        } else if (k in node && typeof attrs[k] !== 'string') {
-          node[k] = attrs[k];
-        } else {
-          node.setAttribute(k, attrs[k]);
-        }
-      }
-    }
-    if (children != null) {
-      const arr = Array.isArray(children) ? children : [children];
-      for (const c of arr) {
-        if (c == null) continue;
-        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
-      }
-    }
-    return node;
-  }
 
   // ---------- Renderers ----------
   function renderOptionGrid(list, opts) {
@@ -727,7 +657,7 @@
     lines.push('');
     lines.push(t('wizard_msg_outro', 'Please contact me to discuss the details. Thank you!'));
 
-    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+    return SE.whatsapp(lines.join('\n'));
   }
 
   // ---------- Validation per step ----------
@@ -812,31 +742,18 @@
 
   // ---------- Mount / open / close ----------
   function buildModal() {
-    const root = el('div', {
+    modal = SE.modal({
       // id used as a sentinel so i18n.js's text-replacement TreeWalker
       // skips the wizard subtree (it would otherwise revert our updated
       // step text back to the value cached in dataset.i18nOrigText).
+      name: 'fs',
       id: 'fs-modal-root',
-      class: 'fs-modal',
-      role: 'dialog',
-      'aria-modal': 'true',
-      'aria-labelledby': 'fs-title'
+      labelledBy: 'fs-title',
+      closeLabel: t('wizard_close', 'Close'),
+      onClose: close
     });
-    root.appendChild(el('div', {
-      class: 'fs-modal-backdrop',
-      on: { click: close }
-    }));
-    const panel = el('div', { class: 'fs-modal-panel' });
-    panel.appendChild(el('button', {
-      type: 'button',
-      class: 'fs-close',
-      'aria-label': t('wizard_close', 'Close'),
-      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>',
-      on: { click: close }
-    }));
     // Progress bar/text are populated by updateFooter() — which always runs
-    // synchronously after buildModal() and before the modal becomes visible
-    // (fs-visible is added inside requestAnimationFrame). No pre-fill needed.
+    // synchronously after buildModal() and before the modal becomes visible.
     const header = el('header', { class: 'fs-header' }, [
       el('h2', { id: 'fs-title', class: 'fs-title' }, t('wizard_title', 'Find Your Perfect Solution')),
       el('p', { class: 'fs-subtitle' }, t('wizard_subtitle', 'A few quick questions to design the right system for you.')),
@@ -845,9 +762,9 @@
         el('span', { class: 'fs-progress-text' }, '')
       ])
     ]);
-    panel.appendChild(header);
-    panel.appendChild(el('div', { class: 'fs-body' }));
-    panel.appendChild(el('footer', { class: 'fs-footer' }, [
+    modal.panel.appendChild(header);
+    modal.panel.appendChild(el('div', { class: 'fs-body' }));
+    modal.panel.appendChild(el('footer', { class: 'fs-footer' }, [
       el('button', {
         type: 'button', class: 'fs-btn fs-btn-secondary fs-back',
         on: { click: goBack }
@@ -857,48 +774,31 @@
         on: { click: goNext }
       }, t('wizard_next', 'Next'))
     ]));
-    root.appendChild(panel);
-    document.body.appendChild(root);
-    return root;
+    return modal.root;
   }
 
   async function open() {
-    // Synchronously remove ANY existing wizard modal (including ones still
-    // playing their close-fade animation) so a quick close→reopen never
-    // shows stale step text or content from the previous session.
-    document.querySelectorAll('.fs-modal').forEach(function (n) { n.remove(); });
-    modalEl = null;
-
-    lang = detectLang();
-    dict = await loadLocale(lang);
+    dict = await SE.locale();
 
     state = freshState();
     stepSequence = buildStepSequence();
     currentIndex = 0;
-    modalEl = buildModal();
-    // Match document direction for RTL behavior of CSS logical props
-    modalEl.setAttribute('dir', document.documentElement.getAttribute('dir') || (lang === 'ar' ? 'rtl' : 'ltr'));
+    modalEl = buildModal();     // also removes any wizard still fading out
     renderStep(stepSequence[currentIndex], modalEl.querySelector('.fs-body'));
     updateFooter();
-    // Force a repaint so CSS transitions kick in
-    requestAnimationFrame(function () {
-      document.body.classList.add('fs-open');
-      modalEl.classList.add('fs-visible');
-    });
+    modal.show();
     // Focus first focusable element after opening
     setTimeout(function () {
-      const first = modalEl.querySelector('.fs-option, .fs-input');
+      const first = modalEl && modalEl.querySelector('.fs-option, .fs-input');
       if (first) first.focus({ preventScroll: true });
     }, 250);
   }
 
   function close() {
-    if (!modalEl) return;
-    modalEl.classList.remove('fs-visible');
-    document.body.classList.remove('fs-open');
-    setTimeout(function () {
-      if (modalEl) { modalEl.remove(); modalEl = null; }
-    }, 280);
+    if (!modal) return;
+    modal.hide();
+    modal = null;
+    modalEl = null;
   }
 
   // ---------- Trigger handling ----------

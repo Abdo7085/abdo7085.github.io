@@ -11,116 +11,37 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '212654132112';
-  const AVAILABLE_LANGS = ['en', 'fr', 'ar'];
-  const DEFAULT_LANG = 'en';
   const STORAGE_KEY = 'se_cart_v1';
   const SITE_ORIGIN = 'https://smartelectricity.ma';
+  const el = SE.el;
 
-  // ---------- Language detection ----------
-  function detectLang() {
-    try {
-      const parts = (location.pathname || '/').split('/').filter(Boolean);
-      if (parts.length) {
-        const first = parts[0].toLowerCase();
-        if (AVAILABLE_LANGS.includes(first)) return first;
-      }
-    } catch (e) {}
-    try {
-      const stored = localStorage.getItem('site_lang');
-      if (stored && AVAILABLE_LANGS.includes(stored)) return stored;
-    } catch (e) {}
-    return DEFAULT_LANG;
-  }
-
-  function langPrefix(lang) {
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-
-  function pickLangText(obj, lang) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    return obj[lang] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-
-  // ---------- Locale loader ----------
-  const localeCache = {};
-  function loadLocale(lang) {
-    if (localeCache[lang]) return localeCache[lang];
-    const candidates = [
-      '/assets/locales/' + lang + '.json',
-      'assets/locales/' + lang + '.json',
-      './assets/locales/' + lang + '.json',
-      '../assets/locales/' + lang + '.json'
-    ];
-    const promise = (async () => {
-      for (const url of candidates) {
-        try {
-          const res = await fetch(url, { cache: 'force-cache' });
-          if (res && res.ok) return await res.json();
-        } catch (e) {}
-      }
-      return {};
-    })();
-    localeCache[lang] = promise;
-    return promise;
-  }
-
-  let dict = {};
+  // ---------- Text ----------
+  // Language, dictionaries, the WhatsApp link and the modal shell come from
+  // assets/site-core.js (SE). `dict` is the dictionary loaded when the modal
+  // opens; before that (the toast after "Add to quote") SE.msg uses the one
+  // i18n.js applied to the page.
+  let dict = null;
   function t(key, fallback) {
-    const v = dict[key];
-    if (typeof v === 'string' && v.length) return v;
-    return fallback != null ? fallback : key;
+    return SE.msg(key, fallback, dict);
   }
 
-  // ---------- Products index loader ----------
+  // ---------- Products index ----------
   let productsMap = null;
-  let productsLoadPromise = null;
   function loadProductsIndex() {
-    if (productsMap) return Promise.resolve(productsMap);
-    if (productsLoadPromise) return productsLoadPromise;
-    const candidates = [
-      '/data/products_index.json',
-      'data/products_index.json',
-      '../data/products_index.json',
-      '../../data/products_index.json'
-    ];
-    productsLoadPromise = (async () => {
-      for (const url of candidates) {
-        try {
-          // Normal HTTP caching (GitHub Pages: 10 min). force-cache would keep
-          // serving an old catalog — and its old image paths — indefinitely.
-          const res = await fetch(url);
-          if (res && res.ok) {
-            const arr = await res.json();
-            const map = {};
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i] && arr[i].id) map[arr[i].id] = arr[i];
-            }
-            productsMap = map;
-            return map;
-          }
-        } catch (e) {}
+    return SE.data.products().then(function (list) {
+      const map = {};
+      for (let i = 0; i < list.length; i++) {
+        if (list[i] && list[i].id) map[list[i].id] = list[i];
       }
-      productsMap = {};
-      return productsMap;
-    })();
-    return productsLoadPromise;
+      productsMap = map;
+      return map;
+    });
   }
 
   // ---------- State + persistence ----------
   let state = { items: [] }; // [{id, qty}]
-  let lang = DEFAULT_LANG;
-  let modalEl = null;
-
-  // Eagerly detect language and pre-load the dictionary so that toasts shown
-  // by add() (which can fire before the modal is ever opened) display in the
-  // active language. Without this, `dict` stays empty until open() runs and
-  // showAddedToast falls back to the hard-coded English string.
-  lang = detectLang();
-  loadLocale(lang).then(function (d) { if (d) dict = d; });
+  let modal = null;     // SE.modal handle while the quote request is open
+  let modalEl = null;   // its root element
 
   function loadState() {
     try {
@@ -216,32 +137,6 @@
   }
 
   // ---------- DOM helpers ----------
-  function el(tag, attrs, children) {
-    const node = document.createElement(tag);
-    if (attrs) {
-      for (const k in attrs) {
-        if (k === 'class') node.className = attrs[k];
-        else if (k === 'html') node.innerHTML = attrs[k];
-        else if (k === 'on') {
-          for (const ev in attrs[k]) node.addEventListener(ev, attrs[k][ev]);
-        } else if (k === 'style' && typeof attrs[k] === 'object') {
-          Object.assign(node.style, attrs[k]);
-        } else if (k in node && typeof attrs[k] !== 'string') {
-          node[k] = attrs[k];
-        } else {
-          node.setAttribute(k, attrs[k]);
-        }
-      }
-    }
-    if (children != null) {
-      const arr = Array.isArray(children) ? children : [children];
-      for (const c of arr) {
-        if (c == null) continue;
-        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
-      }
-    }
-    return node;
-  }
 
   // ---------- Badge updates ----------
   function refreshBadges() {
@@ -304,12 +199,12 @@
     lines.push(t('cart_msg_header', '🛒 Quote request from smartelectricity.ma'));
     lines.push('');
 
-    const prefix = langPrefix(lang);
+    const prefix = SE.prefix();
     let idx = 1;
     for (let i = 0; i < state.items.length; i++) {
       const item = state.items[i];
       const product = (productsMap && productsMap[item.id]) || null;
-      const title = product ? pickLangText(product.title, lang) : item.id;
+      const title = product ? SE.t(product.title) : item.id;
       const brand = product && product.brand ? product.brand : '';
       const url = SITE_ORIGIN + prefix + '/products/' + item.id + '.html';
       lines.push(idx + ') ' + (brand ? '[' + brand + '] ' : '') + title);
@@ -327,12 +222,12 @@
     }
 
     lines.push(t('cart_msg_footer', 'Awaiting your quote, thank you.'));
-    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+    return SE.whatsapp(lines.join('\n'));
   }
 
   // ---------- Render ----------
   function renderItemRow(item, product) {
-    const title = product ? pickLangText(product.title, lang) : item.id;
+    const title = product ? SE.t(product.title) : item.id;
     const brand = product && product.brand ? product.brand : '';
     // product.image is a descriptor {src, srcset, width, height} made by
     // scripts/build_images.py; 64px thumbnail, so the smallest variant wins.
@@ -345,7 +240,7 @@
     } else {
       imgAttrs.src = image || '/assets/S‑ELECTRICITY-LOGO.svg';
     }
-    const prefix = langPrefix(lang);
+    const prefix = SE.prefix();
     const href = prefix + '/products/' + item.id + '.html';
 
     const row = el('div', { class: 'cart-item', 'data-item-id': item.id });
@@ -421,7 +316,7 @@
       html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>'
     }));
     wrap.appendChild(el('p', { class: 'cart-empty-text' }, t('cart_empty', 'Your quote request is empty')));
-    const prefix = langPrefix(lang);
+    const prefix = SE.prefix();
     wrap.appendChild(el('a', {
       class: 'cart-btn cart-btn-primary',
       href: prefix + '/products.html'
@@ -500,48 +395,25 @@
   }
 
   function buildModal() {
-    const root = el('div', {
+    modal = SE.modal({
+      name: 'cart',
       id: 'cart-modal-root',
-      class: 'cart-modal',
-      role: 'dialog',
-      'aria-modal': 'true',
-      'aria-labelledby': 'cart-title'
+      labelledBy: 'cart-title',
+      closeLabel: t('cart_aria_close', 'Close quote request'),
+      onClose: close
     });
-    root.appendChild(el('div', {
-      class: 'cart-modal-backdrop',
-      on: { click: close }
-    }));
-
-    const panel = el('div', { class: 'cart-modal-panel' });
-
-    panel.appendChild(el('button', {
-      type: 'button',
-      class: 'cart-close',
-      'aria-label': t('cart_aria_close', 'Close quote request'),
-      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>',
-      on: { click: close }
-    }));
-
     const header = el('header', { class: 'cart-header' });
     header.appendChild(el('h2', { id: 'cart-title', class: 'cart-title' }, t('cart_title', 'Your Quote Request')));
     header.appendChild(el('p', { class: 'cart-count' }, ''));
-    panel.appendChild(header);
-
-    panel.appendChild(el('div', { class: 'cart-body' }));
-    panel.appendChild(el('footer', { class: 'cart-footer' }));
-
-    root.appendChild(panel);
-    document.body.appendChild(root);
-    return root;
+    modal.panel.appendChild(header);
+    modal.panel.appendChild(el('div', { class: 'cart-body' }));
+    modal.panel.appendChild(el('footer', { class: 'cart-footer' }));
+    return modal.root;
   }
 
   async function open() {
-    document.querySelectorAll('.cart-modal').forEach(function (n) { n.remove(); });
-    modalEl = null;
-
-    lang = detectLang();
-    const [d] = await Promise.all([loadLocale(lang), loadProductsIndex()]);
-    dict = d || {};
+    const loaded = await Promise.all([SE.locale(), loadProductsIndex()]);
+    dict = loaded[0] || {};
 
     // Drop items whose products no longer exist in the index
     if (productsMap) {
@@ -550,28 +422,22 @@
     }
 
     modalEl = buildModal();
-    modalEl.setAttribute('dir', document.documentElement.getAttribute('dir') || (lang === 'ar' ? 'rtl' : 'ltr'));
     renderModalBody();
-    requestAnimationFrame(function () {
-      document.body.classList.add('cart-open');
-      modalEl.classList.add('cart-visible');
-    });
+    modal.show();
   }
 
   function close() {
-    if (!modalEl) return;
-    modalEl.classList.remove('cart-visible');
-    document.body.classList.remove('cart-open');
-    setTimeout(function () {
-      if (modalEl) { modalEl.remove(); modalEl = null; }
-    }, 280);
+    if (!modal) return;
+    modal.hide();
+    modal = null;
+    modalEl = null;
   }
 
   // ---------- Boot ----------
   state = loadState();
 
-  // Eagerly load products index so the badge filter (drop-stale) is accurate
-  // before the user clicks. Cheap fetch, shared with the page via the HTTP cache.
+  // Eagerly load the product index so the badge filter (drop-stale) is
+  // accurate before the user clicks (shared with the page via SE.data).
   loadProductsIndex().then(function (map) {
     if (map && Object.keys(map).length) {
       const before = state.items.length;

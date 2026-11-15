@@ -1,63 +1,25 @@
 /**
  * brand-detail.js
- * Renders a single brand page (/brands/<slug>.html) by injecting content into the SPA layout.
- * Mirrors project-detail.js / product-detail.js architecture:
- *   - Reads window.__BRAND__ pre-embedded by build_brands.py (instant render, no fetch).
- *   - Falls back to fetching /data/brands/<slug>.json + /data/products_index.json (dev mode).
- *   - Mounts a #custom-brand-detail-wrapper into #root once the SPA shell exists.
- *   - Re-renders on SPA navigation via the locationchange event.
+ * Renders a single brand page (/brands/<slug>.html) inside the SPA layout.
+ *   - Reads window.__BRAND__ pre-embedded by build_brands.py (instant render).
+ *   - Falls back to /data/brands/<slug>.json + the product index (bare template).
+ * Mounting, language, product cards and data loading come from
+ * assets/site-core.js (SE).
  */
 
-(function() {
-  // Auto-redirect to language-prefixed URL if needed.
-  var _path = location.pathname || '/';
-  if (_path === '/brand.html' || (_path.startsWith('/brands/') && _path.endsWith('.html'))) {
-    var _lang = localStorage.getItem('site_lang');
-    if (_lang && _lang !== 'en' && (_lang === 'ar' || _lang === 'fr')) {
-      location.replace('/' + _lang + _path + location.search + location.hash);
-      return;
-    }
-  }
+(function () {
+  'use strict';
 
-  // ---------------- Helpers ----------------
-  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
-  const SE = window.SE;
+  const t = SE.t;
+  const escapeHtml = SE.escapeHtml;
+  let dict = null;   // the page language's dictionary, loaded before rendering
 
-  function getLang() {
-    return document.documentElement.lang || 'en';
-  }
-  function getLangPrefix() {
-    const lang = getLang();
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-  function t(obj) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    return obj[getLang()] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-  function escapeHtml(str) {
-    if (str == null) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-  function dictLookup(key, fallback) {
-    if (window.__site_i18n_dict && window.__site_i18n_dict[key]) {
-      return window.__site_i18n_dict[key];
-    }
-    return fallback;
-  }
+  // ---------------- Data ----------------
 
   function getBrandSlug() {
     const match = location.pathname.match(/\/brands\/([^/.]+)(?:\.html)?$/);
     if (match) return match[1];
-    const params = new URLSearchParams(location.search);
-    return params.get('id');
+    return new URLSearchParams(location.search).get('id');
   }
 
   async function fetchBrand(slug) {
@@ -66,71 +28,43 @@
       return window.__BRAND__;
     }
     if (!slug) return null;
-    try {
-      const res = await fetch('/data/brands/' + slug + '.json');
-      if (!res.ok) throw new Error('Brand not found');
-      return await res.json();
-    } catch (e) {
-      console.error('Failed to fetch brand:', e);
-      return null;
-    }
-  }
-
-  async function fetchProductsIndex() {
-    try {
-      const res = await fetch('/data/products_index.json');
-      if (!res.ok) return [];
-      return await res.json();
-    } catch (e) {
-      return [];
-    }
+    return SE.data.json('/data/brands/' + slug + '.json', null);
   }
 
   function getBrandProducts(brand, productsIndex) {
-    // If the page was pre-embedded with brand.products (build_brands.py does this),
-    // trust it. Otherwise filter the products_index by the brand's `brand` field.
+    // build_brands.py pre-embeds brand.products; otherwise filter the index.
     if (Array.isArray(brand.products)) return brand.products;
     const name = brand.brand || '';
-    return (productsIndex || []).filter(function(p) { return p.brand === name; });
+    return (productsIndex || []).filter(function (p) { return p.brand === name; });
   }
 
-  // Derive the unique set of technologies and catalog categories from the brand's
-  // products, sorted by frequency descending. This replaces the previously
-  // manually-curated tech_focus / category_focus arrays in the brand JSON —
-  // the catalog is the single source of truth.
+  // Technologies and catalog categories of the brand's products, by frequency
+  // (mirrors derive_chips() in scripts/build_brands.py — keep them in sync).
   function deriveChips(brandProducts) {
     const techCount = {};
     const catCount = {};
-    brandProducts.forEach(function(p) {
+    brandProducts.forEach(function (p) {
       if (Array.isArray(p.technology)) {
-        p.technology.forEach(function(t) {
-          if (t) techCount[t] = (techCount[t] || 0) + 1;
+        p.technology.forEach(function (x) {
+          if (x) techCount[x] = (techCount[x] || 0) + 1;
         });
       }
-      // Category ids come from data/taxonomy.json (the index carries each
-      // product's derived `category`; fall back to deriving it here).
       const cat = p.category || SE.taxonomy.categoryOf(p.product_type);
-      if (cat) {
-        catCount[cat] = (catCount[cat] || 0) + 1;
-      }
+      if (cat) catCount[cat] = (catCount[cat] || 0) + 1;
     });
     function sortByFreq(counts) {
-      return Object.keys(counts).sort(function(a, b) {
+      return Object.keys(counts).sort(function (a, b) {
         return counts[b] - counts[a] || a.localeCompare(b);
       });
     }
-    return {
-      technologies: sortByFreq(techCount),
-      categories: sortByFreq(catCount),
-    };
+    return { technologies: sortByFreq(techCount), categories: sortByFreq(catCount) };
   }
 
   // ---------------- URL / pagination state ----------------
   const ITEMS_PER_PAGE = 12;
 
   function readPageFromURL() {
-    const params = new URLSearchParams(location.search);
-    const p = parseInt(params.get('page'), 10);
+    const p = parseInt(new URLSearchParams(location.search).get('page'), 10);
     return (Number.isFinite(p) && p > 0) ? p : 1;
   }
 
@@ -139,45 +73,26 @@
     if (page > 1) params.set('page', String(page));
     else params.delete('page');
     const qs = params.toString();
-    const newUrl = location.pathname + (qs ? '?' + qs : '') + location.hash;
-    history.replaceState(null, '', newUrl);
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
   }
 
-  // ---------------- Meta / head updates (for SPA navigation, not the static build) ----------------
+  // ---------------- <head> (bare template; generated pages already have it) ----------------
   function updateMeta(brand) {
-    const tagline = t(brand.tagline);
-    const description = t(brand.description) || tagline;
+    const description = t(brand.description) || t(brand.tagline);
     const brandName = brand.brand || '';
-    const suffix = { en: 'S‑ELECTRICITY Morocco', fr: 'S‑ELECTRICITY Maroc', ar: 'S‑ELECTRICITY المغرب' };
-    document.title = brandName + ' | ' + (suffix[getLang()] || suffix.en);
+    const host = 'https://smartelectricity.ma';
+    const logoUrl = host + (brand.logo || '/assets/S‑ELECTRICITY-LOGO.svg');
 
-    function setContent(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.content = value;
-    }
-    function setHref(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.href = value;
-    }
-
-    const baseUrl = 'https://smartelectricity.ma';
-    const canonicalUrl = baseUrl + getLangPrefix() + '/brands/' + brand.id + '.html';
-    const logoUrl = brand.logo ? (baseUrl + brand.logo) : (baseUrl + '/assets/S‑ELECTRICITY-LOGO.svg');
-
-    setHref('meta-canonical', canonicalUrl);
-    setContent('meta-description', description);
-    setContent('meta-og-title', brandName + ' | S‑ELECTRICITY');
-    setContent('meta-og-description', description);
-    setContent('meta-og-image', logoUrl);
-    setContent('meta-twitter-title', brandName + ' | S‑ELECTRICITY');
-    setContent('meta-twitter-description', description);
-    setContent('meta-twitter-image', logoUrl);
-
-    document.querySelectorAll('link[hreflang]').forEach(function(link) {
-      const lang = link.getAttribute('hreflang');
-      const prefix = (lang === 'en' || lang === 'x-default') ? '' : '/' + lang;
-      link.href = baseUrl + prefix + '/brands/' + brand.id + '.html';
-    });
+    SE.meta.title(brandName);
+    SE.meta.set('meta-canonical', host + SE.prefix() + '/brands/' + brand.id + '.html');
+    SE.meta.set('meta-description', description);
+    SE.meta.set('meta-og-title', brandName + ' | S‑ELECTRICITY');
+    SE.meta.set('meta-og-description', description);
+    SE.meta.fill('meta-og-image', logoUrl);
+    SE.meta.set('meta-twitter-title', brandName + ' | S‑ELECTRICITY');
+    SE.meta.set('meta-twitter-description', description);
+    SE.meta.fill('meta-twitter-image', logoUrl);
+    SE.meta.hreflang('/brands/' + brand.id + '.html');
   }
 
   // ---------------- Rendering ----------------
@@ -189,7 +104,7 @@
   const ICON_SPARKLES = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>';
 
   function renderBreadcrumbs(brand) {
-    const prefix = getLangPrefix();
+    const prefix = SE.prefix();
     return (
       '<nav class="brand-breadcrumbs" aria-label="Breadcrumb">' +
         '<a href="' + prefix + '/" data-i18n="breadcrumb_home">Home</a>' +
@@ -202,7 +117,6 @@
   }
 
   function renderHero(brand, brandProducts) {
-    const prefix = getLangPrefix();
     const brandName = escapeHtml(brand.brand || '');
     const tagline = escapeHtml(t(brand.tagline));
     const count = brandProducts.length;
@@ -220,18 +134,16 @@
       );
     }
     if (brand.founded) {
-      const foundedTpl = dictLookup('brand_founded', 'Founded {year}');
       badges.push(
         '<span class="brand-meta-badge">' + ICON_CAL +
-          '<span>' + escapeHtml(foundedTpl.replace('{year}', brand.founded)) + '</span>' +
+          '<span>' + escapeHtml(SE.msg('brand_founded', 'Founded {year}', dict).replace('{year}', brand.founded)) + '</span>' +
         '</span>'
       );
     }
     if (count > 0) {
-      const countTpl = dictLookup('brand_products_count', '{count} products in our catalog');
       badges.push(
         '<span class="brand-meta-badge">' + ICON_BOX +
-          '<span>' + escapeHtml(countTpl.replace('{count}', count)) + '</span>' +
+          '<span>' + escapeHtml(SE.msg('brand_products_count', '{count} products in our catalog', dict).replace('{count}', count)) + '</span>' +
         '</span>'
       );
     }
@@ -253,7 +165,7 @@
               '<p class="brand-hero-tagline">' + tagline + '</p>' +
               (badges.length ? '<div class="brand-hero-meta">' + badges.join('') + '</div>' : '') +
               '<div class="brand-hero-actions">' +
-                '<a href="' + prefix + '/products.html?brand=' + encodeURIComponent(brand.brand || '') + '" class="brand-hero-btn brand-hero-btn-primary">' +
+                '<a href="' + SE.prefix() + '/products.html?brand=' + encodeURIComponent(brand.brand || '') + '" class="brand-hero-btn brand-hero-btn-primary">' +
                   '<span data-i18n="brand_view_products">View All Products</span>' +
                   ARROW_RIGHT +
                 '</a>' +
@@ -269,7 +181,7 @@
   function renderAbout(brand) {
     const desc = t(brand.description);
     if (!desc) return '';
-    const paragraphs = desc.split(/\n\s*\n/).map(function(p) {
+    const paragraphs = desc.split(/\n\s*\n/).map(function (p) {
       return '<p>' + escapeHtml(p.trim()) + '</p>';
     }).join('');
     return (
@@ -280,19 +192,16 @@
     );
   }
 
-  function renderChips(brand, brandProducts) {
-    // Technologies and Specialization are auto-derived from the brand's
-    // products in the catalog (sorted by frequency desc). The catalog is the
-    // single source of truth — no need to maintain parallel arrays in the JSON.
+  function renderChips(brandProducts) {
     const derived = deriveChips(brandProducts);
     const techs = derived.technologies;
     const cats = derived.categories;
     if (!techs.length && !cats.length) return '';
 
-    const techChips = techs.map(function(x) {
+    const techChips = techs.map(function (x) {
       return '<span class="brand-chip brand-chip-tech">' + escapeHtml(x) + '</span>';
     }).join('');
-    const catChips = cats.map(function(x) {
+    const catChips = cats.map(function (x) {
       return '<span class="brand-chip">' + escapeHtml(SE.taxonomy.label('category', x)) + '</span>';
     }).join('');
 
@@ -302,7 +211,6 @@
         '<div class="brand-chips">' + techChips + '</div>' +
       '</div>'
     ) : '';
-
     const catGroup = cats.length ? (
       '<div class="brand-chip-group">' +
         '<div class="brand-chip-group-label" data-i18n="brand_category_focus">Specialization</div>' +
@@ -312,54 +220,15 @@
 
     return (
       '<section class="brand-section">' +
-        '<div class="brand-chips-grid">' +
-          techGroup +
-          catGroup +
-        '</div>' +
+        '<div class="brand-chips-grid">' + techGroup + catGroup + '</div>' +
       '</section>'
     );
   }
 
-  function brandLogoMarkup(brand) {
-    if (!brand) return '<span class="prod-card-logo-fallback"></span>';
-    const slug = String(brand).toLowerCase().replace(/\s+/g, '-');
-    const safe = escapeHtml(brand);
-    return '<img class="prod-card-logo" src="/assets/brands/' + slug + '.svg" alt="' + safe +
-      '" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML(&quot;afterend&quot;,&quot;<span class=\\&quot;prod-card-logo-fallback\\&quot;>' + safe + '</span>&quot;);this.remove();" />';
-  }
-
-  function renderProductCard(product) {
-    const prefix = getLangPrefix();
-    const title = t(product.title);
-    const desc = t(product.short_description);
-    const techs = Array.isArray(product.technology) ? product.technology : [];
-    const protocolStrip = techs.length
-      ? '<div class="prod-card-protocols">' + techs.map(SE.protoMarkup).join('') + '</div>'
-      : '';
-
-    return (
-      '<a href="' + prefix + '/products/' + product.id + '.html" class="prod-card prod-fade-in product-link">' +
-        '<div class="prod-card-img-wrapper">' +
-          SE.img(product.image, { box: 'card', alt: title, cls: 'prod-card-img' }) +
-        '</div>' +
-        protocolStrip +
-        '<div class="prod-card-content">' +
-          '<h3 class="prod-card-title">' + escapeHtml(title) + '</h3>' +
-          '<p class="prod-card-desc">' + escapeHtml(desc) + '</p>' +
-          '<div class="prod-card-footer">' +
-            brandLogoMarkup(product.brand) +
-            '<button type="button" class="prod-card-add" data-trigger="cart-add" data-product-id="' + escapeHtml(product.id) + '" data-i18n="cart_add_to_quote" aria-label="Add to quote request" data-i18n-attr="aria-label:cart_aria_add_btn" onclick="event.preventDefault();event.stopPropagation();if(window.Cart)window.Cart.add(this.getAttribute(&quot;data-product-id&quot;),1);">+ Add to quote</button>' +
-          '</div>' +
-        '</div>' +
-      '</a>'
-    );
-  }
-
-  // Renders the products section shell — the inner grid + count + pagination
-  // are rendered inside #brand-products-grid-container via renderProductsGrid()
-  // so we can swap pages without rebuilding the surrounding chrome.
+  // The section shell; the grid, count and pagination go into
+  // #brand-products-grid-container (updateProductsGrid) so a page change
+  // does not rebuild the surrounding chrome.
   function renderProductsSection(brand, brandProducts) {
-    const prefix = getLangPrefix();
     if (!brandProducts.length) {
       return (
         '<section class="brand-products-section">' +
@@ -370,7 +239,7 @@
         '</section>'
       );
     }
-    const filterHref = prefix + '/products.html?brand=' + encodeURIComponent(brand.brand || '');
+    const filterHref = SE.prefix() + '/products.html?brand=' + encodeURIComponent(brand.brand || '');
     return (
       '<section class="brand-products-section">' +
         '<div class="brand-products-section-header">' +
@@ -392,22 +261,10 @@
 
     const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
     const paginated = brandProducts.slice(startIdx, startIdx + ITEMS_PER_PAGE);
-    const cards = paginated.map(renderProductCard).join('');
+    let html = '<div class="prod-grid">' + paginated.map(function (p) { return SE.productCard(p, 'grid'); }).join('') + '</div>';
 
-    let html = '<div class="prod-grid">' + cards + '</div>';
-
-    // Localized results count, identical wording to products.html.
-    const showStart = startIdx + 1;
-    const showEnd = Math.min(startIdx + ITEMS_PER_PAGE, brandProducts.length);
-    const lang = getLang();
-    let resultsText;
-    if (lang === 'ar') {
-      resultsText = 'عرض ' + showStart + '–' + showEnd + ' من أصل ' + brandProducts.length + ' منتج';
-    } else if (lang === 'fr') {
-      resultsText = 'Affichage de ' + showStart + '–' + showEnd + ' sur ' + brandProducts.length + ' produits';
-    } else {
-      resultsText = 'Showing ' + showStart + '–' + showEnd + ' of ' + brandProducts.length + ' products';
-    }
+    // Same wording as the catalog's results count.
+    const resultsText = SE.resultsText(startIdx + 1, Math.min(startIdx + ITEMS_PER_PAGE, brandProducts.length), brandProducts.length);
     html += '<div class="prod-results-count" style="text-align:center; color: var(--prod-text-muted); font-size: 0.9rem; margin-top: 1rem;">' +
               escapeHtml(resultsText) +
             '</div>';
@@ -438,49 +295,31 @@
     if (!container) return currentPage;
     const result = renderProductsGrid(brandProducts, currentPage);
     container.innerHTML = result.html;
-    attachLinkTransitions(container);
+    SE.linkTransitions(container);
 
+    function goTo(page) {
+      writePageToURL(page);
+      updateProductsGrid(brandProducts, page);
+      const section = document.querySelector('.brand-products-section');
+      if (section) window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
+    }
     const prev = document.getElementById('brand-prev-page');
     const next = document.getElementById('brand-next-page');
-    const scrollTarget = function() {
-      const section = document.querySelector('.brand-products-section');
-      if (section) {
-        window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
-      }
-    };
-    if (prev) {
-      prev.addEventListener('click', function() {
-        if (result.currentPage > 1) {
-          const newPage = result.currentPage - 1;
-          writePageToURL(newPage);
-          updateProductsGrid(brandProducts, newPage);
-          scrollTarget();
-        }
-      });
-    }
-    if (next) {
-      next.addEventListener('click', function() {
-        if (result.currentPage < result.totalPages) {
-          const newPage = result.currentPage + 1;
-          writePageToURL(newPage);
-          updateProductsGrid(brandProducts, newPage);
-          scrollTarget();
-        }
-      });
-    }
+    if (prev) prev.addEventListener('click', function () {
+      if (result.currentPage > 1) goTo(result.currentPage - 1);
+    });
+    if (next) next.addEventListener('click', function () {
+      if (result.currentPage < result.totalPages) goTo(result.currentPage + 1);
+    });
 
-    if (window.__site_i18n && typeof window.__site_i18n.init === 'function') {
-      setTimeout(function() { window.__site_i18n.init(); }, 50);
-    }
-
+    setTimeout(SE.translate, 50);
     return result.currentPage;
   }
 
   function renderCta() {
-    // Mirror project-detail.js renderCta — same .proj-cta classes so the CTA
-    // looks identical across project, brand, and homepage contexts.
-    const prefix = getLangPrefix();
-    const servicesHref = (prefix || '') + '/#services';
+    // Same .proj-cta block as project-detail.js, so the CTA looks identical
+    // on project, brand and home pages.
+    const servicesHref = SE.prefix() + '/#services';
     return (
       '<section class="proj-cta">' +
         '<div class="proj-cta-inner">' +
@@ -502,12 +341,11 @@
   }
 
   function renderError() {
-    const prefix = getLangPrefix();
     return (
       '<div class="brand-not-found">' +
         '<h2 data-i18n="brand_not_found">Brand Not Found</h2>' +
         '<p data-i18n="brand_not_found_desc">The brand you are looking for does not exist or has been removed.</p>' +
-        '<a href="' + prefix + '/brands.html" class="brand-hero-btn brand-hero-btn-primary" data-i18n="nav_brands">Brands</a>' +
+        '<a href="' + SE.prefix() + '/brands.html" class="brand-hero-btn brand-hero-btn-primary" data-i18n="nav_brands">Brands</a>' +
       '</div>'
     );
   }
@@ -518,145 +356,54 @@
         renderBreadcrumbs(brand) +
         renderHero(brand, brandProducts) +
         renderAbout(brand) +
-        renderChips(brand, brandProducts) +
+        renderChips(brandProducts) +
         renderProductsSection(brand, brandProducts) +
         renderCta() +
       '</div>'
     );
   }
 
-  // ---------------- Link transitions ----------------
-  function attachLinkTransitions(container) {
-    container.querySelectorAll('a[href]').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        const anchor = e.currentTarget;
-        if (e.ctrlKey || e.metaKey || anchor.target === '_blank') return;
-        const href = anchor.getAttribute('href') || '';
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
-            href.startsWith('tel:') || href.startsWith('https://wa.me')) return;
-        try {
-          const u = new URL(href, location.href);
-          if (u.origin !== location.origin) return;
-        } catch(_) {}
-        e.preventDefault();
-        const wrap = document.getElementById('custom-brand-detail-wrapper');
-        if (wrap) {
-          wrap.style.transition = 'opacity 0.2s ease-out';
-          wrap.style.opacity = '0';
-        }
-        setTimeout(function() { window.location.href = href; }, 200);
-      });
-    });
-  }
-
   // ---------------- Mount ----------------
-  var _mounted = false;
 
-  async function initApp() {
-    if (_mounted || document.getElementById('custom-brand-detail-wrapper')) return;
-    _mounted = true;
+  function isBrandDetailPage(path) {
+    return path.endsWith('/brand.html') || path.endsWith('/brand') || /\/brands\/[^/]+\.html$/.test(path);
+  }
 
-    const root = document.getElementById('root');
-    const target = document.querySelector('main.notfound-root') || document.querySelector('main');
+  SE.mount({
+    id: 'custom-brand-detail-wrapper',
+    isPage: isBrandDetailPage,
+    html: '<div class="brand-loading"><div class="brand-loading-spinner"></div></div>',
+    start: async function (wrap) {
+      // The hero badges are dictionary templates ({year}, {count}): wait for
+      // the dictionary too, or they could render in English first.
+      const loaded = await Promise.all([
+        fetchBrand(getBrandSlug()),
+        SE.data.products(),
+        SE.taxonomy.load(),
+        SE.locale()
+      ]);
+      const brand = loaded[0];
+      const productsIndex = loaded[1];
+      dict = loaded[3];
 
-    const appContainer = document.createElement('div');
-    appContainer.id = 'custom-brand-detail-wrapper';
-    appContainer.innerHTML = '<div class="brand-loading"><div class="brand-loading-spinner"></div></div>';
-
-    if (target && target.nodeName === 'MAIN') {
-      target.innerHTML = '';
-      target.appendChild(appContainer);
-    } else {
-      const footer = document.querySelector('footer');
-      if (footer) {
-        footer.parentNode.insertBefore(appContainer, footer);
-      } else if (root) {
-        root.appendChild(appContainer);
+      function render() {
+        let brandProducts = [];
+        if (!brand) {
+          wrap.innerHTML = '<div id="custom-brand-detail-container">' + renderError() + '</div>';
+        } else {
+          updateMeta(brand);
+          brandProducts = getBrandProducts(brand, productsIndex);
+          wrap.innerHTML = renderContent(brand, brandProducts);
+        }
+        SE.linkTransitions(wrap);
+        if (brand && brandProducts.length) updateProductsGrid(brandProducts, readPageFromURL());
+        setTimeout(SE.translate, 50);
       }
+
+      render();
+      window.addEventListener('locationchange', function () {
+        if (isBrandDetailPage(location.pathname || '/')) render();
+      });
     }
-
-    window.addEventListener('pageshow', function() {
-      appContainer.style.transition = 'none';
-      appContainer.style.opacity = '1';
-    });
-
-    if (window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-
-    const slug = getBrandSlug();
-    const [brand, productsIndex] = await Promise.all([
-      fetchBrand(slug),
-      fetchProductsIndex(),
-      SE.taxonomy.load()
-    ]);
-
-    function renderPage() {
-      let html;
-      let brandProducts = [];
-      if (!brand) {
-        html = '<div id="custom-brand-detail-container">' + renderError() + '</div>';
-      } else {
-        updateMeta(brand);
-        brandProducts = getBrandProducts(brand, productsIndex);
-        html = renderContent(brand, brandProducts);
-      }
-      appContainer.innerHTML = html;
-      attachLinkTransitions(appContainer);
-      if (brand && brandProducts.length) {
-        updateProductsGrid(brandProducts, readPageFromURL());
-      }
-      if (window.__site_i18n && typeof window.__site_i18n.init === 'function') {
-        setTimeout(function() { window.__site_i18n.init(); }, 50);
-      }
-    }
-
-    renderPage();
-
-    window.addEventListener('locationchange', function() {
-      if (isBrandDetailPage()) renderPage();
-    });
-  }
-
-  function isBrandDetailPage() {
-    const path = location.pathname || '/';
-    return path.endsWith('/brand.html') ||
-           path.endsWith('/brand') ||
-           /\/brands\/[^/]+\.html$/.test(path);
-  }
-
-  function cleanupBrandDetail() {
-    const wrap = document.getElementById('custom-brand-detail-wrapper');
-    if (wrap) wrap.remove();
-    _mounted = false;
-  }
-
-  function mountApp() {
-    if (!isBrandDetailPage()) return;
-
-    const tryMount = function() {
-      const hasShell = document.querySelector('main') || document.querySelector('footer');
-      if (hasShell) { initApp(); return true; }
-      return false;
-    };
-
-    if (tryMount()) return;
-
-    const observer = new MutationObserver(function(_, obs) {
-      if (tryMount()) obs.disconnect();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-
-  window.addEventListener('locationchange', function() {
-    if (!isBrandDetailPage()) cleanupBrandDetail();
-    else if (!document.getElementById('custom-brand-detail-wrapper')) mountApp();
   });
-  window.addEventListener('popstate', function() {
-    if (!isBrandDetailPage()) cleanupBrandDetail();
-  });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mountApp);
-  } else {
-    mountApp();
-  }
 })();

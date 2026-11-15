@@ -40,7 +40,7 @@ body:not(.home-page) header.fixed.top-0.z-50 {
   padding: 5.5rem 1.5rem 4rem;
   font-family: 'Readex Pro', system-ui, sans-serif;
   color: var(--prod-text-main);
-  /* transparent — the unified cream canvas comes from body (projects.css
+  /* transparent — the unified cream canvas comes from body (site.css
      body:not(.home-page) rule), so there is no max-width seam */
   background-color: transparent;
   min-height: 70vh;
@@ -683,7 +683,7 @@ html[dir="rtl"] .prod-breadcrumbs {
  * "Product detail" (warm specimen plate). Markup/JS behavior unchanged.
  */
 
-/* (The cream page canvas is now site-wide via projects.css
+/* (The cream page canvas is now site-wide via site.css
    `body:not(.home-page)` — no per-page body class needed.) */
 
 /* Breadcrumbs */

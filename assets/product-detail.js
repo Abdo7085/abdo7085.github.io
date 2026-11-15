@@ -1,42 +1,17 @@
 /**
  * product-detail.js
- * Logic for fetching specific product details and rendering the single product page.
+ * Renders a single product page (/products/<id>.html, or the bare template
+ * product.html?id=…) inside the SPA layout. Mounting, language, product
+ * cards, link transitions and data loading come from assets/site-core.js
+ * (SE); the language redirect of unprefixed pages lives in assets/i18n.js.
  */
 
 (function() {
-  // Auto-redirect to correct language-prefixed URL if needed
-  var _path = location.pathname || '/';
-  if (_path === '/product.html' || (_path.startsWith('/products/') && _path.endsWith('.html'))) {
-    var _lang = localStorage.getItem('site_lang');
-    if (_lang && _lang !== 'en' && (_lang === 'ar' || _lang === 'fr')) {
-      location.replace('/' + _lang + _path + location.search + location.hash);
-      return;
-    }
-  }
+  'use strict';
 
-  // (react-helmet duplicate-meta stripping is handled globally in assets/i18n.js)
-
-  // Current language helper
-  function getLang() {
-    return document.documentElement.lang || 'en';
-  }
-
-  // Language-aware URL prefix
-  function getLangPrefix() {
-    const lang = getLang();
-    if (lang === 'ar') return '/ar';
-    if (lang === 'fr') return '/fr';
-    return '';
-  }
-
-  function t(obj) {
-    if (!obj) return '';
-    if (typeof obj === 'string') return obj;
-    return obj[getLang()] || obj['en'] || obj['fr'] || obj['ar'] || '';
-  }
-
-  // Shared helpers (assets/site-core.js): taxonomy labels + protocol icons.
-  const SE = window.SE;
+  const getLang = SE.lang;
+  const getLangPrefix = SE.prefix;
+  const t = SE.t;
 
   function getQueryParam(name) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -48,82 +23,35 @@
     return val;
   }
 
-  async function fetchProduct(id) {
-    if (!id) return null;
-    try {
-      const response = await fetch(`/data/products/${id}.json`);
-      if (!response.ok) throw new Error('Product not found');
-      return await response.json();
-    } catch (error) {
-      console.error('Failed to fetch product:', error);
-      return null;
-    }
+  function fetchProduct(id) {
+    return id ? SE.data.json(`/data/products/${id}.json`, null) : Promise.resolve(null);
   }
 
-  // {product id: [image descriptor, ...]} written by scripts/build_images.py.
-  async function fetchGalleries() {
-    try {
-      const response = await fetch('/data/product_images.json');
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      return await response.json();
-    } catch (e) {
-      console.error('Failed to load product images:', e);
-      return {};
-    }
-  }
-
-  // The product's images, primary first. Falls back to the catalog entry's
-  // primary image if the gallery file could not be read.
+  // The product's images (descriptors from data/product_images.json),
+  // primary first. Falls back to the catalog entry's primary image if the
+  // gallery file could not be read.
   let gallery = [];
 
-  async function fetchAllProducts() {
-    try {
-      const response = await fetch('/data/products_index.json');
-      return await response.json();
-    } catch(e) {
-      return [];
-    }
-  }
+  const HOST = 'https://smartelectricity.ma';
 
+  // <head> for the bare template; generated pages already carry these tags
+  // (the share card stays, the hreflang set is rewritten to the same values).
   function updateMeta(product) {
     const title = t(product.title);
     const descText = t(product.short_description) || t(product.description);
     const image = gallery.length ? SE.img.largest(gallery[0]) : '';
-    const id = product.id;
+    const path = '/products/' + product.id + '.html';
 
-    var _suffix = { en: 'S‑ELECTRICITY Morocco', fr: 'S‑ELECTRICITY Maroc', ar: 'S‑ELECTRICITY المغرب' };
-    document.title = `${title} | ${_suffix[getLang()] || _suffix.en}`;
-
-    const canonical = document.getElementById('meta-canonical');
-    const ogTitle = document.getElementById('meta-og-title');
-    const ogDesc = document.getElementById('meta-og-description');
-    const ogImage = document.getElementById('meta-og-image');
-    const desc = document.getElementById('meta-description');
-    const twitterTitle = document.getElementById('meta-twitter-title');
-    const twitterDesc = document.getElementById('meta-twitter-description');
-    const twitterImage = document.getElementById('meta-twitter-image');
-
-    const baseUrl = 'https://smartelectricity.ma';
-    const canonicalUrl = baseUrl + '/products/' + id + '.html';
-
-    if (canonical) canonical.href = canonicalUrl;
-    if (ogTitle) ogTitle.content = `${title} | S‑ELECTRICITY`;
-    if (ogDesc) ogDesc.content = descText;
-    // Generated pages already point og:image at the share card (assets/og/);
-    // only the bare template (product.html?id=…) needs a value here.
-    if (ogImage && !ogImage.content && image) ogImage.content = baseUrl + image;
-    if (desc) desc.content = descText;
-    if (twitterTitle) twitterTitle.content = `${title} | S‑ELECTRICITY`;
-    if (twitterDesc) twitterDesc.content = descText;
-    if (twitterImage && !twitterImage.content && image) twitterImage.content = baseUrl + image;
-
-    // Update hreflang for this specific product
-    var hreflangs = document.querySelectorAll('link[hreflang]');
-    hreflangs.forEach(function(link) {
-      var lang = link.getAttribute('hreflang');
-      var prefix = lang === 'en' ? '' : '/' + lang;
-      link.href = baseUrl + prefix + '/products/' + id + '.html';
-    });
+    SE.meta.title(title);
+    SE.meta.set('meta-canonical', HOST + getLangPrefix() + path);
+    SE.meta.set('meta-description', descText);
+    SE.meta.set('meta-og-title', `${title} | S‑ELECTRICITY`);
+    SE.meta.set('meta-og-description', descText);
+    SE.meta.fill('meta-og-image', image && HOST + image);
+    SE.meta.set('meta-twitter-title', `${title} | S‑ELECTRICITY`);
+    SE.meta.set('meta-twitter-description', descText);
+    SE.meta.fill('meta-twitter-image', image && HOST + image);
+    SE.meta.hreflang(path);
   }
 
   // Stable per-product fallback rating (mirrors scripts/generate_static_seo.py::derive_rating).
@@ -139,10 +67,11 @@
     return { value: val, count: cnt };
   }
 
+  // Product JSON-LD for the bare template only. Generated pages carry the
+  // build's own block (#product-jsonld, with the page's language URL), which
+  // this must not replace.
   function injectJsonLd(product) {
-    // Remove any stale Product JSON-LD before injecting fresh one
-    var existing = document.getElementById('product-jsonld');
-    if (existing) existing.remove();
+    if (document.getElementById('product-jsonld')) return;
 
     var title = t(product.title);
     var descText = t(product.description) || t(product.short_description);
@@ -158,7 +87,7 @@
       "name": title,
       "description": descText,
       "sku": product.id || '',
-      "url": 'https://smartelectricity.ma/products/' + product.id + '.html',
+      "url": HOST + getLangPrefix() + '/products/' + product.id + '.html',
       "brand": { "@type": "Brand", "name": product.brand || '' },
       "category": product.product_type || '',
       "aggregateRating": {
@@ -257,7 +186,6 @@
 
   function renderRelatedProducts(allProducts, currentProduct) {
      if(!allProducts || allProducts.length === 0) return '';
-     const prefix = getLangPrefix();
 
      const related = allProducts.filter(p => {
         if(p.id === currentProduct.id) return false;
@@ -276,35 +204,7 @@
                    <h3 class="pd-related-title" data-i18n="related_products">Related Products</h3>
                    <div class="prod-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">`;
 
-     related.forEach(p => {
-        const title = t(p.title);
-        const desc = t(p.short_description);
-        const techs = Array.isArray(p.technology) ? p.technology : [];
-        const protocolStrip = techs.length
-          ? '<div class="prod-card-protocols">' + techs.map(SE.protoMarkup).join('') + '</div>'
-          : '';
-        const slug = p.brand ? String(p.brand).toLowerCase().replace(/\s+/g, '-') : '';
-        const footBrand = p.brand
-          ? `<img class="prod-card-logo" src="/assets/brands/${slug}.svg" alt="${p.brand}" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML(&quot;afterend&quot;,&quot;<span class=\\&quot;prod-card-logo-fallback\\&quot;>${p.brand}</span>&quot;);this.remove();" />`
-          : '<span class="prod-card-logo-fallback"></span>';
-        html += `
-          <a href="${prefix}/products/${p.id}.html" class="prod-card link-transition">
-            <div class="prod-card-img-wrapper" style="height:180px;">
-              ${SE.img(p.image, { box: 'card', alt: title, cls: 'prod-card-img' })}
-            </div>
-            ${protocolStrip}
-            <div class="prod-card-content" style="padding:1rem;">
-              <h3 class="prod-card-title">${title}</h3>
-              <p class="prod-card-desc">${desc}</p>
-              <div class="prod-card-footer">
-                ${footBrand}
-                <button type="button" class="prod-card-add" data-trigger="cart-add" data-product-id="${p.id}" data-i18n="cart_add_to_quote" aria-label="Add to quote request" data-i18n-attr="aria-label:cart_aria_add_btn" onclick="event.preventDefault();event.stopPropagation();if(window.Cart)window.Cart.add('${p.id}',1);">+ Add to quote</button>
-              </div>
-            </div>
-          </a>
-        `;
-     });
-
+     html += related.map(p => SE.productCard(p, 'related')).join('');
      html += `</div></div>`;
      return html;
   }
@@ -344,7 +244,7 @@
 
     // Eyebrow: "Brand / Type" — brand stays a link to its brand page
     const brandSlugLink = product.brand
-      ? `<a href="${prefix}/brands/${product.brand.toLowerCase().replace(/\s+/g, '-')}.html" class="pd-brand-link link-transition" title="About ${product.brand}">${product.brand}</a>`
+      ? `<a href="${prefix}/brands/${SE.brandSlug(product.brand)}.html" class="pd-brand-link link-transition" title="About ${SE.escapeHtml(product.brand)}">${SE.escapeHtml(product.brand)}</a>`
       : '';
     const typeLabel = product.product_type
       ? `<span class="pd-eyebrow-type">${SE.escapeHtml(SE.taxonomy.label('type', product.product_type))}</span>`
@@ -404,21 +304,9 @@
     `;
   }
 
-  function attachLinkTransitions(container) {
-    container.querySelectorAll('.link-transition').forEach(link => {
-       link.addEventListener('click', function(e) {
-         const anchor = e.target.closest('a');
-         if (e.ctrlKey || e.metaKey || (anchor && anchor.target === '_blank')) return;
-         e.preventDefault();
-         const href = this.getAttribute('href');
-         const contentEl = document.getElementById('custom-products-container');
-         if (contentEl) {
-           contentEl.style.transition = 'opacity 0.2s ease-out';
-           contentEl.style.opacity = '0';
-         }
-         setTimeout(() => window.location.href = href, 200);
-       });
-    });
+  // Links, quantity buttons and gallery thumbnails of a freshly rendered page.
+  function wireInteractions(container) {
+    SE.linkTransitions(container, '.link-transition');
 
     // Quantity +/- buttons inside .pd-cart-row
     container.querySelectorAll('.pd-cart-row').forEach(row => {
@@ -463,148 +351,44 @@
     });
   }
 
-  let _mounted = false;
-
-  async function initApp() {
-    // Prevent double mounting
-    if (_mounted || document.getElementById('custom-product-detail-wrapper')) return;
-    _mounted = true;
-
-    const root = document.getElementById('root');
-    let target = document.querySelector('main.notfound-root') || document.querySelector('main');
-
-    // Spinner block
-    const spinnerHtml = `<div class="prod-spinner-wrapper"><div class="prod-spinner"></div></div>`;
-    const appContainer = document.createElement('div');
-    appContainer.id = "custom-product-detail-wrapper";
-    appContainer.innerHTML = `<div id="custom-products-container">${spinnerHtml}</div>`;
-
-    if (target && target.nodeName === 'MAIN') {
-       target.innerHTML = '';
-       target.appendChild(appContainer);
-    } else {
-       const footer = document.querySelector('footer');
-       if (footer) {
-         footer.parentNode.insertBefore(appContainer, footer);
-       } else if(root) {
-         root.appendChild(appContainer);
-       }
-    }
-
-    // Restore opacity when returning via browser back button (bfcache)
-    window.addEventListener('pageshow', (e) => {
-      const container = document.getElementById('custom-products-container');
-      if (container) {
-        container.style.transition = 'none';
-        container.style.opacity = '1';
-      }
-    });
-
-
-
-    // Initial Translation trigger
-    if(window.__site_i18n && window.__site_i18n.init) window.__site_i18n.init();
-
-    // Fetch product
-    const id = getQueryParam('id');
-    const [product, allProductsList, galleries] = await Promise.all([
-        fetchProduct(id),
-        fetchAllProducts(),
-        fetchGalleries(),
-        SE.taxonomy.load()
-    ]);
-    if (product) {
-      const entry = allProductsList.find(p => p.id === product.id);
-      gallery = galleries[product.id] || (entry && entry.image ? [entry.image] : []);
-      if (!gallery.length) gallery = [''];   // SE.img draws the logo
-    }
-
-    function renderPage() {
-      let contentHtml = '';
-      if (!product) {
-        contentHtml = `<div id="custom-products-container">${renderError()}</div>`;
-      } else {
-        updateMeta(product);
-        injectJsonLd(product);
-        contentHtml = renderProductContent(product, allProductsList);
-      }
-
-      appContainer.innerHTML = contentHtml;
-      attachLinkTransitions(appContainer);
-
-      if(window.__site_i18n && typeof window.__site_i18n.init === 'function') {
-        setTimeout(()=> window.__site_i18n.init(), 50);
-      }
-    }
-
-    // Initial render
-    renderPage();
-
-    // Re-render fully when language changes
-    window.addEventListener('locationchange', () => {
-       if (window.location.pathname.includes('product.')) {
-           renderPage();
-       }
-    });
-  }
-
-  // Check if the current page is a product detail page
-  function isProductDetailPage() {
-    const path = location.pathname || '/';
+  function isProductDetailPage(path) {
     return path.endsWith('/product.html') || path.endsWith('/product') || /\/products\/[^/]+\.html$/.test(path);
   }
 
-  function cleanupProductDetail() {
-    const wrap = document.getElementById('custom-product-detail-wrapper');
-    if (wrap) wrap.remove();
-  }
-
-  function mountApp() {
-    if (!isProductDetailPage()) return;
-
-    const tryMount = () => {
-       const mainTarget = document.querySelector('main') || document.querySelector('footer');
-       if (mainTarget) {
-          initApp();
-          return true;
-       }
-       return false;
-    };
-
-    if (tryMount()) return;
-
-    const observer = new MutationObserver((mutations, obs) => {
-       if (tryMount()) {
-          obs.disconnect();
-       }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-
-  // Cleanup when navigating away via SPA
-  window.addEventListener('locationchange', () => {
-    if (!isProductDetailPage()) cleanupProductDetail();
-  });
-  window.addEventListener('popstate', () => {
-    if (!isProductDetailPage()) cleanupProductDetail();
-  });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mountApp);
-  } else {
-    mountApp();
-  }
-
-  // Handle SPA navigation (including browser Back/Forward via popstate)
-  window.addEventListener('locationchange', () => {
-    if (window.location.pathname.includes('product')) {
-      // Re-mount products app if it was cleaned up
-      if (!document.getElementById('custom-product-detail-wrapper')) {
-        mountApp();
+  SE.mount({
+    id: 'custom-product-detail-wrapper',
+    isPage: isProductDetailPage,
+    html: '<div id="custom-products-container"><div class="prod-spinner-wrapper"><div class="prod-spinner"></div></div></div>',
+    start: async function (wrap) {
+      const [product, allProductsList, galleries] = await Promise.all([
+        fetchProduct(getQueryParam('id')),
+        SE.data.products(),
+        SE.data.galleries(),
+        SE.taxonomy.load()
+      ]);
+      if (product) {
+        const entry = allProductsList.find(p => p.id === product.id);
+        gallery = galleries[product.id] || (entry && entry.image ? [entry.image] : []);
+        if (!gallery.length) gallery = [''];   // SE.img draws the logo
       }
-    } else {
-      // Cleanup products UI when navigating away
-      cleanupProductDetail();
+
+      function render() {
+        if (!product) {
+          wrap.innerHTML = `<div id="custom-products-container">${renderError()}</div>`;
+        } else {
+          updateMeta(product);
+          injectJsonLd(product);
+          wrap.innerHTML = renderProductContent(product, allProductsList);
+        }
+        wireInteractions(wrap);
+        setTimeout(SE.translate, 50);
+      }
+
+      render();
+      // The bare template re-renders when the SPA changes its URL (language switch).
+      window.addEventListener('locationchange', () => {
+        if (location.pathname.includes('product.')) render();
+      });
     }
   });
 })();

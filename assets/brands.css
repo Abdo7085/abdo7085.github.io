@@ -61,7 +61,7 @@
 }
 
 /* The CTA at the bottom of every brand page is rendered with .proj-cta
- * (same component as projects). The .proj-cta rule in projects.css already
+ * (same component as projects). The .proj-cta rule in site.css already
  * handles the full-bleed background. We just need to pull it down so it
  * fills the wrapper's padding-bottom and ends flush against the footer. */
 #custom-brands-container > .proj-cta,
