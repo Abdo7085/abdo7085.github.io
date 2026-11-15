@@ -62,7 +62,7 @@
     }
   },
 
-  "images": ["/assets/products/eae-knx-ipr200-ip-router.png"],
+  "images": ["eae-knx-ipr200-ip-router.png"],
 
   "files": [
     {

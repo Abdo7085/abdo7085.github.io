@@ -35,7 +35,8 @@
 - `fr/` و `ar/`: المجلدات الخاصة باللغات الإضافية. تُولّد آلياً بواسطة `generate_localized.py` من القوالب الإنجليزية الجذرية. **أي تعديلات على الـ SEO أو الهيكلة يجب أن تتم في القوالب الإنجليزية ثم يُعاد تشغيل السكربت.**
 - `scripts/`: أدوات البناء وسكربتات البايثون اللازمة لتوليد الفهارس والمخططات. تشمل:
   - `_lib.py`: **الوحدة المشتركة** — ثوابت موحّدة (`HOST`, `LANGS`, `OG_LOCALES`, `SITEMAP_EXCLUDE`) ومساعدات i18n/SEO (`t`, `make_meta_description`, `load_locale`, `set_html_lang_dir`, `og_locale_block`, `breadcrumb_jsonld`, `itemlist_jsonld`) + **`write_sitemap()`** المركزي (المولّد الوحيد لـ `sitemap.xml`، idempotent، يقرأ `products_index.json` و `projects_index.json` و `ROOT.glob('*.html')` من القرص).
-  - `build_all.py`: **المنسّق** — يستدعي المراحل الثلاث في عملية بايثون واحدة (بدون subprocess). مُستحسن لعمليات البناء الشاملة.
+  - `build_all.py`: **المنسّق** — يستدعي كل المراحل في عملية بايثون واحدة (بدون subprocess). مُستحسن لعمليات البناء الشاملة.
+  - `build_images.py` (2026-11-15): **خط الصور** — يحوّل الأصول في `media/` إلى ما يُعرض: WebP بعروض 400/800/1200 في `assets/products/`، وبطاقة مشاركة 1200×630 JPG لكل منتج ومشروع في `assets/og/`، وصور الصفحة الرئيسية/404 المذكورة في `SITE_MEDIA`. تراكمي، ويكتب `data/product_images.json`. راجع القسم 3.4.
   - `build_products.py`: يبني فهرس المنتجات + صفحات SEO الثابتة لكل منتج + يحقن ItemList JSON-LD في `products.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`. (سابقاً كان يستدعي `generate_static_seo.py` عبر subprocess؛ الآن مدموج داخلياً.)
   - `build_projects.py`: يبني فهرس معرض الأعمال `data/projects_index.json` + يستخرج أبعاد كل وسائط المشروع عبر Pillow + يولّد صفحات SEO لكل مشروع في `projects/` و `fr/projects/` و `ar/projects/` + يحقن ItemList JSON-LD في `previous-work.html` + يكتب `sitemap.xml` عبر `_lib.write_sitemap()`.
   - `build_brands.py` (2026-05): يبني فهرس العلامات `data/brands_index.json` (مع `tech_focus`/`category_focus` المحسوبة آلياً من المنتجات، مرتّبة حسب التكرار تنازلياً) + يولّد صفحات SEO لكل علامة × 3 لغات في `brands/`, `fr/brands/`, `ar/brands/` مع `Brand` + `BreadcrumbList` + `ItemList` JSON-LD + يحقن `window.__BRAND__` للهيدريشن الفوري + يحقن ItemList في `brands.html` + يكتب `sitemap.xml`.
@@ -51,6 +52,7 @@
 |---|---|---|---|---|---|
 | `_lib.py` | وحدة مشتركة (مكتبة) | ثوابت + مساعدات i18n/SEO + `write_sitemap()` المركزي | — (يُستورد من السكربتات الأخرى) | — | لا يُشغَّل مباشرة |
 | `build_all.py` | منسّق (Orchestrator) | يستدعي المراحل الثلاث بترتيبها في عملية بايثون واحدة | — | كل المخرجات أدناه | **الأمر المُستحسن لأي بناء شامل** |
+| `build_images.py` | بناء (Build) | توليد صور الويب من الأصول + بطاقات المشاركة + حذف المولَّد اليتيم (تراكمي) | `media/products/*`, `media/site/*`, `data/products/*.json` (`images`), `data/projects/*.json` (`cover`) | `assets/products/*.webp`, `assets/og/**/*.jpg`, صور `SITE_MEDIA` في `assets/`, `data/product_images.json`, `scripts/state/images.json` | آلياً داخل `build_all.py` و `build_products.py` |
 | `generate_localized.py` | بناء (Build) | توليد نسخ `fr/` و `ar/` من الصفحات الجذرية + توطين JSON-LD (LocalBusiness/WebSite/FAQPage) | `index.html`, `products.html`, `previous-work.html`, `assets/locales/*.json` | `fr/*.html`, `ar/*.html`, `sitemap.xml` | عند تعديل قالب جذري أو قاموس ترجمة |
 | `build_projects.py` | بناء (Build) | فهرسة المشاريع + استخراج أبعاد الوسائط (Pillow) + توليد صفحات SEO + حقن ItemList في `previous-work.html` | `data/projects/*.json`, `assets/projects/<slug>/*` | `data/projects_index.json`, `projects/*.html`, `fr/projects/*.html`, `ar/projects/*.html`, `previous-work.html` (محقون), `sitemap.xml` | عند إضافة/تعديل مشروع |
 | `build_products.py` | بناء (Build) | فهرسة المنتجات + توليد صفحات SEO الثابتة + حقن ItemList في `products.html` (دمج `generate_static_seo.py` سابقاً) | `data/products/*.json` | `data/products_index.json`, `products/*.html`, `fr/products/*.html`, `ar/products/*.html`, `products.html` (محقون), `sitemap.xml` | عند إضافة/تعديل منتج |
@@ -64,7 +66,7 @@
 - **Idempotence**: كل من `generate_localized.py`, `build_projects.py`, `build_products.py`, `build_brands.py` يكتب `sitemap.xml` كاملاً عبر `_lib.write_sitemap()` (الذي يضمّ الآن العلامات أيضاً) — الترتيب لم يعد يؤثر على صحة الـ sitemap.
 - **ترتيب ItemList**: `build_projects.py`, `build_products.py`, `build_brands.py` يحقنون في ملفات ينتجها `generate_localized.py` (`previous-work.html`, `products.html`, `brands.html`) — لذا لضمان ItemList في النسخ الفرنسية/العربية، يجب تشغيل `generate_localized.py` **أولاً** (وهذا ما يضمنه `build_all.py` آلياً عبر التسلسل: localize → projects → products → brands).
 - **اعتمادية `build_brands.py` على `build_products.py`**: `build_brands.py` يقرأ `data/products_index.json` ليشتقّ Tech/Categories ويعدّ المنتجات. لذا **يجب** أن يُشغَّل `build_products.py` **قبله**. `build_all.py` يضمن هذا الترتيب.
-- **سكربتات الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً قبل إضافة أصول الصور إلى `assets/products/`.
+- **سكربتات تحرير الصور منفصلة**: `remove_bg*.py` و `crop_image.py` لا علاقة لها بدورة البناء — تُشغَّل يدوياً على الأصل داخل `media/products/`. ما يُعرض للزائر يولّده `build_images.py` من ذلك الأصل.
 
 ---
 
@@ -412,7 +414,29 @@ u.jsx(Mt, {
 - **شرائح «التخصّص» في صفحة العلامة** و**شارات فئات المشروع** كانت تُعرض بالإنجليزية في كل اللغات؛ صارت مترجمة.
 
 ### إضافة قيمة جديدة
-عدّل `data/taxonomy.json` فقط ثم ابنِ. التفاصيل خطوة بخطوة في `.claude/commands/product.md` (الخطوة 4) و `.claude/commands/project.md`.
+عدّل `data/taxonomy.json` فقط ثم ابنِ. التفاصيل خطوة بخطوة في `.claude/commands/product.md` (الخطوة 5) و `.claude/commands/project.md`.
+
+## 3.4 خط الصور (Image Pipeline) — 2026-11-15
+
+**المبدأ:** الأصل غير المعروض. الملف الذي تضعه أنت لا يصل إلى الزائر أبداً؛ البناء يولّد منه نسخاً للويب.
+
+| المجلد | المحتوى | من يكتبه |
+|---|---|---|
+| `media/products/` | أصول صور المنتجات (PNG/JPG/WebP، بحد أقصى 2000px) | أنت فقط |
+| `media/site/` | أصول صور الصفحة الرئيسية و404 المذكورة في `SITE_MEDIA` داخل `build_images.py` | أنت فقط |
+| `assets/products/` | `<اسم>-<عرض>.webp` بعروض 400 و800 و1200 (بلا تكبير أبداً) | البناء — **لا تضف ولا تعدّل شيئاً هنا** |
+| `assets/og/products/<id>.jpg` و `assets/og/projects/<id>.jpg` | بطاقة مشاركة 1200×630 (المنتج مقصوص الهوامش على خلفية الكريم، والمشروع صورة غلافه مقصوصة) | البناء |
+| `data/product_images.json` | لكل منتج قائمة واصفات صوره بالترتيب | البناء |
+
+- **ملف المنتج يذكر أسماء الملفات فقط:** `"images": ["zennio-z50.png", "zennio-z50-2.jpg"]` (الأول هو الرئيسي). البناء يتوقف إن كان الاسم مساراً، أو غير موجود في `media/products/`، أو تشارك ملفان الاسم نفسه (`x.png` و `x.jpg`).
+- **الواصف (descriptor):** `{src, srcset, width, height}` — `src` أكبر نسخة لا تتجاوز 800، و`width`/`height` أبعاد أكبر نسخة. الصورة الرئيسية تُنسخ إلى `products_index.json` في الحقل `image`؛ المعرض كاملاً في `data/product_images.json` (منفصل كي يبقى فهرس الكتالوج خفيفاً).
+- **في المتصفح:** `SE.img(desc, {box, alt, cls, id, priority})` في `assets/site-core.js` يرسم `<img>` مع `srcset` و`sizes` و`width`/`height`. قيمة `sizes` تُحسب لكل صورة من نسبة أبعادها ومن «صندوق» التخطيط (`card`, `home`, `main`, `thumb`, `cart` في `IMG_BOXES`) — المنتج الطويل في بطاقة عريضة لا يجلب ملفاً عريضاً. الصناديق حدود عليا؛ عند تغيير مقاسات البطاقات في CSS حدّثها هناك. `SE.img.set()` يبدّل الصورة الرئيسية عند النقر على مصغّرة، و`SE.img.largest()` يعطي أكبر نسخة لـ JSON-LD.
+- **الصورة الرئيسية في صفحة المنتج** وحدها `loading="eager" fetchpriority="high"`؛ الباقي `lazy`.
+- **تراكمي:** `scripts/state/images.json` يحفظ بصمة sha1 لكل أصل مع الإعدادات. أصل لم يتغيّر لا يُعاد ترميزه — فالبناء بلا تغيير لا يغيّر أي ملف حتى لو اختلف إصدار Pillow. أول تشغيل على المستودع كله ~4 دقائق؛ بعده أقل من ثانية.
+- **التنظيف الآلي:** أي ملف في `assets/products/` أو `assets/og/` لا يستعمله منتج أو مشروع يُحذف في البناء. لذلك حذف منتج = حذف ملفه وأصوله، والبناء يزيل الباقي.
+- **تغيير الإعدادات** (العروض، الجودة، لون بطاقة المشاركة) في رأس `build_images.py`؛ تغييرها يعيد توليد ما يتأثر آلياً. تغيير منطق الترميز نفسه يتطلب رفع `PIPELINE_VERSION`.
+- **النتيجة المقاسة (2026-11-15):** الصور الرئيسية الـ84 من 30.9MB إلى نحو 1MB (أصغر نسخة)؛ كل الصور الـ209 من 46.6MB إلى 3.3MB (نسخ ≤800). بطاقة المشاركة بمعدل 35KB.
+- **غير مشمول بعد:** صورة مشاركة صفحات العلامات ما زالت شعار SVG (فيسبوك وواتساب لا يعرضان SVG) — تحويل SVG إلى صورة يحتاج مكتبة غير مثبّتة. فيديو الرئيسية `example01.mp4` يحتاج ffmpeg.
 
 ---
 
@@ -422,7 +446,7 @@ u.jsx(Mt, {
 كل صفحة منتج مولّدة تحتوي على:
 - `<title>` + `<meta description>` مترجمين حسب اللغة.
 - `hreflang` tags لكل اللغات الثلاث + `x-default` (يشير للنسخة الإنجليزية).
-- Open Graph + Twitter Card tags كاملة مع صورة المنتج.
+- Open Graph + Twitter Card tags كاملة مع بطاقة المشاركة `assets/og/products/<id>.jpg` (1200×630 JPG — أبعادها الحقيقية مطابقة لـ `og:image:width/height` في القالب). صورة JSON-LD هي أكبر نسخة WebP.
 - `og:locale` + `og:locale:alternate` لكل لغة.
 - JSON-LD `Product` schema مع `aggregateRating` + `BreadcrumbList`.
 - `<meta name="robots" content="index, follow">` (يتم تجاوز قيمة القالب `noindex` آلياً).
@@ -461,6 +485,7 @@ python scripts/build_all.py
 أو بخطوات يدوية مستقلّة:
 ```
 1. python scripts/generate_localized.py    ← يولّد fr/ و ar/ + يكتب sitemap
+1b. python scripts/build_images.py          ← صور الويب + بطاقات المشاركة (يعيده build_products.py تلقائياً)
 2. python scripts/build_projects.py         ← معرض الأعمال + يكتب sitemap
 3. python scripts/build_products.py         ← المنتجات + يكتب sitemap
 4. python scripts/build_brands.py           ← العلامات التجارية + يكتب sitemap
@@ -488,7 +513,7 @@ python scripts/build_all.py
 
 ## 5. قواعد التطوير الحذرة والنصائح المتبعة (Development Principles)
 
-- **توحيد مصطلحات الفلترة:** عند استخدام تقنية جديدة أو خيارات تنصيب في منتج ما (Installation / Technology)، أضف مقابلها المترجم فورًا إلى قواميس `ar.json` و `fr.json` (باستخدام البادئة `val_`).
+- **توحيد مصطلحات الفلترة:** عند استخدام تقنية جديدة أو خيارات تنصيب في منتج ما (Installation / Technology)، أضفها مع تسمياتها الثلاث إلى `data/taxonomy.json` (القسم 3.3). مفاتيح `val_*` في القواميس أُلغيت في 2026-11-14.
 - **تحسين المظهر العام للمنتجات:** يجب استخدام أدوات إزالة الخلفية لتحويل الصور إلى (PNG شفافة):
   - استخدم `python scripts/remove_bg.py` للمنتجات العادية والبلاستيكية (AI).
   - استخدم `python scripts/remove_bg_traditional.py` كبديل للمنتجات ذات الشاشات السوداء أو الأسطح اللامعة المستوية **أو الهياكل داكنة اللون** (حيث قد يقوم الذكاء الاصطناعي بحفر المنتج من الداخل أو "أكل" أطرافه). مثال: مفتاح EAE Oria الأسود (4-fold Anthracite) — الذكاء الاصطناعي قطع حافته العلوية لأنه اعتبر البلاستيك الداكن خلفيةً. Flood Fill حافظ على الشكل الكامل.

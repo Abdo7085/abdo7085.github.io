@@ -60,8 +60,8 @@
     }
   },
   "images": [
-    "/assets/products/eae-knx-miola-touch-panel.png",
-    "/assets/products/eae-knx-miola-touch-panel-2.jpg"
+    "eae-knx-miola-touch-panel.png",
+    "eae-knx-miola-touch-panel-2.jpg"
   ],
   "files": [
     {

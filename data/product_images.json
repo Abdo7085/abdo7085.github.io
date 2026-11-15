@@ -1,0 +1,1424 @@
+{
+ "dahua-vth2421fb-fw-ip-indoor-monitor": [
+  {
+   "src": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-800.webp",
+   "srcset": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-400.webp 400w, /assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-800.webp 800w, /assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-1200.webp 1200w",
+   "width": 1200,
+   "height": 693
+  },
+  {
+   "src": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-2-400.webp",
+   "srcset": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-2-400.webp 400w",
+   "width": 400,
+   "height": 400
+  }
+ ],
+ "dahua-vth2621gb-gw-ip-indoor-monitor": [
+  {
+   "src": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-303.webp",
+   "srcset": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-303.webp 303w",
+   "width": 303,
+   "height": 222
+  },
+  {
+   "src": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-2-400.webp",
+   "srcset": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-2-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-3-400.webp",
+   "srcset": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-3-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-4-400.webp",
+   "srcset": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-4-400.webp 400w",
+   "width": 400,
+   "height": 400
+  }
+ ],
+ "dahua-vth8621kms-wp-indoor-monitor": [
+  {
+   "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-800.webp",
+   "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-400.webp 400w, /assets/products/dahua-vth8621kms-wp-indoor-monitor-800.webp 800w, /assets/products/dahua-vth8621kms-wp-indoor-monitor-1200.webp 1200w",
+   "width": 1200,
+   "height": 964
+  },
+  {
+   "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-2-400.webp",
+   "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-2-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-3-400.webp",
+   "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-3-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-4-400.webp",
+   "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-4-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-5-400.webp",
+   "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-5-400.webp 400w",
+   "width": 400,
+   "height": 400
+  }
+ ],
+ "dahua-vto3311q-wp-villa-door-station": [
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-189.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-189.webp 189w",
+   "width": 189,
+   "height": 312
+  },
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-2-400.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-2-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-3-400.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-3-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-4-400.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-4-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-5-400.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-5-400.webp 400w",
+   "width": 400,
+   "height": 400
+  },
+  {
+   "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-6-400.webp",
+   "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-6-400.webp 400w",
+   "width": 400,
+   "height": 400
+  }
+ ],
+ "dahua-vto6541h-s2-apartment-door-station": [
+  {
+   "src": "/assets/products/dahua-vto6541h-s2-apartment-door-station-800.webp",
+   "srcset": "/assets/products/dahua-vto6541h-s2-apartment-door-station-400.webp 400w, /assets/products/dahua-vto6541h-s2-apartment-door-station-800.webp 800w, /assets/products/dahua-vto6541h-s2-apartment-door-station-851.webp 851w",
+   "width": 851,
+   "height": 2000
+  },
+  {
+   "src": "/assets/products/dahua-vto6541h-s2-apartment-door-station-2-800.webp",
+   "srcset": "/assets/products/dahua-vto6541h-s2-apartment-door-station-2-400.webp 400w, /assets/products/dahua-vto6541h-s2-apartment-door-station-2-800.webp 800w, /assets/products/dahua-vto6541h-s2-apartment-door-station-2-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  }
+ ],
+ "eae-knx-ipi200-ip-interface": [
+  {
+   "src": "/assets/products/eae-knx-ipi200-ip-interface-663.webp",
+   "srcset": "/assets/products/eae-knx-ipi200-ip-interface-400.webp 400w, /assets/products/eae-knx-ipi200-ip-interface-663.webp 663w",
+   "width": 663,
+   "height": 1036
+  }
+ ],
+ "eae-knx-ipr200-ip-router": [
+  {
+   "src": "/assets/products/eae-knx-ipr200-ip-router-669.webp",
+   "srcset": "/assets/products/eae-knx-ipr200-ip-router-400.webp 400w, /assets/products/eae-knx-ipr200-ip-router-669.webp 669w",
+   "width": 669,
+   "height": 1021
+  }
+ ],
+ "eae-knx-lc200-line-coupler": [
+  {
+   "src": "/assets/products/eae-knx-lc200-line-coupler-670.webp",
+   "srcset": "/assets/products/eae-knx-lc200-line-coupler-400.webp 400w, /assets/products/eae-knx-lc200-line-coupler-670.webp 670w",
+   "width": 670,
+   "height": 1037
+  }
+ ],
+ "eae-knx-miola-touch-panel": [
+  {
+   "src": "/assets/products/eae-knx-miola-touch-panel-800.webp",
+   "srcset": "/assets/products/eae-knx-miola-touch-panel-400.webp 400w, /assets/products/eae-knx-miola-touch-panel-800.webp 800w, /assets/products/eae-knx-miola-touch-panel-1015.webp 1015w",
+   "width": 1015,
+   "height": 818
+  },
+  {
+   "src": "/assets/products/eae-knx-miola-touch-panel-2-800.webp",
+   "srcset": "/assets/products/eae-knx-miola-touch-panel-2-400.webp 400w, /assets/products/eae-knx-miola-touch-panel-2-800.webp 800w, /assets/products/eae-knx-miola-touch-panel-2-1024.webp 1024w",
+   "width": 1024,
+   "height": 727
+  }
+ ],
+ "eae-knx-oria-push-switches": [
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-400.webp 400w, /assets/products/eae-knx-oria-push-switches-800.webp 800w, /assets/products/eae-knx-oria-push-switches-1100.webp 1100w",
+   "width": 1100,
+   "height": 1368
+  },
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-2-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-2-400.webp 400w, /assets/products/eae-knx-oria-push-switches-2-800.webp 800w, /assets/products/eae-knx-oria-push-switches-2-1000.webp 1000w",
+   "width": 1000,
+   "height": 1361
+  },
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-3-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-3-400.webp 400w, /assets/products/eae-knx-oria-push-switches-3-800.webp 800w, /assets/products/eae-knx-oria-push-switches-3-1000.webp 1000w",
+   "width": 1000,
+   "height": 1343
+  },
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-4-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-4-400.webp 400w, /assets/products/eae-knx-oria-push-switches-4-800.webp 800w, /assets/products/eae-knx-oria-push-switches-4-1000.webp 1000w",
+   "width": 1000,
+   "height": 1893
+  },
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-5-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-5-400.webp 400w, /assets/products/eae-knx-oria-push-switches-5-800.webp 800w, /assets/products/eae-knx-oria-push-switches-5-1000.webp 1000w",
+   "width": 1000,
+   "height": 1690
+  },
+  {
+   "src": "/assets/products/eae-knx-oria-push-switches-6-800.webp",
+   "srcset": "/assets/products/eae-knx-oria-push-switches-6-400.webp 400w, /assets/products/eae-knx-oria-push-switches-6-800.webp 800w, /assets/products/eae-knx-oria-push-switches-6-1000.webp 1000w",
+   "width": 1000,
+   "height": 1343
+  }
+ ],
+ "eae-knx-power-supply-ps640": [
+  {
+   "src": "/assets/products/eae-knx-power-supply-ps640-800.webp",
+   "srcset": "/assets/products/eae-knx-power-supply-ps640-400.webp 400w, /assets/products/eae-knx-power-supply-ps640-800.webp 800w, /assets/products/eae-knx-power-supply-ps640-1080.webp 1080w",
+   "width": 1080,
+   "height": 820
+  }
+ ],
+ "eae-knx-ps320-power-supply": [
+  {
+   "src": "/assets/products/eae-knx-ps320-power-supply-800.webp",
+   "srcset": "/assets/products/eae-knx-ps320-power-supply-400.webp 400w, /assets/products/eae-knx-ps320-power-supply-800.webp 800w, /assets/products/eae-knx-ps320-power-supply-1080.webp 1080w",
+   "width": 1080,
+   "height": 826
+  }
+ ],
+ "eae-knx-rosa-switches": [
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-631.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-400.webp 400w, /assets/products/eae-knx-rosa-switches-631.webp 631w",
+   "width": 631,
+   "height": 472
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-2-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-2-400.webp 400w, /assets/products/eae-knx-rosa-switches-2-800.webp 800w, /assets/products/eae-knx-rosa-switches-2-1024.webp 1024w",
+   "width": 1024,
+   "height": 790
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-3-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-3-400.webp 400w, /assets/products/eae-knx-rosa-switches-3-800.webp 800w, /assets/products/eae-knx-rosa-switches-3-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-4-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-4-400.webp 400w, /assets/products/eae-knx-rosa-switches-4-800.webp 800w, /assets/products/eae-knx-rosa-switches-4-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-5-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-5-400.webp 400w, /assets/products/eae-knx-rosa-switches-5-800.webp 800w, /assets/products/eae-knx-rosa-switches-5-1024.webp 1024w",
+   "width": 1024,
+   "height": 790
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-switches-6-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-switches-6-400.webp 400w, /assets/products/eae-knx-rosa-switches-6-800.webp 800w, /assets/products/eae-knx-rosa-switches-6-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  }
+ ],
+ "eae-knx-rosa-thermostat": [
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-613.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-613.webp 613w",
+   "width": 613,
+   "height": 500
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-2-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-2-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-2-800.webp 800w, /assets/products/eae-knx-rosa-thermostat-2-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-3-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-3-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-3-800.webp 800w, /assets/products/eae-knx-rosa-thermostat-3-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-4-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-4-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-4-800.webp 800w, /assets/products/eae-knx-rosa-thermostat-4-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-5-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-5-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-5-800.webp 800w, /assets/products/eae-knx-rosa-thermostat-5-1024.webp 1024w",
+   "width": 1024,
+   "height": 683
+  },
+  {
+   "src": "/assets/products/eae-knx-rosa-thermostat-6-800.webp",
+   "srcset": "/assets/products/eae-knx-rosa-thermostat-6-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-6-800.webp 800w, /assets/products/eae-knx-rosa-thermostat-6-1024.webp 1024w",
+   "width": 1024,
+   "height": 691
+  }
+ ],
+ "eae-knx-td4-touch-panel": [
+  {
+   "src": "/assets/products/eae-knx-td4-touch-panel-525.webp",
+   "srcset": "/assets/products/eae-knx-td4-touch-panel-400.webp 400w, /assets/products/eae-knx-td4-touch-panel-525.webp 525w",
+   "width": 525,
+   "height": 540
+  },
+  {
+   "src": "/assets/products/eae-knx-td4-touch-panel-2-800.webp",
+   "srcset": "/assets/products/eae-knx-td4-touch-panel-2-400.webp 400w, /assets/products/eae-knx-td4-touch-panel-2-800.webp 800w, /assets/products/eae-knx-td4-touch-panel-2-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  },
+  {
+   "src": "/assets/products/eae-knx-td4-touch-panel-3-800.webp",
+   "srcset": "/assets/products/eae-knx-td4-touch-panel-3-400.webp 400w, /assets/products/eae-knx-td4-touch-panel-3-800.webp 800w, /assets/products/eae-knx-td4-touch-panel-3-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  }
+ ],
+ "eae-knx-ui108-universal-interface": [
+  {
+   "src": "/assets/products/eae-knx-ui108-universal-interface-519.webp",
+   "srcset": "/assets/products/eae-knx-ui108-universal-interface-400.webp 400w, /assets/products/eae-knx-ui108-universal-interface-519.webp 519w",
+   "width": 519,
+   "height": 564
+  }
+ ],
+ "moes-matter-zigbee-gateway": [
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-936.webp 936w",
+   "width": 936,
+   "height": 362
+  },
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-2-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-2-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-2-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-2-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-3-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-3-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-3-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-3-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-4-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-4-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-4-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-4-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-5-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-5-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-5-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-5-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/moes-matter-zigbee-gateway-6-800.webp",
+   "srcset": "/assets/products/moes-matter-zigbee-gateway-6-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-6-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-6-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  }
+ ],
+ "rcu0800-room-control-unit": [
+  {
+   "src": "/assets/products/rcu0800-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu0800-room-control-unit-400.webp 400w, /assets/products/rcu0800-room-control-unit-800.webp 800w, /assets/products/rcu0800-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 868
+  }
+ ],
+ "rcu0808-room-control-unit": [
+  {
+   "src": "/assets/products/rcu0808-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu0808-room-control-unit-400.webp 400w, /assets/products/rcu0808-room-control-unit-800.webp 800w, /assets/products/rcu0808-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 868
+  }
+ ],
+ "rcu1200-room-control-unit": [
+  {
+   "src": "/assets/products/rcu1200-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu1200-room-control-unit-400.webp 400w, /assets/products/rcu1200-room-control-unit-800.webp 800w, /assets/products/rcu1200-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 868
+  }
+ ],
+ "rcu1212-room-control-unit": [
+  {
+   "src": "/assets/products/rcu1212-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu1212-room-control-unit-400.webp 400w, /assets/products/rcu1212-room-control-unit-800.webp 800w, /assets/products/rcu1212-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 868
+  }
+ ],
+ "rcu1600-room-control-unit": [
+  {
+   "src": "/assets/products/rcu1600-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu1600-room-control-unit-400.webp 400w, /assets/products/rcu1600-room-control-unit-800.webp 800w, /assets/products/rcu1600-room-control-unit-1077.webp 1077w",
+   "width": 1077,
+   "height": 667
+  }
+ ],
+ "rcu1616-room-control-unit": [
+  {
+   "src": "/assets/products/rcu1616-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu1616-room-control-unit-400.webp 400w, /assets/products/rcu1616-room-control-unit-800.webp 800w, /assets/products/rcu1616-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 670
+  }
+ ],
+ "rcu2000-room-control-unit": [
+  {
+   "src": "/assets/products/rcu2000-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu2000-room-control-unit-400.webp 400w, /assets/products/rcu2000-room-control-unit-800.webp 800w, /assets/products/rcu2000-room-control-unit-1080.webp 1080w",
+   "width": 1080,
+   "height": 671
+  }
+ ],
+ "rcu2018-room-control-unit": [
+  {
+   "src": "/assets/products/rcu2018-room-control-unit-800.webp",
+   "srcset": "/assets/products/rcu2018-room-control-unit-400.webp 400w, /assets/products/rcu2018-room-control-unit-800.webp 800w, /assets/products/rcu2018-room-control-unit-1076.webp 1076w",
+   "width": 1076,
+   "height": 668
+  }
+ ],
+ "reyee-ew1300g": [
+  {
+   "src": "/assets/products/reyee-ew1300g-743.webp",
+   "srcset": "/assets/products/reyee-ew1300g-400.webp 400w, /assets/products/reyee-ew1300g-743.webp 743w",
+   "width": 743,
+   "height": 625
+  }
+ ],
+ "rg-eg105gw-t": [
+  {
+   "src": "/assets/products/rg-eg105gw-t-800.webp",
+   "srcset": "/assets/products/rg-eg105gw-t-400.webp 400w, /assets/products/rg-eg105gw-t-800.webp 800w, /assets/products/rg-eg105gw-t-821.webp 821w",
+   "width": 821,
+   "height": 881
+  }
+ ],
+ "rg-eg105gw-x": [
+  {
+   "src": "/assets/products/rg-eg105gw-x-800.webp",
+   "srcset": "/assets/products/rg-eg105gw-x-400.webp 400w, /assets/products/rg-eg105gw-x-800.webp 800w, /assets/products/rg-eg105gw-x-1006.webp 1006w",
+   "width": 1006,
+   "height": 762
+  }
+ ],
+ "rg-es220gs-lp": [
+  {
+   "src": "/assets/products/rg-es220gs-lp-800.webp",
+   "srcset": "/assets/products/rg-es220gs-lp-400.webp 400w, /assets/products/rg-es220gs-lp-800.webp 800w, /assets/products/rg-es220gs-lp-1184.webp 1184w",
+   "width": 1184,
+   "height": 387
+  }
+ ],
+ "rg-rap2200f": [
+  {
+   "src": "/assets/products/rg-rap2200f-648.webp",
+   "srcset": "/assets/products/rg-rap2200f-400.webp 400w, /assets/products/rg-rap2200f-648.webp 648w",
+   "width": 648,
+   "height": 846
+  }
+ ],
+ "rg-rap62": [
+  {
+   "src": "/assets/products/rg-rap62-800.webp",
+   "srcset": "/assets/products/rg-rap62-400.webp 400w, /assets/products/rg-rap62-800.webp 800w, /assets/products/rg-rap62-854.webp 854w",
+   "width": 854,
+   "height": 1041
+  }
+ ],
+ "shelly-1-gen3": [
+  {
+   "src": "/assets/products/shelly-1-gen3-550.webp",
+   "srcset": "/assets/products/shelly-1-gen3-400.webp 400w, /assets/products/shelly-1-gen3-550.webp 550w",
+   "width": 550,
+   "height": 437
+  },
+  {
+   "src": "/assets/products/shelly-1-gen3-2-625.webp",
+   "srcset": "/assets/products/shelly-1-gen3-2-400.webp 400w, /assets/products/shelly-1-gen3-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-1-gen3-3-625.webp",
+   "srcset": "/assets/products/shelly-1-gen3-3-400.webp 400w, /assets/products/shelly-1-gen3-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-1-gen3-4-625.webp",
+   "srcset": "/assets/products/shelly-1-gen3-4-400.webp 400w, /assets/products/shelly-1-gen3-4-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-1pm-gen3": [
+  {
+   "src": "/assets/products/shelly-1pm-gen3-551.webp",
+   "srcset": "/assets/products/shelly-1pm-gen3-400.webp 400w, /assets/products/shelly-1pm-gen3-551.webp 551w",
+   "width": 551,
+   "height": 438
+  },
+  {
+   "src": "/assets/products/shelly-1pm-gen3-2-625.webp",
+   "srcset": "/assets/products/shelly-1pm-gen3-2-400.webp 400w, /assets/products/shelly-1pm-gen3-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-1pm-gen3-3-625.webp",
+   "srcset": "/assets/products/shelly-1pm-gen3-3-400.webp 400w, /assets/products/shelly-1pm-gen3-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-2pm-gen3": [
+  {
+   "src": "/assets/products/shelly-2pm-gen3-552.webp",
+   "srcset": "/assets/products/shelly-2pm-gen3-400.webp 400w, /assets/products/shelly-2pm-gen3-552.webp 552w",
+   "width": 552,
+   "height": 439
+  },
+  {
+   "src": "/assets/products/shelly-2pm-gen3-2-800.webp",
+   "srcset": "/assets/products/shelly-2pm-gen3-2-400.webp 400w, /assets/products/shelly-2pm-gen3-2-800.webp 800w, /assets/products/shelly-2pm-gen3-2-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/shelly-2pm-gen3-3-800.webp",
+   "srcset": "/assets/products/shelly-2pm-gen3-3-400.webp 400w, /assets/products/shelly-2pm-gen3-3-800.webp 800w, /assets/products/shelly-2pm-gen3-3-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  },
+  {
+   "src": "/assets/products/shelly-2pm-gen3-4-800.webp",
+   "srcset": "/assets/products/shelly-2pm-gen3-4-400.webp 400w, /assets/products/shelly-2pm-gen3-4-800.webp 800w, /assets/products/shelly-2pm-gen3-4-1200.webp 1200w",
+   "width": 1200,
+   "height": 1200
+  }
+ ],
+ "shelly-dimmer-gen3": [
+  {
+   "src": "/assets/products/shelly-dimmer-gen3-552.webp",
+   "srcset": "/assets/products/shelly-dimmer-gen3-400.webp 400w, /assets/products/shelly-dimmer-gen3-552.webp 552w",
+   "width": 552,
+   "height": 420
+  },
+  {
+   "src": "/assets/products/shelly-dimmer-gen3-2-800.webp",
+   "srcset": "/assets/products/shelly-dimmer-gen3-2-400.webp 400w, /assets/products/shelly-dimmer-gen3-2-800.webp 800w, /assets/products/shelly-dimmer-gen3-2-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  },
+  {
+   "src": "/assets/products/shelly-dimmer-gen3-3-800.webp",
+   "srcset": "/assets/products/shelly-dimmer-gen3-3-400.webp 400w, /assets/products/shelly-dimmer-gen3-3-800.webp 800w, /assets/products/shelly-dimmer-gen3-3-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  },
+  {
+   "src": "/assets/products/shelly-dimmer-gen3-4-800.webp",
+   "srcset": "/assets/products/shelly-dimmer-gen3-4-400.webp 400w, /assets/products/shelly-dimmer-gen3-4-800.webp 800w, /assets/products/shelly-dimmer-gen3-4-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  }
+ ],
+ "shelly-plus-1": [
+  {
+   "src": "/assets/products/shelly-plus-1-550.webp",
+   "srcset": "/assets/products/shelly-plus-1-400.webp 400w, /assets/products/shelly-plus-1-550.webp 550w",
+   "width": 550,
+   "height": 437
+  },
+  {
+   "src": "/assets/products/shelly-plus-1-2-625.webp",
+   "srcset": "/assets/products/shelly-plus-1-2-400.webp 400w, /assets/products/shelly-plus-1-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-1-3-625.webp",
+   "srcset": "/assets/products/shelly-plus-1-3-400.webp 400w, /assets/products/shelly-plus-1-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-1-4-625.webp",
+   "srcset": "/assets/products/shelly-plus-1-4-400.webp 400w, /assets/products/shelly-plus-1-4-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-1-5-625.webp",
+   "srcset": "/assets/products/shelly-plus-1-5-400.webp 400w, /assets/products/shelly-plus-1-5-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-plus-1pm": [
+  {
+   "src": "/assets/products/shelly-plus-1pm-551.webp",
+   "srcset": "/assets/products/shelly-plus-1pm-400.webp 400w, /assets/products/shelly-plus-1pm-551.webp 551w",
+   "width": 551,
+   "height": 438
+  },
+  {
+   "src": "/assets/products/shelly-plus-1pm-2-625.webp",
+   "srcset": "/assets/products/shelly-plus-1pm-2-400.webp 400w, /assets/products/shelly-plus-1pm-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-1pm-3-625.webp",
+   "srcset": "/assets/products/shelly-plus-1pm-3-400.webp 400w, /assets/products/shelly-plus-1pm-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-plus-2pm": [
+  {
+   "src": "/assets/products/shelly-plus-2pm-554.webp",
+   "srcset": "/assets/products/shelly-plus-2pm-400.webp 400w, /assets/products/shelly-plus-2pm-554.webp 554w",
+   "width": 554,
+   "height": 440
+  },
+  {
+   "src": "/assets/products/shelly-plus-2pm-2-625.webp",
+   "srcset": "/assets/products/shelly-plus-2pm-2-400.webp 400w, /assets/products/shelly-plus-2pm-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-2pm-3-625.webp",
+   "srcset": "/assets/products/shelly-plus-2pm-3-400.webp 400w, /assets/products/shelly-plus-2pm-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-2pm-4-625.webp",
+   "srcset": "/assets/products/shelly-plus-2pm-4-400.webp 400w, /assets/products/shelly-plus-2pm-4-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-plus-2pm-5-625.webp",
+   "srcset": "/assets/products/shelly-plus-2pm-5-400.webp 400w, /assets/products/shelly-plus-2pm-5-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-pro-3": [
+  {
+   "src": "/assets/products/shelly-pro-3-468.webp",
+   "srcset": "/assets/products/shelly-pro-3-400.webp 400w, /assets/products/shelly-pro-3-468.webp 468w",
+   "width": 468,
+   "height": 610
+  },
+  {
+   "src": "/assets/products/shelly-pro-3-2-625.webp",
+   "srcset": "/assets/products/shelly-pro-3-2-400.webp 400w, /assets/products/shelly-pro-3-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-pro-3-3-625.webp",
+   "srcset": "/assets/products/shelly-pro-3-3-400.webp 400w, /assets/products/shelly-pro-3-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-pro-4pm": [
+  {
+   "src": "/assets/products/shelly-pro-4pm-538.webp",
+   "srcset": "/assets/products/shelly-pro-4pm-400.webp 400w, /assets/products/shelly-pro-4pm-538.webp 538w",
+   "width": 538,
+   "height": 796
+  },
+  {
+   "src": "/assets/products/shelly-pro-4pm-2-625.webp",
+   "srcset": "/assets/products/shelly-pro-4pm-2-400.webp 400w, /assets/products/shelly-pro-4pm-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-pro-4pm-3-625.webp",
+   "srcset": "/assets/products/shelly-pro-4pm-3-400.webp 400w, /assets/products/shelly-pro-4pm-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-pro-4pm-4-625.webp",
+   "srcset": "/assets/products/shelly-pro-4pm-4-400.webp 400w, /assets/products/shelly-pro-4pm-4-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-pro-dual-cover-shutter-pm": [
+  {
+   "src": "/assets/products/shelly-pro-dual-cover-shutter-pm-469.webp",
+   "srcset": "/assets/products/shelly-pro-dual-cover-shutter-pm-400.webp 400w, /assets/products/shelly-pro-dual-cover-shutter-pm-469.webp 469w",
+   "width": 469,
+   "height": 710
+  },
+  {
+   "src": "/assets/products/shelly-pro-dual-cover-shutter-pm-2-625.webp",
+   "srcset": "/assets/products/shelly-pro-dual-cover-shutter-pm-2-400.webp 400w, /assets/products/shelly-pro-dual-cover-shutter-pm-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-pro-dual-cover-shutter-pm-3-625.webp",
+   "srcset": "/assets/products/shelly-pro-dual-cover-shutter-pm-3-400.webp 400w, /assets/products/shelly-pro-dual-cover-shutter-pm-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-pro-dual-cover-shutter-pm-4-625.webp",
+   "srcset": "/assets/products/shelly-pro-dual-cover-shutter-pm-4-400.webp 400w, /assets/products/shelly-pro-dual-cover-shutter-pm-4-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "shelly-wall-display": [
+  {
+   "src": "/assets/products/shelly-wall-display-443.webp",
+   "srcset": "/assets/products/shelly-wall-display-400.webp 400w, /assets/products/shelly-wall-display-443.webp 443w",
+   "width": 443,
+   "height": 352
+  },
+  {
+   "src": "/assets/products/shelly-wall-display-2-625.webp",
+   "srcset": "/assets/products/shelly-wall-display-2-400.webp 400w, /assets/products/shelly-wall-display-2-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-wall-display-3-625.webp",
+   "srcset": "/assets/products/shelly-wall-display-3-400.webp 400w, /assets/products/shelly-wall-display-3-625.webp 625w",
+   "width": 625,
+   "height": 625
+  },
+  {
+   "src": "/assets/products/shelly-wall-display-4-800.webp",
+   "srcset": "/assets/products/shelly-wall-display-4-400.webp 400w, /assets/products/shelly-wall-display-4-800.webp 800w, /assets/products/shelly-wall-display-4-1000.webp 1000w",
+   "width": 1000,
+   "height": 1000
+  },
+  {
+   "src": "/assets/products/shelly-wall-display-5-625.webp",
+   "srcset": "/assets/products/shelly-wall-display-5-400.webp 400w, /assets/products/shelly-wall-display-5-625.webp 625w",
+   "width": 625,
+   "height": 625
+  }
+ ],
+ "sonoff-mini-zb2gs": [
+  {
+   "src": "/assets/products/sonoff-mini-zb2gs-800.webp",
+   "srcset": "/assets/products/sonoff-mini-zb2gs-400.webp 400w, /assets/products/sonoff-mini-zb2gs-800.webp 800w, /assets/products/sonoff-mini-zb2gs-1140.webp 1140w",
+   "width": 1140,
+   "height": 1015
+  }
+ ],
+ "sonoff-mini-zb2gs-l": [
+  {
+   "src": "/assets/products/sonoff-mini-zb2gs-l-800.webp",
+   "srcset": "/assets/products/sonoff-mini-zb2gs-l-400.webp 400w, /assets/products/sonoff-mini-zb2gs-l-800.webp 800w, /assets/products/sonoff-mini-zb2gs-l-1130.webp 1130w",
+   "width": 1130,
+   "height": 1005
+  }
+ ],
+ "sonoff-mini-zbdim": [
+  {
+   "src": "/assets/products/sonoff-mini-zbdim-800.webp",
+   "srcset": "/assets/products/sonoff-mini-zbdim-400.webp 400w, /assets/products/sonoff-mini-zbdim-800.webp 800w, /assets/products/sonoff-mini-zbdim-1134.webp 1134w",
+   "width": 1134,
+   "height": 1011
+  }
+ ],
+ "sonoff-mini-zbrbs": [
+  {
+   "src": "/assets/products/sonoff-mini-zbrbs-800.webp",
+   "srcset": "/assets/products/sonoff-mini-zbrbs-400.webp 400w, /assets/products/sonoff-mini-zbrbs-800.webp 800w, /assets/products/sonoff-mini-zbrbs-1139.webp 1139w",
+   "width": 1139,
+   "height": 966
+  }
+ ],
+ "sonoff-zbmini-extreme": [
+  {
+   "src": "/assets/products/sonoff-zbmini-extreme-800.webp",
+   "srcset": "/assets/products/sonoff-zbmini-extreme-400.webp 400w, /assets/products/sonoff-zbmini-extreme-800.webp 800w, /assets/products/sonoff-zbmini-extreme-1130.webp 1130w",
+   "width": 1130,
+   "height": 956
+  }
+ ],
+ "sonoff-zbmini-extreme-l2": [
+  {
+   "src": "/assets/products/sonoff-zbmini-extreme-l2-800.webp",
+   "srcset": "/assets/products/sonoff-zbmini-extreme-l2-400.webp 400w, /assets/products/sonoff-zbmini-extreme-l2-800.webp 800w, /assets/products/sonoff-zbmini-extreme-l2-1200.webp 1200w",
+   "width": 1200,
+   "height": 988
+  }
+ ],
+ "zennio-bin-t-2x": [
+  {
+   "src": "/assets/products/zennio-bin-t-2x-333.webp",
+   "srcset": "/assets/products/zennio-bin-t-2x-333.webp 333w",
+   "width": 333,
+   "height": 281
+  }
+ ],
+ "zennio-bin-t-4x": [
+  {
+   "src": "/assets/products/zennio-bin-t-4x-333.webp",
+   "srcset": "/assets/products/zennio-bin-t-4x-333.webp 333w",
+   "width": 333,
+   "height": 281
+  }
+ ],
+ "zennio-bin-t-6x": [
+  {
+   "src": "/assets/products/zennio-bin-t-6x-333.webp",
+   "srcset": "/assets/products/zennio-bin-t-6x-333.webp 333w",
+   "width": 333,
+   "height": 281
+  }
+ ],
+ "zennio-bin-t-8x": [
+  {
+   "src": "/assets/products/zennio-bin-t-8x-333.webp",
+   "srcset": "/assets/products/zennio-bin-t-8x-333.webp 333w",
+   "width": 333,
+   "height": 281
+  }
+ ],
+ "zennio-diminbox-dx2": [
+  {
+   "src": "/assets/products/zennio-diminbox-dx2-313.webp",
+   "srcset": "/assets/products/zennio-diminbox-dx2-313.webp 313w",
+   "width": 313,
+   "height": 307
+  }
+ ],
+ "zennio-diminbox-dx4": [
+  {
+   "src": "/assets/products/zennio-diminbox-dx4-371.webp",
+   "srcset": "/assets/products/zennio-diminbox-dx4-371.webp 371w",
+   "width": 371,
+   "height": 241
+  }
+ ],
+ "zennio-flat-70": [
+  {
+   "src": "/assets/products/zennio-flat-70-275.webp",
+   "srcset": "/assets/products/zennio-flat-70-275.webp 275w",
+   "width": 275,
+   "height": 300
+  },
+  {
+   "src": "/assets/products/zennio-flat-70-2-370.webp",
+   "srcset": "/assets/products/zennio-flat-70-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-flat-70-3-370.webp",
+   "srcset": "/assets/products/zennio-flat-70-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-flat-70-4-370.webp",
+   "srcset": "/assets/products/zennio-flat-70-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-flat-70-5-370.webp",
+   "srcset": "/assets/products/zennio-flat-70-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-flat-70-6-370.webp",
+   "srcset": "/assets/products/zennio-flat-70-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-inbox-20-v3": [
+  {
+   "src": "/assets/products/zennio-inbox-20-v3-287.webp",
+   "srcset": "/assets/products/zennio-inbox-20-v3-287.webp 287w",
+   "width": 287,
+   "height": 253
+  }
+ ],
+ "zennio-inbox-24-v3": [
+  {
+   "src": "/assets/products/zennio-inbox-24-v3-287.webp",
+   "srcset": "/assets/products/zennio-inbox-24-v3-287.webp 287w",
+   "width": 287,
+   "height": 253
+  }
+ ],
+ "zennio-kupsupply-160ma": [
+  {
+   "src": "/assets/products/zennio-kupsupply-160ma-184.webp",
+   "srcset": "/assets/products/zennio-kupsupply-160ma-184.webp 184w",
+   "width": 184,
+   "height": 291
+  }
+ ],
+ "zennio-kupsupply-320ma": [
+  {
+   "src": "/assets/products/zennio-kupsupply-320ma-320.webp",
+   "srcset": "/assets/products/zennio-kupsupply-320ma-320.webp 320w",
+   "width": 320,
+   "height": 313
+  }
+ ],
+ "zennio-kupsupply-640ma": [
+  {
+   "src": "/assets/products/zennio-kupsupply-640ma-320.webp",
+   "srcset": "/assets/products/zennio-kupsupply-640ma-320.webp 320w",
+   "width": 320,
+   "height": 313
+  }
+ ],
+ "zennio-maxinbox-12": [
+  {
+   "src": "/assets/products/zennio-maxinbox-12-288.webp",
+   "srcset": "/assets/products/zennio-maxinbox-12-288.webp 288w",
+   "width": 288,
+   "height": 227
+  }
+ ],
+ "zennio-maxinbox-16-v4": [
+  {
+   "src": "/assets/products/zennio-maxinbox-16-v4-372.webp",
+   "srcset": "/assets/products/zennio-maxinbox-16-v4-372.webp 372w",
+   "width": 372,
+   "height": 241
+  }
+ ],
+ "zennio-maxinbox-20": [
+  {
+   "src": "/assets/products/zennio-maxinbox-20-373.webp",
+   "srcset": "/assets/products/zennio-maxinbox-20-373.webp 373w",
+   "width": 373,
+   "height": 202
+  }
+ ],
+ "zennio-maxinbox-24-v2": [
+  {
+   "src": "/assets/products/zennio-maxinbox-24-v2-334.webp",
+   "srcset": "/assets/products/zennio-maxinbox-24-v2-334.webp 334w",
+   "width": 334,
+   "height": 157
+  }
+ ],
+ "zennio-maxinbox-66-v3": [
+  {
+   "src": "/assets/products/zennio-maxinbox-66-v3-327.webp",
+   "srcset": "/assets/products/zennio-maxinbox-66-v3-327.webp 327w",
+   "width": 327,
+   "height": 319
+  }
+ ],
+ "zennio-maxinbox-8-v4": [
+  {
+   "src": "/assets/products/zennio-maxinbox-8-v4-313.webp",
+   "srcset": "/assets/products/zennio-maxinbox-8-v4-313.webp 313w",
+   "width": 313,
+   "height": 309
+  }
+ ],
+ "zennio-maxinbox-88": [
+  {
+   "src": "/assets/products/zennio-maxinbox-88-291.webp",
+   "srcset": "/assets/products/zennio-maxinbox-88-291.webp 291w",
+   "width": 291,
+   "height": 306
+  }
+ ],
+ "zennio-minibox-20-v2": [
+  {
+   "src": "/assets/products/zennio-minibox-20-v2-188.webp",
+   "srcset": "/assets/products/zennio-minibox-20-v2-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-minibox-25-v3": [
+  {
+   "src": "/assets/products/zennio-minibox-25-v3-188.webp",
+   "srcset": "/assets/products/zennio-minibox-25-v3-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-minibox-40-v3": [
+  {
+   "src": "/assets/products/zennio-minibox-40-v3-188.webp",
+   "srcset": "/assets/products/zennio-minibox-40-v3-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-minibox-45-v3": [
+  {
+   "src": "/assets/products/zennio-minibox-45-v3-188.webp",
+   "srcset": "/assets/products/zennio-minibox-45-v3-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-narrowdim-x2": [
+  {
+   "src": "/assets/products/zennio-narrowdim-x2-188.webp",
+   "srcset": "/assets/products/zennio-narrowdim-x2-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-narrowdim-x4": [
+  {
+   "src": "/assets/products/zennio-narrowdim-x4-313.webp",
+   "srcset": "/assets/products/zennio-narrowdim-x4-313.webp 313w",
+   "width": 313,
+   "height": 315
+  }
+ ],
+ "zennio-railquad-8": [
+  {
+   "src": "/assets/products/zennio-railquad-8-188.webp",
+   "srcset": "/assets/products/zennio-railquad-8-188.webp 188w",
+   "width": 188,
+   "height": 293
+  }
+ ],
+ "zennio-tecla": [
+  {
+   "src": "/assets/products/zennio-tecla-255.webp",
+   "srcset": "/assets/products/zennio-tecla-255.webp 255w",
+   "width": 255,
+   "height": 286
+  },
+  {
+   "src": "/assets/products/zennio-tecla-2-370.webp",
+   "srcset": "/assets/products/zennio-tecla-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-3-370.webp",
+   "srcset": "/assets/products/zennio-tecla-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-4-370.webp",
+   "srcset": "/assets/products/zennio-tecla-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-5-370.webp",
+   "srcset": "/assets/products/zennio-tecla-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-6-370.webp",
+   "srcset": "/assets/products/zennio-tecla-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-tecla-55": [
+  {
+   "src": "/assets/products/zennio-tecla-55-278.webp",
+   "srcset": "/assets/products/zennio-tecla-55-278.webp 278w",
+   "width": 278,
+   "height": 312
+  },
+  {
+   "src": "/assets/products/zennio-tecla-55-2-370.webp",
+   "srcset": "/assets/products/zennio-tecla-55-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-55-3-370.webp",
+   "srcset": "/assets/products/zennio-tecla-55-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-55-4-370.webp",
+   "srcset": "/assets/products/zennio-tecla-55-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-55-5-370.webp",
+   "srcset": "/assets/products/zennio-tecla-55-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-55-6-370.webp",
+   "srcset": "/assets/products/zennio-tecla-55-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-tecla-70": [
+  {
+   "src": "/assets/products/zennio-tecla-70-275.webp",
+   "srcset": "/assets/products/zennio-tecla-70-275.webp 275w",
+   "width": 275,
+   "height": 300
+  },
+  {
+   "src": "/assets/products/zennio-tecla-70-2-370.webp",
+   "srcset": "/assets/products/zennio-tecla-70-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-70-3-370.webp",
+   "srcset": "/assets/products/zennio-tecla-70-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-70-4-370.webp",
+   "srcset": "/assets/products/zennio-tecla-70-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-70-5-370.webp",
+   "srcset": "/assets/products/zennio-tecla-70-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-70-6-370.webp",
+   "srcset": "/assets/products/zennio-tecla-70-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-tecla-xl": [
+  {
+   "src": "/assets/products/zennio-tecla-xl-190.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-190.webp 190w",
+   "width": 190,
+   "height": 306
+  },
+  {
+   "src": "/assets/products/zennio-tecla-xl-2-370.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-xl-3-370.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-xl-4-370.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-xl-5-370.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-tecla-xl-6-370.webp",
+   "srcset": "/assets/products/zennio-tecla-xl-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z100-touch-panel": [
+  {
+   "src": "/assets/products/zennio-z100-touch-panel-320.webp",
+   "srcset": "/assets/products/zennio-z100-touch-panel-320.webp 320w",
+   "width": 320,
+   "height": 271
+  },
+  {
+   "src": "/assets/products/zennio-z100-2-370.webp",
+   "srcset": "/assets/products/zennio-z100-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z100-3-370.webp",
+   "srcset": "/assets/products/zennio-z100-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z100-4-370.webp",
+   "srcset": "/assets/products/zennio-z100-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z100-5-370.webp",
+   "srcset": "/assets/products/zennio-z100-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z100-6-370.webp",
+   "srcset": "/assets/products/zennio-z100-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z28": [
+  {
+   "src": "/assets/products/zennio-z28-274.webp",
+   "srcset": "/assets/products/zennio-z28-274.webp 274w",
+   "width": 274,
+   "height": 300
+  },
+  {
+   "src": "/assets/products/zennio-z28-2-370.webp",
+   "srcset": "/assets/products/zennio-z28-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z28-3-370.webp",
+   "srcset": "/assets/products/zennio-z28-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z28-4-370.webp",
+   "srcset": "/assets/products/zennio-z28-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z28-5-370.webp",
+   "srcset": "/assets/products/zennio-z28-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z28-6-370.webp",
+   "srcset": "/assets/products/zennio-z28-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z35-v3": [
+  {
+   "src": "/assets/products/zennio-z35-v3-294.webp",
+   "srcset": "/assets/products/zennio-z35-v3-294.webp 294w",
+   "width": 294,
+   "height": 315
+  },
+  {
+   "src": "/assets/products/zennio-z35-v3-2-370.webp",
+   "srcset": "/assets/products/zennio-z35-v3-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z35-v3-3-370.webp",
+   "srcset": "/assets/products/zennio-z35-v3-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z35-v3-4-370.webp",
+   "srcset": "/assets/products/zennio-z35-v3-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z35-v3-5-370.webp",
+   "srcset": "/assets/products/zennio-z35-v3-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z35-v3-6-370.webp",
+   "srcset": "/assets/products/zennio-z35-v3-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z40": [
+  {
+   "src": "/assets/products/zennio-z40-274.webp",
+   "srcset": "/assets/products/zennio-z40-274.webp 274w",
+   "width": 274,
+   "height": 271
+  },
+  {
+   "src": "/assets/products/zennio-z40-2-370.webp",
+   "srcset": "/assets/products/zennio-z40-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z40-3-370.webp",
+   "srcset": "/assets/products/zennio-z40-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z40-4-370.webp",
+   "srcset": "/assets/products/zennio-z40-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z40-5-370.webp",
+   "srcset": "/assets/products/zennio-z40-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z40-6-370.webp",
+   "srcset": "/assets/products/zennio-z40-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z50": [
+  {
+   "src": "/assets/products/zennio-z50-143.webp",
+   "srcset": "/assets/products/zennio-z50-143.webp 143w",
+   "width": 143,
+   "height": 248
+  },
+  {
+   "src": "/assets/products/zennio-z50-2-370.webp",
+   "srcset": "/assets/products/zennio-z50-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z50-3-370.webp",
+   "srcset": "/assets/products/zennio-z50-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z50-4-370.webp",
+   "srcset": "/assets/products/zennio-z50-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z50-5-370.webp",
+   "srcset": "/assets/products/zennio-z50-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z50-6-370.webp",
+   "srcset": "/assets/products/zennio-z50-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ],
+ "zennio-z70-v2": [
+  {
+   "src": "/assets/products/zennio-z70-v2-329.webp",
+   "srcset": "/assets/products/zennio-z70-v2-329.webp 329w",
+   "width": 329,
+   "height": 319
+  },
+  {
+   "src": "/assets/products/zennio-z70-v2-2-370.webp",
+   "srcset": "/assets/products/zennio-z70-v2-2-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z70-v2-3-370.webp",
+   "srcset": "/assets/products/zennio-z70-v2-3-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z70-v2-4-370.webp",
+   "srcset": "/assets/products/zennio-z70-v2-4-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z70-v2-5-370.webp",
+   "srcset": "/assets/products/zennio-z70-v2-5-370.webp 370w",
+   "width": 370,
+   "height": 361
+  },
+  {
+   "src": "/assets/products/zennio-z70-v2-6-370.webp",
+   "srcset": "/assets/products/zennio-z70-v2-6-370.webp 370w",
+   "width": 370,
+   "height": 361
+  }
+ ]
+}

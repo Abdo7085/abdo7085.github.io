@@ -66,12 +66,12 @@
   },
 
   "images": [
-    "/assets/products/moes-matter-zigbee-gateway.png",
-    "/assets/products/moes-matter-zigbee-gateway-2.jpg",
-    "/assets/products/moes-matter-zigbee-gateway-3.jpg",
-    "/assets/products/moes-matter-zigbee-gateway-4.jpg",
-    "/assets/products/moes-matter-zigbee-gateway-5.jpg",
-    "/assets/products/moes-matter-zigbee-gateway-6.jpg"
+    "moes-matter-zigbee-gateway.png",
+    "moes-matter-zigbee-gateway-2.jpg",
+    "moes-matter-zigbee-gateway-3.jpg",
+    "moes-matter-zigbee-gateway-4.jpg",
+    "moes-matter-zigbee-gateway-5.jpg",
+    "moes-matter-zigbee-gateway-6.jpg"
   ],
 
   "files": [

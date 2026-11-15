@@ -56,7 +56,7 @@
     }
   },
 
-  "images": ["/assets/products/eae-knx-lc200-line-coupler.png"],
+  "images": ["eae-knx-lc200-line-coupler.png"],
 
   "files": [
     {

@@ -87,10 +87,10 @@
     }
   },
   "images": [
-    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png",
-    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-2.png",
-    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-3.png",
-    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-4.png"
+    "dahua-vth2621gb-gw-ip-indoor-monitor.png",
+    "dahua-vth2621gb-gw-ip-indoor-monitor-2.png",
+    "dahua-vth2621gb-gw-ip-indoor-monitor-3.png",
+    "dahua-vth2621gb-gw-ip-indoor-monitor-4.png"
   ],
   "files": [
     {

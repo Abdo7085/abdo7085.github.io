@@ -323,15 +323,16 @@ def load_taxonomy() -> Taxonomy:
     return Taxonomy(raw)
 
 
-def abort_on_problems(problems: list, what: str) -> None:
+def abort_on_problems(problems: list, what: str, hint: str = "") -> None:
     """Stop the build with a readable report instead of publishing bad data."""
     if not problems:
         return
     print(f"\nBUILD STOPPED - {len(problems)} problem(s) in {what}:")
     for line in problems:
         print(f"  - {line}")
-    print("\nFix the file(s) above, then rebuild. A new classification value is added in "
-          "data/taxonomy.json; a new brand needs a file in data/brands/.")
+    print("\nFix the file(s) above, then rebuild. " + (hint or (
+          "A new classification value is added in data/taxonomy.json; "
+          "a new brand needs a file in data/brands/.")))
     raise SystemExit(1)
 
 

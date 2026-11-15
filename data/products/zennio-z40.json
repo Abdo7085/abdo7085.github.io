@@ -75,12 +75,12 @@
     }
   },
   "images": [
-    "/assets/products/zennio-z40.png",
-    "/assets/products/zennio-z40-2.png",
-    "/assets/products/zennio-z40-3.png",
-    "/assets/products/zennio-z40-4.png",
-    "/assets/products/zennio-z40-5.png",
-    "/assets/products/zennio-z40-6.png"
+    "zennio-z40.png",
+    "zennio-z40-2.png",
+    "zennio-z40-3.png",
+    "zennio-z40-4.png",
+    "zennio-z40-5.png",
+    "zennio-z40-6.png"
   ],
   "files": [
     {

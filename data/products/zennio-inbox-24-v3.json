@@ -86,7 +86,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-inbox-24-v3.png"],
+  "images": ["zennio-inbox-24-v3.png"],
 
   "files": [
     {

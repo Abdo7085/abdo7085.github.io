@@ -84,12 +84,12 @@
     }
   },
   "images": [
-    "/assets/products/zennio-z70-v2.png",
-    "/assets/products/zennio-z70-v2-2.png",
-    "/assets/products/zennio-z70-v2-3.png",
-    "/assets/products/zennio-z70-v2-4.png",
-    "/assets/products/zennio-z70-v2-5.png",
-    "/assets/products/zennio-z70-v2-6.png"
+    "zennio-z70-v2.png",
+    "zennio-z70-v2-2.png",
+    "zennio-z70-v2-3.png",
+    "zennio-z70-v2-4.png",
+    "zennio-z70-v2-5.png",
+    "zennio-z70-v2-6.png"
   ],
   "files": [
     {

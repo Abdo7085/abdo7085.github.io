@@ -76,12 +76,12 @@
     }
   },
   "images": [
-    "/assets/products/dahua-vto3311q-wp-villa-door-station.png",
-    "/assets/products/dahua-vto3311q-wp-villa-door-station-2.png",
-    "/assets/products/dahua-vto3311q-wp-villa-door-station-3.png",
-    "/assets/products/dahua-vto3311q-wp-villa-door-station-4.png",
-    "/assets/products/dahua-vto3311q-wp-villa-door-station-5.png",
-    "/assets/products/dahua-vto3311q-wp-villa-door-station-6.png"
+    "dahua-vto3311q-wp-villa-door-station.png",
+    "dahua-vto3311q-wp-villa-door-station-2.png",
+    "dahua-vto3311q-wp-villa-door-station-3.png",
+    "dahua-vto3311q-wp-villa-door-station-4.png",
+    "dahua-vto3311q-wp-villa-door-station-5.png",
+    "dahua-vto3311q-wp-villa-door-station-6.png"
   ],
   "files": [
     {

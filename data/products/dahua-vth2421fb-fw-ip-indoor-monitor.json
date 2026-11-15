@@ -90,8 +90,8 @@
     }
   },
   "images": [
-    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png",
-    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-2.png"
+    "dahua-vth2421fb-fw-ip-indoor-monitor.png",
+    "dahua-vth2421fb-fw-ip-indoor-monitor-2.png"
   ],
   "files": [
     {

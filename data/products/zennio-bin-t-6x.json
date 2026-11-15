@@ -74,7 +74,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-bin-t-6x.png"],
+  "images": ["zennio-bin-t-6x.png"],
 
   "files": [
     {

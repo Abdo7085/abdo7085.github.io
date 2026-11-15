@@ -83,7 +83,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-maxinbox-66-v3.png"],
+  "images": ["zennio-maxinbox-66-v3.png"],
 
   "files": [
     {

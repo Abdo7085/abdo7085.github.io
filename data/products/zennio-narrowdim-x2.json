@@ -65,7 +65,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-narrowdim-x2.png"],
+  "images": ["zennio-narrowdim-x2.png"],
 
   "files": [
     {

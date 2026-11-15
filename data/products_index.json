@@ -18,7 +18,12 @@
       "ar": "شاشة داخلية IP تعمل باللمس بحجم 7 بوصات مع صوت ثنائي الاتجاه ونظام إنذار متكامل."
     },
     "category": "security",
-    "image": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor.png"
+    "image": {
+      "src": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-800.webp",
+      "srcset": "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-400.webp 400w, /assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-800.webp 800w, /assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-1200.webp 1200w",
+      "width": 1200,
+      "height": 693
+    }
   },
   {
     "id": "dahua-vth2621gb-gw-ip-indoor-monitor",
@@ -39,7 +44,12 @@
       "ar": "شاشة داخلية لمسية 7\" مع H.265 و PoE وإنذار متكامل."
     },
     "category": "security",
-    "image": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor.png"
+    "image": {
+      "src": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-303.webp",
+      "srcset": "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-303.webp 303w",
+      "width": 303,
+      "height": 222
+    }
   },
   {
     "id": "dahua-vth8621kms-wp-indoor-monitor",
@@ -61,7 +71,12 @@
       "ar": "شاشة داخلية لمسية 7\" بتقنية Wi-Fi و PoE وإنذار متكامل."
     },
     "category": "security",
-    "image": "/assets/products/dahua-vth8621kms-wp-indoor-monitor.png"
+    "image": {
+      "src": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-800.webp",
+      "srcset": "/assets/products/dahua-vth8621kms-wp-indoor-monitor-400.webp 400w, /assets/products/dahua-vth8621kms-wp-indoor-monitor-800.webp 800w, /assets/products/dahua-vth8621kms-wp-indoor-monitor-1200.webp 1200w",
+      "width": 1200,
+      "height": 964
+    }
   },
   {
     "id": "dahua-vto3311q-wp-villa-door-station",
@@ -83,7 +98,12 @@
       "ar": "محطة باب خارجية بتقنية IP و Wi-Fi مع كاميرا 2MP وصوت ثنائي الاتجاه."
     },
     "category": "security",
-    "image": "/assets/products/dahua-vto3311q-wp-villa-door-station.png"
+    "image": {
+      "src": "/assets/products/dahua-vto3311q-wp-villa-door-station-189.webp",
+      "srcset": "/assets/products/dahua-vto3311q-wp-villa-door-station-189.webp 189w",
+      "width": 189,
+      "height": 312
+    }
   },
   {
     "id": "dahua-vto6541h-s2-apartment-door-station",
@@ -104,7 +124,12 @@
       "ar": "محطة باب خارجية IP مع دخول بالوجه والبصمة والبطاقة وكلمة المرور."
     },
     "category": "security",
-    "image": "/assets/products/dahua-vto6541h-s2-apartment-door-station.png"
+    "image": {
+      "src": "/assets/products/dahua-vto6541h-s2-apartment-door-station-800.webp",
+      "srcset": "/assets/products/dahua-vto6541h-s2-apartment-door-station-400.webp 400w, /assets/products/dahua-vto6541h-s2-apartment-door-station-800.webp 800w, /assets/products/dahua-vto6541h-s2-apartment-door-station-851.webp 851w",
+      "width": 851,
+      "height": 2000
+    }
   },
   {
     "id": "eae-knx-ipi200-ip-interface",
@@ -126,7 +151,12 @@
       "ar": "واجهة KNXnet/IP tunneling للبرمجة والمراقبة."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-ipi200-ip-interface.png"
+    "image": {
+      "src": "/assets/products/eae-knx-ipi200-ip-interface-663.webp",
+      "srcset": "/assets/products/eae-knx-ipi200-ip-interface-400.webp 400w, /assets/products/eae-knx-ipi200-ip-interface-663.webp 663w",
+      "width": 663,
+      "height": 1036
+    }
   },
   {
     "id": "eae-knx-ipr200-ip-router",
@@ -148,7 +178,12 @@
       "ar": "راوتر IP KNX مع 5 اتصالات tunneling متزامنة."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-ipr200-ip-router.png"
+    "image": {
+      "src": "/assets/products/eae-knx-ipr200-ip-router-669.webp",
+      "srcset": "/assets/products/eae-knx-ipr200-ip-router-400.webp 400w, /assets/products/eae-knx-ipr200-ip-router-669.webp 669w",
+      "width": 669,
+      "height": 1021
+    }
   },
   {
     "id": "eae-knx-lc200-line-coupler",
@@ -169,7 +204,12 @@
       "ar": "رابط خطوط/عمود فقري KNX مدمج مع عزل كلفاني."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-lc200-line-coupler.png"
+    "image": {
+      "src": "/assets/products/eae-knx-lc200-line-coupler-670.webp",
+      "srcset": "/assets/products/eae-knx-lc200-line-coupler-400.webp 400w, /assets/products/eae-knx-lc200-line-coupler-670.webp 670w",
+      "width": 670,
+      "height": 1037
+    }
   },
   {
     "id": "eae-knx-miola-touch-panel",
@@ -190,7 +230,12 @@
       "ar": "لوحة تحكم ذكية 10.1 بوصة مع اتصال داخلي ونظام أمان."
     },
     "category": "controls",
-    "image": "/assets/products/eae-knx-miola-touch-panel.png"
+    "image": {
+      "src": "/assets/products/eae-knx-miola-touch-panel-800.webp",
+      "srcset": "/assets/products/eae-knx-miola-touch-panel-400.webp 400w, /assets/products/eae-knx-miola-touch-panel-800.webp 800w, /assets/products/eae-knx-miola-touch-panel-1015.webp 1015w",
+      "width": 1015,
+      "height": 818
+    }
   },
   {
     "id": "eae-knx-oria-push-switches",
@@ -211,7 +256,12 @@
       "ar": "مفتاح ضغط KNX أنيق بتصميم لمسي، من 1 إلى 5 أزرار."
     },
     "category": "controls",
-    "image": "/assets/products/eae-knx-oria-push-switches.png"
+    "image": {
+      "src": "/assets/products/eae-knx-oria-push-switches-800.webp",
+      "srcset": "/assets/products/eae-knx-oria-push-switches-400.webp 400w, /assets/products/eae-knx-oria-push-switches-800.webp 800w, /assets/products/eae-knx-oria-push-switches-1100.webp 1100w",
+      "width": 1100,
+      "height": 1368
+    }
   },
   {
     "id": "eae-knx-power-supply-ps640",
@@ -232,7 +282,12 @@
       "ar": "إمداد طاقة ثابت 30 فولت لخطوط KNX TP مع محوّل مدمج."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-power-supply-ps640.png"
+    "image": {
+      "src": "/assets/products/eae-knx-power-supply-ps640-800.webp",
+      "srcset": "/assets/products/eae-knx-power-supply-ps640-400.webp 400w, /assets/products/eae-knx-power-supply-ps640-800.webp 800w, /assets/products/eae-knx-power-supply-ps640-1080.webp 1080w",
+      "width": 1080,
+      "height": 820
+    }
   },
   {
     "id": "eae-knx-ps320-power-supply",
@@ -253,7 +308,12 @@
       "ar": "مزود طاقة ناقل KNX بقدرة 320 mA مع خرج 30 فولت إضافي."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-ps320-power-supply.png"
+    "image": {
+      "src": "/assets/products/eae-knx-ps320-power-supply-800.webp",
+      "srcset": "/assets/products/eae-knx-ps320-power-supply-400.webp 400w, /assets/products/eae-knx-ps320-power-supply-800.webp 800w, /assets/products/eae-knx-ps320-power-supply-1080.webp 1080w",
+      "width": 1080,
+      "height": 826
+    }
   },
   {
     "id": "eae-knx-rosa-switches",
@@ -274,7 +334,12 @@
       "ar": "مفتاح لمس KNX فاخر من المعدن المصقول وتصميم أنيق بدون إطار."
     },
     "category": "controls",
-    "image": "/assets/products/eae-knx-rosa-switches.png"
+    "image": {
+      "src": "/assets/products/eae-knx-rosa-switches-631.webp",
+      "srcset": "/assets/products/eae-knx-rosa-switches-400.webp 400w, /assets/products/eae-knx-rosa-switches-631.webp 631w",
+      "width": 631,
+      "height": 472
+    }
   },
   {
     "id": "eae-knx-rosa-thermostat",
@@ -295,7 +360,12 @@
       "ar": "منظم حرارة معدني فاخر يعمل باللمس مع جهاز تحكم مدمج لدرجة حرارة الغرفة."
     },
     "category": "controls",
-    "image": "/assets/products/eae-knx-rosa-thermostat.png"
+    "image": {
+      "src": "/assets/products/eae-knx-rosa-thermostat-613.webp",
+      "srcset": "/assets/products/eae-knx-rosa-thermostat-400.webp 400w, /assets/products/eae-knx-rosa-thermostat-613.webp 613w",
+      "width": 613,
+      "height": 500
+    }
   },
   {
     "id": "eae-knx-td4-touch-panel",
@@ -316,7 +386,12 @@
       "ar": "لوحة لمس سعوية بحجم 4 بوصات مزودة بمستشعرات مدمجة، تحكم بإضاءة RGB، ووظائف ترموستات متقدمة."
     },
     "category": "controls",
-    "image": "/assets/products/eae-knx-td4-touch-panel.png"
+    "image": {
+      "src": "/assets/products/eae-knx-td4-touch-panel-525.webp",
+      "srcset": "/assets/products/eae-knx-td4-touch-panel-400.webp 400w, /assets/products/eae-knx-td4-touch-panel-525.webp 525w",
+      "width": 525,
+      "height": 540
+    }
   },
   {
     "id": "eae-knx-ui108-universal-interface",
@@ -337,7 +412,12 @@
       "ar": "مدخل ثنائي KNX بـ 8 قنوات للمفاتيح التقليدية."
     },
     "category": "system",
-    "image": "/assets/products/eae-knx-ui108-universal-interface.png"
+    "image": {
+      "src": "/assets/products/eae-knx-ui108-universal-interface-519.webp",
+      "srcset": "/assets/products/eae-knx-ui108-universal-interface-400.webp 400w, /assets/products/eae-knx-ui108-universal-interface-519.webp 519w",
+      "width": 519,
+      "height": 564
+    }
   },
   {
     "id": "moes-matter-zigbee-gateway",
@@ -361,7 +441,12 @@
       "ar": "موزع منزلي ذكي متعدد البروتوكولات — Matter و Zigbee و Thread."
     },
     "category": "system",
-    "image": "/assets/products/moes-matter-zigbee-gateway.png"
+    "image": {
+      "src": "/assets/products/moes-matter-zigbee-gateway-800.webp",
+      "srcset": "/assets/products/moes-matter-zigbee-gateway-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-936.webp 936w",
+      "width": 936,
+      "height": 362
+    }
   },
   {
     "id": "rcu0800-room-control-unit",
@@ -382,7 +467,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu0800-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu0800-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu0800-room-control-unit-400.webp 400w, /assets/products/rcu0800-room-control-unit-800.webp 800w, /assets/products/rcu0800-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 868
+    }
   },
   {
     "id": "rcu0808-room-control-unit",
@@ -403,7 +493,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu0808-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu0808-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu0808-room-control-unit-400.webp 400w, /assets/products/rcu0808-room-control-unit-800.webp 800w, /assets/products/rcu0808-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 868
+    }
   },
   {
     "id": "rcu1200-room-control-unit",
@@ -424,7 +519,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu1200-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu1200-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu1200-room-control-unit-400.webp 400w, /assets/products/rcu1200-room-control-unit-800.webp 800w, /assets/products/rcu1200-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 868
+    }
   },
   {
     "id": "rcu1212-room-control-unit",
@@ -445,7 +545,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu1212-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu1212-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu1212-room-control-unit-400.webp 400w, /assets/products/rcu1212-room-control-unit-800.webp 800w, /assets/products/rcu1212-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 868
+    }
   },
   {
     "id": "rcu1600-room-control-unit",
@@ -466,7 +571,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu1600-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu1600-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu1600-room-control-unit-400.webp 400w, /assets/products/rcu1600-room-control-unit-800.webp 800w, /assets/products/rcu1600-room-control-unit-1077.webp 1077w",
+      "width": 1077,
+      "height": 667
+    }
   },
   {
     "id": "rcu1616-room-control-unit",
@@ -487,7 +597,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu1616-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu1616-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu1616-room-control-unit-400.webp 400w, /assets/products/rcu1616-room-control-unit-800.webp 800w, /assets/products/rcu1616-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 670
+    }
   },
   {
     "id": "rcu2000-room-control-unit",
@@ -508,7 +623,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu2000-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu2000-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu2000-room-control-unit-400.webp 400w, /assets/products/rcu2000-room-control-unit-800.webp 800w, /assets/products/rcu2000-room-control-unit-1080.webp 1080w",
+      "width": 1080,
+      "height": 671
+    }
   },
   {
     "id": "rcu2018-room-control-unit",
@@ -529,7 +649,12 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
-    "image": "/assets/products/rcu2018-room-control-unit.png"
+    "image": {
+      "src": "/assets/products/rcu2018-room-control-unit-800.webp",
+      "srcset": "/assets/products/rcu2018-room-control-unit-400.webp 400w, /assets/products/rcu2018-room-control-unit-800.webp 800w, /assets/products/rcu2018-room-control-unit-1076.webp 1076w",
+      "width": 1076,
+      "height": 668
+    }
   },
   {
     "id": "reyee-ew1300g",
@@ -551,7 +676,12 @@
       "ar": "راوتر mesh ثنائي النطاق للمنازل."
     },
     "category": "networking",
-    "image": "/assets/products/reyee-ew1300g.png"
+    "image": {
+      "src": "/assets/products/reyee-ew1300g-743.webp",
+      "srcset": "/assets/products/reyee-ew1300g-400.webp 400w, /assets/products/reyee-ew1300g-743.webp 743w",
+      "width": 743,
+      "height": 625
+    }
   },
   {
     "id": "rg-eg105gw-t",
@@ -573,7 +703,12 @@
       "ar": "راوتر أعمال متكامل Wi-Fi 5."
     },
     "category": "networking",
-    "image": "/assets/products/rg-eg105gw-t.png"
+    "image": {
+      "src": "/assets/products/rg-eg105gw-t-800.webp",
+      "srcset": "/assets/products/rg-eg105gw-t-400.webp 400w, /assets/products/rg-eg105gw-t-800.webp 800w, /assets/products/rg-eg105gw-t-821.webp 821w",
+      "width": 821,
+      "height": 881
+    }
   },
   {
     "id": "rg-eg105gw-x",
@@ -595,7 +730,12 @@
       "ar": "راوتر أعمال متكامل Wi-Fi 6 مع VPN."
     },
     "category": "networking",
-    "image": "/assets/products/rg-eg105gw-x.png"
+    "image": {
+      "src": "/assets/products/rg-eg105gw-x-800.webp",
+      "srcset": "/assets/products/rg-eg105gw-x-400.webp 400w, /assets/products/rg-eg105gw-x-800.webp 800w, /assets/products/rg-eg105gw-x-1006.webp 1006w",
+      "width": 1006,
+      "height": 762
+    }
   },
   {
     "id": "rg-es220gs-lp",
@@ -616,7 +756,12 @@
       "ar": "سويتش PoE+ ذكي 20 منفذ للمراقبة بالفيديو."
     },
     "category": "networking",
-    "image": "/assets/products/rg-es220gs-lp.png"
+    "image": {
+      "src": "/assets/products/rg-es220gs-lp-800.webp",
+      "srcset": "/assets/products/rg-es220gs-lp-400.webp 400w, /assets/products/rg-es220gs-lp-800.webp 800w, /assets/products/rg-es220gs-lp-1184.webp 1184w",
+      "width": 1184,
+      "height": 387
+    }
   },
   {
     "id": "rg-rap2200f",
@@ -638,7 +783,12 @@
       "ar": "نقطة وصول سقفية Wi-Fi 5 ثنائية النطاق."
     },
     "category": "networking",
-    "image": "/assets/products/rg-rap2200f.png"
+    "image": {
+      "src": "/assets/products/rg-rap2200f-648.webp",
+      "srcset": "/assets/products/rg-rap2200f-400.webp 400w, /assets/products/rg-rap2200f-648.webp 648w",
+      "width": 648,
+      "height": 846
+    }
   },
   {
     "id": "rg-rap62",
@@ -660,7 +810,12 @@
       "ar": "نقطة وصول سقفية Wi-Fi 6 ثنائية النطاق."
     },
     "category": "networking",
-    "image": "/assets/products/rg-rap62.png"
+    "image": {
+      "src": "/assets/products/rg-rap62-800.webp",
+      "srcset": "/assets/products/rg-rap62-400.webp 400w, /assets/products/rg-rap62-800.webp 800w, /assets/products/rg-rap62-854.webp 854w",
+      "width": 854,
+      "height": 1041
+    }
   },
   {
     "id": "shelly-1-gen3",
@@ -682,7 +837,12 @@
       "ar": "مرحل ذكي الجيل الثالث بقناة واحدة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-1-gen3.png"
+    "image": {
+      "src": "/assets/products/shelly-1-gen3-550.webp",
+      "srcset": "/assets/products/shelly-1-gen3-400.webp 400w, /assets/products/shelly-1-gen3-550.webp 550w",
+      "width": 550,
+      "height": 437
+    }
   },
   {
     "id": "shelly-1pm-gen3",
@@ -704,7 +864,12 @@
       "ar": "مرحل ذكي الجيل الثالث مع قياس الطاقة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-1pm-gen3.png"
+    "image": {
+      "src": "/assets/products/shelly-1pm-gen3-551.webp",
+      "srcset": "/assets/products/shelly-1pm-gen3-400.webp 400w, /assets/products/shelly-1pm-gen3-551.webp 551w",
+      "width": 551,
+      "height": 438
+    }
   },
   {
     "id": "shelly-2pm-gen3",
@@ -726,7 +891,12 @@
       "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-2pm-gen3.png"
+    "image": {
+      "src": "/assets/products/shelly-2pm-gen3-552.webp",
+      "srcset": "/assets/products/shelly-2pm-gen3-400.webp 400w, /assets/products/shelly-2pm-gen3-552.webp 552w",
+      "width": 552,
+      "height": 439
+    }
   },
   {
     "id": "shelly-dimmer-gen3",
@@ -748,7 +918,12 @@
       "ar": "مخفت إضاءة ذكي الجيل الثالث، حتى 200 واط."
     },
     "category": "dimming",
-    "image": "/assets/products/shelly-dimmer-gen3.png"
+    "image": {
+      "src": "/assets/products/shelly-dimmer-gen3-552.webp",
+      "srcset": "/assets/products/shelly-dimmer-gen3-400.webp 400w, /assets/products/shelly-dimmer-gen3-552.webp 552w",
+      "width": 552,
+      "height": 420
+    }
   },
   {
     "id": "shelly-plus-1",
@@ -770,7 +945,12 @@
       "ar": "مرحل ذكي بقناة واحدة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-plus-1.png"
+    "image": {
+      "src": "/assets/products/shelly-plus-1-550.webp",
+      "srcset": "/assets/products/shelly-plus-1-400.webp 400w, /assets/products/shelly-plus-1-550.webp 550w",
+      "width": 550,
+      "height": 437
+    }
   },
   {
     "id": "shelly-plus-1pm",
@@ -792,7 +972,12 @@
       "ar": "مرحل ذكي بقناة واحدة مع قياس الطاقة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-plus-1pm.png"
+    "image": {
+      "src": "/assets/products/shelly-plus-1pm-551.webp",
+      "srcset": "/assets/products/shelly-plus-1pm-400.webp 400w, /assets/products/shelly-plus-1pm-551.webp 551w",
+      "width": 551,
+      "height": 438
+    }
   },
   {
     "id": "shelly-plus-2pm",
@@ -814,7 +999,12 @@
       "ar": "مرحل ذكي بقناتين مع قياس الطاقة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/shelly-plus-2pm.png"
+    "image": {
+      "src": "/assets/products/shelly-plus-2pm-554.webp",
+      "srcset": "/assets/products/shelly-plus-2pm-400.webp 400w, /assets/products/shelly-plus-2pm-554.webp 554w",
+      "width": 554,
+      "height": 440
+    }
   },
   {
     "id": "shelly-pro-3",
@@ -837,7 +1027,12 @@
       "ar": "مرحل ذكي بـ 3 قنوات على سكة DIN."
     },
     "category": "actuators",
-    "image": "/assets/products/shelly-pro-3.png"
+    "image": {
+      "src": "/assets/products/shelly-pro-3-468.webp",
+      "srcset": "/assets/products/shelly-pro-3-400.webp 400w, /assets/products/shelly-pro-3-468.webp 468w",
+      "width": 468,
+      "height": 610
+    }
   },
   {
     "id": "shelly-pro-4pm",
@@ -860,7 +1055,12 @@
       "ar": "مفتاح ذكي من 4 قنوات مع إمكانية قياس استهلاك الطاقة."
     },
     "category": "actuators",
-    "image": "/assets/products/shelly-pro-4pm.png"
+    "image": {
+      "src": "/assets/products/shelly-pro-4pm-538.webp",
+      "srcset": "/assets/products/shelly-pro-4pm-400.webp 400w, /assets/products/shelly-pro-4pm-538.webp 538w",
+      "width": 538,
+      "height": 796
+    }
   },
   {
     "id": "shelly-pro-dual-cover-shutter-pm",
@@ -883,7 +1083,12 @@
       "ar": "وحدة تحكم مزدوجة للستائر مع قياس الطاقة."
     },
     "category": "shutters",
-    "image": "/assets/products/shelly-pro-dual-cover-shutter-pm.png"
+    "image": {
+      "src": "/assets/products/shelly-pro-dual-cover-shutter-pm-469.webp",
+      "srcset": "/assets/products/shelly-pro-dual-cover-shutter-pm-400.webp 400w, /assets/products/shelly-pro-dual-cover-shutter-pm-469.webp 469w",
+      "width": 469,
+      "height": 710
+    }
   },
   {
     "id": "shelly-wall-display",
@@ -905,7 +1110,12 @@
       "ar": "شاشة لمس ذكية 4 بوصة مع مرحل ومستشعرات مدمجة."
     },
     "category": "controls",
-    "image": "/assets/products/shelly-wall-display.png"
+    "image": {
+      "src": "/assets/products/shelly-wall-display-443.webp",
+      "srcset": "/assets/products/shelly-wall-display-400.webp 400w, /assets/products/shelly-wall-display-443.webp 443w",
+      "width": 443,
+      "height": 352
+    }
   },
   {
     "id": "sonoff-mini-zb2gs-l",
@@ -926,7 +1136,12 @@
       "ar": "مفتاح ذكي بقناتين بدون سلك محايد للتركيبات القديمة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/sonoff-mini-zb2gs-l.png"
+    "image": {
+      "src": "/assets/products/sonoff-mini-zb2gs-l-800.webp",
+      "srcset": "/assets/products/sonoff-mini-zb2gs-l-400.webp 400w, /assets/products/sonoff-mini-zb2gs-l-800.webp 800w, /assets/products/sonoff-mini-zb2gs-l-1130.webp 1130w",
+      "width": 1130,
+      "height": 1005
+    }
   },
   {
     "id": "sonoff-mini-zb2gs",
@@ -947,7 +1162,12 @@
       "ar": "مفتاح ذكي مدمج بقناتين للتحكم بحملين."
     },
     "category": "smart-relays",
-    "image": "/assets/products/sonoff-mini-zb2gs.png"
+    "image": {
+      "src": "/assets/products/sonoff-mini-zb2gs-800.webp",
+      "srcset": "/assets/products/sonoff-mini-zb2gs-400.webp 400w, /assets/products/sonoff-mini-zb2gs-800.webp 800w, /assets/products/sonoff-mini-zb2gs-1140.webp 1140w",
+      "width": 1140,
+      "height": 1015
+    }
   },
   {
     "id": "sonoff-mini-zbdim",
@@ -968,7 +1188,12 @@
       "ar": "مخفت إضاءة ذكي مدمج خلف الحائط لإضاءة هادئة."
     },
     "category": "dimming",
-    "image": "/assets/products/sonoff-mini-zbdim.png"
+    "image": {
+      "src": "/assets/products/sonoff-mini-zbdim-800.webp",
+      "srcset": "/assets/products/sonoff-mini-zbdim-400.webp 400w, /assets/products/sonoff-mini-zbdim-800.webp 800w, /assets/products/sonoff-mini-zbdim-1134.webp 1134w",
+      "width": 1134,
+      "height": 1011
+    }
   },
   {
     "id": "sonoff-mini-zbrbs",
@@ -989,7 +1214,12 @@
       "ar": "وحدة تحكم ذكية مدمجة بالستائر، تُركَّب خلف الحائط."
     },
     "category": "shutters",
-    "image": "/assets/products/sonoff-mini-zbrbs.png"
+    "image": {
+      "src": "/assets/products/sonoff-mini-zbrbs-800.webp",
+      "srcset": "/assets/products/sonoff-mini-zbrbs-400.webp 400w, /assets/products/sonoff-mini-zbrbs-800.webp 800w, /assets/products/sonoff-mini-zbrbs-1139.webp 1139w",
+      "width": 1139,
+      "height": 966
+    }
   },
   {
     "id": "sonoff-zbmini-extreme-l2",
@@ -1010,7 +1240,12 @@
       "ar": "مفتاح ذكي بدون سلك محايد للتركيبات القديمة."
     },
     "category": "smart-relays",
-    "image": "/assets/products/sonoff-zbmini-extreme-l2.png"
+    "image": {
+      "src": "/assets/products/sonoff-zbmini-extreme-l2-800.webp",
+      "srcset": "/assets/products/sonoff-zbmini-extreme-l2-400.webp 400w, /assets/products/sonoff-zbmini-extreme-l2-800.webp 800w, /assets/products/sonoff-zbmini-extreme-l2-1200.webp 1200w",
+      "width": 1200,
+      "height": 988
+    }
   },
   {
     "id": "sonoff-zbmini-extreme",
@@ -1031,7 +1266,12 @@
       "ar": "مفتاح ذكي Zigbee 3.0 فائق الصغر."
     },
     "category": "smart-relays",
-    "image": "/assets/products/sonoff-zbmini-extreme.png"
+    "image": {
+      "src": "/assets/products/sonoff-zbmini-extreme-800.webp",
+      "srcset": "/assets/products/sonoff-zbmini-extreme-400.webp 400w, /assets/products/sonoff-zbmini-extreme-800.webp 800w, /assets/products/sonoff-zbmini-extreme-1130.webp 1130w",
+      "width": 1130,
+      "height": 956
+    }
   },
   {
     "id": "zennio-bin-t-2x",
@@ -1052,7 +1292,12 @@
       "ar": "واجهة 2 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
     "category": "system",
-    "image": "/assets/products/zennio-bin-t-2x.png"
+    "image": {
+      "src": "/assets/products/zennio-bin-t-2x-333.webp",
+      "srcset": "/assets/products/zennio-bin-t-2x-333.webp 333w",
+      "width": 333,
+      "height": 281
+    }
   },
   {
     "id": "zennio-bin-t-4x",
@@ -1073,7 +1318,12 @@
       "ar": "واجهة 4 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
     "category": "system",
-    "image": "/assets/products/zennio-bin-t-4x.png"
+    "image": {
+      "src": "/assets/products/zennio-bin-t-4x-333.webp",
+      "srcset": "/assets/products/zennio-bin-t-4x-333.webp 333w",
+      "width": 333,
+      "height": 281
+    }
   },
   {
     "id": "zennio-bin-t-6x",
@@ -1094,7 +1344,12 @@
       "ar": "واجهة 6 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
     "category": "system",
-    "image": "/assets/products/zennio-bin-t-6x.png"
+    "image": {
+      "src": "/assets/products/zennio-bin-t-6x-333.webp",
+      "srcset": "/assets/products/zennio-bin-t-6x-333.webp 333w",
+      "width": 333,
+      "height": 281
+    }
   },
   {
     "id": "zennio-bin-t-8x",
@@ -1115,7 +1370,12 @@
       "ar": "واجهة 8 قنوات دخل ثنائي/خرج LED مع حساس حرارة."
     },
     "category": "system",
-    "image": "/assets/products/zennio-bin-t-8x.png"
+    "image": {
+      "src": "/assets/products/zennio-bin-t-8x-333.webp",
+      "srcset": "/assets/products/zennio-bin-t-8x-333.webp 333w",
+      "width": 333,
+      "height": 281
+    }
   },
   {
     "id": "zennio-diminbox-dx2",
@@ -1136,7 +1396,12 @@
       "ar": "خافت ضوء KNX عالمي 2 قنوات، 310 واط/قناة، مع مداخل تناظرية-رقمية."
     },
     "category": "dimming",
-    "image": "/assets/products/zennio-diminbox-dx2.png"
+    "image": {
+      "src": "/assets/products/zennio-diminbox-dx2-313.webp",
+      "srcset": "/assets/products/zennio-diminbox-dx2-313.webp 313w",
+      "width": 313,
+      "height": 307
+    }
   },
   {
     "id": "zennio-diminbox-dx4",
@@ -1157,7 +1422,12 @@
       "ar": "خافت ضوء KNX عالمي 4 قنوات، 300 واط/قناة، حتى 1200 واط مجمّعاً."
     },
     "category": "dimming",
-    "image": "/assets/products/zennio-diminbox-dx4.png"
+    "image": {
+      "src": "/assets/products/zennio-diminbox-dx4-371.webp",
+      "srcset": "/assets/products/zennio-diminbox-dx4-371.webp 371w",
+      "width": 371,
+      "height": 241
+    }
   },
   {
     "id": "zennio-flat-70",
@@ -1178,7 +1448,12 @@
       "ar": "مفتاح لمسي زجاجي KNX سعوي فاخر لإطارات 70 مم."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-flat-70.png"
+    "image": {
+      "src": "/assets/products/zennio-flat-70-275.webp",
+      "srcset": "/assets/products/zennio-flat-70-275.webp 275w",
+      "width": 275,
+      "height": 300
+    }
   },
   {
     "id": "zennio-inbox-20-v3",
@@ -1199,7 +1474,12 @@
       "ar": "مشغل مدمج بمخرجين لعلب الحائط."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-inbox-20-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-inbox-20-v3-287.webp",
+      "srcset": "/assets/products/zennio-inbox-20-v3-287.webp 287w",
+      "width": 287,
+      "height": 253
+    }
   },
   {
     "id": "zennio-inbox-24-v3",
@@ -1220,7 +1500,12 @@
       "ar": "مشغل مدمج بمخرجين و4 مداخل مع ثرموستات."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-inbox-24-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-inbox-24-v3-287.webp",
+      "srcset": "/assets/products/zennio-inbox-24-v3-287.webp 287w",
+      "width": 287,
+      "height": 253
+    }
   },
   {
     "id": "zennio-kupsupply-160ma",
@@ -1241,7 +1526,12 @@
       "ar": "مصدر طاقة KNX عالمي مدمج 160 mA مع خرج مساعد."
     },
     "category": "system",
-    "image": "/assets/products/zennio-kupsupply-160ma.png"
+    "image": {
+      "src": "/assets/products/zennio-kupsupply-160ma-184.webp",
+      "srcset": "/assets/products/zennio-kupsupply-160ma-184.webp 184w",
+      "width": 184,
+      "height": 291
+    }
   },
   {
     "id": "zennio-kupsupply-320ma",
@@ -1262,7 +1552,12 @@
       "ar": "مصدر طاقة KNX عالمي 320 mA مع خرج مساعد 29 فولت."
     },
     "category": "system",
-    "image": "/assets/products/zennio-kupsupply-320ma.png"
+    "image": {
+      "src": "/assets/products/zennio-kupsupply-320ma-320.webp",
+      "srcset": "/assets/products/zennio-kupsupply-320ma-320.webp 320w",
+      "width": 320,
+      "height": 313
+    }
   },
   {
     "id": "zennio-kupsupply-640ma",
@@ -1283,7 +1578,12 @@
       "ar": "مصدر طاقة KNX عالمي 640 mA مع خرج مساعد 29 فولت."
     },
     "category": "system",
-    "image": "/assets/products/zennio-kupsupply-640ma.png"
+    "image": {
+      "src": "/assets/products/zennio-kupsupply-640ma-320.webp",
+      "srcset": "/assets/products/zennio-kupsupply-640ma-320.webp 320w",
+      "width": 320,
+      "height": 313
+    }
   },
   {
     "id": "zennio-maxinbox-12",
@@ -1304,7 +1604,12 @@
       "ar": "مشغل متعدد الوظائف بـ 12 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-12.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-12-288.webp",
+      "srcset": "/assets/products/zennio-maxinbox-12-288.webp 288w",
+      "width": 288,
+      "height": 227
+    }
   },
   {
     "id": "zennio-maxinbox-16-v4",
@@ -1325,7 +1630,12 @@
       "ar": "مشغل متعدد الوظائف بـ 16 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-16-v4.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-16-v4-372.webp",
+      "srcset": "/assets/products/zennio-maxinbox-16-v4-372.webp 372w",
+      "width": 372,
+      "height": 241
+    }
   },
   {
     "id": "zennio-maxinbox-20",
@@ -1346,7 +1656,12 @@
       "ar": "مشغل متعدد الوظائف بـ 20 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-20.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-20-373.webp",
+      "srcset": "/assets/products/zennio-maxinbox-20-373.webp 373w",
+      "width": 373,
+      "height": 202
+    }
   },
   {
     "id": "zennio-maxinbox-24-v2",
@@ -1367,7 +1682,12 @@
       "ar": "مشغل متعدد الوظائف بـ 24 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-24-v2.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-24-v2-334.webp",
+      "srcset": "/assets/products/zennio-maxinbox-24-v2-334.webp 334w",
+      "width": 334,
+      "height": 157
+    }
   },
   {
     "id": "zennio-maxinbox-66-v3",
@@ -1388,7 +1708,12 @@
       "ar": "مشغل متعدد الوظائف بـ 6 مخارج و6 مداخل مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-66-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-66-v3-327.webp",
+      "srcset": "/assets/products/zennio-maxinbox-66-v3-327.webp 327w",
+      "width": 327,
+      "height": 319
+    }
   },
   {
     "id": "zennio-maxinbox-8-v4",
@@ -1409,7 +1734,12 @@
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-8-v4.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-8-v4-313.webp",
+      "srcset": "/assets/products/zennio-maxinbox-8-v4-313.webp 313w",
+      "width": 313,
+      "height": 309
+    }
   },
   {
     "id": "zennio-maxinbox-88",
@@ -1430,7 +1760,12 @@
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج و8 مداخل مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-maxinbox-88.png"
+    "image": {
+      "src": "/assets/products/zennio-maxinbox-88-291.webp",
+      "srcset": "/assets/products/zennio-maxinbox-88-291.webp 291w",
+      "width": 291,
+      "height": 306
+    }
   },
   {
     "id": "zennio-minibox-20-v2",
@@ -1451,7 +1786,12 @@
       "ar": "مشغل DIN مدمج بمخرجين مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-minibox-20-v2.png"
+    "image": {
+      "src": "/assets/products/zennio-minibox-20-v2-188.webp",
+      "srcset": "/assets/products/zennio-minibox-20-v2-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-minibox-25-v3",
@@ -1472,7 +1812,12 @@
       "ar": "مشغل DIN مدمج بـ 2 مخارج و5 مداخل مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-minibox-25-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-minibox-25-v3-188.webp",
+      "srcset": "/assets/products/zennio-minibox-25-v3-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-minibox-40-v3",
@@ -1493,7 +1838,12 @@
       "ar": "مشغل DIN مدمج بـ 4 مخارج مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-minibox-40-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-minibox-40-v3-188.webp",
+      "srcset": "/assets/products/zennio-minibox-40-v3-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-minibox-45-v3",
@@ -1514,7 +1864,12 @@
       "ar": "مشغل DIN مدمج بـ 4 مخارج و5 مداخل مع KNX Secure."
     },
     "category": "actuators",
-    "image": "/assets/products/zennio-minibox-45-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-minibox-45-v3-188.webp",
+      "srcset": "/assets/products/zennio-minibox-45-v3-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-narrowdim-x2",
@@ -1535,7 +1890,12 @@
       "ar": "خافت ضوء KNX عالمي 2 قنوات لأحمال RLC وLED وCFL."
     },
     "category": "dimming",
-    "image": "/assets/products/zennio-narrowdim-x2.png"
+    "image": {
+      "src": "/assets/products/zennio-narrowdim-x2-188.webp",
+      "srcset": "/assets/products/zennio-narrowdim-x2-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-narrowdim-x4",
@@ -1556,7 +1916,12 @@
       "ar": "خافت ضوء KNX عالمي 4 قنوات لأحمال RLC وLED وCFL."
     },
     "category": "dimming",
-    "image": "/assets/products/zennio-narrowdim-x4.png"
+    "image": {
+      "src": "/assets/products/zennio-narrowdim-x4-313.webp",
+      "srcset": "/assets/products/zennio-narrowdim-x4-313.webp 313w",
+      "width": 313,
+      "height": 315
+    }
   },
   {
     "id": "zennio-railquad-8",
@@ -1577,7 +1942,12 @@
       "ar": "وحدة مداخل KNX على سكة DIN بـ 8 قنوات تناظرية-رقمية."
     },
     "category": "system",
-    "image": "/assets/products/zennio-railquad-8.png"
+    "image": {
+      "src": "/assets/products/zennio-railquad-8-188.webp",
+      "srcset": "/assets/products/zennio-railquad-8-188.webp 188w",
+      "width": 188,
+      "height": 293
+    }
   },
   {
     "id": "zennio-tecla-55",
@@ -1598,7 +1968,12 @@
       "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 55 مم القياسية."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-tecla-55.png"
+    "image": {
+      "src": "/assets/products/zennio-tecla-55-278.webp",
+      "srcset": "/assets/products/zennio-tecla-55-278.webp 278w",
+      "width": 278,
+      "height": 312
+    }
   },
   {
     "id": "zennio-tecla-70",
@@ -1619,7 +1994,12 @@
       "ar": "مفتاح لمسي KNX سعوي مضيء لإطارات 70 مم القياسية."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-tecla-70.png"
+    "image": {
+      "src": "/assets/products/zennio-tecla-70-275.webp",
+      "srcset": "/assets/products/zennio-tecla-70-275.webp 275w",
+      "width": 275,
+      "height": 300
+    }
   },
   {
     "id": "zennio-tecla-xl",
@@ -1640,7 +2020,12 @@
       "ar": "مفتاح لمسي KNX سعوي مضيء بحجم كبير، 4 إلى 10 أزرار."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-tecla-xl.png"
+    "image": {
+      "src": "/assets/products/zennio-tecla-xl-190.webp",
+      "srcset": "/assets/products/zennio-tecla-xl-190.webp 190w",
+      "width": 190,
+      "height": 306
+    }
   },
   {
     "id": "zennio-tecla",
@@ -1661,7 +2046,12 @@
       "ar": "مفتاح لمسي KNX سعوي مضيء، من 1 إلى 8 أزرار قابلة للتخصيص."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-tecla.png"
+    "image": {
+      "src": "/assets/products/zennio-tecla-255.webp",
+      "srcset": "/assets/products/zennio-tecla-255.webp 255w",
+      "width": 255,
+      "height": 286
+    }
   },
   {
     "id": "zennio-z100-touch-panel",
@@ -1682,7 +2072,12 @@
       "ar": "شاشة لمس ملونة سعوية 10 بوصة مع ترموستات واتصال داخلي."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z100-touch-panel.png"
+    "image": {
+      "src": "/assets/products/zennio-z100-touch-panel-320.webp",
+      "srcset": "/assets/products/zennio-z100-touch-panel-320.webp 320w",
+      "width": 320,
+      "height": 271
+    }
   },
   {
     "id": "zennio-z28",
@@ -1703,7 +2098,12 @@
       "ar": "لوحة تحكم لمسية KNX بحجم 2.8 بوصات لإطارات 70 مم القياسية."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z28.png"
+    "image": {
+      "src": "/assets/products/zennio-z28-274.webp",
+      "srcset": "/assets/products/zennio-z28-274.webp 274w",
+      "width": 274,
+      "height": 300
+    }
   },
   {
     "id": "zennio-z35-v3",
@@ -1724,7 +2124,12 @@
       "ar": "لوحة تحكم لمسية KNX بحجم 3.5 بوصات مع حساس رطوبة وKNX Secure."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z35-v3.png"
+    "image": {
+      "src": "/assets/products/zennio-z35-v3-294.webp",
+      "srcset": "/assets/products/zennio-z35-v3-294.webp 294w",
+      "width": 294,
+      "height": 315
+    }
   },
   {
     "id": "zennio-z40",
@@ -1745,7 +2150,12 @@
       "ar": "لوحة تحكم لمسية KNX بحجم 4.1 بوصات و7 صفحات."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z40.png"
+    "image": {
+      "src": "/assets/products/zennio-z40-274.webp",
+      "srcset": "/assets/products/zennio-z40-274.webp 274w",
+      "width": 274,
+      "height": 271
+    }
   },
   {
     "id": "zennio-z50",
@@ -1766,7 +2176,12 @@
       "ar": "لوحة تحكم لمسية KNX ملونة بحجم 5 بوصات و12 صفحة."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z50.png"
+    "image": {
+      "src": "/assets/products/zennio-z50-143.webp",
+      "srcset": "/assets/products/zennio-z50-143.webp 143w",
+      "width": 143,
+      "height": 248
+    }
   },
   {
     "id": "zennio-z70-v2",
@@ -1787,6 +2202,11 @@
       "ar": "لوحة تحكم لمسية KNX ملونة بحجم 7 بوصات و56 مشهداً."
     },
     "category": "controls",
-    "image": "/assets/products/zennio-z70-v2.png"
+    "image": {
+      "src": "/assets/products/zennio-z70-v2-329.webp",
+      "srcset": "/assets/products/zennio-z70-v2-329.webp 329w",
+      "width": 329,
+      "height": 319
+    }
   }
 ]

@@ -2,13 +2,15 @@
  * site-core.js — shared runtime helpers, exposed as window.SE.
  *
  * Loaded (defer) before the page scripts that need it: products.js,
- * product-detail.js, brand-detail.js, project-detail.js.
+ * product-detail.js, brand-detail.js, project-detail.js, homepage-products.js.
  *
  *  - SE.taxonomy   catalog classification read from /data/taxonomy.json:
  *                  categories -> product types, installation methods and
  *                  project categories, with their en/fr/ar labels. This is
  *                  the only place the browser gets those labels from.
  *  - SE.protoMarkup  the one protocol icon dictionary (Wi-Fi, KNX, Zigbee …).
+ *  - SE.img        <img> markup for product images made by build_images.py
+ *                  (srcset/sizes/width/height), plus .set / .largest / .sizes.
  *
  * To add a product type / category / installation: edit data/taxonomy.json.
  * To add a protocol: add it to data/taxonomy.json AND an icon branch in
@@ -144,10 +146,100 @@
     return '<span class="prod-proto">' + icon + escapeHtml(tech) + '</span>';
   }
 
+  // ---------------- Product images ----------------
+  //
+  // scripts/build_images.py turns every original in media/products/ into
+  // WebP variants and describes each image as
+  //   { src, srcset: "url 400w, url 800w, …", width, height }
+  // (width/height = largest variant): data/products_index.json "image" for
+  // the primary, data/product_images.json for galleries. img() turns one
+  // into an <img> tag; a plain URL string (logo fallback) works too.
+  //
+  // `sizes` tells the browser which variant to download. The boxes below are
+  // upper bounds, in CSS px, of the space each layout gives the image
+  // (object-fit: contain) per breakpoint; the image's own aspect ratio then
+  // narrows it, so a tall product in a wide card does not fetch a wide file.
+  // Layout itself comes from the CSS + width/height, not from these numbers.
+  var FALLBACK_IMG = '/assets/S‑ELECTRICITY-LOGO.svg';
+  var IMG_BOXES = {
+    // .prod-card-img — 75% of a card ≤400px wide x 75% of the 220px image
+    // area; phones: 70% of a card ≤310px x 70% of 150px (products.css)
+    card: [['(max-width: 640px)', 220, 105], [null, 300, 165]],
+    // .hp-product-card-img img — 80% of the card x 80% of 200px / 150px
+    // (homepage-products.css)
+    home: [['(max-width: 640px)', 280, 120], [null, 400, 160]],
+    // .pd-gallery on the product page, secondary images included (they fill it)
+    main: [['(max-width: 900px)', 900, 680], [null, 600, 450]],
+    thumb: [[null, 72, 72]],
+    cart: [[null, 64, 64]]
+  };
+
+  function isDescriptor(desc) {
+    return !!(desc && typeof desc === 'object' && desc.srcset && desc.width && desc.height);
+  }
+
+  function imgSizes(desc, box) {
+    var ratio = desc.width / desc.height;
+    return (IMG_BOXES[box] || IMG_BOXES.card).map(function (b) {
+      var w = Math.ceil(Math.min(b[1], b[2] * ratio, desc.width));
+      return (b[0] ? b[0] + ' ' : '') + w + 'px';
+    }).join(', ');
+  }
+
+  // opts: { box: key of IMG_BOXES, alt, cls, id,
+  //         priority: true for the one image that matters first on the page
+  //         (loads eagerly with high priority; everything else is lazy) }
+  function img(desc, opts) {
+    opts = opts || {};
+    var attrs;
+    if (isDescriptor(desc)) {
+      attrs = [
+        'src="' + escapeHtml(desc.src) + '"',
+        'srcset="' + escapeHtml(desc.srcset) + '"',
+        'sizes="' + imgSizes(desc, opts.box) + '"',
+        'width="' + desc.width + '"',
+        'height="' + desc.height + '"'
+      ];
+    } else {
+      attrs = ['src="' + escapeHtml(typeof desc === 'string' && desc ? desc : FALLBACK_IMG) + '"'];
+    }
+    attrs.push('alt="' + escapeHtml(opts.alt || '') + '"');
+    if (opts.cls) attrs.push('class="' + escapeHtml(opts.cls) + '"');
+    if (opts.id) attrs.push('id="' + escapeHtml(opts.id) + '"');
+    attrs.push(opts.priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"');
+    attrs.push('decoding="async"');
+    return '<img ' + attrs.join(' ') + ' />';
+  }
+
+  // Point an existing <img> at another image (gallery thumbnail clicks).
+  function setImg(el, desc, box) {
+    if (isDescriptor(desc)) {
+      el.setAttribute('sizes', imgSizes(desc, box));
+      el.setAttribute('srcset', desc.srcset);
+      el.setAttribute('width', desc.width);
+      el.setAttribute('height', desc.height);
+      el.setAttribute('src', desc.src);
+    } else {
+      ['srcset', 'sizes', 'width', 'height'].forEach(function (a) { el.removeAttribute(a); });
+      el.setAttribute('src', typeof desc === 'string' && desc ? desc : FALLBACK_IMG);
+    }
+  }
+
+  // Widest variant URL (structured data wants the biggest image).
+  function imgLargest(desc) {
+    if (!isDescriptor(desc)) return typeof desc === 'string' ? desc : '';
+    return desc.srcset.split(', ').pop().split(' ')[0];
+  }
+
+  img.set = setImg;
+  img.largest = imgLargest;
+  img.sizes = imgSizes;
+
   window.SE = {
     lang: lang,
     escapeHtml: escapeHtml,
     protoMarkup: protoMarkup,
+    img: img,
     taxonomy: {
       load: load,
       label: label,

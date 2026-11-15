@@ -62,7 +62,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-railquad-8.png"],
+  "images": ["zennio-railquad-8.png"],
 
   "files": [
     {

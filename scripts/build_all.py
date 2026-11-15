@@ -8,6 +8,9 @@ warm and the `load_locale` cache hits across modules.
 
 Order:
   1. generate_localized — emit /fr/ and /ar/ localized copies of root HTML.
+  1b. build_images      — turn the originals in media/ into the served WebP
+                          variants and 1200x630 share cards (incremental; also
+                          re-checked by build_products, instant when unchanged).
   2. build_projects     — read data/projects/*.json, enrich media, write
                           per-project HTML, inject ItemList into previous-work.
   3. build_products     — read data/products/*.json, write per-product HTML,
@@ -31,6 +34,7 @@ import sys
 import time
 
 import generate_localized
+import build_images
 import build_projects
 import build_products
 import build_brands
@@ -48,6 +52,7 @@ def run_stage(name: str, fn) -> None:
 
 def main() -> int:
     run_stage("generate_localized", generate_localized.main)
+    run_stage("build_images", build_images.main)
     run_stage("build_projects", build_projects.main)
     run_stage("build_products", build_products.main)
     run_stage("build_brands", build_brands.main)

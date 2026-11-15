@@ -63,12 +63,12 @@
     }
   },
   "images": [
-    "/assets/products/zennio-z100-touch-panel.png",
-    "/assets/products/zennio-z100-2.png",
-    "/assets/products/zennio-z100-3.png",
-    "/assets/products/zennio-z100-4.png",
-    "/assets/products/zennio-z100-5.png",
-    "/assets/products/zennio-z100-6.png"
+    "zennio-z100-touch-panel.png",
+    "zennio-z100-2.png",
+    "zennio-z100-3.png",
+    "zennio-z100-4.png",
+    "zennio-z100-5.png",
+    "zennio-z100-6.png"
   ],
   "files": [
     {

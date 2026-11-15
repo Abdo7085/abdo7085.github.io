@@ -94,13 +94,14 @@
   function renderCard(product) {
     var title = t(product.title);
     var desc = t(product.short_description);
-    var image = product.image || ((product.images && product.images.length > 0) ? product.images[0] : '');
     var prefix = getLangPrefix();
     var href = prefix + '/products/' + product.id + '.html';
 
     return '<a href="' + href + '" class="hp-product-card">'
       + '<div class="hp-product-card-img">'
-      + '<img src="' + image + '" alt="' + title + '" loading="lazy" />'
+      + (window.SE
+          ? SE.img(product.image, { box: 'home', alt: title })
+          : '<img src="' + ((product.image && product.image.src) || product.image || '') + '" alt="" loading="lazy" />')
       + '</div>'
       + '<div class="hp-product-card-body">'
       + '<span class="hp-product-card-brand">' + (product.brand || '') + '</span>'

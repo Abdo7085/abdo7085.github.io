@@ -68,7 +68,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-diminbox-dx2.png"],
+  "images": ["zennio-diminbox-dx2.png"],
 
   "files": [
     {

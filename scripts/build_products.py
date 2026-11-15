@@ -30,6 +30,7 @@ import re
 from pathlib import Path
 
 import _lib
+import build_images
 from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PRODUCTS_DIR = ROOT / "data" / "products"
@@ -39,7 +40,8 @@ TEMPLATE_PATH = ROOT / "product.html"
 
 # ---------------- Index build ----------------
 
-def build_index():
+def build_index(manifest):
+    """manifest: {product id: [image descriptor, ...]} from build_images.build()."""
     PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)
     # Sorted so the index is identical on every OS (glob order is not).
     product_files = sorted(glob.glob(str(PRODUCTS_DIR / "*.json")))
@@ -87,9 +89,11 @@ def build_index():
             # Derived, never stored in the product file: type -> category.
             "category": taxonomy.category_of(data.get("product_type", "")),
         }
-        images = data.get("images", [])
-        if images:
-            index_entry["image"] = images[0]
+        # Primary image as a descriptor {src, srcset, width, height}; the
+        # gallery stays in data/product_images.json so this index stays lean.
+        descs = manifest.get(data.get("id")) or []
+        if descs:
+            index_entry["image"] = descs[0]
         products_index.append(index_entry)
         print(f"  Added {data.get('id')} to index.")
 
@@ -129,13 +133,13 @@ def get_rating(product):
 
 # ---------------- JSON-LD builders ----------------
 
-def build_json_ld(product, lang):
+def build_json_ld(product, lang, manifest):
     """Build JSON-LD structured data for a single product page."""
     title = t(product.get("title"), lang)
     desc = t(product.get("description"), lang) or t(product.get("short_description"), lang)
     pid = product.get("id", "")
-    images = product.get("images", [])
-    image_url = HOST + images[0] if images else ""
+    descs = manifest.get(pid) or []
+    image_url = HOST + build_images.largest_url(descs[0]) if descs else ""
     rating_value, rating_count = get_rating(product)
 
     # Issue 9 fix: use correct language prefix in URL
@@ -169,7 +173,7 @@ def build_json_ld(product, lang):
 
 # ---------------- Per-product HTML generation ----------------
 
-def generate_product_html(template_html, product, lang):
+def generate_product_html(template_html, product, lang, manifest):
     """
     Generate a static HTML page for a product in a specific language.
     Injects:
@@ -187,9 +191,10 @@ def generate_product_html(template_html, product, lang):
     title = t(product.get("title"), lang)
     brand = product.get("brand", "")
     desc_text = make_meta_description(product, lang)
-    images = product.get("images", [])
-    image_path = images[0] if images else ""
-    image_url = HOST + image_path if image_path else f"{HOST}/assets/S\u2011ELECTRICITY-LOGO.svg"
+    # Share card: 1200x630 JPG made by build_images.py (og:image:width/height
+    # in product.html match it).
+    og_path = build_images.og_url("products", pid)
+    image_url = HOST + og_path if og_path else f"{HOST}/assets/android-chrome-512x512.png"
 
     suffix = {"en": "S\u2011ELECTRICITY Morocco", "fr": "S\u2011ELECTRICITY Maroc", "ar": "S\u2011ELECTRICITY \u0627\u0644\u0645\u063a\u0631\u0628"}[lang]
     if brand and brand.lower() not in title.lower():
@@ -307,7 +312,7 @@ def generate_product_html(template_html, product, lang):
     )
 
     # Product JSON-LD with aggregateRating (catalog site — uses ratings, not offers)
-    json_ld = build_json_ld(product, lang)
+    json_ld = build_json_ld(product, lang, manifest)
     ld_script = f'<script type="application/ld+json" id="product-jsonld">{json_ld}</script>'
 
     # BreadcrumbList JSON-LD
@@ -398,7 +403,7 @@ def inject_products_page_jsonld(all_products):
 
 # ---------------- Entry point ----------------
 
-def generate_static_pages():
+def generate_static_pages(manifest):
     """Render per-product HTML, inject ItemList, write sitemap."""
     if not TEMPLATE_PATH.exists():
         print(f"ERROR: Template {TEMPLATE_PATH} not found!")
@@ -428,7 +433,7 @@ def generate_static_pages():
             out_dir = ROOT / "products" if lang == "en" else ROOT / lang / "products"
             out_dir.mkdir(parents=True, exist_ok=True)
             out_path = out_dir / f"{pid}.html"
-            page_html = generate_product_html(template_html, product, lang)
+            page_html = generate_product_html(template_html, product, lang, manifest)
             out_path.write_text(page_html, encoding="utf-8")
             print(f"  OK {out_path.relative_to(ROOT)}")
 
@@ -442,14 +447,17 @@ def generate_static_pages():
 
 def main():
     print("=== Building Product Catalog ===\n")
-    count = build_index()
+    # Images first: it validates every product's "images" list and returns
+    # the descriptors the index and the pages need (fast when nothing changed).
+    manifest = build_images.build()
+    count = build_index(manifest)
 
     if count == 0:
         print("\nNo products found. Nothing to generate.")
         return
 
     print("\n[2/3] Generating static SEO pages...")
-    ok = generate_static_pages()
+    ok = generate_static_pages(manifest)
 
     if ok:
         print("\n=== All done! Index + SEO pages + Sitemap ready. ===")

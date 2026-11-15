@@ -309,8 +309,6 @@
   }
 
   function renderCard(product) {
-    const defaultImage = '/assets/S‑ELECTRICITY-LOGO.svg';
-    const image = product.image || defaultImage;
     const title = t(product.title);
     const desc = t(product.short_description);
     const techs = Array.isArray(product.technology) ? product.technology : [];
@@ -329,7 +327,7 @@
     return `
       <a href="${prefix}/products/${product.id}.html" class="prod-card prod-fade-in product-link">
         <div class="prod-card-img-wrapper">
-          <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
+          ${SE.img(product.image, { box: 'card', alt: title, cls: 'prod-card-img' })}
         </div>
         ${protocolStrip}
         <div class="prod-card-content">

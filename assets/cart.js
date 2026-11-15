@@ -90,7 +90,9 @@
     productsLoadPromise = (async () => {
       for (const url of candidates) {
         try {
-          const res = await fetch(url, { cache: 'force-cache' });
+          // Normal HTTP caching (GitHub Pages: 10 min). force-cache would keep
+          // serving an old catalog — and its old image paths — indefinitely.
+          const res = await fetch(url);
           if (res && res.ok) {
             const arr = await res.json();
             const map = {};
@@ -332,7 +334,17 @@
   function renderItemRow(item, product) {
     const title = product ? pickLangText(product.title, lang) : item.id;
     const brand = product && product.brand ? product.brand : '';
-    const image = product && product.image ? product.image : '/assets/S‑ELECTRICITY-LOGO.svg';
+    // product.image is a descriptor {src, srcset, width, height} made by
+    // scripts/build_images.py; 64px thumbnail, so the smallest variant wins.
+    const image = product && product.image;
+    const imgAttrs = { alt: title, loading: 'lazy' };
+    if (image && typeof image === 'object' && image.srcset) {
+      imgAttrs.src = image.src;
+      imgAttrs.srcset = image.srcset;
+      imgAttrs.sizes = '64px';
+    } else {
+      imgAttrs.src = image || '/assets/S‑ELECTRICITY-LOGO.svg';
+    }
     const prefix = langPrefix(lang);
     const href = prefix + '/products/' + item.id + '.html';
 
@@ -342,7 +354,7 @@
       class: 'cart-item-thumb',
       href: href,
       'aria-label': title
-    }, el('img', { src: image, alt: title, loading: 'lazy' })));
+    }, el('img', imgAttrs)));
 
     const info = el('div', { class: 'cart-item-info' });
     if (brand) info.appendChild(el('div', { class: 'cart-item-brand' }, brand));
@@ -559,7 +571,7 @@
   state = loadState();
 
   // Eagerly load products index so the badge filter (drop-stale) is accurate
-  // before the user clicks. Cheap fetch, force-cache.
+  // before the user clicks. Cheap fetch, shared with the page via the HTTP cache.
   loadProductsIndex().then(function (map) {
     if (map && Object.keys(map).length) {
       const before = state.items.length;

@@ -32,6 +32,7 @@ except ImportError:
     raise
 
 import _lib
+import build_images
 from _lib import HOST, LANGS, OG_LOCALES, ROOT, t, make_meta_description, write_sitemap
 
 PROJECTS_DIR = ROOT / "data" / "projects"
@@ -232,8 +233,10 @@ def generate_project_html(template_html, project, lang, products_index):
     pid = project.get("id", "")
     title = t(project.get("title"), lang)
     desc_text = make_meta_description(project, lang)
-    cover = project.get("cover") or ""
-    cover_url = HOST + cover if cover else f"{HOST}/assets/S\u2011ELECTRICITY-LOGO.svg"
+    # Share card: the 1200x630 JPG build_images.py cuts from the cover
+    # (og:image:width/height in project.html match it).
+    og_path = build_images.og_url("projects", pid)
+    cover_url = HOST + og_path if og_path else f"{HOST}/assets/android-chrome-512x512.png"
 
     suffix = {
         "en": "S\u2011ELECTRICITY Morocco",

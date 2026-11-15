@@ -59,7 +59,7 @@
     }
   },
 
-  "images": ["/assets/products/eae-knx-ps320-power-supply.png"],
+  "images": ["eae-knx-ps320-power-supply.png"],
 
   "files": [
     {

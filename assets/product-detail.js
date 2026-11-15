@@ -60,6 +60,22 @@
     }
   }
 
+  // {product id: [image descriptor, ...]} written by scripts/build_images.py.
+  async function fetchGalleries() {
+    try {
+      const response = await fetch('/data/product_images.json');
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return await response.json();
+    } catch (e) {
+      console.error('Failed to load product images:', e);
+      return {};
+    }
+  }
+
+  // The product's images, primary first. Falls back to the catalog entry's
+  // primary image if the gallery file could not be read.
+  let gallery = [];
+
   async function fetchAllProducts() {
     try {
       const response = await fetch('/data/products_index.json');
@@ -72,8 +88,7 @@
   function updateMeta(product) {
     const title = t(product.title);
     const descText = t(product.short_description) || t(product.description);
-    const image = (product.images && product.images.length > 0) ? product.images[0] : '';
-    const imageUrl = image ? window.location.origin + image : '';
+    const image = gallery.length ? SE.img.largest(gallery[0]) : '';
     const id = product.id;
 
     var _suffix = { en: 'S‑ELECTRICITY Morocco', fr: 'S‑ELECTRICITY Maroc', ar: 'S‑ELECTRICITY المغرب' };
@@ -94,11 +109,13 @@
     if (canonical) canonical.href = canonicalUrl;
     if (ogTitle) ogTitle.content = `${title} | S‑ELECTRICITY`;
     if (ogDesc) ogDesc.content = descText;
-    if (ogImage) ogImage.content = imageUrl ? baseUrl + image : '';
+    // Generated pages already point og:image at the share card (assets/og/);
+    // only the bare template (product.html?id=…) needs a value here.
+    if (ogImage && !ogImage.content && image) ogImage.content = baseUrl + image;
     if (desc) desc.content = descText;
     if (twitterTitle) twitterTitle.content = `${title} | S‑ELECTRICITY`;
     if (twitterDesc) twitterDesc.content = descText;
-    if (twitterImage) twitterImage.content = imageUrl ? baseUrl + image : '';
+    if (twitterImage && !twitterImage.content && image) twitterImage.content = baseUrl + image;
 
     // Update hreflang for this specific product
     var hreflangs = document.querySelectorAll('link[hreflang]');
@@ -129,7 +146,7 @@
 
     var title = t(product.title);
     var descText = t(product.description) || t(product.short_description);
-    var image = (product.images && product.images.length > 0) ? product.images[0] : '';
+    var image = gallery.length ? SE.img.largest(gallery[0]) : '';
 
     var rating = (product.rating && product.rating.value && product.rating.count)
       ? product.rating
@@ -163,17 +180,18 @@
     document.head.appendChild(script);
   }
 
+  // images: descriptors from data/product_images.json, primary first.
+  // The main image is the page's largest element, so it loads first (eager,
+  // high priority); thumbnails and everything else stay lazy.
   function renderGallery(images, title) {
-    const defaultImage = '/assets/S‑ELECTRICITY-LOGO.svg';
-    const mainImg = images && images.length > 0 ? images[0] : defaultImage;
-    const hasMultiple = images && images.length > 1;
+    const hasMultiple = images.length > 1;
 
     let thumbsHtml = '';
     if (hasMultiple) {
       thumbsHtml = `<div class="pd-thumbs">`;
       images.forEach((img, i) => {
         thumbsHtml += `<button class="pd-thumb ${i === 0 ? 'pd-thumb-active' : ''}" data-idx="${i}">
-          <img src="${img}" alt="${title}" loading="lazy" />
+          ${SE.img(img, { box: 'thumb', alt: title })}
         </button>`;
       });
       thumbsHtml += `</div>`;
@@ -183,7 +201,7 @@
       <div class="pd-gallery-wrapper">
         ${thumbsHtml}
         <div class="pd-gallery">
-          <img src="${mainImg}" alt="${title}" class="pd-main-img prod-fade-in" id="pd-main-image" loading="lazy" />
+          ${SE.img(images[0], { box: 'main', alt: title, cls: 'pd-main-img prod-fade-in', id: 'pd-main-image', priority: true })}
         </div>
       </div>
     `;
@@ -261,7 +279,6 @@
      related.forEach(p => {
         const title = t(p.title);
         const desc = t(p.short_description);
-        const image = p.image || '/assets/S‑ELECTRICITY-LOGO.svg';
         const techs = Array.isArray(p.technology) ? p.technology : [];
         const protocolStrip = techs.length
           ? '<div class="prod-card-protocols">' + techs.map(SE.protoMarkup).join('') + '</div>'
@@ -273,7 +290,7 @@
         html += `
           <a href="${prefix}/products/${p.id}.html" class="prod-card link-transition">
             <div class="prod-card-img-wrapper" style="height:180px;">
-              <img src="${image}" alt="${title}" class="prod-card-img" loading="lazy" />
+              ${SE.img(p.image, { box: 'card', alt: title, cls: 'prod-card-img' })}
             </div>
             ${protocolStrip}
             <div class="prod-card-content" style="padding:1rem;">
@@ -349,7 +366,7 @@
 
         <div class="pd-layout">
           <!-- Left side: Gallery -->
-          ${renderGallery(product.images, title)}
+          ${renderGallery(gallery, title)}
 
           <!-- Right side: Info -->
           <div class="pd-info prod-fade-in">
@@ -430,11 +447,10 @@
       thumb.addEventListener('click', function() {
         const idx = parseInt(this.getAttribute('data-idx'));
         const mainImg = document.getElementById('pd-main-image');
-        const img = this.querySelector('img');
-        if (mainImg && img) {
+        if (mainImg && gallery[idx]) {
           mainImg.style.opacity = '0';
           setTimeout(() => {
-            mainImg.src = img.src;
+            SE.img.set(mainImg, gallery[idx], 'main');
             mainImg.classList.toggle('pd-main-img-fill', idx !== 0);
             const gallery = mainImg.closest('.pd-gallery');
             if (gallery) gallery.style.padding = idx !== 0 ? '0.3rem' : '';
@@ -491,11 +507,17 @@
 
     // Fetch product
     const id = getQueryParam('id');
-    const [product, allProductsList] = await Promise.all([
+    const [product, allProductsList, galleries] = await Promise.all([
         fetchProduct(id),
         fetchAllProducts(),
+        fetchGalleries(),
         SE.taxonomy.load()
     ]);
+    if (product) {
+      const entry = allProductsList.find(p => p.id === product.id);
+      gallery = galleries[product.id] || (entry && entry.image ? [entry.image] : []);
+      if (!gallery.length) gallery = [''];   // SE.img draws the logo
+    }
 
     function renderPage() {
       let contentHtml = '';

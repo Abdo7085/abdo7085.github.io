@@ -42,12 +42,12 @@
     }
   },
   "images": [
-    "/assets/products/eae-knx-rosa-switches.png",
-    "/assets/products/eae-knx-rosa-switches-2.jpg",
-    "/assets/products/eae-knx-rosa-switches-3.jpg",
-    "/assets/products/eae-knx-rosa-switches-4.jpg",
-    "/assets/products/eae-knx-rosa-switches-5.jpg",
-    "/assets/products/eae-knx-rosa-switches-6.jpg"
+    "eae-knx-rosa-switches.png",
+    "eae-knx-rosa-switches-2.jpg",
+    "eae-knx-rosa-switches-3.jpg",
+    "eae-knx-rosa-switches-4.jpg",
+    "eae-knx-rosa-switches-5.jpg",
+    "eae-knx-rosa-switches-6.jpg"
   ],
   "files": [
     {

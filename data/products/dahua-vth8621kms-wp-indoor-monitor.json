@@ -88,11 +88,11 @@
     }
   },
   "images": [
-    "/assets/products/dahua-vth8621kms-wp-indoor-monitor.png",
-    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-2.png",
-    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-3.png",
-    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-4.png",
-    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-5.png"
+    "dahua-vth8621kms-wp-indoor-monitor.png",
+    "dahua-vth8621kms-wp-indoor-monitor-2.png",
+    "dahua-vth8621kms-wp-indoor-monitor-3.png",
+    "dahua-vth8621kms-wp-indoor-monitor-4.png",
+    "dahua-vth8621kms-wp-indoor-monitor-5.png"
   ],
   "files": [
     {

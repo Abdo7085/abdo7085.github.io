@@ -80,7 +80,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-maxinbox-8-v4.png"],
+  "images": ["zennio-maxinbox-8-v4.png"],
 
   "files": [
     {

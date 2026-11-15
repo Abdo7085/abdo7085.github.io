@@ -60,12 +60,12 @@
     }
   },
   "images": [
-    "/assets/products/eae-knx-oria-push-switches.png",
-    "/assets/products/eae-knx-oria-push-switches-2.png",
-    "/assets/products/eae-knx-oria-push-switches-3.jpg",
-    "/assets/products/eae-knx-oria-push-switches-4.jpg",
-    "/assets/products/eae-knx-oria-push-switches-5.jpg",
-    "/assets/products/eae-knx-oria-push-switches-6.jpg"
+    "eae-knx-oria-push-switches.png",
+    "eae-knx-oria-push-switches-2.png",
+    "eae-knx-oria-push-switches-3.jpg",
+    "eae-knx-oria-push-switches-4.jpg",
+    "eae-knx-oria-push-switches-5.jpg",
+    "eae-knx-oria-push-switches-6.jpg"
   ],
   "files": [
     {

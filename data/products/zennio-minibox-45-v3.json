@@ -86,7 +86,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-minibox-45-v3.png"],
+  "images": ["zennio-minibox-45-v3.png"],
 
   "files": [
     {

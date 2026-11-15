@@ -1,0 +1,3245 @@
+{
+ "og/products/dahua-vth2421fb-fw-ip-indoor-monitor": {
+  "fp": "f992c788f8330ea7e0262f93e123d23a12f0b75d:8f1c548d8227",
+  "out": "assets/og/products/dahua-vth2421fb-fw-ip-indoor-monitor.jpg"
+ },
+ "og/products/dahua-vth2621gb-gw-ip-indoor-monitor": {
+  "fp": "fcde019e8c623165bb18d9413b635c2b6dcf61be:8f1c548d8227",
+  "out": "assets/og/products/dahua-vth2621gb-gw-ip-indoor-monitor.jpg"
+ },
+ "og/products/dahua-vth8621kms-wp-indoor-monitor": {
+  "fp": "e58f74aa2213686ccf119fa150c2fc1bf06ca1fe:8f1c548d8227",
+  "out": "assets/og/products/dahua-vth8621kms-wp-indoor-monitor.jpg"
+ },
+ "og/products/dahua-vto3311q-wp-villa-door-station": {
+  "fp": "a7ec5b7da85c3e223247667f783f59a5c9151c5e:8f1c548d8227",
+  "out": "assets/og/products/dahua-vto3311q-wp-villa-door-station.jpg"
+ },
+ "og/products/dahua-vto6541h-s2-apartment-door-station": {
+  "fp": "d0c81c7298b92e698cb00194970a9725801e692c:8f1c548d8227",
+  "out": "assets/og/products/dahua-vto6541h-s2-apartment-door-station.jpg"
+ },
+ "og/products/eae-knx-ipi200-ip-interface": {
+  "fp": "2546bc5c15fc23347c11b1105ad48268e22ae9ed:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-ipi200-ip-interface.jpg"
+ },
+ "og/products/eae-knx-ipr200-ip-router": {
+  "fp": "65980660eee1f1673cba5c928505402693de6e8e:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-ipr200-ip-router.jpg"
+ },
+ "og/products/eae-knx-lc200-line-coupler": {
+  "fp": "d6434496fdc14a352225a9fc930693b38419d0b9:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-lc200-line-coupler.jpg"
+ },
+ "og/products/eae-knx-miola-touch-panel": {
+  "fp": "d4a9bd863468a98110ca937ba924b28885efde4f:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-miola-touch-panel.jpg"
+ },
+ "og/products/eae-knx-oria-push-switches": {
+  "fp": "5f3c4401cd08c757765e8c365c256a0592f08c7d:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-oria-push-switches.jpg"
+ },
+ "og/products/eae-knx-power-supply-ps640": {
+  "fp": "0656a1d7359e4d1a12328a3dc16be548ee4ac417:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-power-supply-ps640.jpg"
+ },
+ "og/products/eae-knx-ps320-power-supply": {
+  "fp": "7b9734c2864893b059ed3f94ff19d7090df5b392:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-ps320-power-supply.jpg"
+ },
+ "og/products/eae-knx-rosa-switches": {
+  "fp": "af1f6e9a4e49c343b5f2384d9a69107b87a535b4:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-rosa-switches.jpg"
+ },
+ "og/products/eae-knx-rosa-thermostat": {
+  "fp": "6306f40f37f789dd7651b75d8393c337534e9a16:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-rosa-thermostat.jpg"
+ },
+ "og/products/eae-knx-td4-touch-panel": {
+  "fp": "b92e4ea46a2700268d5288e78457f108b261ca81:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-td4-touch-panel.jpg"
+ },
+ "og/products/eae-knx-ui108-universal-interface": {
+  "fp": "40884dfb952be0599544fee2f84c9c67f7ad4c71:8f1c548d8227",
+  "out": "assets/og/products/eae-knx-ui108-universal-interface.jpg"
+ },
+ "og/products/moes-matter-zigbee-gateway": {
+  "fp": "d37c0cdd099c8a7481c559b919231b21a741990e:8f1c548d8227",
+  "out": "assets/og/products/moes-matter-zigbee-gateway.jpg"
+ },
+ "og/products/rcu0800-room-control-unit": {
+  "fp": "fa6556cd9b1c94845835b8ae3ce7d53ab2dfc0d2:8f1c548d8227",
+  "out": "assets/og/products/rcu0800-room-control-unit.jpg"
+ },
+ "og/products/rcu0808-room-control-unit": {
+  "fp": "09d66ce62e1138100b2cf003849f3ea57682d429:8f1c548d8227",
+  "out": "assets/og/products/rcu0808-room-control-unit.jpg"
+ },
+ "og/products/rcu1200-room-control-unit": {
+  "fp": "7d3ddb4a08728b4b6e6f6a28bfadba2894d4999c:8f1c548d8227",
+  "out": "assets/og/products/rcu1200-room-control-unit.jpg"
+ },
+ "og/products/rcu1212-room-control-unit": {
+  "fp": "5fab3bcb516fb080ba89583bdcc075c6d0e59245:8f1c548d8227",
+  "out": "assets/og/products/rcu1212-room-control-unit.jpg"
+ },
+ "og/products/rcu1600-room-control-unit": {
+  "fp": "e4604912bf2d4152317c1f8ffdb8ea88363d3c34:8f1c548d8227",
+  "out": "assets/og/products/rcu1600-room-control-unit.jpg"
+ },
+ "og/products/rcu1616-room-control-unit": {
+  "fp": "9fdab3c679ad02e0dc9a5139db342a0b3ad4f97b:8f1c548d8227",
+  "out": "assets/og/products/rcu1616-room-control-unit.jpg"
+ },
+ "og/products/rcu2000-room-control-unit": {
+  "fp": "0e4706a80c6321dc887499b876db8eccb9ccfbb7:8f1c548d8227",
+  "out": "assets/og/products/rcu2000-room-control-unit.jpg"
+ },
+ "og/products/rcu2018-room-control-unit": {
+  "fp": "39c56f027b23549b5f1346151c564eacdb13bf34:8f1c548d8227",
+  "out": "assets/og/products/rcu2018-room-control-unit.jpg"
+ },
+ "og/products/reyee-ew1300g": {
+  "fp": "032b4b5fc943704284e00b69feb0fd7ed9ea62b5:8f1c548d8227",
+  "out": "assets/og/products/reyee-ew1300g.jpg"
+ },
+ "og/products/rg-eg105gw-t": {
+  "fp": "15ef797662b6d3a96b587b3592983d05a32ce1c5:8f1c548d8227",
+  "out": "assets/og/products/rg-eg105gw-t.jpg"
+ },
+ "og/products/rg-eg105gw-x": {
+  "fp": "83ff6711848e082174f21b9d57efd4eb362cf433:8f1c548d8227",
+  "out": "assets/og/products/rg-eg105gw-x.jpg"
+ },
+ "og/products/rg-es220gs-lp": {
+  "fp": "4e7eee6f52c152d251c37f4fdc0ffdada82ee458:8f1c548d8227",
+  "out": "assets/og/products/rg-es220gs-lp.jpg"
+ },
+ "og/products/rg-rap2200f": {
+  "fp": "c2c0a1f1a4832b7153b908405eab6181c89c6134:8f1c548d8227",
+  "out": "assets/og/products/rg-rap2200f.jpg"
+ },
+ "og/products/rg-rap62": {
+  "fp": "a19f0733d52e1071b7712054cff26ec718002122:8f1c548d8227",
+  "out": "assets/og/products/rg-rap62.jpg"
+ },
+ "og/products/shelly-1-gen3": {
+  "fp": "05ff3b7e8b56c0bb801a9d2cc99fe7468f7ce9eb:8f1c548d8227",
+  "out": "assets/og/products/shelly-1-gen3.jpg"
+ },
+ "og/products/shelly-1pm-gen3": {
+  "fp": "764b0cf1763073107401cfb0cf9a37b172b52bb1:8f1c548d8227",
+  "out": "assets/og/products/shelly-1pm-gen3.jpg"
+ },
+ "og/products/shelly-2pm-gen3": {
+  "fp": "aa5b8378a8ed9ba7fb18f8c0c054a00973762002:8f1c548d8227",
+  "out": "assets/og/products/shelly-2pm-gen3.jpg"
+ },
+ "og/products/shelly-dimmer-gen3": {
+  "fp": "264238ee1743c50b73cc0493979dfd9490720f8e:8f1c548d8227",
+  "out": "assets/og/products/shelly-dimmer-gen3.jpg"
+ },
+ "og/products/shelly-plus-1": {
+  "fp": "8552cd59cc57f2eaaa8b367dd36bd2ac5510da5b:8f1c548d8227",
+  "out": "assets/og/products/shelly-plus-1.jpg"
+ },
+ "og/products/shelly-plus-1pm": {
+  "fp": "1f34b0792cf5db3b4cfe1f23d15cca1fe2f81e75:8f1c548d8227",
+  "out": "assets/og/products/shelly-plus-1pm.jpg"
+ },
+ "og/products/shelly-plus-2pm": {
+  "fp": "dd892330b09de325a389fd4b4760158b039f3148:8f1c548d8227",
+  "out": "assets/og/products/shelly-plus-2pm.jpg"
+ },
+ "og/products/shelly-pro-3": {
+  "fp": "570b2ec5cc2946be3d8141a7e1b91efb3165a326:8f1c548d8227",
+  "out": "assets/og/products/shelly-pro-3.jpg"
+ },
+ "og/products/shelly-pro-4pm": {
+  "fp": "1bbd4b0eb3842b4d2fa46a9ffe8c06cc7535f004:8f1c548d8227",
+  "out": "assets/og/products/shelly-pro-4pm.jpg"
+ },
+ "og/products/shelly-pro-dual-cover-shutter-pm": {
+  "fp": "eca9b63f8b4aeee54dd45174336e38fad810dede:8f1c548d8227",
+  "out": "assets/og/products/shelly-pro-dual-cover-shutter-pm.jpg"
+ },
+ "og/products/shelly-wall-display": {
+  "fp": "149b60cf87486f0ad2c253cfdc51a05495da7a9d:8f1c548d8227",
+  "out": "assets/og/products/shelly-wall-display.jpg"
+ },
+ "og/products/sonoff-mini-zb2gs": {
+  "fp": "18238c0a8a8d4d08f279bd6a35b6753cb65b62a7:8f1c548d8227",
+  "out": "assets/og/products/sonoff-mini-zb2gs.jpg"
+ },
+ "og/products/sonoff-mini-zb2gs-l": {
+  "fp": "f061ef264eb5e49cf75aafe607a0fe36796743e1:8f1c548d8227",
+  "out": "assets/og/products/sonoff-mini-zb2gs-l.jpg"
+ },
+ "og/products/sonoff-mini-zbdim": {
+  "fp": "3ec34ea31b803e991ff134f0e3e22d3a2bd07cdf:8f1c548d8227",
+  "out": "assets/og/products/sonoff-mini-zbdim.jpg"
+ },
+ "og/products/sonoff-mini-zbrbs": {
+  "fp": "c3dad3e9b408f94e563891fd6209455353b659e1:8f1c548d8227",
+  "out": "assets/og/products/sonoff-mini-zbrbs.jpg"
+ },
+ "og/products/sonoff-zbmini-extreme": {
+  "fp": "1e889d06a3583b9e21e3a85b96f3fabefec93bcc:8f1c548d8227",
+  "out": "assets/og/products/sonoff-zbmini-extreme.jpg"
+ },
+ "og/products/sonoff-zbmini-extreme-l2": {
+  "fp": "de807e73633ac426f2bab9f5348e1880825c43c8:8f1c548d8227",
+  "out": "assets/og/products/sonoff-zbmini-extreme-l2.jpg"
+ },
+ "og/products/zennio-bin-t-2x": {
+  "fp": "41dcf99df847f5528e00e1f38b2b845986c1f6a4:8f1c548d8227",
+  "out": "assets/og/products/zennio-bin-t-2x.jpg"
+ },
+ "og/products/zennio-bin-t-4x": {
+  "fp": "9a043b168c8557fc08885c7903f203591aab4911:8f1c548d8227",
+  "out": "assets/og/products/zennio-bin-t-4x.jpg"
+ },
+ "og/products/zennio-bin-t-6x": {
+  "fp": "62434ef142256cacb7659c48091d47f629c26fb6:8f1c548d8227",
+  "out": "assets/og/products/zennio-bin-t-6x.jpg"
+ },
+ "og/products/zennio-bin-t-8x": {
+  "fp": "45b7cb3adc7ff4d9f5b7f458db9d70a86292cd65:8f1c548d8227",
+  "out": "assets/og/products/zennio-bin-t-8x.jpg"
+ },
+ "og/products/zennio-diminbox-dx2": {
+  "fp": "fa3f2e38fee98202c98f02a27c5c517441b64df7:8f1c548d8227",
+  "out": "assets/og/products/zennio-diminbox-dx2.jpg"
+ },
+ "og/products/zennio-diminbox-dx4": {
+  "fp": "6aec49e39ada6f5f261471c9c38dccda6f76a59c:8f1c548d8227",
+  "out": "assets/og/products/zennio-diminbox-dx4.jpg"
+ },
+ "og/products/zennio-flat-70": {
+  "fp": "93da0566ecb088b3370b05e1650f15df5cf91930:8f1c548d8227",
+  "out": "assets/og/products/zennio-flat-70.jpg"
+ },
+ "og/products/zennio-inbox-20-v3": {
+  "fp": "2c832f9415b0884e06177ba2ade6ee94009d65cc:8f1c548d8227",
+  "out": "assets/og/products/zennio-inbox-20-v3.jpg"
+ },
+ "og/products/zennio-inbox-24-v3": {
+  "fp": "ddb2102d0a726adb2f7a213863477b0c9ef18d0b:8f1c548d8227",
+  "out": "assets/og/products/zennio-inbox-24-v3.jpg"
+ },
+ "og/products/zennio-kupsupply-160ma": {
+  "fp": "3d13a83cee56861e0441256984847cf0c4006f59:8f1c548d8227",
+  "out": "assets/og/products/zennio-kupsupply-160ma.jpg"
+ },
+ "og/products/zennio-kupsupply-320ma": {
+  "fp": "e886aae5a1af47a1c2738b9d2c96012fc3254f51:8f1c548d8227",
+  "out": "assets/og/products/zennio-kupsupply-320ma.jpg"
+ },
+ "og/products/zennio-kupsupply-640ma": {
+  "fp": "0de79f11dc018fad2aaa69fab7df5d64631234a1:8f1c548d8227",
+  "out": "assets/og/products/zennio-kupsupply-640ma.jpg"
+ },
+ "og/products/zennio-maxinbox-12": {
+  "fp": "1805eef69fad0763576f5c4bfa23847a15fa2d7c:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-12.jpg"
+ },
+ "og/products/zennio-maxinbox-16-v4": {
+  "fp": "aa8ac919f7ec05e769c18b8252afe5dec33951f0:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-16-v4.jpg"
+ },
+ "og/products/zennio-maxinbox-20": {
+  "fp": "a4d779221b3cef7a792b94e8f263c4e683a74018:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-20.jpg"
+ },
+ "og/products/zennio-maxinbox-24-v2": {
+  "fp": "3c2ec52fbe802e10814fbf29cc209166d53fab1e:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-24-v2.jpg"
+ },
+ "og/products/zennio-maxinbox-66-v3": {
+  "fp": "1649984d77afd5c32f3374176919cf6f38ed79ad:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-66-v3.jpg"
+ },
+ "og/products/zennio-maxinbox-8-v4": {
+  "fp": "93ebd96a39e40629dfe4b44bdd886b9d9cd31338:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-8-v4.jpg"
+ },
+ "og/products/zennio-maxinbox-88": {
+  "fp": "3587db296623a7fa23fad11f60b1b5f1ca71a5db:8f1c548d8227",
+  "out": "assets/og/products/zennio-maxinbox-88.jpg"
+ },
+ "og/products/zennio-minibox-20-v2": {
+  "fp": "6c4056ea1ecd383a237a5a3c1aabee4ca89ab91e:8f1c548d8227",
+  "out": "assets/og/products/zennio-minibox-20-v2.jpg"
+ },
+ "og/products/zennio-minibox-25-v3": {
+  "fp": "2b75647dcb08e467cd0f1b9f2a0ea028c6d75192:8f1c548d8227",
+  "out": "assets/og/products/zennio-minibox-25-v3.jpg"
+ },
+ "og/products/zennio-minibox-40-v3": {
+  "fp": "d1061ca392d5dad9d85ca20c6d9a8cc6482c68c4:8f1c548d8227",
+  "out": "assets/og/products/zennio-minibox-40-v3.jpg"
+ },
+ "og/products/zennio-minibox-45-v3": {
+  "fp": "d0f66e2afa773ebcacacfc265aa44b58e9d151dc:8f1c548d8227",
+  "out": "assets/og/products/zennio-minibox-45-v3.jpg"
+ },
+ "og/products/zennio-narrowdim-x2": {
+  "fp": "18417426cb427665157562aaca4050849d91a1da:8f1c548d8227",
+  "out": "assets/og/products/zennio-narrowdim-x2.jpg"
+ },
+ "og/products/zennio-narrowdim-x4": {
+  "fp": "29815ba27485b3af36739b2ca38bf2cb764591f1:8f1c548d8227",
+  "out": "assets/og/products/zennio-narrowdim-x4.jpg"
+ },
+ "og/products/zennio-railquad-8": {
+  "fp": "35408b301e8ecf3716035a58b4892c43b3168231:8f1c548d8227",
+  "out": "assets/og/products/zennio-railquad-8.jpg"
+ },
+ "og/products/zennio-tecla": {
+  "fp": "a0ad59ddeac2e23ca3588d6ea3b3e801595454f2:8f1c548d8227",
+  "out": "assets/og/products/zennio-tecla.jpg"
+ },
+ "og/products/zennio-tecla-55": {
+  "fp": "d68bd8c0325cf64fdeaf3065593f3737d95af741:8f1c548d8227",
+  "out": "assets/og/products/zennio-tecla-55.jpg"
+ },
+ "og/products/zennio-tecla-70": {
+  "fp": "eafa8e9b926c88e006f980e54d10a7aa3762ce2d:8f1c548d8227",
+  "out": "assets/og/products/zennio-tecla-70.jpg"
+ },
+ "og/products/zennio-tecla-xl": {
+  "fp": "adbf17c1661b50f9e72e3e931e974ac2f0b5f816:8f1c548d8227",
+  "out": "assets/og/products/zennio-tecla-xl.jpg"
+ },
+ "og/products/zennio-z100-touch-panel": {
+  "fp": "45e41e9f258254542bf154f4ca75e163ab16a737:8f1c548d8227",
+  "out": "assets/og/products/zennio-z100-touch-panel.jpg"
+ },
+ "og/products/zennio-z28": {
+  "fp": "635f76b4fa932b8263710f8481bb249b628fc0c4:8f1c548d8227",
+  "out": "assets/og/products/zennio-z28.jpg"
+ },
+ "og/products/zennio-z35-v3": {
+  "fp": "b08ea588c0f0bb99159367f8a589031f5f01203a:8f1c548d8227",
+  "out": "assets/og/products/zennio-z35-v3.jpg"
+ },
+ "og/products/zennio-z40": {
+  "fp": "69abc9c55b450acaa7c9f4658414440b509af893:8f1c548d8227",
+  "out": "assets/og/products/zennio-z40.jpg"
+ },
+ "og/products/zennio-z50": {
+  "fp": "6c699a8d829c5b4b096e1fb51493b893e99c6412:8f1c548d8227",
+  "out": "assets/og/products/zennio-z50.jpg"
+ },
+ "og/products/zennio-z70-v2": {
+  "fp": "e10b92ffc6fe373794bcbae81e269445cc12794c:8f1c548d8227",
+  "out": "assets/og/products/zennio-z70-v2.jpg"
+ },
+ "og/projects/huerto-pool-tetouan": {
+  "fp": "3feb764448283518cb1783c7e33da35d07589e08:04bb68d6a8e7",
+  "out": "assets/og/projects/huerto-pool-tetouan.jpg"
+ },
+ "og/projects/villa-knx-tetouan": {
+  "fp": "bc27d33aa0c106f987ca3a0de194ea74fcde200f:04bb68d6a8e7",
+  "out": "assets/og/projects/villa-knx-tetouan.jpg"
+ },
+ "products/dahua-vth2421fb-fw-ip-indoor-monitor-2.png": {
+  "fp": "0ce6c70b944195141050a4446c39d90db555d382:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-2-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth2421fb-fw-ip-indoor-monitor.png": {
+  "fp": "f992c788f8330ea7e0262f93e123d23a12f0b75d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-400.webp",
+    400,
+    231
+   ],
+   [
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-800.webp",
+    800,
+    462
+   ],
+   [
+    "/assets/products/dahua-vth2421fb-fw-ip-indoor-monitor-1200.webp",
+    1200,
+    693
+   ]
+  ]
+ },
+ "products/dahua-vth2621gb-gw-ip-indoor-monitor-2.png": {
+  "fp": "c287a92e34aaac17a5d9a53d342f301c17ee10f6:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-2-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth2621gb-gw-ip-indoor-monitor-3.png": {
+  "fp": "50f86ac8b318b9488fe3575688679f2566eb4294:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-3-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth2621gb-gw-ip-indoor-monitor-4.png": {
+  "fp": "1e569baa140bb7a4cbbab6c9c04b6c0e9fdc18d2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-4-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth2621gb-gw-ip-indoor-monitor.png": {
+  "fp": "fcde019e8c623165bb18d9413b635c2b6dcf61be:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth2621gb-gw-ip-indoor-monitor-303.webp",
+    303,
+    222
+   ]
+  ]
+ },
+ "products/dahua-vth8621kms-wp-indoor-monitor-2.png": {
+  "fp": "856176738516be0f531f42032589aa7a596a2d2b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-2-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth8621kms-wp-indoor-monitor-3.png": {
+  "fp": "9aa76e0f96e396cc50a80cf083035dc5a4a8fd43:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-3-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth8621kms-wp-indoor-monitor-4.png": {
+  "fp": "25423680eb332efd6feef97464d45e9ef001dd5c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-4-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth8621kms-wp-indoor-monitor-5.png": {
+  "fp": "0829fe5cf01eef8893a7049e421b547f548d83d2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-5-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vth8621kms-wp-indoor-monitor.png": {
+  "fp": "e58f74aa2213686ccf119fa150c2fc1bf06ca1fe:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-400.webp",
+    400,
+    321
+   ],
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-800.webp",
+    800,
+    642
+   ],
+   [
+    "/assets/products/dahua-vth8621kms-wp-indoor-monitor-1200.webp",
+    1200,
+    964
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station-2.png": {
+  "fp": "a2d46a6cf71385016bfe986dd4ac913416e1af41:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-2-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station-3.png": {
+  "fp": "43d787648852a2e9e21162f92df577e45944694a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-3-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station-4.png": {
+  "fp": "3bbddd9005932de682ae3bbebae3945f892923b2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-4-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station-5.png": {
+  "fp": "6629fac8e00dabd789be55820c0a0547a8066edc:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-5-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station-6.png": {
+  "fp": "36d9db65c405432c3b387acac817c44a5280edb2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-6-400.webp",
+    400,
+    400
+   ]
+  ]
+ },
+ "products/dahua-vto3311q-wp-villa-door-station.png": {
+  "fp": "a7ec5b7da85c3e223247667f783f59a5c9151c5e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto3311q-wp-villa-door-station-189.webp",
+    189,
+    312
+   ]
+  ]
+ },
+ "products/dahua-vto6541h-s2-apartment-door-station-2.png": {
+  "fp": "8e3ab1cbedd3d440b45df6961f67cc1dff252cc7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-2-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-2-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/dahua-vto6541h-s2-apartment-door-station.png": {
+  "fp": "d0c81c7298b92e698cb00194970a9725801e692c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-400.webp",
+    400,
+    940
+   ],
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-800.webp",
+    800,
+    1880
+   ],
+   [
+    "/assets/products/dahua-vto6541h-s2-apartment-door-station-851.webp",
+    851,
+    2000
+   ]
+  ]
+ },
+ "products/eae-knx-ipi200-ip-interface.png": {
+  "fp": "2546bc5c15fc23347c11b1105ad48268e22ae9ed:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-ipi200-ip-interface-400.webp",
+    400,
+    625
+   ],
+   [
+    "/assets/products/eae-knx-ipi200-ip-interface-663.webp",
+    663,
+    1036
+   ]
+  ]
+ },
+ "products/eae-knx-ipr200-ip-router.png": {
+  "fp": "65980660eee1f1673cba5c928505402693de6e8e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-ipr200-ip-router-400.webp",
+    400,
+    610
+   ],
+   [
+    "/assets/products/eae-knx-ipr200-ip-router-669.webp",
+    669,
+    1021
+   ]
+  ]
+ },
+ "products/eae-knx-lc200-line-coupler.png": {
+  "fp": "d6434496fdc14a352225a9fc930693b38419d0b9:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-lc200-line-coupler-400.webp",
+    400,
+    619
+   ],
+   [
+    "/assets/products/eae-knx-lc200-line-coupler-670.webp",
+    670,
+    1037
+   ]
+  ]
+ },
+ "products/eae-knx-miola-touch-panel-2.jpg": {
+  "fp": "ba9ce557d96b6b436532140e057fc88b47d30723:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-miola-touch-panel-2-400.webp",
+    400,
+    284
+   ],
+   [
+    "/assets/products/eae-knx-miola-touch-panel-2-800.webp",
+    800,
+    568
+   ],
+   [
+    "/assets/products/eae-knx-miola-touch-panel-2-1024.webp",
+    1024,
+    727
+   ]
+  ]
+ },
+ "products/eae-knx-miola-touch-panel.png": {
+  "fp": "d4a9bd863468a98110ca937ba924b28885efde4f:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-miola-touch-panel-400.webp",
+    400,
+    322
+   ],
+   [
+    "/assets/products/eae-knx-miola-touch-panel-800.webp",
+    800,
+    645
+   ],
+   [
+    "/assets/products/eae-knx-miola-touch-panel-1015.webp",
+    1015,
+    818
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches-2.png": {
+  "fp": "13eb05c5c465c912ee204d64342506ad19740c77:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-2-400.webp",
+    400,
+    544
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-2-800.webp",
+    800,
+    1089
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-2-1000.webp",
+    1000,
+    1361
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches-3.jpg": {
+  "fp": "5e4a26daabeed849afadba6fa324a2a2fec7b62d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-3-400.webp",
+    400,
+    537
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-3-800.webp",
+    800,
+    1074
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-3-1000.webp",
+    1000,
+    1343
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches-4.jpg": {
+  "fp": "080817582524e513bcde87ea5e9a003b46382ece:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-4-400.webp",
+    400,
+    757
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-4-800.webp",
+    800,
+    1514
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-4-1000.webp",
+    1000,
+    1893
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches-5.jpg": {
+  "fp": "1029f195f0f2704ffe7f02ba74a815ab283295b8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-5-400.webp",
+    400,
+    676
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-5-800.webp",
+    800,
+    1352
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-5-1000.webp",
+    1000,
+    1690
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches-6.jpg": {
+  "fp": "245dae861601229022707854f67ee6112fa4fbf7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-6-400.webp",
+    400,
+    537
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-6-800.webp",
+    800,
+    1074
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-6-1000.webp",
+    1000,
+    1343
+   ]
+  ]
+ },
+ "products/eae-knx-oria-push-switches.png": {
+  "fp": "5f3c4401cd08c757765e8c365c256a0592f08c7d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-oria-push-switches-400.webp",
+    400,
+    497
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-800.webp",
+    800,
+    995
+   ],
+   [
+    "/assets/products/eae-knx-oria-push-switches-1100.webp",
+    1100,
+    1368
+   ]
+  ]
+ },
+ "products/eae-knx-power-supply-ps640.png": {
+  "fp": "0656a1d7359e4d1a12328a3dc16be548ee4ac417:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-power-supply-ps640-400.webp",
+    400,
+    304
+   ],
+   [
+    "/assets/products/eae-knx-power-supply-ps640-800.webp",
+    800,
+    607
+   ],
+   [
+    "/assets/products/eae-knx-power-supply-ps640-1080.webp",
+    1080,
+    820
+   ]
+  ]
+ },
+ "products/eae-knx-ps320-power-supply.png": {
+  "fp": "7b9734c2864893b059ed3f94ff19d7090df5b392:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-ps320-power-supply-400.webp",
+    400,
+    306
+   ],
+   [
+    "/assets/products/eae-knx-ps320-power-supply-800.webp",
+    800,
+    612
+   ],
+   [
+    "/assets/products/eae-knx-ps320-power-supply-1080.webp",
+    1080,
+    826
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches-2.jpg": {
+  "fp": "54d1bf4ad47a167dc53a2f69d9c0972066efad30:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-2-400.webp",
+    400,
+    309
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-2-800.webp",
+    800,
+    617
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-2-1024.webp",
+    1024,
+    790
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches-3.jpg": {
+  "fp": "8955b6bccf006df1f89d8e9d6088751391e30566:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-3-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-3-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-3-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches-4.jpg": {
+  "fp": "8f1852128fae5f424f31f5dd3c5020639307b6c8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-4-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-4-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-4-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches-5.jpg": {
+  "fp": "c931507523017cc071cb33348a2b21fd61d99f8d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-5-400.webp",
+    400,
+    309
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-5-800.webp",
+    800,
+    617
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-5-1024.webp",
+    1024,
+    790
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches-6.jpg": {
+  "fp": "fe8250c22c3f77cd90f43ebf6a03530f169e1271:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-6-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-6-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-6-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-switches.png": {
+  "fp": "af1f6e9a4e49c343b5f2384d9a69107b87a535b4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-switches-400.webp",
+    400,
+    299
+   ],
+   [
+    "/assets/products/eae-knx-rosa-switches-631.webp",
+    631,
+    472
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat-2.jpg": {
+  "fp": "4b54fd45162f504dec6305458911d9b866268905:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-2-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-2-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-2-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat-3.jpg": {
+  "fp": "6d8a9c1bcd7824affb978e923b11acded5bd392a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-3-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-3-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-3-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat-4.jpg": {
+  "fp": "4ad3c0c81a0a23953c3a54c658d07396c7595bb9:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-4-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-4-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-4-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat-5.jpg": {
+  "fp": "f9be05cc4df25737ad86bc578711b4470319393a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-5-400.webp",
+    400,
+    267
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-5-800.webp",
+    800,
+    534
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-5-1024.webp",
+    1024,
+    683
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat-6.jpg": {
+  "fp": "22b048f709ecde6f04921e47fa324db4c4f4bbbf:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-6-400.webp",
+    400,
+    270
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-6-800.webp",
+    800,
+    540
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-6-1024.webp",
+    1024,
+    691
+   ]
+  ]
+ },
+ "products/eae-knx-rosa-thermostat.png": {
+  "fp": "6306f40f37f789dd7651b75d8393c337534e9a16:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-rosa-thermostat-400.webp",
+    400,
+    326
+   ],
+   [
+    "/assets/products/eae-knx-rosa-thermostat-613.webp",
+    613,
+    500
+   ]
+  ]
+ },
+ "products/eae-knx-td4-touch-panel-2.jpg": {
+  "fp": "91b8ebbd6395c8e16e8ac24170dba16e9e752539:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-td4-touch-panel-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/eae-knx-td4-touch-panel-2-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/eae-knx-td4-touch-panel-2-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/eae-knx-td4-touch-panel-3.jpg": {
+  "fp": "ed3d9e0eff170ec583cb52abf4aa8c94328b079c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-td4-touch-panel-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/eae-knx-td4-touch-panel-3-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/eae-knx-td4-touch-panel-3-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/eae-knx-td4-touch-panel.png": {
+  "fp": "b92e4ea46a2700268d5288e78457f108b261ca81:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-td4-touch-panel-400.webp",
+    400,
+    411
+   ],
+   [
+    "/assets/products/eae-knx-td4-touch-panel-525.webp",
+    525,
+    540
+   ]
+  ]
+ },
+ "products/eae-knx-ui108-universal-interface.png": {
+  "fp": "40884dfb952be0599544fee2f84c9c67f7ad4c71:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/eae-knx-ui108-universal-interface-400.webp",
+    400,
+    435
+   ],
+   [
+    "/assets/products/eae-knx-ui108-universal-interface-519.webp",
+    519,
+    564
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway-2.jpg": {
+  "fp": "c0b0722855d8f37f32d80db37a500cb7a991ac41:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-2-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-2-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway-3.jpg": {
+  "fp": "8eeef46ab8686aad0eae402813ecc40c87980d77:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-3-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-3-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway-4.jpg": {
+  "fp": "6ad487e3bf8b2f04b78ed213e9c7f26441d9aeaf:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-4-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-4-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway-5.jpg": {
+  "fp": "ea9c0fb77c43f241f93293d81c3e9cf67b886831:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-5-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-5-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-5-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway-6.jpg": {
+  "fp": "c4521ecebebee64e87684cbeeaf390911d828a03:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-6-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-6-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-6-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/moes-matter-zigbee-gateway.png": {
+  "fp": "d37c0cdd099c8a7481c559b919231b21a741990e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/moes-matter-zigbee-gateway-400.webp",
+    400,
+    155
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-800.webp",
+    800,
+    309
+   ],
+   [
+    "/assets/products/moes-matter-zigbee-gateway-936.webp",
+    936,
+    362
+   ]
+  ]
+ },
+ "products/rcu0800-room-control-unit.png": {
+  "fp": "fa6556cd9b1c94845835b8ae3ce7d53ab2dfc0d2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu0800-room-control-unit-400.webp",
+    400,
+    321
+   ],
+   [
+    "/assets/products/rcu0800-room-control-unit-800.webp",
+    800,
+    643
+   ],
+   [
+    "/assets/products/rcu0800-room-control-unit-1080.webp",
+    1080,
+    868
+   ]
+  ]
+ },
+ "products/rcu0808-room-control-unit.png": {
+  "fp": "09d66ce62e1138100b2cf003849f3ea57682d429:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu0808-room-control-unit-400.webp",
+    400,
+    321
+   ],
+   [
+    "/assets/products/rcu0808-room-control-unit-800.webp",
+    800,
+    643
+   ],
+   [
+    "/assets/products/rcu0808-room-control-unit-1080.webp",
+    1080,
+    868
+   ]
+  ]
+ },
+ "products/rcu1200-room-control-unit.png": {
+  "fp": "7d3ddb4a08728b4b6e6f6a28bfadba2894d4999c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu1200-room-control-unit-400.webp",
+    400,
+    321
+   ],
+   [
+    "/assets/products/rcu1200-room-control-unit-800.webp",
+    800,
+    643
+   ],
+   [
+    "/assets/products/rcu1200-room-control-unit-1080.webp",
+    1080,
+    868
+   ]
+  ]
+ },
+ "products/rcu1212-room-control-unit.png": {
+  "fp": "5fab3bcb516fb080ba89583bdcc075c6d0e59245:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu1212-room-control-unit-400.webp",
+    400,
+    321
+   ],
+   [
+    "/assets/products/rcu1212-room-control-unit-800.webp",
+    800,
+    643
+   ],
+   [
+    "/assets/products/rcu1212-room-control-unit-1080.webp",
+    1080,
+    868
+   ]
+  ]
+ },
+ "products/rcu1600-room-control-unit.png": {
+  "fp": "e4604912bf2d4152317c1f8ffdb8ea88363d3c34:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu1600-room-control-unit-400.webp",
+    400,
+    248
+   ],
+   [
+    "/assets/products/rcu1600-room-control-unit-800.webp",
+    800,
+    495
+   ],
+   [
+    "/assets/products/rcu1600-room-control-unit-1077.webp",
+    1077,
+    667
+   ]
+  ]
+ },
+ "products/rcu1616-room-control-unit.png": {
+  "fp": "9fdab3c679ad02e0dc9a5139db342a0b3ad4f97b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu1616-room-control-unit-400.webp",
+    400,
+    248
+   ],
+   [
+    "/assets/products/rcu1616-room-control-unit-800.webp",
+    800,
+    496
+   ],
+   [
+    "/assets/products/rcu1616-room-control-unit-1080.webp",
+    1080,
+    670
+   ]
+  ]
+ },
+ "products/rcu2000-room-control-unit.png": {
+  "fp": "0e4706a80c6321dc887499b876db8eccb9ccfbb7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu2000-room-control-unit-400.webp",
+    400,
+    249
+   ],
+   [
+    "/assets/products/rcu2000-room-control-unit-800.webp",
+    800,
+    497
+   ],
+   [
+    "/assets/products/rcu2000-room-control-unit-1080.webp",
+    1080,
+    671
+   ]
+  ]
+ },
+ "products/rcu2018-room-control-unit.png": {
+  "fp": "39c56f027b23549b5f1346151c564eacdb13bf34:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rcu2018-room-control-unit-400.webp",
+    400,
+    248
+   ],
+   [
+    "/assets/products/rcu2018-room-control-unit-800.webp",
+    800,
+    497
+   ],
+   [
+    "/assets/products/rcu2018-room-control-unit-1076.webp",
+    1076,
+    668
+   ]
+  ]
+ },
+ "products/reyee-ew1300g.png": {
+  "fp": "032b4b5fc943704284e00b69feb0fd7ed9ea62b5:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/reyee-ew1300g-400.webp",
+    400,
+    336
+   ],
+   [
+    "/assets/products/reyee-ew1300g-743.webp",
+    743,
+    625
+   ]
+  ]
+ },
+ "products/rg-eg105gw-t.png": {
+  "fp": "15ef797662b6d3a96b587b3592983d05a32ce1c5:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rg-eg105gw-t-400.webp",
+    400,
+    429
+   ],
+   [
+    "/assets/products/rg-eg105gw-t-800.webp",
+    800,
+    858
+   ],
+   [
+    "/assets/products/rg-eg105gw-t-821.webp",
+    821,
+    881
+   ]
+  ]
+ },
+ "products/rg-eg105gw-x.png": {
+  "fp": "83ff6711848e082174f21b9d57efd4eb362cf433:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rg-eg105gw-x-400.webp",
+    400,
+    303
+   ],
+   [
+    "/assets/products/rg-eg105gw-x-800.webp",
+    800,
+    606
+   ],
+   [
+    "/assets/products/rg-eg105gw-x-1006.webp",
+    1006,
+    762
+   ]
+  ]
+ },
+ "products/rg-es220gs-lp.png": {
+  "fp": "4e7eee6f52c152d251c37f4fdc0ffdada82ee458:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rg-es220gs-lp-400.webp",
+    400,
+    131
+   ],
+   [
+    "/assets/products/rg-es220gs-lp-800.webp",
+    800,
+    261
+   ],
+   [
+    "/assets/products/rg-es220gs-lp-1184.webp",
+    1184,
+    387
+   ]
+  ]
+ },
+ "products/rg-rap2200f.png": {
+  "fp": "c2c0a1f1a4832b7153b908405eab6181c89c6134:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rg-rap2200f-400.webp",
+    400,
+    522
+   ],
+   [
+    "/assets/products/rg-rap2200f-648.webp",
+    648,
+    846
+   ]
+  ]
+ },
+ "products/rg-rap62.png": {
+  "fp": "a19f0733d52e1071b7712054cff26ec718002122:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/rg-rap62-400.webp",
+    400,
+    488
+   ],
+   [
+    "/assets/products/rg-rap62-800.webp",
+    800,
+    975
+   ],
+   [
+    "/assets/products/rg-rap62-854.webp",
+    854,
+    1041
+   ]
+  ]
+ },
+ "products/shelly-1-gen3-2.jpg": {
+  "fp": "84b3cc1b19c99361482c5cd1c1fd46a9c72ff677:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1-gen3-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-1-gen3-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-1-gen3-3.jpg": {
+  "fp": "ccca303eeac743114ded713e73bbf7ad40bf212d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1-gen3-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-1-gen3-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-1-gen3-4.jpg": {
+  "fp": "68807eecfaaa0d5d5b3d0d0a860dbe9ed01e8c9c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1-gen3-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-1-gen3-4-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-1-gen3.png": {
+  "fp": "05ff3b7e8b56c0bb801a9d2cc99fe7468f7ce9eb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1-gen3-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-1-gen3-550.webp",
+    550,
+    437
+   ]
+  ]
+ },
+ "products/shelly-1pm-gen3-2.jpg": {
+  "fp": "82e5525523fb8c2f5cf84aeedd6f6b78489d31d8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1pm-gen3-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-1pm-gen3-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-1pm-gen3-3.jpg": {
+  "fp": "854329d235d387ff0848961df3a55518b4249554:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1pm-gen3-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-1pm-gen3-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-1pm-gen3.png": {
+  "fp": "764b0cf1763073107401cfb0cf9a37b172b52bb1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-1pm-gen3-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-1pm-gen3-551.webp",
+    551,
+    438
+   ]
+  ]
+ },
+ "products/shelly-2pm-gen3-2.jpg": {
+  "fp": "8aab118db5d3cc3b2c05ed0e6f4e7cc3831774d6:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-2pm-gen3-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-2-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-2-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/shelly-2pm-gen3-3.jpg": {
+  "fp": "73db782dcd944fca84fc5a623ae2e46ee7a2a3c2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-2pm-gen3-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-3-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-3-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/shelly-2pm-gen3-4.jpg": {
+  "fp": "ef11392e09a9a49cba8b2bc3def8cafabef6503d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-2pm-gen3-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-4-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-4-1200.webp",
+    1200,
+    1200
+   ]
+  ]
+ },
+ "products/shelly-2pm-gen3.png": {
+  "fp": "aa5b8378a8ed9ba7fb18f8c0c054a00973762002:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-2pm-gen3-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-2pm-gen3-552.webp",
+    552,
+    439
+   ]
+  ]
+ },
+ "products/shelly-dimmer-gen3-2.jpg": {
+  "fp": "931705719d07e44b664e75bf625275a2729d57a4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-dimmer-gen3-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-2-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-2-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/shelly-dimmer-gen3-3.jpg": {
+  "fp": "c864e84166c1fa68c6951b1ddf9169afb5840a03:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-dimmer-gen3-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-3-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-3-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/shelly-dimmer-gen3-4.jpg": {
+  "fp": "cae5149065f05c340eda13c73375c7dc7a9de8d8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-dimmer-gen3-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-4-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-4-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/shelly-dimmer-gen3.png": {
+  "fp": "264238ee1743c50b73cc0493979dfd9490720f8e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-dimmer-gen3-400.webp",
+    400,
+    304
+   ],
+   [
+    "/assets/products/shelly-dimmer-gen3-552.webp",
+    552,
+    420
+   ]
+  ]
+ },
+ "products/shelly-plus-1-2.jpg": {
+  "fp": "069ad2ea4af137acf9618d2da14c42d5f07aa199:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1-3.jpg": {
+  "fp": "ff2b15325054225ac4da91b68bcb171c3dc203b1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1-4.jpg": {
+  "fp": "eaa87417de264b0ba3c193a8b59fed81af63c790:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1-4-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1-5.jpg": {
+  "fp": "ea013872be7921379991a3effa0c08304df9ccb5:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1-5-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1-5-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1.png": {
+  "fp": "8552cd59cc57f2eaaa8b367dd36bd2ac5510da5b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-plus-1-550.webp",
+    550,
+    437
+   ]
+  ]
+ },
+ "products/shelly-plus-1pm-2.jpg": {
+  "fp": "3ba13f2a9380de9a49ab78698532c08fb4711b46:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1pm-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1pm-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1pm-3.jpg": {
+  "fp": "8b7eb2b9c7c8a6594453d500de66292cb60505ac:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1pm-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-1pm-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-1pm.png": {
+  "fp": "1f34b0792cf5db3b4cfe1f23d15cca1fe2f81e75:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-1pm-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-plus-1pm-551.webp",
+    551,
+    438
+   ]
+  ]
+ },
+ "products/shelly-plus-2pm-2.jpg": {
+  "fp": "4b9f1215f2019d3f18a17db59495bde5275972ec:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-2pm-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-2pm-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-2pm-3.jpg": {
+  "fp": "65e16b199ce68806446c5bacd1a8bfbcf3d0d8cf:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-2pm-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-2pm-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-2pm-4.jpg": {
+  "fp": "ee642f248557e097620c8891855f19ea95f19e08:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-2pm-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-2pm-4-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-2pm-5.jpg": {
+  "fp": "c430378ca799f14673f823de1f7216c81fc7de04:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-2pm-5-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-plus-2pm-5-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-plus-2pm.png": {
+  "fp": "dd892330b09de325a389fd4b4760158b039f3148:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-plus-2pm-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-plus-2pm-554.webp",
+    554,
+    440
+   ]
+  ]
+ },
+ "products/shelly-pro-3-2.jpg": {
+  "fp": "a0f80767dee1f36b77b14fc098a6720cadd43e05:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-3-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-3-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-3-3.jpg": {
+  "fp": "92e925106fad8fd448e4b8a661d779fcc36309aa:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-3-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-3-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-3.png": {
+  "fp": "570b2ec5cc2946be3d8141a7e1b91efb3165a326:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-3-400.webp",
+    400,
+    521
+   ],
+   [
+    "/assets/products/shelly-pro-3-468.webp",
+    468,
+    610
+   ]
+  ]
+ },
+ "products/shelly-pro-4pm-2.jpg": {
+  "fp": "d77fe55368630e1348be4d06d9719aff34e79725:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-4pm-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-4pm-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-4pm-3.jpg": {
+  "fp": "046a2160690a686d8ffe6d4130125c76728b22bb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-4pm-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-4pm-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-4pm-4.jpg": {
+  "fp": "3eee10c015aeaf658fe41a2dd071fc824337a99d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-4pm-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-4pm-4-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-4pm.png": {
+  "fp": "1bbd4b0eb3842b4d2fa46a9ffe8c06cc7535f004:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-4pm-400.webp",
+    400,
+    592
+   ],
+   [
+    "/assets/products/shelly-pro-4pm-538.webp",
+    538,
+    796
+   ]
+  ]
+ },
+ "products/shelly-pro-dual-cover-shutter-pm-2.jpg": {
+  "fp": "e3bc9b818b2b1e61cc37529b7ecc512101ab2e90:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-dual-cover-shutter-pm-3.jpg": {
+  "fp": "51ce618aea32eedb3502c0d5d07dcf0630eb08f5:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-dual-cover-shutter-pm-4.jpg": {
+  "fp": "5059287b9afadf7fe067c64bead14a9c6de27d48:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-4-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-pro-dual-cover-shutter-pm.png": {
+  "fp": "eca9b63f8b4aeee54dd45174336e38fad810dede:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-400.webp",
+    400,
+    606
+   ],
+   [
+    "/assets/products/shelly-pro-dual-cover-shutter-pm-469.webp",
+    469,
+    710
+   ]
+  ]
+ },
+ "products/shelly-wall-display-2.jpg": {
+  "fp": "6a67d043b0f34bb8e2ded10592dd87826e94fded:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-wall-display-2-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-wall-display-2-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-wall-display-3.jpg": {
+  "fp": "0bcbf1e024ada95c906c637f9387ae007684d903:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-wall-display-3-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-wall-display-3-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-wall-display-4.jpg": {
+  "fp": "81fbfead3a7084e4f03ad139bd9faa490a2884df:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-wall-display-4-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-wall-display-4-800.webp",
+    800,
+    800
+   ],
+   [
+    "/assets/products/shelly-wall-display-4-1000.webp",
+    1000,
+    1000
+   ]
+  ]
+ },
+ "products/shelly-wall-display-5.jpg": {
+  "fp": "9d2ccb49ec2364179062ca92febcc985e0fc43e6:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-wall-display-5-400.webp",
+    400,
+    400
+   ],
+   [
+    "/assets/products/shelly-wall-display-5-625.webp",
+    625,
+    625
+   ]
+  ]
+ },
+ "products/shelly-wall-display.png": {
+  "fp": "149b60cf87486f0ad2c253cfdc51a05495da7a9d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/shelly-wall-display-400.webp",
+    400,
+    318
+   ],
+   [
+    "/assets/products/shelly-wall-display-443.webp",
+    443,
+    352
+   ]
+  ]
+ },
+ "products/sonoff-mini-zb2gs-l.png": {
+  "fp": "f061ef264eb5e49cf75aafe607a0fe36796743e1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-mini-zb2gs-l-400.webp",
+    400,
+    356
+   ],
+   [
+    "/assets/products/sonoff-mini-zb2gs-l-800.webp",
+    800,
+    712
+   ],
+   [
+    "/assets/products/sonoff-mini-zb2gs-l-1130.webp",
+    1130,
+    1005
+   ]
+  ]
+ },
+ "products/sonoff-mini-zb2gs.png": {
+  "fp": "18238c0a8a8d4d08f279bd6a35b6753cb65b62a7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-mini-zb2gs-400.webp",
+    400,
+    356
+   ],
+   [
+    "/assets/products/sonoff-mini-zb2gs-800.webp",
+    800,
+    712
+   ],
+   [
+    "/assets/products/sonoff-mini-zb2gs-1140.webp",
+    1140,
+    1015
+   ]
+  ]
+ },
+ "products/sonoff-mini-zbdim.png": {
+  "fp": "3ec34ea31b803e991ff134f0e3e22d3a2bd07cdf:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-mini-zbdim-400.webp",
+    400,
+    357
+   ],
+   [
+    "/assets/products/sonoff-mini-zbdim-800.webp",
+    800,
+    713
+   ],
+   [
+    "/assets/products/sonoff-mini-zbdim-1134.webp",
+    1134,
+    1011
+   ]
+  ]
+ },
+ "products/sonoff-mini-zbrbs.png": {
+  "fp": "c3dad3e9b408f94e563891fd6209455353b659e1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-mini-zbrbs-400.webp",
+    400,
+    339
+   ],
+   [
+    "/assets/products/sonoff-mini-zbrbs-800.webp",
+    800,
+    678
+   ],
+   [
+    "/assets/products/sonoff-mini-zbrbs-1139.webp",
+    1139,
+    966
+   ]
+  ]
+ },
+ "products/sonoff-zbmini-extreme-l2.png": {
+  "fp": "de807e73633ac426f2bab9f5348e1880825c43c8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-zbmini-extreme-l2-400.webp",
+    400,
+    329
+   ],
+   [
+    "/assets/products/sonoff-zbmini-extreme-l2-800.webp",
+    800,
+    658
+   ],
+   [
+    "/assets/products/sonoff-zbmini-extreme-l2-1200.webp",
+    1200,
+    988
+   ]
+  ]
+ },
+ "products/sonoff-zbmini-extreme.png": {
+  "fp": "1e889d06a3583b9e21e3a85b96f3fabefec93bcc:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/sonoff-zbmini-extreme-400.webp",
+    400,
+    338
+   ],
+   [
+    "/assets/products/sonoff-zbmini-extreme-800.webp",
+    800,
+    677
+   ],
+   [
+    "/assets/products/sonoff-zbmini-extreme-1130.webp",
+    1130,
+    956
+   ]
+  ]
+ },
+ "products/zennio-bin-t-2x.png": {
+  "fp": "41dcf99df847f5528e00e1f38b2b845986c1f6a4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-bin-t-2x-333.webp",
+    333,
+    281
+   ]
+  ]
+ },
+ "products/zennio-bin-t-4x.png": {
+  "fp": "9a043b168c8557fc08885c7903f203591aab4911:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-bin-t-4x-333.webp",
+    333,
+    281
+   ]
+  ]
+ },
+ "products/zennio-bin-t-6x.png": {
+  "fp": "62434ef142256cacb7659c48091d47f629c26fb6:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-bin-t-6x-333.webp",
+    333,
+    281
+   ]
+  ]
+ },
+ "products/zennio-bin-t-8x.png": {
+  "fp": "45b7cb3adc7ff4d9f5b7f458db9d70a86292cd65:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-bin-t-8x-333.webp",
+    333,
+    281
+   ]
+  ]
+ },
+ "products/zennio-diminbox-dx2.png": {
+  "fp": "fa3f2e38fee98202c98f02a27c5c517441b64df7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-diminbox-dx2-313.webp",
+    313,
+    307
+   ]
+  ]
+ },
+ "products/zennio-diminbox-dx4.png": {
+  "fp": "6aec49e39ada6f5f261471c9c38dccda6f76a59c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-diminbox-dx4-371.webp",
+    371,
+    241
+   ]
+  ]
+ },
+ "products/zennio-flat-70-2.png": {
+  "fp": "226ef953a7755a7ee94e4b573b4813e0df87b2fb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-flat-70-3.png": {
+  "fp": "ad1274c442bb9faa7cf190a1e7d0b1aacb8f1de2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-flat-70-4.png": {
+  "fp": "e8513cd140b0a84dff0924ee49dd1ee0a5b77d25:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-flat-70-5.png": {
+  "fp": "4dee801fb90ddb04b4ad4ebabc3b510323a3c254:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-flat-70-6.png": {
+  "fp": "28088ba6dc1415e530ddc70597f0aac8c78e61ae:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-flat-70.png": {
+  "fp": "93da0566ecb088b3370b05e1650f15df5cf91930:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-flat-70-275.webp",
+    275,
+    300
+   ]
+  ]
+ },
+ "products/zennio-inbox-20-v3.png": {
+  "fp": "2c832f9415b0884e06177ba2ade6ee94009d65cc:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-inbox-20-v3-287.webp",
+    287,
+    253
+   ]
+  ]
+ },
+ "products/zennio-inbox-24-v3.png": {
+  "fp": "ddb2102d0a726adb2f7a213863477b0c9ef18d0b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-inbox-24-v3-287.webp",
+    287,
+    253
+   ]
+  ]
+ },
+ "products/zennio-kupsupply-160ma.png": {
+  "fp": "3d13a83cee56861e0441256984847cf0c4006f59:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-kupsupply-160ma-184.webp",
+    184,
+    291
+   ]
+  ]
+ },
+ "products/zennio-kupsupply-320ma.png": {
+  "fp": "e886aae5a1af47a1c2738b9d2c96012fc3254f51:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-kupsupply-320ma-320.webp",
+    320,
+    313
+   ]
+  ]
+ },
+ "products/zennio-kupsupply-640ma.png": {
+  "fp": "0de79f11dc018fad2aaa69fab7df5d64631234a1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-kupsupply-640ma-320.webp",
+    320,
+    313
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-12.png": {
+  "fp": "1805eef69fad0763576f5c4bfa23847a15fa2d7c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-12-288.webp",
+    288,
+    227
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-16-v4.png": {
+  "fp": "aa8ac919f7ec05e769c18b8252afe5dec33951f0:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-16-v4-372.webp",
+    372,
+    241
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-20.png": {
+  "fp": "a4d779221b3cef7a792b94e8f263c4e683a74018:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-20-373.webp",
+    373,
+    202
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-24-v2.png": {
+  "fp": "3c2ec52fbe802e10814fbf29cc209166d53fab1e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-24-v2-334.webp",
+    334,
+    157
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-66-v3.png": {
+  "fp": "1649984d77afd5c32f3374176919cf6f38ed79ad:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-66-v3-327.webp",
+    327,
+    319
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-8-v4.png": {
+  "fp": "93ebd96a39e40629dfe4b44bdd886b9d9cd31338:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-8-v4-313.webp",
+    313,
+    309
+   ]
+  ]
+ },
+ "products/zennio-maxinbox-88.png": {
+  "fp": "3587db296623a7fa23fad11f60b1b5f1ca71a5db:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-maxinbox-88-291.webp",
+    291,
+    306
+   ]
+  ]
+ },
+ "products/zennio-minibox-20-v2.png": {
+  "fp": "6c4056ea1ecd383a237a5a3c1aabee4ca89ab91e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-minibox-20-v2-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-minibox-25-v3.png": {
+  "fp": "2b75647dcb08e467cd0f1b9f2a0ea028c6d75192:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-minibox-25-v3-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-minibox-40-v3.png": {
+  "fp": "d1061ca392d5dad9d85ca20c6d9a8cc6482c68c4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-minibox-40-v3-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-minibox-45-v3.png": {
+  "fp": "d0f66e2afa773ebcacacfc265aa44b58e9d151dc:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-minibox-45-v3-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-narrowdim-x2.png": {
+  "fp": "18417426cb427665157562aaca4050849d91a1da:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-narrowdim-x2-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-narrowdim-x4.png": {
+  "fp": "29815ba27485b3af36739b2ca38bf2cb764591f1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-narrowdim-x4-313.webp",
+    313,
+    315
+   ]
+  ]
+ },
+ "products/zennio-railquad-8.png": {
+  "fp": "35408b301e8ecf3716035a58b4892c43b3168231:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-railquad-8-188.webp",
+    188,
+    293
+   ]
+  ]
+ },
+ "products/zennio-tecla-2.png": {
+  "fp": "29d08cdc1a4aa531a512ebc3d753e0f0b7900f62:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-3.png": {
+  "fp": "61857bccc1606a3c6b5947151146239dadd069e7:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-4.png": {
+  "fp": "61616b3a6526a7040c325b52c675d2a68c9ae620:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-5.png": {
+  "fp": "04b78400aec1ed1257a461dc30d0a105ee5ef96b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55-2.png": {
+  "fp": "fa77aab9f5321ef4bedd6229f265d621497b3f72:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55-3.png": {
+  "fp": "c8ec9d8243682529809f196ddf60bb1a5870c73b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55-4.png": {
+  "fp": "6bf29f619dd1eaced41854a80f85130521938bf8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55-5.png": {
+  "fp": "932dc883901505eb83c9c18ae234b8411240c5cb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55-6.png": {
+  "fp": "bd737c6762afdb1fe66e7ba842a02ab48706a59d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-55.png": {
+  "fp": "d68bd8c0325cf64fdeaf3065593f3737d95af741:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-55-278.webp",
+    278,
+    312
+   ]
+  ]
+ },
+ "products/zennio-tecla-6.png": {
+  "fp": "abf15e903a33e3fd4f5b426b58d337d8d9b611c1:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70-2.png": {
+  "fp": "f3eeb7ea18078f5484ecaab00be39450ab67b0d8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70-3.png": {
+  "fp": "3e8c655c0dd6b35bc82e226b6f38ed9b6911fc0a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70-4.png": {
+  "fp": "1e37cb6042ab8de52516cf1af770f40d7eb217fb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70-5.png": {
+  "fp": "e8d7add0d231e35028eff355eea8e092a7c97a4f:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70-6.png": {
+  "fp": "54ff170b2e0769cc04caf0022a00bc568bf83003:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-70.png": {
+  "fp": "eafa8e9b926c88e006f980e54d10a7aa3762ce2d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-70-275.webp",
+    275,
+    300
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl-2.png": {
+  "fp": "1e87a6eccc2c3226819736b468c3ea0b49f1a0f2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl-3.png": {
+  "fp": "ad795b2ed6dbe7b77a4b8a1717e53d2eaa6e5f99:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl-4.png": {
+  "fp": "ac4160cab123a819b78c629388ce1b50e7a0bd76:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl-5.png": {
+  "fp": "fc7802d9b747eeb78f475d209a8e7161160e4bb4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl-6.png": {
+  "fp": "75802ea86a7bfd7db2276a1980ff707c07d2f352:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-tecla-xl.png": {
+  "fp": "adbf17c1661b50f9e72e3e931e974ac2f0b5f816:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-xl-190.webp",
+    190,
+    306
+   ]
+  ]
+ },
+ "products/zennio-tecla.png": {
+  "fp": "a0ad59ddeac2e23ca3588d6ea3b3e801595454f2:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-tecla-255.webp",
+    255,
+    286
+   ]
+  ]
+ },
+ "products/zennio-z100-2.png": {
+  "fp": "0e30c0e616c947359f8c138fd029ae8379046cf3:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z100-3.png": {
+  "fp": "0414ac68c6c125df64dcec412a5f802d2a07597f:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z100-4.png": {
+  "fp": "d24a313b94e92cae26b0942f6048e1997ef4ab44:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z100-5.png": {
+  "fp": "837476d6c8ba2a8c673d34dfa9a404327b6bb8b0:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z100-6.png": {
+  "fp": "9e809017f9d41256373bc5329583f303331b520a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z100-touch-panel.png": {
+  "fp": "45e41e9f258254542bf154f4ca75e163ab16a737:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z100-touch-panel-320.webp",
+    320,
+    271
+   ]
+  ]
+ },
+ "products/zennio-z28-2.png": {
+  "fp": "78a686b97df1aa83f9d60ad511d924c8cd88998c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z28-3.png": {
+  "fp": "570201ec4667c2bdeb8b0c5a12794d7890603488:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z28-4.png": {
+  "fp": "e084789edacbe425a9682455cc447828fa30a051:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z28-5.png": {
+  "fp": "502f2894942708896542f59588d09a7c48ca3258:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z28-6.png": {
+  "fp": "bd2fb85134be25d7cc635d7592c7776f0806da6f:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z28.png": {
+  "fp": "635f76b4fa932b8263710f8481bb249b628fc0c4:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z28-274.webp",
+    274,
+    300
+   ]
+  ]
+ },
+ "products/zennio-z35-v3-2.png": {
+  "fp": "9a96c5fcf1c9d0d6766f86576074da0589c068dc:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z35-v3-3.png": {
+  "fp": "68130b506b25ba0f5b9ee983aa215478cd791c34:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z35-v3-4.png": {
+  "fp": "0e87a2cc2af7deed7225d84021b061cf62b4b962:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z35-v3-5.png": {
+  "fp": "8b467af78af8793fbddcc7dff41afacaf8510a6c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z35-v3-6.png": {
+  "fp": "0d34146d1443b4562b2eeb8dda9c7744ab206478:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z35-v3.png": {
+  "fp": "b08ea588c0f0bb99159367f8a589031f5f01203a:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z35-v3-294.webp",
+    294,
+    315
+   ]
+  ]
+ },
+ "products/zennio-z40-2.png": {
+  "fp": "e87429ebd23f3a2c7cfdf7c11feec6d0103e2c36:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z40-3.png": {
+  "fp": "6a320a24226458e6c5298e47c7f93650f07e2b54:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z40-4.png": {
+  "fp": "1fe6a1a3b8d614853eac708f00548c2164308c17:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z40-5.png": {
+  "fp": "23e7c4e6af128e4001711410a4619e5d47a119bd:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z40-6.png": {
+  "fp": "870267f9e310c6cf2c6dd92847dcde55c97cbee8:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z40.png": {
+  "fp": "69abc9c55b450acaa7c9f4658414440b509af893:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z40-274.webp",
+    274,
+    271
+   ]
+  ]
+ },
+ "products/zennio-z50-2.png": {
+  "fp": "a0ec264d314e507837ec84d4b5d3954f120d0164:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z50-3.png": {
+  "fp": "ed2bd41bc5333fe587f6d496b7e6181120adfd1b:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z50-4.png": {
+  "fp": "205b428e0353e99d5c0507b1c304d5bf812a7eea:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z50-5.png": {
+  "fp": "8e6f0c8fd56efa2a6f8ea5a421edc1066d0c18b3:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z50-6.png": {
+  "fp": "fc4a377793306b0efaff31bf51428cbae80761fb:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z50.png": {
+  "fp": "6c699a8d829c5b4b096e1fb51493b893e99c6412:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z50-143.webp",
+    143,
+    248
+   ]
+  ]
+ },
+ "products/zennio-z70-v2-2.png": {
+  "fp": "cd82307dc93952da5da7ebbd8cdc0cc4ec3f0010:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-2-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z70-v2-3.png": {
+  "fp": "5718589c5812c94a9da55e9ba1f206045e156131:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-3-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z70-v2-4.png": {
+  "fp": "5813af8c43b68ad913e907c6f1097d20b8cfdd3d:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-4-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z70-v2-5.png": {
+  "fp": "ce0077f4a30ef139a4eef38a05d51f0e2201a40e:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-5-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z70-v2-6.png": {
+  "fp": "42a8043677acb76b6f47dd297072188fdfd12a81:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-6-370.webp",
+    370,
+    361
+   ]
+  ]
+ },
+ "products/zennio-z70-v2.png": {
+  "fp": "e10b92ffc6fe373794bcbae81e269445cc12794c:15da7822039a",
+  "variants": [
+   [
+    "/assets/products/zennio-z70-v2-329.webp",
+    329,
+    319
+   ]
+  ]
+ },
+ "site/Vila-big-background.webp": {
+  "fp": "a59a457770cf39be0de167b3f8854ec9a1ae4729:ae3b000e8fd7"
+ },
+ "site/logocircular.webp": {
+  "fp": "188d5474368697825aea46b4935dcb8c20f3a397:bd56fd1ad0ea"
+ },
+ "site/roomwebp.webp": {
+  "fp": "bc27d33aa0c106f987ca3a0de194ea74fcde200f:55aa4702e8b9"
+ }
+}

@@ -81,12 +81,12 @@
     }
   },
   "images": [
-    "/assets/products/zennio-flat-70.png",
-    "/assets/products/zennio-flat-70-2.png",
-    "/assets/products/zennio-flat-70-3.png",
-    "/assets/products/zennio-flat-70-4.png",
-    "/assets/products/zennio-flat-70-5.png",
-    "/assets/products/zennio-flat-70-6.png"
+    "zennio-flat-70.png",
+    "zennio-flat-70-2.png",
+    "zennio-flat-70-3.png",
+    "zennio-flat-70-4.png",
+    "zennio-flat-70-5.png",
+    "zennio-flat-70-6.png"
   ],
   "files": [
     {

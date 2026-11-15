@@ -546,11 +546,10 @@
     const prefix = getLangPrefix();
     const cards = items.map(function(p) {
       const title = t(p.title);
-      const image = p.image || (p.images && p.images[0]) || '/assets/S‑ELECTRICITY-LOGO.svg';
       return (
         '<a href="' + prefix + '/products/' + p.id + '.html" class="prod-card link-transition">' +
           '<div class="prod-card-img-wrapper" style="height:180px;">' +
-            '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(title) + '" class="prod-card-img" loading="lazy" />' +
+            SE.img(p.image, { box: 'card', alt: title, cls: 'prod-card-img' }) +
           '</div>' +
           '<div class="prod-card-content" style="padding:1rem;">' +
             '<h4 style="font-size:1.1rem; color: #1f2937; margin:0;">' + escapeHtml(title) + '</h4>' +

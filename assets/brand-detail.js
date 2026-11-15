@@ -332,7 +332,6 @@
     const prefix = getLangPrefix();
     const title = t(product.title);
     const desc = t(product.short_description);
-    const image = product.image || (product.images && product.images[0]) || '/assets/S‑ELECTRICITY-LOGO.svg';
     const techs = Array.isArray(product.technology) ? product.technology : [];
     const protocolStrip = techs.length
       ? '<div class="prod-card-protocols">' + techs.map(SE.protoMarkup).join('') + '</div>'
@@ -341,7 +340,7 @@
     return (
       '<a href="' + prefix + '/products/' + product.id + '.html" class="prod-card prod-fade-in product-link">' +
         '<div class="prod-card-img-wrapper">' +
-          '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(title) + '" class="prod-card-img" loading="lazy" />' +
+          SE.img(product.image, { box: 'card', alt: title, cls: 'prod-card-img' }) +
         '</div>' +
         protocolStrip +
         '<div class="prod-card-content">' +

@@ -74,7 +74,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-kupsupply-320ma.png"],
+  "images": ["zennio-kupsupply-320ma.png"],
 
   "files": [
     {

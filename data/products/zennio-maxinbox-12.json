@@ -68,7 +68,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-maxinbox-12.png"],
+  "images": ["zennio-maxinbox-12.png"],
 
   "files": [
     {

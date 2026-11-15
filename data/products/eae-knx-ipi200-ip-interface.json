@@ -59,7 +59,7 @@
     }
   },
 
-  "images": ["/assets/products/eae-knx-ipi200-ip-interface.png"],
+  "images": ["eae-knx-ipi200-ip-interface.png"],
 
   "files": [
     {

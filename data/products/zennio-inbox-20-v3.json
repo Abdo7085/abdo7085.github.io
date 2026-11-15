@@ -71,7 +71,7 @@
     }
   },
 
-  "images": ["/assets/products/zennio-inbox-20-v3.png"],
+  "images": ["zennio-inbox-20-v3.png"],
 
   "files": [
     {
