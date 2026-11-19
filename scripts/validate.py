@@ -64,7 +64,8 @@ PROJECT_REQUIRED = {
     "id", "date", "location", "categories", "title", "short_description",
     "description", "cover", "media", "related_products", "duration_days",
 }
-PROJECT_OPTIONAL = {"testimonial", "extra_brands", "extra_protocols"}
+# seo_title: {lang: text}, only where the title is too long for search results (build_projects.py)
+PROJECT_OPTIONAL = {"testimonial", "extra_brands", "extra_protocols", "seo_title"}
 MEDIA_TYPES = {"image", "video", "reel"}      # video also needs a "poster" image
 
 
@@ -309,6 +310,10 @@ def check_projects(rep: Report, taxonomy, product_ids: set) -> None:
         _placeholders(rep, where, data)
         for key in ("title", "short_description", "description"):
             _localized(rep, where, data, key)
+        seo = data.get("seo_title")
+        if "seo_title" in data and not (isinstance(seo, dict) and seo and all(
+                l in ("en", "fr", "ar") and isinstance(v, str) and v.strip() for l, v in seo.items())):
+            rep.error(where, '"seo_title" must map some of en/fr/ar to a non-empty text')
 
         if "location" in data and not _text(data.get("location")):
             rep.error(where, '"location" is empty')

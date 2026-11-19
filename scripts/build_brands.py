@@ -172,12 +172,7 @@ def generate_brand_html(template_html, brand, brand_products, lang):
     desc_text = make_meta_description(brand, lang)
     logo = brand.get("logo")
 
-    suffix = {
-        "en": "S‑ELECTRICITY Morocco",
-        "fr": "S‑ELECTRICITY Maroc",
-        "ar": "S‑ELECTRICITY المغرب",
-    }[lang]
-    page_title = f"{brand_name} | {suffix}"
+    page_title = _lib.page_title(brand_name, lang)
 
     safe_title = html_module.escape(page_title, quote=True)
     safe_desc = html_module.escape(desc_text, quote=True)

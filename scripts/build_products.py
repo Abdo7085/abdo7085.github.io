@@ -169,11 +169,7 @@ def generate_product_html(template_html, product, lang, manifest):
     og_path = build_images.og_url("products", pid)
     image_url = HOST + og_path if og_path else f"{HOST}/assets/android-chrome-512x512.png"
 
-    suffix = {"en": "S\u2011ELECTRICITY Morocco", "fr": "S\u2011ELECTRICITY Maroc", "ar": "S\u2011ELECTRICITY \u0627\u0644\u0645\u063a\u0631\u0628"}[lang]
-    if brand and brand.lower() not in title.lower():
-        page_title = f"{title} - {brand} | {suffix}"
-    else:
-        page_title = f"{title} | {suffix}"
+    page_title = _lib.page_title(title, lang, brand)
 
     # Escape for HTML attributes
     safe_title = html_module.escape(page_title, quote=True)

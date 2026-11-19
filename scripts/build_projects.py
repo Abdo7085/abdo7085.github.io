@@ -228,12 +228,8 @@ def generate_project_html(template_html, project, lang, products_index):
     og_path = build_images.og_url("projects", pid)
     cover_url = HOST + og_path if og_path else f"{HOST}/assets/android-chrome-512x512.png"
 
-    suffix = {
-        "en": "S\u2011ELECTRICITY Morocco",
-        "fr": "S\u2011ELECTRICITY Maroc",
-        "ar": "S\u2011ELECTRICITY \u0627\u0644\u0645\u063a\u0631\u0628",
-    }[lang]
-    page_title = f"{title} | {suffix}"
+    # a shorter name for search results where the project's title is too long (optional "seo_title")
+    page_title = _lib.page_title((project.get("seo_title") or {}).get(lang) or title, lang)
 
     safe_title = html_module.escape(page_title, quote=True)
     safe_desc = html_module.escape(desc_text, quote=True)

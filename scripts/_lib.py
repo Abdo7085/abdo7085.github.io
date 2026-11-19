@@ -74,6 +74,25 @@ def t(obj, lang: str = "en") -> str:
     return obj.get(lang) or obj.get("en") or obj.get("fr") or obj.get("ar") or ""
 
 
+TITLE_MAX = 65  # search results show about 60 characters of a title; keep the name whole, shorten the tail
+SITE_SUFFIX = {"en": "S‑ELECTRICITY Morocco", "fr": "S‑ELECTRICITY Maroc",
+               "ar": "S‑ELECTRICITY المغرب"}
+
+
+def page_title(name: str, lang: str, brand: str = "") -> str:
+    """<title> for a generated page: the longest form that fits TITLE_MAX —
+    "Name - Brand | S‑ELECTRICITY Morocco", then without the brand, then with the
+    short "S‑ELECTRICITY", then the name alone (a name is never cut)."""
+    forms = []
+    if brand and brand.lower() not in name.lower():
+        forms.append(f"{name} - {brand} | {SITE_SUFFIX[lang]}")
+    forms += [f"{name} | {SITE_SUFFIX[lang]}", f"{name} | S‑ELECTRICITY", name]
+    for f in forms:
+        if len(f) <= TITLE_MAX:
+            return f
+    return name
+
+
 def make_meta_description(obj, lang: str, max_len: int = 160) -> str:
     """Build an SEO-safe meta description from a localized object.
     Prefers `description`, falls back to `short_description`. Truncates on a
