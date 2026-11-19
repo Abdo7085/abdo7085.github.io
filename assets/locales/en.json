@@ -276,5 +276,15 @@
   "brand_founded": "Founded {year}",
   "brand_no_products": "No products from this brand yet.",
   "brand_not_found": "Brand Not Found",
-  "brand_not_found_desc": "The brand you are looking for does not exist or has been removed."
+  "brand_not_found_desc": "The brand you are looking for does not exist or has been removed.",
+  "nav_products": "Products",
+  "nav_projects": "Projects",
+  "nav_services": "Services",
+  "nav_contact": "Contact",
+  "menu": "Menu",
+  "logo_sub": "Smart home · Tetouan",
+  "ftr_explore": "Explore",
+  "ftr_catalogue": "Catalogue",
+  "ftr_location": "Tetouan, Morocco",
+  "skip_to_content": "Skip to content"
 }

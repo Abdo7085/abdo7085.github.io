@@ -287,5 +287,15 @@
   "brand_founded": "تأسّست سنة {year}",
   "brand_no_products": "لا توجد منتجات لهذه العلامة بعد.",
   "brand_not_found": "العلامة غير موجودة",
-  "brand_not_found_desc": "العلامة التي تبحث عنها غير موجودة أو تم حذفها."
+  "brand_not_found_desc": "العلامة التي تبحث عنها غير موجودة أو تم حذفها.",
+  "nav_products": "المنتجات",
+  "nav_projects": "أعمالنا",
+  "nav_services": "خدماتنا",
+  "nav_contact": "اتصل بنا",
+  "menu": "القائمة",
+  "logo_sub": "المنزل الذكي · تطوان",
+  "ftr_explore": "استكشف",
+  "ftr_catalogue": "الكتالوج",
+  "ftr_location": "تطوان، المغرب",
+  "skip_to_content": "انتقل إلى المحتوى"
 }

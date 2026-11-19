@@ -1,0 +1,200 @@
+/*
+ * se.css — S-ELECTRICITY design "Panel & Villa", design D (approved 2026-11-19).
+ * Source of the design: docs/redesign/ (the prototype). This file is the production copy and grows
+ * one wave at a time (docs/REPAIR_PLAN.md, phase 7). Wave 1: fonts, colours, header, phone menu, footer.
+ *
+ * Fonts are served from /assets/fonts (latin + arabic subsets only): the browser downloads a file
+ * only when the page uses characters in its unicode-range. No preload on purpose: on a slow link
+ * the page scripts and data must arrive first; text shows in a fallback font, then swaps.
+ * Changa is Arabic-only: Latin words in Arabic headings fall through to Readex Pro.
+ */
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/barlow-condensed-latin-500.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/barlow-condensed-latin-600.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/barlow-condensed-latin-700.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Changa'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/assets/fonts/changa-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/readex-pro-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/readex-pro-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/readex-pro-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/readex-pro-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/readex-pro-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/readex-pro-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/readex-pro-arabic.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1; }
+@font-face { font-family: 'Readex Pro'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/readex-pro-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* ───────────────────────── Tokens ── */
+:root {
+  --y: #ffca43;            /* logo yellow — actions, LEDs, labels */
+  --y-deep: #e9ae1f;
+  --y-pale: #fff4d6;
+  --y-glow: rgba(255, 202, 67, 0.22);   /* glows stay a hint, never a halo */
+
+  /* Panel functions — one muted colour each, same lightness so none shouts */
+  --c-light: #f2c35a;      /* interior lighting — the brand's warm yellow, softened */
+  --c-facade: #e3a06a;     /* facade lighting — amber */
+  --c-shutter: #93abc9;    /* shutters — brushed steel blue */
+  --c-climate: #df8c7c;    /* climate — warm coral */
+  --c-scene: #d9d3c7;      /* scenes — pearl */
+
+  --brass: #c9a86a;        /* brushed brass — hairlines and borders, never a fill */
+  --brass-line: rgba(201, 168, 106, 0.4);
+  --brass-grad: linear-gradient(90deg, #8a6d3b, #e6cf98 35%, #a8853f 65%, #efdcaa);
+  --khatam: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><g fill='none' stroke='%23c9a86a' stroke-width='1.3'><rect x='3.2' y='3.2' width='9.6' height='9.6'/><rect x='3.2' y='3.2' width='9.6' height='9.6' transform='rotate(45 8 8)'/></g></svg>");   /* the 8-point star of Tetouan's zellige — a mark, never a pattern fill */
+
+  --graphite: #232528;     /* accent on light surfaces: icons, links, active states */
+  --graphite-2: #34373b;
+  --glass: #111214;        /* black glass */
+  --ink: #17181a;
+  --ink-soft: #55585c;
+  --ink-faint: #8a8d91;
+
+  --wash: #efefed;         /* page canvas: plaster white-grey */
+  --white: #ffffff;
+  --panel: #d9dbd8;        /* RAL 7035, lightened */
+  --line: rgba(23, 24, 26, 0.12);
+  --line-strong: rgba(23, 24, 26, 0.22);
+
+  --on-dark: #f3f2ef;
+  --on-dark-soft: rgba(243, 242, 239, 0.72);
+  --on-dark-faint: rgba(243, 242, 239, 0.46);
+  --line-dark: rgba(243, 242, 239, 0.14);
+
+  /* IEC 60446 wire colours */
+  --w-brown: #6e4127; --w-black: #26272a; --w-grey: #8c9093; --w-blue: #2563b0; --w-earth: #2f8f46; --w-earth-y: #f2d230;
+
+  --f-body: 'Readex Pro', system-ui, sans-serif;
+  --f-disp: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --f-ar: 'Changa', 'Readex Pro', sans-serif;
+
+  --r-sm: 6px; --r: 10px; --r-lg: 12px; --r-xl: 20px; --r-pill: 999px;
+  --shadow-sm: 0 2px 0 rgba(23, 24, 26, 0.05), 0 6px 16px -10px rgba(10, 11, 12, 0.35);
+  --shadow: 0 18px 40px -22px rgba(10, 11, 12, 0.5);
+  --shadow-lg: 0 34px 80px -30px rgba(10, 11, 12, 0.65);
+
+  --wrap: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --hdr-h: 66px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* circuit traces: pads, vias and a component footprint */
+  --pat-dark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'><g fill='none' stroke='%23c9a86a' stroke-opacity='.16' stroke-width='1'><path d='M0 18H24L32 26H72'/><path d='M18 0V12'/><path d='M50 26V72'/><path d='M0 54H16L24 46H40'/><rect x='14' y='12' width='8' height='8'/><rect x='14' y='12' width='8' height='8' transform='rotate(45 18 16)'/><rect x='46' y='50' width='8' height='8'/><rect x='46' y='50' width='8' height='8' transform='rotate(45 50 54)'/></g><g fill='%23c9a86a' fill-opacity='.3'><circle cx='40' cy='46' r='1.6'/><circle cx='72' cy='26' r='1.6'/></g></svg>");
+  --pat-light: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><g fill='none' stroke='%23232528' stroke-opacity='.08' stroke-width='1'><path d='M0 16H22L30 24H64'/><path d='M16 0V12'/><path d='M44 24V64'/><path d='M0 48H14L22 40H34'/><rect x='34' y='36' width='8' height='8' rx='1'/></g><g fill='%23232528' fill-opacity='.12'><circle cx='16' cy='12' r='2'/><circle cx='44' cy='24' r='2'/><circle cx='38' cy='40' r='1.4'/></g></svg>");
+}
+
+/* ───────────────────────── Shared pieces ── */
+.wrap { width: 100%; max-width: calc(var(--wrap) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: absolute; inset-inline-start: 12px; top: -60px; z-index: 100; padding: 10px 14px; border-radius: 4px; background: var(--y); color: var(--glass); font-weight: 700; }
+.skip:focus { top: 12px; }
+
+/* Header, phone menu and footer carry their own small reset, so they look the same over any page body */
+:is(.hdr, .menu, .ftr) { font-family: var(--f-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+:is(.hdr, .menu, .ftr) *, :is(.hdr, .menu, .ftr) *::before, :is(.hdr, .menu, .ftr) *::after { box-sizing: border-box; }
+:is(.hdr, .menu, .ftr) a { color: inherit; text-decoration: none; }
+:is(.hdr, .menu, .ftr) button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
+:is(.hdr, .menu, .ftr) :is(h2, p, ul) { margin: 0; padding: 0; }
+:is(.hdr, .menu, .ftr) ul { list-style: none; }
+:is(.hdr, .menu, .ftr) :is(img, svg) { display: block; max-width: 100%; }
+:is(.hdr, .menu, .ftr) :focus-visible { outline: 2px solid var(--y); outline-offset: 3px; border-radius: 4px; }
+
+/* Buttons: square keys (design D) */
+:is(.hdr, .menu, .ftr) .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 22px;
+  border-radius: 4px; border: 2px solid transparent; font-family: var(--f-disp); font-size: 17px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1; white-space: nowrap;
+  transition: background-color .18s, color .18s, border-color .18s, box-shadow .18s, transform .18s;
+}
+[lang="ar"] :is(.hdr, .menu, .ftr) .btn { font-family: var(--f-ar); font-size: 15.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+:is(.hdr, .menu, .ftr) .btn:active { transform: translateY(1px); }
+:is(.hdr, .menu, .ftr) .btn-sm { min-height: 38px; padding: 0 14px; font-size: 15px; }
+:is(.hdr, .menu, .ftr) .btn-primary { background: var(--y); color: var(--glass); }
+:is(.hdr, .menu, .ftr) .btn-primary:hover { background: #ffd35f; box-shadow: 0 0 0 4px rgba(255, 202, 67, 0.28); }
+
+/* Wire stripe: the five IEC conductors, with a running current pulse */
+.wires { position: relative; display: grid; gap: 2px; padding-block: 3px; overflow: hidden; }
+.wires i { display: block; height: 3px; border-radius: 2px; }
+.wires .br { background: var(--w-brown); } .wires .bk { background: var(--w-black); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28); } .wires .gy { background: var(--w-grey); } .wires .bl { background: var(--w-blue); }
+.wires .pe { background: repeating-linear-gradient(90deg, var(--w-earth) 0 22px, var(--w-earth-y) 22px 34px); }
+.wires::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+  background: linear-gradient(90deg, transparent, rgba(255, 246, 214, 0.95), transparent) no-repeat;
+  background-size: 120px 100%; mix-blend-mode: screen; animation: se-current 5.5s linear infinite;
+}
+@keyframes se-current { from { background-position: -140px 0; } to { background-position: calc(100% + 140px) 0; } }
+[dir="rtl"] .wires::after { animation-direction: reverse; }
+
+/* ───────────────────────── Header ── */
+/* overflow-x: clip, not hidden: hidden on both <html> and <body> turns body into a scroll box that never
+   scrolls, and the sticky header then scrolls away with the page */
+html, body { overflow-x: clip; }
+/* in-page links (#contact, #main) stop below the sticky header */
+html { scroll-padding-top: calc(var(--hdr-h) + 20px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 61; background: var(--glass); }
+.hdr { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; background: linear-gradient(180deg, #1c1e21, var(--glass)); color: var(--on-dark); }
+.hdr-in { display: flex; align-items: center; gap: 18px; height: var(--hdr-h); }
+.hdr > .wires { padding-block: 0; gap: 0; filter: saturate(.55); opacity: .75; }
+.hdr > .wires i { height: 2px; border-radius: 0; }
+.logo { display: flex; align-items: center; gap: 10px; flex: none; }
+.logo img { width: 42px; height: 42px; }
+.logo-word { display: grid; line-height: 1; }
+.logo-word b { font-family: var(--f-disp); font-weight: 700; font-size: 22px; letter-spacing: 0.04em; color: #fff; }
+.logo-word small { margin-block-start: 3px; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-faint); }
+[lang="ar"] .logo-word small { letter-spacing: 0.02em; font-size: 11px; }
+.nav { display: flex; gap: 2px; margin-inline-start: auto; }
+.nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 8px; font-size: 14.5px; font-weight: 500; white-space: nowrap; color: var(--on-dark-soft); transition: color .2s, background-color .2s; }
+.nav a:hover { color: #fff; background: rgba(243, 242, 239, 0.07); }
+.nav a[aria-current="page"] { color: var(--y); }
+.nav a[aria-current="page"]::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--y); box-shadow: 0 0 8px 1px var(--y-glow); }
+.hdr-tools { display: flex; align-items: center; gap: 10px; }
+.lang { display: flex; padding: 3px; border: 1px solid var(--line-dark); border-radius: 10px; }
+.lang a { padding: 5px 8px; border-radius: 7px; font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: .05em; color: var(--on-dark-faint); }
+.lang a:hover { color: var(--on-dark); }
+.lang a.on { background: var(--y); color: var(--glass); }
+/* the one Arabic letter in the switcher uses the system font on en/fr pages, so they skip the Arabic font file */
+html:not([lang="ar"]) .lang a[lang="ar"] { font-family: system-ui, "Segoe UI", Tahoma, sans-serif; }
+.icon-btn { position: relative; display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 4px; border: 1px solid var(--line-dark); color: var(--on-dark); transition: border-color .2s, background-color .2s; }
+:is(.hdr, .menu) .icon-btn { border: 1px solid var(--line-dark); }
+:is(.hdr, .menu) .icon-btn:hover { border-color: var(--y); background: rgba(243, 242, 239, 0.06); }
+.icon-btn svg { width: 20px; height: 20px; }
+.icon-btn .count { position: absolute; top: -6px; inset-inline-end: -6px; min-width: 19px; height: 19px; padding: 0 5px; display: grid; place-items: center; border-radius: var(--r-pill); background: var(--y); color: var(--glass); font-size: 11px; font-weight: 800; line-height: 1; box-shadow: 0 0 0 2px var(--glass), 0 0 12px 1px var(--y-glow); }
+.icon-btn .count:empty { display: none; }
+.hdr .burger { display: none; }
+.burger svg + svg, .burger[aria-expanded="true"] svg:first-child { display: none; }
+.burger[aria-expanded="true"] svg + svg { display: block; }
+@media (max-width: 1180px) { .hdr-cta { display: none !important; } }
+@media (max-width: 1020px) { .nav { display: none; } .hdr .burger { display: grid; } .hdr-tools { margin-inline-start: auto; } }
+@media (max-width: 480px) { .hdr-tools .lang { display: none; } .logo-word small { display: none; } }
+
+.menu {
+  position: fixed; inset: calc(var(--hdr-h) + 5px + env(safe-area-inset-top, 0px)) 0 auto 0; z-index: 59;
+  max-height: calc(100dvh - var(--hdr-h) - 5px); overflow: auto; background: var(--glass); color: var(--on-dark);
+  border-block-end: 3px solid var(--y); transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: opacity .22s var(--ease), transform .22s var(--ease), visibility 0s .22s;
+}
+.menu.open { transform: none; opacity: 1; visibility: visible; transition-delay: 0s; }
+.menu nav { display: grid; padding: 8px var(--gutter) 4px; }
+.menu nav a { display: flex; justify-content: space-between; align-items: center; padding: 15px 2px; border-block-end: 1px solid var(--line-dark); font-size: 19px; font-weight: 500; }
+.menu nav a span { font-family: var(--f-disp); font-size: 14px; letter-spacing: .08em; color: var(--y); }
+.menu-foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 16px var(--gutter) 22px; }
+@media (min-width: 1021px) { .menu { display: none; } }
+
+/* ───────────────────────── Footer ── */
+.ftr { position: relative; margin-block-start: clamp(60px, 8vw, 100px); padding-block: 0 26px; color: var(--on-dark); background-color: var(--glass); background-image: var(--pat-dark); background-size: 72px 72px; }
+.ftr > .wires { margin-block-end: clamp(40px, 5vw, 60px); }
+.ftr > .wires i { border-radius: 0; }
+.ftr-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.1fr; gap: 34px; }
+.ftr h2 { margin-block-end: 14px; font-family: var(--f-disp); font-size: 15px; font-weight: 700; line-height: 1.3; letter-spacing: .14em; text-transform: uppercase; color: var(--y); }
+[lang="ar"] .ftr h2 { font-family: var(--f-body); letter-spacing: 0; font-size: 14px; }
+.ftr ul { display: grid; gap: 10px; font-size: 14.5px; color: var(--on-dark-soft); }
+.ftr ul a:hover, .ftr ul button:hover { color: var(--y); }
+.ftr ul button { text-align: start; }
+.ftr-about p { margin-block-start: 16px; color: var(--on-dark-soft); font-size: 14.5px; max-width: 36ch; }
+.ftr-contact li { display: flex; gap: 10px; align-items: center; }
+.ftr-contact svg { width: 16px; height: 16px; color: var(--y); flex: none; }
+.ftr-base { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-block-start: 44px; padding-block-start: 24px; font-size: 13px; color: var(--on-dark-faint); }
+.ftr-base::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brass-line) 18%, var(--brass-line) 82%, transparent); }
+.ftr-base::after { content: ""; position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; background: var(--glass) var(--khatam) center / 16px no-repeat; }
+@media (max-width: 900px) { .ftr-grid { grid-template-columns: 1fr 1fr; } .ftr-about { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .ftr-grid { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .wires::after { display: none; }
+  .menu { transition: none; }
+}

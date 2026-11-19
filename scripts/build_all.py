@@ -21,6 +21,9 @@ Order:
                           from stage 3), write per-brand HTML, inject ItemList
                           into brands.html. Runs after build_products so the
                           freshest products_index.json is available.
+  5. build_layout       — write the static header + footer into every page
+                          (replaces the React bundle's; runs last so it sees
+                          every page the stages above wrote).
 
 Stages 2-4 also delete generated pages whose source file is gone
 (`_lib.remove_orphan_pages`), and build_images deletes unused image files.
@@ -44,6 +47,7 @@ import build_images
 import build_projects
 import build_products
 import build_brands
+import build_layout
 
 
 def run_stage(name: str, fn) -> None:
@@ -63,6 +67,7 @@ def main() -> int:
     run_stage("build_projects", build_projects.main)
     run_stage("build_products", build_products.main)
     run_stage("build_brands", build_brands.main)
+    run_stage("build_layout", build_layout.main)
     print("\n=== Full site build complete. ===")
     return 0
 

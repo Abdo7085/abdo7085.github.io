@@ -287,5 +287,15 @@
   "brand_founded": "Fondée en {year}",
   "brand_no_products": "Aucun produit de cette marque pour le moment.",
   "brand_not_found": "Marque introuvable",
-  "brand_not_found_desc": "La marque que vous recherchez n'existe pas ou a été supprimée."
+  "brand_not_found_desc": "La marque que vous recherchez n'existe pas ou a été supprimée.",
+  "nav_products": "Produits",
+  "nav_projects": "Réalisations",
+  "nav_services": "Services",
+  "nav_contact": "Contact",
+  "menu": "Menu",
+  "logo_sub": "Maison intelligente · Tétouan",
+  "ftr_explore": "Explorer",
+  "ftr_catalogue": "Catalogue",
+  "ftr_location": "Tétouan, Maroc",
+  "skip_to_content": "Aller au contenu"
 }
