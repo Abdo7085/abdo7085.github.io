@@ -379,6 +379,8 @@
         // translated via the multilingual JSON data and the t() helper.
         var el = node.parentElement;
         while(el) {
+          // [data-se]: written at build time in the page's language (scripts/build_layout.py)
+          if(el.hasAttribute && el.hasAttribute('data-se')) return NodeFilter.FILTER_REJECT;
           if(el.id === 'custom-products-root-wrapper' || el.id === 'custom-product-detail-wrapper' || el.id === 'custom-project-detail-wrapper' || el.id === 'custom-brands-root-wrapper' || el.id === 'custom-brand-detail-wrapper' || el.id === 'fs-modal-root' || el.id === 'cart-modal-root' || (el.hasAttribute && el.hasAttribute('data-cart-badge'))) {
             return NodeFilter.FILTER_REJECT;
           }

@@ -18,9 +18,13 @@ Idempotent: the block sits between <!-- se:layout --> markers and is
 rewritten in place on every build, so the CI "rebuild changes nothing"
 check stays green.
 
-Pages still drawn by the React bundle are skipped until their own wave:
-the homepage (index.html) and the projects list (previous-work.html), whose
-content lives inside the bundle, and 404.html, which has its own layout.
+Wave 2: the homepage content is written here too (build_home.py, between
+the header and the footer, in <main data-se>), and the page gets the page
+styles (assets/se-pages.css, scoped to body.se-page).
+
+Pages skipped until their own wave: the projects list (previous-work.html),
+whose content still lives inside the React bundle, and 404.html, which has
+its own layout.
 
 Usage:
     python scripts/build_layout.py
@@ -32,9 +36,14 @@ import html as _html
 import re
 from pathlib import Path
 
+import build_home
+from _icons import WA_ICON, ic
 from _lib import ROOT, LANGS, load_locale, load_taxonomy, t
 
-SKIP = {"index.html", "previous-work.html", "404.html"}
+# Pages whose content is still drawn by the React bundle or has its own layout, until their wave
+SKIP = {"previous-work.html", "404.html"}
+# Pages whose content is written here too (the rest: header/footer around a page app)
+CONTENT = {"index.html": build_home.home}
 PHONE_TEL = "+212654132112"
 PHONE_TXT = "+212 654-132112"
 WHATSAPP = "212654132112"
@@ -47,25 +56,11 @@ BLOCK = re.compile(r'<!-- se:layout -->[\s\S]*?<!-- /se:layout -->')
 HEAD_MARK = '<!-- se:head -->'
 HEAD_LINKS = (HEAD_MARK + '\n    <link rel="stylesheet" href="/assets/se.css">'
               '\n    <script defer src="/assets/se.js"></script>\n')
-
-# Stroke icons (24×24), same set as the prototype
-ICONS = {
-    "quote": '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 3h6v3H9z"/><path d="M8.5 11h7M8.5 15h4.5"/>',
-    "menu": '<path d="M4 7h16M4 12h16M4 17h10"/>',
-    "x": '<path d="M6 6l12 12M18 6 6 18"/>',
-    "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
-    "pin": '<path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>',
-}
-WA_ICON = ('<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>')
-
+# pages fully in the new design (CONTENT) also get the page styles (body.se-page)
+PAGE_CSS = '\n    <link rel="stylesheet" href="/assets/se-pages.css">'
 
 def esc(s) -> str:
     return _html.escape(str(s), quote=True)
-
-
-def ic(name: str) -> str:
-    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
-            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>')
 
 
 def page_of(rel: str):
@@ -130,7 +125,7 @@ def header(lang: str, suffix: str, s: dict) -> str:
     cta = esc(s["spa_cta_find_solution"])
     return (
         f'<a class="skip" href="#main">{esc(s["skip_to_content"])}</a>\n'
-        '<header class="hdr"><div class="wrap hdr-in">'
+        '<header class="hdr" data-se><div class="wrap hdr-in">'
         + logo(lang, s, True)
         + f'<nav class="nav" aria-label="Main">{nav}</nav>'
         '<div class="hdr-tools">' + switch
@@ -140,7 +135,7 @@ def header(lang: str, suffix: str, s: dict) -> str:
         f'<button class="icon-btn burger" type="button" data-menu aria-controls="menu" aria-expanded="false" aria-label="{esc(s["menu"])}">'
         + ic("menu") + ic("x") + '</button>'
         '</div></div>' + wires() + '</header>\n'
-        f'<div class="menu" id="menu"><nav aria-label="{esc(s["menu"])}">{menu}</nav>'
+        f'<div class="menu" id="menu" data-se><nav aria-label="{esc(s["menu"])}">{menu}</nav>'
         f'<div class="menu-foot">{switch}'
         f'<button class="btn btn-primary btn-sm" type="button" data-trigger="find-solution">{cta}</button></div></div>'
     )
@@ -152,7 +147,7 @@ def footer(lang: str, s: dict, tax) -> str:
         f'<li><a href="{b}products.html?category={esc(cid)}">{esc(t(tax.category_labels[cid], lang))}</a></li>'
         for cid in tax.category_order[:6])
     return (
-        '<footer class="ftr" id="contact">' + wires() + '<div class="wrap">'
+        '<footer class="ftr" id="contact" data-se>' + wires() + '<div class="wrap">'
         '<div class="ftr-grid">'
         '<div class="ftr-about">' + logo(lang, s, False) + f'<p>{esc(s["spa_tagline"])}</p></div>'
         f'<div><h2>{esc(s["ftr_explore"])}</h2><ul>'
@@ -175,8 +170,10 @@ def footer(lang: str, s: dict, tax) -> str:
 
 
 def block(lang: str, suffix: str, s: dict, tax) -> str:
+    render = CONTENT.get(suffix)
+    main = f'<main id="main" data-se>{render(lang)}</main>' if render else '<main id="main"></main>'
     return ('<!-- se:layout -->\n' + header(lang, suffix, s)
-            + '\n<main id="main"></main>\n' + footer(lang, s, tax) + '\n<!-- /se:layout -->')
+            + '\n' + main + '\n' + footer(lang, s, tax) + '\n<!-- /se:layout -->')
 
 
 def apply(html: str, lang: str, suffix: str, s: dict, tax) -> str:
@@ -189,6 +186,8 @@ def apply(html: str, lang: str, suffix: str, s: dict, tax) -> str:
     if HEAD_MARK not in html:
         html = html.replace("</head>", "  " + HEAD_LINKS + "  </head>", 1) if "</head>" in html \
             else html.replace("<body", HEAD_LINKS + "  <body", 1)
+    if suffix in CONTENT and PAGE_CSS not in html:
+        html = html.replace('<link rel="stylesheet" href="/assets/se.css">', '<link rel="stylesheet" href="/assets/se.css">' + PAGE_CSS, 1)
     new = block(lang, suffix, s, tax)
     if BLOCK.search(html):
         html = BLOCK.sub(lambda m: new, html, count=1)

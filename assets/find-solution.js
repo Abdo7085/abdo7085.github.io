@@ -777,12 +777,20 @@
     return modal.root;
   }
 
-  async function open() {
+  // opts.building (optional): a BUILDING_TYPES id chosen before opening (the homepage's
+  // "who we work with" cards); the wizard then starts on the next question.
+  async function open(opts) {
     dict = await SE.locale();
 
     state = freshState();
     stepSequence = buildStepSequence();
     currentIndex = 0;
+    const preset = opts && opts.building && getOptionById(BUILDING_TYPES, opts.building);
+    if (preset) {
+      state.buildingType = preset.id;
+      stepSequence = buildStepSequence();
+      currentIndex = Math.min(1, stepSequence.length - 1);
+    }
     modalEl = buildModal();     // also removes any wizard still fading out
     renderStep(stepSequence[currentIndex], modalEl.querySelector('.fs-body'));
     updateFooter();
