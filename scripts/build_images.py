@@ -21,7 +21,7 @@ A descriptor is what the browser needs to draw the image:
      "srcset": "/assets/products/x-400.webp 400w, /assets/products/x-800.webp 800w",
      "width": 800, "height": 600}
 width/height are those of the largest variant. build_products.py copies the
-first descriptor into products_index.json ("image"); product-detail.js reads
+first descriptor into products_index.json ("image"); build_product.py reads
 the whole list for the gallery.
 
 Incremental: scripts/state/images.json remembers each source's sha1 and the
@@ -77,9 +77,8 @@ SITE_MEDIA = {
 # aq-mode 3 keeps detail in its dark scenes) plus a poster frame. The poster
 # is what a phone that blocks autoplay (iPhone Low Power Mode) shows, so it is
 # taken from the opening scene, not frame 0 (a black fade-in). Source:
-# media/site/<name>. The <video> in assets/index-CGMiSPUa.js carries
-# data-poster (set by its lazy loader together with the video) and the
-# output width/height — update them there if the video's shape changes.
+# media/site/<name>. The homepage <video> is written by scripts/build_home.py
+# (VIDEO, POSTER, width/height) — update it there if the video's shape changes.
 # ffmpeg is needed only when the source or these settings change.
 SITE_VIDEO = {
     "example01.mp4": {"max_w": 1280, "crf": 26, "aq_mode": 3,

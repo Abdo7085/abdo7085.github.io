@@ -16,17 +16,12 @@ inserted as-is; everything else is escaped.
 
 from __future__ import annotations
 
-import html as _html
 import json
-from functools import lru_cache
-from urllib.parse import quote
 
-from _icons import ICONS, WA_ICON, ic
-from _lib import ROOT, LANGS, load_locale, load_taxonomy, t
+from _icons import WA_ICON, ic
+from _lib import LANGS, t
+from _ui import PHONE_TEL, PHONE_TXT, Page, data, esc, pimg, ruler, wa
 
-WHATSAPP = "212654132112"
-PHONE_TEL = "+212654132112"
-PHONE_TXT = "+212 654-132112"
 VIDEO = "/assets/example01.mp4"
 POSTER = "/assets/example01-poster.webp"
 VILLA = "/assets/home/"          # the demo panel's three layers (night base + two light layers)
@@ -39,18 +34,6 @@ SCENE_GEO = {"int": {"left": 43.152, "top": 6.848, "width": 38.696, "height": 65
                           "C": {"left": 72.065, "top": 62.174, "width": 8.696, "height": 8.913}}}
 SCENES = ["sc_dinner", "sc_movie", "sc_sleep", "sc_away"]
 SCENE_ICON = {"sc_dinner": "dinner", "sc_movie": "movie", "sc_sleep": "sleep", "sc_away": "away"}
-
-# Counted nouns. Arabic: 1 / 2 / 3–10 / 11+
-NOUNS = {
-    "product": {"en": ["product", "products"], "fr": ["produit", "produits"], "ar": ["منتج واحد", "منتجان", "منتجات", "منتجاً"]},
-    "media": {"en": ["photo & video", "photos & videos"], "fr": ["photo et vidéo", "photos et vidéos"], "ar": ["صورة واحدة", "صورتان", "صور وفيديو", "صورة وفيديو"]},
-}
-MONTHS = {
-    "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-    "ar": ["يناير", "فبراير", "مارس", "أبريل", "ماي", "يونيو", "يوليوز", "غشت", "شتنبر", "أكتوبر", "نونبر", "دجنبر"],
-}
-CITY = {"Tetouan, Morocco": {"fr": "Tétouan, Maroc", "ar": "تطوان، المغرب"}}
 
 SERVICES = [
     ("spa_feat_thermostats", ["spa_title_smart_lighting", "svc_shutters", "spa_title_thermostat", "spa_title_voice_integration"], "controls", "smart_home"),
@@ -66,77 +49,9 @@ FAQ = [("spa_q_services", "spa_a_services"), ("spa_q_price", "spa_a_prices"),
        ("spa_q_sell_products", "spa_a_sell_products"), ("spa_q_schedule", "spa_a_schedule")]
 
 
-def esc(v) -> str:
-    return _html.escape("" if v is None else str(v), quote=True)
-
-
-@lru_cache(maxsize=None)
-def data():
-    rd = lambda p: json.loads((ROOT / p).read_text(encoding="utf-8"))
-    projects = rd("data/projects_index.json")
-    full = {}
-    for pj in projects:
-        f = ROOT / "data" / "projects" / f"{pj['id']}.json"
-        full[pj["id"]] = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
-    return {"products": rd("data/products_index.json"), "brands": rd("data/brands_index.json"),
-            "projects": projects, "full": full, "tax": load_taxonomy()}
-
-
-class Page:
-    """Strings and links for one language."""
-
-    def __init__(self, lang: str):
-        self.lang = lang
-        self.L = load_locale(lang)
-        self.base = "/" if lang == "en" else f"/{lang}/"
-
-    def s(self, key: str, **kv) -> str:
-        if key not in self.L:
-            raise SystemExit(f"build_home: string '{key}' missing in assets/locales/{self.lang}.json")
-        v = str(self.L[key])
-        for k, x in kv.items():
-            v = v.replace("{" + k + "}", str(x))
-        return v
-
-    def e(self, key: str, **kv) -> str:
-        return esc(self.s(key, **kv))
-
-    def count(self, n: int, noun: str) -> str:
-        f = NOUNS[noun][self.lang]
-        if self.lang == "ar":
-            if n == 1: return f[0]
-            if n == 2: return f[1]
-            return f"{n} {f[2] if 3 <= n <= 10 else f[3]}"
-        return f"{n} {f[0] if n == 1 else f[1]}"
-
-    def date(self, iso: str) -> str:
-        y, m = iso[:4], int(iso[5:7])
-        return f"{MONTHS[self.lang][m - 1]} {y}"
-
-    def city(self, v: str) -> str:
-        return v if self.lang == "en" else CITY.get(v, {}).get(self.lang, v)
-
-
-def pimg(desc, sizes: str, alt: str = "") -> str:
-    if not desc:
-        return ""
-    srcset = f' srcset="{esc(desc["srcset"])}" sizes="{esc(sizes)}"' if desc.get("srcset") else ""
-    wh = f' width="{desc["width"]}" height="{desc["height"]}"' if desc.get("width") else ""
-    return f'<img class="prod-img" src="{esc(desc["src"])}"{srcset}{wh} alt="{esc(alt)}" loading="lazy" decoding="async">'
-
-
-def ruler(label: str, meta: str = "") -> str:
-    return (f'<div class="sh"><span class="kicker">{esc(label)}</span><span class="sh-line"></span>'
-            + (f'<span class="sh-meta">{esc(meta)}</span>' if meta else "") + "</div>")
-
-
 def chev(d: str) -> str:
     return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
             f'stroke-linejoin="round" aria-hidden="true"><path d="{d}"/></svg>')
-
-
-def wa(text: str = "") -> str:
-    return f"https://wa.me/{WHATSAPP}" + (f"?text={quote(text)}" if text else "")
 
 
 def wizard_btn(p: Page, cls: str = "btn btn-primary") -> str:
@@ -347,7 +262,8 @@ def contact(p: Page) -> str:
 
 def home(lang: str) -> str:
     p, d = Page(lang), data()
-    return (hero(p, d) + strip(p, d) + clients(p) + work(p, d) + services(p)
+    # the film and the brand strip share the first screen exactly, on any screen size
+    return ('<div class="first-screen">' + hero(p, d) + strip(p, d) + '</div>' + clients(p) + work(p, d) + services(p)
             + demo(p) + tiles(p, d) + method(p) + faq(p) + contact(p))
 
 

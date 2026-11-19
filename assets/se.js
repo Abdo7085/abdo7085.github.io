@@ -8,6 +8,16 @@
 (function () {
   'use strict';
 
+  // The header's real height (logo, wire stripe, safe area), for layouts that fill the screen
+  // under it (the homepage's first screen): exposed as --hdr-real on <html>.
+  var hdr = document.querySelector('.hdr');
+  function hdrHeight() {
+    if (hdr) document.documentElement.style.setProperty('--hdr-real', hdr.getBoundingClientRect().bottom + 'px');
+  }
+  hdrHeight();
+  window.addEventListener('resize', hdrHeight);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(hdrHeight);
+
   var menu = document.getElementById('menu');
   var burger = document.querySelector('.hdr [data-menu]');
 
@@ -36,6 +46,40 @@
       if (window.innerWidth > 1020) setMenu(false);
     });
   }
+
+  /* ---------- Scrolling tab rows (catalog categories, brand page): swipe, mouse wheel or the
+     arrows at the ends; the arrow + fade show only on a side with more tabs hidden.
+     window.seRail(row) wires one row; it returns { nav, center(tab) }. ---------- */
+  window.seRail = function (rail) {
+    if (!rail) return { nav: function () {}, center: function () {} };
+    var dir = document.documentElement.dir === 'rtl' ? -1 : 1;
+    var box = rail.parentNode;
+    function nav() {
+      var max = rail.scrollWidth - rail.clientWidth, at = Math.abs(rail.scrollLeft);
+      box.classList.toggle('can-start', at > 2);
+      box.classList.toggle('can-end', max - at > 2);
+    }
+    rail.addEventListener('scroll', nav, { passive: true });
+    rail.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      var max = rail.scrollWidth - rail.clientWidth, at = Math.abs(rail.scrollLeft), fwd = e.deltaY > 0;
+      if (max < 2 || (fwd && max - at < 2) || (!fwd && at < 2)) return; // at an end: let the page scroll
+      e.preventDefault(); rail.scrollLeft += dir * e.deltaY;
+    }, { passive: false });
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-rail]');
+      if (b) rail.scrollBy({ left: +b.getAttribute('data-rail') * dir * rail.clientWidth * 0.7, behavior: 'smooth' });
+    });
+    window.addEventListener('resize', nav);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(nav);
+    nav();
+    return {
+      nav: nav,
+      center: function (t) {
+        if (t) rail.scrollTo({ left: t.offsetLeft - (rail.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+      }
+    };
+  };
 
   /* ---------- Homepage (scripts/build_home.py writes the HTML) ---------- */
 
@@ -131,6 +175,42 @@
       paint();
     }
   }
+
+  /* ---------- "Add to quote" buttons on cards: show which products are already in the request ---------- */
+  function paintAdds() {
+    if (!window.Cart || !window.Cart.getItems) return;
+    var inCart = {};
+    window.Cart.getItems().forEach(function (it) { inCart[it.id] = 1; });
+    document.querySelectorAll('.btn-add[data-product-id]').forEach(function (b) {
+      var on = !!inCart[b.getAttribute('data-product-id')];
+      if (b.classList.contains('is-added') === on) return;
+      b.classList.toggle('is-added', on);
+      if (!b._label) b._label = b.innerHTML;
+      b.innerHTML = on ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>' +
+        b.getAttribute('data-added') + '</span>' : b._label;
+    });
+  }
+  if (document.querySelector('.btn-add[data-product-id]')) {
+    document.addEventListener('cart:change', paintAdds);
+    window.addEventListener('pageshow', paintAdds); // back button: the cart may have changed elsewhere
+    (function wait(n) { if (window.Cart) paintAdds(); else if (n) setTimeout(function () { wait(n - 1); }, 100); })(50);
+  }
+
+  // GitHub Pages answers every missing address with the root (English) 404.html:
+  // on a /fr/… or /ar/… address, show that language's 404 instead.
+  (function () {
+    var m = location.pathname.match(/^\/(fr|ar)\//);
+    if (m && document.body.classList.contains('pg-404') && document.documentElement.lang !== m[1]) {
+      location.replace('/' + m[1] + '/404.html');
+    }
+  })();
+
+  // Legacy query-string pages (product.html, brand.html, project.html ?id=…): the page now lives at its own address
+  (function () {
+    var m = location.pathname.match(/^(.*\/)(product|brand|project)\.html$/);
+    var id = new URLSearchParams(location.search).get('id');
+    if (m && id && /^[\w-]+$/.test(id)) location.replace(m[1] + m[2] + 's/' + id + '.html');
+  })();
 
   // Language links are plain links to the page in that language; remember the choice
   // the same way i18n.js does, so the homepage opens in it next time. The query string

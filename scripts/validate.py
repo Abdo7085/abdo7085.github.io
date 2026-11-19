@@ -292,7 +292,7 @@ def check_brands(rep: Report) -> set:
 
 
 def brand_slug(name: str) -> str:
-    """Same rule as product-detail.js / products.js: lower case, spaces -> '-'."""
+    """Brand id from its name: lower case, spaces -> '-' (as the brand page URLs)."""
     return re.sub(r"\s+", "-", str(name).lower())
 
 

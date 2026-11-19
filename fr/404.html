@@ -5,12 +5,70 @@
     <title data-i18n-title="page_title_404">Page Introuvable | S‑ELECTRICITY Maroc</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Page introuvable — S‑ELECTRICITY. Domotique, optimisation réseau/Wi‑Fi, caméras de surveillance et serrures intelligentes au Maroc. Découvrez nos services ou contactez‑nous." data-i18n-meta="meta_description_404">
-    <link rel="stylesheet" href="/assets/brand.css" />
-    <link rel="stylesheet" href="/assets/404.css" />
-  <link rel="stylesheet" href="/assets/i18n.css" />
-    <link rel="stylesheet" href="/assets/section-eyebrows.css" />
-    <link rel="stylesheet" crossorigin href="/assets/index-CJ3jXuVd.css">
     <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/assets/brand.css">
+    
+    <!-- Localization Script -->
+    <script defer src="/assets/i18n.js"></script>
+    <!-- Shared helpers: taxonomy labels + protocol icons (must precede the page scripts) -->
+    <script defer src="/assets/site-core.js"></script>
+    <!-- Find Your Solution wizard (modal) -->
+    <link rel="stylesheet" href="/assets/find-solution.css">
+    <script defer src="/assets/find-solution.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
   <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/" />
   <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/" />
   <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/" />
@@ -28,51 +86,18 @@
 
       gtag('config', 'G-T59VT16363');
     </script>
-</head>
-  <body>
-    <!-- Language menu (toggled by [data-trigger="lang-toggle"] buttons inside the SPA navbar) -->
-    <div id="langMenuRoot" class="lang-menu" role="menu" aria-label="Language" hidden>
-      <button type="button" data-lang="en" role="menuitem">English</button>
-      <button type="button" data-lang="fr" role="menuitem">Français</button>
-      <button type="button" data-lang="ar" role="menuitem">العربية</button>
-    </div>
-    <main class="notfound-root" role="main">
-      <a class="logo-link" href="/" aria-label="Back to home" data-i18n="logo_alt_link">Retour à l'accueil<img src="/assets/logocircular.webp" alt="SMART‑ELECTRICITY logo" class="logo" data-i18n-alt="logo_alt" />
-      </a>
-
-      <section class="card">
-        <div class="eyebrow">404</div>
-        <h1 data-i18n="title">Page non trouvée</h1>
-        <p class="lead" data-i18n="lead">La page que vous recherchez n'existe pas ou a été déplacée. Reprenons la bonne voie.</p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="/" data-i18n="go_home">Aller à l'accueil</a>
-          <a class="btn btn-outline" href="tel:0654132112" aria-label="Call SMART‑ELECTRICITY" data-i18n="call">Appeler : 0654-132112</a>
-        </div>
-
-        <p class="small">
-          <span data-i18n="try_services">Ou essayez nos services principaux :</span>
-          <a href="/#services" data-i18n="services">Services</a>,
-          <a href="/previous-work" data-i18n="previous_work">Travaux précédents</a>,
-          <a href="/#contact" data-i18n="contact">Contact</a>
-        </p>
-      </section>
-
-      <footer class="site-footer">
-        <p data-i18n="footer_copyright">© 2025 SMART‑ELECTRICITY LLC · <a href="/privacy" data-i18n="privacy">Confidentialité</a></p>
-      </footer>
-    </main>
-
-    <!-- Optional tiny inline script to keep focus for accessibility -->
-    <script>
-      // Focus the main heading for screen readers
-      (function(){
-        try {
-          var h = document.querySelector('.card h1');
-          if (h && typeof h.focus === 'function') h.setAttribute('tabindex','-1'), h.focus();
-        } catch(e){}
-      })();
-    </script>
-    <script src="/assets/i18n.js" defer></script>
+  <!-- se:head -->
+    <link rel="stylesheet" href="/assets/se.css">
+    <link rel="stylesheet" href="/assets/se-pages.css">
+    <script defer src="/assets/se.js"></script>
+  </head>
+  <body class="se-page pg-404">
+    <!-- se:layout -->
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="hdr" data-se><div class="wrap hdr-in"><a class="logo" href="/fr/" aria-label="Retour à l&#x27;accueil"><img src="/assets/logocircular.webp" alt="" width="42" height="42"><span class="logo-word"><b>S‑ELECTRICITY</b><small>Maison intelligente · Tétouan</small></span></a><nav class="nav" aria-label="Main"><a href="/fr/products.html">Produits</a><a href="/fr/brands.html">Marques</a><a href="/fr/previous-work.html">Réalisations</a><a href="/fr/#services">Services</a><a href="#contact">Contact</a></nav><div class="hdr-tools"><div class="lang" role="group" aria-label="Language"><a href="/404.html" hreflang="en" lang="en">EN</a><a href="/fr/404.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="/ar/404.html" hreflang="ar" lang="ar">ع</a></div><button class="icon-btn" type="button" data-trigger="cart-open" aria-label="Ouvrir la demande de devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 3h6v3H9z"/><path d="M8.5 11h7M8.5 15h4.5"/></svg><span class="count" data-cart-badge></span></button><button class="btn btn-primary btn-sm hdr-cta" type="button" data-trigger="find-solution">Trouvez votre solution</button><button class="icon-btn burger" type="button" data-menu aria-controls="menu" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div><div class="wires" aria-hidden="true"><i class="br"></i><i class="bk"></i><i class="gy"></i><i class="bl"></i><i class="pe"></i></div></header>
+<div class="menu" id="menu" data-se><nav aria-label="Menu"><a href="/fr/products.html">Produits<span>01</span></a><a href="/fr/brands.html">Marques<span>02</span></a><a href="/fr/previous-work.html">Réalisations<span>03</span></a><a href="/fr/#services">Services<span>04</span></a><a href="#contact">Contact<span>05</span></a></nav><div class="menu-foot"><div class="lang" role="group" aria-label="Language"><a href="/404.html" hreflang="en" lang="en">EN</a><a href="/fr/404.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="/ar/404.html" hreflang="ar" lang="ar">ع</a></div><button class="btn btn-primary btn-sm" type="button" data-trigger="find-solution">Trouvez votre solution</button></div></div>
+<main id="main" data-se><div class="wrap"><section class="nf"><div class="nf-art dark" aria-hidden="true"><span class="nf-code">404</span><span class="brk"><span class="brk-top"><span>Q404</span><span class="led"></span></span><span class="brk-lever"></span><span class="brk-name">Erreur 404</span></span></div><div class="reveal"><p class="kicker">Erreur 404</p><h1 class="display nf-title">Page non trouvée</h1><p class="lead">La page que vous recherchez n&#x27;existe pas ou a été déplacée. Reprenons la bonne voie.</p><form class="search nf-search" action="/fr/products.html" method="get" role="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input name="q" type="search" placeholder="Rechercher dans le catalogue" aria-label="Rechercher dans le catalogue"></form><div class="nf-links"><a href="/fr/products.html">Produits<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flip"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="/fr/brands.html">Marques<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flip"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="/fr/previous-work.html">Réalisations<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flip"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="/fr/#services">Services<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flip"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><div class="actions nf-actions"><a class="btn btn-primary" href="/fr/">Aller à l&#x27;accueil</a><a class="btn btn-line" href="tel:+212654132112"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span dir="ltr">+212 654-132112</span></a></div></div></section></div></main>
+<footer class="ftr" id="contact" data-se><div class="wires" aria-hidden="true"><i class="br"></i><i class="bk"></i><i class="gy"></i><i class="bl"></i><i class="pe"></i></div><div class="wrap"><div class="ftr-grid"><div class="ftr-about"><a class="logo" href="/fr/"><img src="/assets/logocircular.webp" alt="" width="42" height="42"><span class="logo-word"><b>S‑ELECTRICITY</b><small>Maison intelligente · Tétouan</small></span></a><p>Une seule équipe, un seul appel — du câblage au Wi-Fi, des caméras au KNX. Installation professionnelle, support complet.</p></div><div><h2>Explorer</h2><ul><li><a href="/fr/products.html">Produits</a></li><li><a href="/fr/brands.html">Marques</a></li><li><a href="/fr/previous-work.html">Réalisations</a></li><li><a href="/fr/#services">Services</a></li><li><button type="button" data-trigger="find-solution">Trouvez votre solution</button></li></ul></div><div><h2>Catalogue</h2><ul><li><a href="/fr/products.html?category=controls">Interrupteurs &amp; écrans tactiles</a></li><li><a href="/fr/products.html?category=actuators">Actionneurs &amp; contrôleurs de pièce</a></li><li><a href="/fr/products.html?category=dimming">Variation d&#x27;éclairage</a></li><li><a href="/fr/products.html?category=shutters">Volets &amp; stores</a></li><li><a href="/fr/products.html?category=smart-relays">Relais intelligents</a></li><li><a href="/fr/products.html?category=security">Interphonie &amp; sécurité</a></li></ul></div><div><h2>Contact</h2><ul class="ftr-contact"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+212654132112" dir="ltr">+212 654-132112</a></li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg><a href="https://wa.me/212654132112" target="_blank" rel="noopener">Discuter sur WhatsApp</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Tétouan, Maroc</span></li></ul></div></div><div class="ftr-base"><span>© 2026 S‑ELECTRICITY. Tous droits réservés.</span></div></div></footer>
+<!-- /se:layout -->
   </body>
 </html>

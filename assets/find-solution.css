@@ -460,3 +460,118 @@ body.fs-open { overflow: hidden; }
   .fs-option,
   .fs-btn { transition: none !important; animation: none !important; }
 }
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Design D ("Panel & Villa", 2026-11-19): the wizard as in docs/redesign,
+   black-glass head with a wire-style progress line, square keys, yellow for
+   the chosen answer. Overrides the look above; the markup (find-solution.js)
+   is unchanged. Colours come from assets/se.css.
+   ========================================================================== */
+.fs-modal { font-family: var(--f-body, "Readex Pro", system-ui, sans-serif); color: var(--ink, #17181a); }
+.fs-modal-backdrop { background: rgba(10, 11, 12, 0.55); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.fs-modal-panel { max-width: 720px; border-radius: 14px; background: var(--wash, #efefed); box-shadow: var(--shadow-lg, 0 34px 80px -30px rgba(10, 11, 12, .65)); }
+.fs-modal .fs-close {
+  top: 16px; inset-inline-end: 16px; width: 40px; height: 40px; border-radius: 4px;
+  background: transparent; border: 1px solid var(--line-dark, rgba(243, 242, 239, .14)); color: var(--on-dark, #f3f2ef);
+}
+.fs-modal .fs-close:hover { background: rgba(243, 242, 239, .06); border-color: var(--y, #ffca43); transform: none; }
+/* Head as in the prototype: "Step 2 of 5" in yellow beside the close key, the wire under it */
+.fs-modal .fs-header { padding: 18px 24px 16px; background: var(--glass, #111214); border-bottom: 0; }
+.fs-modal .fs-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.fs-modal .fs-top { display: flex; align-items: center; min-height: 40px; padding-inline-end: 52px; }
+.fs-modal .fs-progress { display: block; margin-top: 14px; }
+.fs-modal .fs-progress-track { height: 4px; border-radius: 4px; background: rgba(243, 242, 239, .15); overflow: visible; }
+.fs-modal .fs-progress-bar { position: relative; border-radius: 4px; background: var(--y, #ffca43); box-shadow: 0 0 12px rgba(255, 202, 67, .22); }
+.fs-modal .fs-progress-bar::after {
+  content: ""; position: absolute; inset-inline-end: -5px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 4px rgba(255, 202, 67, .5), 0 0 16px 4px rgba(255, 202, 67, .22);
+}
+.fs-modal .fs-progress-text { font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: 15px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--y, #ffca43); }
+.fs-modal[dir="rtl"] .fs-progress-text { font-family: inherit; letter-spacing: 0; text-transform: none; font-size: 13.5px; }
+.fs-modal .fs-question { font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: clamp(22px, 2.3vw, 29px); font-weight: 600; line-height: 1.12; color: var(--ink, #17181a); }
+.fs-modal[dir="rtl"] .fs-question { font-family: var(--f-ar, "Changa", sans-serif); font-size: 20px; }
+.fs-modal .fs-question-hint { color: var(--ink-faint, #8a8d91); }
+/* Answer cards as in the prototype: icon top, label under it, both at the start edge; the chosen one
+   turns pale yellow with a yellow ring and an LED dot in its corner */
+.fs-modal .fs-options { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.fs-modal .fs-option {
+  display: grid; align-content: start; justify-items: start; justify-content: stretch; grid-template-columns: minmax(0, 1fr); gap: 10px; min-height: 96px; padding: 15px;
+  border-radius: 14px; border: 1.5px solid var(--line-strong, rgba(23, 24, 26, .22)); background: var(--white, #fff);
+  color: var(--ink, #17181a); font-family: inherit; font-size: 14.5px; font-weight: 600; line-height: 1.35; text-align: start; box-shadow: none;
+  transition: border-color .15s, background-color .15s, box-shadow .15s;
+}
+.fs-modal .fs-option:hover { border-color: var(--graphite, #232528); background: var(--white, #fff); transform: none; }
+.fs-modal .fs-option.fs-selected, .fs-modal .fs-option[aria-pressed="true"] { border-color: var(--graphite, #232528); background: var(--y-pale, #fff4d6); color: var(--ink, #17181a); box-shadow: 0 0 0 3px rgba(255, 202, 67, .55); }
+.fs-modal .fs-option.fs-selected::after {
+  content: ""; top: 12px; inset-inline-end: 12px; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--y, #ffca43); box-shadow: 0 0 0 2px var(--graphite, #232528), 0 0 10px 2px rgba(255, 202, 67, .22);
+}
+.fs-modal .fs-option-icon { color: var(--graphite, #232528); background: none; font-size: inherit; }
+.fs-modal .fs-option-icon svg { width: 26px; height: 26px; }
+.fs-modal .fs-option.fs-selected .fs-option-icon { color: var(--graphite, #232528); }
+.fs-modal .fs-option-label { line-height: 1.35; }
+.fs-modal .fs-options-list .fs-option { display: flex; align-items: center; min-height: 0; padding: 13px 15px; gap: 12px; }
+.fs-modal .fs-options-list .fs-option-icon svg { width: 22px; height: 22px; }
+.fs-modal .fs-input { border-radius: 4px; border: 1.5px solid var(--line-strong, rgba(23, 24, 26, .22)); background: var(--white, #fff); color: var(--ink, #17181a); }
+.fs-modal .fs-input:focus { border-color: var(--graphite, #232528); box-shadow: 0 0 0 4px rgba(255, 202, 67, .4); }
+.fs-modal .fs-footer { background: var(--white, #fff); border-top: 1px solid var(--line, rgba(23, 24, 26, .12)); }
+/* Keys as in the prototype: "next / send" is the yellow key, "back" a white key with a thin dark rim
+   (the buttons need their own padding: the page reset `.se-page button` zeroes it) */
+.fs-modal .fs-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 8px 22px;
+  border-radius: 4px; font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: 17px; font-weight: 700; line-height: 1.15;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: none;
+}
+.fs-modal[dir="rtl"] .fs-btn { font-family: var(--f-ar, "Changa", sans-serif); font-size: 15.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.fs-modal .fs-btn svg { width: 18px; height: 18px; flex: none; }
+.fs-modal .fs-btn-primary, .fs-modal .fs-btn-whatsapp { background: var(--y, #ffca43); color: var(--glass, #111214); border: 2px solid transparent; }
+.fs-modal .fs-btn-primary:hover, .fs-modal .fs-btn-whatsapp:hover { background: #ffd35f; color: var(--glass, #111214); box-shadow: 0 0 0 4px rgba(255, 202, 67, .28); }
+.fs-modal .fs-btn-secondary { background: var(--white, #fff); color: var(--ink, #17181a); border: 1px solid var(--ink, #17181a); }
+.fs-modal .fs-btn-secondary:hover { background: var(--ink, #17181a); color: #fff; border-color: var(--ink, #17181a); }
+.fs-modal .fs-summary-list { border-radius: 10px; border: 1px solid var(--line, rgba(23, 24, 26, .12)); background: var(--white, #fff); }
+@media (max-width: 600px) {
+  .fs-modal { align-items: flex-end; }
+  .fs-modal-panel { margin: 0; width: 100%; max-height: 92dvh; height: auto; border-radius: 22px 22px 0 0; }
+  .fs-modal .fs-header { padding: 16px 18px 14px; }
+}
+/* question → hint → answers: the same rhythm as the prototype, also on steps without a hint */
+.fs-modal .fs-question { margin: 0 0 6px; }
+.fs-modal .fs-question-hint { margin: 0 0 4px; font-size: 14px; }
+.fs-modal .fs-options, .fs-modal .fs-options-list { margin-top: 16px; }
+.fs-modal .fs-input-label { display: block; margin: 16px 0 8px; }
+
+/* the wizard's name above the first question: brass zellige star + small caps, like every section label */
+.fs-modal .fs-kicker {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 12px; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft, #55585c);
+}
+.fs-modal .fs-kicker::before { content: ""; width: 16px; height: 16px; flex: none; background: var(--khatam) center / 16px no-repeat; }
+.fs-modal[dir="rtl"] .fs-kicker { letter-spacing: 0; font-size: 13px; }
+/* questions after the first two: text-only cards, tighter */
+.fs-modal .fs-compact .fs-option { min-height: 0; padding: 13px 15px; padding-inline-end: 32px; } /* room for the LED dot of the chosen answer */
+/* summary: one white table, label | answer, dashed rules between rows */
+.fs-modal .fs-summary { display: grid; margin: 16px 0 0; border-radius: 12px; border: 1px solid var(--line, rgba(23, 24, 26, .12)); overflow: hidden; background: var(--white, #fff); }
+.fs-modal .fs-summary > div { display: grid; grid-template-columns: 40% 1fr; gap: 14px; padding: 11px 16px; border-bottom: 1px dashed var(--line-strong, rgba(23, 24, 26, .22)); font-size: 14.5px; }
+.fs-modal .fs-summary > div:last-child { border-bottom: 0; }
+.fs-modal .fs-summary dt { margin: 0; color: var(--ink-soft, #55585c); }
+.fs-modal .fs-summary dd { margin: 0; font-weight: 600; color: var(--ink, #17181a); }
+.fs-modal .fs-summary-cta-lead { margin-top: 16px; text-align: start; }
+/* footer keys: the arrow on "next", the WhatsApp mark on "send" (never mirrored) */
+.fs-modal .fs-footer { padding: 14px 24px 20px; }
+.fs-modal .fs-send[hidden] { display: none; }
+.fs-modal .fs-arrow { margin-inline-start: 2px; }
+.fs-modal[dir="rtl"] .fs-send svg { transform: none; }
+@media (max-width: 600px) {
+  .fs-modal .fs-header { padding: 16px 18px 14px; }
+  .fs-modal .fs-footer { padding: 12px 18px calc(14px + env(safe-area-inset-bottom)); }
+  .fs-modal .fs-options { grid-template-columns: 1fr 1fr; }
+}

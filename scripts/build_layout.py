@@ -36,14 +36,40 @@ import html as _html
 import re
 from pathlib import Path
 
+import build_brand_pages
+import build_catalog
 import build_home
+import build_notfound
+import build_product
+import build_project_pages
 from _icons import WA_ICON, ic
 from _lib import ROOT, LANGS, load_locale, load_taxonomy, t
 
 # Pages whose content is still drawn by the React bundle or has its own layout, until their wave
-SKIP = {"previous-work.html", "404.html"}
+SKIP: set = set()
 # Pages whose content is written here too (the rest: header/footer around a page app)
-CONTENT = {"index.html": build_home.home}
+CONTENT = {"index.html": (build_home.home, None),
+           "products.html": (build_catalog.catalog, "/assets/se-catalog.js"),
+           "brands.html": (build_brand_pages.brands, None),
+           "previous-work.html": (build_project_pages.projects, "/assets/se-projects.js"),
+           "404.html": (build_notfound.notfound, None)}
+# Generated detail pages: folder → (render(lang, id), page script)
+DETAIL = {"products/": (build_product.page, "/assets/se-product.js"),
+          "brands/": (build_brand_pages.brand, "/assets/se-brand.js"),
+          "projects/": (build_project_pages.project, None)}
+
+
+def content_for(suffix: str):
+    """(render(lang) -> main HTML, page script or None) for pages written here, else None."""
+    if suffix in CONTENT:
+        return CONTENT[suffix]
+    for folder, (render, script) in DETAIL.items():
+        if suffix.startswith(folder) and suffix.endswith(".html"):
+            pid = suffix[len(folder):-len(".html")]
+            return (lambda lang: render(lang, pid)), script
+    return None
+
+
 PHONE_TEL = "+212654132112"
 PHONE_TXT = "+212 654-132112"
 WHATSAPP = "212654132112"
@@ -170,8 +196,8 @@ def footer(lang: str, s: dict, tax) -> str:
 
 
 def block(lang: str, suffix: str, s: dict, tax) -> str:
-    render = CONTENT.get(suffix)
-    main = f'<main id="main" data-se>{render(lang)}</main>' if render else '<main id="main"></main>'
+    c = content_for(suffix)
+    main = f'<main id="main" data-se>{c[0](lang)}</main>' if c else '<main id="main"></main>'
     return ('<!-- se:layout -->\n' + header(lang, suffix, s)
             + '\n' + main + '\n' + footer(lang, s, tax) + '\n<!-- /se:layout -->')
 
@@ -186,8 +212,13 @@ def apply(html: str, lang: str, suffix: str, s: dict, tax) -> str:
     if HEAD_MARK not in html:
         html = html.replace("</head>", "  " + HEAD_LINKS + "  </head>", 1) if "</head>" in html \
             else html.replace("<body", HEAD_LINKS + "  <body", 1)
-    if suffix in CONTENT and PAGE_CSS not in html:
-        html = html.replace('<link rel="stylesheet" href="/assets/se.css">', '<link rel="stylesheet" href="/assets/se.css">' + PAGE_CSS, 1)
+    c = content_for(suffix)
+    if c:
+        if PAGE_CSS not in html:
+            html = html.replace('<link rel="stylesheet" href="/assets/se.css">', '<link rel="stylesheet" href="/assets/se.css">' + PAGE_CSS, 1)
+        tag = f'<script defer src="{c[1]}"></script>' if c[1] else ""
+        if tag and tag not in html:
+            html = html.replace('<script defer src="/assets/se.js"></script>', '<script defer src="/assets/se.js"></script>\n    ' + tag, 1)
     new = block(lang, suffix, s, tax)
     if BLOCK.search(html):
         html = BLOCK.sub(lambda m: new, html, count=1)

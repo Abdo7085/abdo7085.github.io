@@ -66,6 +66,8 @@
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ v: 1, items: state.items }));
     } catch (e) {}
+    // pages that show an "added" state on their buttons (assets/se.js) listen for this
+    try { document.dispatchEvent(new CustomEvent('cart:change')); } catch (e) {}
   }
 
   function totalCount() {

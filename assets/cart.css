@@ -631,3 +631,82 @@ body.cart-open { overflow: hidden; }
   .pd-add-to-cart,
   .cart-btn { transition: none !important; animation: none !important; }
 }
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Design D ("Panel & Villa", 2026-11-19): the quote request is a side drawer
+   with a black-glass head, like docs/redesign. Overrides the look above; the
+   markup (cart.js) is unchanged. Colours come from assets/se.css.
+   ========================================================================== */
+.cart-modal { justify-content: flex-end; align-items: stretch; font-family: var(--f-body, "Readex Pro", system-ui, sans-serif); color: var(--ink, #17181a); }
+.cart-modal-backdrop { background: rgba(10, 11, 12, 0.55); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.cart-modal-panel {
+  width: min(440px, 100vw); max-width: none; height: 100dvh; max-height: none; margin: 0; border-radius: 0;
+  background: var(--wash, #efefed); box-shadow: var(--shadow-lg, 0 34px 80px -30px rgba(10, 11, 12, .65));
+  transform: translateX(105%); transition: transform .35s var(--ease, ease);
+}
+.cart-modal[dir="rtl"] .cart-modal-panel { transform: translateX(-105%); }
+.cart-modal.cart-visible .cart-modal-panel { transform: none; }
+.cart-modal .cart-close {
+  top: 16px; inset-inline-end: 16px; width: 40px; height: 40px; border-radius: 4px;
+  background: transparent; border: 1px solid var(--line-dark, rgba(243, 242, 239, .14)); color: var(--on-dark, #f3f2ef);
+}
+.cart-modal .cart-close:hover { background: rgba(243, 242, 239, .06); border-color: var(--y, #ffca43); transform: none; }
+.cart-modal .cart-close svg { width: 18px; height: 18px; }
+.cart-modal .cart-header { padding: 18px 20px; background: var(--glass, #111214); border-bottom: 0; box-shadow: inset 0 -3px 0 var(--y, #ffca43); }
+.cart-modal .cart-title {
+  font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: 26px; font-weight: 700; line-height: 1.1;
+  letter-spacing: .02em; text-transform: uppercase; color: #fff; padding-inline-end: 52px;
+}
+.cart-modal[dir="rtl"] .cart-title { font-family: var(--f-ar, "Changa", sans-serif); font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 22px; }
+.cart-modal .cart-count { margin-top: 2px; font-size: 13px; color: var(--y, #ffca43); }
+.cart-modal .cart-body { padding: 12px 16px 16px; }
+.cart-modal .cart-items { gap: 8px; }
+.cart-modal .cart-item { padding: 12px; border-radius: 10px; background: var(--white, #fff); border: 1px solid var(--line, rgba(23, 24, 26, .12)); box-shadow: none; }
+.cart-modal .cart-item-thumb { width: 72px; height: 72px; border-radius: 6px; background: radial-gradient(120% 90% at 50% 0%, #fff, #e9ece7 70%); border: 0; }
+.cart-modal .cart-item-thumb img { mix-blend-mode: multiply; }
+.cart-modal .cart-item-brand { color: var(--ink-faint, #8a8d91); font-size: 12.5px; letter-spacing: .04em; }
+.cart-modal .cart-item-title { color: var(--ink, #17181a); font-size: 14.5px; font-weight: 600; line-height: 1.35; }
+.cart-modal .cart-item-title:hover { color: var(--graphite, #232528); text-decoration: underline; text-decoration-color: var(--y, #ffca43); }
+.cart-modal .cart-qty { border-radius: 4px; border: 1.5px solid var(--line-strong, rgba(23, 24, 26, .22)); background: var(--white, #fff); }
+.cart-modal .cart-qty-btn { color: var(--graphite, #232528); border-radius: 0; }
+.cart-modal .cart-qty-btn:hover { background: var(--y-pale, #fff4d6); color: var(--glass, #111214); }
+.cart-modal .cart-qty-input { font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: 17px; font-weight: 700; color: var(--ink, #17181a); }
+.cart-modal .cart-item-remove { color: var(--ink-faint, #8a8d91); border-radius: 4px; }
+.cart-modal .cart-item-remove:hover { color: var(--graphite, #232528); background: var(--wash, #efefed); }
+.cart-modal .cart-notes-label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft, #55585c); }
+.cart-modal[dir="rtl"] .cart-notes-label { letter-spacing: 0; text-transform: none; font-size: 13px; }
+.cart-modal .cart-notes { min-height: 84px; border-radius: 4px; border: 1.5px solid var(--line-strong, rgba(23, 24, 26, .22)); background: var(--white, #fff); font-family: inherit; color: var(--ink, #17181a); }
+.cart-modal .cart-notes:focus { border-color: var(--graphite, #232528); box-shadow: 0 0 0 4px rgba(255, 202, 67, .4); }
+/* Footer as in the prototype: one full-width yellow "send on WhatsApp" key; "clear all" is a quiet
+   text link under it (the buttons need their own padding: the page reset `.se-page button` zeroes it) */
+.cart-modal .cart-footer { flex-direction: column-reverse; align-items: stretch; gap: 8px; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); background: var(--white, #fff); border-top: 1px solid var(--line, rgba(23, 24, 26, .12)); }
+.cart-modal .cart-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 8px 22px;
+  border-radius: 4px; font-family: var(--f-disp, "Barlow Condensed", sans-serif); font-size: 17px; font-weight: 700; line-height: 1.15;
+  letter-spacing: .06em; text-transform: uppercase; text-align: center; box-shadow: none; flex: none; width: auto;
+}
+.cart-modal[dir="rtl"] .cart-btn { font-family: var(--f-ar, "Changa", sans-serif); font-size: 15.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.cart-modal .cart-btn svg { width: 18px; height: 18px; flex: none; }
+.cart-modal .cart-btn-whatsapp, .cart-modal .cart-btn-primary { background: var(--y, #ffca43); color: var(--glass, #111214); border: 2px solid transparent; }
+.cart-modal .cart-btn-whatsapp:hover, .cart-modal .cart-btn-primary:hover { background: #ffd35f; color: var(--glass, #111214); box-shadow: 0 0 0 4px rgba(255, 202, 67, .28); }
+.cart-modal .cart-btn-ghost {
+  min-height: 34px; padding: 4px 8px; align-self: center; background: none; border: 0; color: var(--ink-faint, #8a8d91);
+  font-family: var(--f-body, "Readex Pro", system-ui, sans-serif); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.cart-modal[dir="rtl"] .cart-btn-ghost { font-family: var(--f-body, "Readex Pro", system-ui, sans-serif); font-size: 13px; font-weight: 500; }
+.cart-modal .cart-btn-ghost:hover { background: none; color: var(--graphite, #232528); }
+.cart-modal .cart-empty-icon { color: var(--graphite, #232528); background: none; }
+.cart-modal .cart-empty-text { color: var(--ink-soft, #55585c); }
+/* Toast: black glass with a yellow mark */
+.cart-toast { border-radius: 12px; background: var(--glass, #111214); color: var(--on-dark, #f3f2ef); font-family: var(--f-body, "Readex Pro", system-ui, sans-serif); box-shadow: 0 0 0 1px var(--brass-line, rgba(201, 168, 106, .4)), 0 18px 40px -16px rgba(0, 0, 0, .6); }
+.cart-toast-icon { background: var(--y, #ffca43); color: var(--glass, #111214); }

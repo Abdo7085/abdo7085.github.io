@@ -8,8 +8,7 @@ Build the brand catalog end-to-end:
   3. Write data/brands_index.json (lean listing index with product_count per brand).
   4. Generate static SEO HTML pages in brands/, fr/brands/, ar/brands/ with full
      meta tags, hreflang, og:locale, Brand + BreadcrumbList + ItemList JSON-LD,
-     <h1>/<p> fallback in <noscript>, and window.__BRAND__ inline pre-embed
-     (so brand-detail.js renders without a second fetch).
+     (the page body itself is written by build_brand_pages.py, via build_layout.py).
   5. Inject ItemList JSON-LD into the root brands.html (EN/FR/AR) for catalog
      rich results — listing all brands as entry points.
   6. Write the authoritative sitemap.xml via _lib.write_sitemap().
@@ -42,8 +41,7 @@ DETAIL_TEMPLATE_PATH = ROOT / "brand.html"
 
 def derive_chips(brand_products):
     """Return (technologies, categories) — both sorted by frequency desc.
-    Mirrors the deriveChips() function in assets/brand-detail.js so the
-    JSON-LD / index agree with what the page renders client-side."""
+    The brands page shows these (protocols and categories per brand)."""
     # "categories" are taxonomy category ids (data/taxonomy.json), read from
     # the `category` field build_products.py derives for every index entry.
     taxonomy = _lib.load_taxonomy()
@@ -261,14 +259,8 @@ def generate_brand_html(template_html, brand, brand_products, lang):
     )
     locale_tags = f'<meta property="og:locale" content="{og_locale}" />{alt_locales}'
 
-    # Inline pre-embed of the full brand + filtered products so brand-detail.js
-    # can render instantly without a second fetch.
-    brand_with_products = dict(brand)
-    brand_with_products["products"] = brand_products
-    embedded = json.dumps(brand_with_products, ensure_ascii=False)
-    pre_embed = f'<script id="brand-preload">window.__BRAND__ = {embedded};</script>'
-
-    inject = f"  {locale_tags}\n  {brand_script}\n  {bc_script}\n  {il_script}\n  {pre_embed}\n  </head>"
+    # The page body is written at build time (build_brand_pages.py), so no data is embedded for a script.
+    inject = f"  {locale_tags}\n  {brand_script}\n  {bc_script}\n  {il_script}\n  </head>"
     out = out.replace("</head>", inject, 1)
 
     # <noscript> fallback — H1 + tagline

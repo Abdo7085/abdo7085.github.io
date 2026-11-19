@@ -7,7 +7,7 @@ Build the Previous-Work project portfolio:
   3. Write data/projects_index.json (sorted by date desc).
   4. Generate static SEO HTML pages in projects/, fr/projects/, ar/projects/
      with full meta tags, hreflang, og:locale, Article/CreativeWork + BreadcrumbList
-     JSON-LD, window.__PROJECT__ inline pre-embed, <h1>/<p> fallback in <noscript>.
+     JSON-LD (the page body itself is written by build_project_pages.py, via build_layout.py).
   5. Inject an ItemList JSON-LD into previous-work.html (EN/FR/AR) for portfolio
      rich results.
   6. Overwrite sitemap.xml with static pages + project URLs (build_products.py
@@ -309,12 +309,8 @@ def generate_project_html(template_html, project, lang, products_index):
     )
     locale_tags = f'<meta property="og:locale" content="{og_locale}" />{alt_locales}'
 
-    # Inline pre-embed of the full project so project-detail.js can render
-    # instantly without a second fetch.
-    embedded = json.dumps(project, ensure_ascii=False)
-    pre_embed = f'<script id="project-preload">window.__PROJECT__ = {embedded};</script>'
-
-    inject = f"  {locale_tags}\n  {ld_script}\n  {bc_script}\n  {pre_embed}\n  </head>"
+    # The page body is written at build time (build_project_pages.py), so no data is embedded for a script.
+    inject = f"  {locale_tags}\n  {ld_script}\n  {bc_script}\n  </head>"
     out = out.replace("</head>", inject, 1)
 
     # <noscript> fallback — H1 + short description
