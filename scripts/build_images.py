@@ -71,6 +71,7 @@ SITE_MEDIA = {
     "roomwebp.webp": (2400, 72),             # homepage hero (desktop), villa project cover
     "Vila-big-background.webp": (2000, 72),  # homepage hero (phones), villa project gallery
     "logocircular.webp": (256, 90),          # 404 page logo, shown at 72px
+    "logo-mark.webp": (168, 90),             # header + footer logo (house with plug), shown at 42px
 }
 
 # Homepage video, re-encoded with ffmpeg (H.264, no audio track, +faststart;

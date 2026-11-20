@@ -119,7 +119,7 @@ def wires() -> str:
 def logo(lang: str, s: dict, label: bool) -> str:
     aria = f' aria-label="{esc(s.get("logo_alt_link", "S‑ELECTRICITY"))}"' if label else ""
     return (f'<a class="logo" href="{base(lang)}"{aria}>'
-            '<img src="/assets/logocircular.webp" alt="" width="42" height="42">'
+            '<img src="/assets/logo-mark.webp" alt="" width="42" height="42">'
             f'<span class="logo-word"><b>S‑ELECTRICITY</b><small>{esc(s["logo_sub"])}</small></span></a>')
 
 
