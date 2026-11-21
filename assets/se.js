@@ -165,6 +165,15 @@
       custom(); paint();
     });
     range.addEventListener('input', function () { HS.light = +range.value; custom(); paint(); });
+    // Phones: the panel must fit the visible screen (address bar + bottom bar shown). CSS sizes the
+    // square picture from 100svh; it needs the height of everything else in the panel.
+    var screenEl = dev.querySelector('.screen');
+    var fitPanel = function () {
+      dev.style.setProperty('--dev-chrome', (dev.offsetHeight - screenEl.offsetHeight) + 'px');
+    };
+    fitPanel();
+    window.addEventListener('resize', fitPanel);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPanel);
     // the villa switches its lights on when the panel first comes into view
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {

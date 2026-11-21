@@ -1140,3 +1140,22 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
   .se-page .next-pj { padding: 18px; padding-inline-end: 66px; }
   .se-page .next-pj .tile-go { inset-inline-end: 14px; width: 34px; height: 34px; margin-top: -17px; }
 }
+
+/* Demo panel on phones (2026-11-21): the whole panel fits the screen even with the browser's address
+   bar and bottom bar showing. The keys are tighter, and the villa picture stays square but takes only
+   the height that is left: --dev-chrome = the panel minus its picture (measured by assets/se.js);
+   100svh = the visible screen with the browser bars shown. */
+@media (max-width: 999px) {
+  .se-page .demo .dev-face { padding: 14px 10px 10px; }
+  .se-page .demo .dev-top { padding: 0 4px 8px; }
+  .se-page .demo .screen { width: min(100%, calc(100vh - var(--hdr-real, 76px) - var(--dev-chrome, 300px) - 20px)); width: min(100%, calc(100svh - var(--hdr-real, 76px) - var(--dev-chrome, 300px) - 20px)); min-width: 150px; margin-inline: auto; }
+  .se-page .demo .dev-ctl { gap: 6px; margin-block-start: 10px; }
+  .se-page .demo .key { gap: 3px; padding: 7px 9px 9px; border-radius: 12px; }
+  .se-page .demo .key-head svg { width: 18px; height: 18px; }
+  .se-page .demo .key input[type="range"] { height: 18px; }
+  .se-page .demo .shut-btns button { height: 26px; }
+  .se-page .demo .scenes { gap: 6px; margin-block-start: 6px; }
+  .se-page .demo .scene-key { gap: 2px; padding: 6px 4px 8px; border-radius: 12px; }
+  .se-page .demo .scene-key svg { width: 18px; height: 18px; }
+  .se-page .demo .dev-brand { display: none; }
+}
