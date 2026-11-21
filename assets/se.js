@@ -205,6 +205,19 @@
     (function wait(n) { if (window.Cart) paintAdds(); else if (n) setTimeout(function () { wait(n - 1); }, 100); })(50);
   }
 
+  // A visitor who chose French or Arabic and opens an English catalog, brand or project
+  // address (a shared link, a search result) lands on the same page in their language.
+  // The homepage (/) stays English on purpose, so the language can always be changed there.
+  (function () {
+    var path = location.pathname || '/';
+    var localized = /^\/(?:products|product|brands|brand|project|previous-work)\.html$/.test(path) ||
+      /^\/(?:products|brands|projects)\/[^/]+\.html$/.test(path);
+    if (!localized) return;
+    var saved = null;
+    try { saved = localStorage.getItem('site_lang'); } catch (err) { /* private mode */ }
+    if (saved === 'fr' || saved === 'ar') location.replace('/' + saved + path + location.search + location.hash);
+  })();
+
   // GitHub Pages answers every missing address with the root (English) 404.html:
   // on a /fr/… or /ar/… address, show that language's 404 instead.
   (function () {
@@ -222,7 +235,7 @@
   })();
 
   // Language links are plain links to the page in that language; remember the choice
-  // the same way i18n.js does, so the homepage opens in it next time. The query string
+  // (key site_lang), so the next English address opens in it. The query string
   // (catalog filters, ?id= on the old product.html links) goes along to the other language.
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('.lang a[hreflang]');

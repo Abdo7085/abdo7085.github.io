@@ -2,7 +2,7 @@
    Self-contained: opens via [data-trigger="find-solution"] or
    [data-i18n="spa_cta_book_visit"] (the existing About-section button).
    Loads the page language's dictionary when it opens (SE.locale), so it
-   works even before assets/i18n.js finishes hydrating SPA content.
+   always speaks the page language.
    Language, dictionaries, the WhatsApp link, the DOM builder and the modal
    shell come from assets/site-core.js (SE). */
 (function () {
@@ -736,9 +736,6 @@
   // ---------- Mount / open / close ----------
   function buildModal() {
     modal = SE.modal({
-      // id used as a sentinel so i18n.js's text-replacement TreeWalker
-      // skips the wizard subtree (it would otherwise revert our updated
-      // step text back to the value cached in dataset.i18nOrigText).
       name: 'fs',
       id: 'fs-modal-root',
       labelledBy: 'fs-title',

@@ -1,7 +1,7 @@
 /*
  * site-core.js — shared runtime helpers for the quote cart (cart.js) and the
  * solution wizard (find-solution.js), exposed as window.SE. Loaded (defer)
- * right after i18n.js and before both.
+ * before both.
  *
  *  - SE.lang / prefix / t / locale / msg / translate   language and text
  *  - SE.data       JSON fetched once per page (the cart reads the product index)
@@ -30,9 +30,8 @@
 
   // ---------------- Language & text ----------------
   //
-  // assets/i18n.js decides the page language (URL prefix, then the saved
-  // choice) and writes it to <html lang>; everything here reads it from
-  // there, so every script agrees with the page.
+  // The page language is written into <html lang> at build time (one page per
+  // language); everything here reads it from there, so every script agrees.
 
   // '' for English, '/fr' or '/ar' — the prefix of every internal link.
   function prefix() {
@@ -50,13 +49,11 @@
     return obj[lang()] || obj.en || obj.fr || obj.ar || '';
   }
 
-  // The locale dictionary (assets/locales/<lang>.json). Shares i18n.js's
-  // cache, so the file is fetched once per page whoever asks first.
+  // The locale dictionary (assets/locales/<lang>.json), fetched once per page
+  // whoever asks first.
   var localeCache = {};
   function locale(l) {
     l = l || lang();
-    var i18n = window.__site_i18n;
-    if (i18n && typeof i18n.loadLocale === 'function') return i18n.loadLocale(l);
     if (!localeCache[l]) {
       localeCache[l] = fetch('/assets/locales/' + l + '.json')
         .then(function (res) { return res.ok ? res.json() : {}; })
@@ -65,19 +62,13 @@
     return localeCache[l];
   }
 
-  // One string from a dictionary (default: the one i18n.js applied to the
-  // page); `fallback` (or the key itself) when it has none.
+  // One string from a dictionary (default: the page's, loaded at start);
+  // `fallback` (or the key itself) when it has none.
   function msg(key, fallback, dict) {
     var d = dict || window.__site_i18n_dict || {};
     var v = d[key];
     if (typeof v === 'string' && v.length) return v;
     return fallback != null ? fallback : key;
-  }
-
-  // Re-apply data-i18n translations to content a script just rendered.
-  function translate() {
-    var i18n = window.__site_i18n;
-    if (i18n && typeof i18n.init === 'function') i18n.init();
   }
 
   // ---------------- Data ----------------
@@ -207,13 +198,16 @@
     };
   }
 
+  // The page's dictionary, loaded once at start: SE.msg falls back to it, so the cart's
+  // "added" toast speaks the page language even before the quote drawer has opened.
+  locale().then(function (d) { window.__site_i18n_dict = d || {}; });
+
   window.SE = {
     lang: lang,
     prefix: prefix,
     t: t,
     locale: locale,
     msg: msg,
-    translate: translate,
     escapeHtml: escapeHtml,
     data: data,
     whatsapp: whatsapp,

@@ -2,19 +2,18 @@
    Brand orange #b86c25. RTL aware via [dir="rtl"]. */
 
 :root {
-  /* Brand colors reference assets/brand.css (single source of truth).
-     Fallbacks ensure no visual regression if brand.css fails to load. */
-  --cart-orange:        var(--brand, #b86c25);
-  --cart-orange-dark:   var(--brand-deep, #9c5a1e);
-  --cart-orange-light:  var(--brand-pale, #f5e7d8);
-  --cart-text:          var(--ink, #2a1f16);
-  --cart-text-muted:    var(--ink-muted, #6b5d4f);
-  --cart-border:        var(--line-strong, rgba(42, 31, 22, 0.2));  /* warm hairline (was cool #e5e7eb) */
-  --cart-bg:            var(--paper, #ffffff);
-  --cart-bg-soft:       var(--cream, #f1efec);
-  --cart-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --cart-wa:            var(--brand, #b86c25);
-  --cart-wa-dark:       var(--brand-deep, #9c5a1e);
+  /* Colours come from assets/se.css (design D "Panel & Villa"); brand.css is gone. */
+  --cart-orange:        var(--y-deep);
+  --cart-orange-dark:   var(--graphite);
+  --cart-orange-light:  var(--y-pale);
+  --cart-text:          var(--ink);
+  --cart-text-muted:    var(--ink-soft);
+  --cart-border:        var(--line-strong);
+  --cart-bg:            var(--white);
+  --cart-bg-soft:       var(--wash);
+  --cart-shadow:        var(--shadow-lg);
+  --cart-wa:            var(--y);
+  --cart-wa-dark:       var(--y-deep);
 }
 
 /* ---------- Navbar cart button — minimal line-art (Loxone-style) ---------- */
@@ -119,7 +118,7 @@
   border: 1.5px solid var(--line-strong, rgba(42, 31, 22, 0.2));
   border-radius: 12px;
   overflow: hidden;
-  background: var(--paper, #fdfdfb);
+  background: var(--white);
   height: 52px;
 }
 .pd-qty-btn {
@@ -134,7 +133,7 @@
   font-family: inherit;
 }
 .pd-qty-btn:hover {
-  background: var(--cream, #f1efec);
+  background: var(--wash);
   color: var(--cart-orange);
 }
 .pd-qty-input {
@@ -172,7 +171,7 @@
   font-weight: 600;
   letter-spacing: 0.01em;
   border-radius: var(--r-btn, 16px);
-  box-shadow: 0 10px 24px -14px var(--brand-glow, rgba(184, 108, 37, 0.45));
+  box-shadow: 0 10px 24px -14px var(--y-glow);
   cursor: pointer;
   transition: background 0.18s ease, transform 0.2s ease;
   flex: 1 1 auto;
@@ -412,7 +411,7 @@ body.cart-open { overflow: hidden; }
   height: 64px;
   border-radius: 8px;
   overflow: hidden;
-  background: var(--paper, #fdfdfb);
+  background: var(--white);
   border: 1px solid var(--cart-border);
   display: flex;
   align-items: center;
@@ -464,7 +463,7 @@ body.cart-open { overflow: hidden; }
   border: 1.5px solid var(--cart-border);
   border-radius: 8px;
   overflow: hidden;
-  background: var(--paper, #fdfdfb);
+  background: var(--white);
 }
 .cart-qty-btn {
   width: 32px;

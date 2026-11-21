@@ -35,29 +35,44 @@
     <title>Interface universelle KNX Zennio BIN-T 8X | S‑ELECTRICITY Maroc</title>
     
     <!-- SPA Integration -->
-    <link rel="stylesheet" href="/assets/brand.css">
     
     <!-- Localization Script -->
-    <script defer src="/assets/i18n.js"></script>
     <!-- Shared helpers: taxonomy labels + protocol icons (must precede the page scripts) -->
     <script defer src="/assets/site-core.js"></script>
-    <!-- Find Your Solution wizard (modal) -->
-    <link rel="stylesheet" href="/assets/find-solution.css">
-    <script defer src="/assets/find-solution.js"></script>
+<!-- Find Your Solution wizard: its script and styles load on the first click
+         (assets/find-solution.js + .css, ~16 KB), not with every page. -->
     <script>
       (function () {
+        function load() {
+          if (window.FindSolution || window.__fsLoading) return;
+          window.__fsLoading = true;
+          var css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = '/assets/find-solution.css';
+          var js = function () {
+            var s = document.createElement('script');
+            s.src = '/assets/find-solution.js';
+            document.head.appendChild(s);
+          };
+          css.onload = js; css.onerror = js;   // styles first, so it never opens unstyled
+          document.head.appendChild(css);
+        }
+        // capture phase, registered while the page is parsed: a click on any wizard button
+        // is caught even before the page's other scripts have run
         document.addEventListener('click', function (e) {
-          var hit = e.target.closest('[data-trigger="find-solution"], [data-i18n="spa_cta_book_visit"]');
+          var hit = e.target.closest && e.target.closest('[data-trigger="find-solution"]');
           if (!hit) return;
           e.preventDefault();
           e.stopPropagation();
+          load();
+          var building = hit.getAttribute('data-building');
           (function tryOpen(retries) {
             if (window.FindSolution && typeof window.FindSolution.open === 'function') {
-              window.FindSolution.open();
+              window.FindSolution.open({ building: building });
             } else if (retries > 0) {
               setTimeout(function () { tryOpen(retries - 1); }, 80);
             }
-          })(50);
+          })(125);   // up to 10 s on a slow connection
         }, true);
       })();
     </script>

@@ -1,16 +1,16 @@
 /* Find Your Solution — full-screen wizard modal
-   Self-contained styles. Brand orange #b86c25. RTL aware via [dir="rtl"]. */
+   Self-contained styles, coloured by assets/se.css (design D). RTL aware via [dir="rtl"]. */
 
 :root {
-  /* Brand colors reference assets/brand.css (single source of truth). */
-  --fs-orange:        var(--brand, #b86c25);
-  --fs-orange-dark:   var(--brand-deep, #9c5a1e);
-  --fs-orange-light:  var(--brand-pale, #f5e7d8);
-  --fs-text:          var(--ink, #2a1f16);
-  --fs-text-muted:    var(--ink-muted, #6b5d4f);
-  --fs-border:        var(--line-strong, rgba(42, 31, 22, 0.2));  /* warm hairline (was cool #e5e7eb) */
-  --fs-bg:            var(--paper, #ffffff);
-  --fs-bg-soft:       var(--cream, #f1efec);
+  /* Colours come from assets/se.css (design D); brand.css is gone. */
+  --fs-orange: var(--y-deep);
+  --fs-orange-dark: var(--graphite);
+  --fs-orange-light: var(--y-pale);
+  --fs-text: var(--ink);
+  --fs-text-muted: var(--ink-soft);
+  --fs-border: var(--line-strong);  /* warm hairline (was cool #e5e7eb) */
+  --fs-bg: var(--white);
+  --fs-bg-soft: var(--wash);
   --fs-shadow:        0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 

@@ -2,7 +2,9 @@
 # nothing. A red mark on the commit means one of:
 #   - a content file is broken (scripts/validate.py says which and why), or
 #   - the committed site is out of date with its sources: someone edited
-#     data/ or media/ without running  python scripts/build_all.py
+#     data/ or media/ without running  python scripts/build_all.py, or
+#   - a page lost something search engines need (scripts/check_seo.py says
+#     which page and what: title, <h1>, canonical, hreflang, a broken link …)
 # GitHub Pages still publishes the branch either way; the mark (and GitHub's
 # email) is the warning to fix it.
 name: Check site
@@ -49,3 +51,10 @@ jobs:
             exit 1
           fi
           echo "Rebuilding changed nothing: the committed site matches its sources."
+
+      - name: Pages are search-engine ready
+        env:
+          PYTHONIOENCODING: utf-8
+        # titles, descriptions, one <h1>, canonical, hreflang, Open Graph, JSON-LD,
+        # image alt texts and internal links of every page in sitemap.xml (scripts/check_seo.py)
+        run: python scripts/check_seo.py

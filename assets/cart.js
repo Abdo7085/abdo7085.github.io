@@ -18,8 +18,8 @@
   // ---------- Text ----------
   // Language, dictionaries, the WhatsApp link and the modal shell come from
   // assets/site-core.js (SE). `dict` is the dictionary loaded when the modal
-  // opens; before that (the toast after "Add to quote") SE.msg uses the one
-  // i18n.js applied to the page.
+  // opens; before that (the toast after "Add to quote") SE.msg uses the page's
+  // dictionary, which site-core.js loads at start.
   let dict = null;
   function t(key, fallback) {
     return SE.msg(key, fallback, dict);
