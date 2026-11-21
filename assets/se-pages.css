@@ -196,6 +196,9 @@ body.se-page {
 .se-page .proto svg { width: 12px; height: 12px; flex: none; color: var(--graphite); }
 .se-page .dark .proto { border-color: var(--line-dark); color: var(--on-dark-soft); }
 .se-page .dark .proto svg { color: var(--y); }
+/* KNX: the official logo, sized by height; on a project page as tall as the other protocols' icon + name */
+.se-page .proto-knx img { display: block; width: auto; height: 14px; }
+.se-page .spec-v .proto-knx img { height: 18px; filter: none; opacity: 1; }   /* keeps its colours (brand logos there are grey) */
 /* ───────────────────────── Home: hero — the touch panel shows the villa ── */
 .se-page .hero { position: relative; overflow: hidden; }
 .se-page .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: var(--pat-dark) 0 0 / 72px 72px; opacity: .8;
