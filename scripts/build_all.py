@@ -28,7 +28,8 @@ Order:
 Stages 2-4 also delete generated pages whose source file is gone
 (`_lib.remove_orphan_pages`), and build_images deletes unused image files.
 
-Each stage writes sitemap.xml via `_lib.write_sitemap()`. Because that
+Each stage writes sitemap.xml via `_lib.write_sitemap()`, and it is written once more after
+build_layout, which changes the root pages it fingerprints. Because that
 writer is idempotent and reads indexes from disk, the final sitemap is
 always complete — regardless of which stage ran last.
 
@@ -48,6 +49,7 @@ import build_projects
 import build_products
 import build_brands
 import build_layout
+from _lib import write_sitemap
 
 
 def run_stage(name: str, fn) -> None:
@@ -68,6 +70,10 @@ def main() -> int:
     run_stage("build_products", build_products.main)
     run_stage("build_brands", build_brands.main)
     run_stage("build_layout", build_layout.main)
+    # build_layout rewrites the root pages after the stages above fingerprinted them for the
+    # sitemap: fingerprint once more so scripts/state/sitemap.json matches the final pages
+    # (otherwise a header/footer change shows up one build late and the CI check goes red)
+    run_stage("sitemap", write_sitemap)
     print("\n=== Full site build complete. ===")
     return 0
 
