@@ -4,9 +4,9 @@
   "match": ["Wi-Fi"],
   "standard": "IEEE 802.11",
   "seo_title": {
-    "en": "Wi-Fi smart home devices",
-    "fr": "Maison connectée en Wi-Fi",
-    "ar": "أجهزة المنزل الذكي عبر Wi-Fi"
+    "en": "Wi-Fi network, cameras and smart devices",
+    "fr": "Wi-Fi : réseau, caméras et maison connectée",
+    "ar": "Wi-Fi: الشبكة والكاميرات والمنزل الذكي"
   },
   "kicker": {
     "en": "Wireless · IEEE 802.11",
@@ -14,9 +14,9 @@
     "ar": "لاسلكي · IEEE 802.11"
   },
   "tagline": {
-    "en": "Smart devices on the home network you already have — no extra hub to install.",
-    "fr": "Des appareils connectés sur le réseau que vous avez déjà — sans passerelle à installer.",
-    "ar": "أجهزة ذكية على الشبكة المنزلية الموجودة لديك — دون جهاز وسيط إضافي."
+    "en": "The wireless network the whole house shares — phones and TVs, cameras, intercoms and smart devices alike.",
+    "fr": "Le réseau sans fil de toute la maison — téléphones et TV, caméras, visiophones et appareils connectés.",
+    "ar": "الشبكة اللاسلكية التي يتشاركها البيت كله — الهواتف والتلفاز والكاميرات وأنظمة الاتصال الداخلي والأجهزة الذكية."
   },
   "medium": {
     "en": "Radio · 2.4 / 5 GHz",
@@ -24,34 +24,34 @@
     "ar": "موجات راديو · 2.4 / 5 GHz"
   },
   "description": {
-    "en": "Wi-Fi devices join your home router like a phone or a laptop, so there is no extra hub to install: relay modules behind the switches, dimmers, shutter modules, wall displays and video intercoms. What matters is where the control runs. Devices that work locally keep switching and following their schedules on the home network even when the internet is down; devices that depend on a cloud stop answering the app when the connection or the maker's server goes. Because every device takes a place on the network, a solid router and well-placed access points make the difference between a reliable installation and a frustrating one.",
-    "fr": "Les appareils Wi-Fi se connectent à votre box comme un téléphone ou un ordinateur : aucune passerelle à installer. Ce sont des modules relais derrière les interrupteurs, des variateurs, des modules de volets, des écrans muraux et des visiophones. L'essentiel est de savoir où se fait la commande. Les appareils qui fonctionnent en local continuent de commuter et de suivre leurs horaires sur le réseau de la maison même sans internet ; ceux qui dépendent d'un cloud ne répondent plus à l'appli quand la connexion ou le serveur du fabricant tombe. Comme chaque appareil occupe une place sur le réseau, un bon routeur et des points d'accès bien placés font la différence entre une installation fiable et une installation pénible.",
-    "ar": "تتصل أجهزة Wi-Fi بالراوتر المنزلي مثل الهاتف أو الحاسوب، فلا حاجة لتركيب جهاز وسيط إضافي: وحدات تحكم خلف المفاتيح، ومخفّتات إضاءة، ووحدات للستائر، وشاشات حائطية، وأنظمة اتصال داخلي بالفيديو. المهم هو مكان تنفيذ التحكم. الأجهزة التي تعمل محلياً تواصل التشغيل واتباع جداولها على الشبكة المنزلية حتى عند انقطاع الإنترنت، أما الأجهزة التي تعتمد على السحابة فتتوقف عن الاستجابة للتطبيق عند انقطاع الاتصال أو تعطّل خادم الشركة المصنّعة. ولأن كل جهاز يأخذ مكاناً على الشبكة، فإن راوتراً جيداً ونقاط وصول في أماكن مناسبة هي ما يصنع الفرق بين تركيب موثوق وآخر مُتعب."
+    "en": "Wi-Fi is the wireless network the whole house shares: phones, laptops and TVs, but also security cameras, video intercoms, wall displays and smart modules for lighting and shutters. Every device joins the home router directly, with no extra hub. For cameras and intercoms that means live video on the phone, at home or away; for smart devices it is worth knowing where the control runs — devices that work locally keep going when the internet is down, while cloud-dependent ones stop answering the app. Since every device takes a share of the network, a solid router and well-placed access points make the difference between a reliable installation and a frustrating one.",
+    "fr": "Le Wi-Fi est le réseau sans fil que partage toute la maison : téléphones, ordinateurs et TV, mais aussi caméras de surveillance, visiophones, écrans muraux et modules connectés pour l'éclairage et les volets. Chaque appareil rejoint directement la box, sans passerelle supplémentaire. Pour les caméras et les visiophones, cela veut dire la vidéo en direct sur le téléphone, à la maison comme à l'extérieur ; pour les appareils connectés, il faut savoir où se fait la commande — ceux qui fonctionnent en local continuent sans internet, ceux qui dépendent d'un cloud ne répondent plus à l'appli. Comme chaque appareil prend sa part du réseau, un bon routeur et des points d'accès bien placés font la différence entre une installation fiable et une installation pénible.",
+    "ar": "Wi-Fi هي الشبكة اللاسلكية التي يتشاركها البيت كله: الهواتف والحواسيب والتلفاز، وأيضاً كاميرات المراقبة وأنظمة الاتصال الداخلي بالفيديو والشاشات الحائطية والوحدات الذكية للإضاءة والستائر. كل جهاز يتصل مباشرة بالراوتر، دون جهاز وسيط إضافي. بالنسبة للكاميرات وأنظمة الاتصال الداخلي، يعني ذلك الفيديو المباشر على الهاتف داخل البيت وخارجه، أما الأجهزة الذكية فمن المهم معرفة مكان تنفيذ التحكم — الأجهزة التي تعمل محلياً تواصل العمل عند انقطاع الإنترنت، والتي تعتمد على السحابة تتوقف عن الاستجابة للتطبيق. ولأن كل جهاز يأخذ حصته من الشبكة، فإن راوتراً جيداً ونقاط وصول في أماكن مناسبة هي ما يصنع الفرق بين تركيب موثوق وآخر مُتعب."
   },
   "when": {
     "en": [
-      "Finished homes and flats: modules fit behind the existing switches, with no new cables.",
-      "Start small: a few rooms first, then more later, one device at a time.",
-      "Pick devices that work locally: they keep running when the internet is down.",
-      "Pair it with good coverage: a proper router, and access points where the signal is weak."
+      "Finished homes: cameras, intercoms and smart modules added without pulling new cables.",
+      "One network for everyone: phones, TVs, laptops and smart devices together.",
+      "Cameras where a cable cannot go: a garden, a gate, an outbuilding within range.",
+      "Start small and grow: a camera or a few rooms first, more later."
     ],
     "fr": [
-      "Logements déjà finis : les modules se placent derrière les interrupteurs existants, sans nouveaux câbles.",
-      "Commencer petit : quelques pièces d'abord, puis d'autres, un appareil à la fois.",
-      "Choisir des appareils qui fonctionnent en local : ils continuent sans internet.",
-      "Avec une bonne couverture : un vrai routeur, et des points d'accès là où le signal est faible."
+      "Logements déjà finis : caméras, visiophones et modules connectés ajoutés sans tirer de câbles.",
+      "Un seul réseau pour tous : téléphones, TV, ordinateurs et appareils connectés ensemble.",
+      "Des caméras là où un câble ne passe pas : jardin, portail, dépendance à portée.",
+      "Commencer petit puis grandir : une caméra ou quelques pièces d'abord, la suite plus tard."
     ],
     "ar": [
-      "المنازل والشقق الجاهزة: الوحدات تُركّب خلف المفاتيح الموجودة، دون أسلاك جديدة.",
-      "ابدأ صغيراً: بضع غرف أولاً، ثم المزيد لاحقاً، جهازاً بعد جهاز.",
-      "اختر أجهزة تعمل محلياً: تواصل العمل عند انقطاع الإنترنت.",
-      "مع تغطية جيدة: راوتر مناسب، ونقاط وصول حيث تكون الإشارة ضعيفة."
+      "المنازل الجاهزة: كاميرات وأنظمة اتصال داخلي ووحدات ذكية تُضاف دون تمديد كابلات.",
+      "شبكة واحدة للجميع: الهواتف والتلفاز والحواسيب والأجهزة الذكية معاً.",
+      "كاميرات حيث لا يصل الكابل: حديقة أو بوابة أو ملحق ضمن مدى الشبكة.",
+      "ابدأ صغيراً ثم توسّع: كاميرا أو بضع غرف أولاً، والباقي لاحقاً."
     ]
   },
   "less_suited": {
-    "en": "Dozens of devices in a large villa on a weak network — KNX or a Zigbee mesh fit better there.",
-    "fr": "Des dizaines d'appareils dans une grande villa avec un réseau faible — KNX ou un maillage Zigbee y conviennent mieux.",
-    "ar": "عشرات الأجهزة في فيلا كبيرة بشبكة ضعيفة — هنا KNX أو شبكة Zigbee المتشابكة أنسب."
+    "en": "Many cameras recording around the clock, or dozens of devices on a weak network — a wired LAN with PoE, KNX or Zigbee fit better there.",
+    "fr": "De nombreuses caméras qui enregistrent en continu, ou des dizaines d'appareils sur un réseau faible — un LAN filaire avec PoE, KNX ou Zigbee y conviennent mieux.",
+    "ar": "كاميرات كثيرة تسجّل على مدار الساعة، أو عشرات الأجهزة على شبكة ضعيفة — هنا شبكة LAN سلكية مع PoE أو KNX أو Zigbee أنسب."
   },
   "graph": {
     "view": [1060, 390],
@@ -91,7 +91,7 @@
       "display": "Wall display",
       "door": "Door station",
       "monitor": "Indoor monitor",
-      "note": "Control runs on the home network; the cloud is only for access from outside",
+      "note": "Every device joins the router; the cloud is only for access from outside",
       "camera": "Wi-Fi camera"
     },
     "fr": {
@@ -104,7 +104,7 @@
       "display": "Écran mural",
       "door": "Platine de rue",
       "monitor": "Écran intérieur",
-      "note": "La commande passe par le réseau de la maison ; le cloud sert seulement à distance",
+      "note": "Chaque appareil rejoint le routeur ; le cloud sert seulement à distance",
       "camera": "Caméra Wi-Fi"
     },
     "ar": {
@@ -117,7 +117,7 @@
       "display": "شاشة حائطية",
       "door": "وحدة الباب",
       "monitor": "شاشة داخلية",
-      "note": "التحكم يمر عبر الشبكة المنزلية، والسحابة فقط للوصول من خارج البيت",
+      "note": "كل جهاز يتصل بالراوتر، والسحابة فقط للوصول من خارج البيت",
       "camera": "كاميرا Wi-Fi"
     }
   }

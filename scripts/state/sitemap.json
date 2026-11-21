@@ -44,7 +44,7 @@
   "lastmod": "2026-11-21"
  },
  "page:protocols.html": {
-  "hash": "2ab5b271ef9ea66f",
+  "hash": "6ff411a0bc411a05",
   "lastmod": "2026-11-21"
  },
  "product:dahua-vth2421fb-fw-ip-indoor-monitor": {
@@ -400,7 +400,7 @@
   "lastmod": "2026-11-21"
  },
  "protocol:lan": {
-  "hash": "646a6a92f64033ee",
+  "hash": "eefb551f1cf35a40",
   "lastmod": "2026-11-21"
  },
  "protocol:matter": {
@@ -412,7 +412,7 @@
   "lastmod": "2026-11-21"
  },
  "protocol:wifi": {
-  "hash": "e6197cb1b5a0c1f1",
+  "hash": "00307e199b407dbc",
   "lastmod": "2026-11-21"
  },
  "protocol:zigbee": {

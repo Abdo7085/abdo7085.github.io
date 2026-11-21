@@ -4,9 +4,9 @@
   "match": ["LAN", "PoE"],
   "standard": "IEEE 802.3",
   "seo_title": {
-    "en": "Wired LAN and PoE network for the home",
-    "fr": "Réseau LAN filaire et PoE pour la maison",
-    "ar": "شبكة LAN سلكية وPoE للمنزل"
+    "en": "Wired LAN and PoE: cameras, Wi-Fi, intercoms",
+    "fr": "LAN filaire et PoE : caméras, Wi-Fi, visiophones",
+    "ar": "شبكة LAN سلكية وPoE: كاميرات وWi-Fi واتصال داخلي"
   },
   "kicker": {
     "en": "Wired network · Ethernet",
@@ -14,9 +14,9 @@
     "ar": "شبكة سلكية · Ethernet"
   },
   "tagline": {
-    "en": "The wired backbone of the house — and, with PoE, power over the same cable.",
-    "fr": "L'épine dorsale filaire de la maison — et, avec le PoE, l'alimentation par le même câble.",
-    "ar": "العمود الفقري السلكي للبيت — ومع PoE، الطاقة عبر نفس الكابل."
+    "en": "The wired backbone of the house — internet, cameras, intercoms, Wi-Fi access points and smart systems — with PoE power on the same cable.",
+    "fr": "L'épine dorsale filaire de la maison — internet, caméras, visiophones, points d'accès Wi-Fi et domotique — avec l'alimentation PoE sur le même câble.",
+    "ar": "العمود الفقري السلكي للبيت — الإنترنت والكاميرات والاتصال الداخلي ونقاط وصول Wi-Fi والأنظمة الذكية — مع طاقة PoE على نفس الكابل."
   },
   "medium": {
     "en": "Network cable · PoE",
@@ -24,28 +24,28 @@
     "ar": "كابل شبكة · PoE"
   },
   "description": {
-    "en": "The LAN is the wired network of the house: Ethernet cables run from the router and a switch to every point that needs a fast, stable connection. With PoE (Power over Ethernet), the same cable also powers the device, so a door station, an indoor monitor or a ceiling access point needs no socket of its own. The Wi-Fi in a large house is only as good as this backbone: access points wired to the switch give full coverage on every floor. Smart-home systems use it too — KNX reaches the network through an IP interface, and hubs and panel modules plug in with a cable instead of relying on Wi-Fi.",
-    "fr": "Le LAN est le réseau filaire de la maison : des câbles Ethernet partent du routeur et d'un switch vers chaque point qui a besoin d'une connexion rapide et stable. Avec le PoE (Power over Ethernet), le même câble alimente aussi l'appareil : une platine de rue, un moniteur intérieur ou un point d'accès au plafond n'ont pas besoin de prise. Dans une grande maison, le Wi-Fi ne vaut que ce que vaut cette épine dorsale : des points d'accès câblés au switch couvrent chaque étage. La domotique s'en sert aussi — KNX rejoint le réseau par une interface IP, et les passerelles et modules de tableau se branchent par câble au lieu de dépendre du Wi-Fi.",
-    "ar": "شبكة LAN هي الشبكة السلكية للبيت: كابلات Ethernet تمتد من الراوتر ومن محوّل الشبكة إلى كل نقطة تحتاج اتصالاً سريعاً ومستقراً. ومع PoE (الطاقة عبر Ethernet) يغذّي نفس الكابل الجهاز بالكهرباء أيضاً، فلا تحتاج وحدة الباب أو الشاشة الداخلية أو نقطة الوصول في السقف إلى مقبس خاص بها. وفي البيوت الكبيرة، تكون جودة Wi-Fi بقدر جودة هذا العمود الفقري: نقاط وصول موصولة بالكابل إلى المحوّل تغطي كل طابق. وتستعمله أنظمة المنزل الذكي أيضاً — يتصل KNX بالشبكة عبر واجهة بروتوكول الإنترنت، وتُوصل البوابات ووحدات اللوحة الكهربائية بكابل بدل الاعتماد على Wi-Fi."
+    "en": "The LAN is the wired network of the house: Ethernet cables run from the router and a switch to everything that needs a fast, stable connection — computers and TVs, security cameras and their recorder, video intercoms, Wi-Fi access points and smart-home systems. With PoE (Power over Ethernet) the same cable also powers the device, so a camera on the façade, a door station or a ceiling access point needs no socket of its own. Cameras on a cable record around the clock without dropping out, and the Wi-Fi in a large house is only as good as this backbone: access points wired to the switch cover every floor. Smart-home systems plug in too — KNX through an IP interface, hubs and panel modules on a cable instead of the Wi-Fi.",
+    "fr": "Le LAN est le réseau filaire de la maison : des câbles Ethernet partent du routeur et d'un switch vers tout ce qui a besoin d'une connexion rapide et stable — ordinateurs et TV, caméras de surveillance et leur enregistreur, visiophones, points d'accès Wi-Fi et domotique. Avec le PoE (Power over Ethernet), le même câble alimente aussi l'appareil : une caméra en façade, une platine de rue ou un point d'accès au plafond n'ont pas besoin de prise. Les caméras sur câble enregistrent en continu sans décrocher, et dans une grande maison le Wi-Fi ne vaut que ce que vaut cette épine dorsale : des points d'accès câblés au switch couvrent chaque étage. La domotique s'y branche aussi — KNX par une interface IP, passerelles et modules de tableau sur câble plutôt qu'en Wi-Fi.",
+    "ar": "شبكة LAN هي الشبكة السلكية للبيت: كابلات Ethernet تمتد من الراوتر ومن محوّل الشبكة إلى كل ما يحتاج اتصالاً سريعاً ومستقراً — الحواسيب والتلفاز، وكاميرات المراقبة وجهاز تسجيلها، وأنظمة الاتصال الداخلي بالفيديو، ونقاط وصول Wi-Fi، وأنظمة المنزل الذكي. ومع PoE (الطاقة عبر Ethernet) يغذّي نفس الكابل الجهاز بالكهرباء أيضاً، فلا تحتاج كاميرا الواجهة أو وحدة الباب أو نقطة الوصول في السقف إلى مقبس خاص بها. والكاميرات الموصولة بالكابل تسجّل على مدار الساعة دون انقطاع، وجودة Wi-Fi في البيوت الكبيرة بقدر جودة هذا العمود الفقري: نقاط وصول موصولة بالكابل إلى المحوّل تغطي كل طابق. وتتصل به أنظمة المنزل الذكي أيضاً — KNX عبر واجهة بروتوكول الإنترنت، والبوابات ووحدات اللوحة بكابل بدل Wi-Fi."
   },
   "when": {
     "en": [
-      "New build or renovation: run the network cables with the electrical wiring.",
-      "Video intercoms and access points: one cable for data and power (PoE).",
-      "Large houses: access points on every floor, wired back to one switch.",
-      "Anything that must never drop: hubs, interfaces and panel modules on a cable."
+      "New build or renovation: network cables go in with the electrical wiring.",
+      "Security cameras: one PoE cable per camera, recording around the clock.",
+      "Video intercoms and access points: data and power on a single cable.",
+      "Large houses and anything that must never drop: access points on every floor, hubs and interfaces on a cable."
     ],
     "fr": [
-      "Construction neuve ou rénovation : poser les câbles réseau avec le câblage électrique.",
-      "Visiophones et points d'accès : un seul câble pour les données et l'alimentation (PoE).",
-      "Grandes maisons : des points d'accès à chaque étage, câblés vers un même switch.",
-      "Tout ce qui ne doit jamais décrocher : passerelles, interfaces et modules de tableau sur câble."
+      "Construction neuve ou rénovation : les câbles réseau se posent avec le câblage électrique.",
+      "Caméras de surveillance : un câble PoE par caméra, enregistrement en continu.",
+      "Visiophones et points d'accès : données et alimentation sur un seul câble.",
+      "Grandes maisons et tout ce qui ne doit jamais décrocher : points d'accès à chaque étage, passerelles et interfaces sur câble."
     ],
     "ar": [
-      "بناء جديد أو تجديد: تُمدّ كابلات الشبكة مع أسلاك الكهرباء.",
-      "الاتصال الداخلي بالفيديو ونقاط الوصول: كابل واحد للبيانات والطاقة (PoE).",
-      "البيوت الكبيرة: نقاط وصول في كل طابق، موصولة بالكابل إلى محوّل واحد.",
-      "كل ما يجب ألا ينقطع أبداً: البوابات والواجهات ووحدات اللوحة على كابل."
+      "بناء جديد أو تجديد: كابلات الشبكة تُمدّ مع أسلاك الكهرباء.",
+      "كاميرات المراقبة: كابل PoE واحد لكل كاميرا، وتسجيل على مدار الساعة.",
+      "الاتصال الداخلي بالفيديو ونقاط الوصول: البيانات والطاقة على كابل واحد.",
+      "البيوت الكبيرة وكل ما يجب ألا ينقطع: نقاط وصول في كل طابق، والبوابات والواجهات على كابل."
     ]
   },
   "less_suited": {

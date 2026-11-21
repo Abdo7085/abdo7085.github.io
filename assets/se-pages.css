@@ -627,7 +627,7 @@ body.se-page {
 .se-page .facts dd { font-size: 15.5px; font-weight: 600; }
 .se-page .facts dd.big { font-family: var(--f-disp); font-size: 28px; font-weight: 700; line-height: 1.05; color: var(--graphite); }
 @media (max-width: 900px) {
-  .se-page .brand-hero { grid-template-columns: 1fr; }
+  .se-page .brand-hero { grid-template-columns: minmax(0, 1fr); }   /* minmax(0,…): a long line can never widen the card past the screen */
   .se-page .brand-hero-logo { min-height: 180px; }
 }
 @media (max-width: 560px) {
@@ -1151,3 +1151,6 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
 .se-page .ledger-logo .proto-mark { gap: 8px; }
 .se-page .ledger-logo .proto-mark svg { width: 38px; height: 38px; }
 .se-page .ledger-logo .proto-mark b { font-size: 15px; }
+/* the hero kicker may be long (a protocol's standard body): let it wrap instead of widening the card */
+.se-page .brand-hero-body .kicker { white-space: normal; align-items: flex-start; }
+.se-page .brand-hero-body .kicker::before { margin-block-start: 1px; }
