@@ -676,14 +676,28 @@ body.se-page {
   .se-page .gal-item.tall { grid-column: auto; aspect-ratio: 9 / 14; }
   .se-page .pj-facts .facts { translate: 0 -24px; margin-block-end: 0; }
 }
-.se-page .stack-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-.se-page .stack-box { padding: 20px; border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); }
-.se-page .stack-logos { display: flex; flex-wrap: wrap; gap: 10px; }
-.se-page .stack-logos > * { display: grid; place-items: center; height: 54px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--line); }
-.se-page .stack-logos img { max-height: 22px; width: auto; }
-.se-page .stack-logos .txt { font-weight: 700; font-size: 14px; color: var(--ink-soft); }
+/* Brands & Protocols: one card read like a datasheet — the label, then cells sharing the row's width
+   evenly (auto-fit: a row of 3 gets thirds, a long list wraps), a hairline between cells */
+.se-page .spec { border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); overflow: hidden; }
+.se-page .spec:empty { display: none; }
+.se-page .spec-row { display: grid; grid-template-columns: 180px minmax(0, 1fr); }
+.se-page .spec-row + .spec-row { border-top: 1px solid var(--line); }
+.se-page .spec-k { display: flex; align-items: center; gap: 10px; margin: 0; padding: 22px 24px; border-inline-end: 1px solid var(--line); font-family: var(--f-disp); font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.se-page .spec-k::before { content: ""; width: 12px; height: 12px; flex: none; background: var(--khatam) center / contain no-repeat; }
+.se-page .spec-v { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); overflow: hidden; }
+.se-page .spec-v > * { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 76px; padding: 12px 20px; box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line); text-align: center; }
+[dir="rtl"] .se-page .spec-v > *, .se-page[dir="rtl"] .spec-v > * { box-shadow: -1px 0 0 var(--line), 0 1px 0 var(--line); }
+.se-page .spec-v img { height: 24px; max-width: 100%; width: auto; filter: grayscale(1) contrast(1.1); opacity: .78; transition: filter .2s, opacity .2s; }
+.se-page .spec-v a:hover img, .se-page .spec-v a:focus-visible img { filter: none; opacity: 1; }
+.se-page .spec-v .txt { font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--ink-soft); }
+.se-page .spec-v .proto { padding: 12px 20px; border: 0; border-radius: 0; font-size: 15px; font-weight: 600; color: var(--ink); white-space: normal; }
+.se-page .spec-v .proto svg { width: 18px; height: 18px; color: var(--graphite); }
+.se-page .spec-v .proto-knx { font-size: 16px; letter-spacing: .1em; }
 @media (max-width: 760px) {
-  .se-page .stack-row { grid-template-columns: 1fr; }
+  .se-page .spec-row { grid-template-columns: 1fr; }
+  .se-page .spec-k { padding: 14px 18px; border-inline-end: 0; border-bottom: 1px solid var(--line); }
+  .se-page .spec-v { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+  .se-page .spec-v > * { min-height: 62px; padding: 10px 14px; }
 }
 .se-page .mini { position: relative; display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px; padding-inline-end: 16px; border-radius: 14px; background: var(--white); border: 1px solid var(--line); transition: all .2s; }
 .se-page .mini:hover { border-color: var(--graphite); box-shadow: var(--shadow-sm); }
@@ -1000,12 +1014,6 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
 /* Projects: list title size, case number spacing, larger protocol chips, label on the dark quote */
 .se-page .pw-title { font-size: clamp(40px, 5.6vw, 76px); }
 .se-page .pj-n { margin-block-start: 28px; }
-/* protocol chips beside the brand logos take the same tile shape: same height, gap, radius and border */
-.se-page .protos-lg { gap: 10px; }
-.se-page .protos-lg .proto { height: 54px; padding: 0 18px; gap: 8px; border: 1px solid var(--line); border-radius: 10px;
-  background: radial-gradient(120% 90% at 50% 0%, #ffffff, #e9ece7 70%); font-size: 14px; font-weight: 700; color: var(--ink-soft); }
-.se-page .protos-lg .proto svg { width: 16px; height: 16px; }
-.se-page .protos-lg .proto-knx { color: var(--graphite); border-color: var(--line); }
 .se-page .testimonial .label-sm { color: var(--on-dark-faint); }
 
 /* Project hero: room under the title for the facts card that rides up over the photo (long French titles) */

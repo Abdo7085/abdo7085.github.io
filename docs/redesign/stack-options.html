@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Brands &amp; Protocols — 3 options</title>
+<link rel="stylesheet" href="/assets/se.css">
+<link rel="stylesheet" href="/assets/se-pages.css">
+<style>
+  .opt-h { display: flex; align-items: baseline; gap: 12px; margin: 0 0 14px; font-family: var(--f-disp); font-size: 22px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+  .opt-h small { font-family: var(--f-body); font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink-soft); }
+  .opt { margin-block-end: 56px; }
+
+  /* ---------- A · Black-glass panel ---------- */
+  .a-panel { display: grid; grid-template-columns: 1.15fr 1fr; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow); }
+  .a-col { padding: 26px 28px; }
+  .a-col + .a-col { border-inline-start: 1px solid var(--brass-line); }
+  .a-lab { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; font-family: var(--f-disp); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--on-dark-faint); }
+  .a-lab .led { width: 7px; height: 7px; }
+  .a-logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+  .a-logos > * { display: grid; place-items: center; height: 58px; padding: 0 14px; border-radius: 10px; background: #f6f6f3; box-shadow: inset 0 -2px 0 rgba(0,0,0,.08); transition: transform .2s var(--ease); }
+  .a-logos > a:hover { transform: translateY(-2px); }
+  .a-logos img { max-height: 22px; max-width: 100%; }
+  .a-logos .txt { font-size: 13px; font-weight: 700; color: var(--ink-soft); text-align: center; line-height: 1.2; }
+  .a-protos { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+  .a-protos span { display: flex; align-items: center; gap: 10px; height: 58px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line-dark); background: rgba(255,255,255,.03); font-size: 14px; font-weight: 600; color: var(--on-dark); }
+  .a-protos svg { width: 18px; height: 18px; color: var(--y); flex: none; }
+
+  /* ---------- B · Datasheet ---------- */
+  .b-sheet { border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); }
+  .b-row { display: grid; grid-template-columns: 170px 1fr; align-items: center; }
+  .b-row + .b-row { border-top: 1px solid var(--line); }
+  .b-k { align-self: stretch; display: flex; align-items: center; gap: 10px; padding: 22px 24px; border-inline-end: 1px solid var(--line); font-family: var(--f-disp); font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+  .b-k::before { content: ""; width: 12px; height: 12px; background: var(--khatam) center / contain no-repeat; }
+  .b-v { display: flex; flex-wrap: wrap; align-items: center; }
+  .b-v > * { display: flex; align-items: center; gap: 9px; min-height: 76px; padding: 0 28px; position: relative; }
+  .b-v > * + *::before { content: ""; position: absolute; inset-inline-start: 0; top: 24px; bottom: 24px; border-inline-start: 1px solid var(--line); }
+  .b-v img { height: 24px; width: auto; filter: grayscale(1) contrast(1.1); opacity: .78; transition: filter .2s, opacity .2s; }
+  .b-v a:hover img { filter: none; opacity: 1; }
+  .b-v .txt { font-size: 14px; font-weight: 700; color: var(--ink-soft); }
+  .b-v .p { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .b-v .p svg { width: 18px; height: 18px; color: var(--graphite); }
+
+  /* ---------- C · Breaker modules on a rail ---------- */
+  .c-rail { padding: 22px; border-radius: var(--r-xl); background: var(--panel); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(0,0,0,.06); }
+  .c-grp + .c-grp { margin-top: 18px; }
+  .c-lab { margin: 0 0 10px; font-family: var(--f-disp); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+  .c-mods { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 8px; }
+  .c-mod { position: relative; display: grid; grid-template-rows: 54px auto; border-radius: 8px; background: linear-gradient(#fbfbf9, #ecedea); border: 1px solid rgba(23,24,26,.1); box-shadow: 0 2px 0 rgba(23,24,26,.06); overflow: hidden; transition: transform .2s var(--ease); }
+  a.c-mod:hover { transform: translateY(-2px); }
+  .c-mod .face { display: grid; place-items: center; padding: 0 14px; }
+  .c-mod img { max-height: 22px; max-width: 100%; }
+  .c-mod .face svg { width: 22px; height: 22px; color: var(--graphite); }
+  .c-mod .name { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 7px 10px; background: var(--glass); color: var(--on-dark); font-size: 12px; font-weight: 600; }
+  .c-mod .name .led { width: 7px; height: 7px; }
+
+  @media (max-width: 760px) {
+    .a-panel { grid-template-columns: 1fr; }
+    .a-col + .a-col { border-inline-start: 0; border-top: 1px solid var(--brass-line); }
+    .b-row { grid-template-columns: 1fr; }
+    .b-k { border-inline-end: 0; border-bottom: 1px solid var(--line); padding: 14px 18px; }
+    .b-v > * { min-height: 60px; padding: 0 18px; }
+  }
+</style>
+</head>
+<body class="se-page" style="background: var(--wash)">
+<main class="wrap" style="padding-block: 48px">
+
+<!-- shared icons -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+  <symbol id="i-lan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></symbol>
+  <symbol id="i-bt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></symbol>
+</svg>
+
+<!-- A -->
+<section class="opt">
+  <h2 class="opt-h">A · Black-glass panel <small>dark like the next-project bar and the client quote; logos on light plates, protocols with yellow icons</small></h2>
+  <div class="sh"><span class="kicker">Brands &amp; Protocols</span><span class="sh-line"></span></div>
+  <div class="a-panel dark">
+    <div class="a-col">
+      <p class="a-lab"><span class="led on"></span>Brands</p>
+      <div class="a-logos">
+        <a href="#"><img src="/assets/brands/reyee.svg" alt="Reyee"></a>
+        <a href="#"><img src="/assets/brands/shelly.svg" alt="Shelly"></a>
+        <a href="#"><img src="/assets/brands/dahua.svg" alt="Dahua"></a>
+        <span class="txt">Advanced server</span>
+      </div>
+    </div>
+    <div class="a-col">
+      <p class="a-lab"><span class="led on"></span>Protocols</p>
+      <div class="a-protos">
+        <span><svg><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span><svg><use href="#i-lan"/></svg>LAN</span>
+        <span><svg><use href="#i-bt"/></svg>Bluetooth</span>
+        <span><svg><use href="#i-lan"/></svg>PoE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B -->
+<section class="opt">
+  <h2 class="opt-h">B · Datasheet <small>one light card read like a spec sheet; logos in grey until hovered, no boxes</small></h2>
+  <div class="sh"><span class="kicker">Brands &amp; Protocols</span><span class="sh-line"></span></div>
+  <div class="b-sheet">
+    <div class="b-row">
+      <div class="b-k">Brands</div>
+      <div class="b-v">
+        <a href="#"><img src="/assets/brands/reyee.svg" alt="Reyee"></a>
+        <a href="#"><img src="/assets/brands/shelly.svg" alt="Shelly"></a>
+        <a href="#"><img src="/assets/brands/dahua.svg" alt="Dahua"></a>
+        <span class="txt">Advanced server</span>
+      </div>
+    </div>
+    <div class="b-row">
+      <div class="b-k">Protocols</div>
+      <div class="b-v">
+        <span class="p"><svg><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span class="p"><svg><use href="#i-lan"/></svg>LAN</span>
+        <span class="p"><svg><use href="#i-bt"/></svg>Bluetooth</span>
+        <span class="p"><svg><use href="#i-lan"/></svg>PoE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C -->
+<section class="opt">
+  <h2 class="opt-h">C · Breaker modules <small>every brand and protocol is a module clipped on a panel rail, with a black name strip and LED</small></h2>
+  <div class="sh"><span class="kicker">Brands &amp; Protocols</span><span class="sh-line"></span></div>
+  <div class="c-rail">
+    <div class="c-grp">
+      <p class="c-lab">Brands</p>
+      <div class="c-mods">
+        <a class="c-mod" href="#"><span class="face"><img src="/assets/brands/reyee.svg" alt=""></span><span class="name">Reyee<span class="led on"></span></span></a>
+        <a class="c-mod" href="#"><span class="face"><img src="/assets/brands/shelly.svg" alt=""></span><span class="name">Shelly<span class="led on"></span></span></a>
+        <a class="c-mod" href="#"><span class="face"><img src="/assets/brands/dahua.svg" alt=""></span><span class="name">Dahua<span class="led on"></span></span></a>
+        <span class="c-mod"><span class="face"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></span><span class="name">Advanced server<span class="led on"></span></span></span>
+      </div>
+    </div>
+    <div class="c-grp">
+      <p class="c-lab">Protocols</p>
+      <div class="c-mods">
+        <span class="c-mod"><span class="face"><svg><use href="#i-wifi"/></svg></span><span class="name">Wi-Fi<span class="led on"></span></span></span>
+        <span class="c-mod"><span class="face"><svg><use href="#i-lan"/></svg></span><span class="name">LAN<span class="led on"></span></span></span>
+        <span class="c-mod"><span class="face"><svg><use href="#i-bt"/></svg></span><span class="name">Bluetooth<span class="led on"></span></span></span>
+        <span class="c-mod"><span class="face"><svg><use href="#i-lan"/></svg></span><span class="name">PoE<span class="led on"></span></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

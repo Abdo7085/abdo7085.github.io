@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from _icons import ic
 from _lib import LANGS, t
-from _ui import Page, crumbs, data, esc, pimg, protos, ruler
+from _ui import Page, crumbs, data, esc, pimg, proto, ruler
 from build_home import contact, plate
 
 
@@ -65,6 +65,14 @@ def _tile(p: Page, prod: dict) -> str:
             f'<span class="tile-t"><b>{esc(t(prod["title"], p.lang))}</b>'
             f'<small>{esc(prod.get("brand"))} · {esc(p.type(prod.get("product_type")))}</small></span>'
             f'<span class="tile-go">{ic("arrow", "flip")}</span></a>')
+
+
+def _spec_row(label: str, cells: list) -> str:
+    """One row of the Brands & Protocols datasheet: the label, then its cells in a grid that
+    shares the row's width out evenly (cells wrap onto a new line when they run out of room)."""
+    if not cells:
+        return ""
+    return f'<div class="spec-row"><p class="spec-k">{label}</p><div class="spec-v">{"".join(cells)}</div></div>'
 
 
 def project(lang: str, pid: str) -> str:
@@ -113,8 +121,8 @@ def project(lang: str, pid: str) -> str:
     logos = []
     for b in brands:
         bi = d["brand_by_name"].get(b)
-        logos.append(f'<a class="recess" href="{p.brand_url(bi["id"])}"><img src="{esc(bi["logo"])}" alt="{esc(b)}" loading="lazy"></a>'
-                     if bi and bi.get("logo") else f'<span class="recess txt">{esc(b)}</span>')
+        logos.append(f'<a href="{p.brand_url(bi["id"])}"><img src="{esc(bi["logo"])}" alt="{esc(b)}" loading="lazy"></a>'
+                     if bi and bi.get("logo") else f'<span class="txt">{esc(b)}</span>')
 
     story_side = (f'<aside class="testimonial dark"><p class="label-sm">{p.e("client_words")}</p>'
                   f'<blockquote>{esc(t(tst.get("quote"), lang))}</blockquote><cite>— {esc(tst.get("author", ""))}</cite></aside>'
@@ -137,9 +145,9 @@ def project(lang: str, pid: str) -> str:
         + ('<section class="sec-tight"><div class="wrap">' + ruler(p.s("proj_gallery_title"), p.count(len(media), "media"))
            + '<div class="gallery">' + "".join(figs) + '</div></div></section>' if figs else "")
         + '<section class="sec-tight"><div class="wrap">' + ruler(p.s("proj_brands_title"))
-        + f'<div class="stack-row"><div class="stack-box"><p class="label-sm">{p.e("proj_brands_label")}</p><div class="stack-logos">{"".join(logos)}</div></div>'
-        f'<div class="stack-box"><p class="label-sm">{p.e("proj_protocols_label")}</p>{protos(techs).replace('class="protos"', 'class="protos protos-lg"', 1)}</div></div>'
-        '</div></section>'
+        + (f'<div class="spec">{_spec_row(p.e("proj_brands_label"), logos)}'
+           f'{_spec_row(p.e("proj_protocols_label"), [proto(x) for x in techs])}</div>')
+        + '</div></section>'
         + ('<section class="sec-tight"><div class="wrap">' + ruler(p.s("products_used"), p.count(len(prods), "product"))
            + '<div class="tiles tiles-base">' + "".join(_tile(p, x) for x in prods) + '</div></div></section>' if prods else "")
         # next project: the same black-glass base with the yellow hairline, as one link
