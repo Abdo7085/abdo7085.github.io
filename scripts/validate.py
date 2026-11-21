@@ -23,6 +23,8 @@ What it checks:
   data/brands/*.json     fields, id, en/fr/ar text, logo file, unique names
   data/projects/*.json   fields, id, date, categories from the taxonomy,
                          related products exist, cover/media files exist
+  data/protocols/*.json  fields, id, en/fr/ar text, the technology names it
+                         covers, logo file, diagram labels in every language
   assets/locales/*.json  fr and ar have every key en has, and the same keys
                          as each other (fr/ar-only keys feed the localized
                          copies of the root pages); no empty values
@@ -66,6 +68,9 @@ PROJECT_REQUIRED = {
 }
 # seo_title: {lang: text}, only where the title is too long for search results (build_projects.py)
 PROJECT_OPTIONAL = {"testimonial", "extra_brands", "extra_protocols", "seo_title"}
+PROTOCOL_REQUIRED = {"id", "name", "match", "tagline", "description"}
+PROTOCOL_OPTIONAL = {"logo", "standard", "diagram", "seo_title", "kicker", "medium", "when",
+                     "less_suited", "diagram_labels"}
 MEDIA_TYPES = {"image", "video", "reel"}      # video also needs a "poster" image
 
 
@@ -378,6 +383,52 @@ def _media(rep: Report, where: str, data: dict) -> None:
             rep.error(where, f"media[{i}] has no alt text")
 
 
+# ---------------- Protocols ----------------
+
+def check_protocols(rep: Report, technologies: set) -> None:
+    """technologies: every "technology" value the products use (lower case)."""
+    claimed: dict = {}
+    for path in sorted((DATA / "protocols").glob("*.json")):
+        where = f"data/protocols/{path.name}"
+        data = _read(rep, path, where)
+        if data is None:
+            continue
+        _fields(rep, where, data, PROTOCOL_REQUIRED, PROTOCOL_OPTIONAL)
+        _id(rep, where, data, path)
+        _placeholders(rep, where, data)
+        for key in ("tagline", "description", "kicker", "medium", "less_suited", "seo_title"):
+            _localized(rep, where, data, key)
+        if not _text(data.get("name")):
+            rep.error(where, '"name" is empty')
+        match = data.get("match")
+        if not (isinstance(match, list) and match and all(_text(m) for m in match)):
+            rep.error(where, '"match" must list the technology names it covers, e.g. ["KNX"]')
+        else:
+            for m in match:
+                if m.lower() in claimed:
+                    rep.error(where, f'"{m}" is also claimed by {claimed[m.lower()]}')
+                claimed[m.lower()] = path.name
+                if m.lower() not in technologies:
+                    rep.warn(where, f'no product has the technology "{m}" yet')
+        logo = data.get("logo")
+        if "logo" in data and not (isinstance(logo, str) and _local_file(logo).is_file()):
+            rep.error(where, f"logo {logo!r} does not exist")
+        when = data.get("when")
+        if "when" in data and not (isinstance(when, dict) and all(
+                isinstance(when.get(l), list) and when[l] and all(_text(x) for x in when[l]) for l in LANGS)):
+            rep.error(where, '"when" must give a list of points in en, fr and ar')
+        elif isinstance(when, dict) and len({len(when[l]) for l in LANGS}) != 1:
+            rep.error(where, '"when" has a different number of points per language')
+        labels = data.get("diagram_labels")
+        if "diagram" in data and not isinstance(labels, dict):
+            rep.error(where, '"diagram" needs "diagram_labels" in en, fr and ar')
+        elif isinstance(labels, dict):
+            keys = {l: set(labels.get(l) or {}) for l in LANGS}
+            for l in LANGS:
+                if keys[l] != keys["en"] or not all(_text(v) for v in (labels.get(l) or {}).values()):
+                    rep.error(where, f'"diagram_labels" in {l} must have the same, non-empty labels as en')
+
+
 # ---------------- Locales ----------------
 
 def _flatten(node: dict, prefix: str = "") -> dict:
@@ -429,6 +480,7 @@ def run() -> Report:
     brand_names = check_brands(rep)
     products = check_products(rep, taxonomy, brand_names)
     check_projects(rep, taxonomy, set(products))
+    check_protocols(rep, {str(x).lower() for p in products.values() for x in p.get("technology") or []})
     check_locales(rep)
 
     used = {p.get("brand") for p in products.values()}

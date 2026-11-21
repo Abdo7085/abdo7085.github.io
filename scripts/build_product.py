@@ -61,7 +61,7 @@ def page(lang: str, pid: str) -> str:
         f'<h1 class="h2 pd-title">{esc(title)}</h1>'
         f'<p class="pd-short">{esc(t(prod.get("short_description"), lang))}</p>'
         '<dl class="pd-cells">'
-        f'<div class="pd-cell recess"><dt>{p.e("pd_protocols")}</dt><dd>{protos(prod.get("technology"))}</dd></div>'
+        f'<div class="pd-cell recess"><dt>{p.e("pd_protocols")}</dt><dd>{protos(prod.get("technology"), p)}</dd></div>'
         f'<div class="pd-cell recess"><dt>{p.e("pd_installation")}</dt><dd>{esc(p.inst(prod.get("installation")))}</dd></div>'
         f'<div class="pd-cell recess"><dt>{p.e("filter_category")}</dt><dd><a href="{p.catalog_url(cat)}">{esc(p.cat(cat))}</a></dd></div>'
         '</dl>'

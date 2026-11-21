@@ -85,7 +85,7 @@ def brand(lang: str, bid: str) -> str:
         f'<div><dt>{p.e("founded")}</dt><dd class="big">{esc(b.get("founded") or "—")}</dd></div>'
         f'<div><dt>{p.e("country")}</dt><dd>{country}</dd></div>'
         f'<div><dt>{p.e("products_lbl")}</dt><dd class="big">{len(mine)}</dd></div>'
-        f'<div><dt>{p.e("pd_protocols")}</dt><dd>{protos(techs)}</dd></div>'
+        f'<div><dt>{p.e("pd_protocols")}</dt><dd>{protos(techs, p)}</dd></div>'
         '</dl>'
         f'<div class="prose"><p>{esc(t(b.get("description"), lang))}</p></div>'
         + (f'<a class="link-arrow" href="{esc(b["website"])}" target="_blank" rel="noopener">{p.e("website")}{ic("ext")}</a>' if b.get("website") else "")

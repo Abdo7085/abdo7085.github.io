@@ -429,12 +429,14 @@ def write_sitemap() -> None:
       2. Products, sorted by id (ascending) × (en, fr, ar)
       3. Projects, in the order stored in data/projects_index.json × (en, fr, ar)
       4. Brands, in the order stored in data/brands_index.json × (en, fr, ar)
+      5. Protocols, sorted by id × (en, fr, ar)
 
     lastmod policy — a URL's date moves only when its source content changes:
       - static pages: the English root template (incl. its injected ItemList)
       - products:     data/products/<id>.json
       - projects:     data/projects/<id>.json
       - brands:       data/brands/<id>.json + the ids of that brand's products
+      - protocols:    data/protocols/<id>.json + the ids of the products it covers
     Each source's fingerprint and date are kept in scripts/state/sitemap.json.
     Unchanged fingerprint → date kept. Changed → today. First time seen → the
     date already in sitemap.xml if there is one, else today. Rebuilding with
@@ -550,6 +552,31 @@ def write_sitemap() -> None:
                 prefix = "" if lang == "en" else f"/{lang}"
                 loc = f"{HOST}{prefix}/{suffix}"
                 urls.append(_sitemap_url_block(loc, lastmod, suffix))
+
+    # 5. Protocols (sorted by id). A protocol page lists the products whose "technology"
+    # is in its "match", so it changes with the file or when such a product comes or goes.
+    tech_product_ids: dict = {}
+    for pid, pf in product_files.items():
+        try:
+            techs = json.loads(pf.read_text(encoding="utf-8")).get("technology") or []
+        except Exception:
+            techs = []
+        for tech in techs:
+            tech_product_ids.setdefault(str(tech).lower(), []).append(pid)
+    for source in sorted((ROOT / "data" / "protocols").glob("*.json")):
+        try:
+            pr = json.loads(source.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        prid = pr.get("id")
+        if not prid:
+            continue
+        its = sorted({i for m in pr.get("match") or [] for i in tech_product_ids.get(str(m).lower(), [])})
+        suffix = f"protocols/{prid}.html"
+        lastmod = lastmod_for(f"protocol:{prid}", _fingerprint(source, ",".join(its)), f"{HOST}/{suffix}")
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"/{lang}"
+            urls.append(_sitemap_url_block(f"{HOST}{prefix}/{suffix}", lastmod, suffix))
 
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'

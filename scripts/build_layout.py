@@ -42,6 +42,7 @@ import build_home
 import build_notfound
 import build_product
 import build_project_pages
+import build_protocol_pages
 from _icons import WA_ICON, ic
 from _lib import ROOT, LANGS, load_locale, load_taxonomy, t
 
@@ -56,7 +57,8 @@ CONTENT = {"index.html": (build_home.home, None),
 # Generated detail pages: folder → (render(lang, id), page script)
 DETAIL = {"products/": (build_product.page, "/assets/se-product.js"),
           "brands/": (build_brand_pages.brand, "/assets/se-brand.js"),
-          "projects/": (build_project_pages.project, None)}
+          "projects/": (build_project_pages.project, None),
+          "protocols/": (build_protocol_pages.protocol, "/assets/se-brand.js")}
 
 
 def content_for(suffix: str):

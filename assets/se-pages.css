@@ -1113,3 +1113,32 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
 .se-page .brand-txt { font-family: var(--f-disp); font-size: 18px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .se-page .brand-strip .brand-txt { color: var(--on-dark-soft); }
 .se-page .mini-brand .brand-txt { color: var(--ink-soft); }
+
+/* Protocol pages (protocols/<id>.html, build_protocol_pages.py) */
+/* a protocol chip that opens its protocol page */
+.se-page a.proto { transition: border-color .2s, color .2s; }
+.se-page a.proto:hover, .se-page a.proto:focus-visible { border-color: var(--y-deep); color: var(--ink); }
+.se-page .spec-v a.proto:hover { background: var(--y-pale); }
+/* the installation diagram: black glass, the bus in yellow */
+.se-page .kd { margin: 0; padding: 18px; border-radius: var(--r-xl); overflow-x: auto; }
+.se-page .kd svg { display: block; width: 100%; min-width: 680px; height: auto; }
+.se-page .kd-box { fill: rgba(255, 255, 255, .05); stroke: var(--line-dark); }
+.se-page .kd-ps { stroke: var(--brass-line); }
+.se-page .kd-bus { stroke: var(--y); stroke-width: 4; stroke-linecap: round; }
+.se-page .kd-drop { stroke: var(--y); stroke-width: 2; }
+.se-page .kd-load { stroke: var(--on-dark-faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.se-page .kd-wifi { stroke: var(--y); stroke-width: 1.5; fill: none; stroke-dasharray: 3 5; }
+.se-page .kd-pill { fill: none; stroke: var(--on-dark-faint); }
+.se-page .kd-ic { fill: none; stroke: var(--y); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.se-page .kd-t { fill: var(--on-dark); font-family: var(--f-body); font-size: 15px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+.se-page .kd-y { fill: var(--y); }
+.se-page .kd-bus-t { fill: var(--y); font-family: var(--f-disp); font-size: 18px; font-weight: 700; letter-spacing: .06em; text-anchor: middle; }
+[lang="ar"] .se-page .kd-t, [lang="ar"] .se-page .kd-bus-t { font-family: var(--f-ar); letter-spacing: 0; }
+/* when to choose it: the good fits, and where it fits less */
+.se-page .kw { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; }
+.se-page .kw-yes { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); overflow: hidden; }
+.se-page .kw-yes li { display: flex; gap: 10px; padding: 20px 22px; line-height: 1.55; box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line); }
+.se-page .kw-yes li::before { content: ""; flex: none; width: 9px; height: 9px; margin-top: 7px; border-radius: 50%; background: var(--y); box-shadow: 0 0 0 3px var(--y-glow); }
+.se-page .kw-no { padding: 20px 22px; border-radius: var(--r-lg); border: 1px dashed var(--line-strong); display: grid; align-content: start; gap: 8px; }
+.se-page .kw-no p:last-child { margin: 0; color: var(--ink-soft); line-height: 1.6; }
+@media (max-width: 760px) { .se-page .kw, .se-page .kw-yes { grid-template-columns: 1fr; } }

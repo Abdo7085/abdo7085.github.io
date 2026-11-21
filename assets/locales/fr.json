@@ -425,5 +425,17 @@
   "sc_dinner": "Dîner",
   "sc_movie": "Film",
   "sc_sleep": "Nuit",
-  "sc_away": "Absence"
+  "sc_away": "Absence",
+  "proto_standard": "Standard",
+  "proto_medium": "Support",
+  "proto_brands": "Marques",
+  "proto_how": "Comment fonctionne une installation {name}",
+  "proto_diagram": "Schéma",
+  "proto_when": "Quand choisir {name}",
+  "proto_fit": "Usage",
+  "proto_less": "Moins adapté",
+  "proto_brands_t": "Les marques {name} que nous fournissons",
+  "proto_brand_n": "produits {name}",
+  "proto_products": "Produits {name}",
+  "proto_projects": "Projets {name}"
 }

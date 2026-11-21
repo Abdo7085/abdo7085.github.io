@@ -414,5 +414,17 @@
   "sc_dinner": "Dinner",
   "sc_movie": "Movie",
   "sc_sleep": "Sleep",
-  "sc_away": "Away"
+  "sc_away": "Away",
+  "proto_standard": "Standard",
+  "proto_medium": "Medium",
+  "proto_brands": "Brands",
+  "proto_how": "How a {name} installation works",
+  "proto_diagram": "Diagram",
+  "proto_when": "When to choose {name}",
+  "proto_fit": "Fit",
+  "proto_less": "Less suited",
+  "proto_brands_t": "{name} brands we supply",
+  "proto_brand_n": "{name} products",
+  "proto_products": "{name} products",
+  "proto_projects": "{name} projects"
 }

@@ -21,6 +21,8 @@ Order:
                           from stage 3), write per-brand HTML, inject ItemList
                           into brands.html. Runs after build_products so the
                           freshest products_index.json is available.
+  4b. build_protocols — read data/protocols/*.json, write the head of each
+                        protocol page (protocols/<id>.html in en/fr/ar).
   5. build_layout       — write the static header + footer into every page
                           (replaces the React bundle's; runs last so it sees
                           every page the stages above wrote).
@@ -48,6 +50,7 @@ import build_images
 import build_projects
 import build_products
 import build_brands
+import build_protocols
 import build_layout
 from _lib import write_sitemap
 
@@ -69,6 +72,7 @@ def main() -> int:
     run_stage("build_projects", build_projects.main)
     run_stage("build_products", build_products.main)
     run_stage("build_brands", build_brands.main)
+    run_stage("build_protocols", build_protocols.main)
     run_stage("build_layout", build_layout.main)
     # build_layout rewrites the root pages after the stages above fingerprinted them for the
     # sitemap: fingerprint once more so scripts/state/sitemap.json matches the final pages

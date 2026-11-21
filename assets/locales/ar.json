@@ -425,5 +425,17 @@
   "sc_dinner": "عشاء",
   "sc_movie": "فيلم",
   "sc_sleep": "نوم",
-  "sc_away": "غياب"
+  "sc_away": "غياب",
+  "proto_standard": "المعيار",
+  "proto_medium": "الوسيط",
+  "proto_brands": "العلامات",
+  "proto_how": "كيف يعمل تركيب {name}",
+  "proto_diagram": "رسم توضيحي",
+  "proto_when": "متى تختار {name}",
+  "proto_fit": "الملاءمة",
+  "proto_less": "أقل ملاءمة",
+  "proto_brands_t": "علامات {name} التي نوفّرها",
+  "proto_brand_n": "منتج {name}",
+  "proto_products": "منتجات {name}",
+  "proto_projects": "مشاريع {name}"
 }

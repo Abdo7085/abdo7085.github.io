@@ -1,0 +1,78 @@
+{
+  "id": "knx",
+  "name": "KNX",
+  "match": ["KNX"],
+  "logo": "/assets/knx-logo.svg",
+  "standard": "ISO/IEC 14543",
+  "diagram": "knx",
+  "seo_title": {
+    "en": "KNX home and building automation",
+    "fr": "Domotique KNX pour maisons et bâtiments",
+    "ar": "نظام KNX للمنازل والمباني الذكية"
+  },
+  "kicker": {
+    "en": "Open standard · ISO/IEC 14543",
+    "fr": "Standard ouvert · ISO/IEC 14543",
+    "ar": "معيار مفتوح · ISO/IEC 14543"
+  },
+  "tagline": {
+    "en": "One wired bus for lighting, shutters, climate and scenes — the open standard behind serious smart buildings.",
+    "fr": "Un seul bus filaire pour l'éclairage, les volets, la climatisation et les scènes — le standard ouvert des bâtiments intelligents sérieux.",
+    "ar": "ناقل سلكي واحد للإضاءة والستائر والتكييف والمشاهد — المعيار المفتوح وراء المباني الذكية الجادّة."
+  },
+  "medium": {
+    "en": "Twisted pair · IP",
+    "fr": "Paire torsadée · IP",
+    "ar": "سلك مزدوج · بروتوكول الإنترنت"
+  },
+  "description": {
+    "en": "KNX is the open, worldwide standard for home and building control. Every switch, sensor, actuator and touch panel is connected to one dedicated two-wire bus cable, laid alongside the power wiring, and the devices talk to each other directly: there is no central box whose failure stops the house, and nothing depends on the internet. Because KNX is a standard and not a brand, devices from hundreds of manufacturers work together, and any certified integrator can extend or service the installation years later.",
+    "fr": "KNX est le standard ouvert et mondial pour la commande des maisons et des bâtiments. Chaque interrupteur, capteur, actionneur et écran tactile est relié à un même câble bus à deux fils, posé avec le câblage électrique, et les appareils communiquent directement entre eux : aucun boîtier central dont la panne arrêterait la maison, et rien ne dépend d'internet. Comme KNX est un standard et non une marque, les appareils de centaines de fabricants fonctionnent ensemble, et tout intégrateur certifié peut étendre ou entretenir l'installation des années plus tard.",
+    "ar": "KNX هو المعيار العالمي المفتوح للتحكم في المنازل والمباني. كل مفتاح ومستشعر ووحدة تشغيل ولوحة لمس يتصل بكابل ناقل واحد من سلكين، يُمدّ بجانب أسلاك الكهرباء، وتتواصل الأجهزة فيما بينها مباشرة: لا يوجد جهاز مركزي يتوقف البيت إذا تعطّل، ولا شيء يعتمد على الإنترنت. ولأن KNX معيار وليس علامة تجارية، تعمل أجهزة مئات المصنّعين معاً، ويستطيع أي مركّب معتمد توسيع التركيب أو صيانته بعد سنوات."
+  },
+  "when": {
+    "en": [
+      "New build or full renovation: the bus cable goes in with the electrical wiring.",
+      "Villas, hotels and offices: many rooms, lights, shutters and climate zones under one system.",
+      "Reliability first: works locally, with no cloud and no internet needed.",
+      "Room to grow: add a room, a sensor or a brand later without starting over."
+    ],
+    "fr": [
+      "Construction neuve ou rénovation complète : le câble bus se pose avec le câblage électrique.",
+      "Villas, hôtels et bureaux : de nombreuses pièces, lumières, volets et zones de climatisation dans un seul système.",
+      "La fiabilité d'abord : tout fonctionne en local, sans cloud et sans internet.",
+      "Prêt à évoluer : ajoutez une pièce, un capteur ou une marque plus tard sans tout recommencer."
+    ],
+    "ar": [
+      "بناء جديد أو تجديد كامل: كابل الناقل يُمدّ مع أسلاك الكهرباء.",
+      "الفيلات والفنادق والمكاتب: غرف كثيرة وإضاءة وستائر ومناطق تكييف في نظام واحد.",
+      "الموثوقية أولاً: يعمل محلياً دون سحابة ودون إنترنت.",
+      "قابل للتوسّع: أضف غرفة أو مستشعراً أو علامة أخرى لاحقاً دون البدء من الصفر."
+    ]
+  },
+  "less_suited": {
+    "en": "A quick upgrade in a finished flat without rewiring — Zigbee or Wi-Fi devices fit there better.",
+    "fr": "Une mise à niveau rapide d'un appartement fini, sans recâblage — des appareils Zigbee ou Wi-Fi y conviennent mieux.",
+    "ar": "ترقية سريعة لشقة جاهزة دون تمديد أسلاك — هنا أجهزة Zigbee أو Wi-Fi أنسب."
+  },
+  "diagram_labels": {
+    "en": {
+      "power": "Bus power supply", "bus": "KNX bus — two wires to every device",
+      "buttons": "Push-buttons", "thermostat": "Thermostat", "panel": "Touch panel",
+      "actuators": "Panel actuators", "gateway": "Climate gateway", "ip": "IP interface",
+      "lights": "Lights", "shutters": "Shutters", "ac": "AC unit", "app": "App & remote access"
+    },
+    "fr": {
+      "power": "Alimentation du bus", "bus": "Bus KNX — deux fils vers chaque appareil",
+      "buttons": "Poussoirs", "thermostat": "Thermostat", "panel": "Écran tactile",
+      "actuators": "Actionneurs\ndu tableau", "gateway": "Passerelle clim", "ip": "Interface IP",
+      "lights": "Éclairage", "shutters": "Volets", "ac": "Climatiseur", "app": "Appli et accès distant"
+    },
+    "ar": {
+      "power": "مزوّد طاقة الناقل", "bus": "ناقل KNX — سلكان يصلان إلى كل جهاز",
+      "buttons": "مفاتيح ضغط", "thermostat": "ترموستات", "panel": "لوحة لمس",
+      "actuators": "وحدات التشغيل", "gateway": "بوابة التكييف", "ip": "واجهة بروتوكول\nالإنترنت",
+      "lights": "الإضاءة", "shutters": "الستائر", "ac": "جهاز التكييف", "app": "التطبيق والتحكم عن بعد"
+    }
+  }
+}

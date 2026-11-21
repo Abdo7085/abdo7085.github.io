@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="840" viewBox="0 0 680 420" font-family="Segoe UI, Tahoma, Arial, sans-serif">
+<title>خريطة الموقع بعد إضافة البروتوكولات والمقالات</title>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<style>
+.g rect{fill:#F1EFE8;stroke:#888780}.g .h{fill:#2C2C2A}.g .s{fill:#5F5E5A}
+.n rect{fill:#E1F5EE;stroke:#0F6E56}.n .h{fill:#04342C}.n .s{fill:#0F6E56}
+.h{font-size:14px;font-weight:600}.s{font-size:12px}
+.l{stroke:#888780;stroke-width:1.2;fill:none}
+.x{stroke:#1D9E75;stroke-width:1.5;stroke-dasharray:4 3;fill:none}
+text{text-anchor:middle;dominant-baseline:central}
+</style>
+</defs>
+<rect width="680" height="420" fill="#ffffff"/>
+<g class="g"><rect x="270" y="30" width="140" height="44" rx="8"/><text class="h" x="340" y="52">الصفحة الرئيسية</text></g>
+<line class="l" x1="320" y1="74" x2="125" y2="118" marker-end="url(#a)"/>
+<line class="l" x1="330" y1="74" x2="265" y2="118" marker-end="url(#a)"/>
+<line class="l" x1="350" y1="74" x2="415" y2="118" marker-end="url(#a)"/>
+<line class="l" x1="360" y1="74" x2="555" y2="118" marker-end="url(#a)"/>
+<g class="g"><rect x="50" y="120" width="130" height="56" rx="8"/><text class="h" x="115" y="138">المشاريع</text><text class="s" x="115" y="158">قائمة الأعمال</text></g>
+<g class="g"><rect x="200" y="120" width="130" height="56" rx="8"/><text class="h" x="265" y="138">الكتالوج</text><text class="s" x="265" y="158">فلاتر الأقسام</text></g>
+<g class="n"><rect x="350" y="120" width="130" height="56" rx="8"/><text class="h" x="415" y="138">البروتوكولات</text><text class="s" x="415" y="158">كل البروتوكولات</text></g>
+<g class="n"><rect x="500" y="120" width="130" height="56" rx="8"/><text class="h" x="565" y="138">المقالات</text><text class="s" x="565" y="158">فلتر: بروتوكول + نوع</text></g>
+<line class="l" x1="115" y1="176" x2="115" y2="248" marker-end="url(#a)"/>
+<line class="l" x1="265" y1="176" x2="265" y2="248" marker-end="url(#a)"/>
+<line class="l" x1="415" y1="176" x2="415" y2="248" marker-end="url(#a)"/>
+<line class="l" x1="565" y1="176" x2="565" y2="248" marker-end="url(#a)"/>
+<g class="g"><rect x="50" y="250" width="130" height="56" rx="8"/><text class="h" x="115" y="268">صفحة مشروع</text><text class="s" x="115" y="288">الشارات = روابط</text></g>
+<g class="g"><rect x="200" y="250" width="130" height="56" rx="8"/><text class="h" x="265" y="268">صفحة منتج</text><text class="s" x="265" y="288">الشارات = روابط</text></g>
+<g class="n"><rect x="350" y="250" width="130" height="56" rx="8"/><text class="h" x="415" y="268">صفحة بروتوكول</text><text class="s" x="415" y="288">وصف + منتجات</text></g>
+<g class="n"><rect x="500" y="250" width="130" height="56" rx="8"/><text class="h" x="565" y="268">صفحة مقالة</text><text class="s" x="565" y="288">المنتجات المذكورة</text></g>
+<line class="x" x1="330" y1="278" x2="348" y2="278" marker-end="url(#a)"/>
+<line class="x" x1="482" y1="278" x2="498" y2="278" marker-start="url(#a)" marker-end="url(#a)"/>
+<path class="x" d="M115 306 L115 340 L405 340 L405 308" marker-end="url(#a)"/>
+<path class="x" d="M465 250 L465 218 L520 218 L520 178" marker-end="url(#a)"/>
+<text class="s" x="260" y="354" fill="#0F6E56">شارة البروتوكول في المشروع</text>
+<text class="s" x="575" y="212" fill="#0F6E56">كل مقالاته</text>
+<rect x="150" y="380" width="14" height="14" rx="3" fill="#F1EFE8" stroke="#888780"/><text class="s" x="192" y="387" fill="#2C2C2A">موجود</text>
+<rect x="260" y="380" width="14" height="14" rx="3" fill="#E1F5EE" stroke="#0F6E56"/><text class="s" x="298" y="387" fill="#2C2C2A">جديد</text>
+<line class="x" x1="360" y1="387" x2="392" y2="387"/><text class="s" x="432" y="387" fill="#2C2C2A">رابط جديد</text>
+</svg>

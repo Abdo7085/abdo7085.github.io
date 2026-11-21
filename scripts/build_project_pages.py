@@ -146,7 +146,7 @@ def project(lang: str, pid: str) -> str:
            + '<div class="gallery">' + "".join(figs) + '</div></div></section>' if figs else "")
         + '<section class="sec-tight"><div class="wrap">' + ruler(p.s("proj_brands_title"))
         + (f'<div class="spec">{_spec_row(p.e("proj_brands_label"), logos)}'
-           f'{_spec_row(p.e("proj_protocols_label"), [proto(x) for x in techs])}</div>')
+           f'{_spec_row(p.e("proj_protocols_label"), [proto(x, p) for x in techs])}</div>')
         + '</div></section>'
         + ('<section class="sec-tight"><div class="wrap">' + ruler(p.s("products_used"), p.count(len(prods), "product"))
            + '<div class="tiles tiles-base">' + "".join(_tile(p, x) for x in prods) + '</div></div></section>' if prods else "")

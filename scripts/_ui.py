@@ -56,8 +56,10 @@ def data():
         f = ROOT / "data" / "projects" / f"{pj['id']}.json"
         full[pj["id"]] = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
     brands = rd("data/brands_index.json")
+    protocols = [json.loads(f.read_text(encoding="utf-8")) for f in sorted((ROOT / "data" / "protocols").glob("*.json"))]
     return {"products": products, "by_id": {p["id"]: p for p in products},
             "brands": brands, "brand_by_name": {b["brand"]: b for b in brands},
+            "protocols": protocols, "protocol_by_tech": {m.lower(): pr for pr in protocols for m in pr.get("match") or []},
             "projects": projects, "full": full, "tax": load_taxonomy(),
             "tax_raw": rd("data/taxonomy.json"), "images": rd("data/product_images.json")}
 
@@ -126,6 +128,9 @@ class Page:
     def brand_url(self, bid: str) -> str:
         return f"{self.base}brands/{bid}.html"
 
+    def protocol_url(self, pid: str) -> str:
+        return f"{self.base}protocols/{pid}.html"
+
 
 def pimg(desc, sizes: str, alt: str = "", eager: bool = False) -> str:
     if not desc:
@@ -179,14 +184,23 @@ def proto_icon(tech: str) -> str:
     return ""
 
 
-def proto(tech: str) -> str:
+def protocol_of(tech: str):
+    """The protocol page (data/protocols/<id>.json) a technology name belongs to, or None."""
+    return data()["protocol_by_tech"].get(str(tech).lower())
+
+
+def proto(tech: str, p: "Page | None" = None) -> str:
+    """A protocol chip. With a Page, and when the protocol has its own page, the chip links to it
+    (not inside product cards, whose title link covers the whole card)."""
+    pr = protocol_of(tech) if p is not None else None
+    tag, href = ("a", f' href="{p.protocol_url(pr["id"])}"') if pr else ("span", "")
     if "knx" in str(tech).lower():   # the official KNX logo in its colours stands for icon and name
-        return '<span class="proto proto-knx"><img src="/assets/knx-logo.svg" alt="KNX" width="1069" height="510"></span>'
-    return f'<span class="proto">{proto_icon(tech)}{esc(tech)}</span>'
+        return f'<{tag} class="proto proto-knx"{href}><img src="/assets/knx-logo.svg" alt="KNX" width="1069" height="510"></{tag}>'
+    return f'<{tag} class="proto"{href}>{proto_icon(tech)}{esc(tech)}</{tag}>'
 
 
-def protos(lst) -> str:
-    return ('<div class="protos">' + "".join(proto(x) for x in lst) + "</div>") if lst else ""
+def protos(lst, p: "Page | None" = None) -> str:
+    return ('<div class="protos">' + "".join(proto(x, p) for x in lst) + "</div>") if lst else ""
 
 
 def brand_mark(b: dict, decorative: bool = False) -> str:
