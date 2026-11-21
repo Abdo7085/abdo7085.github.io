@@ -155,6 +155,8 @@ def crumbs(items) -> str:
 _PROTO = {
     "wifi": '<path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>',
     "bt": '<polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/>',
+    # KNX: one bus line with three devices hanging off it (the logo's own arcs are too wide to read at this size)
+    "knx": '<path d="M2 6h20"/><path d="M5 6v6"/><path d="M12 6v6"/><path d="M19 6v6"/><rect x="3" y="12" width="4" height="6" rx="1"/><rect x="10" y="12" width="4" height="6" rx="1"/><rect x="17" y="12" width="4" height="6" rx="1"/>',
     "lan": '<path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/>',
     "zwave": '<path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/><circle cx="12" cy="12" r="2"/>',
 }
@@ -170,6 +172,7 @@ def proto_icon(tech: str) -> str:
     stroke = lambda p: ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
                         f'stroke-linejoin="round" aria-hidden="true">{p}</svg>')
     if "wi-fi" in x or "wifi" in x: return stroke(_PROTO["wifi"])
+    if "knx" in x: return stroke(_PROTO["knx"])
     if "bluetooth" in x: return stroke(_PROTO["bt"])
     if "zigbee" in x: return _PROTO_FILL["zigbee"]
     if "matter" in x: return _PROTO_FILL["matter"]
@@ -180,8 +183,8 @@ def proto_icon(tech: str) -> str:
 
 
 def proto(tech: str) -> str:
-    if "knx" in str(tech).lower():
-        return '<span class="proto proto-knx">KNX</span>'
+    if "knx" in str(tech).lower():   # bus icon, then the name, like the others
+        return f'<span class="proto proto-knx">{proto_icon("knx")}KNX</span>'
     return f'<span class="proto">{proto_icon(tech)}{esc(tech)}</span>'
 
 
