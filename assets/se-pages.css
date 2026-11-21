@@ -1000,7 +1000,12 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
 /* Projects: list title size, case number spacing, larger protocol chips, label on the dark quote */
 .se-page .pw-title { font-size: clamp(40px, 5.6vw, 76px); }
 .se-page .pj-n { margin-block-start: 28px; }
-.se-page .protos-lg { gap: 12px 20px; font-size: 14px; }
+/* protocol chips beside the brand logos take the same tile shape: same height, gap, radius and border */
+.se-page .protos-lg { gap: 10px; }
+.se-page .protos-lg .proto { height: 54px; padding: 0 18px; gap: 8px; border: 1px solid var(--line); border-radius: 10px;
+  background: radial-gradient(120% 90% at 50% 0%, #ffffff, #e9ece7 70%); font-size: 14px; font-weight: 700; color: var(--ink-soft); }
+.se-page .protos-lg .proto svg { width: 16px; height: 16px; }
+.se-page .protos-lg .proto-knx { color: var(--graphite); border-color: var(--line); }
 .se-page .testimonial .label-sm { color: var(--on-dark-faint); }
 
 /* Project hero: room under the title for the facts card that rides up over the photo (long French titles) */
