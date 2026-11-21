@@ -22,6 +22,7 @@ PHONE_TXT = "+212 654-132112"
 # Counted nouns. Arabic: 1 / 2 / 3–10 / 11+
 NOUNS = {
     "product": {"en": ["product", "products"], "fr": ["produit", "produits"], "ar": ["منتج واحد", "منتجان", "منتجات", "منتجاً"]},
+    "protocol": {"en": ["protocol", "protocols"], "fr": ["protocole", "protocoles"], "ar": ["بروتوكول واحد", "بروتوكولان", "بروتوكولات", "بروتوكولاً"]},
     "brand": {"en": ["brand", "brands"], "fr": ["marque", "marques"], "ar": ["علامة واحدة", "علامتان", "علامات", "علامة"]},
     "day": {"en": ["day", "days"], "fr": ["jour", "jours"], "ar": ["يوم واحد", "يومان", "أيام", "يوماً"]},
     "project": {"en": ["case study", "case studies"], "fr": ["étude de cas", "études de cas"], "ar": ["مشروع واحد", "مشروعان", "مشاريع", "مشروعاً"]},
@@ -197,6 +198,16 @@ def proto(tech: str, p: "Page | None" = None) -> str:
     if "knx" in str(tech).lower():   # the official KNX logo in its colours stands for icon and name
         return f'<{tag} class="proto proto-knx"{href}><img src="/assets/knx-logo.svg" alt="KNX" width="1069" height="510"></{tag}>'
     return f'<{tag} class="proto"{href}>{proto_icon(tech)}{esc(tech)}</{tag}>'
+
+
+def proto_mark(pr: dict, decorative: bool = False) -> str:
+    """A protocol's mark for the hero and the protocols list: its logo file, else its chip icon
+    drawn large with the name (Wi-Fi, Zigbee... have no logo file)."""
+    alt = "" if decorative else esc(pr["name"])
+    if pr.get("logo"):
+        return f'<img src="{esc(pr["logo"])}" alt="{alt}">'
+    hidden = ' aria-hidden="true"' if decorative else ""
+    return f'<span class="proto-mark"{hidden}>{proto_icon(pr["name"])}<b>{esc(pr["name"])}</b></span>'
 
 
 def protos(lst, p: "Page | None" = None) -> str:

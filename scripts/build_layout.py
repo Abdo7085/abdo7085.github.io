@@ -52,6 +52,7 @@ SKIP: set = set()
 CONTENT = {"index.html": (build_home.home, None),
            "products.html": (build_catalog.catalog, "/assets/se-catalog.js"),
            "brands.html": (build_brand_pages.brands, None),
+           "protocols.html": (build_protocol_pages.protocols, None),
            "previous-work.html": (build_project_pages.projects, "/assets/se-projects.js"),
            "404.html": (build_notfound.notfound, None)}
 # Generated detail pages: folder → (render(lang, id), page script)
@@ -106,6 +107,8 @@ def section_of(suffix: str) -> str:
         return "brands"
     if suffix.startswith("projects/") or suffix in ("previous-work.html", "project.html"):
         return "projects"
+    if suffix.startswith("protocols/") or suffix == "protocols.html":
+        return "protocols"
     return ""
 
 
@@ -140,6 +143,7 @@ def header(lang: str, suffix: str, s: dict) -> str:
     links = [
         ("products", f"{b}products.html", s["nav_products"]),
         ("brands", f"{b}brands.html", s["nav_brands"]),
+        ("protocols", f"{b}protocols.html", s["nav_protocols"]),
         ("projects", f"{b}previous-work.html", s["nav_projects"]),
         ("services", f"{b}#services", s["nav_services"]),
         ("contact", "#contact", s["nav_contact"]),
@@ -181,6 +185,7 @@ def footer(lang: str, s: dict, tax) -> str:
         f'<div><h2>{esc(s["ftr_explore"])}</h2><ul>'
         f'<li><a href="{b}products.html">{esc(s["nav_products"])}</a></li>'
         f'<li><a href="{b}brands.html">{esc(s["nav_brands"])}</a></li>'
+        f'<li><a href="{b}protocols.html">{esc(s["nav_protocols"])}</a></li>'
         f'<li><a href="{b}previous-work.html">{esc(s["nav_projects"])}</a></li>'
         f'<li><a href="{b}#services">{esc(s["nav_services"])}</a></li>'
         f'<li><button type="button" data-trigger="find-solution">{esc(s["spa_cta_find_solution"])}</button></li>'

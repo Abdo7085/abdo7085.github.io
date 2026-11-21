@@ -97,6 +97,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/products.html" />
   </url>
   <url>
+    <loc>https://smartelectricity.ma/protocols.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols.html" />
+  </url>
+  <url>
     <loc>https://smartelectricity.ma/products/dahua-vth2421fb-fw-ip-indoor-monitor.html</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/products/dahua-vth2421fb-fw-ip-indoor-monitor.html" />
@@ -2329,6 +2353,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/brands/tuya.html" />
   </url>
   <url>
+    <loc>https://smartelectricity.ma/protocols/bluetooth.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/bluetooth.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/bluetooth.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/bluetooth.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/bluetooth.html" />
+  </url>
+  <url>
     <loc>https://smartelectricity.ma/protocols/knx.html</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/knx.html" />
@@ -2351,5 +2399,125 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/knx.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/knx.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/knx.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/protocols/lan.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/lan.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/lan.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/lan.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/lan.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/lan.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/lan.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/protocols/matter.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/matter.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/matter.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/matter.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/matter.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/matter.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/matter.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/protocols/thread.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/thread.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/thread.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/thread.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/thread.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/thread.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/thread.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/protocols/wifi.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/wifi.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/wifi.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/wifi.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/wifi.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/wifi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/wifi.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/protocols/zigbee.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/zigbee.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/fr/protocols/zigbee.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/zigbee.html" />
+  </url>
+  <url>
+    <loc>https://smartelectricity.ma/ar/protocols/zigbee.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/zigbee.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/zigbee.html" />
   </url>
 </urlset>

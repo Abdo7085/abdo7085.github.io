@@ -158,8 +158,8 @@ html:not([lang="ar"]) .lang a[lang="ar"] { font-family: system-ui, "Segoe UI", T
 .hdr .burger { display: none; }
 .burger svg + svg, .burger[aria-expanded="true"] svg:first-child { display: none; }
 .burger[aria-expanded="true"] svg + svg { display: block; }
-@media (max-width: 1180px) { .hdr-cta { display: none !important; } }
-@media (max-width: 1020px) { .nav { display: none; } .hdr .burger { display: grid; } .hdr-tools { margin-inline-start: auto; } }
+@media (max-width: 1300px) { .hdr-cta { display: none !important; } }   /* French needs this much room with six links */
+@media (max-width: 1100px) { .nav { display: none; } .hdr .burger { display: grid; } .hdr-tools { margin-inline-start: auto; } }
 @media (max-width: 480px) { .hdr-tools .lang { display: none; } .logo-word small { display: none; } }
 
 .menu {
@@ -173,7 +173,7 @@ html:not([lang="ar"]) .lang a[lang="ar"] { font-family: system-ui, "Segoe UI", T
 .menu nav a { display: flex; justify-content: space-between; align-items: center; padding: 15px 2px; border-block-end: 1px solid var(--line-dark); font-size: 19px; font-weight: 500; }
 .menu nav a span { font-family: var(--f-disp); font-size: 14px; letter-spacing: .08em; color: var(--y); }
 .menu-foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 16px var(--gutter) 22px; }
-@media (min-width: 1021px) { .menu { display: none; } }
+@media (min-width: 1101px) { .menu { display: none; } }
 
 /* ───────────────────────── Footer ── */
 .ftr { position: relative; margin-block-start: clamp(60px, 8vw, 100px); padding-block: 0 26px; color: var(--on-dark); background-color: var(--glass); background-image: var(--pat-dark); background-size: 72px 72px; }

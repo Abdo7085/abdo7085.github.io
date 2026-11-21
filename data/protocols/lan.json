@@ -1,0 +1,119 @@
+{
+  "id": "lan",
+  "name": "LAN",
+  "match": ["LAN", "PoE"],
+  "standard": "IEEE 802.3",
+  "seo_title": {
+    "en": "Wired LAN and PoE network for the home",
+    "fr": "Réseau LAN filaire et PoE pour la maison",
+    "ar": "شبكة LAN سلكية وPoE للمنزل"
+  },
+  "kicker": {
+    "en": "Wired network · Ethernet",
+    "fr": "Réseau filaire · Ethernet",
+    "ar": "شبكة سلكية · Ethernet"
+  },
+  "tagline": {
+    "en": "The wired backbone of the house — and, with PoE, power over the same cable.",
+    "fr": "L'épine dorsale filaire de la maison — et, avec le PoE, l'alimentation par le même câble.",
+    "ar": "العمود الفقري السلكي للبيت — ومع PoE، الطاقة عبر نفس الكابل."
+  },
+  "medium": {
+    "en": "Network cable · PoE",
+    "fr": "Câble réseau · PoE",
+    "ar": "كابل شبكة · PoE"
+  },
+  "description": {
+    "en": "The LAN is the wired network of the house: Ethernet cables run from the router and a switch to every point that needs a fast, stable connection. With PoE (Power over Ethernet), the same cable also powers the device, so a door station, an indoor monitor or a ceiling access point needs no socket of its own. The Wi-Fi in a large house is only as good as this backbone: access points wired to the switch give full coverage on every floor. Smart-home systems use it too — KNX reaches the network through an IP interface, and hubs and panel modules plug in with a cable instead of relying on Wi-Fi.",
+    "fr": "Le LAN est le réseau filaire de la maison : des câbles Ethernet partent du routeur et d'un switch vers chaque point qui a besoin d'une connexion rapide et stable. Avec le PoE (Power over Ethernet), le même câble alimente aussi l'appareil : une platine de rue, un moniteur intérieur ou un point d'accès au plafond n'ont pas besoin de prise. Dans une grande maison, le Wi-Fi ne vaut que ce que vaut cette épine dorsale : des points d'accès câblés au switch couvrent chaque étage. La domotique s'en sert aussi — KNX rejoint le réseau par une interface IP, et les passerelles et modules de tableau se branchent par câble au lieu de dépendre du Wi-Fi.",
+    "ar": "شبكة LAN هي الشبكة السلكية للبيت: كابلات Ethernet تمتد من الراوتر ومن محوّل الشبكة إلى كل نقطة تحتاج اتصالاً سريعاً ومستقراً. ومع PoE (الطاقة عبر Ethernet) يغذّي نفس الكابل الجهاز بالكهرباء أيضاً، فلا تحتاج وحدة الباب أو الشاشة الداخلية أو نقطة الوصول في السقف إلى مقبس خاص بها. وفي البيوت الكبيرة، تكون جودة Wi-Fi بقدر جودة هذا العمود الفقري: نقاط وصول موصولة بالكابل إلى المحوّل تغطي كل طابق. وتستعمله أنظمة المنزل الذكي أيضاً — يتصل KNX بالشبكة عبر واجهة بروتوكول الإنترنت، وتُوصل البوابات ووحدات اللوحة الكهربائية بكابل بدل الاعتماد على Wi-Fi."
+  },
+  "when": {
+    "en": [
+      "New build or renovation: run the network cables with the electrical wiring.",
+      "Video intercoms and access points: one cable for data and power (PoE).",
+      "Large houses: access points on every floor, wired back to one switch.",
+      "Anything that must never drop: hubs, interfaces and panel modules on a cable."
+    ],
+    "fr": [
+      "Construction neuve ou rénovation : poser les câbles réseau avec le câblage électrique.",
+      "Visiophones et points d'accès : un seul câble pour les données et l'alimentation (PoE).",
+      "Grandes maisons : des points d'accès à chaque étage, câblés vers un même switch.",
+      "Tout ce qui ne doit jamais décrocher : passerelles, interfaces et modules de tableau sur câble."
+    ],
+    "ar": [
+      "بناء جديد أو تجديد: تُمدّ كابلات الشبكة مع أسلاك الكهرباء.",
+      "الاتصال الداخلي بالفيديو ونقاط الوصول: كابل واحد للبيانات والطاقة (PoE).",
+      "البيوت الكبيرة: نقاط وصول في كل طابق، موصولة بالكابل إلى محوّل واحد.",
+      "كل ما يجب ألا ينقطع أبداً: البوابات والواجهات ووحدات اللوحة على كابل."
+    ]
+  },
+  "less_suited": {
+    "en": "Devices that move, or sit far from any cable route — Wi-Fi reaches them better.",
+    "fr": "Les appareils qui bougent, ou loin de tout passage de câble — le Wi-Fi les atteint mieux.",
+    "ar": "الأجهزة المتنقلة أو البعيدة عن أي مسار للكابلات — يصلها Wi-Fi بشكل أفضل."
+  },
+  "graph": {
+    "view": [1060, 390],
+    "nodes": [
+      {"id": "router", "icon": "router", "x": 170, "y": 70, "w": 210},
+      {"id": "switch", "icon": "switch", "x": 530, "y": 70, "w": 180, "accent": true},
+      {"id": "ap", "icon": "ap", "x": 80, "y": 250},
+      {"id": "door", "icon": "door", "x": 380, "y": 250},
+      {"id": "monitor", "icon": "monitor", "x": 530, "y": 250},
+      {"id": "knx", "icon": "ip", "x": 680, "y": 250},
+      {"id": "modules", "icon": "actuators", "x": 830, "y": 250},
+      {"id": "hub", "icon": "hub", "x": 980, "y": 250},
+      {"id": "note", "kind": "text", "x": 530, "y": 360},
+      {"id": "camera", "icon": "cameras", "x": 230, "y": 250}
+    ],
+    "links": [
+      ["router", "switch", "wire"],
+      ["switch", "ap", "wire"],
+      ["switch", "door", "wire"],
+      ["switch", "monitor", "wire"],
+      ["switch", "knx", "wire"],
+      ["switch", "modules", "wire"],
+      ["switch", "hub", "wire"],
+      ["switch", "camera", "wire"]
+    ]
+  },
+  "diagram_labels": {
+    "en": {
+      "router": "Router · internet",
+      "switch": "PoE switch",
+      "ap": "Access point",
+      "door": "Door station",
+      "monitor": "Indoor monitor",
+      "knx": "KNX IP interface",
+      "modules": "Panel modules",
+      "hub": "Smart-home hub",
+      "note": "One cable carries the data — and, with PoE, the power too",
+      "camera": "PoE camera"
+    },
+    "fr": {
+      "router": "Routeur · internet",
+      "switch": "Switch PoE",
+      "ap": "Point d'accès",
+      "door": "Platine de rue",
+      "monitor": "Écran intérieur",
+      "knx": "Interface IP\nKNX",
+      "modules": "Modules\nde tableau",
+      "hub": "Passerelle",
+      "note": "Un seul câble transporte les données — et, avec le PoE, l'alimentation",
+      "camera": "Caméra PoE"
+    },
+    "ar": {
+      "router": "الراوتر · الإنترنت",
+      "switch": "محوّل شبكة PoE",
+      "ap": "نقطة وصول",
+      "door": "وحدة الباب",
+      "monitor": "شاشة داخلية",
+      "knx": "واجهة KNX\nبروتوكول الإنترنت",
+      "modules": "وحدات اللوحة",
+      "hub": "بوابة المنزل الذكي",
+      "note": "كابل واحد ينقل البيانات — ومع PoE ينقل الطاقة أيضاً",
+      "camera": "كاميرا PoE"
+    }
+  }
+}

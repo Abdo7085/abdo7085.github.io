@@ -437,5 +437,11 @@
   "proto_brands_t": "Les marques {name} que nous fournissons",
   "proto_brand_n": "produits {name}",
   "proto_products": "Produits {name}",
-  "proto_projects": "Projets {name}"
+  "proto_projects": "Projets {name}",
+  "nav_protocols": "Protocoles",
+  "page_title_protocols": "Protocoles domotiques : KNX, Zigbee, Wi-Fi, Matter | S‑ELECTRICITY",
+  "meta_description_protocols": "KNX, Wi-Fi, Zigbee, Matter, Thread, Bluetooth et LAN filaire expliqués : comment fonctionne chaque système, quand le choisir, et nos produits installés au Maroc.",
+  "protocols_kicker": "Protocoles · {n}",
+  "protocols_hero_title": "Comment les appareils se parlent",
+  "protocols_hero_subtitle": "Chaque maison connectée repose sur un ou plusieurs protocoles. Voici comment chacun fonctionne, où il convient le mieux, et les produits que nous installons pour lui."
 }

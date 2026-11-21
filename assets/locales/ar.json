@@ -437,5 +437,11 @@
   "proto_brands_t": "علامات {name} التي نوفّرها",
   "proto_brand_n": "منتج {name}",
   "proto_products": "منتجات {name}",
-  "proto_projects": "مشاريع {name}"
+  "proto_projects": "مشاريع {name}",
+  "nav_protocols": "البروتوكولات",
+  "page_title_protocols": "بروتوكولات المنزل الذكي: KNX وZigbee وWi-Fi وMatter | S‑ELECTRICITY",
+  "meta_description_protocols": "شرح KNX وWi-Fi وZigbee وMatter وThread وBluetooth وشبكة LAN السلكية: كيف يعمل كل نظام، ومتى تختاره، والمنتجات التي نركّبها في المغرب.",
+  "protocols_kicker": "البروتوكولات · {n}",
+  "protocols_hero_title": "كيف تتواصل الأجهزة فيما بينها",
+  "protocols_hero_subtitle": "كل منزل ذكي يعمل ببروتوكول واحد أو أكثر. إليك كيف يعمل كل واحد منها، وأين يناسب أكثر، والمنتجات التي نركّبها له."
 }

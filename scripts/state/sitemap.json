@@ -28,19 +28,23 @@
   "lastmod": "2026-07-25"
  },
  "page:brands.html": {
-  "hash": "87fb98d1e96bef56",
+  "hash": "cab302180f9941c9",
   "lastmod": "2026-11-21"
  },
  "page:index.html": {
-  "hash": "fcb226de63c7278a",
+  "hash": "f0d0420729f5bc69",
   "lastmod": "2026-11-21"
  },
  "page:previous-work.html": {
-  "hash": "cf662c30d3b99805",
+  "hash": "dee7dee9cbe50870",
   "lastmod": "2026-11-21"
  },
  "page:products.html": {
-  "hash": "20dc767a016b61da",
+  "hash": "0ce6fccff2af83bc",
+  "lastmod": "2026-11-21"
+ },
+ "page:protocols.html": {
+  "hash": "2ab5b271ef9ea66f",
   "lastmod": "2026-11-21"
  },
  "product:dahua-vth2421fb-fw-ip-indoor-monitor": {
@@ -387,8 +391,32 @@
   "hash": "dc76be4c949bba02",
   "lastmod": "2026-11-21"
  },
+ "protocol:bluetooth": {
+  "hash": "e51b65772bba1b44",
+  "lastmod": "2026-11-21"
+ },
  "protocol:knx": {
   "hash": "959e9c2c4ebaaf2b",
+  "lastmod": "2026-11-21"
+ },
+ "protocol:lan": {
+  "hash": "646a6a92f64033ee",
+  "lastmod": "2026-11-21"
+ },
+ "protocol:matter": {
+  "hash": "4ed3ef4fcc8294fe",
+  "lastmod": "2026-11-21"
+ },
+ "protocol:thread": {
+  "hash": "a4246ac0d8047955",
+  "lastmod": "2026-11-21"
+ },
+ "protocol:wifi": {
+  "hash": "e6197cb1b5a0c1f1",
+  "lastmod": "2026-11-21"
+ },
+ "protocol:zigbee": {
+  "hash": "92d68818c52d3624",
   "lastmod": "2026-11-21"
  }
 }

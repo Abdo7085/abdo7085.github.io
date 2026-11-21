@@ -1,0 +1,100 @@
+{
+  "id": "zigbee",
+  "name": "Zigbee",
+  "match": ["Zigbee"],
+  "standard": "IEEE 802.15.4",
+  "seo_title": {
+    "en": "Zigbee smart home: the wireless mesh",
+    "fr": "Domotique Zigbee : le réseau maillé sans fil",
+    "ar": "نظام Zigbee: الشبكة اللاسلكية المتشابكة"
+  },
+  "kicker": {
+    "en": "Wireless mesh · IEEE 802.15.4",
+    "fr": "Maillage sans fil · IEEE 802.15.4",
+    "ar": "شبكة لاسلكية متشابكة · IEEE 802.15.4"
+  },
+  "tagline": {
+    "en": "A low-power wireless mesh: every mains-powered device passes the signal on, and battery sensors run for years.",
+    "fr": "Un maillage sans fil basse consommation : chaque appareil sur secteur relaie le signal, et les capteurs sur pile durent des années.",
+    "ar": "شبكة لاسلكية متشابكة قليلة الاستهلاك: كل جهاز موصول بالكهرباء يمرّر الإشارة، ومستشعرات البطارية تعمل لسنوات."
+  },
+  "medium": {
+    "en": "Radio · 2.4 GHz mesh",
+    "fr": "Radio · maillage 2,4 GHz",
+    "ar": "موجات راديو · شبكة متشابكة 2.4 GHz"
+  },
+  "description": {
+    "en": "Zigbee is an open wireless standard from the Connectivity Standards Alliance, made for home automation. Zigbee devices do not join the Wi-Fi: they talk to a Zigbee hub plugged into the router, and every mains-powered device — a switch module, a dimmer, a shutter module — also relays the signal to its neighbours, so the network grows stronger as devices are added. The radio uses so little power that door and motion sensors run for years on a small battery. The hub connects the whole system to the app and to voice assistants, and keeps dozens of devices off the Wi-Fi.",
+    "fr": "Zigbee est un standard sans fil ouvert de la Connectivity Standards Alliance, conçu pour la domotique. Les appareils Zigbee ne rejoignent pas le Wi-Fi : ils communiquent avec une passerelle Zigbee branchée au routeur, et chaque appareil sur secteur — module interrupteur, variateur, module de volets — relaie aussi le signal vers ses voisins, si bien que le réseau se renforce à chaque ajout. La radio consomme si peu que les capteurs d'ouverture et de mouvement tiennent des années sur une petite pile. La passerelle relie tout le système à l'appli et aux assistants vocaux, et garde des dizaines d'appareils hors du Wi-Fi.",
+    "ar": "Zigbee معيار لاسلكي مفتوح من Connectivity Standards Alliance، صُمّم للمنازل الذكية. أجهزة Zigbee لا تتصل بشبكة Wi-Fi: بل تتواصل مع بوابة Zigbee موصولة بالراوتر، وكل جهاز موصول بالكهرباء — وحدة مفتاح أو مخفّت إضاءة أو وحدة ستائر — يمرّر الإشارة أيضاً إلى الأجهزة المجاورة، فتزداد الشبكة قوة كلما أُضيفت أجهزة. واستهلاك الإشارة ضعيف جداً، لذلك تعمل مستشعرات الأبواب والحركة لسنوات ببطارية صغيرة. وتربط البوابة النظام كله بالتطبيق وبالمساعدات الصوتية، وتُبعد عشرات الأجهزة عن شبكة Wi-Fi."
+  },
+  "when": {
+    "en": [
+      "Existing homes: small modules behind the switches, no new wiring.",
+      "Many devices in one house: the mesh gets stronger with each mains-powered device.",
+      "Battery sensors: doors, windows and motion, with batteries that last for years.",
+      "A lighter Wi-Fi: dozens of devices on one hub instead of on the router."
+    ],
+    "fr": [
+      "Logements existants : de petits modules derrière les interrupteurs, sans nouveau câblage.",
+      "Beaucoup d'appareils : le maillage se renforce avec chaque appareil sur secteur.",
+      "Capteurs sur pile : portes, fenêtres et mouvement, avec des piles qui durent des années.",
+      "Un Wi-Fi allégé : des dizaines d'appareils sur une passerelle plutôt que sur le routeur."
+    ],
+    "ar": [
+      "المنازل القائمة: وحدات صغيرة خلف المفاتيح، دون تمديد أسلاك جديدة.",
+      "أجهزة كثيرة في بيت واحد: الشبكة تقوى مع كل جهاز موصول بالكهرباء.",
+      "مستشعرات بالبطارية: للأبواب والنوافذ والحركة، ببطاريات تدوم لسنوات.",
+      "شبكة Wi-Fi أخف: عشرات الأجهزة على بوابة واحدة بدل الراوتر."
+    ]
+  },
+  "less_suited": {
+    "en": "A single device on its own — Zigbee always needs a hub, so one Wi-Fi device is simpler.",
+    "fr": "Un seul appareil isolé — Zigbee demande toujours une passerelle ; un appareil Wi-Fi est plus simple.",
+    "ar": "جهاز واحد فقط — Zigbee يحتاج دائماً إلى بوابة، فجهاز Wi-Fi واحد أبسط."
+  },
+  "graph": {
+    "view": [940, 390],
+    "nodes": [
+      {"id": "router", "icon": "router", "x": 150, "y": 70, "w": 180},
+      {"id": "hub", "icon": "hub", "x": 470, "y": 70, "w": 180, "accent": true},
+      {"id": "d1", "icon": "relay", "x": 130, "y": 235},
+      {"id": "d2", "icon": "dimmer", "x": 360, "y": 235},
+      {"id": "d3", "icon": "shutter", "x": 590, "y": 235},
+      {"id": "d4", "icon": "relay", "x": 820, "y": 235},
+      {"id": "s1", "kind": "pill", "x": 245, "y": 350, "w": 170},
+      {"id": "s2", "kind": "pill", "x": 705, "y": 350, "w": 170},
+      {"id": "note", "kind": "text", "x": 790, "y": 70}
+    ],
+    "links": [
+      ["router", "hub", "wire"],
+      ["hub", "d2", "radio"],
+      ["hub", "d3", "radio"],
+      ["d1", "d2", "mesh"],
+      ["d2", "d3", "mesh"],
+      ["d3", "d4", "mesh"],
+      ["s1", "d1", "mesh"],
+      ["s2", "d4", "mesh"]
+    ]
+  },
+  "diagram_labels": {
+    "en": {
+      "router": "Router", "hub": "Zigbee hub",
+      "d1": "Switch module", "d2": "Dimmer", "d3": "Shutter module", "d4": "Switch module",
+      "s1": "Door sensor", "s2": "Motion sensor",
+      "note": "Each device relays the signal"
+    },
+    "fr": {
+      "router": "Routeur", "hub": "Passerelle Zigbee",
+      "d1": "Module\ninterrupteur", "d2": "Variateur", "d3": "Module volets", "d4": "Module\ninterrupteur",
+      "s1": "Capteur d'ouverture", "s2": "Capteur mouvement",
+      "note": "Chaque appareil relaie le signal"
+    },
+    "ar": {
+      "router": "الراوتر", "hub": "بوابة Zigbee",
+      "d1": "وحدة مفتاح", "d2": "مخفّت الإضاءة", "d3": "وحدة الستائر", "d4": "وحدة مفتاح",
+      "s1": "مستشعر الباب", "s2": "مستشعر الحركة",
+      "note": "كل جهاز يمرّر الإشارة"
+    }
+  }
+}

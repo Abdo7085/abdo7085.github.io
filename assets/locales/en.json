@@ -426,5 +426,11 @@
   "proto_brands_t": "{name} brands we supply",
   "proto_brand_n": "{name} products",
   "proto_products": "{name} products",
-  "proto_projects": "{name} projects"
+  "proto_projects": "{name} projects",
+  "nav_protocols": "Protocols",
+  "page_title_protocols": "Smart Home Protocols: KNX, Zigbee, Wi-Fi, Matter | S‑ELECTRICITY",
+  "meta_description_protocols": "KNX, Wi-Fi, Zigbee, Matter, Thread, Bluetooth and wired LAN explained: how each smart home system works, when to choose it, and the products we install in Morocco.",
+  "protocols_kicker": "Protocols · {n}",
+  "protocols_hero_title": "How the devices talk to each other",
+  "protocols_hero_subtitle": "Every smart home runs on one or more protocols. Here is how each one works, where it fits best, and the products we install for it."
 }

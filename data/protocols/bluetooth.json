@@ -1,0 +1,93 @@
+{
+  "id": "bluetooth",
+  "name": "Bluetooth",
+  "match": ["Bluetooth"],
+  "standard": "Bluetooth LE",
+  "seo_title": {
+    "en": "Bluetooth in smart home devices",
+    "fr": "Le Bluetooth dans la maison connectée",
+    "ar": "Bluetooth في أجهزة المنزل الذكي"
+  },
+  "kicker": {
+    "en": "Short range · Bluetooth Low Energy",
+    "fr": "Courte portée · Bluetooth Low Energy",
+    "ar": "مدى قصير · Bluetooth Low Energy"
+  },
+  "tagline": {
+    "en": "Short-range radio between your phone and a device — for quick setup, and as a bridge for small battery sensors.",
+    "fr": "Une radio courte portée entre votre téléphone et un appareil — pour une mise en service rapide, et comme pont pour de petits capteurs sur pile.",
+    "ar": "إشارة قصيرة المدى بين هاتفك والجهاز — لإعداد سريع، وكجسر لمستشعرات صغيرة بالبطارية."
+  },
+  "medium": {
+    "en": "Radio · 2.4 GHz · short range",
+    "fr": "Radio · 2,4 GHz · courte portée",
+    "ar": "موجات راديو · 2.4 GHz · مدى قصير"
+  },
+  "description": {
+    "en": "Bluetooth Low Energy is the short-range radio built into every phone. In the Wi-Fi devices we install it has two jobs. You set a device up from your phone while standing next to it, before it joins the home network. And a mains-powered device can act as a bridge for small Bluetooth sensors and buttons, passing their events on to the Wi-Fi network with no extra hub. Its range is a room or two, so Bluetooth does not run a whole house on its own: it is a handy companion to Wi-Fi.",
+    "fr": "Le Bluetooth Low Energy est la radio courte portée présente dans chaque téléphone. Dans les appareils Wi-Fi que nous installons, il a deux rôles. On met en service un appareil depuis son téléphone, à côté de lui, avant qu'il rejoigne le réseau de la maison. Et un appareil sur secteur peut servir de pont pour de petits capteurs et boutons Bluetooth, en transmettant leurs événements au réseau Wi-Fi sans passerelle supplémentaire. Sa portée est d'une pièce ou deux : le Bluetooth ne pilote pas une maison entière à lui seul, c'est un complément pratique du Wi-Fi.",
+    "ar": "Bluetooth Low Energy هو الإشارة قصيرة المدى الموجودة في كل هاتف. وفي أجهزة Wi-Fi التي نركّبها له مهمتان. تُعِدّ الجهاز من هاتفك وأنت بجانبه، قبل أن يتصل بالشبكة المنزلية. ويمكن لجهاز موصول بالكهرباء أن يعمل كجسر لمستشعرات وأزرار Bluetooth صغيرة، فينقل أحداثها إلى شبكة Wi-Fi دون بوابة إضافية. ومداه غرفة أو غرفتان، لذلك لا يدير Bluetooth بيتاً كاملاً وحده: إنه رفيق عملي لشبكة Wi-Fi."
+  },
+  "when": {
+    "en": [
+      "Quick setup: add a new device from your phone, standing next to it.",
+      "Battery sensors and buttons close to a mains device that bridges them to the Wi-Fi.",
+      "No extra hub: the bridge is built into the device itself.",
+      "One small spot: a button by the bed, a sensor on a door."
+    ],
+    "fr": [
+      "Mise en service rapide : ajouter un nouvel appareil depuis le téléphone, à côté de lui.",
+      "Capteurs et boutons sur pile proches d'un appareil sur secteur qui les relie au Wi-Fi.",
+      "Sans passerelle : le pont est intégré à l'appareil lui-même.",
+      "Un petit point précis : un bouton près du lit, un capteur sur une porte."
+    ],
+    "ar": [
+      "إعداد سريع: أضف جهازاً جديداً من هاتفك وأنت بجانبه.",
+      "مستشعرات وأزرار بالبطارية قرب جهاز موصول بالكهرباء يربطها بشبكة Wi-Fi.",
+      "دون بوابة إضافية: الجسر مدمج في الجهاز نفسه.",
+      "نقطة صغيرة محددة: زر قرب السرير، أو مستشعر على باب."
+    ]
+  },
+  "less_suited": {
+    "en": "Running a whole house — the range is too short; Wi-Fi, Zigbee or KNX carry the system.",
+    "fr": "Piloter toute une maison — la portée est trop courte ; le Wi-Fi, Zigbee ou KNX portent le système.",
+    "ar": "إدارة بيت كامل — المدى قصير جداً، والنظام يحمله Wi-Fi أو Zigbee أو KNX."
+  },
+  "graph": {
+    "view": [940, 390],
+    "nodes": [
+      {"id": "phone", "icon": "phone", "x": 140, "y": 150, "w": 180},
+      {"id": "device", "icon": "relay", "x": 470, "y": 150, "w": 190, "accent": true},
+      {"id": "router", "icon": "router", "x": 800, "y": 150, "w": 180},
+      {"id": "bt", "kind": "text", "x": 305, "y": 95},
+      {"id": "wifi", "kind": "text", "x": 635, "y": 95},
+      {"id": "s1", "kind": "pill", "x": 290, "y": 330, "w": 172},
+      {"id": "s2", "kind": "pill", "x": 470, "y": 330, "w": 172},
+      {"id": "s3", "kind": "pill", "x": 650, "y": 330, "w": 172}
+    ],
+    "links": [
+      ["phone", "device", "mesh"],
+      ["device", "router", "radio"],
+      ["s1", "device", "mesh"],
+      ["s2", "device", "mesh"],
+      ["s3", "device", "mesh"]
+    ]
+  },
+  "diagram_labels": {
+    "en": {
+      "phone": "Phone · setup", "device": "Smart relay", "router": "Wi-Fi router",
+      "bt": "Bluetooth · a few metres", "wifi": "Wi-Fi · the whole house",
+      "s1": "Button", "s2": "Door sensor", "s3": "Motion sensor"
+    },
+    "fr": {
+      "phone": "Téléphone · réglage", "device": "Relais connecté", "router": "Routeur Wi-Fi",
+      "bt": "Bluetooth · quelques mètres", "wifi": "Wi-Fi · toute la maison",
+      "s1": "Bouton", "s2": "Capteur d'ouverture", "s3": "Capteur mouvement"
+    },
+    "ar": {
+      "phone": "الهاتف · الإعداد", "device": "وحدة تحكم ذكية", "router": "راوتر Wi-Fi",
+      "bt": "Bluetooth · بضعة أمتار", "wifi": "Wi-Fi · البيت كله",
+      "s1": "زر", "s2": "مستشعر الباب", "s3": "مستشعر الحركة"
+    }
+  }
+}

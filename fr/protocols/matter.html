@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon-144x144.png" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau…" id="meta-description" />
+
+    <link rel="alternate" hreflang="en" href="https://smartelectricity.ma/protocols/matter.html" />
+    <link rel="alternate" hreflang="fr" href="https://smartelectricity.ma/fr/protocols/matter.html" />
+    <link rel="alternate" hreflang="ar" href="https://smartelectricity.ma/ar/protocols/matter.html" />
+    <link rel="alternate" hreflang="x-default" href="https://smartelectricity.ma/protocols/matter.html" />
+    <link rel="canonical" href="https://smartelectricity.ma/fr/protocols/matter.html" id="meta-canonical" />
+    <meta property="og:title" content="Matter : un standard pour toutes les applis | S‑ELECTRICITY Maroc" id="meta-og-title" />
+    <meta property="og:description" content="Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau…" id="meta-og-description" />
+    <meta property="og:url" content="https://smartelectricity.ma/fr/protocols/matter.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="S‑ELECTRICITY" />
+    <meta property="og:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-og-image" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Matter : un standard pour toutes les applis | S‑ELECTRICITY Maroc" id="meta-twitter-title" />
+    <meta name="twitter:description" content="Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau…" id="meta-twitter-description" />
+    <meta name="twitter:image" content="https://smartelectricity.ma/assets/S‑ELECTRICITY-LOGO.svg" id="meta-twitter-image" />
+    <meta name="robots" content="index, follow" />
+
+
+    <title>Matter : un standard pour toutes les applis | S‑ELECTRICITY Maroc</title>
+
+    <!-- SPA Integration -->
+
+    <!-- Localization Script -->
+    <!-- Shared helpers: taxonomy labels + protocol icons (must precede the page scripts) -->
+    <script defer src="/assets/site-core.js"></script>
+<!-- Find Your Solution wizard: its script and styles load on the first click
+         (assets/find-solution.js + .css, ~16 KB), not with every page. -->
+    <script>
+      (function () {
+        function load() {
+          if (window.FindSolution || window.__fsLoading) return;
+          window.__fsLoading = true;
+          var css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = '/assets/find-solution.css';
+          var js = function () {
+            var s = document.createElement('script');
+            s.src = '/assets/find-solution.js';
+            document.head.appendChild(s);
+          };
+          css.onload = js; css.onerror = js;   // styles first, so it never opens unstyled
+          document.head.appendChild(css);
+        }
+        // capture phase, registered while the page is parsed: a click on any wizard button
+        // is caught even before the page's other scripts have run
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest && e.target.closest('[data-trigger="find-solution"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          load();
+          var building = hit.getAttribute('data-building');
+          (function tryOpen(retries) {
+            if (window.FindSolution && typeof window.FindSolution.open === 'function') {
+              window.FindSolution.open({ building: building });
+            } else if (retries > 0) {
+              setTimeout(function () { tryOpen(retries - 1); }, 80);
+            }
+          })(125);   // up to 10 s on a slow connection
+        }, true);
+      })();
+    </script>
+    <!-- WhatsApp Cart -->
+    <link rel="stylesheet" href="/assets/cart.css">
+    <script defer src="/assets/cart.js"></script>
+    <script>
+      (function () {
+        document.addEventListener('click', function (e) {
+          var hit = e.target.closest('[data-trigger="cart-open"], [data-trigger="cart-add"]');
+          if (!hit) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var pending;
+          if (hit.getAttribute('data-trigger') === 'cart-add') {
+            var id = hit.getAttribute('data-product-id');
+            var qty = 1;
+            if (hit.hasAttribute('data-qty-source')) {
+              var row = hit.closest('[data-cart-row], .pd-cart-row');
+              var input = row ? row.querySelector('.pd-qty-input, .cart-qty-input') : null;
+              if (input) {
+                var v = parseInt(input.value, 10);
+                qty = (Number.isFinite(v) && v > 0) ? Math.min(99, v) : 1;
+              }
+            }
+            pending = { type: 'add', id: id, qty: qty };
+          } else {
+            pending = { type: 'open' };
+          }
+          (function tryRun(retries) {
+            if (window.Cart) {
+              if (pending.type === 'add') window.Cart.add(pending.id, pending.qty);
+              else window.Cart.open();
+            } else if (retries > 0) {
+              setTimeout(function () { tryRun(retries - 1); }, 80);
+            }
+          })(50);
+        }, true);
+      })();
+    </script>
+
+    <!-- Shared styling consistent with products & projects pages -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T59VT16363"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T59VT16363');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wa9td0m3ds");
+    </script>
+  <!-- se:head -->
+    <link rel="stylesheet" href="/assets/se.css">
+    <link rel="stylesheet" href="/assets/se-pages.css">
+    <script defer src="/assets/se.js"></script>
+    <script defer src="/assets/se-brand.js"></script>
+    <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Matter : un standard pour toutes les applis", "description": "Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau…", "url": "https://smartelectricity.ma/fr/protocols/matter.html", "inLanguage": "fr", "about": {"@type": "Thing", "name": "Matter", "description": "Un appareil, toutes les applis : Matter fonctionne avec Apple Home, Google Home, Amazon Alexa et SmartThings — en même temps, et en local."}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": "https://smartelectricity.ma/fr/"}, {"@type": "ListItem", "position": 2, "name": "Protocoles", "item": "https://smartelectricity.ma/fr/protocols.html"}, {"@type": "ListItem", "position": 3, "name": "Matter", "item": "https://smartelectricity.ma/fr/protocols/matter.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Matter products", "numberOfItems": 1, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://smartelectricity.ma/fr/products/moes-matter-zigbee-gateway.html", "name": "Passerelle Matter Zigbee Tuya"}]}</script>
+  </head>
+  <body class="se-page pg-brand">
+    <!-- se:layout -->
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="hdr" data-se><div class="wrap hdr-in"><a class="logo" href="/fr/" aria-label="Retour à l&#x27;accueil"><img src="/assets/logo-mark.webp" alt="" width="42" height="42"><span class="logo-word"><b>S‑ELECTRICITY</b><small>Maison intelligente · Tétouan</small></span></a><nav class="nav" aria-label="Main"><a href="/fr/products.html">Produits</a><a href="/fr/brands.html">Marques</a><a href="/fr/protocols.html" aria-current="page">Protocoles</a><a href="/fr/previous-work.html">Réalisations</a><a href="/fr/#services">Services</a><a href="#contact">Contact</a></nav><div class="hdr-tools"><div class="lang" role="group" aria-label="Language"><a href="/protocols/matter.html" hreflang="en" lang="en">EN</a><a href="/fr/protocols/matter.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="/ar/protocols/matter.html" hreflang="ar" lang="ar">ع</a></div><button class="icon-btn" type="button" data-trigger="cart-open" aria-label="Ouvrir la demande de devis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 3h6v3H9z"/><path d="M8.5 11h7M8.5 15h4.5"/></svg><span class="count" data-cart-badge></span></button><button class="btn btn-primary btn-sm hdr-cta" type="button" data-trigger="find-solution">Trouvez votre solution</button><button class="icon-btn burger" type="button" data-menu aria-controls="menu" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div><div class="wires" aria-hidden="true"><i class="br"></i><i class="bk"></i><i class="gy"></i><i class="bl"></i><i class="pe"></i></div></header>
+<div class="menu" id="menu" data-se><nav aria-label="Menu"><a href="/fr/products.html">Produits<span>01</span></a><a href="/fr/brands.html">Marques<span>02</span></a><a href="/fr/protocols.html">Protocoles<span>03</span></a><a href="/fr/previous-work.html">Réalisations<span>04</span></a><a href="/fr/#services">Services<span>05</span></a><a href="#contact">Contact<span>06</span></a></nav><div class="menu-foot"><div class="lang" role="group" aria-label="Language"><a href="/protocols/matter.html" hreflang="en" lang="en">EN</a><a href="/fr/protocols/matter.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="/ar/protocols/matter.html" hreflang="ar" lang="ar">ع</a></div><button class="btn btn-primary btn-sm" type="button" data-trigger="find-solution">Trouvez votre solution</button></div></div>
+<main id="main" data-se><div class="wrap pd-wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/fr/">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sep"><path d="m9 18 6-6-6-6"/></svg><a href="/fr/protocols.html">Protocoles</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sep"><path d="m9 18 6-6-6-6"/></svg><span aria-current="page">Matter</span></nav><section class="brand-hero reveal"><div class="brand-hero-logo recess crop static"><span class="proto-mark"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M152 134.4c21.5 17.5 47.1 29.2 74.4 34.2V22.9l29.7-17.1 29.6 17.1v145.6c27.3-4.9 52.9-16.7 74.5-34.2l53.8 31.1c-87.6 86.6-228.5 86.6-316.1 0zm65.5 371.8C248.7 387 178.1 264.9 59.3 232.5v62.3c25.9 9.9 48.9 26.2 66.8 47.4L0 414.9v34.2l29.7 17 126.1-72.8c9.4 26.1 12 54.2 7.6 81.5zm235.3-273.7C334 265 263.6 387.1 294.8 506.2l54-31.2c-4.4-27.4-1.7-55.4 7.6-81.5l126 72.7 29.6-17.1v-34.2l-126.1-72.8c17.9-21.2 40.9-37.5 66.8-47.4z"/></svg><b>Matter</b></span></div><div class="brand-hero-body"><p class="kicker">Standard ouvert · Connectivity Standards Alliance</p><h1 class="display brand-name">Matter</h1><p class="lead brand-tag">Un appareil, toutes les applis : Matter fonctionne avec Apple Home, Google Home, Amazon Alexa et SmartThings — en même temps, et en local.</p><dl class="facts"><div><dt>Standard</dt><dd>CSA · 2022</dd></div><div><dt>Support</dt><dd>Wi-Fi · Thread · Ethernet</dd></div><div><dt>Marques</dt><dd class="big">1</dd></div><div><dt>Produits</dt><dd class="big">1</dd></div></dl><div class="prose"><p>Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau de la maison, pas via le serveur lointain d&#x27;un fabricant, et le même appareil peut être ajouté à plusieurs applis à la fois : l&#x27;un utilise Apple Home, l&#x27;autre Google Home. Matter fonctionne sur Wi-Fi, Ethernet et Thread, et une passerelle-pont y intègre un système existant : une passerelle Zigbee Matter, par exemple, affiche ses appareils Zigbee dans les applis Matter. Matter est jeune et évolue encore : mieux vaut vérifier les types d&#x27;appareils et les fonctions que gère chaque appli.</p></div></div></section></div><section class="sec-tight"><div class="wrap"><div class="sh"><span class="kicker">Comment fonctionne une installation Matter</span><span class="sh-line"></span><span class="sh-meta">Schéma</span></div><figure class="kd dark"><svg viewBox="0 0 940 400" role="img" aria-label="Comment fonctionne une installation Matter"><line x1="140.0" y1="65.0" x2="140.0" y2="150.0" class="kd-wifi"/><line x1="320.0" y1="65.0" x2="320.0" y2="150.0" class="kd-wifi"/><line x1="620.0" y1="65.0" x2="620.0" y2="150.0" class="kd-wifi"/><line x1="800.0" y1="65.0" x2="800.0" y2="150.0" class="kd-wifi"/><line x1="130.0" y1="204.0" x2="130.0" y2="150.0" class="kd-drop"/><line x1="350.0" y1="204.0" x2="350.0" y2="150.0" class="kd-drop"/><line x1="590.0" y1="204.0" x2="590.0" y2="150.0" class="kd-drop"/><line x1="810.0" y1="204.0" x2="810.0" y2="150.0" class="kd-drop"/><line x1="590.0" y1="286.0" x2="590.0" y2="340.0" class="kd-mesh"/><line x1="810.0" y1="286.0" x2="810.0" y2="340.0" class="kd-mesh"/><rect x="60.0" y="25" width="160.0" height="40" rx="20" class="kd-pill"/><text x="140" y="45" class="kd-t">Apple Home</text><rect x="240.0" y="25" width="160.0" height="40" rx="20" class="kd-pill"/><text x="320" y="45" class="kd-t">Google Home</text><rect x="540.0" y="25" width="160.0" height="40" rx="20" class="kd-pill"/><text x="620" y="45" class="kd-t">Amazon Alexa</text><rect x="720.0" y="25" width="160.0" height="40" rx="20" class="kd-pill"/><text x="800" y="45" class="kd-t">SmartThings</text><line x1="20" y1="150" x2="920" y2="150" class="kd-bus"/><text x="470" y="126" class="kd-bus-t">Réseau de la maison — Matter</text><rect x="45.0" y="204.0" width="170.0" height="82.0" rx="10" class="kd-box"/><g transform="translate(117 216.0) scale(1.0833)" class="kd-ic"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h5"/><path d="M16 16h.01"/></g><text x="130" y="262.0" class="kd-t">Appareils Wi-Fi</text><rect x="265.0" y="204.0" width="170.0" height="82.0" rx="10" class="kd-box"/><g transform="translate(337 216.0) scale(1.0833)" class="kd-ic"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11h2M10 11h2M14 11h2M6 14h12"/></g><text x="350" y="262.0" class="kd-t">Appareils Ethernet</text><rect x="505.0" y="204.0" width="170.0" height="82.0" rx="10" class="kd-box"/><g transform="translate(577 209.0) scale(1.0833)" class="kd-ic"><rect x="3" y="8" width="18" height="10" rx="3"/><circle cx="12" cy="13" r="1.5"/><path d="M8.5 5a5 5 0 0 1 7 0"/></g><text x="590" y="250.0" class="kd-t">Routeur de</text><text x="590" y="271.0" class="kd-t">bordure Thread</text><rect x="725.0" y="204.0" width="170.0" height="82.0" rx="10" class="kd-box kd-ps"/><g transform="translate(797 216.0) scale(1.0833)" class="kd-ic"><rect x="3" y="8" width="18" height="10" rx="3"/><circle cx="12" cy="13" r="1.5"/><path d="M8.5 5a5 5 0 0 1 7 0"/></g><text x="810" y="262.0" class="kd-t">Pont Zigbee</text><rect x="510.0" y="340" width="160.0" height="40" rx="20" class="kd-pill"/><text x="590" y="360" class="kd-t">Appareils Thread</text><rect x="730.0" y="340" width="160.0" height="40" rx="20" class="kd-pill"/><text x="810" y="360" class="kd-t">Appareils Zigbee</text></svg></figure></div></section><section class="sec-tight"><div class="wrap"><div class="sh"><span class="kicker">Quand choisir Matter</span><span class="sh-line"></span><span class="sh-meta">Usage</span></div><div class="kw"><ul class="kw-yes"><li><span>Une famille sur des téléphones différents : les mêmes lumières dans Apple Home, Google Home ou Alexa.</span></li><li><span>Liberté de changer : les appareils ne sont pas liés à l&#x27;appli d&#x27;un fabricant.</span></li><li><span>Commande locale : tout passe par le réseau de la maison, pas par un serveur lointain.</span></li><li><span>Mélanger les systèmes : une passerelle-pont amène les appareils Zigbee dans les mêmes applis.</span></li></ul><div class="kw-no"><p class="label-sm">Moins adapté</p><p>Scènes avancées et grandes installations filaires — Matter couvre l&#x27;essentiel ; KNX va bien plus loin.</p></div></div></div></section><section class="sec-tight"><div class="wrap"><div class="sh"><span class="kicker">Les marques Matter que nous fournissons</span><span class="sh-line"></span><span class="sh-meta">1 marque</span></div><div class="ledger"><article class="ledger-row crop-host"><div class="ledger-logo recess crop"><img src="/assets/brands/tuya.svg" alt="" loading="lazy"></div><div><div class="ledger-name"><h3 class="h3"><a href="/fr/brands/tuya.html">Tuya</a></h3><span class="ledger-origin">Chine · depuis 2014</span></div><p class="ledger-tag">Une plateforme cloud IA mondiale qui équipe les produits connectés de milliers de marques.</p></div><div class="ledger-focus"><div class="ledger-cats"><span class="chip">Système &amp; alimentation</span></div></div><div class="ledger-count"><b>1</b><span>produits Matter</span></div></article></div></div></section><section class="sec-tight"><div class="wrap"><div class="sh"><span class="kicker">Produits Matter</span><span class="sh-line"></span><span class="sh-meta">1 produit</span></div><div class="grid grid-4" id="bgrid"><article class="card crop-host" data-id="moes-matter-zigbee-gateway" data-c="system"><a class="card-media recess crop" href="/fr/products/moes-matter-zigbee-gateway.html" tabindex="-1" aria-hidden="true"><img class="prod-img" src="/assets/products/moes-matter-zigbee-gateway-800.webp" srcset="/assets/products/moes-matter-zigbee-gateway-400.webp 400w, /assets/products/moes-matter-zigbee-gateway-800.webp 800w, /assets/products/moes-matter-zigbee-gateway-936.webp 936w" sizes="(max-width: 820px) 46vw, 300px" width="936" height="362" alt="" loading="lazy" decoding="async"></a><div class="card-body"><p class="card-kicker">Passerelle</p><h3 class="card-title"><a href="/fr/products/moes-matter-zigbee-gateway.html">Passerelle Matter Zigbee Tuya</a></h3><div class="protos"><span class="proto"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M32.042,9.792c4.595,1.238,4.88,3.165,5.524,5.048C34.841,17.664,17.35,35.7,17.35,35.7s10.901,1.177,23.487-1.003c-0.001,0.029-0.002,0.048-0.003,0.076C42.829,31.661,44,27.97,44,24c0-11.046-8.954-20-20-20c-5.634,0-10.715,2.338-14.35,6.087C15.489,9.124,26.89,8.403,32.042,9.792z"/><path d="M14.724,37.285c-1.982-0.347-4.212-2.131-4.707-5.302c1.437-1.239,19.994-20.507,19.994-20.507c-7.008-0.424-14.569-0.465-22.237,0.864C5.408,15.625,4,19.644,4,24c0,11.046,8.954,20,20,20c6.173,0,11.689-2.8,15.358-7.195C35.486,37.33,23.257,38.769,14.724,37.285z"/></svg>Zigbee</span><span class="proto"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M152 134.4c21.5 17.5 47.1 29.2 74.4 34.2V22.9l29.7-17.1 29.6 17.1v145.6c27.3-4.9 52.9-16.7 74.5-34.2l53.8 31.1c-87.6 86.6-228.5 86.6-316.1 0zm65.5 371.8C248.7 387 178.1 264.9 59.3 232.5v62.3c25.9 9.9 48.9 26.2 66.8 47.4L0 414.9v34.2l29.7 17 126.1-72.8c9.4 26.1 12 54.2 7.6 81.5zm235.3-273.7C334 265 263.6 387.1 294.8 506.2l54-31.2c-4.4-27.4-1.7-55.4 7.6-81.5l126 72.7 29.6-17.1v-34.2l-126.1-72.8c17.9-21.2 40.9-37.5 66.8-47.4z"/></svg>Matter</span><span class="proto"><svg viewBox="0 0 165 165" fill="currentColor" aria-hidden="true"><path d="M82.498,0C37.008,0,0,37.008,0,82.496c0,45.181,36.51,81.977,81.573,82.476V82.569l-27.002-0.002c-8.023,0-14.554,6.53-14.554,14.561c0,8.023,6.531,14.551,14.554,14.551v17.98c-17.939,0-32.534-14.595-32.534-32.531c0-17.944,14.595-32.543,32.534-32.543l27.002,0.004v-9.096c0-14.932,12.146-27.08,27.075-27.08c14.932,0,27.082,12.148,27.082,27.08c0,14.931-12.15,27.08-27.082,27.08l-9.097-0.001v80.641C136.889,155.333,165,122.14,165,82.496C165,37.008,127.99,0,82.498,0z"/><path d="M117.748,55.493c0-5.016-4.082-9.098-9.1-9.098c-5.015,0-9.097,4.082-9.097,9.098v9.097l9.097,0.001C113.666,64.591,117.748,60.51,117.748,55.493z"/></svg>Thread</span><span class="proto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 20 3-3h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2l3 3z"/><path d="M6 8v1"/><path d="M10 8v1"/><path d="M14 8v1"/><path d="M18 8v1"/></svg>LAN</span></div></div><div class="card-foot"><img class="card-logo" src="/assets/brands/tuya.svg" alt="Tuya" loading="lazy"><button class="btn-add" type="button" data-trigger="cart-add" data-product-id="moes-matter-zigbee-gateway" aria-label="Ajouter au devis" data-added="Ajouté"><span class="lbl-long">+ Ajouter au devis</span><span class="lbl-short">+ Ajouter</span></button></div></article></div></div></section><section class="wrap sec-tight"><div class="cta"><div class="cta-copy"><span class="kicker">Consultation gratuite</span><h2 class="h2">Besoin d&#x27;une solution personnalisée ?</h2><p>Notre équipe d&#x27;experts est prête à concevoir une solution sur mesure adaptée à vos besoins et à votre budget.</p></div><div class="cta-side"><button class="btn btn-primary" type="button" data-trigger="find-solution">Trouvez votre solution</button><a class="btn btn-line" href="https://wa.me/212654132112" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>Discuter sur WhatsApp</a><a class="readout" href="tel:+212654132112" dir="ltr">+212 654-132112</a></div></div></section></main>
+<footer class="ftr" id="contact" data-se><div class="wires" aria-hidden="true"><i class="br"></i><i class="bk"></i><i class="gy"></i><i class="bl"></i><i class="pe"></i></div><div class="wrap"><div class="ftr-grid"><div class="ftr-about"><a class="logo" href="/fr/"><img src="/assets/logo-mark.webp" alt="" width="42" height="42"><span class="logo-word"><b>S‑ELECTRICITY</b><small>Maison intelligente · Tétouan</small></span></a><p>Une seule équipe, un seul appel — du câblage au Wi-Fi, des caméras au KNX. Installation professionnelle, support complet.</p></div><div><h2>Explorer</h2><ul><li><a href="/fr/products.html">Produits</a></li><li><a href="/fr/brands.html">Marques</a></li><li><a href="/fr/protocols.html">Protocoles</a></li><li><a href="/fr/previous-work.html">Réalisations</a></li><li><a href="/fr/#services">Services</a></li><li><button type="button" data-trigger="find-solution">Trouvez votre solution</button></li></ul></div><div><h2>Catalogue</h2><ul><li><a href="/fr/products.html?category=controls">Interrupteurs &amp; écrans tactiles</a></li><li><a href="/fr/products.html?category=actuators">Actionneurs &amp; contrôleurs de pièce</a></li><li><a href="/fr/products.html?category=dimming">Variation d&#x27;éclairage</a></li><li><a href="/fr/products.html?category=shutters">Volets &amp; stores</a></li><li><a href="/fr/products.html?category=smart-relays">Relais intelligents</a></li><li><a href="/fr/products.html?category=security">Interphonie &amp; sécurité</a></li></ul></div><div><h2>Contact</h2><ul class="ftr-contact"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+212654132112" dir="ltr">+212 654-132112</a></li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg><a href="https://wa.me/212654132112" target="_blank" rel="noopener">Discuter sur WhatsApp</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Tétouan, Maroc</span></li></ul></div></div><div class="ftr-base"><span>© 2026 S‑ELECTRICITY. Tous droits réservés.</span></div></div></footer>
+<!-- /se:layout -->
+
+  </body>
+</html>

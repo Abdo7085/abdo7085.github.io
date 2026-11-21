@@ -69,7 +69,7 @@ PROJECT_REQUIRED = {
 # seo_title: {lang: text}, only where the title is too long for search results (build_projects.py)
 PROJECT_OPTIONAL = {"testimonial", "extra_brands", "extra_protocols", "seo_title"}
 PROTOCOL_REQUIRED = {"id", "name", "match", "tagline", "description"}
-PROTOCOL_OPTIONAL = {"logo", "standard", "diagram", "seo_title", "kicker", "medium", "when",
+PROTOCOL_OPTIONAL = {"logo", "standard", "diagram", "graph", "seo_title", "kicker", "medium", "when",
                      "less_suited", "diagram_labels"}
 MEDIA_TYPES = {"image", "video", "reel"}      # video also needs a "poster" image
 
@@ -420,8 +420,19 @@ def check_protocols(rep: Report, technologies: set) -> None:
         elif isinstance(when, dict) and len({len(when[l]) for l in LANGS}) != 1:
             rep.error(where, '"when" has a different number of points per language')
         labels = data.get("diagram_labels")
-        if "diagram" in data and not isinstance(labels, dict):
-            rep.error(where, '"diagram" needs "diagram_labels" in en, fr and ar')
+        graph = data.get("graph")
+        if ("diagram" in data or "graph" in data) and not isinstance(labels, dict):
+            rep.error(where, '"diagram" / "graph" needs "diagram_labels" in en, fr and ar')
+        elif isinstance(graph, dict):
+            ids = [n.get("id") for n in graph.get("nodes") or []]
+            if len(ids) != len(set(ids)) or None in ids:
+                rep.error(where, '"graph" nodes need a unique "id" each')
+            for link in graph.get("links") or []:
+                if not (isinstance(link, list) and len(link) == 3 and link[0] in ids and link[1] in ids
+                        and link[2] in ("wire", "radio", "mesh", "load", "net")):
+                    rep.error(where, f'"graph" link {link!r} must be [node, node, wire|radio|mesh|load|net]')
+            if isinstance(labels, dict) and set(labels.get("en") or {}) != set(ids):
+                rep.error(where, '"diagram_labels" must have one label per "graph" node')
         elif isinstance(labels, dict):
             keys = {l: set(labels.get(l) or {}) for l in LANGS}
             for l in LANGS:

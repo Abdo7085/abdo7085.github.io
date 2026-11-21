@@ -1,0 +1,98 @@
+{
+  "id": "thread",
+  "name": "Thread",
+  "match": ["Thread"],
+  "standard": "IEEE 802.15.4",
+  "seo_title": {
+    "en": "Thread: the mesh network behind Matter",
+    "fr": "Thread : le réseau maillé de Matter",
+    "ar": "Thread: الشبكة المتشابكة وراء Matter"
+  },
+  "kicker": {
+    "en": "IPv6 wireless mesh · IEEE 802.15.4",
+    "fr": "Maillage sans fil IPv6 · IEEE 802.15.4",
+    "ar": "شبكة لاسلكية متشابكة IPv6 · IEEE 802.15.4"
+  },
+  "tagline": {
+    "en": "A low-power wireless mesh that speaks the internet's language — the radio Matter uses for small devices.",
+    "fr": "Un maillage sans fil basse consommation qui parle la langue d'internet — la radio de Matter pour les petits appareils.",
+    "ar": "شبكة لاسلكية متشابكة قليلة الاستهلاك تتكلم لغة الإنترنت — الإشارة التي يستعملها Matter للأجهزة الصغيرة."
+  },
+  "medium": {
+    "en": "Radio · 2.4 GHz · IPv6",
+    "fr": "Radio · 2,4 GHz · IPv6",
+    "ar": "موجات راديو · 2.4 GHz · IPv6"
+  },
+  "description": {
+    "en": "Thread is a wireless mesh standard from the Thread Group. It uses the same low-power radio as Zigbee, but carries IPv6, the addressing of the internet. Mains-powered devices relay the signal, so no single device can stop the house, and battery devices sleep most of the time. A Thread network reaches the home network and the app through a border router — a hub, a smart speaker or a media box — and a home can have several, so one going offline does not cut the others off. Thread is one of the networks Matter runs on: Matter is the language, Thread carries it.",
+    "fr": "Thread est un standard de maillage sans fil du Thread Group. Il utilise la même radio basse consommation que Zigbee, mais transporte de l'IPv6, l'adressage d'internet. Les appareils sur secteur relaient le signal : aucun appareil seul ne peut arrêter la maison, et les appareils sur pile dorment la plupart du temps. Un réseau Thread rejoint le réseau de la maison et l'appli par un routeur de bordure — une passerelle, une enceinte connectée ou un boîtier multimédia — et une maison peut en avoir plusieurs : si l'un s'arrête, les autres prennent le relais. Thread est l'un des réseaux de Matter : Matter est la langue, Thread la transporte.",
+    "ar": "Thread معيار لشبكة لاسلكية متشابكة من Thread Group. يستعمل نفس الإشارة قليلة الاستهلاك التي يستعملها Zigbee، لكنه ينقل IPv6، وهو نظام العناوين في الإنترنت. الأجهزة الموصولة بالكهرباء تمرّر الإشارة، فلا يوجد جهاز واحد يوقف البيت إذا تعطّل، وأجهزة البطارية تبقى في وضع السكون معظم الوقت. وتتصل شبكة Thread بالشبكة المنزلية وبالتطبيق عبر موجّه حدودي — بوابة أو مكبّر صوت ذكي أو جهاز وسائط — ويمكن أن يكون في البيت أكثر من واحد، فإذا توقف أحدها واصل الآخرون العمل. وThread إحدى الشبكات التي يعمل عليها Matter: Matter هو اللغة، وThread ينقلها."
+  },
+  "when": {
+    "en": [
+      "Matter installations: Thread is the radio Matter uses for sensors, lights and switches.",
+      "Battery devices: sensors that last for years and still answer quickly.",
+      "More than one border router: if one goes offline, the others keep the network up.",
+      "Existing homes: wireless, with no new cables."
+    ],
+    "fr": [
+      "Installations Matter : Thread est la radio de Matter pour les capteurs, lumières et interrupteurs.",
+      "Appareils sur pile : des capteurs qui durent des années et répondent vite.",
+      "Plusieurs routeurs de bordure : si l'un s'arrête, les autres maintiennent le réseau.",
+      "Logements existants : sans fil, sans nouveaux câbles."
+    ],
+    "ar": [
+      "تركيبات Matter: Thread هو الإشارة التي يستعملها Matter للمستشعرات والإضاءة والمفاتيح.",
+      "أجهزة البطارية: مستشعرات تدوم لسنوات وتستجيب بسرعة.",
+      "أكثر من موجّه حدودي: إذا توقف أحدها حافظ الآخرون على الشبكة.",
+      "المنازل القائمة: لاسلكي، دون أسلاك جديدة."
+    ]
+  },
+  "less_suited": {
+    "en": "A home with no border router yet — that comes first, and the choice of Thread devices is still smaller than Zigbee's.",
+    "fr": "Une maison sans routeur de bordure — il faut commencer par lui, et le choix d'appareils Thread reste plus réduit que celui de Zigbee.",
+    "ar": "بيت لا يوجد فيه موجّه حدودي بعد — يجب البدء به، واختيار أجهزة Thread ما زال أقل من أجهزة Zigbee."
+  },
+  "graph": {
+    "view": [940, 390],
+    "nodes": [
+      {"id": "router", "icon": "router", "x": 150, "y": 70, "w": 180},
+      {"id": "border", "icon": "hub", "x": 470, "y": 70, "w": 200, "accent": true},
+      {"id": "phone", "icon": "phone", "x": 790, "y": 70, "w": 200},
+      {"id": "d1", "icon": "bulb", "x": 130, "y": 235},
+      {"id": "d2", "icon": "relay", "x": 360, "y": 235},
+      {"id": "d3", "icon": "shutter", "x": 590, "y": 235},
+      {"id": "d4", "icon": "relay", "x": 820, "y": 235},
+      {"id": "s1", "kind": "pill", "x": 245, "y": 350, "w": 170},
+      {"id": "s2", "kind": "pill", "x": 705, "y": 350, "w": 170}
+    ],
+    "links": [
+      ["router", "border", "wire"],
+      ["phone", "border", "radio"],
+      ["border", "d2", "radio"],
+      ["border", "d3", "radio"],
+      ["d1", "d2", "mesh"],
+      ["d2", "d3", "mesh"],
+      ["d3", "d4", "mesh"],
+      ["s1", "d1", "mesh"],
+      ["s2", "d4", "mesh"]
+    ]
+  },
+  "diagram_labels": {
+    "en": {
+      "router": "Router", "border": "Border router", "phone": "App · controller",
+      "d1": "Light", "d2": "Switch", "d3": "Shutters", "d4": "Plug",
+      "s1": "Battery sensor", "s2": "Battery sensor"
+    },
+    "fr": {
+      "router": "Routeur", "border": "Routeur de bordure", "phone": "Appli · contrôleur",
+      "d1": "Lumière", "d2": "Interrupteur", "d3": "Volets", "d4": "Prise",
+      "s1": "Capteur sur pile", "s2": "Capteur sur pile"
+    },
+    "ar": {
+      "router": "الراوتر", "border": "موجّه حدودي", "phone": "التطبيق · وحدة التحكم",
+      "d1": "إضاءة", "d2": "مفتاح", "d3": "ستائر", "d4": "مقبس",
+      "s1": "مستشعر بالبطارية", "s2": "مستشعر بالبطارية"
+    }
+  }
+}

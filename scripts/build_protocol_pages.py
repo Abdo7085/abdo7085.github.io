@@ -23,7 +23,7 @@ import json
 
 from _icons import ICONS
 from _lib import LANGS, ROOT, t
-from _ui import Page, brand_mark, card, crumbs, data, esc, ruler
+from _ui import Page, brand_mark, card, crumbs, data, esc, proto_mark, ruler
 from build_home import contact, plate
 
 LIMIT = 12
@@ -101,7 +101,123 @@ def knx_diagram(x: dict, title: str) -> str:
         '</svg></figure>')
 
 
+# Icons for the "graph" diagrams (24-unit grid, same stroke style)
+_GRAPH_ICONS = dict(_DEV_ICONS,
+    router='<rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 17h.01M10 17h.01"/><path d="M8.5 9.5a5 5 0 0 1 7 0M6 7a8.5 8.5 0 0 1 12 0"/>',
+    switch='<rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11h2M10 11h2M14 11h2M6 14h12"/>',
+    ap='<circle cx="12" cy="15" r="6"/><circle cx="12" cy="15" r="1.5"/><path d="M8.5 6.5a5 5 0 0 1 7 0M6 4a8.5 8.5 0 0 1 12 0"/>',
+    phone='<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/>',
+    cloud='<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z"/>',
+    relay='<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h5"/><path d="M16 16h.01"/>',
+    dimmer='<circle cx="12" cy="12" r="8"/><path d="M12 4v4"/><path d="M12 12l4-3"/>',
+    shutter=ICONS["blinds"],
+    bulb=ICONS["bulb"],
+    cameras='<rect x="1.5" y="4.5" width="2.5" height="15" rx="1"/><path d="M4 15.5h3.5l3-3.6"/><g transform="rotate(24 14 8)"><path d="M7 4.2h14.5l-1.6 2.8H7z"/><path d="M8.2 7h10.6v4.2H9.7a1.5 1.5 0 0 1-1.5-1.5z"/><rect x="18.8" y="7.9" width="2.6" height="2.5" rx=".6"/></g>',   # wall-mounted surveillance camera
+    door='<rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="8" r="2.5"/><path d="M10 15h4M10 18h4"/>',
+    monitor='<rect x="2" y="4" width="20" height="13" rx="2"/><circle cx="8" cy="10.5" r="2.5"/><path d="M13 9h5M13 12h4M9 21h6"/>',
+    hub='<rect x="3" y="8" width="18" height="10" rx="3"/><circle cx="12" cy="13" r="1.5"/><path d="M8.5 5a5 5 0 0 1 7 0"/>',
+    sensor='<rect x="7" y="3" width="10" height="18" rx="3"/><path d="M12 8v4"/>',
+    bluetooth='<path d="M6.5 6.5l11 11L12 23V1l5.5 5.5-11 11"/>',
+    apps='<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+)
+
+_LINK = {"wire": "kd-drop", "radio": "kd-wifi", "mesh": "kd-mesh", "load": "kd-load", "net": "kd-net"}
+
+
+def graph_diagram(g: dict, x: dict, title: str) -> str:
+    """A diagram described in the protocol file ("graph"): nodes placed by their centre, links
+    between them. Node kinds: box (icon + label, 140 x 82), pill (label, 120 x 40), bus (a yellow
+    line from x1 to x2 with its label above), text (a yellow caption). Link styles: wire, radio,
+    mesh, load, net. A link meets the edge of each box; a link to a bus drops straight onto it."""
+    nodes = {n["id"]: n for n in g["nodes"]}
+
+    def size(n):
+        k = n.get("kind", "box")
+        if k == "box":
+            return n.get("w", 140) / 2, n.get("h", 82) / 2
+        if k == "pill":
+            return n.get("w", 120) / 2, 20
+        return 0, 0
+
+    def edge(n, tx, ty):
+        hw, hh = size(n)
+        dx, dy = tx - n["x"], ty - n["y"]
+        if not (hw and (dx or dy)):
+            return n["x"], n["y"]
+        k = min(hw / abs(dx) if dx else 1e9, hh / abs(dy) if dy else 1e9)
+        return n["x"] + dx * k, n["y"] + dy * k
+
+    links = ""
+    for a, b, style in g.get("links", []):
+        na, nb = nodes[a], nodes[b]
+        if nb.get("kind") == "bus":
+            x1, y1 = edge(na, na["x"], nb["y"])
+            x2, y2 = na["x"], nb["y"]
+        else:
+            x1, y1 = edge(na, nb["x"], nb["y"])
+            x2, y2 = edge(nb, na["x"], na["y"])
+        links += f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" class="{_LINK[style]}"/>'
+
+    body = ""
+    for n in g["nodes"]:
+        k, cx, cy = n.get("kind", "box"), n.get("x"), n["y"]
+        label = x.get(n["id"], "")
+        if k == "bus":
+            body += (f'<line x1="{n["x1"]}" y1="{cy}" x2="{n["x2"]}" y2="{cy}" class="kd-bus"/>'
+                     f'<text x="{n.get("lx", (n["x1"] + n["x2"]) / 2)}" y="{cy - 24}" class="kd-bus-t">{esc(label)}</text>')
+        elif k == "text":
+            body += f'<text x="{cx}" y="{cy}" class="kd-t kd-y">{esc(label)}</text>'
+        elif k == "pill":
+            hw, _ = size(n)
+            body += (f'<rect x="{cx - hw}" y="{cy - 20}" width="{hw * 2}" height="40" rx="20" class="kd-pill"/>'
+                     f'<text x="{cx}" y="{cy}" class="kd-t">{esc(label)}</text>')
+        else:
+            hw, hh = size(n)
+            lines = label.split("\n")
+            top = cy - hh
+            iy, ty = (top + 5, (top + 46, top + 67)) if len(lines) > 1 else (top + 12, (top + 58,))
+            txt = "".join(f'<text x="{cx}" y="{yy}" class="kd-t">{esc(l)}</text>' for l, yy in zip(lines, ty))
+            cls = "kd-box kd-ps" if n.get("accent") else "kd-box"
+            body += (f'<rect x="{cx - hw}" y="{top}" width="{hw * 2}" height="{hh * 2}" rx="10" class="{cls}"/>'
+                     f'<g transform="translate({cx - 13} {iy}) scale(1.0833)" class="kd-ic">{_GRAPH_ICONS[n["icon"]]}</g>{txt}')
+    w, h = g.get("view", [940, 390])
+    return (f'<figure class="kd dark"><svg viewBox="0 0 {w} {h}" role="img" aria-label="{esc(title)}">'
+            + links + body + '</svg></figure>')
+
+
 DIAGRAMS = {"knx": knx_diagram}
+
+
+# ---------------- Protocols list (protocols.html) ----------------
+
+def ordered(d: dict) -> list:
+    """Every protocol, the one with the most products first (then by name)."""
+    return sorted(d["protocols"], key=lambda pr: (-len(products_of(pr, d["products"])), pr["name"].lower()))
+
+
+def protocols(lang: str) -> str:
+    p, d = Page(lang), data()
+    rows = []
+    for pr in ordered(d):
+        mine = products_of(pr, d["products"])
+        rows.append(
+            '<article class="ledger-row crop-host">'
+            f'<div class="ledger-logo recess crop">{proto_mark(pr, decorative=True)}</div>'
+            f'<div><div class="ledger-name"><h2 class="h3"><a href="{p.protocol_url(pr["id"])}">{esc(pr["name"])}</a></h2>'
+            f'<span class="ledger-origin">{esc(t(pr.get("kicker"), lang))}</span></div>'
+            f'<p class="ledger-tag">{esc(t(pr.get("tagline"), lang))}</p></div>'
+            '<div class="ledger-focus"></div>'
+            f'<div class="ledger-count"><b>{len(mine)}</b><span>{p.e("in_catalogue")}</span></div>'
+            '</article>')
+    return (
+        '<section class="page-head"><div class="wrap">'
+        + crumbs([(p.s("breadcrumb_home"), p.base), (p.s("nav_protocols"), None)])
+        + '<div class="page-head-grid"><div class="reveal">'
+        f'<p class="kicker">{p.e("protocols_kicker", n=p.count(len(d["protocols"]), "protocol"))}</p>'
+        f'<h1 class="h2">{p.e("protocols_hero_title")}</h1></div><p class="lead">{p.e("protocols_hero_subtitle")}</p></div></div></section>'
+        '<section class="wrap"><div class="ledger">' + "".join(rows) + '</div></section>'
+        + contact(p)
+    )
 
 
 # ---------------- Page ----------------
@@ -119,7 +235,7 @@ def protocol(lang: str, pid: str) -> str:
     brands.sort(key=lambda n: -sum(1 for q in mine if q.get("brand") == n))
     projs = projects_of(pr, d, mine)
 
-    logo = (f'<img src="{esc(pr["logo"])}" alt="{esc(name)}">' if pr.get("logo") else f'<span class="h2">{esc(name)}</span>')
+    logo = proto_mark(pr)
     facts = ([(p.s("proto_standard"), esc(pr["standard"]), "")] if pr.get("standard") else []) \
         + ([(p.s("proto_medium"), esc(t(pr["medium"], lang)), "")] if pr.get("medium") else []) \
         + [(p.s("proto_brands"), str(len(brands)), "big"), (p.s("products_lbl"), str(len(mine)), "big")]
@@ -134,13 +250,15 @@ def protocol(lang: str, pid: str) -> str:
         f'<div class="prose"><p>{esc(t(pr.get("description"), lang))}</p></div></div></section>'
     )
 
-    out = '<div class="wrap pd-wrap">' + crumbs([(p.s("breadcrumb_home"), p.base), (name, None)]) + hero + '</div>'
+    out = ('<div class="wrap pd-wrap">'
+           + crumbs([(p.s("breadcrumb_home"), p.base), (p.s("nav_protocols"), f"{p.base}protocols.html"), (name, None)])
+           + hero + '</div>')
 
-    draw = DIAGRAMS.get(pr.get("diagram"))
-    if draw and pr.get("diagram_labels"):
+    if pr.get("diagram_labels"):
         how = p.s("proto_how", name=name)
-        out += ('<section class="sec-tight"><div class="wrap">' + ruler(how, p.s("proto_diagram"))
-                + draw(pr["diagram_labels"][lang], how) + '</div></section>')
+        labels = pr["diagram_labels"][lang]
+        fig = graph_diagram(pr["graph"], labels, how) if pr.get("graph") else DIAGRAMS[pr["diagram"]](labels, how)
+        out += ('<section class="sec-tight"><div class="wrap">' + ruler(how, p.s("proto_diagram")) + fig + '</div></section>')
 
     yes = (pr.get("when") or {}).get(lang) or []
     if yes:
@@ -202,4 +320,4 @@ def protocol(lang: str, pid: str) -> str:
 
 if __name__ == "__main__":
     for l in LANGS:
-        print(l, len(protocol(l, "knx")), "chars")
+        print(l, len(protocols(l)), len(protocol(l, "knx")), "chars")

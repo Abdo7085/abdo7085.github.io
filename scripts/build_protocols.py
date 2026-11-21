@@ -49,7 +49,9 @@ def jsonld(pr: dict, products: list, lang: str, canonical: str, desc: str) -> li
         "@type": "BreadcrumbList",
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "S‑ELECTRICITY", "item": f"{HOST}{prefix}/"},
-            {"@type": "ListItem", "position": 2, "name": name, "item": canonical},
+            {"@type": "ListItem", "position": 2, "name": {"en": "Protocols", "fr": "Protocoles", "ar": "البروتوكولات"}[lang],
+             "item": f"{HOST}{prefix}/protocols.html"},
+            {"@type": "ListItem", "position": 3, "name": name, "item": canonical},
         ],
     }
     items = {
@@ -112,6 +114,26 @@ def page_html(template: str, pr: dict, products: list, lang: str) -> str:
     return out
 
 
+def inject_list_itemlist(protocols: list, products: list) -> None:
+    """ItemList JSON-LD in protocols.html (en/fr/ar): one entry per protocol page."""
+    order = sorted(protocols, key=lambda pr: (-len(products_of(pr, products)), pr["name"].lower()))
+    for lang in LANGS:
+        path = ROOT / "protocols.html" if lang == "en" else ROOT / lang / "protocols.html"
+        if not path.exists():
+            continue
+        prefix = "" if lang == "en" else f"/{lang}"
+        ld = {"@context": "https://schema.org", "@type": "ItemList",
+              "name": {"en": "Protocols", "fr": "Protocoles", "ar": "البروتوكولات"}[lang],
+              "numberOfItems": len(order),
+              "itemListElement": [{"@type": "ListItem", "position": i, "url": f"{HOST}{prefix}/protocols/{pr['id']}.html",
+                                   "name": pr["name"]} for i, pr in enumerate(order, 1)]}
+        html = path.read_text(encoding="utf-8")
+        html = re.sub(r'^[ \t]*<script type="application/ld\+json" id="protocols-itemlist-jsonld">.*?</script>[ \t]*(?:\r?\n)?',
+                      '', html, flags=re.S | re.M)
+        tag = f'<script type="application/ld+json" id="protocols-itemlist-jsonld">{json.dumps(ld, ensure_ascii=False)}</script>'
+        path.write_text(html.replace("</head>", f"  {tag}\n  </head>", 1), encoding="utf-8")
+
+
 def main():
     print("=== Building protocol pages ===\n")
     validate.ensure()
@@ -126,6 +148,7 @@ def main():
             path = folder / f"{pr['id']}.html"
             path.write_text(page_html(template, pr, mine, lang), encoding="utf-8")
             print(f"  OK {path.relative_to(ROOT)}")
+    inject_list_itemlist(protocols, products)
     for page in _lib.remove_orphan_pages("protocols", [pr.get("id") for pr in protocols]):
         print(f"  Removed {page} (its protocol file is gone)")
     write_sitemap()

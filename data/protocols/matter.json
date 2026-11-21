@@ -1,0 +1,104 @@
+{
+  "id": "matter",
+  "name": "Matter",
+  "match": ["Matter"],
+  "standard": "CSA · 2022",
+  "seo_title": {
+    "en": "Matter: one standard for every smart home app",
+    "fr": "Matter : un standard pour toutes les applis",
+    "ar": "Matter: معيار واحد لكل تطبيقات المنزل الذكي"
+  },
+  "kicker": {
+    "en": "Open standard · Connectivity Standards Alliance",
+    "fr": "Standard ouvert · Connectivity Standards Alliance",
+    "ar": "معيار مفتوح · Connectivity Standards Alliance"
+  },
+  "tagline": {
+    "en": "One device, every app: Matter works with Apple Home, Google Home, Amazon Alexa and SmartThings — at the same time, and locally.",
+    "fr": "Un appareil, toutes les applis : Matter fonctionne avec Apple Home, Google Home, Amazon Alexa et SmartThings — en même temps, et en local.",
+    "ar": "جهاز واحد لكل التطبيقات: يعمل Matter مع Apple Home وGoogle Home وAmazon Alexa وSmartThings — في الوقت نفسه، ومحلياً."
+  },
+  "medium": {
+    "en": "Wi-Fi · Thread · Ethernet",
+    "fr": "Wi-Fi · Thread · Ethernet",
+    "ar": "Wi-Fi · Thread · Ethernet"
+  },
+  "description": {
+    "en": "Matter is an open standard from the Connectivity Standards Alliance, backed by Apple, Google, Amazon and Samsung. A Matter device is controlled on the home network, not through a maker's distant server, and the same device can be added to several apps at once, so one person uses Apple Home and another Google Home. Matter runs over Wi-Fi, Ethernet and Thread, and a bridge brings an existing system into it: a Matter Zigbee hub, for example, shows its Zigbee devices in the Matter apps. Matter is young and still growing, so it is worth checking which device types and features each app supports.",
+    "fr": "Matter est un standard ouvert de la Connectivity Standards Alliance, soutenu par Apple, Google, Amazon et Samsung. Un appareil Matter se commande sur le réseau de la maison, pas via le serveur lointain d'un fabricant, et le même appareil peut être ajouté à plusieurs applis à la fois : l'un utilise Apple Home, l'autre Google Home. Matter fonctionne sur Wi-Fi, Ethernet et Thread, et une passerelle-pont y intègre un système existant : une passerelle Zigbee Matter, par exemple, affiche ses appareils Zigbee dans les applis Matter. Matter est jeune et évolue encore : mieux vaut vérifier les types d'appareils et les fonctions que gère chaque appli.",
+    "ar": "Matter معيار مفتوح من Connectivity Standards Alliance، تدعمه Apple وGoogle وAmazon وSamsung. يُتحكّم في جهاز Matter عبر الشبكة المنزلية، لا عبر خادم بعيد للشركة المصنّعة، ويمكن إضافة الجهاز نفسه إلى عدة تطبيقات في الوقت نفسه، فيستعمل أحد أفراد العائلة Apple Home وآخر Google Home. يعمل Matter عبر Wi-Fi وEthernet وThread، ويُدخل الجسر نظاماً قائماً إليه: بوابة Zigbee تدعم Matter مثلاً تُظهر أجهزة Zigbee في تطبيقات Matter. وMatter حديث وما زال يتطور، لذلك من المفيد التحقق من أنواع الأجهزة والوظائف التي يدعمها كل تطبيق."
+  },
+  "when": {
+    "en": [
+      "A family on different phones: the same lights in Apple Home, Google Home or Alexa.",
+      "Freedom to change: devices are not tied to one maker's app.",
+      "Local control: switching runs on the home network, not through a distant server.",
+      "Mixing systems: a bridge brings Zigbee devices into the same apps."
+    ],
+    "fr": [
+      "Une famille sur des téléphones différents : les mêmes lumières dans Apple Home, Google Home ou Alexa.",
+      "Liberté de changer : les appareils ne sont pas liés à l'appli d'un fabricant.",
+      "Commande locale : tout passe par le réseau de la maison, pas par un serveur lointain.",
+      "Mélanger les systèmes : une passerelle-pont amène les appareils Zigbee dans les mêmes applis."
+    ],
+    "ar": [
+      "عائلة بهواتف مختلفة: نفس الإضاءة في Apple Home أو Google Home أو Alexa.",
+      "حرية التغيير: الأجهزة غير مرتبطة بتطبيق شركة واحدة.",
+      "تحكم محلي: التشغيل يمر عبر الشبكة المنزلية، لا عبر خادم بعيد.",
+      "الجمع بين الأنظمة: الجسر يُدخل أجهزة Zigbee إلى نفس التطبيقات."
+    ]
+  },
+  "less_suited": {
+    "en": "Advanced scenes and large wired installations — Matter covers the essentials; KNX still does far more.",
+    "fr": "Scènes avancées et grandes installations filaires — Matter couvre l'essentiel ; KNX va bien plus loin.",
+    "ar": "المشاهد المتقدمة والتركيبات السلكية الكبيرة — Matter يغطي الأساسيات، وKNX ما زال يقدّم أكثر بكثير."
+  },
+  "graph": {
+    "view": [940, 400],
+    "nodes": [
+      {"id": "a1", "kind": "pill", "x": 140, "y": 45, "w": 160},
+      {"id": "a2", "kind": "pill", "x": 320, "y": 45, "w": 160},
+      {"id": "a3", "kind": "pill", "x": 620, "y": 45, "w": 160},
+      {"id": "a4", "kind": "pill", "x": 800, "y": 45, "w": 160},
+      {"id": "bus", "kind": "bus", "x1": 20, "x2": 920, "y": 150, "lx": 470},
+      {"id": "wifi", "icon": "relay", "x": 130, "y": 245, "w": 170},
+      {"id": "eth", "icon": "switch", "x": 350, "y": 245, "w": 170},
+      {"id": "border", "icon": "hub", "x": 590, "y": 245, "w": 170},
+      {"id": "bridge", "icon": "hub", "x": 810, "y": 245, "w": 170, "accent": true},
+      {"id": "thread", "kind": "pill", "x": 590, "y": 360, "w": 160},
+      {"id": "zigbee", "kind": "pill", "x": 810, "y": 360, "w": 160}
+    ],
+    "links": [
+      ["a1", "bus", "radio"],
+      ["a2", "bus", "radio"],
+      ["a3", "bus", "radio"],
+      ["a4", "bus", "radio"],
+      ["wifi", "bus", "wire"],
+      ["eth", "bus", "wire"],
+      ["border", "bus", "wire"],
+      ["bridge", "bus", "wire"],
+      ["border", "thread", "mesh"],
+      ["bridge", "zigbee", "mesh"]
+    ]
+  },
+  "diagram_labels": {
+    "en": {
+      "a1": "Apple Home", "a2": "Google Home", "a3": "Amazon Alexa", "a4": "SmartThings",
+      "bus": "Home network — Matter",
+      "wifi": "Wi-Fi devices", "eth": "Ethernet devices", "border": "Thread\nborder router", "bridge": "Zigbee bridge",
+      "thread": "Thread devices", "zigbee": "Zigbee devices"
+    },
+    "fr": {
+      "a1": "Apple Home", "a2": "Google Home", "a3": "Amazon Alexa", "a4": "SmartThings",
+      "bus": "Réseau de la maison — Matter",
+      "wifi": "Appareils Wi-Fi", "eth": "Appareils Ethernet", "border": "Routeur de\nbordure Thread", "bridge": "Pont Zigbee",
+      "thread": "Appareils Thread", "zigbee": "Appareils Zigbee"
+    },
+    "ar": {
+      "a1": "Apple Home", "a2": "Google Home", "a3": "Amazon Alexa", "a4": "SmartThings",
+      "bus": "الشبكة المنزلية — Matter",
+      "wifi": "أجهزة Wi-Fi", "eth": "أجهزة Ethernet", "border": "موجّه حدودي\nThread", "bridge": "جسر Zigbee",
+      "thread": "أجهزة Thread", "zigbee": "أجهزة Zigbee"
+    }
+  }
+}
