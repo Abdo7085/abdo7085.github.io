@@ -81,6 +81,7 @@ def project(lang: str, pid: str) -> str:
         if x.get("brand") not in brands:
             brands.append(x.get("brand"))
     for b in pj.get("extra_brands") or []:
+        b = t(b, lang) if isinstance(b, dict) else b   # a generic name ("advanced server") is translated
         if b not in brands:
             brands.append(b)
     techs = []

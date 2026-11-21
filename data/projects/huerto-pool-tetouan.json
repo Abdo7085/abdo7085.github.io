@@ -57,7 +57,11 @@
   ],
   "extra_brands": [
     "Dahua",
-    "Home Assistant"
+    {
+      "en": "Advanced server",
+      "fr": "Serveur avancé",
+      "ar": "خادم متقدم"
+    }
   ],
   "extra_protocols": [
     "PoE"
