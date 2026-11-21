@@ -14,15 +14,30 @@ scripts/_lib.py            → Shared helpers (i18n, SEO, JSON-LD, sitemap)
 scripts/build_all.py       → One-shot orchestrator (validate → localize → images → projects → products → brands)
 scripts/build_brands.py    → Unified build: index + per-brand SEO pages + sitemap + ItemList injection
 scripts/build_products.py  → Products catalog build (MUST run before brands)
-scripts/patch_navbar_brands.py → One-shot SPA bundle surgery (already applied, idempotent)
+scripts/build_brand_pages.py → Writes the BODY of brands.html (the brand list) and of each brand page
+scripts/_ui.py            → Shared page pieces (product card, brand logo with a text fallback, protocol chips)
 
 brands.html              → Root template for the brands index (indexable)
-brand.html               → SPA template for individual brand routes (noindex — overridden by build)
+brand.html               → Template for the head of each brand page (noindex — overridden by build); brand.html?id=<slug> redirects to /brands/<slug>.html
 brands/<slug>.html       → Per-brand static HTML pages (EN, auto-generated)
 fr/brands/<slug>.html    → Per-brand static HTML pages (FR, auto-generated)
 ar/brands/<slug>.html    → Per-brand static HTML pages (AR, auto-generated)
 sitemap.xml              → Auto-generated, includes all brand URLs with hreflang
 ```
+
+How the pages are made (since 2026-11, "phase 7"): every page is written as complete HTML at build
+time — there is no React bundle and no page app in the browser any more.
+  scripts/build_layout.py     → last build stage: writes the header, footer and the page body into
+                                every page (in the page's language), and links the page styles/scripts
+  scripts/_ui.py              → shared pieces: strings per language, the product card, images
+                                (srcset), protocol chips + icons (proto_icon), breadcrumbs
+  scripts/build_home.py, build_catalog.py, build_product.py, build_brand_pages.py,
+  build_project_pages.py, build_notfound.py → the body of each kind of page
+  assets/se.css, assets/se-pages.css → the design (D, "Panel & Villa"); se.js + se-catalog.js,
+                                se-product.js, se-brand.js, se-projects.js → small page scripts
+  assets/locales/<lang>.json  → every interface string (en / fr / ar)
+The head of the detail pages (title, meta, JSON-LD, hreflang) is still written by build_products.py /
+build_brands.py / build_projects.py from product.html / brand.html / project.html.
 
 ## Brand URLs
 
@@ -32,7 +47,7 @@ Brands use **static HTML pages** for SEO:
 - Arabic:  `https://smartelectricity.ma/ar/brands/<brand-slug>.html`
 - Index:   `https://smartelectricity.ma/brands.html` (+ `/fr/brands.html`, `/ar/brands.html`)
 
-Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (`Brand` + `BreadcrumbList` + `ItemList` of that brand's products), `hreflang` (incl. `x-default`), `og:locale`, `robots: index,follow`, an `<h1>` in `<noscript>`, and inline `window.__BRAND__` with the full data + products list pre-embedded so `brand-detail.js` renders instantly without a second fetch.
+Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (`Brand` + `BreadcrumbList` + `ItemList` of that brand's products), `hreflang` (incl. `x-default`), `og:locale`, `robots: index,follow`, and the whole page content written in the HTML itself: hero with logo and facts, description, the brand's products with category tabs (first 12, then "Show all" — `assets/se-brand.js`), and the other brands.
 
 ## Operations
 
@@ -52,7 +67,7 @@ Open with a simple free-form prompt:
 
 From the user's reply, work out silently:
 - The **canonical brand name** — must match exactly what would be (or already is) in `data/products/*.json` `brand` field. Casing matters. E.g. `"EAE Technology"` not `"eae technology"`; `"SONOFF"` not `"Sonoff"`. If you're unsure, ask the user to confirm the exact casing they use for their product JSONs.
-- The slug: `brand.toLowerCase().replace(/\s+/g, '-')` — must be ASCII, kebab-case. E.g. `"EAE Technology"` → `eae-technology`. **This slug is hardcoded into the URL convention** used by `product-detail.js` (`product.brand → /brands/<slug>.html`), so it cannot be customized.
+- The slug: `brand.toLowerCase().replace(/\s+/g, '-')` — must be ASCII, kebab-case. E.g. `"EAE Technology"` → `eae-technology`. **This slug is the URL convention** every page uses to link a product's brand (`product.brand → /brands/<slug>.html`), so it cannot be customized.
 - Whether the brand already exists in `data/brands/<slug>.json` — if so, this is an **edit**, not an add. Switch to the edit flow.
 
 Ask follow-up only for genuinely ambiguous things:
@@ -72,7 +87,7 @@ Never ask for things you can find out yourself (country of origin, founding year
    - `logo` → set to `null` unless the user has already provided a path. The page renders an elegant text-name card when logo is absent; the user can drop a file in `assets/brands/<slug>.<ext>` later and update `logo`.
    - `tagline` (en/fr/ar) — one short professional sentence capturing the brand's positioning (e.g. "KNX building automation and lighting control, engineered and manufactured in Türkiye.").
    - `description` (en/fr/ar) — 3–5 sentences following the structure in **"Writing Style"** below. **MUST cover the brand as a whole, NOT just the SKUs we currently sell. Use generic product categories only — no model names, series names, or SKU numbers.**
-   - **Do NOT include `tech_focus` or `category_focus`** — these are auto-derived from `data/products_index.json` by `build_brands.py` and `brand-detail.js`, sorted by frequency descending. Manual values would be ignored.
+   - **Do NOT include `tech_focus` or `category_focus`** — these are auto-derived from `data/products_index.json` by `build_brands.py`, sorted by frequency descending. Manual values would be ignored.
 
 3. **Present the draft** to the user in a human-readable form (NOT raw JSON):
    - Proposed `id` slug + match check (does it align with how products reference this brand?)
@@ -161,13 +176,13 @@ For the same reason, **create the brand before adding the first product of a new
 
 **Schema rules:**
 - `id` **MUST** equal the filename without `.json` AND **MUST** equal `brand.toLowerCase().replace(/\s+/g, '-')`. Same invariant as products/projects.
-- `brand` **MUST** match — character for character, casing included — the `brand` field in `data/products/*.json` files. This is the join key. A mismatch silently breaks `tech_focus`/`category_focus` derivation and the products grid on the brand page.
-- `logo`: `null` (renders styled text fallback) OR a path starting with `/` (e.g. `/assets/brands/shelly.svg`). Relative paths or external URLs are not supported.
+- `brand` **MUST** match — character for character, casing included — the `brand` field in `data/products/*.json` files. This is the join key. A mismatch would leave the brand page without products (`validate.py` stops a product whose brand has no file).
+- `logo`: `null` (the brand's name is shown as text wherever a logo would be: brand list, brand page, homepage strip, "other brands") OR a path starting with `/` (e.g. `/assets/brands/shelly.svg`). Relative paths or external URLs are not supported.
 - `founded`: integer (year only). Used for the "Founded {year}" badge in the hero. Omit if genuinely unknown.
 - `country_of_origin`: string. Used for the globe icon badge in the hero. Omit if genuinely unknown.
 - `website`: full URL. Used for the "Visit Website" button in the hero. Omit if the brand has no usable public site.
-- **Do NOT add `tech_focus` or `category_focus`.** Both are auto-derived from products at build time (Python in `build_brands.py`) and at render time (JS in `brand-detail.js`), sorted by frequency descending. Manual values are ignored.
-- **Do NOT add `products`.** The build script injects `window.__BRAND__.products` automatically by filtering `products_index.json` by brand name.
+- **Do NOT add `tech_focus` or `category_focus`.** Both are auto-derived from products at build time (`build_brands.py`), sorted by frequency descending. Manual values are ignored.
+- **Do NOT add `products`.** The brand page lists the products whose `brand` matches, at build time.
 
 ---
 
@@ -182,7 +197,7 @@ Two fields shown in the brand page hero/chips are computed from the catalog, NOT
 
 The "Specialization" chips on the brand page show each category's label from `data/taxonomy.json` in the visitor's language (previously they showed raw English product-type names in every language).
 
-The Python implementation is `derive_chips()` in `scripts/build_brands.py`. The JavaScript implementation is `deriveChips()` in `assets/brand-detail.js`. **Both must stay in sync** — if you change the sort logic in one, change it in the other.
+The implementation is `derive_chips()` in `scripts/build_brands.py` (the only one: the pages are written at build time).
 
 **Practical implication:** Adding/removing/editing a product with brand `X` automatically updates brand `X`'s chips on the next build. No brand JSON edit needed.
 
@@ -282,12 +297,12 @@ Never keep a list here — read the live one: `data/brands_index.json` (one row 
 - The `brand` field MUST match — exactly — the `brand` value used in `data/products/*.json` files. Casing matters.
 - All text fields (`tagline`, `description`) MUST have `en`, `fr`, and `ar` versions.
 - **NEVER add `tech_focus` or `category_focus` to the JSON.** They are auto-derived; manual values are ignored.
-- **NEVER add a `products` array.** The build script injects it automatically into `window.__BRAND__`.
+- **NEVER add a `products` array.** The brand page lists the brand's products automatically.
 - Logos go in `assets/brands/<slug>.<ext>` (prefer `.svg`). Reference them as absolute paths starting with `/assets/brands/...`. `null` is a valid value — the page renders a text fallback.
 - **Always run `python scripts/build_all.py` after any brand JSON change** (`new_brand.py` runs it for you).
 - Never manually edit `data/brands_index.json`, `sitemap.xml`, or files in `brands/`, `fr/brands/`, `ar/brands/` — they are all auto-generated.
 - **Never use PowerShell (`ConvertTo-Json`, `Set-Content`) to edit brand JSON files.** PowerShell 5.1 corrupts UTF-8 encoding of Arabic text, producing irrecoverable mojibake. Always use Python (`json.load` + `json.dump` with `encoding='utf-8'`) for any JSON manipulation. If you need batch changes across multiple brand files, write a small Python script — never use a PowerShell pipeline.
-- The "Brands" navbar link is **already wired** into the SPA bundle via `scripts/patch_navbar_brands.py` (one-shot, idempotent). You do NOT need to re-patch the SPA bundle when adding a new brand — the link goes to `/brands.html` and the new brand appears in the grid automatically after `build_all.py`.
+- The "Brands" link is part of the header written by `build_layout.py` on every page. A new brand appears on the brand list, the homepage brand strip and the "other brands" rows automatically after `build_all.py`.
 
 ---
 
@@ -295,7 +310,7 @@ Never keep a list here — read the live one: `data/brands_index.json` (one row 
 
 ```bash
 python scripts/build_all.py
-# Order: validate → generate_localized → build_images → build_projects → build_products → build_brands
+# Order: validate → generate_localized → build_images → build_projects → build_products → build_brands → build_layout
 ```
 
 **What `build_brands.py` does** (mirrors `build_products.py`):
@@ -304,8 +319,7 @@ python scripts/build_all.py
 - Writes `data/brands_index.json` (lean, for the brands grid).
 - Generates static HTML in `brands/`, `fr/brands/`, `ar/brands/` with full SEO (title, meta description, hreflang × 4 incl. `x-default`, og:locale, Twitter card, robots index,follow override).
 - Injects JSON-LD: `Brand` + `BreadcrumbList` + `ItemList` of brand's products.
-- Injects `window.__BRAND__` inline (full data + filtered products) for instant client-side hydration.
-- Injects `<h1>` + lead paragraph in `<noscript>` for crawlers without JS.
+- Then `build_layout.py` (last stage) writes the page body (`build_brand_pages.py`): hero, facts, description, products with category tabs, other brands.
 - Injects ItemList JSON-LD into `brands.html` (EN/FR/AR).
 - Deletes the pages of any brand whose file is gone (`_lib.remove_orphan_pages`).
 - Writes complete `sitemap.xml` via `_lib.write_sitemap()` (idempotent, order-independent).

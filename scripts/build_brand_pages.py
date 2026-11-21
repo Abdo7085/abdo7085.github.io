@@ -39,7 +39,7 @@ def brands(lang: str) -> str:
         if full.get("founded"):
             origin += " · " + p.e("since", y=full["founded"])
         cats = "".join(f'<span class="chip">{esc(p.cat(c))}</span>' for c in b.get("category_focus") or [])
-        logo = f'<img src="{esc(b["logo"])}" alt="" loading="lazy">' if b.get("logo") else ""
+        logo = brand_mark(b, decorative=True)  # the name as text when the brand has no logo file
         rows.append(
             '<article class="ledger-row crop-host">'
             f'<div class="ledger-logo recess crop">{logo}</div>'

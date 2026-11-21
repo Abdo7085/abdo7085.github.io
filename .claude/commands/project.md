@@ -14,12 +14,27 @@ scripts/build_all.py       → One-shot orchestrator (validate first, then every
 scripts/build_projects.py  → Unified build: index + static SEO pages + sitemap + ItemList injection
 scripts/build_products.py  → Products catalog build
 scripts/generate_localized.py  → Root-page localization (index.html, previous-work.html, etc.)
+scripts/build_project_pages.py → Writes the BODY of previous-work.html (the case studies) and of each project page
 
 projects/                  → Static project HTML pages (EN, auto-generated)
 fr/projects/               → Static project HTML pages (FR, auto-generated)
 ar/projects/               → Static project HTML pages (AR, auto-generated)
 sitemap.xml                → Auto-generated sitemap (all URLs)
 ```
+
+How the pages are made (since 2026-11, "phase 7"): every page is written as complete HTML at build
+time — there is no React bundle and no page app in the browser any more.
+  scripts/build_layout.py     → last build stage: writes the header, footer and the page body into
+                                every page (in the page's language), and links the page styles/scripts
+  scripts/_ui.py              → shared pieces: strings per language, the product card, images
+                                (srcset), protocol chips + icons (proto_icon), breadcrumbs
+  scripts/build_home.py, build_catalog.py, build_product.py, build_brand_pages.py,
+  build_project_pages.py, build_notfound.py → the body of each kind of page
+  assets/se.css, assets/se-pages.css → the design (D, "Panel & Villa"); se.js + se-catalog.js,
+                                se-product.js, se-brand.js, se-projects.js → small page scripts
+  assets/locales/<lang>.json  → every interface string (en / fr / ar)
+The head of the detail pages (title, meta, JSON-LD, hreflang) is still written by build_products.py /
+build_brands.py / build_projects.py from product.html / brand.html / project.html.
 
 ## Project URLs
 
@@ -28,7 +43,7 @@ Projects use **static HTML pages** (not query params) for SEO:
 - French: `https://smartelectricity.ma/fr/projects/<project-slug>.html`
 - Arabic: `https://smartelectricity.ma/ar/projects/<project-slug>.html`
 
-Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (`Article` / `CreativeWork` + `BreadcrumbList` + `mentions` linking to related products), `hreflang` (including `x-default`), `og:locale`, `robots: index,follow`, and `<h1>` in `<noscript>` — so search engines and social media crawlers can read the case study without JavaScript.
+Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (`Article` / `CreativeWork` + `BreadcrumbList` + `mentions` linking to related products), `hreflang` (including `x-default`), `og:locale`, `robots: index,follow`, and the whole case study written in the HTML itself — so search engines and social media crawlers read it without JavaScript. A project whose title is too long for search results may carry an optional `"seo_title": {"fr": "…"}` (any of en/fr/ar) — used only for the `<title>`.
 
 ## Media Philosophy
 
@@ -36,12 +51,12 @@ Every project mixes different media types, and the mix varies **per project**. T
 
 1. **`image`** — JPG/PNG/AVIF/WebP photos the user owns (from the job site). Rendered in a horizontal scrollable strip ("Project Gallery") with side-arrow navigation and drag-to-scroll.
 
-2. **`video`** — MP4 videos **produced by the user** (self-hosted). Aspect ratio varies (16:9 or 9:16). Must include a poster frame for fast LCP and SEO. Rendered inside the gallery strip with click-to-play.
+2. **`video`** — MP4 videos **produced by the user** (self-hosted). Aspect ratio varies (16:9 or 9:16). Must include a poster frame for fast LCP and SEO. Rendered in the gallery with the browser's own player (click to play).
 
-3. **`reel`** — A **9:16 portrait short video** owned by the user. Stored as a local MP4 under `/assets/reels/<project-slug>.mp4` and rendered as a **sticky card next to the project description narrative** (not inside the gallery strip). Autoplays muted in a loop, with a tap-to-unmute button and an optional "View on Instagram" button underneath that opens the same clip on Instagram.
+3. **`reel`** — A **9:16 portrait short video** owned by the user. Stored as a local MP4 under `/assets/reels/<project-slug>.mp4` and rendered as a **tall card in the gallery**, beside the photos, with the browser's own player and, when `instagram_url` is set, a "Watch on Instagram" link in its caption.
 
 **Layout rule:**
-- Photos + 16:9 videos → horizontal scrollable gallery strip below the narrative.
+- Photos + videos + reels → one gallery grid below the story, in `media` order (with a reel, photos take the wide slots; with 3+ photos and no reel, the first one is shown large).
 - 9:16 reels → sticky vertical card to the left of the narrative text on desktop, above the text on mobile.
 
 The build script extracts real pixel dimensions via Pillow (for images and video posters) so the mosaic renders with accurate `aspect-ratio` and avoids layout shift (CLS). Reels default to `1080×1920` unless the optional poster declares otherwise.
@@ -261,7 +276,7 @@ Rules:
   - `image` → Pillow reads pixel size, writes `width`/`height` into the index.
   - `video` → Pillow reads the `poster` pixel size (video dimensions cannot be read without ffprobe; the poster drives the layout slot in the gallery strip).
   - `reel` → `src` points to a local MP4 (e.g. `/assets/reels/<slug>.mp4`). Defaults to `1080×1920`; if a `poster` is present, Pillow reads its actual dimensions.
-- **Reel entries are NOT rendered in the gallery strip**. They appear as a sticky card beside the project description. The gallery strip only contains `image` and `video` items, in the order they appear in the `media` array.
+- **Every media entry is rendered in the gallery**, in the order of the `media` array: images and videos as wide cells, a reel as a tall cell.
 - `reel.instagram_url` is optional — when present, a small "View on Instagram" button appears below the sticky video card. When absent, only the autoplay-muted MP4 is shown.
 - At most **one reel per project** is meaningful. If you list multiple, only the first is rendered as the sticky card; the rest are ignored.
 - `related_products` is an array of `id`s from `data/products/`. The build script validates they exist and emits a `mentions` JSON-LD array linking to the product pages. It also feeds the **Brands & Protocols** card on the project page (the renderer reads each product's `brand` + `technology[]` from `products_index.json` and deduplicates them into two chip rows).
@@ -286,8 +301,7 @@ After `validate.py`, the project stage:
   - og:locale + og:locale:alternate for each language.
   - JSON-LD `CreativeWork` (or `Article` when a written narrative dominates) + BreadcrumbList + `mentions[]` for related products.
   - `<meta name="robots" content="index, follow">` override.
-  - `<h1>` + `<p>` inside `<noscript>` so crawlers that don't execute JS still get the core content.
-  - Inline `<script>window.__PROJECT__ = {...}</script>` with the enriched project data (so `project-detail.js` renders instantly without a second fetch).
+- Then `build_layout.py` (last stage) writes the page body (`build_project_pages.py`): cover hero, facts, story + client's words, gallery, brands & protocols, installed products (as cards), next project — and the project appears on the homepage and on previous-work.html.
 - Injects ItemList JSON-LD into `previous-work.html` (EN/FR/AR) for portfolio rich results.
 - Deletes the pages of any project whose file is gone (`_lib.remove_orphan_pages`).
 - Writes the complete `sitemap.xml` via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk.

@@ -189,11 +189,13 @@ def protos(lst) -> str:
     return ('<div class="protos">' + "".join(proto(x) for x in lst) + "</div>") if lst else ""
 
 
-def brand_mark(b: dict) -> str:
-    """A brand's logo for the logo rows (homepage strip, "other brands"); its name as text when
-    the brand has no logo file (a new brand can be added without one)."""
+def brand_mark(b: dict, decorative: bool = False) -> str:
+    """A brand's logo for the logo rows (homepage strip, "other brands", brand list); its name as
+    text when the brand has no logo file (a new brand can be added without one). decorative=True
+    when the name is already written next to it (empty alt, so it is not read twice)."""
     if b.get("logo"):
-        return f'<img src="{esc(b["logo"])}" alt="{esc(b["brand"])}" loading="lazy">'
+        alt = "" if decorative else esc(b["brand"])
+        return f'<img src="{esc(b["logo"])}" alt="{alt}" loading="lazy">'
     return f'<span class="brand-txt">{esc(b["brand"])}</span>'
 
 

@@ -13,7 +13,9 @@ assets/og/              → 1200×630 share cards for WhatsApp/Facebook (auto-ge
 data/product_images.json → Image descriptors per product (auto-generated, used by the gallery)
 data/taxonomy.json      → SINGLE SOURCE OF TRUTH for classification: categories → product types,
                           technologies, installation methods — with their en/fr/ar labels
-assets/site-core.js     → Shared browser helpers: reads taxonomy.json for labels + the one protocol-icon dictionary
+scripts/build_product.py  → Writes the BODY of each product page (gallery, info cells, quote box, description, specs, related)
+scripts/build_catalog.py  → Writes the catalog page (every product card) + the data its filter script uses
+scripts/_ui.py            → Shared page pieces: the product card, images, protocol chips + icons (proto_icon)
 scripts/new_product.py    → ADD a product in one command: checks values, imports images, writes the file, builds
 scripts/remove_product.py → REMOVE a product and everything generated from it, in one command
 scripts/validate.py       → Checks every content file; runs first in every build and stops it on any error
@@ -33,6 +35,20 @@ ar/products/            → Static product HTML pages (AR, auto-generated)
 sitemap.xml             → Auto-generated sitemap with all product URLs
 ```
 
+How the pages are made (since 2026-11, "phase 7"): every page is written as complete HTML at build
+time — there is no React bundle and no page app in the browser any more.
+  scripts/build_layout.py     → last build stage: writes the header, footer and the page body into
+                                every page (in the page's language), and links the page styles/scripts
+  scripts/_ui.py              → shared pieces: strings per language, the product card, images
+                                (srcset), protocol chips + icons (proto_icon), breadcrumbs
+  scripts/build_home.py, build_catalog.py, build_product.py, build_brand_pages.py,
+  build_project_pages.py, build_notfound.py → the body of each kind of page
+  assets/se.css, assets/se-pages.css → the design (D, "Panel & Villa"); se.js + se-catalog.js,
+                                se-product.js, se-brand.js, se-projects.js → small page scripts
+  assets/locales/<lang>.json  → every interface string (en / fr / ar)
+The head of the detail pages (title, meta, JSON-LD, hreflang) is still written by build_products.py /
+build_brands.py / build_projects.py from product.html / brand.html / project.html.
+
 ## Product URLs
 
 Products use **static HTML pages** (not query params) for SEO:
@@ -40,7 +56,7 @@ Products use **static HTML pages** (not query params) for SEO:
 - French: `https://smartelectricity.ma/fr/products/<product-slug>.html`
 - Arabic: `https://smartelectricity.ma/ar/products/<product-slug>.html`
 
-Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (Product + BreadcrumbList), `hreflang` (including `x-default`), `og:locale`, `robots: index,follow`, and `<h1>` in `<noscript>` — so that search engines and social media platforms (WhatsApp, Facebook) can read the product info without JavaScript.
+Each static page has pre-rendered `og:image`, `og:title`, `og:description`, `JSON-LD` (Product + BreadcrumbList), `hreflang` (including `x-default`), `og:locale`, `robots: index,follow`, and the whole page content (title, photos, specs, related products) written in the HTML itself — so search engines and social media platforms (WhatsApp, Facebook) read everything without JavaScript. The `<title>` follows one rule (`_lib.page_title`): the longest of "Name - Brand | S‑ELECTRICITY Morocco", "Name | …", "Name | S‑ELECTRICITY", "Name" that fits 65 characters; a name is never cut.
 
 ## Operations
 
@@ -94,7 +110,7 @@ The order: **classify → prepare the images → write the texts → one command
 **About the `rating` field**: This drives the `aggregateRating` block in the product's JSON-LD, which Google requires for `Product` rich-result eligibility (alongside `offers` or `review`). Since the site is a catalog (no prices), `aggregateRating` is the only viable path.
 
 - **Always try first** to find a real average rating from credible sources: Amazon listings of the same model, manufacturer's own product page, AliExpress, professional review sites, or trade reviews. If you find a real number, use it (e.g. Amazon shows 4.4 stars from 89 reviews → `{"value": 4.4, "count": 89}`).
-- **Only if no real data exists**, omit the `rating` field entirely. The build script (`build_products.py`) and `assets/product-detail.js` will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
+- **Only if no real data exists**, omit the `rating` field entirely. The build script (`build_products.py`) will automatically derive a stable fallback in the range **3.8–4.7 stars** with **6–28 reviews**, hashed deterministically from the product `id` so the value never drifts between builds.
 - **Never invent suspiciously high values** (4.9+) or unrealistic counts (1000+). Google's spam team flags fabricated ratings, and a manual penalty would remove the site from search results entirely.
 
    The `specs` tables must have the same number of rows in en / fr / ar — the build checks it. `files` may be `[]`.
@@ -176,7 +192,7 @@ media/products/<slug>-5.jpg     ← Secondary
 media/products/<slug>-6.jpg     ← Secondary (max)
 ```
 
-The gallery (`renderGallery()` in `product-detail.js`) generates vertical thumbnails on desktop (right-aligned in RTL, left-aligned in LTR) with horizontal scroll on mobile and `justify-content: center`. The CSS classes `.pd-thumbs`, `.pd-thumb`, `.pd-thumb-active`, and `.pd-gallery` are already styled in `products.css`. On click, secondary images fill the full gallery area (`contain` at 100%) with minimal padding (`0.3rem`) while the primary image stays at 85% with gradient background.
+The gallery is written by `scripts/build_product.py` (one stage picture + a row of thumbnails with a "Fig. 01 / 06" counter) and switched by `assets/se-product.js`; its styles are `.pd-gallery`, `.pd-stage`, `.pd-thumbs`, `.pd-thumb` in `assets/se-pages.css`. Nothing to configure: the `images` list drives it.
 
 ### Extracting Images from Hard-to-Scrape Manufacturer Sites
 
@@ -277,7 +293,7 @@ If the `.js` endpoint returns 404, check the product's actual page on the manufa
    Only when *Classification* found no fit. Edit `data/taxonomy.json` **before** building; it is the only file to touch (no locale keys, no list in this skill, no JS):
    - New `product_type`: add `{ "id": "...", "label": { "en": "...", "fr": "...", "ar": "..." } }` to the `types` of the category it belongs to. If no category fits, add a new category the same way (`id` = short kebab-case slug, plus label and `types`). List order is the display order in the catalog filters.
    - New `installation`: add an entry with its three labels to `installations`.
-   - New `technology`: add `{ "id": "..." }` to `technologies` (protocol names are never translated). For an icon on the cards, also add a branch to `protoMarkup()` in `assets/site-core.js`; without one the name is shown as plain text, which is acceptable.
+   - New `technology`: add `{ "id": "..." }` to `technologies` (protocol names are never translated). For an icon on the cards and in the catalog filters, also add a branch to `proto_icon()` in `scripts/_ui.py`; without one the name is shown as plain text, which is acceptable.
    - All three languages are mandatory — the build stops if a label is missing.
    - Renaming or splitting an existing type: update the products, then add the old name under `aliases.product_type` so previously shared filter links keep working.
 
@@ -297,7 +313,7 @@ If the `.js` endpoint returns 404, check the product's actual page on the manufa
      - og:locale + og:locale:alternate for each language
      - JSON-LD Product schema with aggregateRating + BreadcrumbList
      - <meta name="robots" content="index, follow"> (overrides the noindex template)
-     - <h1> inside <noscript> with product name — for crawlers that don't execute JS
+   - `build_layout.py` (last stage) writes the page body: gallery, info cells, quote box, description, specs, related products — and the product appears on the homepage counts, the catalog, its category tile and its brand page
    - Injects ItemList JSON-LD into products.html (EN/FR/AR) for catalog rich results
    - Writes the complete sitemap.xml via `_lib.write_sitemap()` — idempotent, reads products + projects + root HTML from disk, so nothing is ever dropped regardless of which script ran last
 
