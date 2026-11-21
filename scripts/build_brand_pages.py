@@ -19,7 +19,7 @@ import json
 
 from _icons import ic
 from _lib import LANGS, ROOT, t
-from _ui import Page, card, crumbs, data, esc, protos, ruler
+from _ui import Page, brand_mark, card, crumbs, data, esc, protos, ruler
 from build_home import contact
 
 LIMIT = 12
@@ -105,8 +105,7 @@ def brand(lang: str, bid: str) -> str:
     grid = (f'<div class="grid grid-4{" collapsed" if many else ""}" id="bgrid">'
             + "".join(card(p, x, f' data-c="{esc(x.get("category", ""))}"') for x in mine) + '</div>'
             + (f'<div class="load-more" id="bmore"><button class="btn btn-line" type="button" data-bmore>{p.e("show_all", n=len(mine))}</button></div>' if many else ""))
-    others = "".join(f'<a class="mini-brand" href="{p.brand_url(x["id"])}" title="{esc(x["brand"])}">'
-                     f'<img src="{esc(x["logo"])}" alt="{esc(x["brand"])}" loading="lazy"></a>'
+    others = "".join(f'<a class="mini-brand" href="{p.brand_url(x["id"])}" title="{esc(x["brand"])}">{brand_mark(x)}</a>'
                      for x in d["brands"] if x["id"] != bid)
     return (
         '<div class="wrap pd-wrap">'

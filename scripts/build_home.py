@@ -20,7 +20,7 @@ import json
 
 from _icons import WA_ICON, ic
 from _lib import LANGS, t
-from _ui import PHONE_TEL, PHONE_TXT, Page, data, esc, pimg, ruler, wa
+from _ui import PHONE_TEL, PHONE_TXT, Page, brand_mark, data, esc, pimg, ruler, wa
 
 VIDEO = "/assets/example01.mp4"
 POSTER = "/assets/example01-poster.webp"
@@ -86,8 +86,7 @@ def hero(p: Page, d) -> str:
 
 def strip(p: Page, d) -> str:
     logos = "".join(
-        f'<a href="{p.base}brands/{esc(b["id"])}.html" title="{esc(b["brand"])}">'
-        f'<img src="{esc(b["logo"])}" alt="{esc(b["brand"])}" loading="lazy"></a>'
+        f'<a href="{p.base}brands/{esc(b["id"])}.html" title="{esc(b["brand"])}">{brand_mark(b)}</a>'
         for b in d["brands"])
     return (
         '<section class="brand-strip" id="bstrip"><div class="wrap brand-strip-in"><div class="bs-head">'

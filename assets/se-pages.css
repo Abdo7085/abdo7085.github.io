@@ -1159,3 +1159,8 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
   .se-page .demo .scene-key svg { width: 18px; height: 18px; }
   .se-page .demo .dev-brand { display: none; }
 }
+
+/* A brand without a logo file: its name in the logo rows (homepage strip, "other brands") */
+.se-page .brand-txt { font-family: var(--f-disp); font-size: 18px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.se-page .brand-strip .brand-txt { color: var(--on-dark-soft); }
+.se-page .mini-brand .brand-txt { color: var(--ink-soft); }

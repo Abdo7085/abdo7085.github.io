@@ -189,6 +189,14 @@ def protos(lst) -> str:
     return ('<div class="protos">' + "".join(proto(x) for x in lst) + "</div>") if lst else ""
 
 
+def brand_mark(b: dict) -> str:
+    """A brand's logo for the logo rows (homepage strip, "other brands"); its name as text when
+    the brand has no logo file (a new brand can be added without one)."""
+    if b.get("logo"):
+        return f'<img src="{esc(b["logo"])}" alt="{esc(b["brand"])}" loading="lazy">'
+    return f'<span class="brand-txt">{esc(b["brand"])}</span>'
+
+
 def brand_logo(name: str, cls: str = "") -> str:
     b = data()["brand_by_name"].get(name)
     if b and b.get("logo"):
