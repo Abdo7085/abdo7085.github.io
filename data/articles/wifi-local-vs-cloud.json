@@ -208,6 +208,19 @@
         "p": "A cloud device depends on a company keeping its servers running and its app up to date. If the service changes its terms or closes, the device can lose features or stop working altogether. A local device keeps doing its job on your network, whatever happens to the maker's service."
       },
       {
+        "h2": "What the cloud does well"
+      },
+      {
+        "ul": [
+          "Setup is usually plug and play: power the device, scan a code in the app, and it is ready — no technical skills and little time needed.",
+          "Control from outside the house works straight away, with no network settings to change at home.",
+          "Updates, voice assistants and new features arrive through the maker's service, with nothing to do on your side."
+        ]
+      },
+      {
+        "p": "For a few devices in a flat, or for anyone who wants results without a technical setup, a cloud device is a sensible choice. Local control matters more in a large installation, or where the house must keep working without the internet."
+      },
+      {
         "h2": "How to tell them apart before you buy"
       },
       {
@@ -258,6 +271,19 @@
         "p": "Un appareil cloud dépend d'une entreprise qui doit garder ses serveurs en marche et son appli à jour. Si le service change ses conditions ou ferme, l'appareil peut perdre des fonctions ou cesser de fonctionner. Un appareil local continue son travail sur votre réseau, quoi qu'il arrive au service du fabricant."
       },
       {
+        "h2": "Ce que le cloud fait bien"
+      },
+      {
+        "ul": [
+          "L'installation est souvent plug and play : on alimente l'appareil, on scanne un code dans l'appli, et c'est prêt — sans compétences techniques et en peu de temps.",
+          "La commande depuis l'extérieur fonctionne tout de suite, sans réglage réseau à faire à la maison.",
+          "Les mises à jour, les assistants vocaux et les nouvelles fonctions arrivent par le service du fabricant, sans rien faire de votre côté."
+        ]
+      },
+      {
+        "p": "Pour quelques appareils dans un appartement, ou pour qui veut un résultat sans installation technique, un appareil cloud est un choix raisonnable. La commande locale compte davantage dans une grande installation, ou là où la maison doit continuer de fonctionner sans internet."
+      },
+      {
         "h2": "Comment les distinguer avant d'acheter"
       },
       {
@@ -306,6 +332,19 @@
       },
       {
         "p": "الجهاز السحابي مرتبط بشركة يجب أن تُبقي خوادمها تعمل وتطبيقها محدّثاً. فإذا غيّرت الخدمة شروطها أو أُغلقت، قد يفقد الجهاز بعض وظائفه أو يتوقف تماماً. أما الجهاز المحلي فيواصل عمله على شبكتك، مهما حدث لخدمة الشركة المصنّعة."
+      },
+      {
+        "h2": "ما تتقنه الأجهزة السحابية"
+      },
+      {
+        "ul": [
+          "التركيب غالباً سهل وفوري (Plug and Play): توصل الجهاز بالكهرباء، تمسح رمزاً في التطبيق، ويصبح جاهزاً — دون خبرة تقنية وفي وقت قصير.",
+          "التحكم من خارج البيت يعمل مباشرة، دون أي إعدادات للشبكة في المنزل.",
+          "التحديثات والمساعدات الصوتية والوظائف الجديدة تصل عبر خدمة الشركة، دون أي عمل من جهتك."
+        ]
+      },
+      {
+        "p": "لبضعة أجهزة في شقة، أو لمن يريد نتيجة دون تركيب تقني، يبقى الجهاز السحابي اختياراً معقولاً. أما التحكم المحلي فتزداد أهميته في التركيبات الكبيرة، أو حيث يجب أن يواصل البيت العمل دون إنترنت."
       },
       {
         "h2": "كيف تميّز بينهما قبل الشراء"
