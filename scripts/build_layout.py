@@ -79,6 +79,7 @@ def content_for(suffix: str):
 PHONE_TEL = "+212654132112"
 PHONE_TXT = "+212 654-132112"
 WHATSAPP = "212654132112"
+EMAIL = "support@smartelectricity.ma"
 
 BUNDLE_JS = re.compile(r'[ \t]*<script type="module" crossorigin src="/assets/index-[\w-]+\.js"></script>\n?')
 LANG_MENU = re.compile(r'[ \t]*<!-- Language menu[^\n]*-->\s*<div id="langMenuRoot"[\s\S]*?</div>\n?')
@@ -206,6 +207,7 @@ def footer(lang: str, s: dict, tax) -> str:
         f'<div><h2>{esc(s["spa_contact"])}</h2><ul class="ftr-contact">'
         f'<li>{ic("phone")}<a href="tel:{PHONE_TEL}" dir="ltr">{PHONE_TXT}</a></li>'
         f'<li>{WA_ICON}<a href="https://wa.me/{WHATSAPP}" target="_blank" rel="noopener">{esc(s["spa_cta_whatsapp"])}</a></li>'
+        f'<li>{ic("mail")}<a href="mailto:{EMAIL}" dir="ltr">{EMAIL}</a></li>'
         f'<li>{ic("pin")}<span>{esc(s["ftr_location"])}</span></li>'
         '</ul></div>'
         '</div>'
