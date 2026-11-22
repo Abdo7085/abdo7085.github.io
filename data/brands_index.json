@@ -13,6 +13,7 @@
     ],
     "category_focus": [
       "actuators",
+      "shutters",
       "controls",
       "system",
       "dimming"
@@ -35,6 +36,7 @@
     ],
     "category_focus": [
       "actuators",
+      "shutters",
       "system",
       "controls"
     ],
@@ -57,10 +59,10 @@
     ],
     "category_focus": [
       "smart-relays",
+      "shutters",
       "actuators",
       "controls",
-      "dimming",
-      "shutters"
+      "dimming"
     ],
     "country_of_origin": "Bulgaria",
     "product_count": 11

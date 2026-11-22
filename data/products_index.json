@@ -467,6 +467,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu0800-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu0800-room-control-unit-400.webp 400w, /assets/products/rcu0800-room-control-unit-800.webp 800w, /assets/products/rcu0800-room-control-unit-1080.webp 1080w",
@@ -493,6 +501,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu0808-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu0808-room-control-unit-400.webp 400w, /assets/products/rcu0808-room-control-unit-800.webp 800w, /assets/products/rcu0808-room-control-unit-1080.webp 1080w",
@@ -519,6 +535,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu1200-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu1200-room-control-unit-400.webp 400w, /assets/products/rcu1200-room-control-unit-800.webp 800w, /assets/products/rcu1200-room-control-unit-1080.webp 1080w",
@@ -545,6 +569,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu1212-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu1212-room-control-unit-400.webp 400w, /assets/products/rcu1212-room-control-unit-800.webp 800w, /assets/products/rcu1212-room-control-unit-1080.webp 1080w",
@@ -571,6 +603,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu1600-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu1600-room-control-unit-400.webp 400w, /assets/products/rcu1600-room-control-unit-800.webp 800w, /assets/products/rcu1600-room-control-unit-1077.webp 1077w",
@@ -597,6 +637,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu1616-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu1616-room-control-unit-400.webp 400w, /assets/products/rcu1616-room-control-unit-800.webp 800w, /assets/products/rcu1616-room-control-unit-1080.webp 1080w",
@@ -623,6 +671,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu2000-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu2000-room-control-unit-400.webp 400w, /assets/products/rcu2000-room-control-unit-800.webp 800w, /assets/products/rcu2000-room-control-unit-1080.webp 1080w",
@@ -649,6 +705,14 @@
       "ar": "جهاز KNX شامل للتحكم الموحد بجميع وحدات الغرفة."
     },
     "category": "actuators",
+    "types": [
+      "Room Control Unit",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/rcu2018-room-control-unit-800.webp",
       "srcset": "/assets/products/rcu2018-room-control-unit-400.webp 400w, /assets/products/rcu2018-room-control-unit-800.webp 800w, /assets/products/rcu2018-room-control-unit-1076.webp 1076w",
@@ -891,6 +955,14 @@
       "ar": "مرحل ذكي الجيل الثالث بقناتين مع قياس الطاقة."
     },
     "category": "smart-relays",
+    "types": [
+      "Smart Relay",
+      "Shutter"
+    ],
+    "categories": [
+      "smart-relays",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/shelly-2pm-gen3-552.webp",
       "srcset": "/assets/products/shelly-2pm-gen3-400.webp 400w, /assets/products/shelly-2pm-gen3-552.webp 552w",
@@ -999,6 +1071,14 @@
       "ar": "مرحل ذكي بقناتين مع قياس الطاقة."
     },
     "category": "smart-relays",
+    "types": [
+      "Smart Relay",
+      "Shutter"
+    ],
+    "categories": [
+      "smart-relays",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/shelly-plus-2pm-554.webp",
       "srcset": "/assets/products/shelly-plus-2pm-400.webp 400w, /assets/products/shelly-plus-2pm-554.webp 554w",
@@ -1474,6 +1554,14 @@
       "ar": "مشغل مدمج بمخرجين لعلب الحائط."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-inbox-20-v3-287.webp",
       "srcset": "/assets/products/zennio-inbox-20-v3-287.webp 287w",
@@ -1500,6 +1588,14 @@
       "ar": "مشغل مدمج بمخرجين و4 مداخل مع ثرموستات."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-inbox-24-v3-287.webp",
       "srcset": "/assets/products/zennio-inbox-24-v3-287.webp 287w",
@@ -1604,6 +1700,14 @@
       "ar": "مشغل متعدد الوظائف بـ 12 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-12-288.webp",
       "srcset": "/assets/products/zennio-maxinbox-12-288.webp 288w",
@@ -1630,6 +1734,14 @@
       "ar": "مشغل متعدد الوظائف بـ 16 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-16-v4-372.webp",
       "srcset": "/assets/products/zennio-maxinbox-16-v4-372.webp 372w",
@@ -1656,6 +1768,14 @@
       "ar": "مشغل متعدد الوظائف بـ 20 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-20-373.webp",
       "srcset": "/assets/products/zennio-maxinbox-20-373.webp 373w",
@@ -1682,6 +1802,14 @@
       "ar": "مشغل متعدد الوظائف بـ 24 مخرجاً مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-24-v2-334.webp",
       "srcset": "/assets/products/zennio-maxinbox-24-v2-334.webp 334w",
@@ -1708,6 +1836,14 @@
       "ar": "مشغل متعدد الوظائف بـ 6 مخارج و6 مداخل مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-66-v3-327.webp",
       "srcset": "/assets/products/zennio-maxinbox-66-v3-327.webp 327w",
@@ -1734,6 +1870,14 @@
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-8-v4-313.webp",
       "srcset": "/assets/products/zennio-maxinbox-8-v4-313.webp 313w",
@@ -1760,6 +1904,14 @@
       "ar": "مشغل متعدد الوظائف بـ 8 مخارج و8 مداخل مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-maxinbox-88-291.webp",
       "srcset": "/assets/products/zennio-maxinbox-88-291.webp 291w",
@@ -1786,6 +1938,14 @@
       "ar": "مشغل DIN مدمج بمخرجين مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-minibox-20-v2-188.webp",
       "srcset": "/assets/products/zennio-minibox-20-v2-188.webp 188w",
@@ -1812,6 +1972,14 @@
       "ar": "مشغل DIN مدمج بـ 2 مخارج و5 مداخل مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-minibox-25-v3-188.webp",
       "srcset": "/assets/products/zennio-minibox-25-v3-188.webp 188w",
@@ -1838,6 +2006,14 @@
       "ar": "مشغل DIN مدمج بـ 4 مخارج مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-minibox-40-v3-188.webp",
       "srcset": "/assets/products/zennio-minibox-40-v3-188.webp 188w",
@@ -1864,6 +2040,14 @@
       "ar": "مشغل DIN مدمج بـ 4 مخارج و5 مداخل مع KNX Secure."
     },
     "category": "actuators",
+    "types": [
+      "Actuator",
+      "Shutter"
+    ],
+    "categories": [
+      "actuators",
+      "shutters"
+    ],
     "image": {
       "src": "/assets/products/zennio-minibox-45-v3-188.webp",
       "srcset": "/assets/products/zennio-minibox-45-v3-188.webp 188w",

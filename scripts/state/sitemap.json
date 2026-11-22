@@ -44,11 +44,11 @@
   "lastmod": "2026-11-22"
  },
  "page:brands.html": {
-  "hash": "8dd1aadd0c93d756",
+  "hash": "ec76ace226f85e7e",
   "lastmod": "2026-11-22"
  },
  "page:index.html": {
-  "hash": "b51e81bf0ca96fe8",
+  "hash": "23000c59493f2595",
   "lastmod": "2026-11-22"
  },
  "page:previous-work.html": {
@@ -56,7 +56,7 @@
   "lastmod": "2026-11-22"
  },
  "page:products.html": {
-  "hash": "2810fefbb7bc35d7",
+  "hash": "75b333f8a8ce56f1",
   "lastmod": "2026-11-22"
  },
  "page:protocols.html": {
@@ -132,36 +132,36 @@
   "lastmod": "2026-11-15"
  },
  "product:rcu0800-room-control-unit": {
-  "hash": "2402774f58418a84",
-  "lastmod": "2026-11-15"
+  "hash": "07615095b5d4dc9b",
+  "lastmod": "2026-11-22"
  },
  "product:rcu0808-room-control-unit": {
-  "hash": "28490d9257cec01b",
-  "lastmod": "2026-11-15"
+  "hash": "6a89796e0c31fb47",
+  "lastmod": "2026-11-22"
  },
  "product:rcu1200-room-control-unit": {
-  "hash": "9a2a476a21402285",
-  "lastmod": "2026-11-15"
+  "hash": "77de949eecb5b744",
+  "lastmod": "2026-11-22"
  },
  "product:rcu1212-room-control-unit": {
-  "hash": "866977313aedbe0d",
-  "lastmod": "2026-11-15"
+  "hash": "c43f5bd32c68cfab",
+  "lastmod": "2026-11-22"
  },
  "product:rcu1600-room-control-unit": {
-  "hash": "62cbb6e4cd996d38",
-  "lastmod": "2026-11-15"
+  "hash": "2c2e537df2db6efe",
+  "lastmod": "2026-11-22"
  },
  "product:rcu1616-room-control-unit": {
-  "hash": "c87d306110faeb88",
-  "lastmod": "2026-11-15"
+  "hash": "cab48e4acf1ea92b",
+  "lastmod": "2026-11-22"
  },
  "product:rcu2000-room-control-unit": {
-  "hash": "fd39e07441f28a76",
-  "lastmod": "2026-11-15"
+  "hash": "9b1bd6cf8d66dd1b",
+  "lastmod": "2026-11-22"
  },
  "product:rcu2018-room-control-unit": {
-  "hash": "90a511d3cdfe1f29",
-  "lastmod": "2026-11-15"
+  "hash": "bf46d131f98cea34",
+  "lastmod": "2026-11-22"
  },
  "product:reyee-ew1300g": {
   "hash": "d8cf642c6a0b2062",
@@ -196,8 +196,8 @@
   "lastmod": "2026-11-15"
  },
  "product:shelly-2pm-gen3": {
-  "hash": "2e3570d3669366af",
-  "lastmod": "2026-11-15"
+  "hash": "3409c73bfbce22c7",
+  "lastmod": "2026-11-22"
  },
  "product:shelly-dimmer-gen3": {
   "hash": "9887b99596cc5e14",
@@ -212,8 +212,8 @@
   "lastmod": "2026-11-15"
  },
  "product:shelly-plus-2pm": {
-  "hash": "028c95ebfd223884",
-  "lastmod": "2026-11-15"
+  "hash": "6d609fbf7e7f87f3",
+  "lastmod": "2026-11-22"
  },
  "product:shelly-pro-3": {
   "hash": "1ea794bfbf14b498",
@@ -284,12 +284,12 @@
   "lastmod": "2026-11-15"
  },
  "product:zennio-inbox-20-v3": {
-  "hash": "b372d24285847f19",
-  "lastmod": "2026-11-15"
+  "hash": "26680204c383dd87",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-inbox-24-v3": {
-  "hash": "f69c0a8fc2203d57",
-  "lastmod": "2026-11-15"
+  "hash": "d10504d92fc3a4c9",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-kupsupply-160ma": {
   "hash": "ab3a0462fa91e1f2",
@@ -304,48 +304,48 @@
   "lastmod": "2026-11-15"
  },
  "product:zennio-maxinbox-12": {
-  "hash": "cf2636c49cfadb65",
-  "lastmod": "2026-11-15"
+  "hash": "2fae886ade3e8599",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-16-v4": {
-  "hash": "81e4ac3b6d65b394",
-  "lastmod": "2026-11-15"
+  "hash": "4411e99295a1250e",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-20": {
-  "hash": "1d92a8f4bec6b37f",
-  "lastmod": "2026-11-15"
+  "hash": "58eea19502b54f1d",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-24-v2": {
-  "hash": "7221bdd901583049",
-  "lastmod": "2026-11-15"
+  "hash": "e684cb40ce52d430",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-66-v3": {
-  "hash": "d28789c65d094f48",
-  "lastmod": "2026-11-15"
+  "hash": "d615132cdff27725",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-8-v4": {
-  "hash": "2569c5671060782c",
-  "lastmod": "2026-11-15"
+  "hash": "4a7c4277264794fb",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-maxinbox-88": {
-  "hash": "02b9d4138af40a26",
-  "lastmod": "2026-11-15"
+  "hash": "f0d0ded54f1990b7",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-minibox-20-v2": {
-  "hash": "2f3bb536d92d89a4",
-  "lastmod": "2026-11-15"
+  "hash": "02637381f634eecd",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-minibox-25-v3": {
-  "hash": "a5717f2950915f30",
-  "lastmod": "2026-11-15"
+  "hash": "04061e2fac33dd1e",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-minibox-40-v3": {
-  "hash": "451041448049ff13",
-  "lastmod": "2026-11-15"
+  "hash": "fc24b90eff3fba3b",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-minibox-45-v3": {
-  "hash": "fc5b38d3c7b4c55f",
-  "lastmod": "2026-11-15"
+  "hash": "03665704296fe733",
+  "lastmod": "2026-11-22"
  },
  "product:zennio-narrowdim-x2": {
   "hash": "41d43a160b28e732",

@@ -23,7 +23,7 @@ import json
 
 from _diagram import DEV_ICONS, graph_diagram
 from _lib import LANGS, ROOT, t
-from _ui import Page, brand_mark, card, crumbs, data, esc, proto_mark, ruler
+from _ui import Page, brand_mark, card, cats_of, crumbs, data, esc, proto_mark, ruler
 from build_article_pages import latest
 from build_home import contact, plate
 
@@ -133,7 +133,7 @@ def protocol(lang: str, pid: str) -> str:
     pr = load(pid)
     name = pr.get("name", pid)
     mine = products_of(pr, d["products"])
-    cats = [c for c in d["tax"].category_order if any(q.get("category") == c for q in mine)]
+    cats = [c for c in d["tax"].category_order if any(c in cats_of(q) for q in mine)]
     brands = []
     for q in mine:
         if q.get("brand") not in brands:
@@ -208,11 +208,11 @@ def protocol(lang: str, pid: str) -> str:
                     '<div class="tabs cat-rail" id="btabs" role="toolbar">'
                     f'<button class="cat-tab" type="button" data-bcat="all" aria-pressed="true">{p.e("all")}<span class="n">{len(mine)}</span></button>'
                     + "".join(f'<button class="cat-tab" type="button" data-bcat="{esc(c)}" aria-pressed="false">{esc(p.cat(c))}'
-                              f'<span class="n">{sum(1 for q in mine if q.get("category") == c)}</span></button>' for c in cats)
+                              f'<span class="n">{sum(1 for q in mine if c in cats_of(q))}</span></button>' for c in cats)
                     + '</div><button type="button" class="rail-btn rail-next" data-rail="1" tabindex="-1" aria-hidden="true"></button></div>')
         many = len(mine) > LIMIT
         grid = (f'<div class="grid grid-4{" collapsed" if many else ""}" id="bgrid">'
-                + "".join(card(p, q, f' data-c="{esc(q.get("category", ""))}"') for q in mine) + '</div>'
+                + "".join(card(p, q, f' data-c="{esc(" ".join(cats_of(q)))}"') for q in mine) + '</div>'
                 + (f'<div class="load-more" id="bmore"><button class="btn btn-line" type="button" data-bmore>{p.e("show_all", n=len(mine))}</button></div>' if many else ""))
         out += ('<section class="sec-tight"><div class="wrap">' + ruler(p.s("proto_products", name=name), p.count(len(mine), "product"))
                 + tabs + grid + '</div></section>')

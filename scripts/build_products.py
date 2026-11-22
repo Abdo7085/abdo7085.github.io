@@ -65,6 +65,13 @@ def build_index(manifest):
             # Derived, never stored in the product file: type -> category.
             "category": taxonomy.category_of(data.get("product_type", "")),
         }
+        # A device that also serves other types (also_types) is listed under their categories too;
+        # its own type and category stay first and are the ones shown on its card and page.
+        types = [data.get("product_type", "")] + list(data.get("also_types") or [])
+        cats = list(dict.fromkeys(taxonomy.category_of(x) for x in types))
+        if len(types) > 1:
+            index_entry["types"] = types
+            index_entry["categories"] = cats
         # Primary image as a descriptor {src, srcset, width, height}; the
         # gallery stays in data/product_images.json so this index stays lean.
         descs = manifest.get(data.get("id")) or []

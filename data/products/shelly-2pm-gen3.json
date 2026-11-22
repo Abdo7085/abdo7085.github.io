@@ -21,6 +21,7 @@
     "Bluetooth"
   ],
   "product_type": "Smart Relay",
+  "also_types": ["Shutter"],
   "installation": "Behind wall switch",
   "specs": {
     "en": {

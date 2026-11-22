@@ -19,7 +19,7 @@ import json
 
 from _icons import ic
 from _lib import LANGS, ROOT, t
-from _ui import Page, brand_mark, card, crumbs, data, esc, protos, ruler
+from _ui import Page, brand_mark, card, cats_of, crumbs, data, esc, protos, ruler
 from build_home import contact
 
 LIMIT = 12
@@ -71,7 +71,7 @@ def brand(lang: str, bid: str) -> str:
             if tech not in techs:
                 techs.append(tech)
     tax = d["tax"]
-    cats = [c for c in tax.category_order if any(x.get("category") == c for x in mine)]
+    cats = [c for c in tax.category_order if any(c in cats_of(x) for x in mine)]
     country = esc(p.country(b.get("country_of_origin", "")))
 
     logo = (f'<img src="{esc(b["logo"])}" alt="{esc(name)}">' if b.get("logo") else f'<span class="h2">{esc(name)}</span>')
@@ -99,11 +99,11 @@ def brand(lang: str, bid: str) -> str:
                 '<div class="tabs cat-rail" id="btabs" role="toolbar">'
                 f'<button class="cat-tab" type="button" data-bcat="all" aria-pressed="true">{p.e("all")}<span class="n">{len(mine)}</span></button>'
                 + "".join(f'<button class="cat-tab" type="button" data-bcat="{esc(c)}" aria-pressed="false">{esc(p.cat(c))}'
-                          f'<span class="n">{sum(1 for x in mine if x.get("category") == c)}</span></button>' for c in cats)
+                          f'<span class="n">{sum(1 for x in mine if c in cats_of(x))}</span></button>' for c in cats)
                 + '</div><button type="button" class="rail-btn rail-next" data-rail="1" tabindex="-1" aria-hidden="true"></button></div>')
     many = len(mine) > LIMIT
     grid = (f'<div class="grid grid-4{" collapsed" if many else ""}" id="bgrid">'
-            + "".join(card(p, x, f' data-c="{esc(x.get("category", ""))}"') for x in mine) + '</div>'
+            + "".join(card(p, x, f' data-c="{esc(" ".join(cats_of(x)))}"') for x in mine) + '</div>'
             + (f'<div class="load-more" id="bmore"><button class="btn btn-line" type="button" data-bmore>{p.e("show_all", n=len(mine))}</button></div>' if many else ""))
     others = "".join(f'<a class="mini-brand" href="{p.brand_url(x["id"])}" title="{esc(x["brand"])}">{brand_mark(x)}</a>'
                      for x in d["brands"] if x["id"] != bid)

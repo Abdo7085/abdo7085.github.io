@@ -195,6 +195,15 @@ def protocol_of(tech: str):
     return data()["protocol_by_tech"].get(str(tech).lower())
 
 
+def cats_of(x: dict) -> list:
+    """Every category a product is listed under: its own first, then those of its also_types."""
+    return x.get("categories") or [x.get("category", "")]
+
+
+def types_of(x: dict) -> list:
+    return x.get("types") or [x.get("product_type", "")]
+
+
 def proto(tech: str, p: "Page | None" = None) -> str:
     """A protocol chip. With a Page, and when the protocol has its own page, the chip links to it
     (not inside product cards, whose title link covers the whole card)."""

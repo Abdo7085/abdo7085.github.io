@@ -35,7 +35,8 @@
     return n + ' ' + (n === 1 ? f[0] : f[1]);
   }
 
-  // products: [id, category, type, brand, techs, installation, title, search text]
+  // products: [id, categories, types, brand, techs, installation, title, search text]
+  // categories/types: the product's own first, then those it also serves (an actuator that drives shutters)
   var P = D.products.map(function (a, i) {
     return { id: a[0], cat: a[1], type: a[2], brand: a[3], tech: a[4], inst: a[5], title: a[6], hay: a[7], i: i };
   });
@@ -68,9 +69,9 @@
     return ST.q.toLowerCase().split(/\s+/).filter(Boolean).every(function (w) { return p.hay.indexOf(w) >= 0; });
   }
   function match(p, skip) {
-    if (skip !== 'cat' && ST.cat !== 'all' && p.cat !== ST.cat) return false;
+    if (skip !== 'cat' && ST.cat !== 'all' && p.cat.indexOf(ST.cat) < 0) return false;
     if (!hit(p)) return false;
-    if (skip !== 'type' && ST.type.size && !ST.type.has(p.type)) return false;
+    if (skip !== 'type' && ST.type.size && !p.type.some(function (t) { return ST.type.has(t); })) return false;
     if (skip !== 'brand' && ST.brand.size && !ST.brand.has(p.brand)) return false;
     if (skip !== 'tech' && ST.tech.size && !p.tech.some(function (t) { return ST.tech.has(t); })) return false;
     if (skip !== 'inst' && ST.inst.size && !ST.inst.has(p.inst)) return false;
@@ -130,7 +131,8 @@
 
   function render() {
     var catN = tally('cat', 'cat'), allN = 0;
-    Object.keys(catN).forEach(function (k) { allN += catN[k]; });
+    // a product listed in several categories counts once in "All"
+    P.forEach(function (p) { if (match(p, 'cat')) allN++; });
 
     // tabs: counts and the pressed one
     Array.prototype.forEach.call(document.querySelectorAll('#rail [data-cat]'), function (b) {
@@ -152,6 +154,9 @@
 
     // the list
     var list = P.filter(function (p) { return match(p); });
+    // in one category, the devices made for it come before those that also serve it
+    if (ST.cat !== 'all') list = list.filter(function (p) { return p.cat[0] === ST.cat; })
+      .concat(list.filter(function (p) { return p.cat[0] !== ST.cat; }));
     if (ST.sort === 'name') list.sort(function (a, b) { return a.title.localeCompare(b.title, D.lang); });
     if (ST.sort === 'brand') list.sort(function (a, b) { return a.brand.localeCompare(b.brand) || a.title.localeCompare(b.title, D.lang); });
 
@@ -209,7 +214,7 @@
     } else {
       grid.hidden = false;
       if (empty) empty.hidden = true;
-      var order = (ST.sort === 'featured' ? P : list.concat(P.filter(function (p) { return list.indexOf(p) < 0; })));
+      var order = (ST.sort === 'featured' && ST.cat === 'all' ? P : list.concat(P.filter(function (p) { return list.indexOf(p) < 0; })));
       var els = order.map(function (p) { return CARDS[p.id]; });
       var same = els.every(function (el, i) { return grid.children[i] === el; });
       if (!same) grid.replaceChildren.apply(grid, els);

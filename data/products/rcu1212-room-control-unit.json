@@ -5,6 +5,7 @@
     "KNX"
   ],
   "product_type": "Room Control Unit",
+  "also_types": ["Shutter"],
   "installation": "DIN Rail mounting",
   "title": {
     "en": "RCU1212 Room Control Unit",

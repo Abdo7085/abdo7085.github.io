@@ -50,9 +50,10 @@ def derive_chips(brand_products):
         for tech in (p.get("technology") or []):
             if tech:
                 tech_count[tech] = tech_count.get(tech, 0) + 1
-        cat = p.get("category") or taxonomy.category_of(p.get("product_type", ""))
-        if cat:
-            cat_count[cat] = cat_count.get(cat, 0) + 1
+        # every category the product is listed under (its own, then its also_types')
+        for cat in p.get("categories") or [p.get("category") or taxonomy.category_of(p.get("product_type", ""))]:
+            if cat:
+                cat_count[cat] = cat_count.get(cat, 0) + 1
     techs = sorted(tech_count.keys(), key=lambda k: (-tech_count[k], k))
     cats  = sorted(cat_count.keys(), key=lambda k: (-cat_count[k], k))
     return techs, cats

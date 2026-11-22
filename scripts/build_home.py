@@ -20,7 +20,7 @@ import json
 
 from _icons import WA_ICON, ic
 from _lib import LANGS, t
-from _ui import PHONE_TEL, PHONE_TXT, Page, brand_mark, data, esc, pimg, ruler, wa
+from _ui import PHONE_TEL, PHONE_TXT, Page, brand_mark, cats_of, data, esc, pimg, ruler, wa
 
 VIDEO = "/assets/example01.mp4"
 POSTER = "/assets/example01-poster.webp"
@@ -216,8 +216,9 @@ def demo(p: Page) -> str:
 def tiles(p: Page, d) -> str:
     counts, best = {}, {}
     for x in d["products"]:
-        c = x.get("category")
-        counts[c] = counts.get(c, 0) + 1
+        for cc in cats_of(x):               # a device that also serves shutters counts there too
+            counts[cc] = counts.get(cc, 0) + 1
+        c = x.get("category")               # the tile's picture: a device of that category itself
         img = x.get("image")
         if img and (c not in best or (img.get("width") or 0) > (best[c].get("width") or 0)):
             best[c] = img

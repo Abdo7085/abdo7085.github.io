@@ -23,6 +23,6 @@
     grid.classList.toggle('collapsed', c === 'all' && !!more && !more.hidden);
     document.querySelectorAll('[data-bcat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === t)); });
     rail.center(t);
-    grid.querySelectorAll('[data-c]').forEach(function (el) { el.hidden = c !== 'all' && el.getAttribute('data-c') !== c; });
+    grid.querySelectorAll('[data-c]').forEach(function (el) { el.hidden = c !== 'all' && el.getAttribute('data-c').split(' ').indexOf(c) < 0; });
   });
 })();

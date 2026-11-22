@@ -17,7 +17,7 @@ import json
 
 from _icons import WA_ICON, ic
 from _lib import LANGS, t
-from _ui import NOUNS, Page, card, crumbs, data, esc, proto_icon
+from _ui import NOUNS, Page, card, cats_of, crumbs, data, esc, proto_icon, types_of
 
 PAGE_SIZE = 12
 
@@ -33,17 +33,18 @@ def catalog(lang: str) -> str:
     prods = d["products"]
     total = {}
     for x in prods:
-        total[x["category"]] = total.get(x["category"], 0) + 1
+        for c in cats_of(x):
+            total[c] = total.get(c, 0) + 1
     cats = [c for c in raw["categories"] if total.get(c["id"])]
 
     # what the filter script needs, in this language
     js = {
         "lang": lang,
         "page": PAGE_SIZE,
-        "products": [[x["id"], x["category"], x.get("product_type", ""), x.get("brand", ""), x.get("technology") or [],
+        "products": [[x["id"], cats_of(x), types_of(x), x.get("brand", ""), x.get("technology") or [],
                       x.get("installation", ""), t(x["title"], lang),
-                      " ".join([t(x["title"], lang), x["title"].get("en", ""), x.get("brand", ""), p.type(x.get("product_type")),
-                                x.get("product_type", ""), p.cat(x["category"]), " ".join(x.get("technology") or []),
+                      " ".join([t(x["title"], lang), x["title"].get("en", ""), x.get("brand", ""), " ".join(p.type(y) for y in types_of(x)),
+                                " ".join(types_of(x)), " ".join(p.cat(c) for c in cats_of(x)), " ".join(x.get("technology") or []),
                                 t(x.get("short_description"), lang)]).lower()]
                      for x in prods],
         "cats": [[c["id"], t(c["label"], lang), [[ty["id"], t(ty["label"], lang)] for ty in c.get("types", [])]] for c in cats],

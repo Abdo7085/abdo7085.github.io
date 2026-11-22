@@ -58,7 +58,9 @@ PRODUCT_REQUIRED = {
 }
 # rating: optional and deliberately not inspected here (the derived rating
 # fallback lives in build_products.derive_rating).
-PRODUCT_OPTIONAL = {"rating"}
+# also_types: other product types the device can also serve (an actuator whose outputs drive
+# shutters lists "Shutter"); the product then shows in those categories too (build_products.py).
+PRODUCT_OPTIONAL = {"rating", "also_types"}
 
 BRAND_REQUIRED = {"id", "brand", "tagline", "description"}
 # Omitted (or logo: null) when unknown — the page shows a text card instead.
@@ -200,6 +202,20 @@ def check_products(rep: Report, taxonomy, brand_names: set) -> dict:
         if taxonomy is not None:
             for msg in taxonomy.check_product(data):
                 rep.error(where, msg)
+
+        also = data.get("also_types")
+        if also is not None and taxonomy is not None:
+            if not isinstance(also, list) or not also:
+                rep.error(where, '"also_types" must list at least one product type, e.g. ["Shutter"]')
+            else:
+                for ty in also:
+                    if ty not in taxonomy.type_category:
+                        rep.error(where, f'"also_types" has an unknown product type {ty!r}'
+                                         f'{_suggest(str(ty), taxonomy.type_category)}')
+                    elif taxonomy.type_category[ty] == taxonomy.category_of(data.get("product_type", "")):
+                        rep.error(where, f'"also_types": {ty!r} is in the product own category already')
+                if len(set(also)) != len(also):
+                    rep.error(where, '"also_types" lists a type twice')
 
         _specs(rep, where, data)
         _files(rep, where, data)

@@ -3,6 +3,7 @@
   "brand": "Zennio",
   "technology": ["KNX"],
   "product_type": "Actuator",
+  "also_types": ["Shutter"],
   "installation": "DIN Rail mounting",
 
   "title": {
