@@ -1154,3 +1154,78 @@ body.se-page { --r-lg: 16px; --r-xl: 24px; }
 /* the hero kicker may be long (a protocol's standard body): let it wrap instead of widening the card */
 .se-page .brand-hero-body .kicker { white-space: normal; align-items: flex-start; }
 .se-page .brand-hero-body .kicker::before { margin-block-start: 1px; }
+
+/* Articles (articles.html, articles/<id>.html, the block on protocol pages — build_article_pages.py) */
+.se-page .art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-block-end: 18px; }
+.se-page .art-card { display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 10px; padding: 22px; border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.se-page .art-card[hidden] { display: none; }
+.se-page .art-card:hover { border-color: var(--y-deep); box-shadow: var(--shadow); transform: translateY(-2px); }
+.se-page .art-card .h3 { margin: 0; line-height: 1.3; }
+.se-page .art-card p { margin: 0; color: var(--ink-soft); line-height: 1.6; font-size: 14.5px; }
+.se-page .art-kind { justify-self: start; padding: 3px 10px; border-radius: var(--r-pill); background: var(--y-pale); color: var(--ink); font-size: 12px; font-weight: 700; }
+.se-page .art-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-block-start: 12px; border-block-start: 1px solid var(--line); }
+.se-page .art-foot .protos { display: flex; flex-wrap: wrap; gap: 6px; }
+.se-page .art-meta { color: var(--ink-faint); font-size: 12.5px; }
+.se-page .art-none { color: var(--ink-soft); }
+/* one article */
+.se-page .art-wrap { max-width: 820px; }
+.se-page .art-head { display: grid; gap: 14px; margin-block: 26px 30px; padding-block-end: 26px; border-block-end: 1px solid var(--line); }
+.se-page .art-head h1 { margin: 0; }
+.se-page .art-head .kicker { white-space: normal; }
+.se-page .art-head .protos { display: flex; flex-wrap: wrap; gap: 8px; }
+.se-page .art-body { padding-block-end: 20px; }
+.se-page .art-body h2 { margin: 1.8em 0 .5em; }
+.se-page .art-body h2:first-child { margin-block-start: 0; }
+.se-page .art-body p, .se-page .art-body li { color: var(--ink); font-size: 17px; line-height: 1.8; }
+.se-page .art-body p + p { margin-block-start: .9em; }
+.se-page .art-body ul { margin: .6em 0; padding-inline-start: 22px; list-style: disc; }
+.se-page .art-body li + li { margin-block-start: .4em; }
+.se-page .art-body li::marker { color: var(--y-deep); }
+.se-page .art-tip { margin-block: 1.8em 0; padding: 18px 22px; border-radius: var(--r-lg); background: var(--y-pale); border-inline-start: 4px solid var(--y); color: var(--ink); font-size: 16px; line-height: 1.7; font-weight: 500; }
+@media (max-width: 640px) {
+  .se-page .art-body p, .se-page .art-body li { font-size: 16px; }
+}
+
+/* articles list: protocols in the catalog's underlined row (with their icons), types as pills */
+.se-page .cat-line .ct-i { display: inline-flex; color: var(--graphite); }
+.se-page .cat-line .ct-i svg { width: 16px; height: 16px; }
+.se-page .cat-line .ct-i img { height: 13px; width: auto; }
+.se-page .art-list { padding-block-start: 22px; }
+.se-page .art-types { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-block-end: 22px; }
+.se-page .art-types .label-sm { margin-inline-end: 6px; }
+.se-page .art-type { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 15px; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: var(--white); font-size: 13.5px; font-weight: 600; color: var(--ink-soft); transition: border-color .2s, background-color .2s, color .2s; }
+.se-page .art-type .n { font-family: var(--f-disp); color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.se-page .art-type:hover { border-color: var(--y-deep); color: var(--ink); }
+.se-page .art-type[aria-pressed="true"] { background: var(--graphite); border-color: var(--graphite); color: #fff; }
+.se-page .art-type[aria-pressed="true"] .n { color: var(--y); }
+/* the card's header: black glass, the bus wires, the article's icon */
+.se-page .art-card { padding-block-start: 0; overflow: hidden; }
+.se-page .art-cover { position: relative; display: grid; place-items: center; height: 132px; margin-inline: -22px; margin-block-end: 6px; border-radius: 0; }
+.se-page .art-cover svg { position: relative; width: 58px; height: 58px; fill: none; stroke: var(--y); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.se-page .art-wires { position: absolute; inset-inline: 0; bottom: 18px; height: 10px; background: linear-gradient(var(--y) 0 0) 0 0 / 100% 2px no-repeat, linear-gradient(var(--line-dark) 0 0) 0 6px / 100% 1px no-repeat; opacity: .8; }
+.se-page .art-card:hover .art-cover svg { stroke: var(--y-deep); }
+/* figures inside an article */
+.se-page .art-body .kd { margin-block: 1.6em; }
+/* a diagram is wider than the text: it leaves the column (up to 1080px, centred) so its labels stay readable */
+.se-page .art-body .kd { --fig: min(calc(100vw - 2 * var(--gutter) - 24px), 1080px); width: max(100%, var(--fig)); margin-inline: min(0px, calc((100% - var(--fig)) / 2)); }
+.se-page .kd figcaption { margin-block-start: 12px; padding-inline: 4px; color: var(--on-dark-soft); font-size: 14px; line-height: 1.6; }
+.se-page .art-img { margin: 1.6em 0; }
+.se-page .art-img img { display: block; width: 100%; height: auto; border-radius: var(--r-lg); }
+.se-page .art-img figcaption { margin-block-start: 8px; color: var(--ink-soft); font-size: 14px; }
+/* a card's scene (_diagram.scene): a small wordless picture of the article's idea */
+.se-page .art-scene { height: 150px; padding: 8px 14px 4px; }
+.se-page .art-scene svg { width: 100%; height: 100%; }
+.se-page .art-scene * { vector-effect: non-scaling-stroke; }
+.se-page .art-scene .cv-house { fill: rgba(255, 255, 255, .035); stroke: var(--on-dark-faint); stroke-width: 1.5; stroke-linejoin: round; }
+.se-page .art-scene .cv-dash { stroke-dasharray: 5 5; }
+.se-page .art-scene .cv-floor { stroke: var(--line-dark); stroke-width: 1.2; }
+.se-page .art-scene .cv-icon { fill: none; stroke: var(--y); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.se-page .art-scene .cv-dim { stroke: var(--on-dark-faint); }
+.se-page .art-scene .cv-wire { fill: none; stroke: var(--y); stroke-width: 2; stroke-linejoin: round; }
+.se-page .art-scene .cv-radio { fill: none; stroke: var(--y); stroke-width: 1.6; stroke-dasharray: 1 4; stroke-linecap: round; }
+.se-page .art-scene .cv-net { fill: none; stroke: var(--on-dark-faint); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.se-page .art-scene .cv-wave { fill: none; stroke: var(--y); stroke-width: 1.5; stroke-linecap: round; opacity: .85; }
+.se-page .art-scene .cv-ok-bg { fill: var(--y); }
+.se-page .art-scene .cv-ok { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.se-page .art-scene .cv-x-bg { fill: #e5534b; }
+.se-page .art-scene .cv-x { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }

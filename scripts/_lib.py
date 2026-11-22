@@ -430,6 +430,7 @@ def write_sitemap() -> None:
       3. Projects, in the order stored in data/projects_index.json × (en, fr, ar)
       4. Brands, in the order stored in data/brands_index.json × (en, fr, ar)
       5. Protocols, sorted by id × (en, fr, ar)
+      6. Articles, sorted by id × (en, fr, ar)
 
     lastmod policy — a URL's date moves only when its source content changes:
       - static pages: the English root template (incl. its injected ItemList)
@@ -437,6 +438,7 @@ def write_sitemap() -> None:
       - projects:     data/projects/<id>.json
       - brands:       data/brands/<id>.json + the ids of that brand's products
       - protocols:    data/protocols/<id>.json + the ids of the products it covers
+      - articles:     data/articles/<id>.json
     Each source's fingerprint and date are kept in scripts/state/sitemap.json.
     Unchanged fingerprint → date kept. Changed → today. First time seen → the
     date already in sitemap.xml if there is one, else today. Rebuilding with
@@ -574,6 +576,20 @@ def write_sitemap() -> None:
         its = sorted({i for m in pr.get("match") or [] for i in tech_product_ids.get(str(m).lower(), [])})
         suffix = f"protocols/{prid}.html"
         lastmod = lastmod_for(f"protocol:{prid}", _fingerprint(source, ",".join(its)), f"{HOST}/{suffix}")
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"/{lang}"
+            urls.append(_sitemap_url_block(f"{HOST}{prefix}/{suffix}", lastmod, suffix))
+
+    # 6. Articles (sorted by id). The date moves only when the article file changes.
+    for source in sorted((ROOT / "data" / "articles").glob("*.json")):
+        try:
+            aid = json.loads(source.read_text(encoding="utf-8")).get("id")
+        except Exception:
+            continue
+        if not aid:
+            continue
+        suffix = f"articles/{aid}.html"
+        lastmod = lastmod_for(f"article:{aid}", _fingerprint(source), f"{HOST}/{suffix}")
         for lang in LANGS:
             prefix = "" if lang == "en" else f"/{lang}"
             urls.append(_sitemap_url_block(f"{HOST}{prefix}/{suffix}", lastmod, suffix))

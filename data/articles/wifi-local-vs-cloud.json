@@ -1,0 +1,332 @@
+{
+  "id": "wifi-local-vs-cloud",
+  "date": "2026-11-21",
+  "type": "problems",
+  "protocols": [
+    "wifi"
+  ],
+  "related_products": [
+    "shelly-1-gen3",
+    "shelly-2pm-gen3",
+    "shelly-dimmer-gen3",
+    "shelly-pro-4pm",
+    "shelly-pro-dual-cover-shutter-pm",
+    "shelly-wall-display"
+  ],
+  "title": {
+    "en": "Local or cloud: what happens to your Wi-Fi devices when the internet goes down",
+    "fr": "Local ou cloud : que deviennent vos appareils Wi-Fi quand internet tombe ?",
+    "ar": "محلي أم سحابي: ماذا يحدث لأجهزة Wi-Fi عند انقطاع الإنترنت؟"
+  },
+  "seo_title": {
+    "en": "Wi-Fi smart devices: local or cloud control?",
+    "fr": "Appareils Wi-Fi : commande locale ou cloud ?",
+    "ar": "أجهزة Wi-Fi الذكية: تحكم محلي أم سحابي؟"
+  },
+  "summary": {
+    "en": "Two Wi-Fi switches can look identical and behave very differently when the internet drops. How to tell local devices from cloud-dependent ones, and how to choose.",
+    "fr": "Deux interrupteurs Wi-Fi peuvent se ressembler et réagir très différemment quand internet coupe. Comment distinguer les appareils locaux de ceux qui dépendent du cloud, et comment choisir.",
+    "ar": "قد يتشابه مفتاحان يعملان بـ Wi-Fi تماماً، ثم يتصرفان بشكل مختلف جداً عند انقطاع الإنترنت. كيف تميّز الأجهزة المحلية عن المعتمدة على السحابة، وكيف تختار."
+  },
+  "icon": "cloud",
+  "scene": [
+    {"house": [ 18, 10, 214, 114 ]},
+    {"line": [ 136, 72, 258, 44 ], "style": "net"},
+    {"mark": "x", "at": [ 236, 49 ]},
+    {"icon": "cloud", "at": [ 282, 36 ], "size": 42, "dim": true},
+    {"icon": "phone", "at": [ 60, 86 ], "size": 28},
+    {"line": [ 77, 86, 108, 86 ], "style": "wire"},
+    {"icon": "router", "at": [ 125, 86 ], "size": 28},
+    {"line": [ 142, 86, 174, 86 ], "style": "wire"},
+    {"icon": "bulb", "at": [ 192, 84 ], "size": 30},
+    {"mark": "ok", "at": [ 125, 113 ]}
+  ],
+  "figures": {
+    "paths": {
+      "graph": {
+        "view": [1060, 400],
+        "nodes": [
+          {
+            "id": "local",
+            "kind": "text",
+            "x": 530,
+            "y": 30
+          },
+          {
+            "id": "phone1",
+            "icon": "phone",
+            "x": 150,
+            "y": 105,
+            "w": 190
+          },
+          {
+            "id": "router1",
+            "icon": "router",
+            "x": 530,
+            "y": 105,
+            "w": 190,
+            "accent": true
+          },
+          {
+            "id": "device1",
+            "icon": "relay",
+            "x": 910,
+            "y": 105,
+            "w": 190
+          },
+          {
+            "id": "cloud",
+            "kind": "text",
+            "x": 530,
+            "y": 220
+          },
+          {
+            "id": "phone2",
+            "icon": "phone",
+            "x": 130,
+            "y": 300,
+            "w": 190
+          },
+          {
+            "id": "router2",
+            "icon": "router",
+            "x": 390,
+            "y": 300,
+            "w": 190
+          },
+          {
+            "id": "server",
+            "icon": "cloud",
+            "x": 650,
+            "y": 300,
+            "w": 190
+          },
+          {
+            "id": "device2",
+            "icon": "relay",
+            "x": 910,
+            "y": 300,
+            "w": 190
+          }
+        ],
+        "links": [
+          [
+            "phone1",
+            "router1",
+            "radio"
+          ],
+          [
+            "router1",
+            "device1",
+            "radio"
+          ],
+          [
+            "phone2",
+            "router2",
+            "radio"
+          ],
+          [
+            "router2",
+            "server",
+            "net"
+          ],
+          [
+            "server",
+            "device2",
+            "net"
+          ]
+        ]
+      },
+      "labels": {
+        "en": {
+          "local": "Local: the order stays in the house",
+          "phone1": "App or wall switch",
+          "router1": "Home router",
+          "device1": "Device acts\nat once",
+          "cloud": "Cloud: the order leaves the house and comes back",
+          "phone2": "App",
+          "router2": "Home router",
+          "server": "Maker's server",
+          "device2": "Device waits\nfor the answer",
+          "caption": "The same command, two paths: a local device keeps working when the internet is down."
+        },
+        "fr": {
+          "local": "Local : l'ordre reste dans la maison",
+          "phone1": "Appli ou\ninterrupteur",
+          "router1": "Box internet",
+          "device1": "L'appareil\nagit aussitôt",
+          "cloud": "Cloud : l'ordre sort de la maison et revient",
+          "phone2": "Appli",
+          "router2": "Box internet",
+          "server": "Serveur du\nfabricant",
+          "device2": "L'appareil\nattend la réponse",
+          "caption": "La même commande, deux chemins : un appareil local continue de fonctionner sans internet."
+        },
+        "ar": {
+          "local": "محلي: الأمر يبقى داخل البيت",
+          "phone1": "التطبيق أو\nالمفتاح الحائطي",
+          "router1": "الراوتر",
+          "device1": "الجهاز ينفّذ\nفوراً",
+          "cloud": "سحابي: الأمر يخرج من البيت ثم يعود",
+          "phone2": "التطبيق",
+          "router2": "الراوتر",
+          "server": "خادم الشركة",
+          "device2": "الجهاز ينتظر\nالجواب",
+          "caption": "نفس الأمر بطريقين: الجهاز المحلي يواصل العمل عند انقطاع الإنترنت."
+        }
+      }
+    }
+  },
+  "body": {
+    "en": [
+      {
+        "h2": "Same Wi-Fi, two different paths"
+      },
+      {
+        "p": "Every Wi-Fi device joins your home router. What differs is where the decisions are made. A local device takes the order from the app, the wall switch or a schedule inside the house, and acts on it straight away. A cloud device first sends everything to its maker's server, and waits for the answer to come back."
+      },
+      {
+        "p": "When everything works, you cannot tell the difference. It shows the day the internet, or the maker's server, goes down."
+      },
+      {
+        "figure": "paths"
+      },
+      {
+        "h2": "What stops when the internet is down"
+      },
+      {
+        "ul": [
+          "Cloud devices: the app loses them, schedules may stop, voice control stops. Some keep working from the wall switch only.",
+          "Local devices: the wall switch, schedules and automations keep running, and the app still works on the home Wi-Fi.",
+          "Both: control from outside the house needs the internet — that part is normal."
+        ]
+      },
+      {
+        "h2": "The longer-term risk"
+      },
+      {
+        "p": "A cloud device depends on a company keeping its servers running and its app up to date. If the service changes its terms or closes, the device can lose features or stop working altogether. A local device keeps doing its job on your network, whatever happens to the maker's service."
+      },
+      {
+        "h2": "How to tell them apart before you buy"
+      },
+      {
+        "ul": [
+          "Look for local control in the specifications: a built-in web page, a local API, or local protocols.",
+          "Check that schedules and scenes run on the device itself, not in the cloud.",
+          "Check that the wall switch still works when the module is offline.",
+          "Look for Matter: Matter devices are controlled on the home network by design."
+        ]
+      },
+      {
+        "h2": "The Wi-Fi modules in our catalogue"
+      },
+      {
+        "p": "The Wi-Fi modules we offer for lighting, shutters and power work locally: each one has its own web page, runs its schedules on board and keeps the wall switch working whatever the network does. The cloud stays an option for access from outside, not a condition for the house to work."
+      },
+      {
+        "tip": "A simple test: unplug the internet cable from the router and walk through the house. Whatever still works is local."
+      }
+    ],
+    "fr": [
+      {
+        "h2": "Le même Wi-Fi, deux chemins différents"
+      },
+      {
+        "p": "Tout appareil Wi-Fi rejoint votre box. Ce qui change, c'est l'endroit où se prennent les décisions. Un appareil local reçoit l'ordre de l'appli, de l'interrupteur mural ou d'un horaire à l'intérieur de la maison, et l'exécute aussitôt. Un appareil cloud envoie d'abord tout au serveur de son fabricant, et attend que la réponse revienne."
+      },
+      {
+        "p": "Quand tout fonctionne, on ne voit aucune différence. Elle apparaît le jour où internet, ou le serveur du fabricant, tombe en panne."
+      },
+      {
+        "figure": "paths"
+      },
+      {
+        "h2": "Ce qui s'arrête quand internet coupe"
+      },
+      {
+        "ul": [
+          "Appareils cloud : l'appli les perd, les horaires peuvent s'arrêter, la commande vocale aussi. Certains ne répondent plus qu'à l'interrupteur mural.",
+          "Appareils locaux : l'interrupteur, les horaires et les automatismes continuent, et l'appli fonctionne toujours sur le Wi-Fi de la maison.",
+          "Dans les deux cas : la commande depuis l'extérieur a besoin d'internet — c'est normal."
+        ]
+      },
+      {
+        "h2": "Le risque à long terme"
+      },
+      {
+        "p": "Un appareil cloud dépend d'une entreprise qui doit garder ses serveurs en marche et son appli à jour. Si le service change ses conditions ou ferme, l'appareil peut perdre des fonctions ou cesser de fonctionner. Un appareil local continue son travail sur votre réseau, quoi qu'il arrive au service du fabricant."
+      },
+      {
+        "h2": "Comment les distinguer avant d'acheter"
+      },
+      {
+        "ul": [
+          "Cherchez la commande locale dans les caractéristiques : page web intégrée, API locale ou protocoles locaux.",
+          "Vérifiez que les horaires et scènes tournent sur l'appareil lui-même, pas dans le cloud.",
+          "Vérifiez que l'interrupteur mural fonctionne encore quand le module est hors ligne.",
+          "Cherchez Matter : les appareils Matter se commandent sur le réseau de la maison par conception."
+        ]
+      },
+      {
+        "h2": "Les modules Wi-Fi de notre catalogue"
+      },
+      {
+        "p": "Les modules Wi-Fi que nous proposons pour l'éclairage, les volets et l'alimentation fonctionnent en local : chacun a sa propre page web, exécute ses horaires lui-même et garde l'interrupteur mural actif quoi que fasse le réseau. Le cloud reste une option pour l'accès à distance, pas une condition pour que la maison fonctionne."
+      },
+      {
+        "tip": "Un test simple : débranchez le câble internet de la box et faites le tour de la maison. Tout ce qui fonctionne encore est local."
+      }
+    ],
+    "ar": [
+      {
+        "h2": "نفس شبكة Wi-Fi، وطريقان مختلفان"
+      },
+      {
+        "p": "كل جهاز Wi-Fi يتصل بالراوتر المنزلي. الفرق هو المكان الذي تُتّخذ فيه القرارات. الجهاز المحلي يتلقى الأمر من التطبيق أو من المفتاح الحائطي أو من جدول زمني داخل البيت، وينفّذه فوراً. أما الجهاز السحابي فيرسل كل شيء أولاً إلى خادم الشركة المصنّعة، وينتظر عودة الجواب."
+      },
+      {
+        "p": "عندما يعمل كل شيء، لا تلاحظ أي فرق. يظهر الفرق يوم ينقطع الإنترنت، أو يتعطل خادم الشركة."
+      },
+      {
+        "figure": "paths"
+      },
+      {
+        "h2": "ما الذي يتوقف عند انقطاع الإنترنت"
+      },
+      {
+        "ul": [
+          "الأجهزة السحابية: يفقدها التطبيق، وقد تتوقف الجداول الزمنية والتحكم الصوتي. بعضها يواصل العمل من المفتاح الحائطي فقط.",
+          "الأجهزة المحلية: المفتاح الحائطي والجداول والأتمتة تواصل العمل، والتطبيق يعمل على شبكة Wi-Fi المنزلية.",
+          "في الحالتين: التحكم من خارج البيت يحتاج إلى الإنترنت — وهذا أمر طبيعي."
+        ]
+      },
+      {
+        "h2": "الخطر على المدى البعيد"
+      },
+      {
+        "p": "الجهاز السحابي مرتبط بشركة يجب أن تُبقي خوادمها تعمل وتطبيقها محدّثاً. فإذا غيّرت الخدمة شروطها أو أُغلقت، قد يفقد الجهاز بعض وظائفه أو يتوقف تماماً. أما الجهاز المحلي فيواصل عمله على شبكتك، مهما حدث لخدمة الشركة المصنّعة."
+      },
+      {
+        "h2": "كيف تميّز بينهما قبل الشراء"
+      },
+      {
+        "ul": [
+          "ابحث عن التحكم المحلي في المواصفات: صفحة ويب مدمجة، أو واجهة برمجة محلية، أو بروتوكولات محلية.",
+          "تأكد أن الجداول والمشاهد تعمل داخل الجهاز نفسه، لا في السحابة.",
+          "تأكد أن المفتاح الحائطي يعمل حتى عندما تكون الوحدة غير متصلة.",
+          "ابحث عن Matter: أجهزة Matter يُتحكّم فيها عبر الشبكة المنزلية من الأساس."
+        ]
+      },
+      {
+        "h2": "وحدات Wi-Fi في كتالوجنا"
+      },
+      {
+        "p": "وحدات Wi-Fi التي نقدّمها للإضاءة والستائر والطاقة تعمل محلياً: لكل وحدة صفحة ويب خاصة بها، وتنفّذ جداولها بنفسها، وتُبقي المفتاح الحائطي يعمل مهما حدث للشبكة. وتبقى السحابة خياراً للوصول من الخارج، لا شرطاً لكي يعمل البيت."
+      },
+      {
+        "tip": "اختبار بسيط: افصل كابل الإنترنت عن الراوتر وتجوّل في البيت. كل ما يواصل العمل هو محلي."
+      }
+    ]
+  }
+}

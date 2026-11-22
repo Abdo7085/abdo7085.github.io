@@ -1,4 +1,16 @@
 {
+ "article:knx-new-build-guide": {
+  "hash": "43459f451f1b3154",
+  "lastmod": "2026-11-21"
+ },
+ "article:wifi-big-house-coverage": {
+  "hash": "a1a5898ba6375d19",
+  "lastmod": "2026-11-21"
+ },
+ "article:wifi-local-vs-cloud": {
+  "hash": "f58b2ff6f54539d4",
+  "lastmod": "2026-11-21"
+ },
  "brand:dahua": {
   "hash": "83b5a368c521f5eb",
   "lastmod": "2026-07-25"
@@ -27,25 +39,29 @@
   "hash": "7dc274624e2002cd",
   "lastmod": "2026-07-25"
  },
+ "page:articles.html": {
+  "hash": "be06cdbb4f214378",
+  "lastmod": "2026-11-22"
+ },
  "page:brands.html": {
-  "hash": "cab302180f9941c9",
-  "lastmod": "2026-11-21"
+  "hash": "d4cd8f112acee3cd",
+  "lastmod": "2026-11-22"
  },
  "page:index.html": {
-  "hash": "f0d0420729f5bc69",
-  "lastmod": "2026-11-21"
+  "hash": "772122fb94bdc32f",
+  "lastmod": "2026-11-22"
  },
  "page:previous-work.html": {
-  "hash": "dee7dee9cbe50870",
-  "lastmod": "2026-11-21"
+  "hash": "88b727ec59a2ad4f",
+  "lastmod": "2026-11-22"
  },
  "page:products.html": {
-  "hash": "0ce6fccff2af83bc",
-  "lastmod": "2026-11-21"
+  "hash": "6ca27c1cde6ff252",
+  "lastmod": "2026-11-22"
  },
  "page:protocols.html": {
-  "hash": "6ff411a0bc411a05",
-  "lastmod": "2026-11-21"
+  "hash": "337abe87be4eb3f0",
+  "lastmod": "2026-11-22"
  },
  "product:dahua-vth2421fb-fw-ip-indoor-monitor": {
   "hash": "6114da6257fe1f11",

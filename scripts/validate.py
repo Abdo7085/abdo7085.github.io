@@ -25,6 +25,8 @@ What it checks:
                          related products exist, cover/media files exist
   data/protocols/*.json  fields, id, en/fr/ar text, the technology names it
                          covers, logo file, diagram labels in every language
+  data/articles/*.json   fields, id, date, type, protocols and products exist,
+                         en/fr/ar text, the same blocks in every language
   assets/locales/*.json  fr and ar have every key en has, and the same keys
                          as each other (fr/ar-only keys feed the localized
                          copies of the root pages); no empty values
@@ -71,6 +73,10 @@ PROJECT_OPTIONAL = {"testimonial", "extra_brands", "extra_protocols", "seo_title
 PROTOCOL_REQUIRED = {"id", "name", "match", "tagline", "description"}
 PROTOCOL_OPTIONAL = {"logo", "standard", "diagram", "graph", "seo_title", "kicker", "medium", "when",
                      "less_suited", "diagram_labels"}
+ARTICLE_REQUIRED = {"id", "date", "type", "protocols", "title", "summary", "body"}
+ARTICLE_OPTIONAL = {"seo_title", "related_products", "icon", "figures", "scene"}
+ARTICLE_TYPES = {"guide", "comparison", "problems", "explainer"}
+ARTICLE_BLOCKS = {"h2", "p", "ul", "tip", "figure", "image"}
 MEDIA_TYPES = {"image", "video", "reel"}      # video also needs a "poster" image
 
 
@@ -440,6 +446,97 @@ def check_protocols(rep: Report, technologies: set) -> None:
                     rep.error(where, f'"diagram_labels" in {l} must have the same, non-empty labels as en')
 
 
+# ---------------- Articles ----------------
+
+def check_articles(rep: Report, product_ids: set) -> None:
+    protocol_ids = {p.stem for p in (DATA / "protocols").glob("*.json")}
+    for path in sorted((DATA / "articles").glob("*.json")):
+        where = f"data/articles/{path.name}"
+        data = _read(rep, path, where)
+        if data is None:
+            continue
+        _fields(rep, where, data, ARTICLE_REQUIRED, ARTICLE_OPTIONAL)
+        _id(rep, where, data, path)
+        _placeholders(rep, where, data)
+        for key in ("title", "summary", "seo_title"):
+            _localized(rep, where, data, key)
+        try:
+            date.fromisoformat(str(data.get("date")))
+        except ValueError:
+            rep.error(where, f'"date" must be YYYY-MM-DD (got {data.get("date")!r})')
+        if data.get("type") not in ARTICLE_TYPES:
+            rep.error(where, f'"type" must be one of {", ".join(sorted(ARTICLE_TYPES))} (got {data.get("type")!r})')
+        prs = data.get("protocols")
+        if not (isinstance(prs, list) and prs):
+            rep.error(where, '"protocols" must list at least one protocol id (a file in data/protocols/)')
+        else:
+            for x in prs:
+                if x not in protocol_ids:
+                    rep.error(where, f'protocol "{x}" has no file in data/protocols/{_suggest(str(x), protocol_ids)}')
+        for pid in data.get("related_products") or []:
+            if pid not in product_ids:
+                rep.error(where, f'related product "{pid}" does not exist{_suggest(str(pid), product_ids)}')
+        from _diagram import GRAPH_ICONS
+        if "icon" in data and data.get("icon") not in GRAPH_ICONS:
+            rep.error(where, f'"icon" must be one of: {", ".join(sorted(GRAPH_ICONS))}')
+        for i, it in enumerate(data.get("scene") or []):
+            kind = next((k for k in ("house", "icon", "line", "mark", "waves") if k in it), None) if isinstance(it, dict) else None
+            if kind is None:
+                rep.error(where, f'scene[{i}] must be a house, icon, line, mark or waves item')
+            elif kind == "icon" and it["icon"] not in GRAPH_ICONS:
+                rep.error(where, f'scene[{i}] has an unknown icon {it["icon"]!r}')
+        figures = data.get("figures") or {}
+        for name, fig in figures.items():
+            graph = fig.get("graph") if isinstance(fig, dict) else None
+            labels = fig.get("labels") if isinstance(fig, dict) else None
+            if not (isinstance(graph, dict) and isinstance(labels, dict)):
+                rep.error(where, f'figure "{name}" needs "graph" and "labels" (en, fr, ar)')
+                continue
+            ids = {n.get("id") for n in graph.get("nodes") or []}
+            for n in graph.get("nodes") or []:
+                if n.get("kind", "box") == "box" and n.get("icon") not in GRAPH_ICONS:
+                    rep.error(where, f'figure "{name}" node "{n.get("id")}" has an unknown icon {n.get("icon")!r}')
+            for link in graph.get("links") or []:
+                if not (isinstance(link, list) and len(link) == 3 and link[0] in ids and link[1] in ids
+                        and link[2] in ("wire", "radio", "mesh", "load", "net")):
+                    rep.error(where, f'figure "{name}" link {link!r} must be [node, node, wire|radio|mesh|load|net]')
+            for l in LANGS:
+                got = set(labels.get(l) or {}) - {"caption"}
+                if got != ids or not all(_text(v) for v in (labels.get(l) or {}).values()):
+                    rep.error(where, f'figure "{name}" labels in {l} must name every node (plus an optional "caption")')
+        body = data.get("body")
+        if not (isinstance(body, dict) and all(isinstance(body.get(l), list) and body[l] for l in LANGS)):
+            rep.error(where, '"body" needs a list of blocks in en, fr and ar')
+            continue
+        shapes = {}
+        for l in LANGS:
+            shape = []
+            for i, b in enumerate(body[l]):
+                kind = next(iter(b), None) if isinstance(b, dict) and len(b) == 1 else None
+                if kind not in ARTICLE_BLOCKS:
+                    rep.error(where, f'body.{l}[{i}] must be one of {{"h2"|"p"|"tip": text}} or {{"ul": [texts]}}')
+                    continue
+                v = b[kind]
+                if kind == "figure":
+                    if v not in figures:
+                        rep.error(where, f'body.{l}[{i}] figure "{v}" is not in "figures"')
+                    shape.append(f"figure:{v}")
+                    continue
+                if kind == "image":
+                    if not (isinstance(v, dict) and _text(v.get("alt")) and isinstance(v.get("src"), str)
+                            and v["src"].startswith("/assets/articles/") and _local_file(v["src"]).is_file()):
+                        rep.error(where, f'body.{l}[{i}] image needs "src" (a file in /assets/articles/) and "alt"')
+                    shape.append(f"image:{v.get('src') if isinstance(v, dict) else ''}")
+                    continue
+                ok = (isinstance(v, list) and v and all(_text(x) for x in v)) if kind == "ul" else _text(v)
+                if not ok:
+                    rep.error(where, f'body.{l}[{i}] "{kind}" is empty')
+                shape.append(kind if kind != "ul" else f"ul{len(v) if isinstance(v, list) else 0}")
+            shapes[l] = shape
+        if len({tuple(s) for s in shapes.values()}) != 1:
+            rep.error(where, '"body" must have the same blocks (and list lengths) in en, fr and ar')
+
+
 # ---------------- Locales ----------------
 
 def _flatten(node: dict, prefix: str = "") -> dict:
@@ -491,6 +588,7 @@ def run() -> Report:
     brand_names = check_brands(rep)
     products = check_products(rep, taxonomy, brand_names)
     check_projects(rep, taxonomy, set(products))
+    check_articles(rep, set(products))
     check_protocols(rep, {str(x).lower() for p in products.values() for x in p.get("technology") or []})
     check_locales(rep)
 

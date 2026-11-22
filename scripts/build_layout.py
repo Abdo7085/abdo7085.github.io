@@ -36,6 +36,7 @@ import html as _html
 import re
 from pathlib import Path
 
+import build_article_pages
 import build_brand_pages
 import build_catalog
 import build_home
@@ -53,13 +54,15 @@ CONTENT = {"index.html": (build_home.home, None),
            "products.html": (build_catalog.catalog, "/assets/se-catalog.js"),
            "brands.html": (build_brand_pages.brands, None),
            "protocols.html": (build_protocol_pages.protocols, None),
+           "articles.html": (build_article_pages.articles, "/assets/se-articles.js"),
            "previous-work.html": (build_project_pages.projects, "/assets/se-projects.js"),
            "404.html": (build_notfound.notfound, None)}
 # Generated detail pages: folder → (render(lang, id), page script)
 DETAIL = {"products/": (build_product.page, "/assets/se-product.js"),
           "brands/": (build_brand_pages.brand, "/assets/se-brand.js"),
           "projects/": (build_project_pages.project, None),
-          "protocols/": (build_protocol_pages.protocol, "/assets/se-brand.js")}
+          "protocols/": (build_protocol_pages.protocol, "/assets/se-brand.js"),
+          "articles/": (build_article_pages.article, None)}
 
 
 def content_for(suffix: str):
@@ -109,6 +112,8 @@ def section_of(suffix: str) -> str:
         return "projects"
     if suffix.startswith("protocols/") or suffix == "protocols.html":
         return "protocols"
+    if suffix.startswith("articles/") or suffix == "articles.html":
+        return "articles"
     return ""
 
 
@@ -144,9 +149,9 @@ def header(lang: str, suffix: str, s: dict) -> str:
         ("products", f"{b}products.html", s["nav_products"]),
         ("brands", f"{b}brands.html", s["nav_brands"]),
         ("protocols", f"{b}protocols.html", s["nav_protocols"]),
+        ("articles", f"{b}articles.html", s["nav_articles"]),
         ("projects", f"{b}previous-work.html", s["nav_projects"]),
         ("services", f"{b}#services", s["nav_services"]),
-        ("contact", "#contact", s["nav_contact"]),
     ]
     nav = "".join(
         f'<a href="{esc(h)}"{" aria-current=\"page\"" if k == cur else ""}>{esc(txt)}</a>'
@@ -186,6 +191,7 @@ def footer(lang: str, s: dict, tax) -> str:
         f'<li><a href="{b}products.html">{esc(s["nav_products"])}</a></li>'
         f'<li><a href="{b}brands.html">{esc(s["nav_brands"])}</a></li>'
         f'<li><a href="{b}protocols.html">{esc(s["nav_protocols"])}</a></li>'
+        f'<li><a href="{b}articles.html">{esc(s["nav_articles"])}</a></li>'
         f'<li><a href="{b}previous-work.html">{esc(s["nav_projects"])}</a></li>'
         f'<li><a href="{b}#services">{esc(s["nav_services"])}</a></li>'
         f'<li><button type="button" data-trigger="find-solution">{esc(s["spa_cta_find_solution"])}</button></li>'

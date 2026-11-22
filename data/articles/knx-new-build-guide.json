@@ -1,0 +1,360 @@
+{
+  "id": "knx-new-build-guide",
+  "date": "2026-11-21",
+  "type": "guide",
+  "protocols": [
+    "knx"
+  ],
+  "related_products": [
+    "zennio-kupsupply-640ma",
+    "eae-knx-ipi200-ip-interface",
+    "eae-knx-ipr200-ip-router",
+    "zennio-maxinbox-16-v4",
+    "zennio-z50",
+    "eae-knx-miola-touch-panel"
+  ],
+  "title": {
+    "en": "What a KNX installation needs in a new build",
+    "fr": "Ce qu'il faut prévoir pour KNX dans une construction neuve",
+    "ar": "ماذا يحتاج تركيب KNX في بناء جديد"
+  },
+  "seo_title": {
+    "en": "KNX in a new build: what to plan",
+    "fr": "KNX en construction neuve : ce qu'il faut prévoir",
+    "ar": "KNX في بناء جديد: ما الذي يجب التخطيط له"
+  },
+  "summary": {
+    "en": "KNX is planned with the electrical wiring, not after it. What to prepare in a new build: the bus cable, room in the panel, the power supply, the network link and the plan.",
+    "fr": "KNX se prévoit avec le câblage électrique, pas après. Ce qu'il faut préparer en construction neuve : le câble bus, la place au tableau, l'alimentation, le lien réseau et le plan.",
+    "ar": "يُخطَّط لـ KNX مع التمديدات الكهربائية، لا بعدها. ما يجب تجهيزه في بناء جديد: كابل الناقل، ومساحة في اللوحة الكهربائية، ومزوّد الطاقة، والربط بالشبكة، والمخطط."
+  },
+  "icon": "actuators",
+  "scene": [
+    {"house": [ 40, 8, 240, 118 ], "floors": 2, "dashed": true},
+    {"line": [ 88, 115, 250, 115, 250, 74, 100, 74 ], "style": "wire"},
+    {"icon": "actuators", "at": [ 74, 108 ], "size": 24},
+    {"line": [ 140, 108, 140, 115 ], "style": "wire"},
+    {"icon": "buttons", "at": [ 140, 99 ], "size": 18},
+    {"line": [ 200, 108, 200, 115 ], "style": "wire"},
+    {"icon": "thermostat", "at": [ 200, 99 ], "size": 18},
+    {"line": [ 130, 67, 130, 74 ], "style": "wire"},
+    {"icon": "panel", "at": [ 130, 57 ], "size": 20},
+    {"line": [ 200, 66, 200, 74 ], "style": "wire"},
+    {"icon": "buttons", "at": [ 200, 57 ], "size": 18}
+  ],
+  "figures": {
+    "layout": {
+      "graph": {
+        "view": [1060, 400],
+        "nodes": [
+          {
+            "id": "router",
+            "icon": "router",
+            "x": 150,
+            "y": 70,
+            "w": 190
+          },
+          {
+            "id": "panel",
+            "icon": "actuators",
+            "x": 530,
+            "y": 70,
+            "w": 230,
+            "accent": true
+          },
+          {
+            "id": "bus",
+            "kind": "bus",
+            "x1": 40,
+            "x2": 1020,
+            "y": 190,
+            "lx": 800
+          },
+          {
+            "id": "living",
+            "icon": "panel",
+            "x": 130,
+            "y": 300,
+            "w": 180
+          },
+          {
+            "id": "bedrooms",
+            "icon": "buttons",
+            "x": 330,
+            "y": 300,
+            "w": 180
+          },
+          {
+            "id": "climate",
+            "icon": "thermostat",
+            "x": 530,
+            "y": 300,
+            "w": 180
+          },
+          {
+            "id": "corridors",
+            "icon": "sensor",
+            "x": 730,
+            "y": 300,
+            "w": 180
+          },
+          {
+            "id": "windows",
+            "icon": "shutter",
+            "x": 930,
+            "y": 300,
+            "w": 180
+          }
+        ],
+        "links": [
+          [
+            "router",
+            "panel",
+            "net"
+          ],
+          [
+            "panel",
+            "bus",
+            "wire"
+          ],
+          [
+            "living",
+            "bus",
+            "wire"
+          ],
+          [
+            "bedrooms",
+            "bus",
+            "wire"
+          ],
+          [
+            "climate",
+            "bus",
+            "wire"
+          ],
+          [
+            "corridors",
+            "bus",
+            "wire"
+          ],
+          [
+            "windows",
+            "bus",
+            "wire"
+          ]
+        ]
+      },
+      "labels": {
+        "en": {
+          "router": "Router",
+          "panel": "KNX electrical panel",
+          "bus": "Bus cable to every room",
+          "living": "Living room\ntouch panel",
+          "bedrooms": "Bedrooms\npush-buttons",
+          "climate": "Each climate zone\nthermostat",
+          "corridors": "Corridors\npresence sensors",
+          "windows": "Windows\nshutters",
+          "caption": "One bus cable from the panel reaches every room; a network cable links the panel to the router."
+        },
+        "fr": {
+          "router": "Box internet",
+          "panel": "Tableau KNX",
+          "bus": "Câble bus vers chaque pièce",
+          "living": "Salon\nécran tactile",
+          "bedrooms": "Chambres\nboutons-poussoirs",
+          "climate": "Zone de clim\nthermostat",
+          "corridors": "Couloirs\ndétecteurs",
+          "windows": "Fenêtres\nvolets",
+          "caption": "Un câble bus part du tableau vers chaque pièce ; un câble réseau relie le tableau à la box."
+        },
+        "ar": {
+          "router": "الراوتر",
+          "panel": "لوحة KNX الكهربائية",
+          "bus": "كابل الناقل إلى كل غرفة",
+          "living": "الصالون\nلوحة لمس",
+          "bedrooms": "غرف النوم\nمفاتيح ضغط",
+          "climate": "كل منطقة تكييف\nترموستات",
+          "corridors": "الممرات\nمستشعرات حضور",
+          "windows": "النوافذ\nالستائر",
+          "caption": "كابل ناقل واحد يخرج من اللوحة ويصل إلى كل غرفة، وكابل شبكة يربط اللوحة بالراوتر."
+        }
+      }
+    }
+  },
+  "body": {
+    "en": [
+      {
+        "h2": "Plan it before the walls are closed"
+      },
+      {
+        "p": "KNX runs on its own bus cable, laid next to the power cables. In a new build or a full renovation it costs little: it goes into the same conduits, at the same time. Added later, it means opening walls. The single most useful decision is to plan KNX together with the electrical plan."
+      },
+      {
+        "figure": "layout"
+      },
+      {
+        "h2": "1. The bus cable"
+      },
+      {
+        "p": "The KNX bus is a dedicated cable, usually green, that runs from the panel to every place where there will be a push-button, a thermostat, a touch panel or a sensor. It can branch freely — as a line, a star or a tree — but it must not close into a ring."
+      },
+      {
+        "p": "A good habit: leave a bus cable in every room, even where nothing is planned yet. It is the cheapest way to keep the house open to change."
+      },
+      {
+        "h2": "2. Room in the electrical panel"
+      },
+      {
+        "p": "The actuators that switch the lights, sockets, shutters and heating sit on DIN rails in the panel, next to the breakers. A KNX panel is therefore bigger than a standard one: plan extra rows, or a separate KNX panel, from the start."
+      },
+      {
+        "h2": "3. The bus power supply"
+      },
+      {
+        "p": "Each KNX line needs its own power supply, mounted in the panel. Its rating — 160, 320 or 640 mA — depends on how many devices the line carries; one line holds up to 64 devices."
+      },
+      {
+        "h2": "4. The link to the network"
+      },
+      {
+        "p": "An IP interface or an IP router connects the KNX bus to the home network. It is used to program the installation, to connect an app or a home server, and to reach the house from outside. Plan a network cable from the router to the KNX panel."
+      },
+      {
+        "h2": "5. The control points"
+      },
+      {
+        "ul": [
+          "Push-buttons by the doors, for lights, shutters and scenes.",
+          "A thermostat or room sensor in each climate zone.",
+          "A touch panel in the main living area, to see and control the whole house.",
+          "Optional: presence sensors in corridors and bathrooms."
+        ]
+      },
+      {
+        "h2": "6. The plan and the programming"
+      },
+      {
+        "p": "Before work starts, the integrator writes down what each room needs: circuits, shutters, climate zones, scenes. Once the electrician has finished, the installation is programmed with ETS, the KNX configuration software. Keep the ETS project file: it is the key to changing the installation later, with any certified integrator."
+      },
+      {
+        "tip": "Checklist for the electrician: a bus cable to every room and every control point, enough DIN rail space in the panel, and a network cable from the router to the panel."
+      }
+    ],
+    "fr": [
+      {
+        "h2": "Le prévoir avant de fermer les murs"
+      },
+      {
+        "p": "KNX fonctionne sur son propre câble bus, posé à côté des câbles électriques. En construction neuve ou en rénovation complète, cela coûte peu : il passe dans les mêmes gaines, au même moment. Ajouté plus tard, il faut ouvrir les murs. La décision la plus utile est donc de prévoir KNX en même temps que le plan électrique."
+      },
+      {
+        "figure": "layout"
+      },
+      {
+        "h2": "1. Le câble bus"
+      },
+      {
+        "p": "Le bus KNX est un câble dédié, généralement vert, qui part du tableau vers chaque endroit où il y aura un bouton-poussoir, un thermostat, un écran tactile ou un capteur. Il peut se ramifier librement — en ligne, en étoile ou en arbre — mais ne doit jamais former une boucle fermée."
+      },
+      {
+        "p": "Une bonne habitude : laisser un câble bus dans chaque pièce, même là où rien n'est encore prévu. C'est la façon la moins chère de garder la maison ouverte aux changements."
+      },
+      {
+        "h2": "2. De la place au tableau électrique"
+      },
+      {
+        "p": "Les actionneurs qui commandent l'éclairage, les prises, les volets et le chauffage se montent sur rail DIN dans le tableau, à côté des disjoncteurs. Un tableau KNX est donc plus grand qu'un tableau classique : prévoyez des rangées supplémentaires, ou un tableau KNX séparé, dès le départ."
+      },
+      {
+        "h2": "3. L'alimentation du bus"
+      },
+      {
+        "p": "Chaque ligne KNX a besoin de sa propre alimentation, montée au tableau. Sa puissance — 160, 320 ou 640 mA — dépend du nombre d'appareils sur la ligne ; une ligne accueille jusqu'à 64 appareils."
+      },
+      {
+        "h2": "4. Le lien avec le réseau"
+      },
+      {
+        "p": "Une interface IP ou un routeur IP relie le bus KNX au réseau de la maison. Il sert à programmer l'installation, à connecter une appli ou un serveur domotique, et à accéder à la maison à distance. Prévoyez un câble réseau entre la box et le tableau KNX."
+      },
+      {
+        "h2": "5. Les points de commande"
+      },
+      {
+        "ul": [
+          "Des boutons-poussoirs près des portes, pour l'éclairage, les volets et les scènes.",
+          "Un thermostat ou une sonde d'ambiance dans chaque zone de climatisation.",
+          "Un écran tactile dans la pièce de vie principale, pour voir et piloter toute la maison.",
+          "En option : des détecteurs de présence dans les couloirs et les salles de bains."
+        ]
+      },
+      {
+        "h2": "6. Le plan et la programmation"
+      },
+      {
+        "p": "Avant le chantier, l'intégrateur note ce dont chaque pièce a besoin : circuits, volets, zones de climatisation, scènes. Une fois le travail de l'électricien terminé, l'installation est programmée avec ETS, le logiciel de configuration KNX. Gardez le fichier du projet ETS : c'est la clé pour modifier l'installation plus tard, avec n'importe quel intégrateur certifié."
+      },
+      {
+        "tip": "Liste pour l'électricien : un câble bus vers chaque pièce et chaque point de commande, assez de rail DIN au tableau, et un câble réseau entre la box et le tableau."
+      }
+    ],
+    "ar": [
+      {
+        "h2": "خطّط له قبل إغلاق الجدران"
+      },
+      {
+        "p": "يعمل KNX على كابل ناقل خاص به، يُمدّ بجانب كابلات الكهرباء. في البناء الجديد أو التجديد الكامل تكلفته قليلة: يمرّ في نفس الأنابيب وفي نفس الوقت. أما إضافته لاحقاً فتعني فتح الجدران. لذلك أهم قرار هو التخطيط لـ KNX مع المخطط الكهربائي في الوقت نفسه."
+      },
+      {
+        "figure": "layout"
+      },
+      {
+        "h2": "1. كابل الناقل"
+      },
+      {
+        "p": "ناقل KNX كابل مخصّص، أخضر اللون عادة، يمتد من اللوحة الكهربائية إلى كل مكان سيكون فيه مفتاح ضغط أو ترموستات أو لوحة لمس أو مستشعر. يمكن أن يتفرّع بحرية — على شكل خط أو نجمة أو شجرة — لكن يجب ألا يُغلق على شكل حلقة."
+      },
+      {
+        "p": "عادة جيدة: اترك كابل ناقل في كل غرفة، حتى حيث لا يوجد شيء مخطط له بعد. إنها أرخص طريقة لإبقاء البيت قابلاً للتغيير."
+      },
+      {
+        "h2": "2. مساحة في اللوحة الكهربائية"
+      },
+      {
+        "p": "وحدات التشغيل التي تتحكم في الإضاءة والمقابس والستائر والتدفئة تُركّب على قضبان DIN داخل اللوحة الكهربائية، بجانب القواطع. لذلك تكون لوحة KNX أكبر من اللوحة العادية: خطّط لصفوف إضافية، أو للوحة KNX منفصلة، منذ البداية."
+      },
+      {
+        "h2": "3. مزوّد طاقة الناقل"
+      },
+      {
+        "p": "كل خط KNX يحتاج إلى مزوّد طاقة خاص به، يُركّب في اللوحة الكهربائية. قدرته — 160 أو 320 أو 640 ميلي أمبير — تتحدد حسب عدد الأجهزة على الخط، ويتّسع الخط الواحد لـ 64 جهازاً كحد أقصى."
+      },
+      {
+        "h2": "4. الربط بالشبكة"
+      },
+      {
+        "p": "واجهة أو موجّه بروتوكول الإنترنت يربط ناقل KNX بالشبكة المنزلية. يُستعمل لبرمجة التركيب، ولربط تطبيق أو خادم منزلي، وللوصول إلى البيت من الخارج. خطّط لكابل شبكة من الراوتر إلى لوحة KNX."
+      },
+      {
+        "h2": "5. نقاط التحكم"
+      },
+      {
+        "ul": [
+          "مفاتيح ضغط قرب الأبواب، للإضاءة والستائر والمشاهد.",
+          "ترموستات أو مستشعر حرارة في كل منطقة تكييف.",
+          "لوحة لمس في غرفة المعيشة الرئيسية، لرؤية البيت كله والتحكم فيه.",
+          "اختياري: مستشعرات حضور في الممرات والحمامات."
+        ]
+      },
+      {
+        "h2": "6. المخطط والبرمجة"
+      },
+      {
+        "p": "قبل بدء الأشغال، يدوّن المركّب ما تحتاجه كل غرفة: الدوائر والستائر ومناطق التكييف والمشاهد. وبعد انتهاء عمل الكهربائي، يُبرمج التركيب ببرنامج ETS، وهو برنامج إعداد KNX. احتفظ بملف مشروع ETS: إنه المفتاح لتعديل التركيب لاحقاً، مع أي مركّب معتمد."
+      },
+      {
+        "tip": "قائمة للكهربائي: كابل ناقل إلى كل غرفة وكل نقطة تحكم، ومساحة كافية لقضبان DIN في اللوحة، وكابل شبكة من الراوتر إلى اللوحة."
+      }
+    ]
+  }
+}

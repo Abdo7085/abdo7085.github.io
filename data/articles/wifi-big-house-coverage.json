@@ -1,0 +1,292 @@
+{
+  "id": "wifi-big-house-coverage",
+  "date": "2026-11-21",
+  "type": "problems",
+  "protocols": [
+    "wifi",
+    "lan"
+  ],
+  "related_products": [
+    "rg-eg105gw-x",
+    "rg-rap2200f",
+    "rg-rap62",
+    "rg-es220gs-lp",
+    "reyee-ew1300g"
+  ],
+  "title": {
+    "en": "Why the Wi-Fi drops in a big house — and how to fix it",
+    "fr": "Pourquoi le Wi-Fi décroche dans une grande maison — et comment y remédier",
+    "ar": "لماذا تنقطع شبكة Wi-Fi في البيت الكبير — وكيف تحل المشكلة"
+  },
+  "seo_title": {
+    "en": "Wi-Fi drops in a big house: causes and fixes",
+    "fr": "Wi-Fi qui décroche dans une grande maison",
+    "ar": "انقطاع Wi-Fi في البيت الكبير: الأسباب والحلول"
+  },
+  "summary": {
+    "en": "Concrete floors, thick walls and one router in a corner: the usual reasons Wi-Fi fails in a villa, and the fixes that last.",
+    "fr": "Dalles en béton, murs épais et une seule box dans un coin : les raisons habituelles des coupures Wi-Fi dans une villa, et les solutions qui durent.",
+    "ar": "أسقف خرسانية وجدران سميكة وراوتر واحد في زاوية: الأسباب المعتادة لضعف Wi-Fi في الفيلا، والحلول الدائمة."
+  },
+  "icon": "ap",
+  "scene": [
+    {"house": [ 50, 6, 220, 120 ], "floors": 2},
+    {"line": [ 230, 101, 230, 46, 161, 46 ], "style": "wire"},
+    {"line": [ 230, 91, 161, 91 ], "style": "wire"},
+    {"line": [ 242, 112, 280, 106 ], "style": "wire"},
+    {"icon": "switch", "at": [ 230, 112 ], "size": 22},
+    {"icon": "ap", "at": [ 150, 46 ], "size": 20},
+    {"waves": [ 150, 58 ], "r": [ 9, 15 ]},
+    {"icon": "ap", "at": [ 150, 91 ], "size": 20},
+    {"waves": [ 150, 103 ], "r": [ 9, 15 ]},
+    {"icon": "cameras", "at": [ 294, 102 ], "size": 24}
+  ],
+  "figures": {
+    "coverage": {
+      "graph": {
+        "view": [1060, 400],
+        "nodes": [
+          {
+            "id": "upper",
+            "icon": "ap",
+            "x": 170,
+            "y": 90,
+            "w": 200
+          },
+          {
+            "id": "ground",
+            "icon": "ap",
+            "x": 420,
+            "y": 90,
+            "w": 200
+          },
+          {
+            "id": "garden",
+            "icon": "ap",
+            "x": 670,
+            "y": 90,
+            "w": 200
+          },
+          {
+            "id": "gate",
+            "icon": "cameras",
+            "x": 920,
+            "y": 90,
+            "w": 200
+          },
+          {
+            "id": "router",
+            "icon": "router",
+            "x": 170,
+            "y": 310,
+            "w": 200
+          },
+          {
+            "id": "switch",
+            "icon": "switch",
+            "x": 545,
+            "y": 310,
+            "w": 220,
+            "accent": true
+          }
+        ],
+        "links": [
+          [
+            "router",
+            "switch",
+            "wire"
+          ],
+          [
+            "switch",
+            "upper",
+            "wire"
+          ],
+          [
+            "switch",
+            "ground",
+            "wire"
+          ],
+          [
+            "switch",
+            "garden",
+            "wire"
+          ],
+          [
+            "switch",
+            "gate",
+            "wire"
+          ]
+        ]
+      },
+      "labels": {
+        "en": {
+          "upper": "Access point\nupper floor",
+          "ground": "Access point\nground floor",
+          "garden": "Access point\ngarden",
+          "gate": "Camera\ngate",
+          "router": "Router",
+          "switch": "PoE switch\ntechnical room",
+          "caption": "One cable per point carries the data and the power; every floor gets its own access point."
+        },
+        "fr": {
+          "upper": "Point d'accès\nétage",
+          "ground": "Point d'accès\nrez-de-chaussée",
+          "garden": "Point d'accès\njardin",
+          "gate": "Caméra\nportail",
+          "router": "Box internet",
+          "switch": "Switch PoE\nlocal technique",
+          "caption": "Un câble par point transporte les données et l'alimentation ; chaque étage a son point d'accès."
+        },
+        "ar": {
+          "upper": "نقطة وصول\nالطابق العلوي",
+          "ground": "نقطة وصول\nالطابق الأرضي",
+          "garden": "نقطة وصول\nالحديقة",
+          "gate": "كاميرا\nالبوابة",
+          "router": "الراوتر",
+          "switch": "محوّل PoE\nالغرفة التقنية",
+          "caption": "كابل واحد لكل نقطة ينقل البيانات والطاقة، ولكل طابق نقطة وصول خاصة به."
+        }
+      }
+    }
+  },
+  "body": {
+    "en": [
+      {
+        "h2": "One router cannot cover a villa"
+      },
+      {
+        "p": "The router supplied by the internet provider is designed for a flat. In a villa the signal has to cross concrete slabs, brick walls and sometimes metal, and every obstacle weakens it. The result is familiar: full signal in the living room, nothing in the bedrooms upstairs, and video calls that freeze in the garden."
+      },
+      {
+        "h2": "The usual causes"
+      },
+      {
+        "ul": [
+          "The router sits in a corner, often by the entrance or in a cupboard.",
+          "Thick walls and reinforced-concrete floors stand between the router and the rooms.",
+          "Range extenders repeat a weak signal and cut the speed.",
+          "Too many devices share one router: phones, TVs, cameras and smart devices together."
+        ]
+      },
+      {
+        "h2": "The fix that lasts: wired access points"
+      },
+      {
+        "p": "The reliable solution is one access point per floor or zone, each connected to the router by a network cable. Every access point gives a full-strength signal where it is installed, and they all share the same network name, so phones move between them without the user noticing."
+      },
+      {
+        "figure": "coverage"
+      },
+      {
+        "p": "With PoE, the cable that carries the data also powers the access point, so it can go on the ceiling with no socket nearby. One PoE switch in the technical cupboard feeds them all."
+      },
+      {
+        "h2": "When a cable is not possible"
+      },
+      {
+        "p": "In a finished house where no cable can be run, wireless mesh units are the next best option: they pass the signal from one unit to the next. Place each unit where it still receives a good signal from the previous one, not at the far end of the weak zone."
+      },
+      {
+        "h2": "Cameras and smart devices"
+      },
+      {
+        "p": "Cameras and smart devices need steady coverage more than raw speed. A camera at the gate on the edge of the signal loses images; a smart module at the edge answers late. Plan coverage for the garden, the garage and the gate, not only for the rooms."
+      },
+      {
+        "tip": "In a new build, run a network cable to the ceiling of every floor and to the outdoor points — gate, garden, garage. Access points and cameras can then be added later without touching the walls."
+      }
+    ],
+    "fr": [
+      {
+        "h2": "Une seule box ne couvre pas une villa"
+      },
+      {
+        "p": "La box fournie par l'opérateur est pensée pour un appartement. Dans une villa, le signal doit traverser des dalles en béton, des murs en brique et parfois du métal, et chaque obstacle l'affaiblit. Le résultat est connu : plein signal au salon, rien dans les chambres à l'étage, et des appels vidéo qui se figent au jardin."
+      },
+      {
+        "h2": "Les causes habituelles"
+      },
+      {
+        "ul": [
+          "La box est dans un coin, souvent près de l'entrée ou dans un placard.",
+          "Des murs épais et des dalles en béton armé séparent la box des pièces.",
+          "Les répéteurs reprennent un signal faible et réduisent le débit.",
+          "Trop d'appareils sur une seule box : téléphones, TV, caméras et appareils connectés ensemble."
+        ]
+      },
+      {
+        "h2": "La solution durable : des points d'accès câblés"
+      },
+      {
+        "p": "La solution fiable est un point d'accès par étage ou par zone, chacun relié à la box par un câble réseau. Chaque point d'accès donne un signal plein là où il est installé, et tous partagent le même nom de réseau : les téléphones passent de l'un à l'autre sans que l'utilisateur s'en aperçoive."
+      },
+      {
+        "figure": "coverage"
+      },
+      {
+        "p": "Avec le PoE, le câble qui transporte les données alimente aussi le point d'accès : il peut aller au plafond sans prise à proximité. Un seul switch PoE dans le local technique les alimente tous."
+      },
+      {
+        "h2": "Quand un câble est impossible"
+      },
+      {
+        "p": "Dans une maison finie où aucun câble ne peut passer, les systèmes mesh sans fil sont la meilleure alternative : chaque unité relaie le signal vers la suivante. Placez chaque unité là où elle reçoit encore un bon signal de la précédente, pas au fond de la zone faible."
+      },
+      {
+        "h2": "Caméras et appareils connectés"
+      },
+      {
+        "p": "Les caméras et les appareils connectés ont besoin d'une couverture stable plus que de débit. Une caméra au portail en limite de signal perd des images ; un module connecté en limite répond en retard. Prévoyez la couverture du jardin, du garage et du portail, pas seulement des pièces."
+      },
+      {
+        "tip": "En construction neuve, tirez un câble réseau jusqu'au plafond de chaque étage et vers les points extérieurs — portail, jardin, garage. Points d'accès et caméras pourront s'ajouter plus tard sans toucher aux murs."
+      }
+    ],
+    "ar": [
+      {
+        "h2": "راوتر واحد لا يغطي فيلا"
+      },
+      {
+        "p": "الراوتر الذي يقدّمه مزوّد الإنترنت مصمّم للشقق. في الفيلا يجب أن تعبر الإشارة أسقفاً خرسانية وجدراناً من الآجر وأحياناً معادن، وكل عائق يُضعفها. والنتيجة معروفة: إشارة كاملة في الصالون، ولا شيء في غرف الطابق العلوي، ومكالمات فيديو تتجمد في الحديقة."
+      },
+      {
+        "h2": "الأسباب المعتادة"
+      },
+      {
+        "ul": [
+          "الراوتر موضوع في زاوية، غالباً قرب المدخل أو داخل خزانة.",
+          "جدران سميكة وأسقف من الخرسانة المسلحة بين الراوتر والغرف.",
+          "مقوّيات الإشارة تكرّر إشارة ضعيفة وتخفض السرعة.",
+          "أجهزة كثيرة على راوتر واحد: الهواتف والتلفاز والكاميرات والأجهزة الذكية معاً."
+        ]
+      },
+      {
+        "h2": "الحل الدائم: نقاط وصول موصولة بالكابل"
+      },
+      {
+        "p": "الحل الموثوق هو نقطة وصول في كل طابق أو منطقة، كل واحدة موصولة بالراوتر بكابل شبكة. كل نقطة وصول تعطي إشارة كاملة في مكان تركيبها، وكلها تحمل نفس اسم الشبكة، فتنتقل الهواتف بينها دون أن يلاحظ المستعمل."
+      },
+      {
+        "figure": "coverage"
+      },
+      {
+        "p": "ومع PoE يغذّي الكابل الذي ينقل البيانات نقطة الوصول بالكهرباء أيضاً، فيمكن تركيبها في السقف دون مقبس قريب. ومحوّل PoE واحد في الغرفة التقنية يغذّيها كلها."
+      },
+      {
+        "h2": "عندما يتعذّر تمديد الكابل"
+      },
+      {
+        "p": "في بيت جاهز لا يمكن تمديد كابل فيه، تكون أنظمة الشبكة اللاسلكية المتشابكة (Mesh) أفضل بديل: كل وحدة تمرّر الإشارة إلى التي تليها. ضع كل وحدة حيث ما زالت تستقبل إشارة جيدة من الوحدة السابقة، لا في آخر المنطقة الضعيفة."
+      },
+      {
+        "h2": "الكاميرات والأجهزة الذكية"
+      },
+      {
+        "p": "الكاميرات والأجهزة الذكية تحتاج تغطية مستقرة أكثر من السرعة. كاميرا البوابة في طرف الإشارة تفقد الصور، والوحدة الذكية في طرفها تستجيب متأخرة. خطّط لتغطية الحديقة والمرآب والبوابة، لا الغرف فقط."
+      },
+      {
+        "tip": "في البناء الجديد، مدّ كابل شبكة إلى سقف كل طابق وإلى النقاط الخارجية — البوابة والحديقة والمرآب. هكذا يمكن إضافة نقاط الوصول والكاميرات لاحقاً دون لمس الجدران."
+      }
+    ]
+  }
+}

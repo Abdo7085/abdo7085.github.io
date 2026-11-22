@@ -22,6 +22,8 @@ PHONE_TXT = "+212 654-132112"
 # Counted nouns. Arabic: 1 / 2 / 3–10 / 11+
 NOUNS = {
     "product": {"en": ["product", "products"], "fr": ["produit", "produits"], "ar": ["منتج واحد", "منتجان", "منتجات", "منتجاً"]},
+    "minute": {"en": ["min read", "min read"], "fr": ["min de lecture", "min de lecture"], "ar": ["دقيقة للقراءة", "دقيقتان للقراءة", "دقائق للقراءة", "دقيقة للقراءة"]},
+    "article": {"en": ["article", "articles"], "fr": ["article", "articles"], "ar": ["مقال واحد", "مقالان", "مقالات", "مقالاً"]},
     "protocol": {"en": ["protocol", "protocols"], "fr": ["protocole", "protocoles"], "ar": ["بروتوكول واحد", "بروتوكولان", "بروتوكولات", "بروتوكولاً"]},
     "brand": {"en": ["brand", "brands"], "fr": ["marque", "marques"], "ar": ["علامة واحدة", "علامتان", "علامات", "علامة"]},
     "day": {"en": ["day", "days"], "fr": ["jour", "jours"], "ar": ["يوم واحد", "يومان", "أيام", "يوماً"]},
@@ -58,9 +60,12 @@ def data():
         full[pj["id"]] = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
     brands = rd("data/brands_index.json")
     protocols = [json.loads(f.read_text(encoding="utf-8")) for f in sorted((ROOT / "data" / "protocols").glob("*.json"))]
+    # newest first, then by id (same order as build_article_pages.load_all)
+    articles = sorted((json.loads(f.read_text(encoding="utf-8")) for f in (ROOT / "data" / "articles").glob("*.json")),
+                      key=lambda a: (a.get("date", ""), a.get("id", "")), reverse=True)
     return {"products": products, "by_id": {p["id"]: p for p in products},
             "brands": brands, "brand_by_name": {b["brand"]: b for b in brands},
-            "protocols": protocols, "protocol_by_tech": {m.lower(): pr for pr in protocols for m in pr.get("match") or []},
+            "protocols": protocols, "articles": articles, "protocol_by_tech": {m.lower(): pr for pr in protocols for m in pr.get("match") or []},
             "projects": projects, "full": full, "tax": load_taxonomy(),
             "tax_raw": rd("data/taxonomy.json"), "images": rd("data/product_images.json")}
 
