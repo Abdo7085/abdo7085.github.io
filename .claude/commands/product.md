@@ -118,11 +118,11 @@ The order: **classify → prepare the images → write the texts → one command
 4. **Run one command** (values are case-insensitive; a typo stops with the allowed values and the closest match, and nothing is written):
    ```bash
    python scripts/new_product.py <product-slug> --brand "<Brand>" --type "<product_type>" \
-       --tech KNX [--tech Zigbee] --install "<installation>" \
+       --tech KNX [--tech Zigbee] --install "<installation>" [--also Shutter] \
        --image <scratch>/<primary>.png [--image <scratch>/<second>.jpg ...] \
        --content <scratch>/texts.json
    ```
-   It copies the images into `media/products/` as `<slug>.png`, `<slug>-2.jpg`, … (first = primary; anything above 2000px is shrunk), writes `data/products/<slug>.json`, validates it, and runs `build_all.py`. Report the three URLs it prints. Without `--content` it writes `"TODO: ..."` placeholders and the build refuses to run until every one is replaced — useful when the texts come later.
+   It copies the images into `media/products/` as `<slug>.png`, `<slug>-2.jpg`, … (first = primary; anything above 2000px is shrunk), writes `data/products/<slug>.json`, validates it, and runs `build_all.py`. Report the three URLs it prints. Without `--content` it writes `"TODO: ..."` placeholders and the build refuses to run until every one is replaced — useful when the texts come later. `--also` (repeatable) writes `also_types` — use it for every device whose description says it also does another category's job (see "Classify the product" below: an actuator or 2-channel relay that drives shutters → `--also Shutter`), and say so in the summary you show the user before running the command.
 
    *Manual route (still valid):* write `data/products/<slug>.json` yourself with the fields above plus `id`, `brand`, `technology`, `product_type`, `installation` and `images` (file names only), put the originals in `media/products/`, then `python scripts/build_all.py`. The build checks exactly the same things.
 

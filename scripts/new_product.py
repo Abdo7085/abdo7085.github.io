@@ -121,6 +121,8 @@ def main() -> int:
     ap.add_argument("--type", required=True, dest="ptype", help="product type from data/taxonomy.json")
     ap.add_argument("--tech", required=True, action="append", help="repeat for several")
     ap.add_argument("--install", required=True, help="installation from data/taxonomy.json")
+    ap.add_argument("--also", action="append", default=[],
+                    help="another product type the device also serves (e.g. Shutter); repeat for several")
     ap.add_argument("--image", required=True, action="append", help="repeat; first = primary")
     ap.add_argument("--content", help="JSON file with the texts (see above)")
     ap.add_argument("--no-build", action="store_true", help="write the files, skip the rebuild")
@@ -146,6 +148,11 @@ def main() -> int:
         if tech not in techs:
             techs.append(tech)
     install = _lib.match_choice(args.install, taxonomy.installation_labels, "installation")
+    also = []
+    for ty in args.also:
+        ty = _lib.match_choice(ty, taxonomy.type_order, "product type")
+        if ty not in also and taxonomy.category_of(ty) != taxonomy.category_of(ptype):
+            also.append(ty)
     texts = read_content(args.content) if args.content else placeholder_texts()
 
     print(f"\nImporting {len(args.image)} image(s):")
@@ -156,6 +163,7 @@ def main() -> int:
         "brand": brand,
         "technology": techs,
         "product_type": ptype,
+        **({"also_types": also} if also else {}),
         "installation": install,
         "title": texts["title"],
         "short_description": texts["short_description"],
