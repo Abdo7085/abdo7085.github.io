@@ -126,6 +126,12 @@ def wires() -> str:
             '<i class="gy"></i><i class="bl"></i><i class="pe"></i></div>')
 
 
+def knx_wires() -> str:
+    """The header's stripe: the four cores of a KNX bus cable (yellow, white, black, red, top to bottom)."""
+    return ('<div class="wires knx" aria-hidden="true"><i class="ye"></i><i class="wh"></i>'
+            '<i class="bk"></i><i class="rd"></i></div>')
+
+
 def logo(lang: str, s: dict, label: bool) -> str:
     aria = f' aria-label="{esc(s.get("logo_alt_link", "S‑ELECTRICITY"))}"' if label else ""
     return (f'<a class="logo" href="{base(lang)}"{aria}>'
@@ -171,7 +177,7 @@ def header(lang: str, suffix: str, s: dict) -> str:
         f'<button class="btn btn-primary btn-sm hdr-cta" type="button" data-trigger="find-solution">{cta}</button>'
         f'<button class="icon-btn burger" type="button" data-menu aria-controls="menu" aria-expanded="false" aria-label="{esc(s["menu"])}">'
         + ic("menu") + ic("x") + '</button>'
-        '</div></div>' + wires() + '</header>\n'
+        '</div></div>' + knx_wires() + '</header>\n'
         f'<div class="menu" id="menu" data-se><nav aria-label="{esc(s["menu"])}">{menu}</nav>'
         f'<div class="menu-foot">{switch}'
         f'<button class="btn btn-primary btn-sm" type="button" data-trigger="find-solution">{cta}</button></div></div>'

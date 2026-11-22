@@ -131,6 +131,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hdr-in { display: flex; align-items: center; gap: 18px; height: var(--hdr-h); }
 .hdr > .wires { padding-block: 0; gap: 0; filter: saturate(.55); opacity: .75; }
 .hdr > .wires i { height: 2px; border-radius: 0; }
+/* the header's stripe is a KNX bus cable: four 2px cores, thinner than the footer's mains wires */
+.hdr > .wires.knx { padding-block: 0; gap: 0; filter: saturate(.75); opacity: .8; } /* beats .se-page .wires (se-pages.css) */
+.hdr > .wires.knx i { height: 2px; }
+.wires .rd { background: #c8302c; } .wires .wh { background: #e8e6e1; } .wires .ye { background: #e9c21c; }
+.hdr > .wires.knx .bk { background: #08090a; box-shadow: none; }
 .logo { display: flex; align-items: center; gap: 10px; flex: none; }
 .logo img { width: 42px; height: 42px; }
 .logo-word { display: grid; line-height: 1; }
