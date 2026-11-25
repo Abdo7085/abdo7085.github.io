@@ -163,10 +163,12 @@ def build_json_ld(project, lang, products_index):
         prod = next((p for p in products_index if p.get("id") == rpid), None)
         if not prod:
             continue
+        # Thing, not Product: Google rejects a Product without offers/review/aggregateRating,
+        # and those belong on the product's own page.
         mentions.append({
-            "@type": "Product",
+            "@type": "Thing",
             "name": t(prod.get("title"), lang),
-            "url": f"{HOST}/products/{rpid}.html"
+            "url": f"{HOST}{prefix}/products/{rpid}.html"
         })
 
     cw = {
