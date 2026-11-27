@@ -199,7 +199,7 @@
         "p": "The KNX bus is a dedicated cable, usually green, that runs from the panel to every place where there will be a push-button, a thermostat, a touch panel or a sensor. It can branch freely — as a line, a star or a tree — but it must not close into a ring."
       },
       {
-        "p": "A good habit: leave a bus cable in every room, even where nothing is planned yet. It is the cheapest way to keep the house open to change."
+        "p": "The golden rule: run a conduit from every wall switch straight to the electrical panel. Later you can pull the KNX bus cable through it, alongside the lighting cable coming from the actuator, without opening a single wall. It is the cheapest way to keep the house open to change."
       },
       {
         "h2": "2. Room in the electrical panel"
@@ -237,7 +237,7 @@
         "p": "Before work starts, the integrator writes down what each room needs: circuits, shutters, climate zones, scenes. Once the electrician has finished, the installation is programmed with ETS, the KNX configuration software. Keep the ETS project file: it is the key to changing the installation later, with any certified integrator."
       },
       {
-        "tip": "Checklist for the electrician: a bus cable to every room and every control point, enough DIN rail space in the panel, and a network cable from the router to the panel."
+        "tip": "Checklist for the electrician: a conduit from every wall switch straight to the panel, a bus cable to every control point, enough DIN rail space in the panel, and a network cable from the router to the panel."
       }
     ],
     "fr": [
@@ -257,7 +257,7 @@
         "p": "Le bus KNX est un câble dédié, généralement vert, qui part du tableau vers chaque endroit où il y aura un bouton-poussoir, un thermostat, un écran tactile ou un capteur. Il peut se ramifier librement — en ligne, en étoile ou en arbre — mais ne doit jamais former une boucle fermée."
       },
       {
-        "p": "Une bonne habitude : laisser un câble bus dans chaque pièce, même là où rien n'est encore prévu. C'est la façon la moins chère de garder la maison ouverte aux changements."
+        "p": "La règle d'or : tirer une gaine depuis chaque interrupteur mural directement jusqu'au tableau électrique. Plus tard, on peut y passer le câble bus KNX, avec le câble d'éclairage qui vient de l'actionneur, sans ouvrir un seul mur. C'est la façon la moins chère de garder la maison ouverte aux changements."
       },
       {
         "h2": "2. De la place au tableau électrique"
@@ -295,7 +295,7 @@
         "p": "Avant le chantier, l'intégrateur note ce dont chaque pièce a besoin : circuits, volets, zones de climatisation, scènes. Une fois le travail de l'électricien terminé, l'installation est programmée avec ETS, le logiciel de configuration KNX. Gardez le fichier du projet ETS : c'est la clé pour modifier l'installation plus tard, avec n'importe quel intégrateur certifié."
       },
       {
-        "tip": "Liste pour l'électricien : un câble bus vers chaque pièce et chaque point de commande, assez de rail DIN au tableau, et un câble réseau entre la box et le tableau."
+        "tip": "Liste pour l'électricien : une gaine depuis chaque interrupteur mural directement jusqu'au tableau, un câble bus vers chaque point de commande, assez de rail DIN au tableau, et un câble réseau entre la box et le tableau."
       }
     ],
     "ar": [
@@ -315,7 +315,7 @@
         "p": "ناقل KNX كابل مخصّص، أخضر اللون عادة، يمتد من اللوحة الكهربائية إلى كل مكان سيكون فيه مفتاح ضغط أو ترموستات أو لوحة لمس أو مستشعر. يمكن أن يتفرّع بحرية — على شكل خط أو نجمة أو شجرة — لكن يجب ألا يُغلق على شكل حلقة."
       },
       {
-        "p": "عادة جيدة: اترك كابل ناقل في كل غرفة، حتى حيث لا يوجد شيء مخطط له بعد. إنها أرخص طريقة لإبقاء البيت قابلاً للتغيير."
+        "p": "القاعدة الذهبية: مُدّ أنبوباً من كل مفتاح حائطي مباشرة إلى اللوحة الكهربائية. هكذا يمكنك لاحقاً تمرير كابل KNX، مع كابل الإنارة القادم من وحدة التشغيل، دون تكسير أي جدار. إنها أرخص طريقة لإبقاء البيت قابلاً للتغيير."
       },
       {
         "h2": "2. مساحة في اللوحة الكهربائية"
@@ -353,7 +353,7 @@
         "p": "قبل بدء الأشغال، يدوّن المركّب ما تحتاجه كل غرفة: الدوائر والستائر ومناطق التكييف والمشاهد. وبعد انتهاء عمل الكهربائي، يُبرمج التركيب ببرنامج ETS، وهو برنامج إعداد KNX. احتفظ بملف مشروع ETS: إنه المفتاح لتعديل التركيب لاحقاً، مع أي مركّب معتمد."
       },
       {
-        "tip": "قائمة للكهربائي: كابل ناقل إلى كل غرفة وكل نقطة تحكم، ومساحة كافية لقضبان DIN في اللوحة، وكابل شبكة من الراوتر إلى اللوحة."
+        "tip": "قائمة للكهربائي: أنبوب من كل مفتاح حائطي مباشرة إلى اللوحة، وكابل ناقل إلى كل نقطة تحكم، ومساحة كافية لقضبان DIN في اللوحة، وكابل شبكة من الراوتر إلى اللوحة."
       }
     ]
   }
