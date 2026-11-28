@@ -211,7 +211,8 @@ def footer(lang: str, s: dict, tax) -> str:
         f'<li>{ic("pin")}<span>{esc(s["ftr_location"])}</span></li>'
         '</ul></div>'
         '</div>'
-        f'<div class="ftr-base"><span>{esc(s["spa_copyright"])}</span></div>'
+        f'<div class="ftr-base"><span>{esc(s["spa_copyright"])}</span>'
+        f'<button type="button" class="ftr-consent" data-consent-reset>{esc(s["consent_manage"])}</button></div>'
         '</div></footer>'
     )
 
@@ -220,7 +221,17 @@ def block(lang: str, suffix: str, s: dict, tax) -> str:
     c = content_for(suffix)
     main = f'<main id="main" data-se>{c[0](lang)}</main>' if c else '<main id="main"></main>'
     return ('<!-- se:layout -->\n' + header(lang, suffix, s)
-            + '\n' + main + '\n' + footer(lang, s, tax) + '\n<!-- /se:layout -->')
+            + '\n' + main + '\n' + footer(lang, s, tax) + '\n' + consent(s) + '\n<!-- /se:layout -->')
+
+
+def consent(s: dict) -> str:
+    """The ad-measurement question (Meta Pixel). Hidden until se.js finds no answer stored;
+    the pixel loads only after "yes" (law 09-08: the visitor's consent first)."""
+    return ('<div class="consent" data-consent role="region" aria-label="' + esc(s["consent_manage"]) + '" hidden>'
+            f'<p>{esc(s["consent_text"])}</p><div class="consent-keys">'
+            f'<button type="button" class="consent-yes" data-consent-choice="yes">{esc(s["consent_yes"])}</button>'
+            f'<button type="button" class="consent-no" data-consent-choice="no">{esc(s["consent_no"])}</button>'
+            '</div></div>')
 
 
 def apply(html: str, lang: str, suffix: str, s: dict, tax) -> str:

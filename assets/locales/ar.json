@@ -461,5 +461,9 @@
   "art_more": "مقالات أخرى",
   "art_all": "كل المقالات",
   "art_proto_t": "مقالات عن {name}",
-  "art_proto_all": "كل مقالات {name}"
+  "art_proto_all": "كل مقالات {name}",
+  "consent_text": "نستعمل أدوات Meta لقياس إعلاناتنا وعرضها على المهتمين بخدماتنا. هل توافق؟",
+  "consent_yes": "موافق",
+  "consent_no": "لا، شكراً",
+  "consent_manage": "قياس الإعلانات"
 }

@@ -243,4 +243,60 @@
     try { localStorage.setItem('site_lang', a.getAttribute('hreflang')); } catch (err) { /* private mode */ }
     if (location.search && a.getAttribute('href').indexOf('?') < 0) a.setAttribute('href', a.getAttribute('href') + location.search);
   }, true);
+
+  // Contact clicks for GA4 (the gtag in each page's head): whatsapp_click, phone_click and
+  // email_click, with link_location = where on the page (header, footer, quote_cart,
+  // solution_wizard, or the id of the section). Bubble phase, so the quote cart and the
+  // wizard have already written their wa.me address. Only the place is sent, never the
+  // address itself (the WhatsApp text can hold what the visitor typed).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var name = /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href) ? 'whatsapp_click'
+      : href.indexOf('tel:') === 0 ? 'phone_click'
+      : href.indexOf('mailto:') === 0 ? 'email_click' : '';
+    if (!name) return;
+    var where = a.closest('.hdr') ? 'header' : a.closest('.ftr') ? 'footer'
+      : a.closest('.cart-btn-whatsapp') ? 'quote_cart' : a.closest('.fs-send') ? 'solution_wizard'
+      : ((a.closest('section[id], [id].sec') || {}).id || 'page');
+    if (typeof window.gtag === 'function') window.gtag('event', name, { link_location: where, transport_type: 'beacon' });
+    // Meta: one standard Contact event (what the ads optimise for); only when the pixel loaded,
+    // i.e. after the visitor said yes.
+    if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_category: name.replace('_click', '') });
+  });
+
+  // Meta Pixel, only with the visitor's consent (law 09-08). The answer is kept in
+  // localStorage ('se_ads_consent' = yes | no); the footer's "Ad measurement" key asks again.
+  var PIXEL = '1864531918012817', KEY = 'se_ads_consent';
+  function getConsent() { try { return localStorage.getItem(KEY); } catch (err) { return null; } }
+  function setConsent(v) { try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (err) { /* private mode */ } }
+  function loadPixel() {
+    if (window.fbq) return;
+    var n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!window._fbq) window._fbq = n;
+    n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+    var t = document.createElement('script'); t.async = true; t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(t);
+    window.fbq('init', PIXEL);
+    window.fbq('track', 'PageView');
+  }
+  var box = document.querySelector('[data-consent]');
+  if (getConsent() === 'yes') loadPixel();
+  else if (!getConsent() && box) box.hidden = false;
+  if (box) box.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent-choice]');
+    if (!b) return;
+    var v = b.getAttribute('data-consent-choice');
+    setConsent(v);
+    box.hidden = true;
+    if (v === 'yes') loadPixel();
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('[data-consent-reset]') || !box) return;
+    // asking again: a "no" after a "yes" takes effect from the next page (the loaded pixel stays for this one)
+    setConsent(null);
+    box.hidden = false;
+    var y = box.querySelector('.consent-yes'); if (y) y.focus();
+  });
 })();

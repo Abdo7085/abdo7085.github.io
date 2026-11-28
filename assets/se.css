@@ -195,6 +195,19 @@ html:not([lang="ar"]) .lang a[lang="ar"] { font-family: system-ui, "Segoe UI", T
 .ftr-contact svg { width: 16px; height: 16px; color: var(--y); flex: none; }
 .ftr-base { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-block-start: 44px; padding-block-start: 24px; font-size: 13px; color: var(--on-dark-faint); }
 .ftr-base::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brass-line) 18%, var(--brass-line) 82%, transparent); }
+.ftr-consent { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ftr-consent:hover { color: var(--on-dark); }
+/* the ad-measurement question (se.js shows it while no answer is stored) */
+.consent { position: fixed; inset-inline: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 90; max-width: 440px; padding: 16px 18px; border-radius: var(--r); background: var(--glass); color: var(--on-dark); border: 1px solid var(--line-dark); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); font-size: 14px; line-height: 1.5; }
+.consent[hidden] { display: none; }
+.consent p { margin: 0 0 12px; }
+.consent-keys { display: flex; gap: 10px; }
+.consent button { min-height: 40px; padding: 0 18px; border-radius: 4px; border: 2px solid transparent; font: inherit; font-weight: 700; cursor: pointer; }
+.consent-yes { background: var(--y); color: var(--glass); }
+.consent-yes:hover { background: #ffd35f; }
+.consent-no { background: transparent; color: var(--on-dark); border-color: var(--line-dark) !important; }
+.consent-no:hover { border-color: var(--on-dark-soft) !important; }
+.consent :focus-visible, .ftr-consent:focus-visible { outline: 2px solid var(--y); outline-offset: 3px; }
 .ftr-base::after { content: ""; position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; background: var(--glass) var(--khatam) center / 16px no-repeat; }
 @media (max-width: 900px) { .ftr-grid { grid-template-columns: 1fr 1fr; } .ftr-about { grid-column: 1 / -1; } }
 @media (max-width: 480px) { .ftr-grid { grid-template-columns: 1fr; } }
