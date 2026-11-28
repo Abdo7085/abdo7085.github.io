@@ -462,8 +462,8 @@
   "art_all": "Tous les articles",
   "art_proto_t": "Articles sur {name}",
   "art_proto_all": "Tous les articles {name}",
-  "consent_text": "Nous utilisons les outils de Meta pour mesurer nos publicités et les montrer aux personnes intéressées par nos services. Acceptez-vous ?",
+  "consent_text": "Ce site utilise des cookies pour améliorer votre expérience.",
   "consent_yes": "Accepter",
-  "consent_no": "Non merci",
-  "consent_manage": "Mesure publicitaire"
+  "consent_no": "Refuser",
+  "consent_manage": "Paramètres des cookies"
 }

@@ -451,8 +451,8 @@
   "art_all": "All articles",
   "art_proto_t": "Articles about {name}",
   "art_proto_all": "All {name} articles",
-  "consent_text": "We use Meta tools to measure our ads and show them to people interested in our services. Do you agree?",
+  "consent_text": "This site uses cookies to improve your experience.",
   "consent_yes": "Accept",
-  "consent_no": "No thanks",
-  "consent_manage": "Ad measurement"
+  "consent_no": "Decline",
+  "consent_manage": "Cookie settings"
 }
