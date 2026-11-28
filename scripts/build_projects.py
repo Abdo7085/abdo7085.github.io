@@ -148,7 +148,7 @@ def build_index():
 # ---------------- Static HTML per project ----------------
 
 def build_json_ld(project, lang, products_index):
-    """CreativeWork + BreadcrumbList as a JSON array. Adds `mentions` for related products and a review entry if a testimonial exists."""
+    """CreativeWork + BreadcrumbList as a JSON array. Adds `mentions` for related products. The testimonial stays out (see below)."""
     pid = project.get("id", "")
     title = t(project.get("title"), lang)
     desc = t(project.get("description"), lang) or t(project.get("short_description"), lang)
@@ -193,16 +193,9 @@ def build_json_ld(project, lang, products_index):
     if mentions:
         cw["mentions"] = mentions
 
-    testimonial = project.get("testimonial")
-    if testimonial and testimonial.get("quote"):
-        cw["review"] = {
-            "@type": "Review",
-            "reviewBody": t(testimonial.get("quote"), lang),
-            "author": {
-                "@type": "Person",
-                "name": testimonial.get("author", "Client")
-            }
-        }
+    # The client's testimonial is shown on the page only. As a Review on this CreativeWork,
+    # Google rejects it ("Invalid object type for field <parent_node>"), and it cannot go on
+    # the business (self-serving) or on one product (it is about the whole project).
 
     # BreadcrumbList
     prev_work_label = {"en": "Previous Work", "fr": "Réalisations", "ar": "\u0623\u0639\u0645\u0627\u0644\u0646\u0627 \u0627\u0644\u0633\u0627\u0628\u0642\u0629"}[lang]
